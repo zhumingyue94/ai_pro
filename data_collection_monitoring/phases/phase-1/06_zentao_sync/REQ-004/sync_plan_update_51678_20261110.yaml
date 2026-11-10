@@ -1,0 +1,30 @@
+req_id: REQ-004
+project_id: 46
+product_id: 8
+module_id: 733
+operation: update
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+changes:
+- local_case_id: TC-REQ-004-028
+  remote_case_id: 51678
+  removed_expectation_fragment: 按清理方案删除测试分组
+  resulting_expectation: 保存成功时，描述回读值符合页面定义的保留、裁剪或转义规则。
+rebuild: forbidden_and_not_used
+source_hashes_after:
+  yaml: a5e25791396d43eda889ea1b5ced40130f966750f910c720759fc4331ec09df5
+  markdown: 322bce0a65ca2ad41fc61077233ae351dd66daa9c2383467f4cd4178f94ea4cb
+  review_yaml: a3128197cbc1d50f770d076b2cd01e3108055ba9c4728fa6fc0b06b7fb72026e
+execution:
+  status: validated
+  records:
+  - remote_case_id: 51678
+    local_case_id: TC-REQ-004-028
+    operation: update
+    readback_after: validated
+    defects: []
+registry:
+  mapping_status: registered
+  last_step_count: 3
+  last_step_sync_status: validated
+  last_step_sync_at: 2026-11-10

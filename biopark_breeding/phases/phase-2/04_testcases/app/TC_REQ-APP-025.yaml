@@ -1,0 +1,330 @@
+req_id: REQ-APP-025
+module: APP存发苗间出入库记录
+trace:
+  req: REQ-APP-025
+  project: 种禽孵化管理系统
+  version: 4
+  status: redesigned_after_rev_case
+  tp: TEST_PLAN-REQ-APP-025
+  source_review: REV_CASE_REQ-APP-025
+common_preconditions:
+- id: app_inventory_records_access
+  name: APP存发苗间出入库记录页面访问前置
+  steps:
+  - action: 打开小程序并登录，切换到正确的孵化场
+    expected: 进入当前孵化场的小程序首页
+  - action: 进入存发苗间板块，点击“出入库记录”入口
+    expected: 进入出入库记录页面，并确认页面标题显示“存发苗间·出入库记录”
+cases:
+- id: TC-APP-025-001
+  common_preconditions_ref: app_inventory_records_access
+  title: 自动出库记录类型为出库、方式为自动、单位为只
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 自动出库记录
+  coverage_ids:
+  - COV-APP025-AUTO-ATTRIBUTES
+  plan_item_ids:
+  - PLAN-APP025-AUTO-ATTRIBUTES
+  atomic_purpose_ids:
+  - AP-APP025-TYPE-METHOD-UNIT
+  preconditions:
+  - 已批准发货确认变更窗口
+  - 已准备可回读的发货记录和自动出库记录
+  - 已准备可回读的自动出库记录
+  steps:
+  - action: 完成一次有效发货确认并回读对应自动出库记录的类型和方式
+    expected: 自动出库记录的类型显示为“出库”，方式显示为“自动”。
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-002
+  common_preconditions_ref: app_inventory_records_access
+  title: 自动出库记录批次取上孵计划批次
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 自动出库记录
+  coverage_ids:
+  - COV-APP025-AUTO-ATTRIBUTES
+  plan_item_ids:
+  - PLAN-APP025-AUTO-ATTRIBUTES
+  atomic_purpose_ids:
+  - AP-APP025-BATCH
+  preconditions:
+  - 已批准发货确认变更窗口
+  - 已准备带明确上孵计划批次的发货记录和自动出库记录
+  steps:
+  - action: 完成有效发货确认并对照上孵计划批次与自动出库记录批次
+    expected: 自动出库记录批次与本次发货关联的上孵计划批次一致
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-003
+  common_preconditions_ref: app_inventory_records_access
+  title: 自动出库数量等于本次发货数量
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 自动出库记录
+  coverage_ids:
+  - COV-APP025-QUANTITY
+  plan_item_ids:
+  - PLAN-APP025-QUANTITY
+  atomic_purpose_ids:
+  - AP-APP025-QUANTITY
+  preconditions:
+  - 已批准发货确认变更窗口
+  - 已准备可回读且数量明确的发货记录和自动出库记录
+  steps:
+  - action: 完成一次有效的发货确认，发货数=上孵计划剩余可发
+    expected: 发货确认成功，且本次发货数量等于上孵计划剩余可发数量。
+  - action: 对照本次发货数量与自动出库数量
+    expected: 自动出库数量与本次发货数量相等。
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-007
+  common_preconditions_ref: app_inventory_records_access
+  title: 发货确认后生成一笔对应自动出库记录
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 自动出库记录
+  coverage_ids:
+  - COV-APP025-AUTO-CREATE
+  plan_item_ids:
+  - PLAN-APP025-AUTO-CREATE
+  atomic_purpose_ids:
+  - AP-APP025-RECORD-CREATED
+  preconditions:
+  - 已批准发货确认变更窗口
+  - 已准备可回读的发货记录
+  - 发货确认前不存在与本次发货对应的自动出库记录
+  steps:
+  - action: 完成一次有效发货确认并回读对应自动出库记录
+    expected: 新增一笔与本次发货确认对应的自动出库记录
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-008
+  common_preconditions_ref: app_inventory_records_access
+  title: 自动出库操作人、操作时间取发货记录，养殖客户取当前园区
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 自动出库记录
+  coverage_ids:
+  - COV-APP025-AUTO-ATTRIBUTES
+  plan_item_ids:
+  - PLAN-APP025-AUTO-ATTRIBUTES
+  atomic_purpose_ids:
+  - AP-APP025-OPERATOR-TIME-CUSTOMER
+  preconditions:
+  - 已批准发货确认变更窗口
+  - 已准备操作人明确的发货记录和可回读的自动出库记录
+  - 已准备操作时间明确的发货记录和可回读的自动出库记录
+  - 已准备当前园区和养殖客户明确的发货记录
+  - 已准备可回读的自动出库记录
+  steps:
+  - action: 完成一次有效发货确认并对照发货记录操作人和操作时间
+    expected: 自动出库记录的操作人与本次雏苗发货记录的操作人一致，操作时间与本次雏苗发货记录的操作时间一致。
+  - action: 对照当前园区与自动出库记录的养殖客户
+    expected: 自动出库记录的养殖客户为当前园区对应的养殖客户。
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-009
+  common_preconditions_ref: app_inventory_records_access
+  title: 库存充足时出库存发苗间取上孵计划关联
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 自动出库记录
+  coverage_ids:
+  - COV-APP025-AUTO-ATTRIBUTES
+  plan_item_ids:
+  - PLAN-APP025-AUTO-ATTRIBUTES
+  atomic_purpose_ids:
+  - AP-APP025-ROOM-SOURCE
+  preconditions:
+  - 已批准发货确认变更窗口
+  - 已准备仅关联一个存发苗间且库存充足的上孵计划
+  - 已准备可回读的自动出库记录
+  steps:
+  - action: 在单库存发苗间且库存充足条件下完成发货确认并回读自动出库记录的存发苗间
+    expected: 自动出库记录的存发苗间与上孵计划关联的存发苗间一致
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-011
+  common_preconditions_ref: app_inventory_records_access
+  title: 出入库记录列表可见本次自动出库
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 出入库记录查询
+  coverage_ids:
+  - COV-APP025-QUERY
+  plan_item_ids:
+  - PLAN-APP025-QUERY
+  atomic_purpose_ids:
+  - AP-APP025-QUERY-RECORD
+  preconditions:
+  - 授权存发苗间管理角色可用
+  - 已批准发货确认变更窗口
+  - 已准备一次有效发货确认后可对照的自动出库记录
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在出入库记录列表中查找本次发货确认对应的自动出库记录
+    expected: 列表中存在与本次发货确认对应的自动出库记录
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-017
+  common_preconditions_ref: app_inventory_records_access
+  title: 发货数量为零时不生成自动出库记录
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 自动出库数量边界
+  coverage_ids:
+  - COV-APP025-QUANTITY
+  plan_item_ids:
+  - PLAN-APP025-QUANTITY
+  atomic_purpose_ids:
+  - AP-APP025-QUANTITY-ZERO
+  preconditions:
+  - 已批准发货确认变更窗口
+  - 已准备发货数量为零且可回读结果的样本
+  steps:
+  - action: 在发货数量为零的条件下完成发货确认并查询对应自动出库结果
+    expected: 发货确认结果符合待确认的零数量处理契约，且不生成数量大于零的自动出库记录
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-019
+  common_preconditions_ref: app_inventory_records_access
+  title: 发货完成后出入库记录数量字段展示正确
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 出入库记录字段展示
+  coverage_ids:
+  - COV-APP025-RECORD-FIELDS
+  plan_item_ids:
+  - PLAN-APP025-RECORD-FIELDS
+  atomic_purpose_ids:
+  - AP-APP025-RECORD-QUANTITY
+  preconditions:
+  - 已准备发货完成后的出入库记录和字段回读证据
+  steps:
+  - action: 在发货执行已完成联动的条件下查询出入库记录
+    expected: 出入库记录的数量字段展示正确；本用例不验证生成时机、库存扣减时机或库存变动数量
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 6
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+- id: TC-APP-025-022
+  common_preconditions_ref: app_inventory_records_access
+  title: 两个客户端查询同一出入库记录不重复展示
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 出入库记录查询幂等
+  coverage_ids:
+  - COV-APP025-RECORD-IDEMPOTENCY
+  plan_item_ids:
+  - PLAN-APP025-RECORD-IDEMPOTENCY
+  atomic_purpose_ids:
+  - AP-APP025-RECORD-QUERY-IDEMPOTENCY
+  preconditions:
+  - 已准备同一出入库记录和并发查询样本
+  - 查询幂等规则已标记待确认
+  steps:
+  - action: 使用两个客户端查询同一出入库记录并回读列表
+    expected: 记录仅展示一次，查询结果符合待确认的幂等展示契约；本用例不验证发货确认、出库生成或库存扣减
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-025
+    project: 种禽孵化管理系统
+    version: 6
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-025
+summary:
+  case_count: 10
+  type_counts:
+    interface: 9
+    feature: 1
+  auto_counts:
+    auto: 10
+  priority_counts:
+    P3: 4
+    P1: 2
+    P2: 4

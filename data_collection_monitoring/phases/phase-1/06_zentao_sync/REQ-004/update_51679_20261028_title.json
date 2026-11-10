@@ -1,0 +1,20 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "case_id": "TC-REQ-004-029",
+  "zentao_case_id": 51679,
+  "project_id": 46,
+  "product_id": 8,
+  "module_id": 733,
+  "title": "删除没有关联设备的分组后提示成功并从列表移除",
+  "contract": "删除没有关联设备的分组后，系统显示实际删除成功反馈；删除成功后该记录从列表消失。",
+  "remote_version": "4 -> 5",
+  "readback": {
+    "title_matches": true,
+    "project_matches": true,
+    "product_matches": true,
+    "module_matches": true,
+    "steps_and_expects_match": true
+  },
+  "failure_policy": "更新失败即停止；不删除重建，不创建替代用例。"
+}

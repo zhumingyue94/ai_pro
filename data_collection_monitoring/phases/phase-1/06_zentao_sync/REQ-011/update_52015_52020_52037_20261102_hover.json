@@ -1,0 +1,13 @@
+{
+  "req_id": "REQ-011",
+  "operation": "update",
+  "execution_mode": "real_update",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "cases": [
+    {"case_id": "TC-REQ-011-023", "remote_case_id": 52015, "status": "validated", "readback": "validated", "steps": 4},
+    {"case_id": "TC-REQ-011-028", "remote_case_id": 52020, "status": "validated", "readback": "validated", "steps": 5},
+    {"case_id": "TC-REQ-011-045", "remote_case_id": 52037, "status": "validated", "readback": "validated", "steps": 6}
+  ],
+  "checks": ["触发消息列显示查看", "悬浮框JSON字段", "鼠标移开自动消失", "权限和脱敏", "关闭/取消后列表状态"],
+  "failure_policy": "任一更新失败立即停止；本次三条均通过，不删除、不重建、不创建替代用例。"
+}

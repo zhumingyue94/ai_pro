@@ -1,0 +1,2 @@
+# REQ-002 UI 自动化交接\n\n- module_id：`731`\n- 模块：`产品分类`\n- 执行范围：`TC-REQ-002-004, TC-REQ-002-011, TC-REQ-002-012, TC-REQ-002-013, TC-REQ-002-015, TC-REQ-002-021, TC-REQ-002-024, TC-REQ-002-039, TC-REQ-002-026, TC-REQ-002-027, TC-REQ-002-028, TC-REQ-002-029, TC-REQ-002-030, TC-REQ-002-033, TC-REQ-002-034`\n- RUN：`07_ui_automation/reports/RUN_20261110T160000Z/`\n- 统计：`total: 15; passed: 6; excluded: 1; blocked: 8`\n- 缺陷数量：`0`\n- 远程 Bug：未创建\n- Allure 原始证据：`allure-results/`\n- 不在 RUN 目录生成 Handoff.md。\n\n## 缺陷结论
+未确认产品行为缺陷。\n

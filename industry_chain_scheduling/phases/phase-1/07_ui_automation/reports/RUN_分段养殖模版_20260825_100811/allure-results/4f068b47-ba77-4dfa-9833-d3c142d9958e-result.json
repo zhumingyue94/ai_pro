@@ -1,0 +1,34 @@
+{
+  "uuid": "4f068b47-ba77-4dfa-9833-d3c142d9958e",
+  "historyId": "47714",
+  "name": "TC-003-142 审核通过后不可编辑、不可删除、不可再次提交",
+  "fullName": "TC-003-142",
+  "status": "broken",
+  "statusDetails": {
+    "message": "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"off\" spellcheck=\"false\" id=\"el-id-4184-205\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"el-id-4184-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not editable\n    - retrying fill action\n      - waiting 100ms\n    23 × waiting for element to be visible, enabled and editable\n       - element is not editable\n     - retrying fill action\n       - waiting 500ms\n"
+  },
+  "start": 1787623983000,
+  "stop": 1787624006000,
+  "parameters": [
+    {
+      "name": "check_id",
+      "value": "TP-003-142"
+    },
+    {
+      "name": "assertion_scope",
+      "value": "feeding_template.review.approve_status"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "TC-003-142_TP-003-142_timeout_scope.png",
+      "source": "4f068b47-ba77-4dfa-9833-d3c142d9958e_TC-003-142_TP-003-142_timeout_scope.png",
+      "type": "image/png"
+    },
+    {
+      "name": "TC-003-142_TP-003-142_timeout_full.png",
+      "source": "4f068b47-ba77-4dfa-9833-d3c142d9958e_TC-003-142_TP-003-142_timeout_full.png",
+      "type": "image/png"
+    }
+  ]
+}

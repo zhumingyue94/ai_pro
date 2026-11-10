@@ -1,0 +1,4791 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-001
+title: 计划管理 / 上孵计划
+module: 上孵计划
+zentao_module_id: 521
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-001
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-36981
+  title: 上孵计划_导入_年份格式不对，导入失败或者默认带入今年
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的年份格式不对
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量显示正确
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息提示：年份格式不对
+  - action: 年份是202
+    expected: 无法导入，错误信息正确（或者带入当前年份）
+  - action: 年份是aaa
+    expected: 无法导入，错误信息正确（或者带入当前年份）
+  - action: 年份是2026年5月
+    expected: 无法导入，错误信息正确（或者带入当前年份）
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36981
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36981
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36982
+  title: 上孵计划_导入_年份为空，无法导入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的年份为空
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量显示正确
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息提示：年份不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36982
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36982
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36983
+  title: 上孵计划_导入_年份小于今年，无法导入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的年份小于今年
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量显示正确
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息提示：年份不能小于今年
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36983
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36983
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36984
+  title: 上孵计划_导入_计划上孵数量格式不准确，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的计划上孵数量格式不对
+  - 1、小数
+  - 2、负数
+  - 3、非数字
+  steps:
+  - action: 进入计划管理-上孵计划，点击导入按钮打开上传文件弹窗
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 上传文件后，点击确定按钮
+    expected: 提示框中失败数量显示正确
+  - action: 计划的计划上孵数量是小数
+    expected: 计划上孵数量上传小数，错误信息中显示：计划上孵数量格式不正确
+  - action: 上传负数
+    expected: 计划上孵数量上传负数，错误信息中显示：计划上孵数量格式不正确
+  - action: 上传非数字
+    expected: 计划上孵数量上传非数字，错误信息中显示：计划上孵数量格式不正确
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36984
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36984
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36985
+  title: 上孵计划_导入_计划上孵数量为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的计划上孵数量没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：计划上孵数量不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36985
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36985
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36986
+  title: 上孵计划_导入_产蛋日期不是区间，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的产蛋日期不是区间
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：产蛋日期格式不正确
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36986
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36986
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36987
+  title: 上孵计划_导入_产蛋日期格式不准确，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的产蛋日期格式不对
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：产蛋日期格式不正确
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36987
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36987
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36988
+  title: 上孵计划_导入_产蛋日期为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的产蛋日期没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：产蛋日期不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36988
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36988
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36989
+  title: 上孵计划_导入_平均蛋重匹配不到蛋重类型，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 平均蛋重匹配不到蛋重类型
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：平均蛋重匹配不到蛋重类型
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36989
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36989
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36990
+  title: 上孵计划_导入_平均蛋重格式不准确，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的平均蛋重格式不对
+  - 1、小数
+  - 2、负数
+  - 3、非数字
+  steps:
+  - action: 进入计划管理-上孵计划，点击导入按钮打开上传文件弹窗
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 上传文件后，点击确定按钮
+    expected: 提示框中失败数量显示正确
+  - action: 上传负数
+    expected: 平均蛋重上传负数，错误信息中显示：平均蛋重格式不正确
+  - action: 上传非数字
+    expected: 平均蛋重上传非数字，错误信息中显示：平均蛋重格式不正确
+  - action: 上传0
+    expected: 平均蛋重上传0，错误信息中显示：计划上孵数量格式不正确
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36990
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36990
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36991
+  title: 上孵计划_导入_平均蛋重为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的平均蛋重没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：平均蛋重不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36991
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36991
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36992
+  title: 上孵计划_导入_周龄格式不准确，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的周龄格式不对
+  - 1、小数
+  - 2、负数
+  - 3、非数字
+  steps:
+  - action: 进入计划管理-上孵计划，点击导入按钮打开上传文件弹窗
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 上传文件后，点击确定按钮
+    expected: 提示框中失败数量显示正确
+  - action: 计划的周龄是小数
+    expected: 周龄上传小数，错误信息中显示：周龄格式不正确
+  - action: 上传负数
+    expected: 周龄上传负数，错误信息中显示：周龄格式不正确
+  - action: 上传非数字
+    expected: 周龄上传非数字，错误信息中显示：周龄格式不正确
+  - action: 上传0
+    expected: 周龄上传0，错误信息中显示：计划上孵数量格式不正确
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36992
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36992
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36993
+  title: 上孵计划_导入_周龄为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的周龄没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：周龄不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36993
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36993
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36994
+  title: 上孵计划_导入_上孵日期小于今天，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的上孵日期小于今天
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：上孵日期不能早于今天
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36994
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36994
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36995
+  title: 上孵计划_导入_上孵日期格式不准确，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的上孵日期格式不对
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：上孵日期格式不正确
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36995
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36995
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36996
+  title: 上孵计划_导入_上孵日期为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的上孵日期没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：上孵日期不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36996
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36996
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36997
+  title: 上孵计划_导入_孵化器存在，但是不属于导入的孵化场，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 孵化器存在，但是不属于导入的孵化场
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：孵化器不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36997
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36997
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36998
+  title: 上孵计划_导入_孵化器不存在，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的孵化器在系统中不存在
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：孵化器不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36998
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36998
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-36999
+  title: 上孵计划_导入_孵化器停用，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的孵化器在系统中停用
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：孵化器不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 36999
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 36999
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37000
+  title: 上孵计划_导入_品种不存在，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的品种在系统中不存在
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：品种不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37000
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37000
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37001
+  title: 上孵计划_导入_品种停用，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的品种在系统中停用
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：品种不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37001
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37001
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37002
+  title: 上孵计划_导入_品种为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的品种没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：品种不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37002
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37002
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37003
+  title: 上孵计划_导入_种蛋类型不存在，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的种蛋类型在系统中不存在
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：种蛋类型不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37003
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37003
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37004
+  title: 上孵计划_导入_种蛋类型为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的种蛋类型没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：种蛋类型不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37004
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37004
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37005
+  title: 上孵计划_导入_养殖批次不存在，导入成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的养殖批次在系统中不存在
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划成功
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：0
+  - action: 上传文件后，点击确定按钮
+    expected: 系统中新增一个批次
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37005
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37005
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37006
+  title: 上孵计划_导入_养殖批次为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的养殖批次没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：养殖批次不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37006
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37006
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37007
+  title: 上孵计划_导入_养殖场不存在，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的养殖场在系统中不存在
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：养殖场不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37007
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37007
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37008
+  title: 上孵计划_导入_养殖场停用，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的养殖场在系统中停用
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：养殖场不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37008
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37008
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37009
+  title: 上孵计划_导入_养殖场为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的养殖场没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：养殖场不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37009
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37009
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37010
+  title: 上孵计划_导入_孵化场为空，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的孵化场没有填写
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：孵化场不能为空
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37010
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37010
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37011
+  title: 上孵计划_导入_孵化场停用，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的孵化场在系统中停用
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：孵化场不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37011
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37011
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-37012
+  title: 上孵计划_导入_孵化场不存在，导入失败
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 导入计划的孵化场在系统中不存在
+  steps:
+  - action: 进入计划管理-上孵计划
+    expected: 导入计划失败，文件中所有计划都不会导入系统
+  - action: 点击导入按钮打开上传文件弹窗
+    expected: 提示框中失败数量：1
+  - action: 上传文件后，点击确定按钮
+    expected: 错误信息中显示：孵化场不存在
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37012
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37012
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-38520
+  title: 关联任务跳转的种蛋出雏页面与孵化管理-种蛋出雏进入的详情页面数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions: []
+  steps:
+  - action: 点击计划的关联任务
+    expected: ''
+  - action: 选择种蛋出雏进入
+    expected: 种蛋出雏详情页数据，与孵化管理-种蛋出雏任务点击详情按钮查看的数据一致
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38520
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38520
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-38521
+  title: 关联任务跳转的种蛋照蛋页面与孵化管理-种蛋照蛋进入的详情页面数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions: []
+  steps:
+  - action: 点击计划的关联任务
+    expected: ''
+  - action: 选择种蛋照蛋进入
+    expected: 种蛋照蛋详情页数据，与孵化管理-种蛋照蛋任务点击详情按钮查看的数据一致
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38521
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38521
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-38522
+  title: 关联任务跳转的种蛋上孵页面与孵化管理-种蛋上孵进入的详情页面数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions: []
+  steps:
+  - action: 点击计划的关联任务
+    expected: ''
+  - action: 选择种蛋上孵进入
+    expected: 种蛋上孵详情页数据，与孵化管理-种蛋上孵任务点击详情按钮查看的数据一致
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38522
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38522
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: ''
+- id: TC-38926
+  title: 上孵计划_上孵时间提前，下游任务更新正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限<br />
+  - 2、已存在计划状态为正常且为待孵期的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: ''
+  - action: 修改待孵期计划的上孵时间，提前到今天
+    expected: ''
+  - action: 下发任务
+    expected: ''
+  - action: 查看下游的上孵任务
+    expected: 种蛋上孵页面，显示这条计划的任务，状态变为待上孵，可以执行
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38926
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38926
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38927
+  title: 上孵计划_修改待上孵计划的上孵日期，计划进度更新为待孵期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限<br />
+  - 2、已存在计划状态为正常且未执行上孵任务的上孵计划
+  - 3、已经到了计划上孵时间，当前计划进度是带上孵
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: ''
+  - action: 修改待上孵计划的上孵时间，推迟几天
+    expected: ''
+  - action: 查看计划的计划进度
+    expected: 计划进度变为待孵期
+  - action: 查看上孵任务的表格
+    expected: 上孵任务不显示执行按钮
+  - action: 进入任务详情页查看
+    expected: 任务详情页不显示执行任务按钮
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38927
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38927
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38928
+  title: 上孵计划_下发任务_无论是否勾选都下发
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在多条上孵时间为当天的计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 所有达到上孵时间的计划都下发任务，不受勾选影响
+  - action: 不勾选任何数据
+    expected: ''
+  - action: 点击下发任务按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38928
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38928
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38929
+  title: 上孵计划_下发任务_手动触发下发
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在上孵时间为当天的计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 上孵时间为当天的计划下发任务成功，上孵时间迟于当天的计划不下发
+  - action: 点击下发任务按钮进行手动触发
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38929
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38929
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38930
+  title: 上孵计划_下发任务_定时任务下发
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在上孵时间为当天的计划
+  steps:
+  - action: 等待凌晨零点定时任务执行
+    expected: 上孵时间为当天的计划已下发任务，在种蛋上孵页面可以看到这条任务
+  - action: 进入孵化管理-种蛋上孵页面查看
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38930
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38930
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38931
+  title: 上孵计划_批量删除_包含未终止
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划状态为正常的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 弹框提示&#039;包含未终止的计划，不可批量删除&#039;，不可操作
+  - action: 勾选包含未终止状态的计划
+    expected: ''
+  - action: 点击批量删除按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38931
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38931
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38932
+  title: 上孵计划_批量删除_正常删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在多条计划状态为终止的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 批量删除成功，勾选的计划从表格中消失，出入库记录保留
+  - action: 勾选多条计划状态为终止的数据
+    expected: ''
+  - action: 点击批量删除按钮
+    expected: ''
+  - action: 在确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38932
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38932
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38933
+  title: 上孵计划_批量终止_包含已终止
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在终止和正常状态的计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 批量终止成功，已终止的维持终止状态，正常的变为终止
+  - action: 同时勾选已终止和正常状态的计划
+    expected: ''
+  - action: 点击批量终止按钮
+    expected: ''
+  - action: 在确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38933
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38933
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38934
+  title: 上孵计划_批量终止_包含已完成
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划进度为已完成的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 弹框提示&#039;包含已完成进度的计划，不可批量终止&#039;，不可操作
+  - action: 勾选包含已完成进度的计划
+    expected: ''
+  - action: 点击批量终止按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38934
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38934
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38935
+  title: 上孵计划_批量终止_正常终止
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在多条计划状态为正常的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 批量终止成功，勾选的计划状态都变为终止
+  - action: 勾选多条计划状态为正常的数据
+    expected: ''
+  - action: 点击批量终止按钮
+    expected: ''
+  - action: 在确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38935
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38935
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38936
+  title: 上孵计划_模版下载_正常下载
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 下载成功，文件为excel格式，文件名清晰易懂，模板中必填项有明显标记
+  - action: 点击模版下载按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38936
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38936
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38937
+  title: 上孵计划_导入_终止计划不允许更新
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划状态为终止的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法更新导入，提示&#039;计划状态为终止的计划不允许更新导入&#039;
+  - action: 点击导入按钮
+    expected: ''
+  - action: 勾选更新导入
+    expected: ''
+  - action: 选择包含终止计划的导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38937
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38937
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38938
+  title: 上孵计划_导入_更新导入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划状态为正常的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 更新导入成功，表格中计划信息更新，照蛋日期和出雏日期根据上孵日期自动更新
+  - action: 点击导入按钮
+    expected: ''
+  - action: 勾选更新导入
+    expected: ''
+  - action: 选择导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38938
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38938
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38939
+  title: 上孵计划_导入_新增导入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 导入成功，即使导入两条一模一样数据的计划，也会生成两条不同计划号的计划
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择不勾选更新导入
+    expected: ''
+  - action: 选择导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38939
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38939
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38940
+  title: 上孵计划_导入_日期顺序校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好日期顺序错误的导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法导入，提示&#039;必须符合上孵日期<照蛋日期<出雏日期&#039;
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择上孵日期>=照蛋日期或照蛋日期>=出雏日期的导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38940
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38940
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38941
+  title: 上孵计划_导入_蛋重类型自动匹配
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 导入成功，蛋重类型按照平均蛋重自动匹配，不带入导入文件中的蛋重类型
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择导入文件（文件中蛋重类型与平均蛋重不一致）
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38941
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38941
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38942
+  title: 上孵计划_导入_平均蛋重非正数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好平均蛋重为非正数的导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法导入，提示&#039;平均蛋重必须为正数&#039;
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择平均蛋重为负数或0的导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38942
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38942
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38943
+  title: 上孵计划_导入_周龄非正整数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好周龄为非正整数的导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法导入，提示&#039;周龄必须为正整数&#039;
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择周龄为小数、负数或0的导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38943
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38943
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38944
+  title: 上孵计划_导入_选项不存在
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好选项不存在的导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法导入，提示&#039;选项不存在或已停用&#039;
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择包含不存在选项的导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38944
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38944
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38945
+  title: 上孵计划_导入_日期格式错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好日期格式错误的导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法导入，提示&#039;日期格式错误&#039;
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择日期格式错误的导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38945
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38945
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38946
+  title: 上孵计划_导入_必填项未填
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好缺少必填项的导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法导入，提示&#039;必填项未填&#039;
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择缺少必填项的导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38946
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38946
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38947
+  title: 上孵计划_导入_正常导入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已准备好符合格式的导入文件
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 导入成功，表格中显示导入的数据，计划号为系统自动生成
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择导入文件
+    expected: ''
+  - action: 点击确定
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38947
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38947
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38948
+  title: 上孵计划_导出_筛选后导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 导出成功，导出的数据为筛选后的数据
+  - action: 设置筛选条件
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38948
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38948
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38949
+  title: 上孵计划_导出_正常导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 导出成功，下载的文件为excel格式，文件名清晰易懂，表头字段与页面表格一致，数据正确
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38949
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38949
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38950
+  title: 上孵计划_删除_不同进度任务同步删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限<br />
+  - 2、已存在不同进度的终止状态上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 待孵期：不会生成任务；
+  - action: 终止计划
+    expected: 上孵任务同步删除；
+  - action: 分别删除待孵期、待上孵、孵化器中等不同进度的终止计划
+    expected: 照蛋任务同步删除
+  - action: 查看下游任务
+    expected: 出雏任务同步删除
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38950
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38950
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38951
+  title: 上孵计划_删除_非终止无删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划状态为正常的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 非终止状态的计划不显示删除按钮
+  - action: 找到一条计划状态为正常的数据
+    expected: ''
+  - action: 查看操作列
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38951
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38951
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38952
+  title: 上孵计划_删除_正常删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限<br />
+  - 2、已存在计划状态为终止的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 删除成功，计划从表格中消失（逻辑删除），
+  - action: 找到一条计划状态为终止的数据
+    expected: 种蛋仓库出库记录保留
+  - action: 点击删除按钮，在确认弹窗中点击确认
+    expected: 孵化器入库、出库记录保留
+  - action: 查看出雏器管理
+    expected: 出雏器入库记录保留
+  - action: 查看库存管理-合格蛋/二级蛋蛋库
+    expected: 次品库入库记录保留
+  - action: 查看库存管理-次品库
+    expected: ''
+  - action: 查看孵化器管理
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38952
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38952
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38953
+  title: 上孵计划_终止_不同进度下游联动
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限<br />
+  - 2、已存在不同进度的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划，终止待孵期计划，查看下游任务状态
+    expected: 待孵期：不会生成任务；
+  - action: 终止待上孵计划，查看下游任务状态
+    expected: 待上孵：上孵任务状态变成已终止，无法执行
+  - action: 终止孵化器中计划，查看下游任务状态
+    expected: 孵化器中：照蛋任务状态变成已终止，到时间无法执行
+  - action: 终止待照蛋计划，查看下游任务状态
+    expected: 待照蛋：照蛋任务状态变成已终止，无法执行
+  - action: 终止出雏器中计划，查看下游任务状态
+    expected: 出雏器中：出雏任务变为已终止，到时间无法执行
+  - action: 终止待出雏计划，查看下游任务状态
+    expected: 待出雏：出雏任务变为已终止，无法执行
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38953
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38953
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38954
+  title: 上孵计划_终止_已完成无终止
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划进度为已完成的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 已完成状态的计划不显示终止按钮
+  - action: 找到一条计划进度为已完成的数据
+    expected: ''
+  - action: 查看操作列
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38954
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38954
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38955
+  title: 上孵计划_终止_正常终止
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划状态为正常的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 终止成功，该计划状态变为终止，下游任务状态也显示已终止
+  - action: 找到一条计划状态为正常的数据
+    expected: ''
+  - action: 点击终止按钮
+    expected: ''
+  - action: 在确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38955
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38955
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38956
+  title: 上孵计划_修改_修改时间后下游任务更新正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限<br />
+  - 2、已存在计划状态为正常且未执行上孵任务的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 计划详情页显示更新后的数据，下游任务中的计划信息显示正确
+  - action: 修改一条计划的上孵、照蛋、出雏时间
+    expected: ''
+  - action: 查看计划详情页
+    expected: ''
+  - action: 查看下游的上孵、照蛋、出雏任务
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38956
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38956
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38957
+  title: 上孵计划_修改_孵化器中无修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划进度为孵化器中的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 孵化器中的计划不显示修改按钮
+  - action: 找到一条计划进度为孵化器中的数据
+    expected: ''
+  - action: 查看操作列
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38957
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38957
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38958
+  title: 上孵计划_修改_终止状态无修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划状态为终止的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 终止状态的计划不显示修改按钮
+  - action: 找到一条计划状态为终止的数据
+    expected: ''
+  - action: 查看操作列
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38958
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38958
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38959
+  title: 上孵计划_表格_数据显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中每列的数据显示正确，包括：孵化场、养殖场、养殖批次、种蛋类型、品种、上孵日期、周龄、平均蛋重、蛋重类型、产蛋日期、计划上孵数、实际上孵数、孵化器、出雏日期、计划进度、计划状态、计划号、创建人、创建时间、修改人、修改时间、操作
+  - action: 查看表格中的数据
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38959
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38959
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38960
+  title: 上孵计划_新建_暂存功能
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 暂存成功，草稿中显示已填写的数据，不做必填校验
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场
+    expected: ''
+  - action: 点击暂存按钮
+    expected: ''
+  - action: 点击草稿按钮查看
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38960
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38960
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38961
+  title: 上孵计划_新建_上孵数量输入非数字
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，上孵数量只能输入数字
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 上孵数量输入&#039;abc&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38961
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38961
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38962
+  title: 上孵计划_新建_上孵数量输入0
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，上孵数量最小为1
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 上孵数量输入&#039;0&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38962
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38962
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38963
+  title: 上孵计划_新建_上孵数量输入负数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，上孵数量必须大于0
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 上孵数量输入&#039;-100&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38963
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38963
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38964
+  title: 上孵计划_新建_上孵数量输入小数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，上孵数量只能输入整数
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 上孵数量输入&#039;1000.5&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38964
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38964
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38965
+  title: 上孵计划_新建_上孵数量必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;上孵数量不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 上孵数量不填写，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38965
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38965
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38966
+  title: 上孵计划_新建_产蛋日期结束大于开始
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，结束日期必须大于开始日期
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 产蛋日期选择结束日期早于开始日期
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38966
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38966
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38967
+  title: 上孵计划_新建_产蛋日期必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;产蛋日期不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 产蛋日期不选择，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38967
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38967
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38968
+  title: 上孵计划_新建_蛋重类型匹配不到
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已配置蛋重类型区间
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;蛋重类型匹配不到，请检查平均蛋重&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 输入平均蛋重不在任何区间内
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38968
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38968
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38969
+  title: 上孵计划_新建_蛋重类型自动匹配
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已配置蛋重类型区间
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 蛋重类型根据平均蛋重自动匹配显示对应的蛋重类型名称
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 填写其他字段
+    expected: ''
+  - action: 输入平均蛋重&#039;55&#039;
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38969
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38969
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38970
+  title: 上孵计划_新建_平均蛋重输入非数字
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，平均蛋重只能输入数字
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 平均蛋重输入&#039;xyz&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38970
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38970
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38971
+  title: 上孵计划_新建_平均蛋重输入0
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，平均蛋重最小为1
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 平均蛋重输入&#039;0&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38971
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38971
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38972
+  title: 上孵计划_新建_平均蛋重输入负数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，平均蛋重必须为正数
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 平均蛋重输入&#039;-10&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38972
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38972
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38973
+  title: 上孵计划_新建_平均蛋重必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;平均蛋重不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 平均蛋重不填写，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38973
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38973
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38974
+  title: 上孵计划_新建_周龄输入非数字
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，周龄只能输入数字
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 周龄输入&#039;abc&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38974
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38974
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38975
+  title: 上孵计划_新建_周龄输入0
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，周龄最小为1
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 周龄输入&#039;0&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38975
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38975
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38976
+  title: 上孵计划_新建_周龄输入负数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 提示错误，周龄必须大于0
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 周龄输入&#039;-5&#039;
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38976
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38976
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38977
+  title: 上孵计划_新建_周龄必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;周龄不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 周龄不填写，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38977
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38977
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38978
+  title: 上孵计划_新建_品种必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;品种不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 品种不选择，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38978
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38978
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38979
+  title: 上孵计划_新建_种蛋类型必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;种蛋类型不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 种蛋类型不选择，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38979
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38979
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38980
+  title: 上孵计划_新建_养殖批次仅空格校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;养殖批次不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 养殖批次只输入空格
+    expected: ''
+  - action: 其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38980
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38980
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38981
+  title: 上孵计划_新建_养殖批次必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;养殖批次不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 养殖批次不填写，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38981
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38981
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38982
+  title: 上孵计划_新建_养殖场必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;养殖场不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 点击+新增一行
+    expected: ''
+  - action: 不选择养殖场，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38982
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38982
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38983
+  title: 上孵计划_新建_孵化周期为空无法保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、未配置孵化周期
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;孵化周期未配置，无法计算照蛋和出雏日期&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 选择上孵日期
+    expected: ''
+  - action: 填写其他必填字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38983
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38983
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38984
+  title: 上孵计划_新建_照蛋出雏日期自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已配置孵化周期
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 照蛋日期和出雏日期根据上孵日期和孵化周期自动计算并显示，不可修改
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 选择上孵日期
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38984
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38984
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38985
+  title: 上孵计划_新建_上孵日期必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法保存，提示&#039;上孵日期不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场并点击下一步
+    expected: ''
+  - action: 不选择上孵日期
+    expected: ''
+  - action: 填写其他字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38985
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38985
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38986
+  title: 上孵计划_新建_孵化场必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 无法进入下一步，提示&#039;孵化场不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 不选择孵化场
+    expected: ''
+  - action: 点击下一步
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38986
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38986
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38987
+  title: 上孵计划_筛选_重置清空条件
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 所有筛选条件回到默认状态，自动执行搜索显示全部数据
+  - action: 在筛选条件中输入内容或选择选项
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38987
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38987
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38988
+  title: 上孵计划_筛选_创建日期常规选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示创建时间在所选区间内的数据
+  - action: 在创建日期区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38988
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38988
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38989
+  title: 上孵计划_筛选_创建人正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示该创建人创建的数据
+  - action: 在创建人输入框中输入存在的创建人姓名
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38989
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38989
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38990
+  title: 上孵计划_筛选_产蛋日期常规选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示产蛋时间在所选区间内的数据
+  - action: 在产蛋日期区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38990
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38990
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38991
+  title: 上孵计划_筛选_蛋重类型正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在至少一个启用的蛋重类型
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示该蛋重类型的上孵计划数据
+  - action: 在蛋重类型下拉框中选择一个启用的蛋重类型
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38991
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38991
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38992
+  title: 上孵计划_筛选_平均蛋重正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示平均蛋重匹配的数据
+  - action: 在平均蛋重输入框中输入正数
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38992
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38992
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38993
+  title: 上孵计划_筛选_周龄正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示周龄匹配的数据
+  - action: 在周龄输入框中输入正整数
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38993
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38993
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38994
+  title: 上孵计划_筛选_品种正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在至少一个启用的品种
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示该品种的上孵计划数据
+  - action: 在品种下拉框中选择一个启用的品种
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38994
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38994
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38995
+  title: 上孵计划_筛选_种蛋类型合格蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示种蛋类型为合格蛋的数据
+  - action: 在种蛋类型下拉框中选择&#039;合格蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38995
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38995
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38996
+  title: 上孵计划_筛选_养殖场正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在至少一个启用的养殖场
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示该养殖场的上孵计划数据
+  - action: 在养殖场下拉框中选择一个启用的养殖场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38996
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38996
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38997
+  title: 上孵计划_筛选_计划状态正常
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示计划状态为正常的数据
+  - action: 在计划状态下拉框中选择&#039;正常&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38997
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38997
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38998
+  title: 上孵计划_筛选_计划进度待孵期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示计划进度为待孵期的数据
+  - action: 在计划进度下拉框中选择&#039;待孵期&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38998
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38998
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38999
+  title: 上孵计划_筛选_出雏日期常规选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示出雏时间在所选区间内的数据
+  - action: 在出雏日期区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38999
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38999
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39000
+  title: 上孵计划_筛选_上孵日期常规选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示上孵时间在所选区间内的数据
+  - action: 在上孵日期区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39000
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39000
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39001
+  title: 上孵计划_筛选_孵化场正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在至少一个启用的孵化场
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示该孵化场的上孵计划数据
+  - action: 在孵化场下拉框中选择一个启用的孵化场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39001
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39001
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39002
+  title: 上孵计划_筛选_计划号正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 表格中只显示计划号匹配的数据
+  - action: 在计划号输入框中输入存在的计划号
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39002
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39002
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39003
+  title: 上孵计划_修改_正常修改
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在计划状态为正常的上孵计划
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 修改成功，提示&#039;修改成功&#039;，表格中该行的上孵数量更新，照蛋日期和出雏日期根据上孵日期自动更新
+  - action: 找到一条计划状态为正常的数据
+    expected: ''
+  - action: 点击修改按钮
+    expected: ''
+  - action: 修改上孵数量
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39003
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39003
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39004
+  title: 上孵计划_新建_正常保存
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 上孵计划
+  preconditions:
+  - 1、用户登录成功并且有上孵计划菜单权限
+  - 2、已存在至少一个启用的孵化场
+  - 3、已存在至少一个启用的养殖场
+  - 4、已存在至少一个启用的品种
+  steps:
+  - action: 登录后进入计划管理-上孵计划
+    expected: 新建成功，提示&#039;保存成功&#039;，表格中新增一行数据，计划号为系统自动生成值，孵化场、养殖场、养殖批次、种蛋类型、品种、上孵日期、周龄、平均蛋重、蛋重类型、产蛋日期、计划上孵数、出雏日期等信息与填入的一致
+  - action: 点击新建按钮
+    expected: ''
+  - action: 在孵化场选择弹窗中选择一个孵化场
+    expected: ''
+  - action: 点击下一步
+    expected: ''
+  - action: 点击新增计划按钮
+    expected: ''
+  - action: 选择上孵日期
+    expected: ''
+  - action: 在表格中点击+新增一行
+    expected: ''
+  - action: 选择养殖场
+    expected: ''
+  - action: 输入养殖批次&#039;PC20260512001&#039;
+    expected: ''
+  - action: 选择种蛋类型&#039;合格蛋&#039;
+    expected: ''
+  - action: 选择品种&#039;白羽肉鸡&#039;
+    expected: ''
+  - action: 输入周龄&#039;25&#039;
+    expected: ''
+  - action: 输入平均蛋重&#039;55&#039;
+    expected: ''
+  - action: 选择产蛋日期区间
+    expected: ''
+  - action: 输入上孵数量&#039;1000&#039;
+    expected: ''
+  - action: 选择孵化器
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 上孵计划
+    zentao_module_id: 521
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-001
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39004
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39004
+    raw_module: /一期/pc/计划管理/上孵计划(#521)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

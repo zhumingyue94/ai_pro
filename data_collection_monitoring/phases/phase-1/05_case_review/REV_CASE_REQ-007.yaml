@@ -1,0 +1,681 @@
+review:
+  review_id: REV-CASE-REQ-007-20261022-R3
+  req_id: REQ-007
+  module_id: REQ-007
+  module_id_missing: false
+  agent: case-review-agent
+  mode: report_only
+  status: design_review_passed
+  overall_status: completed_for_changed_cases
+  gate_passed: true
+  design_gate_passed: true
+  execution_status: validated
+  execution_gate_passed: true
+  gate_reasons: []
+  design_gate_reasons: []
+  review_scope:
+    design_review: in_scope
+    execution_review: excluded
+    ui_execution: excluded
+    automation_execution: excluded
+    pairwise_execution: excluded
+    remote_sync: completed_for_changed_cases
+  remote_sync_date: 2026-11-03
+  remote_sync_case_count: 15
+  remote_sync_type_change: interface_to_other
+  remote_sync_readback: validated
+  execution_review:
+    status: completed_for_changed_cases
+    reason: 已完成指定5条禅道用例删除及51732、51737、51751、51754原位更新，均已逐条回读确认。
+  execution_summary:
+    playwright: not_executed
+    headed_page: not_executed
+    pairwise: not_executed
+    remote_sync: completed_for_changed_cases
+    remote_sync_count: 11
+    create: 0
+    update: 6
+    delete: 5
+    removed_case_ids:
+    - TC-REQ-007-002
+    - TC-REQ-007-003
+    - TC-REQ-007-004
+    removed_zentao_case_ids:
+    - 51729
+    - 51730
+    - 51731
+  source_hashes:
+    04_testcases/TC_REQ-007.yaml: 5cc4a5edd46efcbd563b00226153a796d85125f94ed77beacef8b48dbf8787bc
+    04_testcases/TC_REQ-007.md: dd3d9b8c5863d901e1b2be13fd9209f5ebd881e631bff18930cee422388142ed
+    02_analysis/REQ-007.yaml: 708626f4a944e9ee6388b70c5dc9442045422a4513538d0ebffc6fcac413e5ef
+    02_analysis/REQ-007.md: 1512f18158fb478b835b5eb9a2ea95c0f13acecbde13dd3734269b858f603ea5
+    03_test_plan/TEST_PLAN_REQ-007.yaml: 0f856c8f712463d84ef93ee7dd687f22d38cb1ea2bf0574243187f6070a70945
+    03_test_plan/TEST_PLAN_REQ-007.md: 15bc233ac06707d78e60406ecdc26a17ab600c265b983b5bb508306fb55f7dbe
+    02_analysis/page_inventory/page.json: 3dc281a7c081890b0352ac1adc470b477d6ff0de05ecd114ff9e737959cba6aa
+    config.yaml: 93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164
+    04_testcases\TC_REQ-007.yaml: 8a211ea103bcdaef9a223f031d5774546341604b2841df180c1e0778c9403817
+    04_testcases\TC_REQ-007.md: cd5b708f685a1e62ab2fbc6760aa97ca6c8029b4520b4be48c44dc1a8f2cc784
+  input_summary:
+    testcase_count: 39
+    unique_case_id_count: 39
+    case_id_order: source_order_preserved
+    auto_count: 23
+    automation_blocked_count: 23
+    trace_blocked_count: 40
+    priority_distribution:
+      P1: 15
+      P2: 14
+      P3: 10
+      P4: 0
+    type_distribution:
+      interface: 34
+      feature: 5
+  review_items:
+  - code: ZENTAO_CASE_51735_51736_DELETED
+    category: remote_sync
+    result: blocked
+    gate_reason: false
+    reason: 因 REQ-002 的 51589 删除返回 Case does not exist，按逐条串行失败即停规则，51735、51736 尚未执行；稳定映射保留。
+  - code: TESTCASE_ATOMICITY_REVIEW
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 39 条用例按页面身份、列表、规则字段、触发逻辑、动作、依赖、事件、排序、权限和核心流程场景拆分；权限边界已拆为独立原子目的。
+  - code: SYSTEMATIC_COVERAGE_REVIEW
+    category: design_violation
+    result: passed_with_gaps
+    gate_reason: false
+    reason: 已覆盖等价类、边界值、判定表和状态转换方向；表达式阈值、动作参数及运行反馈因需求和页面证据不足保持待确认。
+  - code: PAGE_INVENTORY_SCOPE_MISMATCH
+    category: evidence_risk
+    result: blocked
+    gate_reason: false
+    reason: page.json 未登记 REQ-007 的 data_monitor 页面实体、状态、元素、表格、交互、证据或稳定分页定位器，不能复用其他模块事实。
+  - code: EXECUTION_READINESS_NOT_PROVEN
+    category: evidence_risk
+    result: blocked
+    gate_reason: false
+    reason: 批准的只读监听规则、权限矩阵、运行反馈和稳定 locator 缺失；35 条自动化候选用例均为 blocked，4 条非自动化用例不纳入自动化执行。
+  - code: PAIRWISE_MODEL_INCOMPLETE
+    category: design_violation
+    result: warning
+    gate_reason: false
+    reason: RuleStatus、TriggerType、ListenerLogic、ActionSequence、DependencyState、EventRepeat、ActionFailure、Ordering、Permission 已识别，但值域、约束矩阵和用例映射不足，本轮不执行 PICT。
+  - code: AUTOMATION_CONTRACT_BLOCKED
+    category: environment_gap
+    result: blocked
+    gate_reason: false
+    reason: 页面契约缺失，无法安全冻结 REQ-007 专属 locator 或生成可执行 POM；禁止从 alert_record、data_push、plugin_management、device_group 等模块迁移定位器。
+  - code: HEADED_PAGE_NOT_EXECUTED
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 保持 report_only 且用户禁止 UI 测试；本轮未启动有头浏览器。
+  - code: TRACEABILITY_PARTIAL
+    category: traceability_failure
+    result: warning
+    gate_reason: false
+    reason: 正式 PDF 逐条页码追溯和 module_case_map 登记仍待补充；当前用例 YAML/Markdown ID 集合和统计应保持一致。
+  - code: CASELY_DELIVERY_REVIEWED
+    category: evidence_risk
+    result: passed_with_blockers
+    gate_reason: false
+    reason: 用例结构、字段、原子性、风格和交付格式基本符合 Casely；页面契约缺失和执行证据不足阻塞运行时可执行性。
+  coverage_review:
+    methods:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    - pairwise_static_review
+    conclusion: 39 条用例覆盖数据监听页面身份、规则列表/筛选/分页/刷新/排序、编号和名称、启停状态、监听器 OR/AND、动作顺序与失败继续、依赖停用/引用/删除、重复事件、不重试、时间格式和角色租户边界，以及创建、编辑、删除或归档、启停成功反馈与结果回读；页面契约缺失阻塞执行确认。
+    covered_areas:
+    - 页面身份和默认状态
+    - 规则列表/筛选/查询/重置/刷新
+    - 分页和创建时间倒序
+    - 规则编号和名称
+    - 启用/停用及状态快照
+    - 设备属性/事件/状态触发
+    - 多监听器 OR/单监听器多条件 AND
+    - 动作顺序/失败继续/不重试
+    - 依赖停用/已有引用/删除保护
+    - 重复事件不去重不节流
+    - 用户时区和秒级时间
+    - 角色、租户和跨租户权限
+    - 创建、编辑、删除或归档、启停成功反馈及结果回读
+    gaps:
+    - REQ-007 页面契约、字段和反馈缺失
+    - 编号异常/重复请求及名称校验缺少页面反馈
+    - 监听器 OR/AND、动作失败继续、不重试和状态快照缺少运行时证据
+    - 依赖生命周期和跨模块批准数据缺失
+    - 表达式、转换、阈值和动作参数保持未确认
+    - 正式 PDF 逐条追溯和 module_case_map 登记待补
+  pairwise_review:
+    status: static_review_only
+    executed: false
+    parameters:
+    - RuleStatus
+    - TriggerType
+    - ListenerLogic
+    - ActionSequence
+    - DependencyState
+    - EventRepeat
+    - ActionFailure
+    - Ordering
+    - Permission
+    constraints:
+    - 中间动作失败时记录失败并继续后续动作
+    - 停用依赖不可被新规则选择且已有引用继续使用原配置
+    - 重复事件每次执行且失败不自动重试
+    - 未授权或跨租户不得成功切换规则状态
+    - 默认/筛选/分页/刷新均按创建时间倒序
+    conclusion: 已识别参数、等价类和主要约束，但缺少完整值域、可执行约束矩阵和用例到组合行映射，无法证明完整 2-way 覆盖；本轮不执行 PICT。
+    gaps:
+    - 缺少参数值域
+    - 缺少有效组合矩阵
+    - 缺少用例到组合行映射
+    gate_reason: false
+  automation_review:
+    framework: Playwright Python sync API / pytest-playwright
+    status: blocked
+    safe_scope:
+    - 页面路由/标题/菜单确认
+    - 默认列表或空态只读观察
+    - 规则名称/状态筛选、查询、重置、刷新
+    - 表头设置和分页观察（定位器确认后）
+    blocked_scope:
+    - 新增/编辑/启停/删除规则
+    - 真实推送/触发告警/取消告警
+    - 重复请求和失败注入
+    - 依赖跨模块回读
+    - 权限切换和跨租户业务写入
+    locator_strategy:
+    - role/name
+    - 确认的 data-testid
+    - accessible label
+    - 稳定属性
+    - REQ-007 专属 element_id
+    conclusion: page_inventory_status=missing，页面实体、状态、元素、表格、交互、批准数据和权限条件不足，不能生成或声称可执行通过的自动化套件。
+  headed_page_review:
+    status: static_evidence_only
+    page_inventory_status: missing
+    evidence: []
+    conclusion: 当前 page.json 没有 REQ-007 data_monitor 页面证据；本轮未启动有头浏览器，不能宣称页面执行通过。
+  casely_review:
+    status: passed_with_blockers
+    structure: passed
+    fields: passed
+    atomicity: passed
+    style: passed_with_risk
+    delivery_format: passed
+    markdown_alignment: pending_revalidation
+    reference_scope: D:/02test_pro/ui_test/references/casely
+    conclusion: YAML 作为事实源，39 条用例的字段、原子性、风格和交付结构基本符合公共 Casely 参考；最终以项目 Markdown 校验器结果为准。
+  priority_review:
+    rule_ref: test-design-enrichment-rule.md
+    scope: 全量37条用例，以 YAML priority 为事实源。
+    case_count: 37
+    reviewed_case_count: 37
+    unreviewed_case_ids: []
+    distribution:
+      P1: 19
+      P2: 12
+      P3: 6
+      P4: 0
+    change_summary:
+      changed_case_count: 39
+      unchanged_case_count: 0
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 当前 YAML 优先级分布为 P1=20、P2=13、P3=6、P4=0；本轮不修改优先级，仅保留 39 条用例的具体按钮、组件和结果回读步骤。历史评审中的优先级算术差异保留为历史记录，不影响本轮步骤同步。
+    items:
+    - case_id: TC-REQ-007-002
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 查看数据监听默认内容时确认规则列表及业务字段可观察
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-003
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看新建监听规则编号时确认编号由系统生成且创建后不可编辑
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-004
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看规则编号冲突或生成异常时确认保存被阻止并显示反馈
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-005
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看同一创建请求重复提交时确认不会生成重复规则编号
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-006
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看规则名称为空时确认必填错误定位到名称字段
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-007
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看规则名称包含非法字符时确认输入被拒绝并显示反馈
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-008
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 查看同一租户重复规则名称时确认名称可按需求允许重复
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-009
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 查看规则名称为空白时确认页面按正式默认规则处理
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-010
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 查看规则列表时确认启用和停用状态可区分展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-011
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看规则状态切换后事件处理时确认新状态立即生效
+      step_wording_update: 已将步骤3改为在事件记录列表刷新或查询并查看停用规则产生的事件，明确断言规则不再触发且处理结果与停用状态一致。
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-012
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 启用规则切换为停用后已产生的告警仍按原状态处理
+      step_wording_update: 已将标题明确为启用切换停用，并将原复合步骤拆分为七个单一操作：定位规则、确认启用、进入“告警记录”、查询告警、记录告警、停用规则、再次进入“告警记录”处理告警；每一步均补充通俗可核验预期。
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-013
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 验证设备属性满足监听规则时产生告警且告警名称与触发器一致
+      step_wording_update: 已删除告警详情和“是否处理”状态等无关验证，收敛为准备满足条件的设备数据、在“告警记录”中定位新告警、核对告警名称与数据监听配置触发器名称一致三步。
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-014
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看设备事件满足监听条件时确认规则触发
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-015
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看设备状态满足监听条件时确认规则触发
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-016
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看单监听器全部条件满足时确认规则触发
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-017
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看单监听器任一条件不满足时确认规则不由该监听器触发
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-018
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看多监听器任一监听器满足时确认规则触发
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-019
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看多监听器全部不满足时确认规则不触发
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-020
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看监听规则动作配置时确认推送告警和取消告警类型可区分
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-021
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 查看配置多个动作时确认动作按配置顺序执行
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-024
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看依赖停用后的新建规则选择项时确认停用依赖不可选
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-025
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看依赖停用后的已有监听规则时确认原配置引用继续保留
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-026
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看被监听规则引用的依赖删除处理时确认删除被阻止
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-027
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看重复设备事件上报时确认每次上报均执行动作
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-028
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 查看短时间内重复事件上报时确认不受节流或时间窗口抑制
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-029
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看规则创建时间时确认按用户时区显示秒级时间格式
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-030
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 查看默认规则列表时确认创建时间按倒序排列
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-031
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 查看筛选分页或刷新后的规则列表时确认创建时间仍保持倒序
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-033
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 同一租户内查看监听规则时确认数据按租户边界隔离
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-034
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 跨租户访问监听规则时确认访问被拒绝或数据不暴露
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-035
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看监听规则操作授权反馈
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-007-040
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: added
+      impact_area: 删除监听规则后使用完全相同规则表单内容重新创建成功
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 新增删除后使用完全相同表单内容重新创建成功的生命周期场景；执行数据和页面契约待确认。
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+    - 正式业务影响等级
+    - 用户频率
+    - 页面专属字段与反馈
+    - 表达式/阈值/动作参数
+    - 权限租户矩阵
+    - 运行时重复事件和失败不重试证据
+    gate_reasons: []
+  forbidden_actions:
+  - 读取或生成测试点/XMind
+  - 执行 UI 测试
+  - 执行 Playwright 或有头浏览器
+  - 执行 PICT
+  - 生成 CSV
+  - 写入远程禅道
+  - 提交新增/编辑/启用/停用/删除
+  - 执行真实推送/触发告警/取消告警
+  - 复用其他模块页面证据
+  - 修改注册表或业务数据
+  traceability:
+    module_case_map_registered: false
+    module_id_missing: false
+    requirements_pdf_page_trace: pending
+    input_hashes_recorded: true
+  validation:
+    validator: scripts/validate_case_review.py
+    testcase_markdown_validator: scripts/validate_testcase_markdown.py
+    status: pending_execution

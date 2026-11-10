@@ -1,0 +1,39 @@
+req_id: REQ-002
+project_id: 46
+product_id: 8
+module_id: 731
+operation: delete
+zentao_case_ids:
+- 51584
+- 51585
+- 51597
+local_case_ids:
+- TC-REQ-002-024
+- TC-REQ-002-039
+- TC-REQ-002-034
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+rebuild: forbidden_and_not_used
+local_source_case_count_after: 29
+source_hashes_after:
+  yaml: d03b6738629b098f94a23deeedd22fa3e3db9700e3043eb0f021ffa8564bf169
+  markdown: 22a6fa39d8f1c329132bd3c403187df8ea241ab14ddfd5d4a6ca85064a6d1334
+  review_yaml: a7b6b6caa20bbfce559b9bc4a0bd8870339d6e3258a0db0ccd0e48cfdb32b5f8
+execution:
+  status: validated
+  records:
+  - remote_case_id: 51584
+    local_case_id: TC-REQ-002-024
+    delete_response: success
+    readback_after: confirmed_not_found
+  - remote_case_id: 51585
+    local_case_id: TC-REQ-002-039
+    delete_response: success
+    readback_after: confirmed_not_found
+  - remote_case_id: 51597
+    local_case_id: TC-REQ-002-034
+    delete_response: success
+    readback_after: confirmed_not_found
+registry:
+  action: removed_mappings_after_confirmed_absence
+  status: validated

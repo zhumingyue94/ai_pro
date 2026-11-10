@@ -1,0 +1,644 @@
+id: REQ-PC-035
+title: 受健率标准管理
+module_path: 基础数据 / 受健率标准管理
+trace:
+  story: null
+  req: REQ-PC-035
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: standard_crud
+testpoint_template: 标准CRUD审核
+summary: 基础数据 / 受健率标准管理基于当前 PC 5500 原型与需求章节重新分析。
+in_scope:
+- 当前模块实际页面的查询区、列表、表单、弹窗、按钮、状态和页面板块
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 测试点、测试用例、CSV、UI 脚本
+- 真实接口/数据库/权限实现
+- 原型未确认的业务事实
+business_rules:
+- id: BR-001
+  rule: 关键字查询 年份： 2026年 2025年 2024年 2023年 2022年 修改 修改 孵化场： 孵化一场 孵化二场 孵化三场
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 受健率标准管理
+- id: BR-002
+  rule: 表格固定，周龄范围就是固定25-64
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 受健率标准管理
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces:
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-029
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-030
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 页面内导航
+  type: prototype_navigation
+  source_module: live prototype
+  targets:
+  - 上孵计划列表
+  - 仓库全景图（待定）
+  - 仓库管理
+  - 出入库记录
+  - 出雏器全景图（待定）
+  - 出雏器管理
+  - 受健率标准管理
+  - 品种管理
+  - 存发苗间管理
+  - 孵化周期管理
+  - 孵化器全景图（待定）
+  - 孵化器管理
+  - 库存查询
+  - 生产报表
+  - 盘点记录
+  - 种蛋上孵任务
+  - 种蛋出雏任务
+  - 种蛋照蛋任务
+  - 蛋重类型管理
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 真实接口、权限、异常提示和字段校验规则是什么？
+  impact: 影响正式契约与下游测试点
+  owner: 产品/研发
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: observed
+    observed_page_count: 1
+    unmapped_pages: []
+    interaction_boundary: 页面树导航和 DOM 观察，未执行写操作
+  page_chrome:
+  - page: 受健率标准管理
+    title: 受健率标准管理
+    url: http://127.0.0.1:5500/%E5%8F%97%E5%81%A5%E7%8E%87%E6%A0%87%E5%87%86%E7%AE%A1%E7%90%86.html
+    notes: live DOM
+  page_block_specs:
+  - id: CHROME
+    name: 页面壳层
+    fields:
+    - 受健率标准管理
+    data_source: live DOM
+    coverage:
+    - l1
+    - l2
+  - id: CONTROLS
+    name: 当前页面控件
+    fields:
+    - checkbox
+    - 请输入周龄
+    - 2026年 2025年 2024年 2023年 2022年
+    - 孵化一场 孵化二场 孵化三场
+    data_source: live DOM visible controls
+    coverage:
+    - l1
+    - l2
+    - l3
+  - id: NOTES
+    name: 原型注释
+    fields:
+    - 关键字查询 年份： 2026年 2025年 2024年 2023年 2022年 修改 修改 孵化场： 孵化一场 孵化二场 孵化三场
+    - 表格固定，周龄范围就是固定25-64
+    data_source: requirement/prototype annotations
+    coverage:
+    - l1
+    - l2
+  - id: DIALOGS
+    name: 页面弹窗
+    fields:
+    - 品种新建/编辑/删除弹框
+    - 修改品种
+    - 删除品种
+    data_source: page-specific hidden widgets
+    coverage:
+    - l1
+    - l2
+    - l3
+  query_field_specs: []
+  form_field_specs:
+  - name: checkbox
+    control: checkbox
+    editable: true
+    required: null
+    scope: 受健率标准管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  - name: 请输入周龄
+    control: text
+    editable: true
+    required: null
+    scope: 受健率标准管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  - name: 2026年 2025年 2024年 2023年 2022年
+    control: select-one
+    editable: true
+    required: null
+    scope: 受健率标准管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  - name: 孵化一场 孵化二场 孵化三场
+    control: select-one
+    editable: true
+    required: null
+    scope: 受健率标准管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  button_semantics:
+    上孵计划:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋上孵:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋照蛋:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋出雏:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    品种管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    蛋重类型管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    库存查询:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出入库记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    盘点记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库全景图:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    生产报表:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    存发苗间管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化周期管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    受健率标准管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    修改:
+      action: edit
+      summary: 打开编辑路径
+    确认:
+      action: confirm
+      summary: 确认当前弹窗或表单动作
+    取消:
+      action: cancel
+      summary: 关闭当前弹窗或撤销未确认变更
+    新建:
+      action: create
+      summary: 打开新建路径
+  nested_dialogs:
+  - id: 品种新建/编辑/删除弹框
+    type: confirm
+    trigger: page-specific prototype control
+    title: 品种新建/编辑/删除弹框
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 新建受健率标准
+    - 确认
+    - 取消
+    - '*年份：'
+    - '*孵化场：'
+    - 2026年
+    - 2027年
+    - 孵化一场
+    - 孵化二场
+    - 孵化三场
+    - 周龄
+    - 受精率
+    - 受健率
+    - '25'
+    - '26'
+    - '27'
+    - '28'
+    - ……
+    - '64'
+    - 平均
+    - 87%
+    - 87%
+    - 平均行固定不动
+    - 年份最多选到明年
+    - 修改品种
+    - 确认
+    - 取消
+    - '*品种编号：'
+    - '*品种名称：'
+    - '*状态：'
+    - 启用
+    - 停用
+    - 自动生成编号
+    - 删除品种
+    - 是否确认删除？
+    - 确认
+    - 取消
+    - 启用品种
+    - 是否确认启用？
+    - 确认
+    buttons: &id001
+    - 确认
+    - 取消
+    - 删除
+  - id: 修改品种
+    type: input
+    trigger: page-specific prototype control
+    title: 修改品种
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 修改品种
+    - 确认
+    - 取消
+    - '*品种编号：'
+    - '*品种名称：'
+    - '*状态：'
+    - 启用
+    - 停用
+    - 自动生成编号
+    buttons: &id002
+    - 确认
+    - 取消
+  - id: 删除品种
+    type: confirm
+    trigger: page-specific prototype control
+    title: 删除品种
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 删除品种
+    - 是否确认删除？
+    - 确认
+    - 取消
+    buttons: &id003
+    - 确认
+    - 取消
+    - 删除
+  sub_tables: []
+  table_column_specs:
+  - name: 智孵管家管理平台
+    order: 1
+  - name: 上孵计划
+    order: 2
+  - name: 种蛋上孵
+    order: 3
+  - name: 种蛋照蛋
+    order: 4
+  - name: 种蛋出雏
+    order: 5
+  - name: 品种管理
+    order: 6
+  - name: 蛋重类型管理
+    order: 7
+  - name: 合格蛋蛋库
+    order: 8
+  - name: 次品库
+    order: 9
+  - name: 生产报表
+    order: 10
+  - name: 仓库管理
+    order: 11
+  - name: 存发苗间管理
+    order: 12
+  - name: 孵化器管理
+    order: 13
+  - name: 出雏器管理
+    order: 14
+  - name: 孵化周期管理
+    order: 15
+  - name: 养殖场管理
+    order: 16
+  - name: 孵化场管理
+    order: 17
+  - name: 组织管理
+    order: 18
+  - name: 用户管理
+    order: 19
+  - name: 存发苗间
+    order: 20
+  - name: 库存查询
+    order: 21
+  - name: 出入库记录
+    order: 22
+  - name: 孵化器全景
+    order: 23
+  - name: 出雏器全景
+    order: 24
+  - name: 受健率标准管理
+    order: 25
+  - name: 二级蛋蛋库
+    order: 26
+  - name: 首页/一级菜单/二级菜单/三级菜单…
+    order: 27
+  - name: 年份
+    order: 28
+  - name: 孵化场
+    order: 29
+  - name: 周龄
+    order: 30
+  computed_fields: []
+  save_validations: []
+  ui_components:
+  - input/select/button
+  - modal_confirm
+  - table
+  cross_module_refs:
+  - field: 受健率标准管理
+    source_module: REQ-PC-029
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 受健率标准管理
+    source_module: REQ-PC-030
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 页面内导航
+    source_module: live prototype
+    dialog: 页面打开链接
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 上孵计划列表
+    - 仓库全景图（待定）
+    - 仓库管理
+    - 出入库记录
+    - 出雏器全景图（待定）
+    - 出雏器管理
+    - 受健率标准管理
+    - 品种管理
+    - 存发苗间管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 孵化器管理
+    - 库存查询
+    - 生产报表
+    - 盘点记录
+    - 种蛋上孵任务
+    - 种蛋出雏任务
+    - 种蛋照蛋任务
+    - 蛋重类型管理
+  detail_table_specs: []
+  concurrency_checks: []
+  role_coverage: skip
+  observed_pages:
+  - page: 受健率标准管理
+    nodeurl: 受健率标准管理.html
+    title: 受健率标准管理
+    frame_url: http://127.0.0.1:5500/%E5%8F%97%E5%81%A5%E7%8E%87%E6%A0%87%E5%87%86%E7%AE%A1%E7%90%86.html
+    body_line_count: 189
+    body_lines:
+    - 智孵管家管理平台
+    - 计划管理
+    - 上孵计划
+    - 孵化管理
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 库存管理
+    - 品种管理
+    - 蛋重类型管理
+    - 合格蛋蛋库
+    - 次品库
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 养殖场管理
+    - 孵化场管理
+    - 组织管理
+    - 用户管理
+    - 存发苗间
+    - 库存查询
+    - 出入库记录
+    - 孵化器全景
+    - 出雏器全景
+    - 基础数据
+    - 受健率标准管理
+    - 二级蛋蛋库
+    - 首页/一级菜单/二级菜单/三级菜单…
+    - 年份
+    - 孵化场
+    - 周龄
+    - 受精率
+    - 受健率
+    - 修改时间
+    - 修改人
+    - 操作
+    - 2026年
+    - 孵化一场
+    - '25'
+    - 50%
+    - 60%
+    - 2025.12.19 17:24:00
+    - 周韬睿
+    - '26'
+    - 75%
+    - 85%
+    - '27'
+    - 78%
+    - 90.5%
+    - '28'
+    - 86%
+    - 91%
+    - 修改
+    - 周龄：
+    - 搜索
+    - 重置
+    - 新建
+    - 导入
+    - 导出
+    - 注释：关键字查询
+    - 年份：
+    - 2025年
+    - 2024年
+    - 2023年
+    - 2022年
+    - 孵化场：
+    - 孵化二场
+    - 孵化三场
+    - 注释：表格固定，周龄范围就是固定25-64
+    annotations:
+    - 关键字查询 年份： 2026年 2025年 2024年 2023年 2022年 修改 修改 孵化场： 孵化一场 孵化二场 孵化三场
+    - 表格固定，周龄范围就是固定25-64
+    controls:
+    - tag: INPUT
+      id: u3884_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3885_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3886_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3970_input
+      type: text
+      value: 请输入周龄
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u3979_input
+      type: select-one
+      value: 2026年
+      text: 2026年 2025年 2024年 2023年 2022年
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3982_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3983_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u3985_input
+      type: select-one
+      value: 孵化一场
+      text: 孵化一场 孵化二场 孵化三场
+      disabled: false
+      visible: true
+    dialogs:
+    - label: 品种新建/编辑/删除弹框
+      id: u3887
+      text: 新建受健率标准 确认 取消 *年份： *孵化场： 2026年 2027年 孵化一场 孵化二场 孵化三场 周龄 受精率 受健率 25 26 27 28 …… 64 平均 87% 87% 平均行固定不动 年份最多选到明年 修改品种
+        确认 取消 *品种编号： *品种名称： *状态： 启用 停用 自动生成编号 删除品种 是否确认删除？ 确认 取消 启用品种 是否确认启用？ 确认 取消 停用品种 是否确认停用？ 确认 取消
+      buttons: *id001
+    - label: 修改品种
+      id: u3887_state1
+      text: 修改品种 确认 取消 *品种编号： *品种名称： *状态： 启用 停用 自动生成编号
+      buttons: *id002
+    - label: 删除品种
+      id: u3887_state2
+      text: 删除品种 是否确认删除？ 确认 取消
+      buttons: *id003
+    buttons:
+    - 上孵计划
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 出入库记录
+    - 盘点记录
+    - 仓库全景图
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景
+    - 出雏器全景
+    - 受健率标准管理
+    - 修改
+    - 确认
+    - 取消
+    - 新建
+    static_actions:
+    - 上孵计划列表
+    - 种蛋上孵任务
+    - 种蛋照蛋任务
+    - 种蛋出雏任务
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 盘点记录
+    - 仓库全景图（待定）
+    - 出入库记录
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 出雏器全景图（待定）
+    - 受健率标准管理
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-035
+  outputs:
+  - 02_analysis/pc/REQ-PC-035.yaml
+  - 02_analysis/pc/REQ-PC-035_受健率标准管理.md
+  gate: passed
+  next_agent: testpoint-agent
+  blockers: []

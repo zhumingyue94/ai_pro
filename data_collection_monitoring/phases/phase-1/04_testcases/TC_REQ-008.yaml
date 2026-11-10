@@ -1,0 +1,739 @@
+req_id: REQ-008
+module: 数据推送
+trace:
+  req: REQ-008
+  version: '1'
+  status: blocked_scoped_readonly_ui_verification
+  source_review: REQ-008 analysis and TEST_PLAN-REQ-008; latest REQ-008-001..012,
+    REQ-008-015..016
+common_preconditions:
+- id: CP-REQ-008-001
+  name: 登录并进入数据推送页面
+  conditions: []
+  steps:
+  - action: 完成应用门户登录，或复用已有的有效登录态。
+    expected: 登录成功或已有登录态有效，可以正常访问应用门户。
+  - action: 在应用门户选择“数据采集监控平台”。
+    expected: 成功进入数据采集监控平台，并显示对应的平台菜单区域。
+  - action: 展开“数据中心”菜单并点击“数据推送”菜单。
+    expected: 数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。
+cases:
+- id: TC-REQ-008-002
+  coverage_ids:
+  - REQ-008-001
+  - COV-008-L2-filter
+  plan_item_ids:
+  - REQ-008-001
+  - PLAN-008-filter
+  scenario_branch: 目标名称筛选
+  atomic_purpose_ids:
+  - AP-008-002
+  title: 按名称查询，检查推送目标是否匹配
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 名称筛选
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并具备经授权的脱敏列表数据。
+  steps:
+  - action: 在目标名称筛选框输入已授权的脱敏名称并点击“查询”
+    expected: 输入框保留查询值，列表完成刷新。
+  - action: 查看查询结果
+    expected: 每条结果的目标名称符合页面定义的匹配规则，不匹配目标不显示；无结果时显示明确空状态。
+- id: TC-REQ-008-003
+  coverage_ids:
+  - REQ-008-001
+  - COV-008-L2-filter-status
+  plan_item_ids:
+  - REQ-008-001
+  - PLAN-008-filter-status
+  scenario_branch: 启用状态筛选
+  atomic_purpose_ids:
+  - AP-008-003
+  title: 按启用状态筛选，检查目标状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 状态筛选
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并存在经授权的启用状态脱敏数据。
+  steps:
+  - action: 在目标状态下拉框选择“启用”并点击“查询”
+    expected: 状态控件回显“启用”，列表完成刷新。
+  - action: 查看列表状态列
+    expected: 每条结果的目标状态均为“启用”。
+- id: TC-REQ-008-004
+  coverage_ids:
+  - REQ-008-001
+  - COV-008-L2-filter-status
+  plan_item_ids:
+  - REQ-008-001
+  - PLAN-008-filter-status
+  scenario_branch: 停用状态筛选
+  atomic_purpose_ids:
+  - AP-008-004
+  title: 按停用状态筛选，检查目标状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 状态筛选
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并存在经授权的停用状态脱敏数据。
+  steps:
+  - action: 在目标状态下拉框选择“停用”并点击“查询”
+    expected: 状态控件回显“停用”，列表完成刷新。
+  - action: 查看列表状态列
+    expected: 每条结果的目标状态均为“停用”。
+- id: TC-REQ-008-005
+  coverage_ids:
+  - REQ-008-004
+  - COV-008-L2-filter-type
+  plan_item_ids:
+  - REQ-008-004
+  - PLAN-008-filter-type
+  scenario_branch: HTTP 类型筛选
+  atomic_purpose_ids:
+  - AP-008-005
+  title: 按 HTTP 类型筛选，检查目标列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 类型筛选
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并存在经授权的 HTTP 类型脱敏数据。
+  steps:
+  - action: 在目标类型下拉框选择“HTTP”并点击“查询”
+    expected: 类型控件回显“HTTP”，列表完成刷新。
+  - action: 查看列表类型列
+    expected: 每条结果的目标类型均为“HTTP”。
+- id: TC-REQ-008-006
+  coverage_ids:
+  - REQ-008-004
+  - COV-008-L2-filter-type
+  plan_item_ids:
+  - REQ-008-004
+  - PLAN-008-filter-type
+  scenario_branch: MQTT 类型筛选
+  atomic_purpose_ids:
+  - AP-008-006
+  title: 按 MQTT 类型筛选，检查目标列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 类型筛选
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并存在经授权的 MQTT 类型脱敏数据。
+  steps:
+  - action: 在目标类型下拉框选择“MQTT”并点击“查询”
+    expected: 类型控件回显“MQTT”，列表完成刷新。
+  - action: 查看列表类型列
+    expected: 每条结果的目标类型均为“MQTT”。
+- id: TC-REQ-008-008
+  coverage_ids:
+  - REQ-008-001
+  - COV-008-L2-date-filter
+  plan_item_ids:
+  - REQ-008-001
+  - PLAN-008-date-filter
+  scenario_branch: 日期范围筛选
+  atomic_purpose_ids:
+  - AP-008-008
+  title: 按创建日期查询，检查结果范围
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 日期筛选
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并具备覆盖同日和跨日范围的脱敏数据。
+  steps:
+  - action: 在开始日期控件选择批准的开始日期，在结束日期控件选择批准的结束日期并点击“查询”
+    expected: 两个日期控件分别回显所选日期，列表完成刷新。
+  - action: 查看结果的创建时间
+    expected: 结果符合页面定义的开始、结束日期边界规则。
+- id: TC-REQ-008-010
+  coverage_ids:
+  - REQ-008-010
+  - COV-008-L2-query-refresh
+  plan_item_ids:
+  - REQ-008-010
+  - PLAN-008-query-refresh
+  scenario_branch: 刷新获取最新列表
+  atomic_purpose_ids:
+  - AP-008-010
+  title: 点击刷新，检查列表重新加载
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 刷新
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并具备可授权读取的列表数据。
+  steps:
+  - action: 记录当前筛选条件、页码和目标字段，点击“刷新”
+    expected: 列表重新加载，页面恢复可操作状态。
+  - action: 查看筛选条件、页码和目标记录
+    expected: 条件和页码按页面规则保持，目标配置未因刷新被改写。
+- id: TC-REQ-008-015
+  coverage_ids:
+  - REQ-008-001
+  - COV-008-L2-empty
+  plan_item_ids:
+  - REQ-008-001
+  - PLAN-008-empty
+  scenario_branch: 无结果空态
+  atomic_purpose_ids:
+  - AP-008-015
+  title: 查询无匹配条件，检查空结果
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 空结果
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 具备数据推送页面访问权限并获得不会暴露业务数据的无匹配筛选条件。
+  steps:
+  - action: 在目标名称筛选框输入无匹配名称并点击“查询”
+    expected: 输入框保留查询值，列表完成查询。
+  - action: 查看列表区域
+    expected: 显示“暂无数据”或页面定义的等价空状态。
+  - action: 查看旧记录
+    expected: 当前结果不显示与筛选条件不匹配的旧数据。
+- id: TC-REQ-008-018
+  coverage_ids:
+  - REQ-008-003
+  - REQ-008-004
+  - REQ-008-011
+  - COV-008-L2-form-type
+  plan_item_ids:
+  - REQ-008-003
+  - REQ-008-004
+  - REQ-008-011
+  - PLAN-008-form-type
+  scenario_branch: HTTP 请求体字段适用性
+  atomic_purpose_ids:
+  - AP-008-018
+  title: 查看 HTTP 配置，检查请求体字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: HTTP 协议字段
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions: []
+  steps:
+  - action: 点击“新增”按钮
+    expected: 新增弹窗打开。
+  - action: 查看“HTTP”表单字段
+    expected: 表单显示目标名称、目标描述、目标类型、请求地址、请求方法、请求头、请求参数、请求体和目标状态字段。
+- id: TC-REQ-008-019
+  coverage_ids:
+  - REQ-008-007
+  - COV-008-L3-lifecycle
+  plan_item_ids:
+  - REQ-008-007
+  - PLAN-008-lifecycle
+  scenario_branch: 停用目标的新引用
+  atomic_purpose_ids:
+  - AP-008-019
+  title: 选择停用目标，检查新引用限制
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 引用生命周期
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已获得跨模块只读回读证据和隔离数据。
+  steps:
+  - action: 定位状态为“停用”的推送目标
+    expected: 目标行状态列显示“停用”。
+  - action: 在已批准的只读目标选择区域查找该目标
+    expected: 停用目标不能被新的监听规则或采集任务选中；选择器不会回填该目标。
+- id: TC-REQ-008-020
+  coverage_ids:
+  - REQ-008-007
+  - COV-008-L3-lifecycle
+  plan_item_ids:
+  - REQ-008-007
+  - PLAN-008-lifecycle
+  scenario_branch: 停用目标的已有引用
+  atomic_purpose_ids:
+  - AP-008-020
+  title: 查看已停用目标，检查已有引用和配置
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 已有引用
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已登录数据采集监控平台，并进入数据推送页面。
+  - 已准备一个已经被监听规则使用、随后被停用的推送目标。
+  - 已获得经批准的脱敏跨模块引用回读证据。
+  steps:
+  - action: 输入目标名称并点击“查询”，定位已停用且已有引用的目标
+    expected: 列表显示目标，状态为“停用”。
+  - action: 打开已引用的监听规则详情
+    expected: 详情显示该监听规则仍引用原推送目标。
+  - action: 查看监听规则中的推送配置
+    expected: 原目标和原连接配置仍保留，没有被自动替换或清空。
+  - action: 返回数据推送列表并刷新
+    expected: 目标仍为“停用”，已有引用关系保持不变。
+- id: TC-REQ-008-021
+  coverage_ids:
+  - REQ-008-007
+  - COV-008-L3-delete-protection
+  plan_item_ids:
+  - REQ-008-007
+  - PLAN-008-delete-protection
+  scenario_branch: 被引用目标删除保护
+  atomic_purpose_ids:
+  - AP-008-021
+  title: 删除已引用目标，检查删除保护
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 删除保护
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已获得被引用目标的批准脱敏删除反馈证据。
+  steps:
+  - action: 定位正在被监听规则使用的推送目标并点击“删除”
+    expected: 删除确认层显示目标名称或引用保护信息。
+  - action: 在确认层点击“确定删除”
+    expected: 显示明确的引用限制或删除失败提示，目标没有从列表中消失。
+  - action: 刷新列表并按目标标识查找
+    expected: 被引用目标仍存在，配置字段未改变。
+- id: TC-REQ-008-028
+  coverage_ids:
+  - REQ-008-009
+  - COV-008-L3-permission
+  plan_item_ids:
+  - REQ-008-009
+  - PLAN-008-permission
+  scenario_branch: 只读用户权限
+  atomic_purpose_ids:
+  - AP-008-025
+  title: 使用只读账号查看页面，检查操作权限
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 角色权限
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已获得只读用户、数据推送管理员和租户范围的正式权限矩阵。
+  steps:
+  - action: 使用只读账号进入数据推送页面并定位目标行
+    expected: 仅显示该账号授权范围内的目标数据。
+  - action: 分别查看编辑、停用和删除入口
+    expected: 逐项记录入口的实际显示、隐藏或禁用状态。
+  - action: 对允许观察的受保护入口执行点击
+    expected: 页面显示与权限矩阵一致的权限提示，未产生新增、修改、停用或删除。
+- id: TC-REQ-008-030
+  coverage_ids:
+  - REQ-008-003
+  - REQ-008-004
+  plan_item_ids:
+  - REQ-008-003
+  - REQ-008-004
+  scenario_branch: MQTT 表单字段适用性
+  atomic_purpose_ids:
+  - AP-008-030
+  title: 查看 MQTT 配置，检查字段适用范围
+  type: feature
+  auto: auto
+  priority: P2
+  feature: MQTT 协议字段
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions: []
+  steps:
+  - action: 点击“新增”按钮
+    expected: 新增弹窗打开。
+  - action: 查看“MQTT”表单字段
+    expected: 表单显示目标名称、目标描述、目标类型、服务地址、用户名、密码、客户端ID、主题和目标状态字段。
+- id: TC-REQ-008-031
+  coverage_ids:
+  - REQ-008-003
+  - REQ-008-004
+  - REQ-008-011
+  plan_item_ids:
+  - REQ-008-003
+  - REQ-008-004
+  - REQ-008-011
+  scenario_branch: 内置队列表单字段适用性
+  atomic_purpose_ids:
+  - AP-008-031
+  title: 查看内置队列配置，检查字段适用范围
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 内置队列表单
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions: []
+  steps:
+  - action: 点击“新增”按钮打开新增推送目标表单
+    expected: 新增弹窗打开。
+  - action: 查看“内置队列”表单字段
+    expected: 表单显示目标名称、目标描述、目标类型、主题、目标状态字段。
+- id: TC-REQ-008-040
+  coverage_ids:
+  - REQ-008-001
+  - REQ-008-013
+  plan_item_ids:
+  - REQ-008-013
+  scenario_branch: 新增目标
+  atomic_purpose_ids:
+  - AP-008-040
+  title: 新增推送目标，检查保存和列表回显
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 新增推送目标
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已完成角色和写权限矩阵，并准备脱敏测试数据。
+  - 已确认回滚清理方案，外部连接保持关闭。
+  steps:
+  - action: 点击“新增”，填写批准的脱敏名称、协议、地址、方法、状态和其他字段
+    expected: 各控件回显输入值，表单允许提交。
+  - action: 点击“确定”或“保存”
+    expected: 显示明确保存成功提示，弹窗关闭或完成页面定义的提交状态。
+  - action: 刷新或查询列表并定位新目标
+    expected: 列表显示新目标，名称、协议和状态与提交值一致。
+  - action: 打开新目标编辑表单
+    expected: 表单回读已保存的非敏感字段，测试数据按方案保留或清理。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-SANITIZED
+- id: TC-REQ-008-041
+  coverage_ids:
+  - REQ-008-001
+  - REQ-008-013
+  plan_item_ids:
+  - REQ-008-013
+  scenario_branch: 编辑目标
+  atomic_purpose_ids:
+  - AP-008-041
+  title: 编辑推送目标，检查修改结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 编辑推送目标
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已存在可回滚的脱敏推送目标记录。
+  - 已完成角色、写权限矩阵和清理方案。
+  steps:
+  - action: 定位可编辑目标并点击“编辑”
+    expected: 编辑表单打开，当前字段正确回填。
+  - action: 修改批准的非敏感字段并点击“保存”
+    expected: 修改值回显，保存完成后显示明确成功提示。
+  - action: 刷新或重新查询目标
+    expected: 修改字段显示新值，目标标识和其他未修改字段保持不变。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-SANITIZED
+- id: TC-REQ-008-042
+  coverage_ids:
+  - REQ-008-007
+  - REQ-008-013
+  plan_item_ids:
+  - REQ-008-013
+  scenario_branch: 编辑目标状态
+  atomic_purpose_ids:
+  - AP-008-042
+  title: 停用推送目标，检查状态和新引用限制
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 停用推送目标
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已准备可编辑的推送目标，当前目标状态可切换为“启用”或“停用”。
+  steps:
+  - action: 点击目标行的“编辑”按钮
+    expected: 编辑弹窗打开，目标状态控件显示当前状态。
+  - action: 在目标状态控件选择“启用”或“停用”
+    expected: 目标状态控件显示所选状态，弹窗保留其他目标配置。
+  - action: 点击弹窗的“确定”按钮
+    expected: 弹窗关闭，显示保存成功提示。
+  - action: 刷新或重新查询目标
+    expected: 目标状态切换为刚才选择的“启用”或“停用”。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-SANITIZED
+- id: TC-REQ-008-043
+  coverage_ids:
+  - REQ-008-007
+  - REQ-008-013
+  plan_item_ids:
+  - REQ-008-013
+  scenario_branch: 隔离测试租户删除未引用目标
+  atomic_purpose_ids:
+  - AP-008-043
+  title: 删除未引用目标，检查删除结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 删除推送目标
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 目标仅存在于隔离测试租户且无业务引用，数据为脱敏数据。
+  - 已获得删除权限并确认可回滚或清理方案；否则标记 blocked。
+  steps:
+  - action: 在隔离测试租户定位无业务引用的目标并点击“删除”
+    expected: 删除确认层显示目标信息以及“确定”“取消”按钮。
+  - action: 点击“取消”
+    expected: 确认层关闭，目标仍显示在列表中。
+  - action: 再次点击“删除”并在确认层点击“确定”
+    expected: 确认层关闭，显示明确删除成功提示。
+  - action: 刷新或重新查询列表
+    expected: 目标不再显示。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-SANITIZED-ISOLATED
+- id: TC-REQ-008-048
+  coverage_ids:
+  - REQ-008-009
+  - REQ-008-013
+  plan_item_ids:
+  - REQ-008-013
+  scenario_branch: 跨租户数据隔离
+  atomic_purpose_ids:
+  - AP-008-048
+  title: 切换测试租户，检查数据隔离
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 租户隔离
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 已配置两个隔离测试租户和跨租户读权限矩阵；未配置时 blocked。
+  - 仅使用脱敏标识验证可见范围，不读取真实数据。
+  steps:
+  - action: 在当前测试租户查询推送目标列表
+    expected: 列表只显示当前租户授权范围内的脱敏目标。
+  - action: 切换到另一个隔离测试租户并重新查询
+    expected: 列表切换为新租户数据，不显示原租户专属目标。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-SANITIZED-TENANT
+- id: TC-REQ-008-053
+  coverage_ids:
+  - REQ-008-015
+  plan_item_ids:
+  - REQ-008-015
+  - PLAN-008-form-required
+  scenario_branch: HTTP 表单字段规则
+  atomic_purpose_ids:
+  - AP-008-053
+  title: 查看 HTTP 表单，检查字段规则
+  type: feature
+  auto: auto
+  priority: P2
+  feature: HTTP 表单字段
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions: []
+  steps:
+  - action: 点击“新增”按钮
+    expected: 新增推送目标弹窗打开。
+  - action: 在弹窗的目标类型选择器中选择“HTTP”
+    expected: 目标类型选择器显示“HTTP”。
+  - action: 查看 HTTP 表单中业务字段的必填标识
+    expected: 请求地址和请求方法带必填标识；请求头、请求参数和请求体不带必填标识。
+  - action: 保持请求地址为空并点击“确定”
+    expected: 请求地址字段显示必填校验提示，表单保持打开，未产生业务写入。
+  - action: 查看 HTTP 表单中业务字段的默认值
+    expected: 请求地址协议默认值为“http://”。
+- id: TC-REQ-008-054
+  coverage_ids:
+  - REQ-008-015
+  plan_item_ids:
+  - REQ-008-015
+  - PLAN-008-form-required
+  scenario_branch: MQTT 表单字段规则
+  atomic_purpose_ids:
+  - AP-008-054
+  title: 查看 MQTT 表单，检查字段规则
+  type: feature
+  auto: auto
+  priority: P2
+  feature: MQTT 表单字段
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions: []
+  steps:
+  - action: 点击“新增”按钮
+    expected: 新增推送目标弹窗打开。
+  - action: 在弹窗的目标类型选择器中选择“MQTT”
+    expected: 目标类型选择器显示“MQTT”。
+  - action: 查看 MQTT 表单中业务字段的必填标识
+    expected: 服务地址、用户名、密码、客户端ID和主题字段带必填标识。
+  - action: 保持服务地址、用户名、密码、客户端ID和主题为空并点击“确定”
+    expected: 服务地址、用户名、密码、客户端ID和主题字段分别显示必填校验提示，表单保持打开，未产生业务写入。
+  - action: 查看 MQTT 表单中业务字段的默认值
+    expected: 服务地址输入框显示占位提示“请输入MQTT服务地址，格式如：192.168.6.163:1883”。
+- id: TC-REQ-008-055
+  coverage_ids:
+  - REQ-008-015
+  - REQ-008-016
+  plan_item_ids:
+  - REQ-008-015
+  - REQ-008-016
+  scenario_branch: 内置队列 表单字段差异
+  atomic_purpose_ids:
+  - AP-008-055
+  title: 查看 内置队列 表单，检查协议字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 内置队列 表单字段
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions: []
+  steps:
+  - action: 点击“新增”按钮
+    expected: 新增弹窗打开。
+  - action: 点击目标类型下拉框并选择“内置队列”
+    expected: “主题”输入框标签带必填标识。
+  - action: 保持主题为空并点击“确定”
+    expected: 提交后显示“请输入主题”提示，表单保持打开且未产生业务写入。
+- id: TC-REQ-008-057
+  coverage_ids:
+  - REQ-008-017
+  plan_item_ids:
+  - REQ-008-017
+  - PLAN-008-lifecycle-restore
+  scenario_branch: 编辑目标并设置停用状态
+  atomic_purpose_ids:
+  - AP-008-057
+  title: 编辑目标状态为停用，检查是否生效
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 停用恢复
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 使用隔离测试租户中的脱敏推送目标，目标当前为开启状态。
+  - 当前账号默认具备编辑和状态变更权限，已准备好变更后的回滚和清理方案；不连接外部协议。
+  steps:
+  - action: 定位状态为“开启”的测试目标并点击“编辑”
+    expected: 编辑表单打开，目标状态回显“开启”。
+  - action: 将目标状态改为“停用”并点击“确定”
+    expected: 状态选择控件回显“停用”，显示明确保存成功反馈。
+  - action: 刷新或重新查询目标
+    expected: 目标状态为“停用”，目标名称、协议及其他未修改字段保持不变。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-ISOLATED-RESTORE
+- id: TC-REQ-008-058
+  coverage_ids:
+  - REQ-008-017
+  plan_item_ids:
+  - REQ-008-017
+  - PLAN-008-lifecycle-restore
+  scenario_branch: 恢复目标新引用
+  atomic_purpose_ids:
+  - AP-008-058
+  title: 恢复目标后，检查是否可重新选择
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 恢复后新引用
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 隔离测试租户中的目标已恢复为开启，具备可回滚的脱敏引用配置。
+  steps:
+  - action: 将隔离测试目标恢复为“开启”并刷新目标列表
+    expected: 目标状态显示“开启”。
+  - action: 打开新建监听规则的目标选择区域并查找该目标
+    expected: 已恢复目标出现在可选列表中，并可被选择但不提交新业务配置。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-ISOLATED-RESTORE-REFERENCE
+- id: TC-REQ-008-059
+  coverage_ids:
+  - REQ-008-018
+  plan_item_ids:
+  - REQ-008-018
+  - PLAN-008-form-required
+  scenario_branch: 缺失目标名称提交
+  atomic_purpose_ids:
+  - AP-008-059
+  title: 缺失目标名称，检查提交校验
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 必填字段提交校验
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 使用隔离测试租户和脱敏配置，仅允许页面校验，不连接外部协议。
+  steps:
+  - action: 打开新增推送目标表单，填写其他批准字段并保持目标名称为空
+    expected: 目标名称控件保持空值，其他字段显示输入值。
+  - action: 点击“保存”或“确定”
+    expected: 目标名称字段显示明确必填提示，表单保持打开，不创建新目标。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-REQUIRED-NAME
+- id: TC-REQ-008-064
+  coverage_ids:
+  - REQ-008-019
+  plan_item_ids:
+  - REQ-008-019
+  - PLAN-008-delete-readback
+  scenario_branch: 未引用目标删除回读
+  atomic_purpose_ids:
+  - AP-008-064
+  title: 删除未引用目标，检查列表回读
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 删除成功回读
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 目标仅存在于隔离测试租户且无业务引用，使用脱敏数据。
+  - 当前账号已获得删除权限，并已确认删除后的回滚和清理方案。
+  steps:
+  - action: 定位隔离测试租户中未被引用的目标并点击“删除”
+    expected: 删除确认层显示目标信息以及“确定”“取消”按钮。
+  - action: 点击“取消”
+    expected: 确认层关闭，目标仍显示在列表中。
+  - action: 再次点击“删除”并在确认层点击“确定”
+    expected: 显示明确删除成功提示，确认层关闭。
+  - action: 查询或刷新列表
+    expected: 目标不再显示，按清理方案完成测试数据处理。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-ISOLATED-DELETE
+- id: TC-REQ-008-065
+  coverage_ids:
+  - REQ-008-020
+  plan_item_ids:
+  - REQ-008-020
+  - PLAN-008-idempotency
+  scenario_branch: 新增提交重复操作
+  atomic_purpose_ids:
+  - AP-008-065
+  title: 重复点击保存，检查是否只创建一条记录
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 重复提交幂等
+  common_preconditions_ref: CP-REQ-008-001
+  preconditions:
+  - 使用可回滚的隔离测试租户和脱敏配置，已确认重复操作清理方案；不连接外部协议。
+  steps:
+  - action: 打开新增表单并填写批准的脱敏配置
+    expected: 各字段回显输入值，表单允许提交。
+  - action: 点击“保存”或“确定”
+    expected: 按钮进入处理中、禁用或页面定义的提交状态，首次提交只发起一次。
+  - action: 在按钮仍可操作时立即再次点击
+    expected: 第二次点击被忽略或显示处理中提示，不产生第二条记录。
+  - action: 刷新或查询列表并按唯一名称查找
+    expected: 只存在一条本次创建的目标，完成测试数据清理。
+  test_data:
+    page_url: /biopark-iot/iot/data/sink
+    data_prefix: REQ008-IDEMPOTENT-CREATE
+

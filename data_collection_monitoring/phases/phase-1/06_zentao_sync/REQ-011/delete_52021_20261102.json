@@ -1,0 +1,17 @@
+{
+  "req_id": "REQ-011",
+  "operation": "delete",
+  "execution_mode": "real_update",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "case_id": "TC-REQ-011-029",
+  "remote_case_id": 52021,
+  "delete_status": "confirmed_not_found",
+  "script_status": "blocked_case_already_absent",
+  "delete_attempt": "真实删除命令已执行；禅道返回 Case does not exist",
+  "readback": "zentao testcase 52021 --format=json 返回 Case does not exist",
+  "source_hashes": {
+    "TC_REQ-011.yaml": "1564daf32b0cb4639fda16516bfc5cc220aa1fe21b225f5a9edc11f018042a51",
+    "REV_CASE_REQ-011.yaml": "2e3cc64b85a3f9028fe8b6a006f591ff0577c6e6ac36cc65b32613a2d762711e"
+  },
+  "policy": "未删除重建；目标已不存在，未执行任何替代创建或后续同步。"
+}

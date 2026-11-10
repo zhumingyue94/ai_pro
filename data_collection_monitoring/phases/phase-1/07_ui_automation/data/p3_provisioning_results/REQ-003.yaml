@@ -1,0 +1,21 @@
+cases:
+- case_id: TC-REQ-003-016
+  result: blocked
+  reason: 【P3前置数据创建】本轮仅创建/核对前置数据，未执行用例；dataKey=product_editable；blocked：whenMissing=auto_create；按
+    businessFields (name, productKey, categoryName, deviceType, description, moreConfig)
+    查询未命中，无可复用的已存在记录；契约含 UI 表单不可设置字段：productKey, moreConfig；缺少外部依赖/批准样本：productKey,
+    categoryName, productIcon, productImage（引用 AUTO_REQ* 实体或 approved-* 图片文件，工作区未提供且环境未确认存在）；页面对象虽具备新增产品能力（create_product），但契约要求指定
+    productKey、moreConfig 图标/图片与引用的产品分类；ProductKey 由系统自动生成且现有封装只读回读，approved-icon.png/approved-image.png
+    在工作区不存在，故无法按契约字段完整创建；真实探测到的表单字段：ProductKey, 产品名称, 产品分类, 设备类型, 定位类型, 数据格式, 产品图标,
+    产品图片, 产品描述, 请输入 ProductKey, 请输入产品名称, (无占位符)[只读], (无占位符), (无占位符)；按不伪造口径不提交字段不完整的业务数据
+  evidence: {}
+- case_id: TC-REQ-003-039
+  result: blocked
+  reason: 【P3前置数据创建】本轮仅创建/核对前置数据，未执行用例；dataKey=product_filter_target；blocked：whenMissing=auto_create；按
+    businessFields (name, productKey, categoryName, deviceType) 查询未命中，无可复用的已存在记录；契约含
+    UI 表单不可设置字段：productKey；缺少外部依赖/批准样本：productKey, categoryName（引用 AUTO_REQ* 实体或 approved-*
+    图片文件，工作区未提供且环境未确认存在）；页面对象虽具备新增产品能力（create_product），但契约要求指定 productKey、moreConfig
+    图标/图片与引用的产品分类；ProductKey 由系统自动生成且现有封装只读回读，approved-icon.png/approved-image.png
+    在工作区不存在，故无法按契约字段完整创建；真实探测到的表单字段：ProductKey, 产品名称, 产品分类, 设备类型, 定位类型, 数据格式, 产品图标,
+    产品图片, 产品描述, 请输入 ProductKey, 请输入产品名称, (无占位符)[只读], (无占位符), (无占位符)；按不伪造口径不提交字段不完整的业务数据
+  evidence: {}

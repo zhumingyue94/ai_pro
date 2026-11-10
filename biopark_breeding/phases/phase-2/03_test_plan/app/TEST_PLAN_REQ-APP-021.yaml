@@ -1,0 +1,121 @@
+plan_id: TEST_PLAN-REQ-APP-021
+title: APP测试计划 - 雏苗发货列表与筛选
+status: draft
+source_inputs:
+- 01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx
+- 01_requirements/需求变动.md
+- 02_analysis/app/REQ-APP-021.yaml
+- 02_analysis/app/page_inventory/page.json
+- .env
+- ../../../../.agents/references/test-plan.schema.json
+- http://43.143.148.114:18885/biopark-breeding/m/
+trace:
+  story: REQ-005 雏苗发货列表、筛选与搜索
+  req: REQ-APP-021
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+objective: 基于需求分析和已采集页面证据规划 APP 雏苗发货列表与筛选测试范围、策略、环境、数据、风险、证据及分层套件；仅输出测试计划，不生成测试点、测试用例或脚本。
+scope:
+  in_scope:
+  - /m/orders 列表默认态、系统当天日期、日期选择确认/重置、栋舍筛选、状态卡切换和关键字搜索。
+  - 发货单卡片、状态统计、排序、无分页列表、去发货/继续发货及无关联上孵计划时的入口边界。
+  - 已发货/已签收展示和外部签收结果约束、返回后筛选条件保留。
+  out_scope:
+  - 发货数量、列层、备注和发货确认提交，由 REQ-APP-022 承接。
+  - 发货单记录、上孵计划记录、存发苗间记录和库存查询。
+  - 未在 page.json 中采集的页面、元素、接口字段和定位器。
+strategy:
+- 使用等价类和边界值覆盖昨天/今天/明天/自定义日期、取消/确认/重置、栋舍全选/单选、空/精确/无匹配搜索及零统计。
+- 使用判定表评估日期、发货单状态、上孵计划关联、外部签收结果与卡片内操作的组合。
+- 使用状态转换覆盖默认态、日期结果、栋舍结果、搜索空态/结果态、发货中/已发货/已签收。
+- 使用 Pairwise/2-way 评估日期、栋舍、状态、搜索类型、结果集、权限和浏览器组合；仅保留合法组合。
+- Playwright Python 自动化仅规划 page.json 已采集路由、状态和 element_id；优先已记录的 label/text/placeholder/css 定位，重复卡片和状态条件需执行前确认稳定定位器。
+- Web 执行证据规划为脱敏截图、页面状态、DOM 快照、控制台/网络日志按需和 trace；原型证据与正式环境证据分开。
+environment:
+  client: APP移动端Web/移动端模拟
+  os: win32；正式执行记录实际客户端版本
+  browser: Chromium headed；自动化规划使用 Playwright Python，禁止固定等待
+  base_url: ${UI_TEST_URL}
+  page_path: /m/orders；原型路由 http://43.143.148.114:18885/biopark-breeding/m/orders
+  portal_entry: 种禽孵化管理系统 / APP / 雏苗发货列表
+  login: 原型无需登录；正式环境凭据仅从 .env 或运行时环境读取，不写入计划、日志或证据
+data:
+  required:
+  - 系统当天、昨天、明天、自定义日期及无匹配日期数据。
+  - 全部、待发货、发货中、已发货、已签收及统计为零数据。
+  - 全部栋舍、单栋舍、空搜索、发货单号匹配、孵化计划号匹配和无匹配数据。
+  - 有关联/无关联上孵计划、外部签收已确认/未确认样本。
+  preparation: 测试和业务负责人准备脱敏只读数据、授权角色、状态和筛选样本，明确数据清理责任；本计划不执行业务变更，不保存账号、密码、Token、Cookie 或原始搜索值。
+roles:
+- 测试：执行页面范围和证据采集。
+- 产品/业务：确认状态、统计、筛选和签收口径。
+- 研发：确认接口数据口径、排序和定位器。
+- 平台权限/实施：准备授权角色和租户数据。
+dependencies:
+- 雏苗发货单和上孵计划服务
+- 栋舍基础数据
+- 外部商品禽签收结果
+- 系统角色权限配置
+priority: P0：默认列表、筛选、状态统计和入口；P1：排序、空态、返回条件和签收边界；P2：兼容性与视觉一致性
+risks:
+- page.json schema_validation 为 input_missing，采集状态为 partial_corrected；正式环境页面和定位器需重新确认。
+- mock 原型不能证明真实接口、统计、权限和持久化。
+- 状态统计与列表口径、签收来源和无关联订单入口可能不一致。
+- 不得把 page.json 未出现的按钮、字段、菜单或定位器写成事实。
+open_questions:
+- 正式环境 APP 路由、权限和稳定唯一定位器是否与原型一致。
+- 状态统计接口与列表接口的统一口径及刷新协议。
+- 外部签收结果的来源、延迟和已签收判定。
+entry_criteria:
+- 需求说明书、需求变动、REQ-APP-021.yaml、page.json、.env 和 Schema 可读取。
+- page.json 的 input_missing/partial_corrected 风险已登记，正式页面证据和授权角色已准备或转为阻塞。
+- 脱敏数据、证据目录、清理责任和只读执行边界已确认。
+exit_criteria:
+- 范围、策略、环境、数据、角色、依赖、风险、开放问题和证据要求完整。
+- 冒烟、定向、全量套件已定义，未包含测试点、测试用例步骤或脚本。
+- YAML 通过 Schema，Markdown 与 YAML 内容一致；未执行真实业务写入。
+evidence:
+- 02_analysis/app/page_inventory/page.json：app-chick-shipping-list、app021-default、app021-date-picker、app021-date-yesterday-result、app021-house-all、app021-house-filter、app021-search-empty、app021-search-result-input、app021-progress、app021-shipped、app021-signed。
+- element_id：date-filter、house-filter、search-entry、status-tabs、order-card-pending、shipment-record-entry、ship-entry、date-dialog、date-reset、date-confirm、house-dialog、house-all-option、search-form、search-input、search-empty-text、search-result-matched-card、search-result-ship-btn。
+- 既有截图：02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-default.png、req-app-021-reexplore-date-dialog.png、req-app-021-reexplore-search-result.png、req-app-021-reexplore-shipped.png、req-app-021-reexplore-signed.png。
+- 执行阶段保存脱敏截图、DOM、状态标识和运行环境版本；不得保存凭据、Cookie 或未授权数据。
+suites:
+  Smoke: 规划进入 /m/orders、默认列表可见、日期/栋舍入口可达、状态卡可见、搜索入口可达和一个合法卡片入口边界；不执行发货提交。
+  Targeted: 规划日期确认/重置、栋舍筛选、空/匹配搜索、状态统计、排序、返回条件、无关联计划、签收判定和异常/权限边界。
+  Full: 规划全部已采集列表状态、等价类、边界值、判定表、状态转换、Pairwise 组合、筛选与发货执行/记录模块边界回归及兼容性证据。
+plan_items:
+  - id: PLAN-APP021-DATE
+    title: 默认任务日期、日期选择确认与重置
+    source: scope.in_scope[0]; strategy[0]
+    coverage_ids: [COV-APP021-DATE]
+  - id: PLAN-APP021-FILTER
+    title: 栋舍、状态卡和关键字筛选及空结果
+    source: scope.in_scope[0]; strategy[0]
+    coverage_ids: [COV-APP021-FILTER]
+  - id: PLAN-APP021-STATUS
+    title: 发货状态统计、签收判定与状态转换
+    source: scope.in_scope[1]; strategy[1]; strategy[2]
+    coverage_ids: [COV-APP021-STATUS]
+  - id: PLAN-APP021-CARD
+    title: 发货单卡片、字段和实际可发数
+    source: scope.in_scope[1]; data.required
+    coverage_ids: [COV-APP021-CARD]
+  - id: PLAN-APP021-SORT
+    title: 列表排序与移动端无分页
+    source: scope.in_scope[1]; strategy[0]
+    coverage_ids: [COV-APP021-SORT]
+  - id: PLAN-APP021-ACTION
+    title: 卡片内发货、记录入口及无关联计划边界
+    source: scope.in_scope[1]; strategy[1]
+    coverage_ids: [COV-APP021-ACTION]
+  - id: PLAN-APP021-RETURN
+    title: 筛选条件回显与返回后条件保留
+    source: scope.in_scope[2]; strategy[2]
+    coverage_ids: [COV-APP021-RETURN]
+  - id: PLAN-APP021-PAGE
+    title: 页面入口、状态页签和已采集页面区块
+    source: scope.in_scope[0]; evidence
+    coverage_ids: [COV-APP021-PAGE]
+
+next_stage: testcase-generation-agent

@@ -1,0 +1,865 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-003
+title: 种蛋上孵
+module: 种蛋上孵
+zentao_module_id: 523
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-003
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-38523
+  title: 执行页面-有虚拟库位的蛋库显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限<br />
+  - 2、系统中存在待执行状态的任务
+  - 3、两个虚拟库位只有养殖批次不一样，其他信息都一样
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 库位其中一个虚拟库位匹配，另一个虚拟库位不匹配，只显示匹配的那个虚拟库位
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 查看蛋库匹配到的数据
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38523
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38523
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38524
+  title: 执行页面-字段不一样的蛋库不显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限<br />
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 养殖场、养殖批次、品种、产蛋日期、蛋重类型、平均蛋重、周龄、种蛋类型有一个字段不一样的蛋库都不显示
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 查看蛋库匹配到的数据
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38524
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38524
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38525
+  title: 执行页面-蛋库匹配结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限<br />
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 养殖场、养殖批次、品种、产蛋日期、蛋重类型、平均蛋重、周龄、种蛋类型完全一致的蛋库显示
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 查看蛋库匹配到的数据
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38525
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38525
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38599
+  title: 导出功能-不勾选导出全部
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在种蛋上孵任务数据
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 如果有筛选条件，导出筛选后的数据
+  - action: 不勾选任何数据
+    expected: 如果没有筛选条件，导出全部数据
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38599
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38599
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38600
+  title: 导出功能-勾选导出勾选项
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在种蛋上孵任务数据
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 导出的文件只包含勾选的任务数据
+  - action: 勾选几条任务数据
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38600
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38600
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38601
+  title: 详情页面-执行任务按钮页内跳转
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 页面刷新，本页页内跳转至执行任务页面
+  - action: 点击待执行任务的详情按钮
+    expected: 可进行执行任务确认提交操作
+  - action: 点击执行任务按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38601
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38601
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38602
+  title: 详情页面-待执行状态有执行任务按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 待执行状态任务详情页有执行任务按钮
+  - action: 点击待执行任务的详情按钮
+    expected: ''
+  - action: 查看页面底部按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38602
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38602
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38603
+  title: 详情页面-页面标题正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在种蛋上孵任务数据
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 打开详情页面，页面标题为&#039;种蛋上孵任务详情&#039;
+  - action: 点击任意任务的详情按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38603
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38603
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38604
+  title: 确认执行-实际车辆数与预计可不同
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 实际库位数<预计库位数，可执行成功
+  - action: 点击待执行任务的执行按钮
+    expected: 实际库位数>预计库位数，可执行成功
+  - action: 填写的上孵信息使实际库位数小于或大于预计库位数
+    expected: ''
+  - action: 点击确认执行按钮并确认
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38604
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38604
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38605
+  title: 确认执行-孵化器超容可执行
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 无需判断该库位当前情况，孵化器库存超容也可以执行成功
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 填写的上孵数量超出孵化器库容量
+    expected: ''
+  - action: 点击确认执行按钮并确认
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38605
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38605
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38606
+  title: 确认执行-实际上孵数与预计不符二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 弹框提示实际上孵数量与预计上孵数量不相符，进行二次确认
+  - action: 点击待执行任务的执行按钮
+    expected: 确认后执行成功
+  - action: 填写的上孵数与计划上孵数不一致
+    expected: 取消则留在当前页面不完成执行
+  - action: 点击确认执行按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38606
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38606
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38607
+  title: 确认执行-种蛋仓库库存不足提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  - 3、种蛋仓库库存不足
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 弹框提示种蛋仓库库存不足，无法提交成功
+  - action: 点击待执行任务的执行按钮
+    expected: 关闭提示弹框时，页面刷新，展示最新种蛋仓库数据
+  - action: 填写的上孵数超过种蛋仓库当前库存
+    expected: ''
+  - action: 点击确认执行按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38607
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38607
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38608
+  title: 确认执行-待分配数不为0提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 弹框提示待分配数量必须为0，无法提交成功
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 在蛋库表格中填写上孵数但不进行一键分配或分配不完整
+    expected: ''
+  - action: 点击确认执行按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38608
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38608
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38609
+  title: 孵化器表格-一键分配功能
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限<br />
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: ''
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 在蛋库表格中填写上孵数
+    expected: ''
+  - action: 点击一键分配按钮
+    expected: '系统自动将种蛋仓库上孵数总和分配到孵化器库位
+
+      计划有孵化器直接带入
+
+      计划没有自己填，如果孵化场只有一个孵化器也直接带入
+
+      库位行数=种蛋仓库上孵总数÷孵化器库位容量
+
+      不考虑孵化器现有库位库存情况
+
+      '
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38609
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38609
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 4，预期块数量为 6；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: '1. 登录后进入孵化管理-种蛋上孵
+
+      2. 点击待执行任务的执行按钮
+
+      3. 在蛋库表格中填写上孵数
+
+      4. 点击一键分配按钮'
+    raw_expected: '1. 系统自动将种蛋仓库上孵数总和分配到孵化器库位
+
+      1、计划有孵化器直接带入
+
+      2. 计划没有自己填，如果孵化场只有一个孵化器也直接带入
+
+      2. 库位行数=种蛋仓库上孵总数÷孵化器库位容量
+
+      3. 不考虑孵化器现有库位库存情况
+
+      4.'
+- id: TC-38610
+  title: 执行页面-计划信息只读字段正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 上孵计划号、组织、孵化场、计划上孵数、上孵日期、照蛋日期、出雏日期均为只读字段
+  - action: 点击待执行任务的执行按钮
+    expected: 数据显示与任务对应的计划一致
+  - action: 查看计划信息区域
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38610
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38610
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38611
+  title: 执行页面-种蛋信息只读字段正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 养殖场、养殖批次、品种、周龄、种蛋类型、蛋重类型、平均蛋重、产蛋日期均为只读字段
+  - action: 点击待执行任务的执行按钮
+    expected: 数据显示与任务对应的计划一致
+  - action: 查看种蛋信息区域
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38611
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38611
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38612
+  title: 执行页面-任务状态只读显示待执行
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 任务状态字段为只读，显示&#039;待执行&#039;
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 查看任务状态字段
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38612
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38612
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38613
+  title: 执行页面-页面标题正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 打开执行页面，页面标题为&#039;种蛋上孵任务执行&#039;
+  - action: 找到一条待执行状态的任务
+    expected: ''
+  - action: 点击执行按钮
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38613
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38613
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38614
+  title: 确认执行-出库入库操作
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 被选中的蛋从对应种蛋仓库出库并生成出库记录
+  - action: 点击待执行任务的执行按钮
+    expected: 入库孵化器对应库位并生成入库记录
+  - action: 填写完整的上孵信息
+    expected: ''
+  - action: 点击确认执行按钮并确认
+    expected: ''
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38614
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38614
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38615
+  title: 确认执行-成功后任务状态变为已完成
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有种蛋上孵菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋上孵
+    expected: 任务详情页刷新
+  - action: 点击待执行任务的执行按钮
+    expected: 任务状态变为已完成
+  - action: 填写完整的上孵信息
+    expected: 顶部任务执行信息展示实际上孵数、执行人、操作时间、备注
+  - action: 点击确认执行按钮并确认
+    expected: 蛋库、孵化器功能区域根据提交结果展示相关信息，不可修改
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 523
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-003
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38615
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38615
+    raw_module: /一期/pc/孵化管理/种蛋上孵(#523)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

@@ -1,0 +1,130 @@
+id: REQ-000
+title: 商品禽养殖系统总览
+parent_req: null
+zentao_module_id: null
+page_url: null
+source: 商品禽养殖系统产品需求 + 01_requirements/需求变动.md（2026.7.23 9.30 权限校验）
+summary: 商品禽养殖系统权限专项总览。本期 in-scope 为 REQ-002～007 六个业务模块的菜单可达与各页面实际存在的接口权限逐项校验；权限测点/用例统一归属 REQ-000，业务模块 role_coverage=skip
+  不写「角色可查看」灌水测点。
+in_scope:
+- 补栏计划（REQ-002）
+- 补栏确认（REQ-003）
+- 死淘巡检（REQ-004）
+- 饲养日志（REQ-005）
+- 出栏结算（REQ-006）
+- 养殖标准（REQ-007）
+out_scope:
+- REQ-001 养殖端首页
+- REQ-008～012 生产报表
+- 平台侧角色/菜单配置本身（仅验收商品禽养殖页面与接口表现）
+- 提交/审核/复制（本期 002～007 无对应写路径）
+- 各模块导入（除 REQ-007 养殖标准明细导入外均不存在）
+business_rules:
+- 菜单权限：有菜单权限可进入页面，无菜单权限不可进入
+- 接口权限：各页面按实际存在的操作逐项校验；菜单权限与查询权限分开验证
+- 权限专项测点索引 TP-000-16；菜单正反例 TP-000-17/18；接口逐项 TP-000-19~37
+permission_notes:
+- 各角色菜单与按钮权限在平台其他系统中配置
+- 权限专项测点/用例统一在 REQ-000（TP-000-16~37），业务模块通过 permission_scope 引用
+- 需准备多账号：无菜单 / 有菜单无某接口 / 全权限对照
+roles:
+- 养殖场长/养殖主管
+- 养殖技术人员
+- 智控中心小组成员（查看）
+interfaces:
+- 产业链生产排程系统（补栏计划下推）
+- 孵化发货系统（补栏确认发货明细）
+- 平台权限系统（菜单与接口权限配置）
+risks:
+- 角色权限依赖平台配置；需多账号/多角色准备
+- 接口权限与 UI 按钮隐藏/禁用表现可能不一致，需同时观察页面与接口响应
+open_questions: []
+current_test_phase:
+  in_scope_menus:
+  - name: 补栏计划
+    req_id: REQ-002
+    page_url: /biopark-poultry/production/plan
+    zentao_module_id: 651
+  - name: 补栏确认
+    req_id: REQ-003
+    page_url: /biopark-poultry/production/chick-sign
+    zentao_module_id: 652
+  - name: 死淘巡检
+    req_id: REQ-004
+    page_url: /biopark-poultry/production/death-inspection
+    zentao_module_id: 653
+  - name: 饲养日志
+    req_id: REQ-005
+    page_url: /biopark-poultry/production/feeding-log
+    zentao_module_id: 654
+  - name: 出栏结算
+    req_id: REQ-006
+    page_url: /biopark-poultry/production/slaughter-settlement
+    zentao_module_id: 655
+  - name: 养殖标准
+    req_id: REQ-007
+    page_url: /biopark-poultry/basic/target
+    zentao_module_id: 656
+  out_of_scope_modules:
+  - REQ-001 养殖端首页
+  - REQ-008～012 生产报表
+test_scope_suggestion:
+- P1：菜单权限正反例（TP-000-17/18）
+- P1：各模块查询/更新/导出等核心接口权限
+- P2：创建/删除/导入等写路径接口权限
+permission_contract:
+  owner_req: REQ-000
+  menu_rules:
+    with_menu: 角色配置了菜单权限，可以进入页面
+    without_menu: 角色没有菜单权限，无法进入页面
+  api_actions:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+  - 导入
+  - 导出
+  - 提交
+  - 审核
+  - 复制
+  granularity: per_action
+  query_vs_menu: 菜单权限控制页面可达；查询权限控制列表/查询接口，与菜单权限分开验证
+  import_na: 本期仅 REQ-007 养殖标准存在导入接口；其余 in-scope 模块不测导入
+  submit_audit_copy_na: 本期 REQ-002～007 无提交/审核/复制写路径，不测
+module_permission_matrix:
+  REQ-002:
+  - 查询
+  REQ-003:
+  - 查询
+  - 更新
+  REQ-004:
+  - 查询
+  - 创建
+  - 更新
+  - 删除
+  - 导出
+  REQ-005:
+  - 查询
+  - 更新
+  - 导出
+  REQ-006:
+  - 查询
+  - 导出
+  REQ-007:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+  - 导入
+  - 导出
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  summary: 菜单权限与接口权限逐项校验；权限测点/用例统一归属 REQ-000（TP-000-16~37）
+trace:
+  story: null
+  project: 商品禽养殖
+  version: 1
+  status: draft
+  req: REQ-000
+  tp: null

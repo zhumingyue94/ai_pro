@@ -1,0 +1,169 @@
+{
+    "id": 51781,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 744,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "运行中插件的停用按钮按规则显示",
+    "precondition": "前置准备：\n1、存在授权范围内的运行中插件和批准权限矩阵。\n2、停用入口及反馈定位器待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“插件管理”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-protocol”，确认已进入插件管理页面。",
+    "keywords": "",
+    "pri": 3,
+    "type": "interface",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-23 13:31:18",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-28 11:33:48",
+    "version": 5,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 5,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174471,
+            "step": "按插件名称定位运行中的目标插件。",
+            "desc": "按插件名称定位运行中的目标插件。",
+            "expect": "找到目标插件，并确认当前状态为运行中。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 174472,
+            "step": "打开目标插件的操作列或“更多操作”菜单。",
+            "desc": "打开目标插件的操作列或“更多操作”菜单。",
+            "expect": "操作菜单正常打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 174473,
+            "step": "查看“停用”按钮是否显示。",
+            "desc": "查看“停用”按钮是否显示。",
+            "expect": "确认停用按钮的显示状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "4",
+            "id": 174474,
+            "step": "记录停用按钮的可用状态和页面反馈，不点击停用。",
+            "desc": "记录停用按钮的可用状态和页面反馈，不点击停用。",
+            "expect": "记录停用按钮是显示、隐藏、禁用还是点击后拒绝。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51781,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51781",
+        "text": "运行中插件的停用按钮按规则显示",
+        "type": "root",
+        "children": [
+            {
+                "id": 174471,
+                "text": "按插件名称定位运行中的目标插件。",
+                "type": "sub",
+                "parent": "case_51781",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174471",
+                        "text": "找到目标插件，并确认当前状态为运行中。",
+                        "type": "node",
+                        "parent": 174471,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174472,
+                "text": "打开目标插件的操作列或“更多操作”菜单。",
+                "type": "sub",
+                "parent": "case_51781",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174472",
+                        "text": "操作菜单正常打开。",
+                        "type": "node",
+                        "parent": 174472,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174473,
+                "text": "查看“停用”按钮是否显示。",
+                "type": "sub",
+                "parent": "case_51781",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174473",
+                        "text": "确认停用按钮的显示状态。",
+                        "type": "node",
+                        "parent": 174473,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174474,
+                "text": "记录停用按钮的可用状态和页面反馈，不点击停用。",
+                "type": "sub",
+                "parent": "case_51781",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174474",
+                        "text": "记录停用按钮是显示、隐藏、禁用还是点击后拒绝。",
+                        "type": "node",
+                        "parent": 174474,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

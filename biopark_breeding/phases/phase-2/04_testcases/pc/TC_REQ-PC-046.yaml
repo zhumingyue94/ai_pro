@@ -1,0 +1,145 @@
+req_id: REQ-PC-046
+module: 存发苗间出入库记录
+trace:
+  req: REQ-PC-046
+  tp: TEST_PLAN-REQ-PC-046
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft_with_blocked_cases
+  source_review: REV_CASE_REQ-PC-046
+  source_inputs:
+  - 02_analysis/pc/REQ-PC-046.yaml
+  - 03_test_plan/pc/TEST_PLAN_REQ-PC-046.yaml
+  - 02_analysis/pc/page_inventory/page.json
+  source_gaps:
+  - 历史页面映射资料缺失，不作为正式页面证据
+common_preconditions:
+- id: inventory_records_page_access
+  name: 存发苗间出入库记录页面访问前置
+  conditions: []
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 登录成功，进入系统门户或应用入口页
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 进入种禽孵化管理系统主框架，页面显示系统名称或应用标识
+  - action: 在左侧菜单中展开「库存管理」，然后在子菜单中展开「存发苗间」，再点击「出入库记录」菜单项
+    expected: 页面打开「出入库记录」Tab，Tab 处于选中状态且页面标题或内容区显示「出入库记录」
+cases:
+- id: TC-PC-046-010
+  coverage_ids:
+  - FR-046-02
+  plan_item_ids:
+  - PI-046-10
+  atomic_purpose_ids:
+  - AP-046-10
+  common_preconditions_ref: inventory_records_page_access
+  title: 确认发货后可查询自动生成出库记录
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 自动出库联动
+  preconditions:
+  - 已准备可回滚的发货确认前后数据、唯一业务标识和清理责任
+  steps:
+  - action: 记录发货确认前记录基线
+    expected: 显示可回读的基线
+  - action: 在授权发货流程完成雏苗发货确认后按唯一业务标识查询
+    expected: 列表出现对应的自动生成出库记录
+  test_data:
+    page_url: /biopark-breeding/breeding/stock/chick/chickrecord
+    dependency_req: REQ-PC-042
+  trace:
+    story: null
+    req: REQ-PC-046
+    tp: PI-046-10
+    project: 种禽孵化系统
+    version: 1
+    status: blocked_dependency_data
+  ui_source:
+    page_id: not_in_page_json
+    evidence_status: formal_page_not_explored
+- id: TC-PC-046-011
+  coverage_ids:
+  - FR-046-03
+  plan_item_ids:
+  - PI-046-11
+  atomic_purpose_ids:
+  - AP-046-11
+  common_preconditions_ref: inventory_records_page_access
+  title: 自动出库记录数量等于发货数量
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 自动出库数量
+  preconditions:
+  - 已准备可回读的发货数量和对应自动出库记录
+  steps:
+  - action: 查询目标自动出库记录并查看数量
+    expected: 数量等于对应雏苗发货记录的本次发货数量
+  test_data:
+    page_url: /biopark-breeding/breeding/stock/chick/chickrecord
+    field: quantity
+  trace:
+    story: null
+    req: REQ-PC-046
+    tp: PI-046-11
+    project: 种禽孵化系统
+    version: 1
+    status: blocked_dependency_data
+  ui_source:
+    page_id: not_in_page_json
+    evidence_status: formal_page_not_explored
+- id: TC-PC-046-012
+  coverage_ids:
+  - FR-046-03
+  - FR-046-04
+  plan_item_ids:
+  - PI-046-12
+  - PI-046-13
+  atomic_purpose_ids:
+  - AP-046-12
+  common_preconditions_ref: inventory_records_page_access
+  title: 自动出库记录展示固定字段及来源值
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 自动出库固定字段
+  preconditions:
+  - 已准备可回读的授权自动出库记录并确认字段名称
+  - 已准备上孵计划批次、发货操作人和时间、当前园区及对应记录
+  steps:
+  - action: 查询目标自动出库记录
+    expected: 列表显示与发货记录对应的自动出库记录
+  - action: 查看自动出库记录的类型、方式和单位字段
+    expected: 类型为“出库”，方式为“自动”，单位字段显示对应业务单位
+  - action: 核对自动出库记录的批次与上孵计划
+    expected: 出库记录批次与对应上孵计划一致
+  - action: 核对自动出库记录的操作人与操作时间
+    expected: 操作人与操作时间均来自对应发货记录
+  - action: 核对自动出库记录的养殖客户与园区
+    expected: 养殖客户与当前园区一致
+  test_data:
+    page_url: /biopark-breeding/breeding/stock/chick/chickrecord
+    fields: type_method_unit_source
+  trace:
+    story: null
+    req: REQ-PC-046
+    tp: PI-046-12
+    project: 种禽孵化系统
+    version: 1
+    status: blocked_dependency_data
+  ui_source:
+    page_id: not_in_page_json
+    evidence_status: formal_page_not_explored
+summary:
+  type_counts:
+    feature: 5
+    interface: 0
+  auto_counts:
+    auto: 3
+    'no': 0
+  priority_counts:
+    P1: 1
+    P2: 1
+    P3: 1
+    P4: 0

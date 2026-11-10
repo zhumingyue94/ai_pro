@@ -1,0 +1,27 @@
+id: REQ-007
+title: 补栏日看板
+parent_req: REQ-000
+module_path: 排程看板 / 补栏日看板
+zentao_module_id: 674
+page_url: /biopark-poultry/schedule/plan-schedule/replenishment-plan
+analysis_status: analyzed_with_live_dom_readback
+source_precedence: [PRD, 待澄清项确认清单, REQ-基础数据_page_recon, 需求变动, 栋舍分配最小缓冲与推荐得分逻辑说明, 各段转进转出释放日期计算, 排程计算.xlsx]
+scope:
+  in: [补栏计划日历, 补栏计划列表, 饲喂明细入口, 导出]
+  out: [补栏计划手工新增/修改, 雏苗业务处理本身]
+requirements:
+  data_source: 排程审批通过后下推的补栏/商品禽养殖排程计划
+  roles: [养殖区负责人, 智控中心小组成员]
+  list_columns: [序号, 补栏日期, 补栏时间, 补栏计划号, 栋舍, 养殖品种, 补栏数量, 苗重(g), 养殖天数, 出栏日期, 出栏体重(kg), 宰杀线, 计划状态, 排程编号, 1段, 2段, 3段, 操作]
+  segment_dates: 转进/转出/释放日期按最新排程计算.xlsx基线；转运日饲料规则由最新日期说明约束
+  batch_link: 雏苗签收按发货日期与栋舍匹配补栏计划，失败时人工选计划/异常提示依赖商品禽系统契约
+page_contract:
+  navigation: 门户 -> 产业链生产排程系统 -> 排程看板 -> 补栏日看板
+  views: [日历视图, 列表视图]
+  actions: [查询, 重置, 饲喂明细, 导出]
+interfaces: [REQ-005补栏计划下推, REQ-003分段养殖模版, REQ-015栋舍管理, 商品禽养殖系统雏苗签收]
+dependencies: [REQ-003, REQ-005, REQ-015, 商品禽养殖系统]
+risks: [下推字段与模版不一致, 日期边界导致段区/饲喂错位, 雏苗签收失败兜底契约不清]
+open_questions: [雏苗匹配失败处理与重试, 饲喂明细字段/日期范围/转运日规则, 计划状态与批次状态映射]
+prototype_evidence: {source_record: 模块拆分清单与既有REQ-007分析, portal_entry: verified, submenu_dom_readback: verified, route: /biopark-poultry/schedule/plan-schedule/replenishment-plan, title: 补栏计划排程, observed_views: [日历视图, 列表视图], observed_actions: [查询, 重置, 导出, 饲喂明细], observed_list_headers: [序号, 补栏日期, 补栏时间, 补栏计划号, 栋舍, 养殖品种, 补栏数量, 苗重(g), 养殖天数, 出栏日期, 出栏体重(kg), 宰杀线, 计划状态, 排程编号, 1段, 2段, 3段, 操作], observation_time: 2026-08-27}
+trace: {upstream: [REQ-003, REQ-005, REQ-015], downstream: [REQ-010, REQ-011, REQ-016]}

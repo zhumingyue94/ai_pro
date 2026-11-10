@@ -1,0 +1,101 @@
+run_id: RUN_制定排程_20260825_170735
+review_status: pending
+generated_at: '2026-08-25T17:35:00'
+rule: 仅明确产品断言失败进入审核；脚本错误、用例错误和 blocked 不自动创建禅道 Bug。
+bugs:
+- case_id: TC-004-06
+  zentao_case_id: 47723
+  classification: product_defect
+  title: 仅选宰杀线后点击「查询」，列表按宰杀线过滤
+  keywords:
+  - REQ-004
+  - TC-004-06
+  - TP-004-06
+  precondition:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 列表中已存在不同宰杀线的日计划数据
+  steps:
+  - action: 在查询区仅选择一个「宰杀线」，其他条件留空
+    expected: 宰杀线条件已选中
+  - action: 点击「查询」按钮
+    expected: 列表区域：列表仅展示所选宰杀线的排程记录
+  actual:
+    filtered_total: 26
+    control_samples:
+    - code: JH-20260801-01
+      date: '2026-08-01'
+      status: 审核通过
+    - code: JH-20260804-01
+      date: '2026-08-04'
+      status: 审核通过
+    - code: JH-20260805-01
+      date: '2026-08-05'
+      status: 审核通过
+    - code: JH-20260806-01
+      date: '2026-08-06'
+      status: 审核通过
+    - code: JH-20260807-01
+      date: '2026-08-07'
+      status: 审核通过
+  expected: '宰杀线条件已选中
+
+    列表区域：列表仅展示所选宰杀线的排程记录'
+  evidence:
+    screenshots:
+    - path: screenshots/TC-004-06_TP-004-06_line_filter_scope.png
+      sha256: 405f8e4a385fc72e10c82f63928ba59fac872f7d57280a76a496708e9ae93462
+    - path: screenshots/TC-004-06_TP-004-06_line_filter_full.png
+      sha256: f75a70b99aae305e9e9a6d00c76ae46242c98bf0251e62ea79c0e5168195c043
+    console_errors: []
+    page_errors: []
+    request_errors: []
+  zentao_bug_id: null
+- case_id: TC-004-07
+  zentao_case_id: 47724
+  classification: product_defect
+  title: 选择多条件后点击「查询」，列表按组合条件过滤
+  keywords:
+  - REQ-004
+  - TC-004-07
+  - TP-004-07
+  precondition:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 列表中已存在可组合过滤的排程数据
+  steps:
+  - action: 在查询区同时选择「计划月份」「计划状态」「宰杀线」
+    expected: 三个查询条件均已设置
+  - action: 点击「查询」按钮
+    expected: 列表区域：列表按计划月份/状态/宰杀线组合条件正确过滤
+  actual:
+    filtered_total: 25
+    control_samples:
+    - code: JH-20260801-01
+      date: '2026-08-01'
+      status: 审核通过
+    - code: JH-20260804-01
+      date: '2026-08-04'
+      status: 审核通过
+    - code: JH-20260805-01
+      date: '2026-08-05'
+      status: 审核通过
+    - code: JH-20260806-01
+      date: '2026-08-06'
+      status: 审核通过
+    - code: JH-20260807-01
+      date: '2026-08-07'
+      status: 审核通过
+  expected: '三个查询条件均已设置
+
+    列表区域：列表按计划月份/状态/宰杀线组合条件正确过滤'
+  evidence:
+    screenshots:
+    - path: screenshots/TC-004-07_TP-004-07_combined_filter_scope.png
+      sha256: 405f8e4a385fc72e10c82f63928ba59fac872f7d57280a76a496708e9ae93462
+    - path: screenshots/TC-004-07_TP-004-07_combined_filter_full.png
+      sha256: f951c2e890d1b87930bb3bf84a155c8a1d0c3c61f41d16dc1d1eee547be60f03
+    console_errors: []
+    page_errors: []
+    request_errors: []
+  zentao_bug_id: null

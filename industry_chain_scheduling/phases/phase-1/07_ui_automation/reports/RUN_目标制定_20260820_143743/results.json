@@ -1,0 +1,939 @@
+{
+  "run_id": "RUN_目标制定_20260820_143743",
+  "module": "目标制定",
+  "req_id": "REQ-002",
+  "zentao_module_id": 669,
+  "environment": {
+    "base_host": "192.168.6.163:66",
+    "headless": "false"
+  },
+  "generated_at": "2026-08-20T14:41:53",
+  "source": "04_testcases/TC_REQ-002.yaml",
+  "cases": [
+    {
+      "case_id": "TC-002-04",
+      "zentao_case_id": 47485,
+      "title": "仅选年度后点击「查询」，列表按年度过滤",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-04",
+      "assertion_scope": "target_goal.query_filters.year_results",
+      "expected": "仅「年度」有值\n列表仅展示符合该「年度」条件的记录",
+      "actual": {
+        "selected_year": 2033,
+        "result_years": [
+          2033
+        ]
+      },
+      "detail": "年度查询结果均匹配 2033",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表中存在可按「年度」区分的测试数据"
+      ],
+      "steps": [
+        {
+          "action": "在查询区仅设置「年度」，其余条件留空",
+          "expected": "仅「年度」有值"
+        },
+        {
+          "action": "点击「查询」按钮",
+          "expected": "列表仅展示符合该「年度」条件的记录"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-04_TP-002-04_assertion_scope.png",
+          "sha256": "e40fa2b6e35a151c30f972f9c0d0e595b972b473e355778b5f9c9e32ba9fa528"
+        },
+        {
+          "path": "screenshots/TC-002-04_TP-002-04_assertion_full.png",
+          "sha256": "217e035228ca4eb8b4fd33c846da5b8d6574ec47b7572d1f3333a7ba74098a3c"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-04_TP-002-04_assertion_scope.png",
+      "started_at": "2026-08-20T14:37:45",
+      "finished_at": "2026-08-20T14:37:55",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "target_goal_existing_year",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "choose_existing_target_year",
+        "execute": "query_by_year",
+        "assertions": [
+          "query_result_rows_match_selected_year"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-05",
+      "zentao_case_id": 47486,
+      "title": "仅选状态后点击「查询」，列表按状态过滤",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-05",
+      "assertion_scope": "target_goal.query_filters.status_results",
+      "expected": "仅「状态」有值\n列表仅展示符合该「状态」条件的记录",
+      "actual": {
+        "selected_status": "审核通过",
+        "result_statuses": [
+          "审核通过",
+          "审核通过",
+          "审核通过",
+          "审核通过"
+        ]
+      },
+      "detail": "状态查询结果均匹配 审核通过",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表中存在可按「状态」区分的测试数据"
+      ],
+      "steps": [
+        {
+          "action": "在查询区仅设置「状态」，其余条件留空",
+          "expected": "仅「状态」有值"
+        },
+        {
+          "action": "点击「查询」按钮",
+          "expected": "列表仅展示符合该「状态」条件的记录"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-05_TP-002-05_assertion_scope.png",
+          "sha256": "c3c93084e678e45aed2850b14eb49f8e3f3765deea085c947cfa9582f9f1ee45"
+        },
+        {
+          "path": "screenshots/TC-002-05_TP-002-05_assertion_full.png",
+          "sha256": "9abe7b66e089b73c895e46493861f45c06ebc2f917907119b9edf1f5be3a82ed"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-05_TP-002-05_assertion_scope.png",
+      "started_at": "2026-08-20T14:37:55",
+      "finished_at": "2026-08-20T14:38:05",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "target_goal_existing_status",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "choose_existing_target_status",
+        "execute": "query_by_status",
+        "assertions": [
+          "query_result_rows_match_selected_status"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-06",
+      "zentao_case_id": 47487,
+      "title": "选择年度+状态后点击「查询」，列表按组合条件过滤",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-06",
+      "assertion_scope": "target_goal.query_filters.combined_results",
+      "expected": "各筛选项均已设置\n列表仅显示同时满足全部条件的记录",
+      "actual": {
+        "selected_year": 2033,
+        "selected_status": "审核通过",
+        "result_years": [
+          2033
+        ],
+        "result_statuses": [
+          "审核通过"
+        ]
+      },
+      "detail": "年度和状态组合查询结果匹配",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表存在可组合区分的测试数据"
+      ],
+      "steps": [
+        {
+          "action": "同时设置多个查询条件",
+          "expected": "各筛选项均已设置"
+        },
+        {
+          "action": "点击「查询」按钮",
+          "expected": "列表仅显示同时满足全部条件的记录"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-06_TP-002-06_assertion_scope.png",
+          "sha256": "bb126de6cb0ce8b76b49c2f4402c3c9153d3c814ca9e7019e6a11932e1834da0"
+        },
+        {
+          "path": "screenshots/TC-002-06_TP-002-06_assertion_full.png",
+          "sha256": "0a07ca9c117410d94fe4784191fb82d514f8cb8bcc5afe9ef24051e2771e9edc"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-06_TP-002-06_assertion_scope.png",
+      "started_at": "2026-08-20T14:38:05",
+      "finished_at": "2026-08-20T14:38:14",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "target_goal_existing_year_status",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "choose_existing_year_and_status",
+        "execute": "query_by_year_and_status",
+        "assertions": [
+          "query_result_rows_match_selected_year_and_status"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-08",
+      "zentao_case_id": 47489,
+      "title": "点击「重置」，年度/状态恢复默认并刷新列表",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-08",
+      "assertion_scope": "target_goal.query_filters.reset_state",
+      "expected": "列表按条件过滤\n点击「重置」后筛选项回到默认，列表按默认条件重新加载",
+      "actual": {
+        "query_values_after_reset": {
+          "year": "",
+          "status": "请选择状态"
+        },
+        "row_count": 11
+      },
+      "detail": "重置后年度和状态恢复默认",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "设置非默认的年度与状态后点击「查询」",
+          "expected": "列表按条件过滤"
+        },
+        {
+          "action": "点击「重置」按钮",
+          "expected": "点击「重置」后筛选项回到默认，列表按默认条件重新加载"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-08_TP-002-08_assertion_scope.png",
+          "sha256": "2ff70aacbe98fb0b7bad3e7e06c072aa81f3cb43155c1ef38a608ef981a822cd"
+        },
+        {
+          "path": "screenshots/TC-002-08_TP-002-08_assertion_full.png",
+          "sha256": "3257ad50049989e38e6d32deef2490e9090caa1a1b5d07defef314a0406380f0"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-08_TP-002-08_assertion_scope.png",
+      "started_at": "2026-08-20T14:38:15",
+      "finished_at": "2026-08-20T14:38:25",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "target_goal_query_reset",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "choose_existing_query_values",
+        "execute": "reset_query_conditions",
+        "assertions": [
+          "query_values_restore_defaults"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-20",
+      "zentao_case_id": 47501,
+      "title": "点击「按月度平均分配」，12个月份均分且合计=年度宰杀量",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-20",
+      "assertion_scope": "target_goal.goal_form.monthly_distribution",
+      "expected": "字段填写成功\n执行均分后：年度宰杀量均分到1~12月，末月补差，合计等于年度宰杀量",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" autocomplete=\"off\" id=\"el-id-2409-96\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    23 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "打开新增弹窗，选择未占用目标年度，输入年度宰杀量 120",
+          "expected": "字段填写成功"
+        },
+        {
+          "action": "点击「按月度平均分配」",
+          "expected": "执行均分后：年度宰杀量均分到1~12月，末月补差，合计等于年度宰杀量"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-20_TP-002-20_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-20_TP-002-20_blocked_full.png",
+          "sha256": "f0cfc18b91b27a0e0f660bca78316bba692cba1e61a26cecf6c68c5c47b68298"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-20_TP-002-20_blocked_scope.png",
+      "started_at": "2026-08-20T14:38:25",
+      "finished_at": "2026-08-20T14:38:48",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_annual_quantity",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2034",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_target_draft",
+        "execute": "distribute_annual_quantity_by_month",
+        "assertions": [
+          "twelve_month_values_are_equal",
+          "twelve_month_total_equals_annual_quantity"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-27",
+      "zentao_case_id": 47508,
+      "title": "点击「暂存」保存目标，状态=暂存且不提交审核",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-27",
+      "assertion_scope": "target_goal.goal_table.draft_status",
+      "expected": "必填项齐全且合计相等\n点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" autocomplete=\"off\" id=\"el-id-3527-96\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    24 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表中已存在状态为「暂存」的记录"
+      ],
+      "steps": [
+        {
+          "action": "打开新增弹窗，选择未占用年度，填写年度宰杀量并均分",
+          "expected": "必填项齐全且合计相等"
+        },
+        {
+          "action": "点击「暂存」",
+          "expected": "点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-27_TP-002-27_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-27_TP-002-27_blocked_full.png",
+          "sha256": "7780dde39ca0fcec94d08e4c5d9fd6804f1cc31b6cfc069a39b47bff0bcccd64"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-27_TP-002-27_blocked_scope.png",
+      "started_at": "2026-08-20T14:38:48",
+      "finished_at": "2026-08-20T14:39:09",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2035_draft",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2035",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_target_draft",
+        "execute": "save_target_as_draft",
+        "assertions": [
+          "target_status_is_draft",
+          "target_is_not_submitted"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-28",
+      "zentao_case_id": 47509,
+      "title": "点击「保存并提交审核」，状态变为待审核",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-28",
+      "assertion_scope": "target_goal.goal_table.pending_review_status",
+      "expected": "必填项齐全且合计相等\n新增弹窗保存并提交后状态显示为「待审核」",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" autocomplete=\"off\" id=\"el-id-5337-96\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    24 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "打开新增弹窗，选择未占用年度，填写并均分",
+          "expected": "必填项齐全且合计相等"
+        },
+        {
+          "action": "点击「保存并提交审核」",
+          "expected": "新增弹窗保存并提交后状态显示为「待审核」"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-28_TP-002-28_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-28_TP-002-28_blocked_full.png",
+          "sha256": "eb9c70f202e2d0c784b15e5974ca24e7987de158df59a83f3b6cc976095578d7"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-28_TP-002-28_blocked_scope.png",
+      "started_at": "2026-08-20T14:39:09",
+      "finished_at": "2026-08-20T14:39:31",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2036_pending_review",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2036",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_target_draft",
+        "execute": "save_and_submit_target",
+        "assertions": [
+          "target_status_is_pending_review"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-75",
+      "zentao_case_id": 47556,
+      "title": "暂存行点击「提交」弹出确认框",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-75",
+      "assertion_scope": "target_goal.submit_confirmation",
+      "expected": "弹出提交确认框，文案表达将目标提交审核的意图（不强校验逐字）",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.wait_for: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\".el-message-box:visible\") to be visible\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表中已存在状态为「暂存」的记录"
+      ],
+      "steps": [
+        {
+          "action": "在暂存行点击「提交」",
+          "expected": "弹出提交确认框，文案表达将目标提交审核的意图（不强校验逐字）"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-75_TP-002-75_blocked_scope.png",
+          "sha256": "acc7df8df2d438237155fb95de7b341fe9dd0cae72d7406f6c01ac4a8bd15f52"
+        },
+        {
+          "path": "screenshots/TC-002-75_TP-002-75_blocked_full.png",
+          "sha256": "0538c9cf893a2e201767969eaf88d0f4f82aa0b476771112c92eeca10619eb00"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-75_TP-002-75_blocked_scope.png",
+      "started_at": "2026-08-20T14:39:31",
+      "finished_at": "2026-08-20T14:39:48",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_submit_confirmation",
+        "data_key_template": "AUTO测试_勿用_{run_id}_submit_confirmation",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_draft_target",
+        "execute": "open_submit_confirmation_and_cancel",
+        "assertions": [
+          "submit_confirmation_is_visible",
+          "cancel_keeps_target_unchanged"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-77",
+      "zentao_case_id": 47558,
+      "title": "提交确认框点击确定，提示成功且状态变待审核",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-77",
+      "assertion_scope": "target_goal.goal_table.pending_review_status",
+      "expected": "状态显示为「待审核」",
+      "actual": {
+        "year": 2033,
+        "status": "审核通过"
+      },
+      "detail": "列表状态显示审核通过",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表中存在应为「待审核」的记录记录"
+      ],
+      "steps": [
+        {
+          "action": "定位该行查看状态列",
+          "expected": "状态显示为「待审核」"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-77_TP-002-77_assertion_scope.png",
+          "sha256": "1ee4ac3ffef3eb7a5edbe88db42207b7bb48196f2596d96de6d182ec68236c95"
+        },
+        {
+          "path": "screenshots/TC-002-77_TP-002-77_assertion_full.png",
+          "sha256": "abfd1956eb23021f1354011d265b2b1c3247d816fb379926b8ea5122c10b32b7"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-77_TP-002-77_assertion_scope.png",
+      "started_at": "2026-08-20T14:39:48",
+      "finished_at": "2026-08-20T14:39:56",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "target_goal_pending_review_status",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "locate_existing_pending_review_target",
+        "execute": "inspect_pending_review_status",
+        "assertions": [
+          "target_status_is_pending_review"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-84",
+      "zentao_case_id": 47565,
+      "title": "点击「驳回」弹出驳回确认框，填写原因并确认后状态变驳回",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-84",
+      "assertion_scope": "target_goal.reject_flow.rejected_status",
+      "expected": "弹出驳回确认框\n驳回成功，记录状态变为「驳回」",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" id=\"el-id-478-96\" autocomplete=\"off\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    24 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "打开审核弹窗，点击「驳回」",
+          "expected": "弹出驳回确认框"
+        },
+        {
+          "action": "在驳回确认框填写原因后点击确认",
+          "expected": "驳回成功，记录状态变为「驳回」"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-84_TP-002-84_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-84_TP-002-84_blocked_full.png",
+          "sha256": "d9811e77f49b889d04786f120b740ea29af2da762dd79d3956dc28d2175220de"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-84_TP-002-84_blocked_scope.png",
+      "started_at": "2026-08-20T14:39:56",
+      "finished_at": "2026-08-20T14:40:18",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2037_rejection",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2037",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_pending_review_target",
+        "execute": "reject_target_with_reason",
+        "assertions": [
+          "target_status_is_rejected"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-85",
+      "zentao_case_id": 47566,
+      "title": "驳回原因为空被阻断；填写后列表驳回原因列展示",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-85",
+      "assertion_scope": "target_goal.reject_flow.reason_required",
+      "expected": "确认被阻断，状态仍为待审核\n驳回成功\n展示所填驳回原因",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" autocomplete=\"off\" id=\"el-id-5319-96\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    24 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "打开审核弹窗→点击驳回→驳回确认框留空原因点确认",
+          "expected": "确认被阻断，状态仍为待审核"
+        },
+        {
+          "action": "填写有效原因后再次确认驳回",
+          "expected": "驳回成功"
+        },
+        {
+          "action": "查看列表「驳回原因」列",
+          "expected": "展示所填驳回原因"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-85_TP-002-85_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-85_TP-002-85_blocked_full.png",
+          "sha256": "019b04589555ec9da935dd717b64c63ecf4473448c02e9ac9358d30615393347"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-85_TP-002-85_blocked_scope.png",
+      "started_at": "2026-08-20T14:40:18",
+      "finished_at": "2026-08-20T14:40:40",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2038_rejection_reason",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2038",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_pending_review_target",
+        "execute": "validate_rejection_reason_required",
+        "assertions": [
+          "empty_rejection_reason_is_blocked",
+          "valid_rejection_reason_is_saved"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-86",
+      "zentao_case_id": 47567,
+      "title": "点击「审核通过」直接成功，无二次确认框",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-86",
+      "assertion_scope": "target_goal.review_flow.approved_status",
+      "expected": "无二次确认弹窗，直接提示成功且状态变为「审核通过」",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" autocomplete=\"off\" id=\"el-id-5472-96\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    23 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "打开审核弹窗，点击「审核通过」或「通过」",
+          "expected": "无二次确认弹窗，直接提示成功且状态变为「审核通过」"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-86_TP-002-86_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-86_TP-002-86_blocked_full.png",
+          "sha256": "cd9f81a43d861ac29e41e1ecd981670f485aca9e5704d727652015ccee7f5a48"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-86_TP-002-86_blocked_scope.png",
+      "started_at": "2026-08-20T14:40:40",
+      "finished_at": "2026-08-20T14:41:02",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2039_approval",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2039",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_pending_review_target",
+        "execute": "approve_target",
+        "assertions": [
+          "target_status_is_approved",
+          "no_second_confirmation_is_required"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-87",
+      "zentao_case_id": 47568,
+      "title": "审核通过后记录审核人、审核时间",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-87",
+      "assertion_scope": "target_goal.review_flow.audit_metadata",
+      "expected": "状态=审核通过\n通过后落库：写入审核人员与审核时间",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" autocomplete=\"off\" id=\"el-id-8500-96\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    24 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "完成审核通过操作",
+          "expected": "状态=审核通过"
+        },
+        {
+          "action": "查看列表审核人员与审核时间",
+          "expected": "通过后落库：写入审核人员与审核时间"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-87_TP-002-87_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-87_TP-002-87_blocked_full.png",
+          "sha256": "8e6c982990ea9d64aa9d205404f2f40107afb5cb8b97b1095a897415151b16e5"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-87_TP-002-87_blocked_scope.png",
+      "started_at": "2026-08-20T14:41:02",
+      "finished_at": "2026-08-20T14:41:22",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2040_audit_metadata",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2040",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_pending_review_target",
+        "execute": "approve_target_and_read_audit_metadata",
+        "assertions": [
+          "audit_user_is_displayed",
+          "audit_time_is_displayed"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-88",
+      "zentao_case_id": 47569,
+      "title": "点击「删除」弹出确认框",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-88",
+      "assertion_scope": "target_goal.delete_confirmation",
+      "expected": "弹出删除确认框，文案表达删除意图即可（如是否删除所选中数据）",
+      "actual": {
+        "year": 2032,
+        "confirmation_text": "系统提示\n\n是否删除所选中数据？\n\n取消\n确定"
+      },
+      "detail": "删除确认框表达删除意图并已取消",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "在可删除行点击「删除」",
+          "expected": "弹出删除确认框，文案表达删除意图即可（如是否删除所选中数据）"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-88_TP-002-88_delete_confirm_scope.png",
+          "sha256": "6bd3112e8a3224b2451dd416c8d8cddd19ff7bb38d06d6f74f7bd93f621dae0e"
+        },
+        {
+          "path": "screenshots/TC-002-88_TP-002-88_delete_confirm_full.png",
+          "sha256": "ff1428349a8c413099a83890d54ad3e088f5c04115bbff6c203506bfb7e2c68a"
+        },
+        {
+          "path": "screenshots/TC-002-88_TP-002-88_assertion_scope.png",
+          "sha256": "c64ce9325128066ba6ffdb72e2cab6c2b897ada567b6124c306dae1b8bfa6124"
+        },
+        {
+          "path": "screenshots/TC-002-88_TP-002-88_assertion_full.png",
+          "sha256": "accb7d246b558524f2fc360fb6eaa2aee95355f7714d30ac5891c7efa8d55cca"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-88_TP-002-88_delete_confirm_scope.png",
+      "started_at": "2026-08-20T14:41:23",
+      "finished_at": "2026-08-20T14:41:30",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_delete_confirmation",
+        "data_key_template": "AUTO测试_勿用_{run_id}_delete_confirmation",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_draft_target",
+        "execute": "open_delete_confirmation_and_cancel",
+        "assertions": [
+          "delete_confirmation_is_visible",
+          "cancel_keeps_target_unchanged"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-002-90",
+      "zentao_case_id": 47571,
+      "title": "删除确认框点击确定，提示成功且记录从列表消失",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-90",
+      "assertion_scope": "target_goal.delete_flow.removed_row",
+      "expected": "提示删除成功，记录从列表消失",
+      "actual": "页面未稳定",
+      "detail": "页面等待超时：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator(\".el-dialog:visible\").last.locator(\"input[type=\\\"number\\\"]:visible\").nth(1)\n    - locator resolved to <input min=\"0\" step=\"1\" tabindex=\"0\" type=\"number\" aria-valuenow=\"\" role=\"spinbutton\" aria-valuemin=\"0\" autocomplete=\"off\" id=\"el-id-4744-96\" aria-disabled=\"true\" max=\"9007199254740991\" placeholder=\"请输入月度宰杀量\" class=\"el-input__inner\" aria-valuemax=\"9007199254740991\"/>\n    - fill(\"10.0000\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    24 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表中存在可删除的记录/单据测试数据"
+      ],
+      "steps": [
+        {
+          "action": "在删除确认框点击「确定」",
+          "expected": "提示删除成功，记录从列表消失"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-90_TP-002-90_blocked_scope.png",
+          "sha256": "e8102398f9a45d9f2299dce84f1594e096f1d3d2775cb03ef91bfb3ed3a09759"
+        },
+        {
+          "path": "screenshots/TC-002-90_TP-002-90_blocked_full.png",
+          "sha256": "9f966fc145799c0bce758befd9e530759717e66ad637fb3e5587d05f169ce210"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-90_TP-002-90_blocked_scope.png",
+      "started_at": "2026-08-20T14:41:31",
+      "finished_at": "2026-08-20T14:41:52",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2041_delete",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2041",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_draft_target",
+        "execute": "delete_run_owned_target",
+        "assertions": [
+          "target_is_removed_from_list"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    }
+  ]
+}

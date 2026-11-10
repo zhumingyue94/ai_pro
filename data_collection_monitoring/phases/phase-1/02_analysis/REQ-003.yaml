@@ -1,0 +1,200 @@
+schema_version: "1.0"
+
+analysis_id: "REQ-003"
+
+module_id: "REQ-003"
+
+module_name: "产品管理"
+
+project: "数据采集监控平台"
+
+status: "ready_for_scoped_readonly_ui_verification"
+
+source:
+
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+
+  latest_changes: "01_requirements/需求变动.md"
+
+  latest_change_items: ["REQ-003-001", "REQ-003-002", "REQ-003-003", "REQ-003-004", "REQ-003-005", "REQ-003-006", "REQ-003-007", "REQ-003-008", "REQ-003-009", "REQ-003-010", "REQ-003-011", "REQ-003-012", "REQ-003-013", "REQ-003-014", "REQ-003-015"]
+
+  scope_baseline: "01_requirements/模块拆分清单.md"
+
+  page_inventory: "02_analysis/page_inventory/page.json"
+
+  runtime_config: ".env/config.yaml；仅引用配置键名，不记录值"
+
+identity:
+
+  zentao_module_path: "iot平台/设备接入/产品管理"
+
+  zentao_module_id: 732
+
+  parent_module_id: 727
+
+  priority: 3
+
+  route_from_module_inventory: "/iot/device/product"
+
+  route_from_page_inventory: "/biopark-iot/iot/device/product"
+
+  page_id: "product_management"
+
+  title: "数据采集 - 产品管理"
+
+  menu_path: ["数据采集", "设备接入", "产品管理"]
+
+  numbering_note: "源需求变动表当前登记001至010、012至014、016至017；不把旧分析中的未登记011/015作为正式需求编号。"
+
+scope:
+
+  in_scope: ["页面身份、默认列表、产品名称/ProductKey筛选、查询、重置、刷新、表头设置、分页、排序、导出控件", "产品字段、分类、设备类型、图片/图标、状态、物模型入口及关联限制的页面级契约", "新增、编辑、查看、物模型、发布、撤回、删除和导出的只读边界", "租户隔离、权限、异常提示、加载异步状态、接口契约和数据安全责任"]
+
+  out_of_scope: ["真实新增、编辑、发布、撤回、删除、图片上传、物模型修改/发布、导出下载和接口写入", "分类模块内部实现、设备运行时协议、采集/推送/告警内部实现", "具体未确认的长度、字符、并发、性能SLA、文件传输和错误码", "未登记定位器猜测和业务数据造作"]
+
+  acceptance_boundary: ["以需求变动.md实际登记编号和回答为业务基准", "以page.json页面、状态、元素ID和脱敏证据为页面基准", "页面可见不等于CRUD、状态机、物模型、导出、关联、权限和接口已验收", "数据不足时记录无法验证，不据此判失败"]
+
+requirements:
+
+  confirmed:
+
+    REQ-003-001: "产品名称必填；长度、大小写、空白和特殊字符按系统默认；同租户唯一；编辑允许修改但需继续校验唯一性。"
+
+    REQ-003-002: "ProductKey自动生成但允许修改；长度、字符、租户范围、唯一性和并发创建冲突按系统默认。"
+
+    REQ-003-003: "产品分类必填且只能选择启用分类；分类停用保留已有产品原分类；分类删除前处理关联；分类改名同步产品关联名称。"
+
+    REQ-003-004: "支持直连设备、网关子设备、网关设备；建立后设备类型不可修改。"
+
+    REQ-003-005: "产品图标和图片选填可为空；支持常见图片格式；数量、大小和尺寸按系统默认；允许替换。"
+
+    REQ-003-006: "状态按未发布→已发布→撤回→停用；停用后可再次发布；状态关联当前版本；失败回退原状态。"
+
+    REQ-003-007: "物模型支持查看、编辑和按版本发布；发布前可编辑，发布后新版本；新版本兼容已有设备；失败回滚且不影响在线设备。"
+
+    REQ-003-008: "有关联设备、采集任务、推送配置或告警规则时仅禁止删除；仍允许编辑、停用、改分类和发布。"
+
+    REQ-003-009: "导出字段与浏览器表格展示一致，按当前筛选导出；隐藏敏感信息不导出；浏览器下载；失败提示；不单独记录下载；临时文件使用后清理。"
+
+    REQ-003-010: "默认按创建时间倒序；筛选、分页和刷新后保持该排序。"
+
+    REQ-003-011: "沿用PUB-009页面级UI/行为验收范围，不做接口测试；补充实际字段、筛选结果、状态反馈、物模型入口和导出控件验证。"
+
+    REQ-003-012: "确认表用于补充PDF和页面探索未明确内容，不与正式PDF逐条对应。"
+
+    REQ-003-013: "新产品分类下拉只显示启用分类；图片和图标只允许常见图片格式；上传失败提示错误信息；上传控件按页面实际行为记录。"
+
+    REQ-003-014: "当前页面只有产品状态字段和物模型是否发布信息；不记录产品版本号、兼容性检查结果和失败回滚反馈。"
+
+    REQ-003-015: "有关联产品不允许删除；允许撤回发布、编辑和再次发布；本模块没有停用功能；删除阻止时记录页面实际提示。"
+
+  pending: ["正式PDF REQ-003章节逐条追溯", "系统默认名称/ProductKey规则、分类选项、图片格式及上传失败反馈", "状态、物模型发布、兼容性与失败回滚的页面证据", "产品关联删除阻止及编辑/撤回/改分类/再次发布反馈", "导出文件字段、筛选、默认上限、失败提示和临时清理证据", "权限、租户、接口字段、错误码、幂等、并发和审计契约"]
+
+page_contract:
+
+  page_id: "product_management"
+
+  route: "/biopark-iot/iot/device/product"
+
+  title: "数据采集 - 产品管理"
+
+  menu_path: ["数据采集", "设备接入", "产品管理"]
+
+  default_state: "product_management_default"
+
+  collection_status: "partial"
+
+  target: {element_id: "product_management_state", strategy: "css", value: "body"}
+
+  ready_conditions: ["URL contains /biopark-iot/iot/device/product", "title contains 产品管理", "body visible", "loading indicator gone", "no auth/permission failure"]
+
+  states:
+
+    product_management_default: {elements: ["product_management_name", "product_management_key", "product_management_query", "product_management_reset", "product_management_refresh", "product_management_columns", "product_management_export", "product_management_add", "product_management_view", "product_management_edit", "product_management_model", "product_management_delete", "product_management_page_size", "product_management_prev", "product_management_page", "product_management_next"], columns: ["ProductKey", "产品名称", "产品分类", "设备类型", "产品图标", "产品图片", "状态", "创建时间", "操作"]}
+
+    product_management_columns_expanded: {parent_state_id: "product_management_default", expected: "显示列复选框、列宽和固定位置；操作列已选中且禁用，不可隐藏；不提交变更", element: "product_management_columns"}
+
+    product_management_edit: {parent_state_id: "product_management_default", form_id: "product_management_edit_form", element: "product_management_edit_page", fields: ["product_management_product_key", "product_management_regenerate", "product_management_name", "product_management_category", "product_management_direct", "product_management_sub_device", "product_management_gateway", "product_management_network", "product_management_ip_location", "product_management_report_location", "product_management_manual_location", "product_management_alink", "product_management_more", "product_management_confirm", "product_management_cancel"]}
+
+    product_management_more_expanded: {parent_state_id: "product_management_edit", elements: ["product_management_more", "product_management_description"], expected: "产品描述及两个配置占位区域可见，不提交更新"}
+
+    product_management_dialogs_partial: {parent_state_id: "product_management_default", element: "product_management_dialog", locator_status: "missing", evidence_status: "partial", expected: "新增/查看/物模型/删除入口仅有部分观察，不形成完整契约"}
+
+  table: {table_id: "product_management_table", element_id: "product_management_table_element", columns: ["ProductKey", "产品名称", "产品分类", "设备类型", "产品图标", "产品图片", "状态", "创建时间", "操作"], row_actions: ["product_management_view", "product_management_edit", "product_management_model", "product_management_delete"], filters: ["product_management_name", "product_management_key"], pagination: ["product_management_page_size", "product_management_prev", "product_management_page", "product_management_next"]}
+
+  evidence: {page_inventory: "02_analysis/page_inventory/page.json", dom_refs: ["02_analysis/page_inventory/dom/req003-default.html", "02_analysis/page_inventory/dom/req003-columns.html", "02_analysis/page_inventory/dom/req003-edit-page.html"], screenshots: ["02_analysis/page_inventory/screenshots/req003-default.png", "02_analysis/page_inventory/screenshots/req003-default-expanded.png", "02_analysis/page_inventory/screenshots/req003-columns.png", "02_analysis/page_inventory/screenshots/req003-edit-page.png", "02_analysis/page_inventory/screenshots/req003-more-config.png", "02_analysis/page_inventory/screenshots/req003-edit-more-current.png"], log: "02_analysis/page_inventory/logs/req003-exploration.txt", sanitized: true}
+
+roles: ["产品查看人员", "产品维护人员", "物模型维护人员", "设备/数据配置管理员", "平台/审计人员"]
+
+permission_status: "partial_pending_matrix"
+
+dependencies:
+
+  upstream: ["REQ-001 首页", "REQ-002 产品分类", "登录/权限/租户上下文"]
+
+  downstream: ["REQ-005 设备管理", "REQ-007 数据监听", "REQ-008 数据推送", "REQ-009 数据采集", "REQ-010 告警配置", "设备/采集任务/推送配置/告警规则"]
+
+  note: "依赖仅用于范围分析，不代表跨模块链路或接口联动已验证。"
+
+risks:
+
+  - {id: "R-003-01", level: "critical", description: "有关联产品误删可能丢失设备、采集、推送或告警链路", mitigation: "只读核验删除阻止和提示；写操作需授权和隔离数据"}
+
+  - {id: "R-003-02", level: "critical", description: "状态/版本/物模型发布失败未回滚可能影响在线设备", mitigation: "核验状态、版本、兼容性、回退；本阶段不发布"}
+
+  - {id: "R-003-03", level: "high", description: "租户内名称或ProductKey唯一性及并发处理不一致", mitigation: "待确认唯一性、幂等和并发契约；不写入真实数据"}
+
+  - {id: "R-003-04", level: "high", description: "分类启停/改名/删除处理错误造成产品分类失联", mitigation: "核验启用选择、已有产品保留、删除阻止和改名同步"}
+
+  - {id: "R-003-05", level: "high", description: "导出泄露隐藏敏感字段或临时文件未清理", mitigation: "只读核对导出契约；未经授权不下载业务文件"}
+
+  - {id: "R-003-06", level: "medium", description: "建立后修改设备类型造成协议和物模型解释错误", mitigation: "核验编辑禁用；不提交更新"}
+
+  - {id: "R-003-07", level: "high", description: "页面证据泄露ProductKey、产品数据或内部地址", mitigation: "字段级脱敏，不保存凭据、Cookie、Token或未授权数据"}
+
+test_design:
+
+  equivalence_partitions: {product_name: [valid, empty, duplicate_same_tenant, duplicate_other_tenant, whitespace_only, special_chars, default_limit], product_key: [auto_generated, edited, duplicate_same_tenant, duplicate_other_tenant, whitespace_only, special_chars, default_limit, concurrency_conflict], category: [enabled, disabled, missing, renamed, referenced], device_type: [direct, gateway_sub_device, gateway, immutable_after_creation], media: [none, valid_icon, valid_image, invalid_format, duplicate_type, replacement], state: [unpublished, published, withdrawn, disabled, transition_failure], model_version: [draft_editable, published_new_version, compatible, incompatible, publish_failure_rollback], associations: [none, device, collection_task, push_config, alarm_rule, multiple], export: [filtered, unfiltered, hidden_sensitive, over_limit, failed, cleanup_pending], permission: [full, read_only, denied, expired]}
+
+  boundary_candidates: ["名称/ProductKey空、空白、特殊字符、Unicode、系统默认边界、同租户重复", "启用/停用/删除/改名分类与产品关联", "三种设备类型建立前选择与建立后不可编辑", "图片/图标为空、合法格式、非法格式、替换和传输边界", "未发布/已发布/撤回/停用/再发布、失败回退", "物模型发布前编辑、兼容/不兼容、失败回滚和在线设备保护", "各种关联下删除阻止和其他操作允许", "筛选0/1/多条、导出字段、敏感过滤、上限、失败和清理", "分页首末页/空列表及筛选刷新后创建时间倒序"]
+
+  decision_table: ["名称空=>校验失败", "同租户名称/ProductKey重复=>按唯一性规则阻止或提示", "停用分类=>新产品不可选且已有产品保留", "建立后改设备类型=>不可修改", "存在关联删除=>禁止删除但其他确认允许", "物模型不兼容/发布失败=>阻止或回滚且不影响在线设备", "当前筛选导出=>字段与表格一致且不含隐藏敏感信息", "筛选/分页/刷新=>创建时间倒序", "无权限/会话过期=>提示并停止"]
+
+  state_transitions: ["未认证->登录页->门户->product_management_default", "产品草稿->校验失败/保存成功/取消", "未发布->已发布->撤回->停用->再发布", "物模型草稿->编辑->发布新版本->兼容通过/失败回滚", "无关联->关联资源->删除阻止/其他操作允许", "无筛选->筛选->分页/刷新->创建时间倒序", "导出准备->浏览器下载/失败提示->临时清理"]
+
+  pict_model:
+
+    parameters: [Auth, Permission, Name, ProductKey, Category, DeviceType, Media, State, Model, Association, Action, Result]
+
+    constraints: ["IF [Permission] = read_only THEN [Action] IN {query, view, reset, refresh};", "IF [Permission] = denied OR [Auth] != valid THEN [Result] = permission_error;", "IF [Action] IN {add, edit} AND [Name] = empty THEN [Result] = validation_error;", "IF [Action] = delete AND [Association] != none THEN [Result] = blocked_by_reference;", "IF [Action] = model AND [Model] = incompatible THEN [Result] IN {incompatible, rollback};", "IF [Action] = export AND [Permission] != full THEN [Result] = permission_error;", "IF [Action] = edit AND [DeviceType] = immutable_after_creation THEN [Result] IN {success, validation_error};", "IF [Action] = refresh THEN [Result] = success;"]
+
+automation_plan:
+
+  framework: "Playwright Python sync API / pytest-playwright"
+
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+
+  safe_actions: ["复用登录态", "进入门户产品管理", "只读观察默认/表头/编辑/更多配置状态", "读取脱敏字段和表头", "定位稳定时打开并取消安全弹窗"]
+
+  forbidden_actions: ["提交新增", "保存编辑", "发布", "撤回", "停用", "确认删除", "上传媒体", "修改物模型", "导出/下载业务数据", "接口写入", "绕过权限/安全验证"]
+
+  locator_priority: ["role/name", "accessible label", "confirmed data-testid", "page.json元素映射", "行上下文", "可见文本", "CSS最后"]
+
+  missing_or_partial: ["新增/查看/物模型/删除弹窗稳定ID", "状态转换/发布失败/回滚提示", "导出成功失败提示", "权限认证网络失败提示", "加载状态", "文件上传控件"]
+
+  stop_conditions: ["运行配置缺失", "登录失败/人工验证", "主机不匹配", "权限失败", "关键内容缺失", "加载失败", "内容不稳定", "意外写入提示", "未授权数据暴露"]
+
+data_preconditions:
+
+  - "只引用.env/config.yaml配置键名，不记录地址、项目、账号、密码、租户具体值。"
+
+  - "只使用已有页面数据进行只读观察，不创建产品、分类关联、物模型版本或导出文件。"
+
+  - "不得将账号、密码、Token、Cookie、ProductKey、产品名称、租户值、内部地址或未经授权业务数据写入产物。"
+
+  - "本次不执行新增、编辑、发布、撤回、停用、删除、上传、物模型修改、导出或接口写入；数据变更：无；清理状态：not_applicable。"
+
+readiness: {status: "ready_for_scoped_readonly_ui_verification", reason: "最新源需求回答、产品页面列表/表头/编辑/更多配置契约已归并；新增/查看/物模型/删除弹窗、状态转换、导出、权限和接口证据仍待补充。"}
+
+handoff: {path: "02_analysis/HANDOFF/REQ-003_HANDOFF.md", status: "ready_for_scoped_readonly_ui_verification", next_inputs: ["正式PDF章节追溯", "稳定弹窗/状态/导出/上传定位器", "状态版本物模型兼容及回滚证据", "分类和关联操作反馈", "权限租户矩阵", "导出字段上限清理契约", "接口字段错误码幂等并发契约", "隔离数据与写操作清理方案"]}
+

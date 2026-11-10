@@ -1,0 +1,2800 @@
+req_id: REQ-APP-022
+module: APP发货执行
+trace:
+  req: REQ-APP-022
+  project: 种禽孵化管理系统
+  version: 15
+  status: responsibility_remediation_pending_review
+  casely_style_remediation:
+    rule: 依据用例检查.md 的 Casely 风格合规发现执行本地修订，不涉及禅道同步
+    scope:
+    - 清理 131 条预期中的验证前缀与元句
+    - 统一步骤引号为「」
+    - 补登录/权限公共前置（common_preconditions + 196 引用）
+    - 改写 4 条模糊标题与 6 条前置条件动作动词
+    zentao_sync: not_synced
+  tp: TEST_PLAN-REQ-APP-022
+  source_review: REV_CASE_REQ-APP-022
+common_preconditions:
+- id: app_shipment_execution_access
+  name: APP小程序发货执行页导航前置
+  steps:
+  - action: 打开小程序并登录，切换到正确孵化场
+    expected: 登录成功并进入当前孵化场的小程序首页
+  - action: 点击「雏苗发货」入口
+    expected: 进入「雏苗发货」列表页
+  - action: 在目标发货单卡片点击「发货」按钮
+    expected: 进入发货执行页，显示发货单汇总区域和上孵计划列表
+cases:
+- id: TC-APP-022-001
+  title: 进入目标发货执行页核对主信息与统计回读
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货执行页
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-METRICS
+  plan_item_ids:
+  - PLAN-APP022-METRICS
+  atomic_purpose_ids:
+  - AP-APP022-METRICS-SUMMARY-CORE
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  - 已准备待发货执行单初始数据
+  steps:
+  - action: 查看执行页顶部主信息区域
+    expected: 顶部区域显示发货单标题、发货状态、发货单号、计划上苗数和计划苗重；上述字段与目标发货单 FD-APP022-BASE 的授权数据一致。
+  - action: 查看执行页统计区域
+    expected: 统计区域显示实际可发、累计发货和待分配数量，并回读为目标发货单 FD-APP022-BASE 的授权基线值。
+    state_id: app022-exec-default
+    target_element_id: exec-summary-card
+    locator_ref:
+      element_id: exec-summary-card
+      strategy: css
+      value: .shipment-summary
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    responsibility_boundary: 执行页主信息与执行页统计回读（同一页面链路，需独立复评是否拆分）
+    review_required: true
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-001
+- id: TC-APP-022-003
+  title: 确认发货弹窗对零值、负数和小数发货数量统一阻止提交
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货确认弹窗
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-EMPTY
+  - COV-APP022-POSITION-REQUIRED
+  - COV-APP022-QTY-ZERO
+  - COV-APP022-QTY-NEGATIVE
+  - COV-APP022-QTY-NONNUMERIC
+  plan_item_ids:
+  - PLAN-APP022-QTY-EMPTY
+  - PLAN-APP022-POSITION-REQUIRED
+  atomic_purpose_ids:
+  - AP-APP022-QTY-INVALID-NO-SUBMIT
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待分配数量大于零的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 在「发货数量」输入0并点击「确认提交」
+    expected: 输入 0 并点击确认提交后，显示“发货数量需为大于 0 的整数”提示，弹窗保持打开，提交被阻止，发货单、计划、库存和出库记录不变。
+    state_id: app022-validation-no-quantity
+    target_element_id: ship-dialog-error-no-qty
+    locator_ref:
+      element_id: ship-dialog-error-no-qty
+      strategy: text
+      value: 发货数量需为大于 0 的整数
+  - action: 在「发货数量」输入负数并点击「确认提交」
+    expected: 输入负数后点击确认提交，显示“发货数量需为大于 0 的整数”提示，弹窗保持打开，提交被阻止，发货单、计划、库存和出库记录不新增或扣减。
+    state_id: app022-validation-no-quantity
+    target_element_id: ship-dialog-error-no-qty
+    locator_ref:
+      element_id: ship-dialog-error-no-qty
+      strategy: text
+      value: 发货数量需为大于 0 的整数
+  - action: 在「发货数量」输入小数并点击「确认提交」
+    expected: 输入小数后点击确认提交，显示“发货数量需为大于 0 的整数”提示，弹窗保持打开，提交被阻止，发货单、计划、库存和出库记录不新增或扣减。
+    state_id: app022-validation-no-quantity
+    target_element_id: ship-dialog-error-no-qty
+    locator_ref:
+      element_id: ship-dialog-error-no-qty
+      strategy: text
+      value: 发货数量需为大于 0 的整数
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    overlap_repair:
+      decision: merge
+      merged_from:
+      - TC-APP-022-020
+      - TC-APP-022-005
+      - TC-APP-022-006
+      reason: same_page_same_data_baseline_same_continuous_action
+    merge_rule: 同一页面、同一数据基线、同一连续动作；零值、负数和小数边界保留独立步骤与预期
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-003
+- id: TC-APP-022-007
+  title: 发货数量等于待分配数量时允许提交
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货数量校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-EQUAL
+  plan_item_ids:
+  - PLAN-APP022-QTY-EQUAL
+  atomic_purpose_ids:
+  - AP-APP022-QTY-EQUAL-PENDING
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  - 待分配数量为4200且库存数量不低于4200
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 填写有效列和层，在「发货数量」输入4200并点击「确认提交」
+    expected: 数量等于待分配数量的边界放行。
+    state_id: app022-execute-shipped
+    target_element_id: ship-dialog-confirm
+    locator_ref:
+      element_id: ship-dialog-confirm
+      strategy: text
+      value: 确认提交
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    responsibility_boundary: 边界：发货数量 q 等于待分配数量 R
+  test_data:
+    page_url: null
+    data_prefix: approved-shipment-equal-pending
+  tp_id: TC-APP-022-007
+  scenario_branch: 边界：发货数量 q 等于待分配数量 R
+- id: TC-APP-022-008
+  title: 发货数量超过待分配数量时确认提交被阻止并显示数量校验提示（合并阻止提交结果）
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货数量校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-OVER
+  plan_item_ids:
+  - PLAN-APP022-QTY-OVER
+  atomic_purpose_ids:
+  - AP-APP022-QTY-OVER-MESSAGE
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  - 已准备待分配数量为4200的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 在「发货数量」输入4201并点击「确认提交」
+    expected: 在待分配数量 R=4200 时输入4201并点击“确认提交”，弹窗显示“本次发货数量不能超过待分配数量”提示并保持打开；提交被阻止，待分配数量、发货记录、库存和出库记录均不变。
+    state_id: app022-validation-exceed-quantity
+    target_element_id: ship-dialog-error-exceed
+    locator_ref:
+      element_id: ship-dialog-error-exceed
+      strategy: text
+      value: 本次发货数量不能超过待分配数量
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-008
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-008
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-008
+- id: TC-APP-022-009
+  title: 所在列控件必填属性
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置选择
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-REQUIRED
+  plan_item_ids:
+  - PLAN-APP022-POSITION-REQUIRED
+  atomic_purpose_ids:
+  - AP-APP022-COLUMN-REQUIRED
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待分配数量大于零且库存充足的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 打开“确认发货”弹窗，所在列控件显示必填标记。
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 清空「所在列」，保留有效「所在层」，输入有效正整数发货数量并点击「确认提交」
+    expected: 无法提交，提示“请输入所在列”。
+    state_id: app022-validation-no-position
+    target_element_id: ship-dialog-confirm
+    locator_ref:
+      element_id: ship-dialog-confirm
+      strategy: text
+      value: 确认提交
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-009
+- id: TC-APP-022-010
+  title: 重复提交同一发货动作时仅产生一次业务结果
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 发货数量校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-LATEST
+  - COV-APP022-QTY-ATOMIC
+  plan_item_ids:
+  - PLAN-APP022-QTY-LATEST
+  atomic_purpose_ids:
+  - AP-APP022-QTY-LATEST-REPEAT
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  - 已准备待分配数量大于零且库存充足的上孵计划
+  - 已通过独立数据夹具准备待分配数量已减少的初始状态；不将运行时成功结果写入静态前置条件
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 在「确认发货」弹窗选择列 A、层 1，输入发货数量 100
+    expected: 弹窗字段显示列 A、层 1、发货数量 100，且未显示数量校验错误
+  - action: 首次点击「确认提交」按钮
+    expected: 页面显示提交成功反馈；真实服务端提交未执行，自动化状态保持 blocked
+  - action: 立即再次点击同一发货动作的「确认提交」按钮
+    expected: 页面不产生第二次成功业务结果；具体幂等反馈文案待服务端契约确认，自动化状态保持 blocked
+  - action: 重新查询目标发货单并读取库存数量
+    expected: 库存数量应为 4900，即提交前库存 I=5000 仅扣减一次 q=100
+    target_element_id: ship-dialog-confirm
+    locator_ref:
+      element_id: ship-dialog-confirm
+      strategy: text
+      value: 确认提交
+  - action: 重新查询目标上孵计划并读取待分配数量
+    expected: 待分配数量应为 4100，即提交前待分配数量 R=4200 仅扣减一次 q=100
+    target_element_id: ship-dialog-confirm
+    locator_ref:
+      element_id: ship-dialog-confirm
+      strategy: text
+      value: 确认提交
+  - action: 重新查询统计区域累计发货
+    expected: 累计发货相较提交前基线仅增加 q=100，不重复累加
+  - action: 查询本次发货关联的出库记录
+    expected: 仅生成一条出库记录，数量与发货数量 q=100 一致；不重复生成出库记录
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    merge_rule: 同一套数据基线、连续动作链、同一业务结果；提交、回读和关联字段/公式校验拆为连续步骤
+  test_data:
+    page_url: null
+    data_prefix: approved-repeat-submit
+  tp_id: TC-APP-022-010
+- id: TC-APP-022-011
+  title: 并发提交按最新待发货数校验并阻止超发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 发货数量校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-LATEST
+  - COV-APP022-QTY-ATOMIC
+  - COV-APP022-CONCURRENCY-OVER
+  plan_item_ids:
+  - PLAN-APP022-QTY-LATEST
+  - PLAN-APP022-QTY-ATOMIC
+  - PLAN-APP022-QTY-EMPTY
+  atomic_purpose_ids:
+  - AP-APP022-CONCURRENT-ONCE
+  - AP-APP022-QTY-CONCURRENT-BOUNDARY
+  - AP-APP022-SR-051-97
+  - AP-APP022-DT-CONCURRENCY-OVER
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1。
+  - 已准备同一上孵计划、两个授权发货账号和可控并发测试窗口。
+  - 场景一中两个账号各提交 q=100，场景二设置后提交账号的 q 大于并发操作后的最新待发货数，并保留可回读的待发货数、发货记录和库存基线。
+  steps:
+  - action: 使用两个授权发货账号并行打开小程序首页，切换到正确的孵化场，点击雏苗发货板块下的「雏苗发货」
+    expected: 两个账号均进入雏苗发货首页（雏苗发货列表页），页面标题为“雏苗发货”
+  - action: 两个账号并行在目标发货单卡片点击「去发货」
+    expected: 两个账号均到达发货执行页
+  - action: 场景一中两个账号同时填写有效列层和 q=100 并点击「确认提交」
+    expected: 后提交请求在最新待发货数仍足够时成功；前后提交合计不超过最新待发货数，最多生成两条对应发货记录，待发货数量按实际成功数量扣减且库存保持非负。
+    target_element_id: ship-dialog-confirm
+    locator_ref:
+      element_id: ship-dialog-confirm
+      strategy: text
+      value: 确认提交
+  - action: 场景二中先让一个账号成功扣减待发货数，再由后提交账号填写大于最新待发货数的 q 并点击「确认提交」
+    expected: 后提交请求因 q 超过最新待发货数被阻止，页面显示待发货数不足或超发提示；不生成超出最新待发货数的发货记录，待发货数量、库存和既有成功记录保持一致。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 6
+    status: two_concurrency_scenarios
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    overlap_repair:
+      decision: merge
+      merged_from:
+      - TC-APP-022-051
+      - TC-APP-022-186
+      - TC-APP-022-285
+      reason: same_concurrency_latest_quantity_business_rule
+  test_data:
+    page_url: null
+    data_prefix: approved-concurrent-latest-pending
+  tp_id: TC-APP-022-011
+- id: TC-APP-022-013
+  title: 确认发货弹窗对备注15字上限及超长输入执行边界检查
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 发货确认弹窗
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-REMARK-15
+  plan_item_ids:
+  - PLAN-APP022-REMARK-15
+  atomic_purpose_ids:
+  - AP-APP022-REMARK-LENGTH-BOUNDARY
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  - 已准备待分配数量大于零的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 在「备注」输入正好15字内容
+    expected: 输入正好 15 字备注后，备注内容完整保留，不显示超长提示，确认提交按钮仍可继续操作。
+    state_id: app022-remark-15-limit
+    target_element_id: ship-dialog-remark
+    locator_ref:
+      element_id: ship-dialog-remark
+      strategy: label
+      value: 备注
+  - action: 在「备注」输入16字内容并继续输入超过15字的内容
+    expected: 第 16 字起截断，备注字段最多保留 15 字，确认提交按钮仍可继续操作。
+    state_id: app022-remark-15-limit
+    target_element_id: ship-dialog-remark-truncated
+    locator_ref:
+      element_id: ship-dialog-remark-truncated
+      strategy: label
+      value: 备注
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    overlap_repair:
+      decision: merge
+      merged_from:
+      - TC-APP-022-108
+      - TC-APP-022-109
+      - TC-APP-022-014
+      reason: same_page_same_data_baseline_same_continuous_action
+    responsibility_boundary: 边界：备注长度等于上限 15 字及超过上限
+  test_data:
+    page_url: null
+    data_prefix: remark-boundary-15
+  tp_id: TC-APP-022-013
+  scenario_branch: 边界：备注长度等于上限 15 字及超过上限
+- id: TC-APP-022-015
+  title: 取消发货确认后弹窗关闭且执行页统计等于取消前值
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货确认弹窗
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-CANCEL
+  plan_item_ids:
+  - PLAN-APP022-CANCEL
+  atomic_purpose_ids:
+  - AP-APP022-CANCEL-NO-CHANGE
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待分配数量大于零的目标上孵计划
+  - 已记录取消操作前「累计发货」「待分配」「发货进度」三个字段的页面显示值
+  steps:
+  - action: 在「发货执行」页定位目标上孵计划卡片，记录统计区域中「累计发货」「待分配」「发货进度」的当前显示值
+    expected: 三个字段均记录为取消操作前的基线值，且目标上孵计划与测试数据中的计划标识一致
+    state_id: app022-exec-default
+    target_element_id: shipment-plan-card
+    locator_ref:
+      element_id: shipment-plan-card
+      strategy: role
+      value: article
+  - action: 点击目标上孵计划卡片的「发货」按钮
+    expected: 打开标题为确认发货的弹窗，弹窗右上角显示关闭按钮「×」
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 弹窗中填写有效的列、层、发货数量后，点击「确认发货」弹窗的「×」按钮
+    expected: 「确认发货」弹窗关闭并返回「发货执行」页，未提交发货请求，目标上孵计划卡片仍可见
+    state_id: app022-exec-default
+    target_element_id: ship-dialog-close
+    locator_ref:
+      element_id: ship-dialog-close
+      strategy: text
+      value: ×
+  - action: 查看「发货执行」页统计区域中的「累计发货」「待分配」「发货进度」
+    expected: 「累计发货」「待分配」「发货进度」的当前显示值分别等于取消前记录的基线值，且未新增发货记录、未触发库存扣减或出库记录
+    state_id: app022-exec-default
+    target_element_id: shipment-statistics
+    locator_ref:
+      element_id: shipment-statistics
+      strategy: role
+      value: region
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-015
+- id: TC-APP-022-016
+  title: 成功发货后连续回读反馈、统计、状态及关联结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货成功反馈
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SUCCESS-TOAST
+  - COV-APP022-AUTO-OUTBOUND
+  - COV-APP022-SUCCESS-STATISTICS
+  - COV-APP022-SUCCESS-PLAN-STATUS
+  - COV-APP022-REFRESH-REQUERY
+  plan_item_ids:
+  - PLAN-APP022-SUCCESS-TOAST
+  - PLAN-APP022-AUTO-OUTBOUND
+  atomic_purpose_ids:
+  - AP-APP022-SUCCESS-RESULT-READBACK
+  preconditions:
+  - 授权发货角色可用
+  - 已准备有效列层、正整数数量和库存充足的变更数据
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发 货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 填写有效列、层和正整数发货数量后点击「确认提交」
+    expected: 显示本次发货成功结果
+    state_id: app022-execute-shipped
+    target_element_id: ship-success-toast
+    locator_ref:
+      element_id: ship-success-toast
+      strategy: text
+      value: 已完成
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    overlap_repair:
+      decision: merge
+      merged_from:
+      - TC-APP-022-040
+      - TC-APP-022-082
+      reason: same_business_result_same_data_baseline
+    merge_rule: 同一套数据基线、连续动作链、同一业务结果；提交、回读和关联字段/公式校验拆为连续步骤
+  test_data:
+    page_url: null
+    data_prefix: approved-success-shipment
+  tp_id: TC-APP-022-016
+- id: TC-APP-022-018
+  title: 发货数量为1时通过校验并允许确认提交
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货数量校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-ONE
+  plan_item_ids:
+  - PLAN-APP022-QTY-ONE
+  atomic_purpose_ids:
+  - AP-APP022-QTY-ONE
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待分配数量大于1且库存充足的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 填写有效列和层，在「发货数量」输入1并点击「确认提交」
+    expected: 发货数量为1时通过数量校验，「确认提交」按钮保持可用，页面不显示数量非法或超出可发数量提示。
+    state_id: app022-execute-shipped
+    target_element_id: ship-dialog-confirm
+    locator_ref:
+      element_id: ship-dialog-confirm
+      strategy: text
+      value: 确认提交
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    responsibility_boundary: 边界：最小有效发货数量 q=1
+  test_data:
+    page_url: null
+    data_prefix: approved-shipment-qty-one
+  tp_id: TC-APP-022-018
+  scenario_branch: 边界：最小有效发货数量 q=1
+- id: TC-APP-022-023
+  title: 成功发货提交后目标上孵计划状态转换为预期后状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货成功计划状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SUCCESS-PLAN-STATUS
+  plan_item_ids:
+  - PLAN-APP022-SUCCESS-PLAN-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-SUCCESS-PLAN-STATUS
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  - 已准备有效列层、正整数数量和库存充足的变更数据
+  - 已记录成功发货前累计发货基线
+  - 已准备经批准的有效发货数据
+  - 已记录成功发货前待分配数量基线
+  - 已记录成功发货前进度基线
+  - 已准备发货后应发生状态变化的上孵计划
+  steps:
+  - action: 记录目标上孵计划提交前状态，点击当前页面实际提供的提交或完成发货按钮并重新读取目标计划卡片
+    expected: 目标上孵计划提交前状态（如待发货/已确认）在提交或完成发货并重新读取卡片后转换为预期后状态（如已发货/已签收）； 计划卡片状态文案与状态值一致，且与本次成功发货结果唯一对应；
+      不存在仍为提交前态、状态值缺失或与实际发货结果不一致的情况。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    responsibility_boundary: 状态转换：发货提交前状态 -> 发货提交后状态
+  test_data:
+    page_url: null
+    data_prefix: approved-success-shipment
+  tp_id: TC-APP-022-023
+  scenario_branch: 状态转换：发货提交前状态 -> 发货提交后状态
+- id: TC-APP-022-024
+  title: 发货执行页计划列表展示的上孵计划数量与授权基线一致
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 执行页计划列表
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-L1-LIST
+  plan_item_ids:
+  - PLAN-APP022-PLAN-L1-LIST
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-L1-LIST
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待发货执行单初始数据
+  steps:
+  - action: 查看执行页计划区域
+    expected: 执行页计划区域展示的上孵计划卡片数量等于当前待发货执行单的上孵计划数量基线； 列表中存在该待发货计划卡片，不存在多出、缺失或重复展示的计划卡片。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-024
+- id: TC-APP-022-025
+  title: 发货执行页目标上孵计划卡片字段值与基线逐项一致
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 执行页计划卡片字段
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-L2-FIELDS
+  plan_item_ids:
+  - PLAN-APP022-PLAN-L2-FIELDS
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-L2-FIELDS
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待发货执行单 FD-APP022-PLAN-FIELDS，且目标上孵计划 PLAN-APP022-PLAN-FIELDS 的计划号、养殖场、养殖批次和实际苗重基线已知
+  steps:
+  - action: 在发货执行页定位目标上孵计划 PLAN-APP022-PLAN-FIELDS 的计划卡片
+    expected: 计划卡片展示计划字段区域，并逐项显示计划号、养殖场、养殖批次和实际苗重；各字段标签与字段值均可见且非空。
+  - action: 将计划卡片各字段与测试数据基线逐项比对
+    expected: 计划号、养殖场、养殖批次和实际苗重逐项与测试数据基线一致；任一项缺失、错位、为空或展示为其他计划的数据均判定为不通过。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-025
+- id: TC-APP-022-026
+  title: 点击发货打开弹窗
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 执行页计划入口
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-L3-ENTRY
+  plan_item_ids:
+  - PLAN-APP022-PLAN-L3-ENTRY
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-L3-ENTRY
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待分配数量大于零的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发 货」按钮
+    expected: 弹出标题为“确认发货”的弹窗，显示上孵计划号、待发货、所在列、所在层、发货数、备注、取消和“确认提交”按钮
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 点击指定上孵计划卡片的「发货」入口
+    expected: 点击发货打开弹窗。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-026
+- id: TC-APP-022-027
+  title: 有效列层及正整数发货数量校验通过后允许确认提交
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 有效发货位置
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-VALID
+  plan_item_ids:
+  - PLAN-APP022-POSITION-VALID
+  atomic_purpose_ids:
+  - AP-APP022-POSITION-VALID-CORE
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待分配数量大于零且库存充足的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发 货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 从已准备的园区基础数据选择有效列和有效层，填写合法正整数发货数量
+    expected: 有效列、有效层和发货数量均通过校验，确认提交按钮可用；页面未提示列层无效、数量非法或超出可发数量。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-027
+- id: TC-APP-022-028
+  title: 目标发货单含指定数量上孵计划时计划列表统计显示对应数量
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 执行页计划列表
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-COUNT
+  plan_item_ids:
+  - PLAN-APP022-PLAN-COUNT
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-COUNT
+  preconditions:
+  - 已准备目标发货单 FD-APP022-PLAN-COUNT，包含 2 条状态为“待发货”的上孵计划
+  - 目标发货单的计划列表统计基线为 2 条
+  steps:
+  - action: 进入目标发货单 FD-APP022-PLAN-COUNT 的发货执行页
+    expected: 显示上孵计划列表区域，且列表包含 2 条上孵计划卡片
+  - action: 查看计划列表标题右侧的计划数量统计文本
+    expected: 统计文本显示计划数量为 2 条，与目标发货单基线一致
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-028
+- id: TC-APP-022-030
+  title: 发货执行页展示与PC端一致的计划来源字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 执行页计划字段
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-FIELDS-CALCULATION
+  plan_item_ids:
+  - PLAN-APP022-PLAN-FIELDS-CALCULATION
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-FIELDS-CALCULATION-CORE
+  preconditions:
+  - 准备对应 PC 端来源字段、出雏任务及多次发货记录
+  steps:
+  - action: 进入执行页定位指定上孵计划卡片
+    expected: 显示计划号、养殖场、养殖批次、实际苗重和计划数量字段
+  - action: 与 PC 端对应数据逐项比对
+    expected: 来源字段值与 PC 端对应数据一致
+  - action: 校验计划数量
+    expected: 指定字段展示。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-030
+- id: TC-APP-022-032
+  title: 满足待发货条件时目标计划显示“待发货”状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货状态条件
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-REMARK-15
+  plan_item_ids:
+  - PLAN-APP022-REMARK-15
+  atomic_purpose_ids:
+  - AP-APP022-STATUS-PENDING-MATCH
+  preconditions:
+  - 已准备状态为待发货且待发货数量大于0的上孵计划
+  steps:
+  - action: 进入发货执行页并定位目标上孵计划
+    expected: 进入目标页面，显示目标业务数据和待核对区域。
+  - action: 查看目标上孵计划的业务状态
+    expected: 目标计划的业务状态显示为“待发货”。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 6
+    status: updated_after_design_review_pending_independent_review
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  scenario_branch: 待发货状态
+  tp_id: TC-APP-022-032
+- id: TC-APP-022-033
+  title: 提交有效发货数量后发货单数据完成更新
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货确认提交
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-CONFIRM-COMMIT-UPDATE
+  plan_item_ids:
+  - PLAN-APP022-CONFIRM-COMMIT-UPDATE
+  atomic_purpose_ids:
+  - AP-APP022-CONFIRM-COMMIT-UPDATE-CORE
+  preconditions:
+  - 有效发货数 q 满足正整数且不超过目标计划可分配余量
+  steps:
+  - action: 进入正式发货执行页面，填写有效列、层、发货数 q，点击当前页面实际提供的提交或完成发货按钮；如出现确认弹窗则点击确定
+    expected: 提交有效发货数量 q 后，弹窗关闭并返回执行页。
+  - action: 重新读取发货单和目标计划数据
+    expected: 发货单数据更新。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-033
+- id: TC-APP-022-034
+  title: 发货执行页发货单统计纳入已出雏计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货执行页主信息统计
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SUMMARY-FORMULA
+  plan_item_ids:
+  - PLAN-APP022-SUMMARY-FORMULA
+  atomic_purpose_ids:
+  - AP-APP022-SUMMARY-FORMULA-CORE
+  preconditions:
+  - 已准备已出雏与未出雏计划混合数据
+  steps:
+  - action: 打开发货执行页查看顶部统计
+    expected: 显示发货单统计区域及其统计字段。
+  - action: 与已出雏计划集合计算结果比对
+    expected: 已出雏计划纳入统计。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-034
+- id: TC-APP-022-036
+  title: 进入指定上孵计划记录弹窗后点击取消按钮关闭弹窗
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 上孵计划发货记录入口
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-RECORD-ENTRY
+  plan_item_ids:
+  - PLAN-APP022-PLAN-RECORD-ENTRY
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-RECORD-ENTRY
+  preconditions:
+  - 已准备目标发货单 FD-APP022-RECORD，包含至少 2 条可区分的上孵计划记录
+  - 当前账号具备发货记录查看权限
+  steps:
+  - action: 在目标上孵计划卡片点击「记录」
+    expected: 打开该上孵计划的发货记录弹窗，并显示记录列表和「取消」按钮
+  - action: 点击发货记录弹窗中的「取消」按钮
+    expected: 发货记录弹窗关闭，页面返回目标发货执行页且目标计划卡片仍可见
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-036
+- id: TC-APP-022-038
+  title: 取消后重新打开弹窗
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 上孵计划列表
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-SOURCE-CALCULATION
+  plan_item_ids:
+  - PLAN-APP022-PLAN-SOURCE-CALCULATION
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-SOURCE-CALCULATION
+  preconditions:
+  - 已准备 PC 端关联计划和多次发运记录
+  steps:
+  - action: 汇总多次发运记录并计算可分配余量
+    expected: 发货执行页展示多次发运记录的汇总结果；可分配余量等于计划可发数量减去已发运数量，数值与关联计划数据一致。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-038
+- id: TC-APP-022-041
+  title: 提交结果未知
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 发货结果恢复
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-REQUERY-CONSISTENCY
+  plan_item_ids:
+  - PLAN-APP022-REQUERY-CONSISTENCY
+  atomic_purpose_ids:
+  - AP-APP022-REQUERY-CONSISTENCY-CORE
+  preconditions:
+  - 可注入提交后刷新失败或未知结果且提供重新查询入口
+  steps:
+  - action: 提交有效发货数并模拟前端获得未知结果
+    expected: 页面显示处理中或未知状态，不直接判定失败或盲目重复提交
+  - action: 执行重新查询并读取发货记录、计划、统计、库存和出库记录
+    expected: 重新查询后页面显示发货记录的最终处理状态；发货记录、计划、统计、库存和出库记录与服务端查询结果一致，且未新增重复发货记录。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-041
+- id: TC-APP-022-045
+  title: 所在列为0时确认提交显示校验提示并阻止发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-ATOMIC
+  plan_item_ids:
+  - PLAN-APP022-POSITION-ATOMIC
+  atomic_purpose_ids:
+  - AP-APP022-COLUMN-ZERO
+  preconditions: []
+  steps:
+  - action: 所在列输入0、所在层填入有效正整数后点击「确认提交」
+    expected: 点击「确认提交」后，所在列字段显示“必须为正整数”校验提示；确认提交请求未发出，发货单状态、已发货数和待发货数均保持提交前值不变。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-045
+- id: TC-APP-022-046
+  title: 所在列为负数时确认提交显示校验提示并阻止发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-ATOMIC
+  plan_item_ids:
+  - PLAN-APP022-POSITION-ATOMIC
+  atomic_purpose_ids:
+  - AP-APP022-COLUMN-NEGATIVE
+  preconditions: []
+  steps:
+  - action: 所在列输入负数、所在层填入有效正整数后点击「确认提交」
+    expected: 点击「确认提交」后，所在列字段显示“必须为正整数”校验提示；确认提交请求未发出，发货单状态、已发货数和待发货数均保持提交前值不变。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-046
+- id: TC-APP-022-047
+  title: 所在列为小数时确认提交显示校验提示并阻止发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-ATOMIC
+  plan_item_ids:
+  - PLAN-APP022-POSITION-ATOMIC
+  atomic_purpose_ids:
+  - AP-APP022-COLUMN-DECIMAL
+  preconditions: []
+  steps:
+  - action: 所在列输入小数、所在层填入有效正整数后点击「确认提交」
+    expected: 点击「确认提交」后，所在列字段显示“必须为正整数”校验提示；确认提交请求未发出，发货单状态、已发货数和待发货数均保持提交前值不变。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-047
+- id: TC-APP-022-048
+  title: 所在列为字母时确认提交显示格式提示并阻止发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-ATOMIC
+  plan_item_ids:
+  - PLAN-APP022-POSITION-ATOMIC
+  atomic_purpose_ids:
+  - AP-APP022-COLUMN-TEXT
+  preconditions: []
+  steps:
+  - action: 所在列输入字母、所在层填入有效正整数后点击「确认提交」
+    expected: 点击「确认提交」后，所在列字段显示数字格式校验提示；确认提交请求未发出，发货单状态、已发货数和待发货数均保持提交前值不变。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-048
+- id: TC-APP-022-039
+  title: 非数字发货数量显示格式提示并阻止提交
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货确认弹窗
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-NONNUMERIC
+  plan_item_ids:
+  - PLAN-APP022-QTY-NONNUMERIC
+  atomic_purpose_ids:
+  - AP-APP022-QTY-NONNUMERIC-NO-SUBMIT
+  preconditions:
+  - 已准备待发货数大于1且库存充足的上孵计划
+  steps:
+  - action: 在「发货数量」输入非数字字符并点击「确认提交」
+    expected: 输入非数字字符并点击确认提交后，显示数量格式校验提示，提交被阻止且业务数据不变。
+    state_id: app022-validation-non-numeric-quantity
+    target_element_id: ship-dialog-error-non-numeric-qty
+    locator_ref:
+      element_id: ship-dialog-error-non-numeric-qty
+      strategy: text
+      value: 发货数量格式校验
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-039
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-039
+    overlap_repair:
+      decision: merge
+      merged_from:
+      - TC-APP-022-222
+      reason: same_business_result_same_data_baseline
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-039
+  scenario_branch: 等价类：发货数量为非数字字符；格式校验失败并阻止提交
+- id: TC-APP-022-050
+  title: 发货数量小于待分配数量时允许提交
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货确认弹窗
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-LESS-PENDING
+  plan_item_ids:
+  - PLAN-APP022-QTY-LESS-PENDING
+  atomic_purpose_ids:
+  - AP-APP022-QTY-LESS-PENDING
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  steps:
+  - action: 输入大于0且小于最新待分配数量的发货数量并点击「确认提交」
+    expected: 小于待分配数量的边界放行。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    responsibility_boundary: 等价类：0 < q < R
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-050
+  scenario_branch: 等价类：0 < q < R
+- id: TC-APP-022-052
+  title: 目标计划处于待孵期时卡片显示“待孵期”状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片出雏状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-HATCH-STATUS
+  plan_item_ids:
+  - PLAN-APP022-HATCH-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-PENDING-HATCH
+  preconditions:
+  - 存在出雏状态为待孵期且未完成出雏的上孵计划
+  steps:
+  - action: 打开发货执行页并查看目标计划卡片
+    expected: 目标计划卡片状态标签显示“待孵期”，且不显示与其他孵化阶段对应的状态标签。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-052
+- id: TC-APP-022-053
+  title: 目标计划处于待上孵时卡片显示“待上孵”状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片出雏状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-HATCH-STATUS
+  plan_item_ids:
+  - PLAN-APP022-HATCH-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-PENDING-SET
+  preconditions:
+  - 存在出雏状态为待上孵且未完成出雏的上孵计划
+  steps:
+  - action: 打开发货执行页并查看目标计划卡片
+    expected: 目标计划卡片状态标签显示“待上孵”，且不显示与其他孵化阶段对应的状态标签。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-053
+- id: TC-APP-022-054
+  title: 目标计划处于孵化器中时卡片显示对应状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片出雏状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-HATCH-STATUS
+  plan_item_ids:
+  - PLAN-APP022-HATCH-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-IN-INCUBATOR
+  preconditions:
+  - 存在出雏状态为孵化器中且未完成出雏的上孵计划
+  steps:
+  - action: 打开发货执行页并查看目标计划卡片
+    expected: 目标计划卡片状态标签显示“孵化器中”，且不显示与其他孵化阶段对应的状态标签。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-054
+- id: TC-APP-022-055
+  title: 目标计划处于待照蛋时卡片显示“待照蛋”状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片出雏状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-HATCH-STATUS
+  plan_item_ids:
+  - PLAN-APP022-HATCH-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-PENDING-CANDLE
+  preconditions:
+  - 存在出雏状态为待照蛋且未完成出雏的上孵计划
+  steps:
+  - action: 打开发货执行页并查看目标计划卡片
+    expected: 目标计划卡片状态标签显示“待照蛋”，且不显示与其他孵化阶段对应的状态标签。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-055
+- id: TC-APP-022-056
+  title: 目标计划处于出雏器中时卡片显示对应状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片出雏状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-HATCH-STATUS
+  plan_item_ids:
+  - PLAN-APP022-HATCH-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-IN-HATCHER
+  preconditions:
+  - 存在出雏状态为出雏器中且未完成出雏的上孵计划
+  steps:
+  - action: 打开发货执行页并查看目标计划卡片
+    expected: 目标计划卡片状态标签显示“出雏器中”，且不显示与其他孵化阶段对应的状态标签。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-056
+- id: TC-APP-022-057
+  title: 目标计划处于待出雏时卡片显示“待出雏”状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片出雏状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-HATCH-STATUS
+  plan_item_ids:
+  - PLAN-APP022-HATCH-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-PENDING
+  preconditions:
+  - 存在出雏状态为待出雏且未完成出雏的上孵计划
+  steps:
+  - action: 打开发货执行页并查看目标计划卡片
+    expected: 目标计划卡片状态标签显示“待出雏”，且不显示与其他孵化阶段对应的状态标签。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-057
+- id: TC-APP-022-058
+  title: 目标计划卡片显示记录和发货按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片出雏状态
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-HATCH-STATUS
+  plan_item_ids:
+  - PLAN-APP022-HATCH-STATUS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-COMPLETED-HIDDEN
+  preconditions:
+  - 存在已完成出雏任务的上孵计划
+  steps:
+  - action: 打开发货执行页并查看目标计划卡片右下角
+    expected: 目标计划卡片右下角没有状态标签，显示“记录”和“发货”按钮。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-058
+- id: TC-APP-022-059
+  title: 目标计划待发货且未出雏时操作区域识别对应条件
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-BUTTON-PENDING-NOT-HATCHED
+  preconditions:
+  - 存在待发货且未出雏的上孵计划
+  steps:
+  - action: 查看目标计划卡片操作区域
+    expected: 目标计划卡片操作区域显示与“待发货且未出雏”条件匹配的操作控件；不显示仅适用于已出雏计划的“发货”或“记录”控件。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-059
+- id: TC-APP-022-062
+  title: 已发货计划仅显示记录
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-BUTTON-COMPLETED-CORE
+  preconditions:
+  - 存在一个与本用例目标状态一致的上孵计划
+  steps:
+  - action: 查看一个已发货目标计划卡片的操作区域
+    expected: 目标计划卡片显示“记录”按钮。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-062
+- id: TC-APP-022-063
+  title: 成功发货后自动出库记录及来源字段与发货数据一致
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 自动出库
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-AUTO-STOCK
+  - COV-APP022-AUTO-OUTBOUND
+  plan_item_ids:
+  - PLAN-APP022-AUTO-STOCK
+  - PLAN-APP022-AUTO-OUTBOUND
+  atomic_purpose_ids:
+  - AP-APP022-AUTO-OUTBOUND-RESULT-RECORD
+  preconditions:
+  - 已准备可成功发货且园区关联养殖客户明确的计划
+  - 已准备目标发货单 FD-APP022-AUTO、目标上孵计划 PLAN-APP022-AUTO、园区、养殖客户、操作账号、批次、发货数量 q=100
+  - 已记录发货前自动出库记录数量基线 N
+  steps:
+  - action: 完成一次发货（选择列层、输入数量 q=100、提交）并查看自动出库记录
+    expected: 成功发货后生成且仅生成一条对应自动出库记录，记录存在、创建成功，数量与发货数量 q=100 一致；本步骤主断言为记录生成与唯一性。
+  - action: 核对自动出库记录字段来源
+    expected: 自动出库记录中的养殖客户、操作人、操作时间、批次、计划、园区和类型/方式分别显示对应发货数据来源。
+  - action: 核对出库记录与发货单、上孵计划的关联关系
+    expected: 出库记录正确关联目标发货单 FD-APP022-AUTO 与上孵计划 PLAN-APP022-AUTO；按发货前基线 N 核对，出库记录总数仅为
+      N+1，不重复生成。
+  - action: 重新查询自动出库记录
+    expected: 重新查询后仍为同一条新增记录，数量一致，关联字段来源不变；确认结果可回读且与服务端一致。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    overlap_repair:
+      decision: merge
+      merged_from:
+      - TC-APP-022-064
+      - TC-APP-022-065
+      - TC-APP-022-160
+      - TC-APP-022-237
+      reason: same_business_result_same_data_baseline
+    merge_rule: 同一套数据基线、连续动作链、同一业务结果；提交、回读和关联字段/公式校验拆为连续步骤
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-063
+- id: TC-APP-022-068
+  title: 发货弹窗数字输入框支持输入列值1
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-RULE
+  plan_item_ids:
+  - PLAN-APP022-POSITION-RULE
+  atomic_purpose_ids:
+  - AP-APP022-ANY-COLUMN
+  preconditions:
+  - 基础数据-栋舍管理中已配置目标栋舍列数；具体栋舍和列数值待确认
+  - 有效列范围定义为 1..栋舍管理配置的列数
+  steps:
+  - action: 在发货弹窗的列数字输入框中输入 1（有效范围下限）
+    expected: 列数字输入框显示已输入值“1”，且输入值被接受为有效列值。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    responsibility_boundary: 位置边界：列索引为首个有效值
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-068
+  scenario_branch: 位置边界：列索引为首个有效值
+- id: TC-APP-022-069
+  title: 发货弹窗数字输入框支持输入层值1
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-RULE
+  plan_item_ids:
+  - PLAN-APP022-POSITION-RULE
+  atomic_purpose_ids:
+  - AP-APP022-ANY-LAYER
+  preconditions:
+  - 基础数据-栋舍管理中已配置目标栋舍层数；具体栋舍和层数值待确认
+  - 有效层范围定义为 1..栋舍管理配置的层数
+  steps:
+  - action: 在发货弹窗的层数字输入框中输入 1（有效范围下限）
+    expected: 层数字输入框显示已输入值“1”，且输入值被接受为有效层值。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    responsibility_boundary: 位置边界：层索引为首个有效值
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-069
+  scenario_branch: 位置边界：层索引为首个有效值
+- id: TC-APP-022-070
+  title: 单次发货仅展示一个位置录入项
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置校验
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-RULE
+  plan_item_ids:
+  - PLAN-APP022-POSITION-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SINGLE-POSITION-ENTRY
+  preconditions:
+  - 当前发货规则为每次仅允许录入一个列层位置
+  steps:
+  - action: 查看确认发货弹窗的位置录入区域
+    expected: 页面仅展示一个列选择控件和一个层选择控件；不展示用于同次发货增加第二个位置录入项的入口。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-070
+- id: TC-APP-022-073
+  title: 满足待发货条件时执行页顶部显示“待发货”文案
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 待发货状态文案验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-TOP-STATUS-PENDING
+  plan_item_ids:
+  - PLAN-APP022-TOP-STATUS-PENDING
+  atomic_purpose_ids:
+  - AP-APP022-TOP-STATUS-PENDING-LABEL
+  preconditions:
+  - 准备已出雏且已发货数为0、待发货数大于0的执行单
+  steps:
+  - action: 打开目标执行单的执行页
+    expected: 执行页成功打开
+  - action: 查看页面顶部状态
+    expected: 显示“待发货”
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-073
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-073
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-073
+- id: TC-APP-022-225
+  title: 满足待发货条件时顶部状态显示“待发货”
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 待发货状态文案验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-TOP-STATUS-PENDING
+  plan_item_ids:
+  - PLAN-APP022-TOP-STATUS-PENDING
+  atomic_purpose_ids:
+  - AP-APP022-TOP-STATUS-PENDING-CONDITION
+  preconditions:
+  - 存在一个已出雏且已发货数为0的执行单
+  steps:
+  - action: 读取目标计划顶部状态
+    expected: 顶部状态显示“待发货”；本用例只判定该状态结果。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-073
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-073
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-225
+- id: TC-APP-022-074
+  title: 满足发货中条件时执行页顶部显示“发货中”文案
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货中状态文案验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-TOP-STATUS-IN-PROGRESS
+  plan_item_ids:
+  - PLAN-APP022-TOP-STATUS-IN-PROGRESS
+  atomic_purpose_ids:
+  - AP-APP022-TOP-STATUS-IN-PROGRESS-LABEL
+  preconditions:
+  - 准备已出雏且已发货数大于0、待发货数大于0的执行单
+  steps:
+  - action: 打开目标执行单的执行页
+    expected: 执行页成功打开
+  - action: 查看页面顶部状态
+    expected: 显示“发货中”
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-074
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-074
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-074
+- id: TC-APP-022-226
+  title: 满足发货中条件时顶部状态显示“发货中”
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货中状态文案验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-TOP-STATUS-IN-PROGRESS
+  plan_item_ids:
+  - PLAN-APP022-TOP-STATUS-IN-PROGRESS
+  atomic_purpose_ids:
+  - AP-APP022-TOP-STATUS-IN-PROGRESS-CONDITION
+  preconditions:
+  - 存在一个已出雏且已发货数大于0、待分配数大于0的执行单
+  steps:
+  - action: 读取目标计划顶部状态
+    expected: 顶部状态显示“发货中”；本用例只判定该状态结果。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-074
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-074
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-226
+- id: TC-APP-022-078
+  title: 目标上孵计划卡片展示计划号字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 计划字段展示验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-PLAN-FIELDS-CALCULATION
+  plan_item_ids:
+  - PLAN-APP022-PLAN-FIELDS-CALCULATION
+  atomic_purpose_ids:
+  - AP-APP022-PLAN-FIELDS-PLAN-NO
+  preconditions:
+  - 准备对应 PC 端来源字段、出雏任务及多次发货记录
+  steps:
+  - action: 使用前置条件中已准备的目标业务数据，打开对应页面并进入目标弹窗或区域
+    expected: 页面或弹窗进入可验证状态
+  - action: 在目标发货执行页定位前置条件中的目标上孵计划卡片，读取计划号字段。
+    expected: 计划卡片显示前置条件中目标计划的计划号。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-078
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-078
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-078
+- id: TC-APP-022-079
+  title: 发货提交后数量、状态与结果回显更新
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单数据更新验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-CONFIRM-COMMIT-UPDATE
+  plan_item_ids:
+  - PLAN-APP022-CONFIRM-COMMIT-UPDATE
+  atomic_purpose_ids:
+  - AP-APP022-CONFIRM-SHIPMENT-UPDATE-QTY
+  - AP-APP022-CONFIRM-SHIPMENT-UPDATE-STATUS
+  - AP-APP022-CONFIRM-SHIPMENT-UPDATE-DISPLAY
+  preconditions:
+  - 有效发货数 q 满足正整数且不超过目标计划可分配余量
+  steps:
+  - action: 使用前置条件中已准备的目标业务数据，打开对应页面并进入「确认发货」弹窗
+    expected: 「确认发货」弹窗打开，发货数量输入区域可见
+  - action: 在发货数量输入框输入有效发货数 q，并点击「确认提交」按钮
+    expected: 提交成功，页面退出提交处理中状态
+  - action: 在发货执行页读取目标发货单的发货数量和发货单状态
+    expected: 发货数量精确更新为提交的 q，发货单状态同步更新为提交后的业务状态
+  - action: 在发货执行页读取更新后的发货单结果区域
+    expected: 页面回显更新后的发货单结果，数量和状态与本次提交结果一致
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: merged_responsibilities_from_TC-APP-022-233_234
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-079
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-079
+- id: TC-APP-022-080
+  title: 发货执行页顶部统计区域纳入已出雏计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 统计纳入范围验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SUMMARY-FORMULA
+  plan_item_ids:
+  - PLAN-APP022-SUMMARY-FORMULA
+  atomic_purpose_ids:
+  - AP-APP022-SUMMARY-INCLUSION-HATCHED
+  preconditions:
+  - 已准备已出雏与未出雏计划混合数据
+  steps:
+  - action: 使用前置条件中已准备的目标业务数据，打开对应页面并进入目标弹窗或区域
+    expected: 页面或弹窗进入可验证状态
+  - action: 在发货执行页读取顶部统计区域，并将已出雏计划计数与前置条件中的已出雏计划数量进行比对。
+    expected: 发货单统计纳入已出雏计划。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-080
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-080
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-080
+- id: TC-APP-022-235
+  title: 未出雏计划排除统计
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 统计纳入范围验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SUMMARY-FORMULA
+  plan_item_ids:
+  - PLAN-APP022-SUMMARY-FORMULA
+  atomic_purpose_ids:
+  - AP-APP022-SUMMARY-INCLUSION-NOT-HATCHED
+  preconditions:
+  - 已准备已出雏与未出雏计划混合数据
+  steps:
+  - action: 使用前置条件中已准备的目标业务数据，打开对应页面并进入目标弹窗或区域
+    expected: 页面或弹窗进入可验证状态
+  - action: 在发货执行页读取顶部统计区域，并将未出雏计划计数与包含未出雏计划的基线进行比对。
+    expected: 发货单统计不纳入未出雏计划。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-080
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-080
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-235
+- id: TC-APP-022-241
+  title: 发货确认弹窗所在层输入正整数时字段校验通过
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 正整数位置验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-ATOMIC
+  plan_item_ids:
+  - PLAN-APP022-POSITION-ATOMIC
+  atomic_purpose_ids:
+  - AP-APP022-POSITION-POSITIVE-INTEGER-LAYER
+  preconditions: []
+  steps:
+  - action: 使用前置条件中已准备的目标业务数据，打开对应页面并进入目标弹窗或区域
+    expected: 页面或弹窗进入可验证状态
+  - action: 在发货确认弹窗的所在层输入有效正整数，并触发字段校验。
+    expected: 所在层输入有效正整数时通过字段校验。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-241
+- id: TC-APP-022-242
+  title: 待发货已出雏显示发货按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 待发货发货按钮验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-BUTTON-PENDING-HATCHED-SHIP-VISIBLE
+  preconditions:
+  - 存在待发货且已出雏的上孵计划
+  steps:
+  - action: 使用前置条件中已准备的目标业务数据，打开对应页面并进入目标弹窗或区域
+    expected: 页面或弹窗进入可验证状态
+  - action: 在发货执行页定位同时满足待发货和已出雏条件的计划卡片，读取卡片操作区。
+    expected: 待发货且已出雏计划显示「发货」按钮。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: designed_after_responsibility_split_v2
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-242
+- id: TC-APP-022-243
+  title: 发货中显示发货按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货中发货按钮验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-BUTTON-SHIPPING-SHIP-VISIBLE
+  preconditions:
+  - 存在发货中的上孵计划
+  steps:
+  - action: 使用前置条件中已准备的目标业务数据，打开对应页面并进入目标弹窗或区域
+    expected: 页面或弹窗进入可验证状态
+  - action: 在发货执行页定位发货中计划卡片，读取卡片操作区。
+    expected: 发货中计划显示「发货」按钮。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-086
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-243
+- id: TC-APP-022-244
+  title: 已发货计划隐藏发货按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 已发货记录按钮验证
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-BUTTON-SHIPPED-SHIP-HIDDEN
+  preconditions:
+  - 存在一个与本用例目标状态一致的上孵计划
+  steps:
+  - action: 查看一个已发货计划卡片的操作区域
+    expected: 仅验证已发货计划不显示“发货”按钮。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-087
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-087
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-244
+- id: TC-APP-022-247
+  title: 单位置发货数量保存与回显
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 单位置发货
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-RULE
+  plan_item_ids:
+  - PLAN-APP022-POSITION-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SINGLE-POSITION-PERSIST
+  preconditions:
+  - 基础数据-栋舍管理中已配置目标栋舍列数和层数；具体配置值待确认
+  - 有效列范围为 1..栋舍管理配置的列数，有效层范围为 1..栋舍管理配置的层数
+  - 每次发货仅允许一个列层位置，且待分配数量大于零
+  steps:
+  - action: 在确认「确认发货」弹窗选择一个有效列层位置，并在「发货数量」输入合法正整数 q
+    expected: 弹窗显示已选择的列、层和发货数量 q；当前发货仅包含一个列层位置录入项。
+  - action: 点击「确认提交」
+    expected: 执行单位置发货提交后页面显示提交结果并返回执行页。
+  - action: 重新打开同一发货数据并查看位置与数量字段
+    expected: 页面回读同一列层位置和发货数量 q。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 6
+    status: updated_after_design_review_pending_independent_review
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-089
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-247
+- id: TC-APP-022-248
+  title: 单位置发货不拆分数量
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 单位置发货
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-RULE
+  plan_item_ids:
+  - PLAN-APP022-POSITION-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SINGLE-POSITION-NO-SPLIT
+  preconditions:
+  - 已准备有效栋舍配置；具体栋舍列数、层数和业务键待确认
+  - 每次发货仅允许一个列层位置
+  steps:
+  - action: 在确认发货弹窗录入一个有效列层位置和本次发货数量
+    expected: 页面显示一个列层位置和本次发货数量输入项。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-089
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-089
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-248
+- id: TC-APP-022-249
+  title: 不同次发货允许重复选择同一位置
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 重复位置发货规则
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-RULE
+  plan_item_ids:
+  - PLAN-APP022-POSITION-RULE
+  atomic_purpose_ids:
+  - AP-APP022-REPEAT-POSITION-CROSS-SHIPMENT
+  preconditions:
+  - 基础数据-栋舍管理中已配置目标栋舍列数和层数；具体配置值待确认
+  - 已准备同一发货单或同一业务对象的两次独立发货数据，且两次发货均为单个列层位置
+  - 两次发货均为同一列层位置；第二次发货数量和可发余量待确认
+  steps:
+  - action: 在第一次确认「确认发货」弹窗选择有效列层位置 P，并在「发货数量」输入合法正整数 q1
+    expected: 第一次发货弹窗显示位置 P 和数量 q1，且当前发货仅包含一个列层位置录入项。
+  - action: 点击第一次发货的「确认提交」
+    expected: 第一次单位置发货提交后页面显示提交结果。
+  - action: 打开第二次独立发货的确认「确认发货」弹窗，并再次选择同一列层位置 P，输入合法正整数 q2
+    expected: 第二次发货允许再次选择位置 P，且弹窗仍只有一个列层位置录入项并显示数量 q2。
+  - action: 点击第二次发货的「确认提交」
+    expected: 第二次提交仍按单位置发货处理，不把跨次重复选择位置计为同次重复计算。
+  - action: 重新打开第二次发货数据并查看位置与数量字段
+    expected: 页面回读位置 P 和数量 q2。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-089
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-089
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-249
+- id: TC-APP-022-096
+  title: 发货数量为空时确认提交显示必填校验提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货确认弹窗
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-EMPTY
+  plan_item_ids:
+  - PLAN-APP022-QTY-EMPTY
+  atomic_purpose_ids:
+  - AP-APP022-SR-003-07
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待分配数量大于零的上孵计划
+  steps:
+  - action: 在「发货执行」页点击上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 在「发货数量」保持空值并点击「确认提交」
+    expected: 发货数量为空并提交时，仅验证显示“发货数量需为大于 0 的整数”提示。
+    state_id: app022-validation-no-quantity
+    target_element_id: ship-dialog-error-no-qty
+    locator_ref:
+      element_id: ship-dialog-error-no-qty
+      strategy: text
+      value: 发货数量需为大于 0 的整数
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-003
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-003
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-096
+- id: TC-APP-022-125
+  title: 未选择层时发货提交被阻止、显示必填提示且业务数据不变
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置选择
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-REQUIRED
+  plan_item_ids:
+  - PLAN-APP022-POSITION-REQUIRED
+  atomic_purpose_ids:
+  - AP-APP022-SR-020-36
+  preconditions:
+  - 已准备目标发货单 FD-APP022-BASE 和目标上孵计划 PLAN-APP022-BASE；提交前待分配数量 R=4200，库存数量 I=5000；有效列
+    A、层 1；本次发货数量 q=100
+  - 已准备待分配数量大于零且库存充足的上孵计划
+  - 已记录提交前待分配数量、累计发货数量、库存数量、出库记录数量及最后一条记录标识
+  steps:
+  - action: 在「发货执行」页定位目标上孵计划卡片，记录提交前待分配数量、累计发货数量、库存数量、出库记录数量及最后一条出库记录标识
+    expected: 目标计划可定位，且上述字段均记录为本次提交前基线值
+    state_id: app022-exec-default
+    target_element_id: shipment-plan-card
+    locator_ref:
+      element_id: shipment-plan-card
+      strategy: role
+      value: article
+  - action: 点击目标上孵计划卡片的「发货」按钮
+    expected: 弹出标题为"确认发货"的弹窗
+    state_id: app022-ship-dialog
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 清空「所在层」，保留有效「所在列」，输入有效正整数发货数量100并点击「确认提交」
+    expected: 显示「所在层」必填校验提示，提交被阻止且未进入成功提交状态
+    state_id: app022-validation-no-position
+    target_element_id: ship-dialog-confirm
+    locator_ref:
+      element_id: ship-dialog-confirm
+      strategy: text
+      value: 确认提交
+  - action: 检查确认发货弹窗和发货执行页状态
+    expected: 未出现成功提示或成功状态，确认发货弹窗仍处于校验失败状态，目标上孵计划卡片仍可见
+    state_id: app022-validation-no-position
+    target_element_id: ship-dialog
+    locator_ref:
+      element_id: ship-dialog
+      strategy: role
+      value: dialog
+  - action: 刷新发货执行页并核对发货单、库存和出库记录
+    expected: 待分配数量、累计发货数量和库存数量分别等于提交前基线，出库记录数量及最后一条记录标识未发生变化，且不存在本次非法提交产生的业务变更
+    state_id: app022-exec-default
+    target_element_id: shipment-statistics
+    locator_ref:
+      element_id: shipment-statistics
+      strategy: role
+      value: region
+  - action: 再次核对发货单、库存和出库记录，确认提交未产生业务变更
+    expected: 阻止提交；发货单待分配数量、累计发货数量、库存数量、出库记录数量及最后一条记录标识均保持提交前值，无新增发货记录、库存扣减或出库记录
+    state_id: app022-exec-default
+    target_element_id: shipment-statistics
+    locator_ref:
+      element_id: shipment-statistics
+      strategy: role
+      value: region
+  - action: 确认非法提交后的发货单、库存和出库记录状态
+    expected: 无业务变更，所有业务数据均等于提交前基线
+    state_id: app022-exec-default
+    target_element_id: shipment-statistics
+    locator_ref:
+      element_id: shipment-statistics
+      strategy: role
+      value: region
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-020
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-020
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-125
+- id: TC-APP-022-132
+  title: 待发货计划提交发货后状态变更为发货中
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货计划状态转换
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-STATE-IN-PROGRESS
+  plan_item_ids:
+  - PLAN-APP022-STATE-IN-PROGRESS
+  atomic_purpose_ids:
+  - AP-APP022-STATE-TRANSITION-PENDING-TO-IN-PROGRESS
+  preconditions:
+  - 已准备唯一可识别的目标上孵计划，当前状态为“待发货”
+  - 已准备有效列、层和正整数发货数量，且发货数量不超过可发数量
+  - 已记录提交前目标计划状态为“待发货”
+  steps:
+  - action: 在目标上孵计划卡片填写有效列、层和发货数量，点击“提交”按钮
+    expected: 提交成功后重新读取同一目标上孵计划卡片，状态由“待发货”变更为“发货中”，且目标计划标识不变
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-023
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-023
+    responsibility_boundary: 展示层：待发货到发货中的状态转换
+  test_data:
+    page_url: null
+    data_prefix: approved-state-pending-to-in-progress
+  tp_id: TC-APP-022-132
+  scenario_branch: 状态转换：待发货→发货中
+- id: TC-APP-022-289
+  title: 待发货计划完成发货后状态变更为已发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货计划状态转换
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-STATE-SHIPPED
+  plan_item_ids:
+  - PLAN-APP022-STATE-SHIPPED
+  atomic_purpose_ids:
+  - AP-APP022-STATE-TRANSITION-PENDING-TO-SHIPPED
+  preconditions:
+  - 已准备唯一可识别的目标上孵计划，当前状态为“待发货”
+  - 已准备有效列、层和足额发货数量，完成该计划全部待发数量
+  - 已记录提交前目标计划状态为“待发货”
+  steps:
+  - action: 在目标上孵计划卡片填写有效列、层和全部待发发货数量，点击“提交”按钮并确认发货
+    expected: 提交成功后重新读取同一目标上孵计划卡片，状态由“待发货”变更为“已发货”，且目标计划标识不变
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-023
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-023
+    responsibility_boundary: 展示层：待发货到已发货的状态转换
+  test_data:
+    page_url: null
+    data_prefix: approved-state-pending-to-shipped
+  tp_id: TC-APP-022-289
+  scenario_branch: 状态转换：待发货→已发货
+- id: TC-APP-022-290
+  title: 发货中计划完成剩余发货后状态变更为已发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货计划状态转换
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-STATE-IN-PROGRESS-TO-SHIPPED
+  plan_item_ids:
+  - PLAN-APP022-STATE-IN-PROGRESS-TO-SHIPPED
+  atomic_purpose_ids:
+  - AP-APP022-STATE-TRANSITION-IN-PROGRESS-TO-SHIPPED
+  preconditions:
+  - 已准备唯一可识别的目标上孵计划，当前状态为“发货中”
+  - 已准备有效列、层和剩余待发正整数数量，且本次数量等于剩余待发数量
+  - 已记录提交前目标计划状态为“发货中”
+  steps:
+  - action: 在目标上孵计划卡片填写有效列、层和剩余待发数量，点击“提交”按钮并确认发货
+    expected: 提交成功后重新读取同一目标上孵计划卡片，状态由“发货中”变更为“已发货”，且目标计划标识不变
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-023
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-023
+    responsibility_boundary: 展示层：发货中到已发货的状态转换
+  test_data:
+    page_url: null
+    data_prefix: approved-state-in-progress-to-shipped
+  tp_id: TC-APP-022-290
+  scenario_branch: 状态转换：发货中→已发货
+- id: TC-APP-022-148
+  title: 提交有效发货数量后上孵计划数据完成更新
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货确认提交
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-CONFIRM-COMMIT-UPDATE
+  plan_item_ids:
+  - PLAN-APP022-CONFIRM-COMMIT-UPDATE
+  atomic_purpose_ids:
+  - AP-APP022-SR-033-59
+  preconditions:
+  - 有效发货数 q 满足正整数且不超过目标计划可分配余量
+  steps:
+  - action: 进入正式发货执行页面，填写有效列、层、发货数 q，点击当前页面实际提供的提交或完成发货按钮；如出现确认弹窗则点击确定
+    expected: 提交有效发货数量 q 后，弹窗关闭并返回执行页。
+  - action: 重新读取发货单和目标计划数据
+    expected: 上孵计划数据更新。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-033
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-033
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-148
+- id: TC-APP-022-195
+  title: 未出雏的上孵计划发货按钮隐藏
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SR-059-106
+  preconditions:
+  - 存在待发货且未出雏的上孵计划
+  steps:
+  - action: 查看目标计划卡片操作区域
+    expected: 发货按钮隐藏。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-059
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-059
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-195
+- id: TC-APP-022-196
+  title: 未出雏的上孵计划记录按钮隐藏
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SR-059-107
+  preconditions:
+  - 存在待发货且未出雏的上孵计划
+  steps:
+  - action: 查看目标计划卡片操作区域
+    expected: 记录按钮隐藏。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-059
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-059
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-196
+- id: TC-APP-022-197
+  title: 待发货且已出雏计划卡片显示“记录”按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SR-060-108
+  preconditions:
+  - 存在待发货且已出雏的上孵计划
+  steps:
+  - action: 查看目标计划卡片操作区域
+    expected: 记录按钮显示。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-060
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-060
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-197
+- id: TC-APP-022-198
+  title: 发货中计划卡片显示“记录”按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SR-061-109
+  preconditions:
+  - 存在发货中的上孵计划
+  steps:
+  - action: 查看目标计划卡片操作区域
+    expected: 记录按钮显示。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-061
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-061
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-198
+- id: TC-APP-022-199
+  title: 已签收计划显示记录按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SR-062-110
+  preconditions:
+  - 存在一个与本用例目标状态一致的上孵计划
+  steps:
+  - action: 查看一个已签收计划卡片的操作区域
+    expected: 仅验证已签收计划显示“记录”按钮。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-062
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-062
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-199
+- id: TC-APP-022-200
+  title: 已签收计划隐藏发货按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划卡片操作按钮
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-BUTTON-RULE
+  plan_item_ids:
+  - PLAN-APP022-BUTTON-RULE
+  atomic_purpose_ids:
+  - AP-APP022-SR-062-111
+  preconditions:
+  - 存在一个与本用例目标状态一致的上孵计划
+  steps:
+  - action: 查看一个已签收计划卡片的操作区域
+    expected: 仅验证已签收计划不显示“发货”按钮。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: split_from_TC-APP-022-062
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-062
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-200
+- id: TC-APP-022-251
+  title: 发货执行页顶部显示目标孵化计划号
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货执行页
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-METRICS
+  plan_item_ids:
+  - PLAN-APP022-METRICS
+  atomic_purpose_ids:
+  - AP-APP022-HATCH-PLAN-NO-DISPLAY
+  preconditions:
+  - 授权发货角色可用
+  - 已准备待发货执行单初始数据
+  steps:
+  - action: 打开发货执行单的发货执行页
+    expected: 打开发货执行页。
+  - action: 查看执行页顶部主信息区域
+    expected: 顶部区域显示前置条件中的目标孵化计划号。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 6
+    status: split_from_TC-APP-022-091
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-091
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-251
+- id: TC-APP-022-263
+  title: 负数数量拒绝
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量异常
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-NEGATIVE
+  plan_item_ids:
+  - PLAN-APP022-QTY-NEGATIVE
+  atomic_purpose_ids:
+  - AP-APP022-QTY-NEGATIVE
+  preconditions: []
+  steps:
+  - action: 输入负数数量并尝试提交。
+    expected: 页面阻止提交并显示明确的数量校验提示，未产生业务提交。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 7
+    status: updated_after_design_review_scenario_supplement
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+    data_status: 待确认
+  tp_id: TC-APP-022-263
+- id: TC-APP-022-272
+  title: 发货中状态继续发货
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态转换
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-STATE-IN-PROGRESS
+  plan_item_ids:
+  - PLAN-APP022-STATE-IN-PROGRESS
+  atomic_purpose_ids:
+  - AP-APP022-STATE-IN-PROGRESS
+  preconditions:
+  - 准备发货中执行单；真实状态数据待确认。
+  steps:
+  - action: 打开发货中执行单并查看可操作计划。
+    expected: 页面展示发货中状态及可操作计划。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 7
+    status: updated_after_design_review_scenario_supplement
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+    data_status: 待确认
+  tp_id: TC-APP-022-272
+- id: TC-APP-022-273
+  title: 已发货状态禁止继续发货
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态转换
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-STATE-SHIPPED
+  plan_item_ids:
+  - PLAN-APP022-STATE-SHIPPED
+  atomic_purpose_ids:
+  - AP-APP022-STATE-SHIPPED
+  preconditions:
+  - 准备已发货执行单；真实状态数据待确认。
+  steps:
+  - action: 打开已发货执行单并查看发货操作入口。
+    expected: 页面展示已发货状态，且不提供可提交的发货入口。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 7
+    status: updated_after_design_review_scenario_supplement
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+  test_data:
+    page_url: null
+    data_status: 待确认
+  tp_id: TC-APP-022-273
+- id: TC-APP-022-278
+  title: 待分配数量为零时禁止发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 待分配数量为0时发货
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-QTY-PENDING-ZERO
+  plan_item_ids:
+  - PLAN-APP022-QTY-EMPTY
+  atomic_purpose_ids:
+  - AP-APP022-EP-BVA-QTY-PENDING-ZERO
+  preconditions:
+  - 脱敏业务数据、权限和执行环境需责任人确认；未确认项保持blocked
+  - 本用例不执行真实业务提交
+  steps:
+  - action: 打开待分配数量为0的计划并查看发货入口
+    expected: 数量为 0 时，在确认提交前阻止提交并显示校验提示。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: coverage_ledger_supplemented_pending_execution
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-003
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-278
+  scenario_branch: 待分配数量为零时禁止发货
+- id: TC-APP-022-280
+  title: 选择无效列层的提交门禁
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 无效列层组合阻止提交
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-POSITION-INVALID
+  plan_item_ids:
+  - PLAN-APP022-QTY-EMPTY
+  atomic_purpose_ids:
+  - AP-APP022-DT-POSITION-INVALID
+  preconditions:
+  - 脱敏业务数据、权限和执行环境需责任人确认；未确认项保持blocked
+  - 本用例不执行真实业务提交
+  steps:
+  - action: 使用不属于当前园区基础数据的列层值并点击确认提交
+    expected: 列层无效时阻止提交，并显示无效列层提示且不产生发货记录。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: coverage_ledger_supplemented_pending_execution
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-003
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-280
+  scenario_branch: 选择无效列层的提交门禁
+- id: TC-APP-022-284
+  title: 幂等键重放不重复发货
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 相同业务请求重放
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-IDEMPOTENCY-REPLAY
+  plan_item_ids:
+  - PLAN-APP022-QTY-EMPTY
+  atomic_purpose_ids:
+  - AP-APP022-DT-IDEMPOTENCY-REPLAY
+  preconditions:
+  - 脱敏业务数据、权限和执行环境需责任人确认；未确认项保持blocked
+  - 本用例不执行真实业务提交
+  steps:
+  - action: 对同一发货单、计划、列、层和数量重复发送相同业务请求
+    expected: 重复提交时最多产生一条发货记录，且不重复扣减。
+  trace:
+    req: REQ-APP-022
+    project: 种禽孵化管理系统
+    version: 4
+    status: coverage_ledger_supplemented_pending_execution
+    tp: TEST_PLAN-REQ-APP-022
+    source_review: REV_CASE_REQ-APP-022
+    source_case_id: TC-APP-022-003
+  test_data:
+    page_url: null
+  tp_id: TC-APP-022-284
+  scenario_branch: 幂等键重放不重复发货
+- id: TC-APP-022-300
+  title: 部分发货时不生成出库记录且库存不减少
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 发货完成联动
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SHIPMENT-PARTIAL-NO-STOCK-EFFECT
+  plan_item_ids:
+  - PLAN-APP022-SHIPMENT-COMPLETION
+  atomic_purpose_ids:
+  - AP-APP022-SHIPMENT-PARTIAL-NO-STOCK-EFFECT
+  preconditions:
+  - 已准备待发货数 R 大于本次发货数量 q 的上孵计划
+  - 已记录发货前库存和出入库记录基线
+  steps:
+  - action: 提交本次有效发货 q，使剩余待发货数仍大于零
+    expected: 发货执行成功，剩余待发货数正确减少；不生成本次完成联动的出库记录，库存不减少。
+  test_data: {page_url: null, data_prefix: 未提供}
+  trace: {story: null, req: REQ-APP-022, project: 种禽孵化管理系统, version: 6, status: blocked_contract, tp: TEST_PLAN-REQ-APP-022}
+  tp_id: TC-APP-022-300
+  scenario_branch: 部分发货且待发货数大于零
+  zentao_case_id: null
+  mapping_status: pending_registry
+- id: TC-APP-022-301
+  title: 最后一次发货完成时生成出库记录并扣减库存
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 发货完成联动
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SHIPMENT-COMPLETE-STOCK-EFFECT
+  plan_item_ids:
+  - PLAN-APP022-SHIPMENT-COMPLETION
+  atomic_purpose_ids:
+  - AP-APP022-SHIPMENT-COMPLETE-STOCK-EFFECT
+  preconditions:
+  - 已准备最后一次有效发货使待发货数归零的上孵计划
+  - 已记录发货前库存和出入库记录基线
+  steps:
+  - action: 提交最后一次有效发货，使剩余待发货数归零
+    expected: 发货执行成功，生成对应出库记录并扣减库存。
+  test_data: {page_url: null, data_prefix: 未提供}
+  trace: {story: null, req: REQ-APP-022, project: 种禽孵化管理系统, version: 6, status: blocked_contract, tp: TEST_PLAN-REQ-APP-022}
+  tp_id: TC-APP-022-301
+  scenario_branch: 最后一次发货使待发货数归零
+  zentao_case_id: null
+  mapping_status: pending_registry
+- id: TC-APP-022-302
+  title: 多次发货完成后出库数量及库存变动数量等于累计发货数
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 发货完成联动
+  common_preconditions_ref: app_shipment_execution_access
+  coverage_ids:
+  - COV-APP022-SHIPMENT-CUMULATIVE-STOCK-EFFECT
+  plan_item_ids:
+  - PLAN-APP022-SHIPMENT-COMPLETION
+  atomic_purpose_ids:
+  - AP-APP022-SHIPMENT-CUMULATIVE-STOCK-EFFECT
+  preconditions:
+  - 已准备经过多次有效发货后待发货数归零的上孵计划
+  - 已记录实际可发数、各次发货数量及发货前库存基线
+  steps:
+  - action: 完成多次有效发货直至待发货数归零，回读出库记录和库存变动
+    expected: 仅在全部发完后产生联动；出库数量及库存变动数量等于各次发货累计数，且等于上孵计划实际可发数。
+  test_data: {page_url: null, data_prefix: 未提供}
+  trace: {story: null, req: REQ-APP-022, project: 种禽孵化管理系统, version: 6, status: blocked_contract, tp: TEST_PLAN-REQ-APP-022}
+  tp_id: TC-APP-022-302
+  scenario_branch: 多次发货累计完成
+  zentao_case_id: null
+  mapping_status: pending_registry

@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "req_id": "REQ-APP-022",
+  "req_name": "雏苗发货执行",
+  "description": "REQ-APP-022 原型页面状态与指定蓝湖设计图的映射关系。对无法确认的关系标记为 partial_matched 或 unmatched，不虚构匹配。",
+  "prototype_source": {
+    "source_file": "02_analysis/app/page_inventory/page.json",
+    "page_id": "app-chick-shipment-execute",
+    "page_title": "发货执行 - React 原型",
+    "route": "http://43.143.148.114:18885/biopark-breeding/m/orders/BL-20260630-01/execute",
+    "menu_path": ["首页", "雏苗发货", "发货执行"],
+    "states": [
+      {"state_id":"app022-exec-default","state_name":"发货执行默认态","description":"待发货发货单，展示发货进度、实际可发、累计发货、待分配数和上孵计划列表，并提供记录/发货入口"},
+      {"state_id":"app022-ship-dialog","state_name":"发货位置编辑弹窗","description":"点击发货后显示计划号、待分配数量、选择列、选择层、当前累计、发货数量、备注、取消和确认发货"},
+      {"state_id":"app022-validation-no-quantity","state_name":"发货数量校验失败","description":"发货数量为空或为 0 时提示发货数量需为大于 0 的整数"},
+      {"state_id":"app022-validation-exceed-quantity","state_name":"发货数量超限校验","description":"发货数量超过待分配数量时显示超限校验提示"},
+      {"state_id":"app022-validation-no-position","state_name":"未修改位置直接提交","description":"输入数量后保持默认列/层提交，原型实际提交成功；记录了原型缺少位置必填校验的问题"},
+      {"state_id":"app022-remark-200-limit","state_name":"备注长度限制","description":"备注 maxlength=200 生效，超过 200 字符时截断；无实时字符计数器"},
+      {"state_id":"app022-execute-shipped","state_name":"已发货状态发货执行页","description":"发货进度 100%，待分配数为 0，计划仅显示记录按钮"},
+      {"state_id":"app022-execute-bl02","state_name":"发货中状态发货执行页","description":"发货进度 65%，计划列表同时覆盖待发货、发货中、已发货和已签收状态"},
+      {"state_id":"app022-bl02-ship-dialog","state_name":"发货中状态的位置编辑弹窗","description":"在发货中发货单的待发货计划上点击发货，显示位置编辑弹窗"}
+    ]
+  },
+  "lanhu_design_source": {
+    "source_dir": "02_analysis/app/page_inventory/lanhu",
+    "designs": [
+      {"design_id":"2a6bbf07-1f40-4745-a4c8-7b5e6b547ab9","design_name":"雏苗发货执行-上滑","source_file":"02_analysis/app/page_inventory/lanhu/雏苗发货执行-上滑_design.json","node_count":204,"max_depth":7,"size":"375x904"},
+      {"design_id":"56e35a99-c60b-4adc-9f88-bf85e0a98744","design_name":"雏苗发货执行版本1","source_file":"02_analysis/app/page_inventory/lanhu/雏苗发货执行版本1_design.json","node_count":198,"max_depth":7,"size":"375x1307"},
+      {"design_id":"414a2571-f601-411f-a3f3-190f12d2f1ac","design_name":"雏苗发货执行版本2","source_file":"02_analysis/app/page_inventory/lanhu/雏苗发货执行版本2_design.json","node_count":234,"max_depth":7,"size":"375x1543"},
+      {"design_id":"fa69b80d-340e-4393-b09e-6e68ac97b953","design_name":"确认发货","source_file":"02_analysis/app/page_inventory/lanhu/确认发货_design.json","node_count":48,"max_depth":6,"size":"375x812"},
+      {"design_id":"07f1c5c4-79d6-4c1c-a9ce-1a228f38b930","design_name":"确认发货-富状态","source_file":"02_analysis/app/page_inventory/lanhu/确认发货-富状态_design.json","node_count":49,"max_depth":6,"size":"375x812"}
+    ]
+  },
+  "mappings": [
+    {"prototype_state_id":"app022-exec-default","prototype_state_name":"发货执行默认态","req_id":"REQ-APP-022","lanhu_design_id":"414a2571-f601-411f-a3f3-190f12d2f1ac","lanhu_design_name":"雏苗发货执行版本2","match_status":"matched","match_confidence":"high","match_basis":"375x1543 长页面包含发货执行标题、待发货/发货中/已发货/已签收状态、计划列表和发货入口，最完整地覆盖默认发货执行页面结构。"},
+    {"prototype_state_id":"app022-ship-dialog","prototype_state_name":"发货位置编辑弹窗","req_id":"REQ-APP-022","lanhu_design_id":"fa69b80d-340e-4393-b09e-6e68ac97b953","lanhu_design_name":"确认发货","match_status":"matched","match_confidence":"high","match_basis":"设计图包含确认提交、确认发货、待发货、所在列、所在层和发货数等弹窗字段。"},
+    {"prototype_state_id":"app022-validation-no-quantity","prototype_state_name":"发货数量校验失败","req_id":"REQ-APP-022","lanhu_design_id":"07f1c5c4-79d6-4c1c-a9ce-1a228f38b930","lanhu_design_name":"确认发货-富状态","match_status":"partial_matched","match_confidence":"medium","match_basis":"富状态设计图对应确认发货弹窗及校验反馈场景，但未从当前设计图名称确认具体为数量为空/0 的错误态。"},
+    {"prototype_state_id":"app022-validation-exceed-quantity","prototype_state_name":"发货数量超限校验","req_id":"REQ-APP-022","lanhu_design_id":"07f1c5c4-79d6-4c1c-a9ce-1a228f38b930","lanhu_design_name":"确认发货-富状态","match_status":"matched","match_confidence":"high","match_basis":"设计图节点备注明确记录发货数超过待发货数时自动修正并 toast 提醒，直接对应超限校验场景。"},
+    {"prototype_state_id":"app022-validation-no-position","prototype_state_name":"未修改位置直接提交","req_id":"REQ-APP-022","lanhu_design_id":null,"lanhu_design_name":null,"match_status":"unmatched","match_confidence":null,"match_basis":"这是原型缺少列/层必填校验后的实际行为，未找到明确呈现该缺陷行为的独立设计图。"},
+    {"prototype_state_id":"app022-remark-200-limit","prototype_state_name":"备注长度限制","req_id":"REQ-APP-022","lanhu_design_id":"fa69b80d-340e-4393-b09e-6e68ac97b953","lanhu_design_name":"确认发货","match_status":"partial_matched","match_confidence":"medium","match_basis":"确认发货设计图包含备注字段，但未单独呈现 200 字符截断后的交互状态。"},
+    {"prototype_state_id":"app022-execute-shipped","prototype_state_name":"已发货状态发货执行页","req_id":"REQ-APP-022","lanhu_design_id":"56e35a99-c60b-4adc-9f88-bf85e0a98744","lanhu_design_name":"雏苗发货执行版本1","match_status":"partial_matched","match_confidence":"medium","match_basis":"版本1为独立的发货执行页面状态，包含已发货和待发货等状态节点；未能仅凭设计图名称确认其专门对应 100% 已发货状态。"},
+    {"prototype_state_id":"app022-execute-bl02","prototype_state_name":"发货中状态发货执行页","req_id":"REQ-APP-022","lanhu_design_id":"414a2571-f601-411f-a3f3-190f12d2f1ac","lanhu_design_name":"雏苗发货执行版本2","match_status":"matched","match_confidence":"high","match_basis":"版本2包含发货中、已发货、待发货、已签收四类计划状态，和原型 BL-02 发货中页面的混合状态列表一致。"},
+    {"prototype_state_id":"app022-bl02-ship-dialog","prototype_state_name":"发货中状态的位置编辑弹窗","req_id":"REQ-APP-022","lanhu_design_id":"fa69b80d-340e-4393-b09e-6e68ac97b953","lanhu_design_name":"确认发货","match_status":"partial_matched","match_confidence":"medium","match_basis":"该弹窗与默认态发货弹窗结构一致，设计图没有标明其来自 BL-02 发货中状态，因此按通用弹窗部分匹配。"}
+  ],
+  "unmatched": {
+    "prototype_states":[{"state_id":"app022-validation-no-position","state_name":"未修改位置直接提交","reason":"未找到对应的独立设计图；该项主要记录原型行为缺陷"}],
+    "lanhu_designs":[{"design_id":"2a6bbf07-1f40-4745-a4c8-7b5e6b547ab9","design_name":"雏苗发货执行-上滑","reason":"属于发货执行页面上滑/滚动状态，无法从原型状态定义中唯一确认对应的独立状态"}]
+  },
+  "summary": {"prototype_state_count":9,"lanhu_design_count":5,"mapping_count":9,"matched_count":3,"partial_matched_count":5,"unmatched_prototype_state_count":1,"unmatched_lanhu_design_count":1,"coverage_rate":"89%"},
+  "self_check": {"prototype_input_modified":false,"design_inputs_modified":false,"all_prototype_states_recorded":true,"all_designs_recorded":true,"matched_and_unmatched_recorded":true,"output_directory":"02_analysis/app/page_inventory/lanhu_page_mapping","output_file":"REQ-APP-022_lanhu_page_mapping.json"}
+}

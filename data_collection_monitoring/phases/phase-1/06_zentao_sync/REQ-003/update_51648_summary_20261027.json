@@ -1,0 +1,40 @@
+{
+  "status": "validated",
+  "case_id": "TC-REQ-003-045",
+  "remote_case_id": 51648,
+  "operation": "update",
+  "remote_context": {
+    "project": 46,
+    "product": 8,
+    "module": 732
+  },
+  "step_count": 3,
+  "removed_text": "；本轮不执行保存",
+  "steps": [
+    {
+      "action": "在目标产品记录的操作列点击“编辑”按钮。",
+      "expected": "编辑页面打开并显示允许编辑的字段。"
+    },
+    {
+      "action": "在允许编辑的字段输入经批准的修改值。",
+      "expected": "修改值保留在对应输入控件中。"
+    },
+    {
+      "action": "点击“保存”按钮，观察页面在保存过程中的提示和按钮状态。",
+      "expected": "页面显示正在保存的提示，或暂时禁用“保存”按钮，防止重复提交。"
+    }
+  ],
+  "defects": [],
+  "readback_source": "raw_readback_51648_utf8.json",
+  "source_hashes_after": {
+    "04_testcases\\TC_REQ-003.yaml": "8a567c1bc7bffa71cf87df914b2ad363db39ecbb8b44dbf01860574ad461fee0",
+    "04_testcases\\TC_REQ-003.md": "b63f8df7a5956e8b584a96d40f1297f513d2b14656deb0a57bca6a01f219ba96",
+    "05_case_review\\REV_CASE_REQ-003.yaml": "a1d125f8ad17c812e5ec278dcbdf3d9a392ca90c6ad7a6f78cbc543b245195bf",
+    "05_case_review\\REV_CASE_REQ-003.md": "2c91ce282a26a1c2f762231d5b5bc71d0ad7af8581785d8b178805a92ac9f0e8",
+    "05_case_review\\HANDOFF\\REQ-003_HANDOFF.md": "562e44f213c56cf8ea7722181590cbc966a5fec0824406db79f12f41edc9f161",
+    "04_testcases\\HANDOFF\\REQ-003_HANDOFF.md": "93867d21e78f3976e3c26873081f8457efa8fe2e0e642f48de4ed476cf9bbb49",
+    "06_zentao_sync\\REQ-003\\HANDOFF\\REQ-003_HANDOFF.md": "2a535a594dfffb9709fba4c15e33f225e5837010057a94daba2da83ae8a9e93e",
+    "module_case_map.json": "17a9d02ee36b08127780111367cc0d74ad0ee1b9dd263ba500bb1f2534de19b4",
+    "06_zentao_sync\\REQ-003\\raw_readback_51648_utf8.json": "bd3ae2ded266e4b32bbe2f002b4c94908ddac51806f312e9ecb860810a7997a7"
+  }
+}

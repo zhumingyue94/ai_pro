@@ -1,0 +1,885 @@
+id: REQ-PC-014
+title: 库存查询
+module_path: 库存管理 / 存发苗间 / 库存查询
+trace:
+  story: null
+  req: REQ-PC-014
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: 库存管理 / 存发苗间 / 库存查询基于当前 PC 5500 原型与需求章节重新分析。
+in_scope:
+- 当前模块实际页面的查询区、列表、表单、弹窗、按钮、状态和页面板块
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 测试点、测试用例、CSV、UI 脚本
+- 真实接口/数据库/权限实现
+- 原型未确认的业务事实
+business_rules:
+- id: BR-001
+  rule: 鸡苗库存 1、鸡苗类型：健雏； 2、确定一种鸡苗的字段包括：鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重； 3、以孵化场、仓库、鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重为维度铺列仓库，每种类型合并计数及操作；
+    4、鸡苗库存没有库位概念； 5、存发苗间的鸡苗类型是不断在变动的，只要有数量就会出现展示，没有数量不展示，不同于次品库，没有固定的类型。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库存查询
+- id: BR-002
+  rule: 平均苗重：来自种蛋出雏任务执行时填写。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库存查询
+- id: BR-003
+  rule: 数据可能来自多个上孵计划，则展示多个上孵计划号。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库存查询
+- id: BR-004
+  rule: 关于每行操作的说明： 1、每行的操作（出库、盘点），仅针对并涉及该行数据/类型进行操作； 2、出库：如果有健雏数据，则有出库操作按钮，点击弹框/跳转进行出库操作； 3、盘点：点击弹框进行盘点操作，盘点对应生成盘点出库和盘点入库记录；
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库存查询
+- id: BR-005
+  rule: 关于批量操作的说明： 1、入库：①此为入库操作，不需要选择某类鸡苗就可以操作，如果选择，则选择为无效操作；②点击有弹框入库操作，统一的入库弹框； 2、出库：①此为多类型鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框出库操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量出库操作可跨孵化场、仓库；
+    3、盘点：①此为多鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框盘点操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量盘点操作可跨孵化场、仓库； 5、导出：导出选中鸡苗的仓库信息表，如果没有选中也可导出，默认全选操作。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库存查询
+- id: BR-006
+  rule: 鸡苗类型：只有健雏。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库存查询
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces:
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-005
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-032
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 页面内导航
+  type: prototype_navigation
+  source_module: live prototype
+  targets:
+  - 上孵计划列表
+  - 仓库全景图（待定）
+  - 仓库管理
+  - 出入库记录
+  - 出雏器全景图（待定）
+  - 出雏器管理
+  - 受健率标准管理
+  - 品种管理
+  - 存发苗间管理
+  - 孵化周期管理
+  - 孵化器全景图（待定）
+  - 孵化器管理
+  - 库位出入库记录
+  - 库存查询
+  - 生产报表
+  - 盘点记录
+  - 种蛋上孵任务
+  - 种蛋出雏任务
+  - 种蛋照蛋任务
+  - 蛋重类型管理
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 真实接口、权限、异常提示和字段校验规则是什么？
+  impact: 影响正式契约与下游测试点
+  owner: 产品/研发
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: observed
+    observed_page_count: 1
+    unmapped_pages: []
+    interaction_boundary: 页面树导航和 DOM 观察，未执行写操作
+  page_chrome:
+  - page: 库存查询
+    title: 库存查询
+    url: http://127.0.0.1:5500/%E5%BA%93%E5%AD%98%E6%9F%A5%E8%AF%A2_3.html
+    notes: live DOM
+  page_block_specs:
+  - id: CHROME
+    name: 页面壳层
+    fields:
+    - 库存查询
+    data_source: live DOM
+    coverage:
+    - l1
+    - l2
+  - id: CONTROLS
+    name: 当前页面控件
+    fields:
+    - checkbox
+    - 全部仓库 北一号仓库 北二号仓库 南一号仓库
+    - 全部类型 健雏
+    - 全部养殖场 养殖场一 养殖场二 养殖场三
+    - 全部品种 AA 利丰
+    - 全部孵化场 孵化一场 孵化二场
+    - 请输入养殖批次
+    data_source: live DOM visible controls
+    coverage:
+    - l1
+    - l2
+    - l3
+  - id: NOTES
+    name: 原型注释
+    fields:
+    - 鸡苗库存 1、鸡苗类型：健雏； 2、确定一种鸡苗的字段包括：鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重； 3、以孵化场、仓库、鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重为维度铺列仓库，每种类型合并计数及操作； 4、鸡苗库存没有库位概念；
+      5、存发苗间的鸡苗类型是不断在变动的，只要有数量就会出现展示，没有数量不展示，不同于次品库，没有固定的类型。
+    - 平均苗重：来自种蛋出雏任务执行时填写。
+    - 数据可能来自多个上孵计划，则展示多个上孵计划号。
+    - 关于每行操作的说明： 1、每行的操作（出库、盘点），仅针对并涉及该行数据/类型进行操作； 2、出库：如果有健雏数据，则有出库操作按钮，点击弹框/跳转进行出库操作； 3、盘点：点击弹框进行盘点操作，盘点对应生成盘点出库和盘点入库记录；
+    - 关于批量操作的说明： 1、入库：①此为入库操作，不需要选择某类鸡苗就可以操作，如果选择，则选择为无效操作；②点击有弹框入库操作，统一的入库弹框； 2、出库：①此为多类型鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框出库操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量出库操作可跨孵化场、仓库；
+      3、盘点：①此为多鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框盘点操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量盘点操作可跨孵化场、仓库； 5、导出：导出选中鸡苗的仓库信息表，如果没有选中也可导出，默认全选操作。
+    - 鸡苗类型：只有健雏。
+    data_source: requirement/prototype annotations
+    coverage:
+    - l1
+    - l2
+  - id: DIALOGS
+    name: 页面弹窗
+    fields:
+    - 雏苗出入库操作弹框
+    - 确认入库弹框
+    - 保存草稿
+    - 确认入库弹框
+    - 保存草稿
+    - 确认盘点弹框
+    - 保存草稿
+    - 确认入库弹框
+    - 保存草稿
+    - 确认盘点弹框
+    - 保存草稿
+    - 确认入库弹框
+    - 保存草稿
+    data_source: page-specific hidden widgets
+    coverage:
+    - l1
+    - l2
+    - l3
+  query_field_specs:
+  - name: 全部仓库 北一号仓库 北二号仓库 南一号仓库
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19002_input
+  - name: 全部类型 健雏
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19004_input
+  - name: 全部养殖场 养殖场一 养殖场二 养殖场三
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19006_input
+  - name: 全部品种 AA 利丰
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19009_input
+  - name: 全部孵化场 孵化一场 孵化二场
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19025_input
+  - name: 请输入养殖批次
+    control: text
+    options_source: live DOM option/value
+    notes: live control u19026_input
+  form_field_specs: []
+  button_semantics:
+    上孵计划:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋上孵:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋照蛋:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋出雏:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    品种管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    蛋重类型管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    库存查询:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出入库记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    盘点记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库全景图:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    生产报表:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    存发苗间管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化周期管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    受健率标准管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    入库:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出库:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    确认:
+      action: confirm
+      summary: 确认当前弹窗或表单动作
+    取消:
+      action: cancel
+      summary: 关闭当前弹窗或撤销未确认变更
+    盘点:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+  nested_dialogs:
+  - id: 雏苗出入库操作弹框
+    type: input
+    trigger: page-specific prototype control
+    title: 雏苗出入库操作弹框
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 手动入库
+    - '*存发苗间：'
+    - 确认
+    - 取消
+    - 宜兴二场
+    - 宜兴一场
+    - 养殖场组织列表
+    - AA
+    - 利丰
+    - '*养殖场：'
+    - '*品种：'
+    - '*入库数：'
+    - '*养殖批次：'
+    - '*孵化场：'
+    - 备注：
+    - '*入库原因：'
+    - 请选择入库原因
+    - 鸡苗挑选
+    - 其他
+    - 请选择仓库
+    - 北一号仓库
+    - 北二号仓库
+    - 南一号仓库
+    - 请选择孵化场
+    - 孵化一场
+    - 孵化二场
+    - 注释：入库只可针对某一个孵化场下的某一个仓库操作
+    - '*平均苗重：'
+    - '*出苗日期：'
+    - 注释：1、入库字段逻辑规则同其他仓库入库，此处不再重复赘述；2、入库原因：种蛋出雏、其他；无默认选择；3、确认有二次弹框确认。
+    - '*鸡苗类型：'
+    - 健雏
+    - 确认雏苗入库
+    - 是否确认入库？
+    - 确认
+    - 取消
+    - 保存上孵计划
+    - 是否确认保存草稿？
+    - 确认
+    - 取消
+    buttons: &id001
+    - 确认
+    - 取消
+    - 保存
+  - id: 确认入库弹框
+    type: confirm
+    trigger: page-specific prototype control
+    title: 确认入库弹框
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 确认雏苗入库
+    - 是否确认入库？
+    - 确认
+    - 取消
+    - 保存上孵计划
+    - 是否确认保存草稿？
+    - 确认
+    - 取消
+    buttons: &id003
+    - 确认
+    - 取消
+    - 保存
+  - id: 保存草稿
+    type: input
+    trigger: page-specific prototype control
+    title: 保存草稿
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 保存上孵计划
+    - 是否确认保存草稿？
+    - 确认
+    - 取消
+    buttons: &id004
+    - 确认
+    - 取消
+    - 保存
+  - id: 确认盘点弹框
+    type: confirm
+    trigger: page-specific prototype control
+    title: 确认盘点弹框
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 确认盘点
+    - 是否确认完成盘点？
+    - 确认
+    - 取消
+    - 保存上孵计划
+    - 是否确认保存草稿？
+    - 确认
+    - 取消
+    buttons: &id002
+    - 确认
+    - 取消
+    - 保存
+  sub_tables: []
+  table_column_specs:
+  - name: 智孵管家管理平台
+    order: 1
+  - name: 上孵计划
+    order: 2
+  - name: 种蛋上孵
+    order: 3
+  - name: 种蛋照蛋
+    order: 4
+  - name: 种蛋出雏
+    order: 5
+  - name: 品种管理
+    order: 6
+  - name: 蛋重类型管理
+    order: 7
+  - name: 合格蛋蛋库
+    order: 8
+  - name: 次品库
+    order: 9
+  - name: 生产报表
+    order: 10
+  - name: 仓库管理
+    order: 11
+  - name: 存发苗间管理
+    order: 12
+  - name: 孵化器管理
+    order: 13
+  - name: 出雏器管理
+    order: 14
+  - name: 孵化周期管理
+    order: 15
+  - name: 养殖场管理
+    order: 16
+  - name: 孵化场管理
+    order: 17
+  - name: 组织管理
+    order: 18
+  - name: 用户管理
+    order: 19
+  - name: 存发苗间
+    order: 20
+  - name: 库存查询
+    order: 21
+  - name: 出入库记录
+    order: 22
+  - name: 孵化器全景
+    order: 23
+  - name: 出雏器全景
+    order: 24
+  - name: 受健率标准管理
+    order: 25
+  - name: 二级蛋蛋库
+    order: 26
+  - name: 首页/一级菜单/二级菜单/三级菜单…
+    order: 27
+  - name: 合计
+    order: 28
+  - name: 孵化场
+    order: 29
+  - name: 鸡苗类型
+    order: 30
+  computed_fields: []
+  save_validations:
+  - rule: 关于批量操作的说明： 1、入库：①此为入库操作，不需要选择某类鸡苗就可以操作，如果选择，则选择为无效操作；②点击有弹框入库操作，统一的入库弹框； 2、出库：①此为多类型鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框出库操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量出库操作可跨孵化场、仓库；
+      3、盘点：①此为多鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框盘点操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量盘点操作可跨孵化场、仓库； 5、导出：导出选中鸡苗的仓库信息表，如果没有选中也可导出，默认全选操作。
+    when:
+    - 保存
+    - 确认
+    - 提交
+    message: 需求/原型规则，具体错误文案需确认
+  ui_components:
+  - input/select/button
+  - modal_confirm
+  - table
+  cross_module_refs:
+  - field: 库存查询
+    source_module: REQ-PC-005
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 库存查询
+    source_module: REQ-PC-032
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 页面内导航
+    source_module: live prototype
+    dialog: 页面打开链接
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 上孵计划列表
+    - 仓库全景图（待定）
+    - 仓库管理
+    - 出入库记录
+    - 出雏器全景图（待定）
+    - 出雏器管理
+    - 受健率标准管理
+    - 品种管理
+    - 存发苗间管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 孵化器管理
+    - 库位出入库记录
+    - 库存查询
+    - 生产报表
+    - 盘点记录
+    - 种蛋上孵任务
+    - 种蛋出雏任务
+    - 种蛋照蛋任务
+    - 蛋重类型管理
+  detail_table_specs: []
+  concurrency_checks: []
+  role_coverage: skip
+  observed_pages:
+  - page: 库存查询
+    nodeurl: 库存查询_3.html
+    title: 库存查询
+    frame_url: http://127.0.0.1:5500/%E5%BA%93%E5%AD%98%E6%9F%A5%E8%AF%A2_3.html
+    body_line_count: 428
+    body_lines:
+    - 智孵管家管理平台
+    - 计划管理
+    - 上孵计划
+    - 孵化管理
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 库存管理
+    - 品种管理
+    - 蛋重类型管理
+    - 合格蛋蛋库
+    - 次品库
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 养殖场管理
+    - 孵化场管理
+    - 组织管理
+    - 用户管理
+    - 存发苗间
+    - 库存查询
+    - 出入库记录
+    - 孵化器全景
+    - 出雏器全景
+    - 基础数据
+    - 受健率标准管理
+    - 二级蛋蛋库
+    - 首页/一级菜单/二级菜单/三级菜单…
+    - 合计
+    - '9000'
+    - 孵化场
+    - 鸡苗类型
+    - 养殖场
+    - 养殖批次
+    - 品种
+    - 出苗日期
+    - 平均苗重/g
+    - 当前库存
+    - 上孵计划号
+    - 操作
+    - 孵化一场
+    - 北一号仓库
+    - 健雏
+    - 养殖场一
+    - 1p
+    - AA
+    - '2025-11-25'
+    - '345'
+    - '7000'
+    - SFJH874932224，SFJH874932224，SFJH874932224
+    - 2p
+    - 利丰
+    - '2025-11-30'
+    - '543'
+    - '2000'
+    - SFJH874932224
+    - 养殖场二
+    - 2026-1-10
+    - 南二号仓库
+    - 3p
+    - '6000'
+    - 入库
+    - 出库
+    - 搜索
+    - 重置
+    - 存发苗间：
+    - 全部仓库
+    - 北二号仓库
+    - 南一号仓库
+    - 鸡苗类型：
+    - 全部类型
+    - 养殖场：
+    - 全部养殖场
+    - 养殖场三
+    - 养殖批次：
+    - 品种：
+    - 全部品种
+    - 盘点
+    - 孵化场：
+    - 全部孵化场
+    - 孵化二场
+    - 导出
+    - 注释：鸡苗库存
+    - 1、鸡苗类型：健雏；
+    - 2、确定一种鸡苗的字段包括：鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重；
+    - 3、以孵化场、仓库、鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重为维度铺列仓库，每种类型合并计数及操作；
+    - 4、鸡苗库存没有库位概念；
+    - 5、存发苗间的鸡苗类型是不断在变动的，只要有数量就会出现展示，没有数量不展示，不同于次品库，没有固定的类型。
+    - 注释：
+    - 平均苗重：来自种蛋出雏任务执行时填写。
+    - 注释：数据可能来自多个上孵计划，则展示多个上孵计划号。
+    - 关于每行操作的说明：
+    - 1、每行的操作（出库、盘点），仅针对并涉及该行数据/类型进行操作；
+    - 2、出库：如果有健雏数据，则有出库操作按钮，点击弹框/跳转进行出库操作；
+    - 3、盘点：点击弹框进行盘点操作，盘点对应生成盘点出库和盘点入库记录；
+    - 关于批量操作的说明：
+    - 1、入库：①此为入库操作，不需要选择某类鸡苗就可以操作，如果选择，则选择为无效操作；②点击有弹框入库操作，统一的入库弹框；
+    annotations:
+    - 鸡苗库存 1、鸡苗类型：健雏； 2、确定一种鸡苗的字段包括：鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重； 3、以孵化场、仓库、鸡苗类型、养殖场、养殖批次、品种、出苗日期、平均苗重为维度铺列仓库，每种类型合并计数及操作； 4、鸡苗库存没有库位概念；
+      5、存发苗间的鸡苗类型是不断在变动的，只要有数量就会出现展示，没有数量不展示，不同于次品库，没有固定的类型。
+    - 平均苗重：来自种蛋出雏任务执行时填写。
+    - 数据可能来自多个上孵计划，则展示多个上孵计划号。
+    - 关于每行操作的说明： 1、每行的操作（出库、盘点），仅针对并涉及该行数据/类型进行操作； 2、出库：如果有健雏数据，则有出库操作按钮，点击弹框/跳转进行出库操作； 3、盘点：点击弹框进行盘点操作，盘点对应生成盘点出库和盘点入库记录；
+    - 关于批量操作的说明： 1、入库：①此为入库操作，不需要选择某类鸡苗就可以操作，如果选择，则选择为无效操作；②点击有弹框入库操作，统一的入库弹框； 2、出库：①此为多类型鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框出库操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量出库操作可跨孵化场、仓库；
+      3、盘点：①此为多鸡苗批量出库操作，只有选择了鸡苗，才会点击有弹框盘点操作，即使只选择了一个鸡苗，也可触发同样的弹框操作，否则弹框提示“请选择鸡苗”；②批量盘点操作可跨孵化场、仓库； 5、导出：导出选中鸡苗的仓库信息表，如果没有选中也可导出，默认全选操作。
+    - 鸡苗类型：只有健雏。
+    controls:
+    - tag: INPUT
+      id: u18462_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u18463_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u18464_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19002_input
+      type: select-one
+      value: 全部仓库
+      text: 全部仓库 北一号仓库 北二号仓库 南一号仓库
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19004_input
+      type: select-one
+      value: 全部类型
+      text: 全部类型 健雏
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19006_input
+      type: select-one
+      value: 全部养殖场
+      text: 全部养殖场 养殖场一 养殖场二 养殖场三
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19009_input
+      type: select-one
+      value: 全部品种
+      text: 全部品种 AA 利丰
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19015_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19016_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19017_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19018_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19019_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19020_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19021_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19022_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19025_input
+      type: select-one
+      value: 全部孵化场
+      text: 全部孵化场 孵化一场 孵化二场
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19026_input
+      type: text
+      value: 请输入养殖批次
+      text: ''
+      disabled: false
+      visible: true
+    dialogs:
+    - label: 雏苗出入库操作弹框
+      id: u18466
+      text: 手动入库 *存发苗间： 确认 取消 宜兴二场 宜兴一场 养殖场组织列表 AA 利丰 *养殖场： *品种： *入库数： *养殖批次： *孵化场： 备注： *入库原因： 请选择入库原因 鸡苗挑选 其他 请选择仓库 北一号仓库
+        北二号仓库 南一号仓库 请选择孵化场 孵化一场 孵化二场 注释：入库只可针对某一个孵化场下的某一个仓库操作 *平均苗重： *出苗日期： 注释：1、入库字段逻辑规则同其他仓库入库，此处不再重复赘述；2、入库原因：种蛋出雏、其他；无默认选择；3、确认有二次弹框确认。
+        *鸡苗类型： 健雏 确认雏苗入库 是否确认入库？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消 出库 *存发苗间： 确认 取消 *养殖场： *品种： *出库数： *养殖批次： *孵化场： *养殖客户： *出库原因：
+        请选择入库原因 销售 其他 注释：此为单类型鸡苗出库操作。 *平均苗重/g： *出苗日期： 注释：1、出库鸡苗基础信息字段默认带出；2、出库原因：销售、其他；默认选择销售；3、养殖客户：销售的目标客户名称，文本输入框；4、确认有二次弹框确认。
+        备注： 北1号仓库 孵化二场 宜兴二场 99p AA *鸡苗类型： 健雏 2025-12-13 67 确认雏苗入库 是否确认入库？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消 雏苗盘点 确认 取消 *库存数： *零散数：
+        10000 *装箱数： *盘点数： 注释：装箱数、零散数、入库数：三数据联动，①如果零散数不为0，入库数=（装箱数-1）*预设的箱容量+零散数入库；②如果零散数为0，入库数=装箱数*预设的箱容量；③填写/修改入库数，根据箱容量自动计算填写装箱数、零散数；填写/修改装箱数、零散数自动计算入库数并填写；
+        备注： *存发苗间： *养殖场： *品种： *养殖批次： *孵化场： *平均苗重/g： *出苗日期： 北1号仓库 孵化二场 宜兴二场 99p AA *鸡苗类型： 健雏 2025-12-13 67 确认盘点 是否确认完成盘点？ 确认
+        取消 保存上孵计划 是否确认保存草稿？ 确认 取消 批量出库 确认 取消 *养殖客户： *出库原因： 请选择入库原因 销售 其他 注释：此为批量出库操作，可以跨孵化场、仓库操作。 注释：1、出库鸡苗基础信息字段默认带出；2、出库数默认填写该类型全部数量，可以修改，进行部分出库；3、出库原因：销售、其他；默认选择销售；4、养殖客户：销售的目标客户名称，文本输入框；5、确认有二次弹框确认。
+        备注： 孵化场 仓库 鸡苗类型 养殖场 养殖批次 品种 出苗日期 平均苗重/g 出库数 孵化一场 北一号仓库 健雏 养殖场一 1p AA 2025-11-25 345 孵化一场 北一号仓库 健雏 养殖场一 2p 利丰 2025-11-30
+        543 孵化一场 北一号仓库 健雏 养殖场
+      buttons: *id001
+    - label: 确认入库弹框
+      id: u18497
+      text: 确认雏苗入库 是否确认入库？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 保存草稿
+      id: u18497_state1
+      text: 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 确认入库弹框
+      id: u18544
+      text: 确认雏苗入库 是否确认入库？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 保存草稿
+      id: u18544_state1
+      text: 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 确认盘点弹框
+      id: u18592
+      text: 确认盘点 是否确认完成盘点？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 保存草稿
+      id: u18592_state1
+      text: 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 确认入库弹框
+      id: u18713
+      text: 确认雏苗入库 是否确认入库？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 保存草稿
+      id: u18713_state1
+      text: 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 确认盘点弹框
+      id: u18864
+      text: 确认盘点 是否确认完成盘点？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons: *id002
+    - label: 保存草稿
+      id: u18864_state1
+      text: 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons:
+      - 确认
+      - 取消
+      - 保存
+    - label: 确认入库弹框
+      id: u18984
+      text: 确认雏苗入库 是否确认入库？ 确认 取消 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons: *id003
+    - label: 保存草稿
+      id: u18984_state1
+      text: 保存上孵计划 是否确认保存草稿？ 确认 取消
+      buttons: *id004
+    buttons:
+    - 上孵计划
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 出入库记录
+    - 盘点记录
+    - 仓库全景图
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景
+    - 出雏器全景
+    - 受健率标准管理
+    - 入库
+    - 出库
+    - 确认
+    - 取消
+    - 盘点
+    static_actions:
+    - 库位出入库记录
+    - 上孵计划列表
+    - 种蛋上孵任务
+    - 种蛋照蛋任务
+    - 种蛋出雏任务
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 盘点记录
+    - 仓库全景图（待定）
+    - 出入库记录
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 出雏器全景图（待定）
+    - 受健率标准管理
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-014
+  outputs:
+  - 02_analysis/pc/REQ-PC-014.yaml
+  - 02_analysis/pc/REQ-PC-014_库存查询.md
+  gate: passed
+  next_agent: testpoint-agent
+  blockers: []

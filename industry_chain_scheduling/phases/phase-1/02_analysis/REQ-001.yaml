@@ -1,0 +1,85 @@
+id: REQ-001
+title: 排程首页
+parent_req: REQ-000
+zentao_module_id: null
+page_url: /biopark-poultry/schedule/introduction
+summary: 系统入口概览页，展示排程运营统计及功能模块快捷入口，帮助用户快速了解整体排程状态并跳转子模块。
+in_scope:
+- 统计卡片展示（月度排程、今日排程、进行中、月度总计等）
+- 功能模块快捷入口卡片
+- 从首页跳转至各子模块
+out_scope:
+- PRD标注为「待设计/二期」的完整首页设计方案（以原型已实现部分为准）
+- 首页卡片「种禽养殖排程」对应独立菜单（原型无入口，本期不纳入测试）
+- 排程首页整体本期不纳入测试范围（Q-010 已确认）
+business_rules:
+- 首页为产业链生产排程系统默认 landing 页
+- 快捷卡片点击应跳转对应功能模块
+roles:
+- 园区总经理
+- 智控中心小组成员
+- 各中心负责人（查看）
+interfaces:
+- 页面 /biopark-poultry/schedule/introduction
+risks:
+- PRD与原型对首页成熟度描述不一致
+- 部分卡片无对应菜单入口
+clarifications:
+- id: Q-002
+  question: 首页「种禽养殖排程」卡片是否有对应功能？
+  conclusion: 排除首页本期暂时不做，不纳入测试范围
+  date: '2026-07-10'
+- id: Q-010
+  question: PRD 标注首页「待设计/二期」与原型已实现范围边界？
+  conclusion: 排程首页本期不测试，本期只测试排程管理和排程看板下的菜单
+  date: '2026-07-10'
+open_questions:
+- 首页统计指标计算口径与数据来源？
+test_scope_suggestion:
+- 本期 Out of Scope：排程首页整体不纳入本期测试
+- 后续迭代可测：P2 统计卡片展示、P2 快捷入口跳转、P3 无数据/加载异常
+prototype_verification:
+  cards:
+  - 7月度排程
+  - 12今日排程
+  - 36进行中
+  - 156月度总计
+  shortcuts:
+  - 排程看板
+  - 宰杀排程
+  - 补栏排程
+  - 孵化排程
+  - 饲料需求排程
+  - 种禽养殖排程
+  buttons: []
+  query_fields: []
+  table_columns: []
+trace:
+  story: null
+  project: 产业链生产排程系统
+  version: 3
+  status: draft
+  req: REQ-001
+  tp: null
+design_artifacts:
+  state_transitions: []
+  decision_tables:
+  - name: 快捷入口跳转
+    conditions:
+    - 卡片类型
+    rules:
+    - when: 排程看板/宰杀/补栏/孵化/饲料需求
+      then: 跳转对应看板菜单
+    - when: 种禽养殖排程
+      then: 无对应菜单，本期不测（Q-002）
+  bva_fields:
+  - field: 统计卡片数值
+    type: integer
+    boundaries:
+    - '0'
+    - 空数据
+    - 大数值
+  combinatorial_blocks:
+  - name: 首页统计与入口
+    pict_eligible: false
+    notes: 本期整体 out of scope（Q-010），仅保留结构供后续迭代

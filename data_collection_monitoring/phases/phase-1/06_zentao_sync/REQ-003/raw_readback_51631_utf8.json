@@ -1,0 +1,91 @@
+{
+    "id": 51631,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 732,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "查看产品列表时确认产品状态值为已发布或未发布",
+    "precondition": "前置准备：\n1、已准备经授权可读且状态值可脱敏核对的产品列表数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开平台菜单并点击“产品管理”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/product”，确认已进入产品管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:48:07",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-27 17:00:18",
+    "version": 3,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 3,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174336,
+            "step": "查看产品列表中的状态列，检查显示的状态值。",
+            "desc": "查看产品列表中的状态列，检查显示的状态值。",
+            "expect": "产品状态字段可见，状态值只能是“已发布”或“未发布”，并与产品实际状态一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51631,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51631",
+        "text": "查看产品列表时确认产品状态值为已发布或未发布",
+        "type": "root",
+        "children": [
+            {
+                "id": 174336,
+                "text": "查看产品列表中的状态列，检查显示的状态值。",
+                "type": "sub",
+                "parent": "case_51631",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174336",
+                        "text": "产品状态字段可见，状态值只能是“已发布”或“未发布”，并与产品实际状态一致。",
+                        "type": "node",
+                        "parent": 174336,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,2572 @@
+﻿{
+    "created_at":  "2026-11-03T10:41:01.1154454+08:00",
+    "targets":  [
+                    {
+                        "id":  51673,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "重置筛选条件，检查控件和列表",
+                        "precondition":  "前置准备：\n1、页面存在经授权可读的设备分组列表数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:52:58",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:42",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176113,
+                                          "step":  "在名称筛选框输入名称片段，选择开始日期和结束日期并点击“查询”。",
+                                          "desc":  "在名称筛选框输入名称片段，选择开始日期和结束日期并点击“查询”。",
+                                          "expect":  "列表显示符合三个筛选条件的结果。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176114,
+                                          "step":  "点击“重置”。",
+                                          "desc":  "点击“重置”。",
+                                          "expect":  "名称、开始日期和结束日期控件全部恢复为空或默认值，列表恢复默认查询结果。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51673,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51673",
+                                             "text":  "重置筛选条件，检查控件和列表",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176113,
+                                                                  "text":  "在名称筛选框输入名称片段，选择开始日期和结束日期并点击“查询”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51673",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176113",
+                                                                                       "text":  "列表显示符合三个筛选条件的结果。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176113,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176114,
+                                                                  "text":  "点击“重置”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51673",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176114",
+                                                                                       "text":  "名称、开始日期和结束日期控件全部恢复为空或默认值，列表恢复默认查询结果。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176114,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51674,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "刷新分组列表，检查重新查询结果",
+                        "precondition":  "前置准备：\n1、页面存在经授权可读的设备分组列表数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:53:00",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:44",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 09:13:03",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176115,
+                                          "step":  "记录当前页码和目标分组名称，点击“刷新”。",
+                                          "desc":  "记录当前页码和目标分组名称，点击“刷新”。",
+                                          "expect":  "列表重新加载，页面仍位于设备分组页面。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176116,
+                                          "step":  "查看刷新后的目标分组和分页。",
+                                          "desc":  "查看刷新后的目标分组和分页。",
+                                          "expect":  "当前数据重新显示，目标分组字段与当前数据一致；分页状态按页面定义保持或回到第 1 页。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51674,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51674",
+                                             "text":  "刷新分组列表，检查重新查询结果",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176115,
+                                                                  "text":  "记录当前页码和目标分组名称，点击“刷新”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51674",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176115",
+                                                                                       "text":  "列表重新加载，页面仍位于设备分组页面。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176115,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176116,
+                                                                  "text":  "查看刷新后的目标分组和分页。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51674",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176116",
+                                                                                       "text":  "当前数据重新显示，目标分组字段与当前数据一致；分页状态按页面定义保持或回到第 1 页。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176116,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51675,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "新增分组名称为空，检查必填提示",
+                        "precondition":  "前置准备：\n1、已获得不产生业务写入的表单校验观察授权和脱敏样本。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:53:01",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:46",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176117,
+                                          "step":  "点击“新增设备分组”，保持分组名称为空，填写其他必要字段并点击“确定”。",
+                                          "desc":  "点击“新增设备分组”，保持分组名称为空，填写其他必要字段并点击“确定”。",
+                                          "expect":  "分组名称字段显示明确必填提示，表单保持打开且未新增分组。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176118,
+                                          "step":  "查询分组列表。",
+                                          "desc":  "查询分组列表。",
+                                          "expect":  "列表不出现名称为空的新分组记录。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51675,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51675",
+                                             "text":  "新增分组名称为空，检查必填提示",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176117,
+                                                                  "text":  "点击“新增设备分组”，保持分组名称为空，填写其他必要字段并点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51675",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176117",
+                                                                                       "text":  "分组名称字段显示明确必填提示，表单保持打开且未新增分组。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176117,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176118,
+                                                                  "text":  "查询分组列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51675",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176118",
+                                                                                       "text":  "列表不出现名称为空的新分组记录。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176118,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51676,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "新增分组名称为空白，检查校验提示",
+                        "precondition":  "前置准备：\n1、已获得不产生业务写入的表单校验观察授权和脱敏样本。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:53:03",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:48",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176119,
+                                          "step":  "在新增表单的分组名称输入框输入仅包含空格的值并点击“确定”。",
+                                          "desc":  "在新增表单的分组名称输入框输入仅包含空格的值并点击“确定”。",
+                                          "expect":  "名称字段显示空白值错误或必填提示，表单保持打开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176120,
+                                          "step":  "查询分组列表。",
+                                          "desc":  "查询分组列表。",
+                                          "expect":  "列表不出现名称为空或仅空白的新分组记录。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51676,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51676",
+                                             "text":  "新增分组名称为空白，检查校验提示",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176119,
+                                                                  "text":  "在新增表单的分组名称输入框输入仅包含空格的值并点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51676",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176119",
+                                                                                       "text":  "名称字段显示空白值错误或必填提示，表单保持打开。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176119,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176120,
+                                                                  "text":  "查询分组列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51676",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176120",
+                                                                                       "text":  "列表不出现名称为空或仅空白的新分组记录。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176120,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51677,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "新增分组描述为空，检查非必填结果",
+                        "precondition":  "前置准备：\n1、已获得不产生业务写入的表单校验观察授权和脱敏样本。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:53:04",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:51",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176121,
+                                          "step":  "在新增表单输入合法分组名称，保持描述为空并点击“确定”。",
+                                          "desc":  "在新增表单输入合法分组名称，保持描述为空并点击“确定”。",
+                                          "expect":  "名称字段有值，描述字段为空，表单提交完成或显示具体校验提示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176122,
+                                          "step":  "查询测试分组并打开详情。",
+                                          "desc":  "查询测试分组并打开详情。",
+                                          "expect":  "若保存成功，分组记录存在，描述显示为空或页面定义的空值文本；按清理方案删除测试分组。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51677,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51677",
+                                             "text":  "新增分组描述为空，检查非必填结果",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176121,
+                                                                  "text":  "在新增表单输入合法分组名称，保持描述为空并点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51677",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176121",
+                                                                                       "text":  "名称字段有值，描述字段为空，表单提交完成或显示具体校验提示。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176121,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176122,
+                                                                  "text":  "查询测试分组并打开详情。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51677",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176122",
+                                                                                       "text":  "若保存成功，分组记录存在，描述显示为空或页面定义的空值文本；按清理方案删除测试分组。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176122,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51678,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "新增分组输入特殊描述，检查字段处理",
+                        "precondition":  "前置准备：\n1、已获得不产生业务写入的表单校验观察授权和脱敏样本。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:53:06",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:53",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176123,
+                                          "step":  "在新增表单输入合法分组名称，并在描述框输入包含换行、首尾空白和批准特殊字符的测试值。",
+                                          "desc":  "在新增表单输入合法分组名称，并在描述框输入包含换行、首尾空白和批准特殊字符的测试值。",
+                                          "expect":  "描述框显示实际输入值，未出现页面结构异常。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176124,
+                                          "step":  "点击“确定”。",
+                                          "desc":  "点击“确定”。",
+                                          "expect":  "显示明确成功提示或描述字段的具体校验提示，表单不产生重复提交。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176125,
+                                          "step":  "查询并打开测试分组。",
+                                          "desc":  "查询并打开测试分组。",
+                                          "expect":  "保存成功时，描述回读值符合页面定义的保留、裁剪或转义规则；按清理方案删除测试分组。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51678,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51678",
+                                             "text":  "新增分组输入特殊描述，检查字段处理",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176123,
+                                                                  "text":  "在新增表单输入合法分组名称，并在描述框输入包含换行、首尾空白和批准特殊字符的测试值。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51678",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176123",
+                                                                                       "text":  "描述框显示实际输入值，未出现页面结构异常。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176123,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176124,
+                                                                  "text":  "点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51678",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176124",
+                                                                                       "text":  "显示明确成功提示或描述字段的具体校验提示，表单不产生重复提交。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176124,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176125,
+                                                                  "text":  "查询并打开测试分组。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51678",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176125",
+                                                                                       "text":  "保存成功时，描述回读值符合页面定义的保留、裁剪或转义规则；按清理方案删除测试分组。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176125,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51679,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "删除无关联设备分组，检查成功反馈和列表",
+                        "precondition":  "前置准备：\n1、已获得无关联设备分组样本、删除授权、清理条件和脱敏回读证据；未满足时保持 blocked。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:53:07",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:56",
+                        "version":  7,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 09:15:21",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  7,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176126,
+                                          "step":  "定位设备数量为 0 的隔离测试分组并点击“删除”。",
+                                          "desc":  "定位设备数量为 0 的隔离测试分组并点击“删除”。",
+                                          "expect":  "显示删除确认层，并展示目标分组标识及“确定”“取消”按钮。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176127,
+                                          "step":  "点击确认层“确定”。",
+                                          "desc":  "点击确认层“确定”。",
+                                          "expect":  "显示删除成功提示，确认层关闭。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176128,
+                                          "step":  "刷新列表并按分组名称查询。",
+                                          "desc":  "刷新列表并按分组名称查询。",
+                                          "expect":  "目标分组不再显示，其他分组记录不受影响。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51679,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51679",
+                                             "text":  "删除无关联设备分组，检查成功反馈和列表",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176126,
+                                                                  "text":  "定位设备数量为 0 的隔离测试分组并点击“删除”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51679",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176126",
+                                                                                       "text":  "显示删除确认层，并展示目标分组标识及“确定”“取消”按钮。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176126,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176127,
+                                                                  "text":  "点击确认层“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51679",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176127",
+                                                                                       "text":  "显示删除成功提示，确认层关闭。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176127,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176128,
+                                                                  "text":  "刷新列表并按分组名称查询。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51679",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176128",
+                                                                                       "text":  "目标分组不再显示，其他分组记录不受影响。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176128,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51684,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "查询或刷新处理中，检查重复操作控制",
+                        "precondition":  "前置准备：\n1、已获得查询失败、超时、网络异常、权限不足或处理中状态的批准脱敏反馈。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:53:14",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:05",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176138,
+                                          "step":  "在设备分组页面点击“查询”或“刷新”，立即观察请求处理期间的对应控件。",
+                                          "desc":  "在设备分组页面点击“查询”或“刷新”，立即观察请求处理期间的对应控件。",
+                                          "expect":  "请求处理中显示加载状态，提交控件按页面规则禁用或阻止重复提交。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176139,
+                                          "step":  "请求完成后查看列表。",
+                                          "desc":  "请求完成后查看列表。",
+                                          "expect":  "页面只完成一次有效查询或刷新，列表不出现重复记录和重复加载结果。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51684,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51684",
+                                             "text":  "查询或刷新处理中，检查重复操作控制",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176138,
+                                                                  "text":  "在设备分组页面点击“查询”或“刷新”，立即观察请求处理期间的对应控件。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51684",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176138",
+                                                                                       "text":  "请求处理中显示加载状态，提交控件按页面规则禁用或阻止重复提交。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176138,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176139,
+                                                                  "text":  "请求完成后查看列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51684",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176139",
+                                                                                       "text":  "页面只完成一次有效查询或刷新，列表不出现重复记录和重复加载结果。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176139,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52076,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "新增合法设备分组，检查成功反馈和列表回读",
+                        "precondition":  "前置准备：\n1、已获得隔离测试数据、写操作授权、清理条件和脱敏回读证据；未满足时保持 blocked。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 17:10:38",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:07",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-26 15:13:31",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176140,
+                                          "step":  "点击“新增设备分组”，输入隔离测试名称，保持描述为空并保留默认启用状态。",
+                                          "desc":  "点击“新增设备分组”，输入隔离测试名称，保持描述为空并保留默认启用状态。",
+                                          "expect":  "名称、描述和状态字段显示预期值。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176141,
+                                          "step":  "点击“确定”。",
+                                          "desc":  "点击“确定”。",
+                                          "expect":  "显示新增成功提示，表单关闭或进入完成状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176142,
+                                          "step":  "刷新列表并按测试名称查询。",
+                                          "desc":  "刷新列表并按测试名称查询。",
+                                          "expect":  "列表出现一条目标分组记录，名称、状态和创建时间有值，设备数量为 0 或页面定义的初始值。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176143,
+                                          "step":  "打开目标分组详情。",
+                                          "desc":  "打开目标分组详情。",
+                                          "expect":  "描述为空或显示页面定义的空值文本；按清理方案删除测试分组。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52076,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52076",
+                                             "text":  "新增合法设备分组，检查成功反馈和列表回读",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176140,
+                                                                  "text":  "点击“新增设备分组”，输入隔离测试名称，保持描述为空并保留默认启用状态。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52076",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176140",
+                                                                                       "text":  "名称、描述和状态字段显示预期值。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176140,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176141,
+                                                                  "text":  "点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52076",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176141",
+                                                                                       "text":  "显示新增成功提示，表单关闭或进入完成状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176141,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176142,
+                                                                  "text":  "刷新列表并按测试名称查询。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52076",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176142",
+                                                                                       "text":  "列表出现一条目标分组记录，名称、状态和创建时间有值，设备数量为 0 或页面定义的初始值。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176142,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176143,
+                                                                  "text":  "打开目标分组详情。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52076",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176143",
+                                                                                       "text":  "描述为空或显示页面定义的空值文本；按清理方案删除测试分组。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176143,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52077,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "描述为空时新增分组，检查保存和回读",
+                        "precondition":  "前置准备：\n1、已获得隔离测试数据、写操作授权、清理条件和脱敏回读证据；未满足时保持 blocked。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 17:10:39",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:10",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 09:17:28",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176144,
+                                          "step":  "打开新增分组表单，输入合法隔离测试名称并保持描述为空。",
+                                          "desc":  "打开新增分组表单，输入合法隔离测试名称并保持描述为空。",
+                                          "expect":  "名称字段有值，描述字段为空。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176145,
+                                          "step":  "点击“确定”。",
+                                          "desc":  "点击“确定”。",
+                                          "expect":  "显示新增成功提示，未显示描述必填错误。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176146,
+                                          "step":  "查询并打开测试分组。",
+                                          "desc":  "查询并打开测试分组。",
+                                          "expect":  "分组记录存在，描述为空或显示明确空值文本，其他字段回读正确；按清理方案删除测试分组。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52077,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52077",
+                                             "text":  "描述为空时新增分组，检查保存和回读",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176144,
+                                                                  "text":  "打开新增分组表单，输入合法隔离测试名称并保持描述为空。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52077",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176144",
+                                                                                       "text":  "名称字段有值，描述字段为空。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176144,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176145,
+                                                                  "text":  "点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52077",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176145",
+                                                                                       "text":  "显示新增成功提示，未显示描述必填错误。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176145,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176146,
+                                                                  "text":  "查询并打开测试分组。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52077",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176146",
+                                                                                       "text":  "分组记录存在，描述为空或显示明确空值文本，其他字段回读正确；按清理方案删除测试分组。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176146,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52078,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "编辑分组名称和描述，检查保存回读",
+                        "precondition":  "前置准备：\n1、已获得隔离测试数据、写操作授权、清理条件和脱敏回读证据；未满足时保持 blocked。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 17:10:40",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:12",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-26 15:13:38",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176147,
+                                          "step":  "定位隔离测试分组并点击“编辑”。",
+                                          "desc":  "定位隔离测试分组并点击“编辑”。",
+                                          "expect":  "编辑表单打开，名称、描述和状态正确回填。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176148,
+                                          "step":  "修改名称和描述并点击“保存”。",
+                                          "desc":  "修改名称和描述并点击“保存”。",
+                                          "expect":  "显示修改成功提示，表单关闭或进入完成状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176149,
+                                          "step":  "刷新列表并按新名称查询。",
+                                          "desc":  "刷新列表并按新名称查询。",
+                                          "expect":  "列表显示修改后的名称，描述字段回读值与输入值一致。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176150,
+                                          "step":  "按清理方案删除或恢复测试分组。",
+                                          "desc":  "按清理方案删除或恢复测试分组。",
+                                          "expect":  "测试数据清理完成，列表状态恢复到执行前状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52078,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52078",
+                                             "text":  "编辑分组名称和描述，检查保存回读",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176147,
+                                                                  "text":  "定位隔离测试分组并点击“编辑”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52078",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176147",
+                                                                                       "text":  "编辑表单打开，名称、描述和状态正确回填。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176147,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176148,
+                                                                  "text":  "修改名称和描述并点击“保存”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52078",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176148",
+                                                                                       "text":  "显示修改成功提示，表单关闭或进入完成状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176148,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176149,
+                                                                  "text":  "刷新列表并按新名称查询。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52078",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176149",
+                                                                                       "text":  "列表显示修改后的名称，描述字段回读值与输入值一致。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176149,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176150,
+                                                                  "text":  "按清理方案删除或恢复测试分组。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52078",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176150",
+                                                                                       "text":  "测试数据清理完成，列表状态恢复到执行前状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176150,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52079,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "编辑有关联设备分组名称，检查设备关系",
+                        "precondition":  "前置准备：\n1、已获得隔离测试数据、写操作授权、清理条件和脱敏回读证据；未满足时保持 blocked。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 17:10:41",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:15",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-26 16:31:02",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176151,
+                                          "step":  "定位设备数量大于 0 的隔离分组并打开编辑表单。",
+                                          "desc":  "定位设备数量大于 0 的隔离分组并打开编辑表单。",
+                                          "expect":  "表单显示当前名称、描述、状态和设备数量关联信息。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176152,
+                                          "step":  "修改分组名称并点击“保存”。",
+                                          "desc":  "修改分组名称并点击“保存”。",
+                                          "expect":  "显示修改成功提示，分组名称更新完成。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176153,
+                                          "step":  "刷新列表并打开关联设备明细。",
+                                          "desc":  "刷新列表并打开关联设备明细。",
+                                          "expect":  "新名称可查询，原有关联设备仍存在，设备数量与修改前一致。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52079,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52079",
+                                             "text":  "编辑有关联设备分组名称，检查设备关系",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176151,
+                                                                  "text":  "定位设备数量大于 0 的隔离分组并打开编辑表单。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52079",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176151",
+                                                                                       "text":  "表单显示当前名称、描述、状态和设备数量关联信息。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176151,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176152,
+                                                                  "text":  "修改分组名称并点击“保存”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52079",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176152",
+                                                                                       "text":  "显示修改成功提示，分组名称更新完成。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176152,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176153,
+                                                                  "text":  "刷新列表并打开关联设备明细。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52079",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176153",
+                                                                                       "text":  "新名称可查询，原有关联设备仍存在，设备数量与修改前一致。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176153,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52083,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "给设备加入分组，检查多分组关系和数量",
+                        "precondition":  "前置准备：\n1、已获得隔离测试数据、写操作授权、清理条件和脱敏回读证据；未满足时保持 blocked。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 17:10:45",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:19",
+                        "version":  6,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-26 15:40:18",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  6,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176157,
+                                          "step":  "点击设备管理菜单进入设备管理页面，定位隔离测试设备并打开编辑表单。",
+                                          "desc":  "点击设备管理菜单进入设备管理页面，定位隔离测试设备并打开编辑表单。",
+                                          "expect":  "编辑表单打开，当前设备已有分组关系可读取。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176158,
+                                          "step":  "在设备分组选择器中加入目标分组并点击“保存”。",
+                                          "desc":  "在设备分组选择器中加入目标分组并点击“保存”。",
+                                          "expect":  "显示保存成功提示，设备保留原有分组并新增目标分组关系。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176159,
+                                          "step":  "返回设备分组页面并查询目标分组。",
+                                          "desc":  "返回设备分组页面并查询目标分组。",
+                                          "expect":  "目标分组设备数量增加 1，设备出现在关联设备明细中且只计数一次。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176160,
+                                          "step":  "刷新设备分组列表。",
+                                          "desc":  "刷新设备分组列表。",
+                                          "expect":  "目标分组数量和关联关系仍保持正确。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52083,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52083",
+                                             "text":  "给设备加入分组，检查多分组关系和数量",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176157,
+                                                                  "text":  "点击设备管理菜单进入设备管理页面，定位隔离测试设备并打开编辑表单。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52083",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176157",
+                                                                                       "text":  "编辑表单打开，当前设备已有分组关系可读取。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176157,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176158,
+                                                                  "text":  "在设备分组选择器中加入目标分组并点击“保存”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52083",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176158",
+                                                                                       "text":  "显示保存成功提示，设备保留原有分组并新增目标分组关系。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176158,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176159,
+                                                                  "text":  "返回设备分组页面并查询目标分组。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52083",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176159",
+                                                                                       "text":  "目标分组设备数量增加 1，设备出现在关联设备明细中且只计数一次。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176159,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176160,
+                                                                  "text":  "刷新设备分组列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52083",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176160",
+                                                                                       "text":  "目标分组数量和关联关系仍保持正确。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176160,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52084,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "移出设备分组，检查关系解除和数量",
+                        "precondition":  "前置准备：\n1、已获得隔离测试数据、写操作授权、清理条件和脱敏回读证据；未满足时保持 blocked。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 17:10:46",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:22",
+                        "version":  6,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-26 15:40:51",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  6,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176161,
+                                          "step":  "点击设备管理菜单进入设备管理页面，定位已关联目标分组的隔离测试设备并打开编辑表单。",
+                                          "desc":  "点击设备管理菜单进入设备管理页面，定位已关联目标分组的隔离测试设备并打开编辑表单。",
+                                          "expect":  "编辑表单显示目标分组已被选中。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176162,
+                                          "step":  "在设备分组选择器中移除目标分组并点击“保存”。",
+                                          "desc":  "在设备分组选择器中移除目标分组并点击“保存”。",
+                                          "expect":  "显示保存成功提示，目标分组不再被选中。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176163,
+                                          "step":  "返回设备分组页面并查询目标分组。",
+                                          "desc":  "返回设备分组页面并查询目标分组。",
+                                          "expect":  "目标设备不再出现在关联设备明细中，设备数量减少 1，其他分组关系保持不变。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176164,
+                                          "step":  "刷新页面并重新查询。",
+                                          "desc":  "刷新页面并重新查询。",
+                                          "expect":  "关系解除和数量结果保持一致；按清理方案恢复测试设备分组关系。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52084,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52084",
+                                             "text":  "移出设备分组，检查关系解除和数量",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176161,
+                                                                  "text":  "点击设备管理菜单进入设备管理页面，定位已关联目标分组的隔离测试设备并打开编辑表单。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52084",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176161",
+                                                                                       "text":  "编辑表单显示目标分组已被选中。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176161,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176162,
+                                                                  "text":  "在设备分组选择器中移除目标分组并点击“保存”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52084",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176162",
+                                                                                       "text":  "显示保存成功提示，目标分组不再被选中。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176162,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176163,
+                                                                  "text":  "返回设备分组页面并查询目标分组。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52084",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176163",
+                                                                                       "text":  "目标设备不再出现在关联设备明细中，设备数量减少 1，其他分组关系保持不变。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176163,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176164,
+                                                                  "text":  "刷新页面并重新查询。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52084",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176164",
+                                                                                       "text":  "关系解除和数量结果保持一致；按清理方案恢复测试设备分组关系。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176164,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51654,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "按分组名称查询，检查模糊匹配结果",
+                        "precondition":  "前置准备：\n1、已准备当前租户中经授权可读的脱敏分组名字片段。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:52:31",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:11",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-27 17:24:44",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176079,
+                                          "step":  "在分组名称筛选框输入已存在名称的片段并点击“查询”。",
+                                          "desc":  "在分组名称筛选框输入已存在名称的片段并点击“查询”。",
+                                          "expect":  "查询完成后，列表仅显示名称包含该片段的分组；无匹配时显示空结果状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176080,
+                                          "step":  "查看查询结果的分组名称。",
+                                          "desc":  "查看查询结果的分组名称。",
+                                          "expect":  "每条结果均包含输入片段，其他名称不出现在当前结果中。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51654,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51654",
+                                             "text":  "按分组名称查询，检查模糊匹配结果",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176079,
+                                                                  "text":  "在分组名称筛选框输入已存在名称的片段并点击“查询”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51654",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176079",
+                                                                                       "text":  "查询完成后，列表仅显示名称包含该片段的分组；无匹配时显示空结果状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176079,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176080,
+                                                                  "text":  "查看查询结果的分组名称。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51654",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176080",
+                                                                                       "text":  "每条结果均包含输入片段，其他名称不出现在当前结果中。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176080,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51657,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "切换分组分页，检查页码和边界按钮",
+                        "precondition":  "前置准备：\n1、已准备至少两页的经授权可读分组数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:52:35",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:53:16",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 09:08:30",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176083,
+                                          "step":  "将每页条数设置为 10 条并进入第 1 页。",
+                                          "desc":  "将每页条数设置为 10 条并进入第 1 页。",
+                                          "expect":  "当前页显示为第 1 页，每页最多显示 10 条记录。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176084,
+                                          "step":  "点击“下一页”。",
+                                          "desc":  "点击“下一页”。",
+                                          "expect":  "当前页码增加 1，列表切换到下一页记录，上一页按钮可用。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176085,
+                                          "step":  "点击“上一页”。",
+                                          "desc":  "点击“上一页”。",
+                                          "expect":  "当前页码恢复为第 1 页，列表记录与首次查看的第 1 页一致，上一页按钮禁用或不显示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176086,
+                                          "step":  "进入最后一页并查看分页按钮。",
+                                          "desc":  "进入最后一页并查看分页按钮。",
+                                          "expect":  "当前页码等于总页数，下一页按钮禁用或不显示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51657,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51657",
+                                             "text":  "切换分组分页，检查页码和边界按钮",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176083,
+                                                                  "text":  "将每页条数设置为 10 条并进入第 1 页。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51657",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176083",
+                                                                                       "text":  "当前页显示为第 1 页，每页最多显示 10 条记录。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176083,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176084,
+                                                                  "text":  "点击“下一页”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51657",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176084",
+                                                                                       "text":  "当前页码增加 1，列表切换到下一页记录，上一页按钮可用。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176084,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176085,
+                                                                  "text":  "点击“上一页”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51657",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176085",
+                                                                                       "text":  "当前页码恢复为第 1 页，列表记录与首次查看的第 1 页一致，上一页按钮禁用或不显示。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176085,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176086,
+                                                                  "text":  "进入最后一页并查看分页按钮。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51657",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176086",
+                                                                                       "text":  "当前页码等于总页数，下一页按钮禁用或不显示。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176086,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52117,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  733,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "删除后用相同配置重建设备分组",
+                        "precondition":  "前置准备：\n1、已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。\n2、已记录删除前表单字段：分组名称、描述及关联字段；删除后使用相同值，不使用原系统生成的唯一标识。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备分组”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/device-group”，确认已进入设备分组页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-27 11:19:08",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:54:24",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 09:19:27",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176165,
+                                          "step":  "使用隔离数据新增设备分组，填写名称、描述和状态并记录回读字段。",
+                                          "desc":  "使用隔离数据新增设备分组，填写名称、描述和状态并记录回读字段。",
+                                          "expect":  "新增成功，列表显示目标分组，名称、描述和状态与输入值一致。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176166,
+                                          "step":  "删除目标分组并在确认层点击“确定”。",
+                                          "desc":  "删除目标分组并在确认层点击“确定”。",
+                                          "expect":  "显示删除成功提示，刷新列表后目标分组不再显示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176167,
+                                          "step":  "使用相同名称、描述和状态重新填写新增表单并点击“确定”。",
+                                          "desc":  "使用相同名称、描述和状态重新填写新增表单并点击“确定”。",
+                                          "expect":  "重建成功并显示新增成功提示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176168,
+                                          "step":  "刷新列表并打开重建分组详情。",
+                                          "desc":  "刷新列表并打开重建分组详情。",
+                                          "expect":  "名称、描述和状态与首次创建记录一致；编号、创建时间等系统生成字段按系统规则重新生成。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "5",
+                                          "id":  176169,
+                                          "step":  "按清理方案删除重建分组并刷新列表。",
+                                          "desc":  "按清理方案删除重建分组并刷新列表。",
+                                          "expect":  "测试分组清理完成，列表不再显示测试记录。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52117,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52117",
+                                             "text":  "删除后用相同配置重建设备分组",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176165,
+                                                                  "text":  "使用隔离数据新增设备分组，填写名称、描述和状态并记录回读字段。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52117",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176165",
+                                                                                       "text":  "新增成功，列表显示目标分组，名称、描述和状态与输入值一致。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176165,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176166,
+                                                                  "text":  "删除目标分组并在确认层点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52117",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176166",
+                                                                                       "text":  "显示删除成功提示，刷新列表后目标分组不再显示。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176166,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176167,
+                                                                  "text":  "使用相同名称、描述和状态重新填写新增表单并点击“确定”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52117",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176167",
+                                                                                       "text":  "重建成功并显示新增成功提示。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176167,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176168,
+                                                                  "text":  "刷新列表并打开重建分组详情。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52117",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176168",
+                                                                                       "text":  "名称、描述和状态与首次创建记录一致；编号、创建时间等系统生成字段按系统规则重新生成。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176168,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176169,
+                                                                  "text":  "按清理方案删除重建分组并刷新列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52117",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176169",
+                                                                                       "text":  "测试分组清理完成，列表不再显示测试记录。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176169,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    }
+                ]
+}

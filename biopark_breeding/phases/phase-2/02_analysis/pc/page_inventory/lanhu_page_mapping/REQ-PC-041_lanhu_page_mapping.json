@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "req_id": "REQ-PC-041",
+  "req_name": "PC 雏苗发货列表与筛选",
+  "description": "REQ-PC-041 原型页面状态与指定蓝湖设计图的页面清单映射。蓝湖文件名称为“首页”，但其节点内容实际呈现计划管理/雏苗发货列表页；本文件按节点内容、页面结构、功能元素和状态描述进行对齐，不修改任何输入 JSON。",
+  "prototype_source": {
+    "source_file": "02_analysis/pc/page_inventory/page.json",
+    "page_id": "pc-chick-shipping",
+    "page_title": "雏苗发货单列表 - React 原型",
+    "route": "http://43.143.148.114:18885/biopark-breeding/",
+    "menu_path": ["计划管理", "雏苗发货"],
+    "source_req_id_in_page_json": "REQ-PC-041",
+    "states": [
+      {"state_id":"st-default","state_name":"列表默认态","description":"默认日期、状态/栋舍/品种筛选、统计卡、14 列发货列表和分页"},
+      {"state_id":"st-stat-pending","state_name":"待发货统计筛选态","description":"点击待发货统计卡后列表过滤为 4 条"},
+      {"state_id":"st-filter-keyword","state_name":"关键字筛选态","description":"按发货单号或孵化计划号查询后的过滤结果"},
+      {"state_id":"st-pagination-page2","state_name":"分页第 2 页态","description":"共 12 条、每页 8 条，展示第 2 页 4 条记录"},
+      {"state_id":"st-export-dialog","state_name":"导出配置弹窗","description":"列表页打开导出发货单数据配置弹窗"},
+      {"state_id":"st-export-scope-options","state_name":"导出数据口径下拉展开态","description":"展示当前筛选结果与当前页结果两个数据口径选项"},
+      {"state_id":"st-export-field-options","state_name":"导出字段方案下拉展开态","description":"导出配置中的字段方案选项展开"},
+      {"state_id":"st-export-processing","state_name":"导出处理中","description":"确认导出后按钮 loading，弹窗保持打开"},
+      {"state_id":"st-export-result","state_name":"导出结果与预览","description":"导出成功、文件信息、条件摘要和前 5 条数据预览"},
+      {"state_id":"st-export-reopen","state_name":"再次导出返回配置态","description":"从导出结果再次导出，返回配置弹窗并保留筛选条件"},
+      {"state_id":"st-export-filter-status","state_name":"已发货筛选后的导出配置态","description":"已发货筛选结果 2 条并打开导出配置弹窗"},
+      {"state_id":"st-export-filter-keyword","state_name":"关键字筛选后的导出配置态","description":"关键字筛选结果 1 条并打开导出配置弹窗"}
+    ]
+  },
+  "lanhu_design_source": {
+    "source_dir": "02_analysis/pc/page_inventory/lanhu",
+    "designs": [
+      {"design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","design_name":"首页","source_file":"02_analysis/pc/page_inventory/lanhu/首页_design.json","page_id":"lanhu-266dfcdc-e7f4-4eed-b4dc-71cf052515d9","node_count":447,"max_depth":7,"size":"1668px wide root content"}
+    ]
+  },
+  "mappings": [
+    {"prototype_state_id":"st-default","prototype_state_name":"列表默认态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"matched","match_confidence":"high","match_basis":"设计图节点明确包含计划发货日期、栋舍、品种、单号筛选，查询/重置，状态统计卡，雏苗发货表格、14 个字段、分页及发货/明细操作；虽文件名为首页，但页面内容与 REQ-PC-041 列表完全对应。"},
+    {"prototype_state_id":"st-stat-pending","prototype_state_name":"待发货统计筛选态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图包含待发货统计卡和待发货列表数据，可覆盖筛选后的视觉结构；未从静态设计图确认点击统计卡后的交互结果。"},
+    {"prototype_state_id":"st-filter-keyword","prototype_state_name":"关键字筛选态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图包含单号/孵化计划号输入框、查询按钮和列表；未明确标注输入查询后的单条过滤结果状态。"},
+    {"prototype_state_id":"st-pagination-page2","prototype_state_name":"分页第 2 页态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图包含分页组件和列表记录；未明确标注分页切换后的第 2 页状态。"},
+    {"prototype_state_id":"st-export-dialog","prototype_state_name":"导出配置弹窗","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"matched","match_confidence":"high","match_basis":"设计图明确包含列表右上角导出按钮，且导出入口属于同一雏苗发货列表页面；原型该状态为列表内导出配置弹窗。"},
+    {"prototype_state_id":"st-export-scope-options","prototype_state_name":"导出数据口径下拉展开态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图覆盖导出配置入口，但未明确呈现导出弹窗数据口径下拉展开及其两个选项。"},
+    {"prototype_state_id":"st-export-field-options","prototype_state_name":"导出字段方案下拉展开态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图覆盖列表导出入口，但未明确呈现字段方案下拉展开状态。"},
+    {"prototype_state_id":"st-export-processing","prototype_state_name":"导出处理中","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"low","match_basis":"设计图未明确呈现确认导出后的 loading/处理中状态，不能将静态导出入口视为处理中状态的完全匹配。"},
+    {"prototype_state_id":"st-export-result","prototype_state_name":"导出结果与预览","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"low","match_basis":"设计图包含导出按钮和列表数据，但未明确呈现导出成功结果、文件信息、条件摘要及前 5 条预览。"},
+    {"prototype_state_id":"st-export-reopen","prototype_state_name":"再次导出返回配置态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"low","match_basis":"设计图仅能确认导出入口存在，未明确呈现从结果页再次导出并保留筛选条件的交互状态。"},
+    {"prototype_state_id":"st-export-filter-status","prototype_state_name":"已发货筛选后的导出配置态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图包含已发货统计卡、状态列和导出按钮，可覆盖该状态的页面结构；未明确呈现筛选后 2 条列表及其导出配置摘要。"},
+    {"prototype_state_id":"st-export-filter-keyword","prototype_state_name":"关键字筛选后的导出配置态","req_id":"REQ-PC-041","lanhu_design_id":"266dfcdc-e7f4-4eed-b4dc-71cf052515d9","lanhu_design_name":"首页","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图包含关键字输入、查询和导出入口，可覆盖该状态的功能区域；未明确呈现关键字筛选后单条结果及配置弹窗。"}
+  ],
+  "unmatched": {
+    "prototype_states": [],
+    "lanhu_designs": []
+  },
+  "summary": {"prototype_state_count":12,"lanhu_design_count":1,"mapping_count":12,"matched_count":2,"partial_matched_count":10,"unmatched_prototype_state_count":0,"unmatched_lanhu_design_count":0,"coverage_rate":"100%"},
+  "self_check": {"prototype_input_modified":false,"design_inputs_modified":false,"all_prototype_states_recorded":true,"all_designs_recorded":true,"matched_and_unmatched_recorded":true,"output_directory":"02_analysis/pc/page_inventory/lanhu_page_mapping","output_file":"REQ-PC-041_lanhu_page_mapping.json"}
+}

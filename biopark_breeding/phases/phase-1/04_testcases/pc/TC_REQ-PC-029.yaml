@@ -1,0 +1,2184 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-029
+title: 品种管理
+module: 品种管理
+zentao_module_id: 546
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-029
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-39157
+  title: 行操作-删除按钮二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 找到一条停用状态的品种
+    expected: 找到停用状态品种
+  - action: 点击该行的删除按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“删除成功“，该品种从表格中消失
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39157
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39157
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39158
+  title: 行操作-停用按钮二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 找到一条启用状态的品种
+    expected: 找到启用状态品种
+  - action: 点击该行的停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“停用成功“，该品种状态变为“停用“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39158
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39158
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39159
+  title: 行操作-启用按钮二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 找到一条停用状态的品种
+    expected: 找到停用状态品种
+  - action: 点击该行的启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“启用成功“，该品种状态变为“启用“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39159
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39159
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39160
+  title: 修改-校验规则与新建一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击某条数据的修改按钮
+    expected: 打开修改弹窗
+  - action: 将品种名称清空
+    expected: 品种名称清空
+  - action: 点击确定按钮
+    expected: 无法保存，提示“品种名称不能为空“，与新建时的校验规则一致
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39160
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39160
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39161
+  title: 修改-取消修改不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击某条数据的修改按钮
+    expected: 打开修改弹窗
+  - action: 修改品种名称
+    expected: 品种名称已修改
+  - action: 点击取消或关闭按钮
+    expected: 弹窗关闭，表格中数据未更新，仍为原值
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39161
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39161
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39162
+  title: 修改-品种名称同步更新下游
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在被下游业务使用的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击某条已被使用的数据的修改按钮
+    expected: 打开修改弹窗
+  - action: 将品种名称从“白羽肉鸡“修改为“黄羽肉鸡“
+    expected: 品种名称修改为“黄羽肉鸡“
+  - action: 点击确定按钮并确认
+    expected: 确认后，提示“修改成功“，表格中该行的品种名称更新为“黄羽肉鸡“
+  - action: 查看下游相关业务页面
+    expected: 下游相关页面中该品种名称同步更新为“黄羽肉鸡“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39162
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39162
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39163
+  title: 修改-品种名称修改成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击某条数据的修改按钮
+    expected: 打开修改弹窗，品种名称显示“白羽肉鸡“
+  - action: 将品种名称从“白羽肉鸡“修改为“黄羽肉鸡“
+    expected: 品种名称修改为“黄羽肉鸡“
+  - action: 点击确定按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“修改成功“，表格中该行的品种名称更新为“黄羽肉鸡“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39163
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39163
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39164
+  title: 修改-品种编号不可修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击某条数据的修改按钮
+    expected: 打开修改弹窗
+  - action: 尝试修改品种编号输入框
+    expected: 品种编号输入框为禁用状态或只读，无法修改
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39164
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39164
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39165
+  title: 修改-表单数据回显正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 找到一条品种数据（品种编号PZ001，品种名称白羽肉鸡，状态启用，备注测试）
+    expected: 找到目标品种
+  - action: 点击该行的修改按钮
+    expected: 打开修改弹窗
+  - action: 观察弹窗中的表单数据
+    expected: 弹窗中品种编号显示“PZ001“，品种名称显示“白羽肉鸡“，状态选中“启用“，备注显示“测试“，与表格数据一致
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39165
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39165
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39166
+  title: 修改-打开修改弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限<br />
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 找到一条品种数据
+    expected: 找到目标品种
+  - action: 点击该行的修改按钮
+    expected: 打开修改弹窗，弹窗标题显示“修改品种“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39166
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39166
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39167
+  title: 表格-批量勾选仅限当前页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、数据量超过一页
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在第1页勾选几条数据
+    expected: 第1页数据被勾选
+  - action: 翻到第2页
+    expected: 翻到第2页
+  - action: 观察第1页的勾选状态
+    expected: 第1页的勾选失效，第2页无勾选状态
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39167
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39167
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39168
+  title: 表格-数据显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限<br />
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 观察表格中每列的数据
+    expected: 表格中各列数据显示正确，与填写的一致
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39168
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39168
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39169
+  title: 表格-表头字段正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限<br />
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 观察表格表头
+    expected: 表格表头显示：品种编号、品种名称、状态、备注、创建时间、创建人、更新时间、关系人、操作
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39169
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39169
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39170
+  title: 删除-取消二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 勾选一个停用状态的品种
+    expected: 勾选停用状态的品种
+  - action: 点击删除按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击取消
+    expected: 弹窗关闭，品种未被删除，仍在表格中显示
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39170
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39170
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39171
+  title: 删除-批量删除过滤启用品种
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用和停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 同时勾选启用和停用状态的品种
+    expected: 勾选多个不同状态的品种
+  - action: 点击删除按钮
+    expected: 弹出二次确认对话框或直接提示
+  - action: 观察系统行为
+    expected: 系统过滤掉启用状态的品种，只删除停用状态的品种，或提示“只能删除停用状态的品种“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39171
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39171
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39172
+  title: 删除-单个停用品种删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 勾选一个停用状态的品种
+    expected: 勾选停用状态的品种
+  - action: 点击删除按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“删除成功“，该品种从表格中消失
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39172
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39172
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39173
+  title: 删除-未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 不勾选任何数据
+    expected: 无数据被勾选
+  - action: 点击删除按钮
+    expected: 弹窗提示“请先勾选要删除的品种“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39173
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39173
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39174
+  title: 停用-取消二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 勾选一个启用状态的品种
+    expected: 勾选启用状态的品种
+  - action: 点击停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击取消
+    expected: 弹窗关闭，品种状态不变，仍为“启用“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39174
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39174
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39175
+  title: 停用-批量停用混合状态
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用和停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 同时勾选启用和停用状态的品种
+    expected: 勾选多个不同状态的品种
+  - action: 点击停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，已停用的品种维持停用状态，启用的品种变为停用状态
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39175
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39175
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39176
+  title: 停用-单个品种停用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 勾选一个启用状态的品种
+    expected: 勾选启用状态的品种
+  - action: 点击停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“停用成功“，该品种状态变为“停用“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39176
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39176
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39177
+  title: 停用-未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 不勾选任何数据
+    expected: 无数据被勾选
+  - action: 点击停用按钮
+    expected: 弹窗提示“请先勾选要停用的品种“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39177
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39177
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39178
+  title: 启用-取消二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 勾选一个停用状态的品种
+    expected: 勾选停用状态的品种
+  - action: 点击启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击取消
+    expected: 弹窗关闭，品种状态不变，仍为“停用“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39178
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39178
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39179
+  title: 启用-批量启用混合状态
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用和停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 同时勾选启用和停用状态的品种
+    expected: 勾选多个不同状态的品种
+  - action: 点击启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，已启用的品种维持启用状态，停用的品种变为启用状态
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39179
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39179
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39180
+  title: 启用-单个品种启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 勾选一个停用状态的品种
+    expected: 勾选停用状态的品种
+  - action: 点击启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后可用，提示“启用成功“，该品种状态变为“启用“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39180
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39180
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39181
+  title: 启用-未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 不勾选任何数据
+    expected: 无数据被勾选
+  - action: 点击启用按钮
+    expected: 弹窗提示“请先勾选要启用的品种“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39181
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39181
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39182
+  title: 导出-筛选后导出数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在多条品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在品种名称输入框中输入“白羽“
+    expected: 输入筛选条件
+  - action: 点击搜索按钮
+    expected: 表格中只显示筛选后的数据
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 打开导出文件检查数据
+    expected: 导出文件中只包含筛选后的数据，不包含全部数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39182
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39182
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39183
+  title: 导出-数据准确性验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在多条品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 记录表格中的数据
+    expected: 表格中显示多条品种数据
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 打开导出文件对比数据
+    expected: 导出文件中的数据与页面表格中的数据完全一致
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39183
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39183
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39184
+  title: 导出-表头字段与页面一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 打开导出文件检查表头
+    expected: 导出文件的表头字段为：品种编号、品种名称、状态、创建时间、操作，与页面表格一致
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39184
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39184
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39185
+  title: 导出-文件格式正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 下载文件并检查文件后缀
+    expected: 下载的文件后缀为.xls或.xlsx
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39185
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39185
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39186
+  title: 新建-再次打开弹窗数据清空
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 填写部分表单数据
+    expected: 表单数据已填写
+  - action: 点击取消按钮关闭弹窗
+    expected: 弹窗关闭
+  - action: 再次点击新建按钮
+    expected: 再次打开新建弹窗
+  - action: 观察表单数据
+    expected: 表单中所有字段为空或恢复默认值，不会带入上次的数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39186
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39186
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39187
+  title: 新建-关闭按钮不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 填写部分表单数据
+    expected: 表单数据已填写
+  - action: 点击弹窗右上角的×关闭按钮
+    expected: 弹窗关闭，表格中无新增数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39187
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39187
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39188
+  title: 新建-取消按钮不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 填写部分表单数据
+    expected: 表单数据已填写
+  - action: 点击取消按钮
+    expected: 弹窗关闭，表格中无新增数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39188
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39188
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39189
+  title: 新建-确定按钮保存成功
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 填写所有必填项和选填项的正常值
+    expected: 表单数据填写完整
+  - action: 点击确定按钮
+    expected: 弹窗关闭，提示“保存成功“，表格中新增一行数据，各字段值与填写的一致
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39189
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39189
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39190
+  title: 新建-备注非必填
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 备注输入框不填写任何内容
+    expected: 备注输入框为空
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的备注为空
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39190
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39190
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39191
+  title: 新建-状态默认选中启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 观察状态字段的默认选中值
+    expected: 状态单选框默认选中“启用“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39191
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39191
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39192
+  title: 新建-状态选择停用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 状态选择“停用“
+    expected: 状态单选框选中“停用“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，下游流程中该品种不在选项中显示
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39192
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39192
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39193
+  title: 新建-状态选择启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 状态选择“启用“
+    expected: 状态单选框选中“启用“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，下游流程中该品种可在选项中选择
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39193
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39193
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39194
+  title: 新建-品种名称仅输入空格校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 品种名称输入框只输入空格“   “
+    expected: 品种名称输入框显示空格
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“品种名称不能为空“或“品种名称不能只包含空格“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39194
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39194
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39195
+  title: 新建-品种名称重复校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在品种名称为“白羽肉鸡“的数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 品种名称输入框填写“白羽肉鸡“（与已有数据重复）
+    expected: 品种名称显示“白羽肉鸡“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“品种名称已存在，请使用其他名称“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39195
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39195
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39196
+  title: 新建-品种名称正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 品种名称输入框填写“黄羽肉鸡“
+    expected: 品种名称显示“黄羽肉鸡“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的品种名称为“黄羽肉鸡“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39196
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39196
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39197
+  title: 新建-品种名称必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 品种名称输入框不填写任何内容
+    expected: 品种名称输入框为空
+  - action: 品种编号、状态等其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“品种名称不能为空“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39197
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39197
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39198
+  title: 新建-品种编号可修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 将品种编号修改为“PZ999“
+    expected: 品种编号修改为“PZ999“
+  - action: 填写其他必填项
+    expected: 其他字段填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的品种编号为“PZ999“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39198
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39198
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39199
+  title: 新建-品种编号自动生成
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 观察品种编号输入框的默认值
+    expected: 品种编号输入框显示系统自动生成的编号
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39199
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39199
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39200
+  title: 新建-正常保存
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 品种编号输入框填写“PZ001“（或保持系统自动生成）
+    expected: 品种编号显示“PZ001“或系统生成的编号
+  - action: 品种名称输入框填写“白羽肉鸡“
+    expected: 品种名称显示“白羽肉鸡“
+  - action: 状态选择“启用“
+    expected: 状态默认选中“启用“
+  - action: 备注输入框填写“测试品种“
+    expected: 备注显示“测试品种“
+  - action: 点击确定按钮
+    expected: 弹窗关闭，提示“保存成功“，表格中新增一行数据，品种编号为“PZ001“，品种名称为“白羽肉鸡“，状态为“启用“，备注为“测试备注“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39200
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39200
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39201
+  title: 新建弹窗-表单字段显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗
+  - action: 观察弹窗中的表单字段
+    expected: 弹窗中显示品种编号、品种名称、状态、备注四个字段
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39201
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39201
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39202
+  title: 新建弹窗-打开弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 点击新建按钮
+    expected: 打开新建品种弹窗，弹窗标题显示“新建品种“
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39202
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39202
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39203
+  title: 重置按钮-自动执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已设置筛选条件并搜索
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 设置筛选条件并点击搜索
+    expected: 表格显示筛选后的数据
+  - action: 点击重置按钮
+    expected: 筛选条件清空
+  - action: 观察是否需再次点击搜索
+    expected: 表格自动刷新显示全部数据，无需再次点击搜索
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39203
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39203
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39204
+  title: 重置按钮-清空所有筛选条件
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已设置多个筛选条件
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 设置品种名称、状态等筛选条件
+    expected: 筛选条件正确设置
+  - action: 点击搜索按钮
+    expected: 表格显示筛选后的数据
+  - action: 点击重置按钮
+    expected: 所有筛选条件清空，表格自动显示全部数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39204
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39204
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39205
+  title: 搜索按钮-翻页后搜索回到第一页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、数据量超过一页
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 翻到第2页或第3页
+    expected: 显示对应页码的数据
+  - action: 在品种名称输入框中输入筛选条件
+    expected: 输入筛选条件
+  - action: 点击搜索按钮
+    expected: 表格回到第1页并显示筛选后的数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39205
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39205
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39206
+  title: 组合筛选-多条件组合
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在多条品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在品种名称输入框中输入“白羽“
+    expected: 各筛选条件正确显示
+  - action: 在状态下拉框中选择“启用“
+    expected: 表格中只显示品种名称包含“白羽“且状态为“启用“的数据
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39206
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39206
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39207
+  title: 状态筛选-选择停用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用和停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在状态下拉框中选择“停用“
+    expected: 下拉框显示选中“停用“
+  - action: 点击搜索按钮
+    expected: 表格中只显示状态为“停用“的品种数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39207
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39207
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39208
+  title: 状态筛选-选择启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 品种管理
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、已存在启用和停用状态的品种数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在状态下拉框中选择“启用“
+    expected: 下拉框显示选中“启用“
+  - action: 点击搜索按钮
+    expected: 表格中只显示状态为“启用“的品种数据
+  test_data:
+    module: 品种管理
+    zentao_module_id: 546
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-029
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39208
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39208
+    raw_module: /一期/pc/基础数据/品种管理(#546)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

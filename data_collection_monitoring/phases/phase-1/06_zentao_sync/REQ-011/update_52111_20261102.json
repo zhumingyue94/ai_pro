@@ -1,0 +1,19 @@
+{
+  "req_id": "REQ-011",
+  "operation": "update",
+  "remote_case_id": 52111,
+  "local_case_id": "TC-REQ-011-054",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "status": "validated",
+  "remote_version_after": 8,
+  "steps_after": 4,
+  "readback": {
+    "title": "处理告警后刷新，检查状态保持",
+    "first_step": "在告警记录列表定位未处理记录，点击“处理”按钮打开处理告警弹窗。",
+    "first_expected": "打开“处理告警”弹窗，并显示原因输入框和提交控件。",
+    "second_step": "在处理告警弹窗输入原因并确定",
+    "third_step": "刷新或查询并按编号定位记录",
+    "fourth_step": "查看处理人、时间和结果"
+  },
+  "policy": "稳定ID原位更新；未删除重建、未创建替代用例。"
+}

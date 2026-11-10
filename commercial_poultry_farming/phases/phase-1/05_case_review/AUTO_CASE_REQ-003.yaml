@@ -1,0 +1,686 @@
+id: AUTO_CASE_REQ-003
+req_id: REQ-003
+module: 补栏确认
+upstream_gate_passed: true
+trace:
+  req: REQ-003
+  source_tc: 04_testcases/TC_REQ-003.yaml
+  source_case_review: 05_case_review/REV_CASE_REQ-003.yaml
+  project: 商品禽养殖
+summary:
+  total: 90
+  auto: 86
+  manual: 4
+items:
+- case_id: TC-003-01
+  tp_id: TP-003-01
+  automation: manual
+  matched:
+  - 闭环
+  reason: 查询区控件存在性壳层
+- case_id: TC-003-02
+  tp_id: TP-003-02
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤主路径，PC可脚本断言
+- case_id: TC-003-03
+  tp_id: TP-003-03
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤主路径，PC可脚本断言
+- case_id: TC-003-04
+  tp_id: TP-003-04
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤主路径，PC可脚本断言
+- case_id: TC-003-05
+  tp_id: TP-003-05
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤主路径，PC可脚本断言
+- case_id: TC-003-06
+  tp_id: TP-003-06
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 查询控件默认值/选项可脚本断言
+- case_id: TC-003-07
+  tp_id: TP-003-07
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤主路径，PC可脚本断言
+- case_id: TC-003-08
+  tp_id: TP-003-08
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤主路径，PC可脚本断言
+- case_id: TC-003-09
+  tp_id: TP-003-09
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 查询控件默认值/选项可脚本断言
+- case_id: TC-003-10
+  tp_id: TP-003-10
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤主路径，PC可脚本断言
+- case_id: TC-003-11
+  tp_id: TP-003-11
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 提前生成/批次分配核心规则可脚本断言
+- case_id: TC-003-89
+  tp_id: TP-003-89
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 提前生成/批次分配核心规则可脚本断言
+- case_id: TC-003-90
+  tp_id: TP-003-90
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 提前生成/批次分配核心规则可脚本断言
+- case_id: TC-003-12
+  tp_id: TP-003-12
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 列表字段/格式可脚本断言
+- case_id: TC-003-13
+  tp_id: TP-003-13
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认状态推导可脚本断言
+- case_id: TC-003-14
+  tp_id: TP-003-14
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认状态推导可脚本断言
+- case_id: TC-003-15
+  tp_id: TP-003-15
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认状态推导可脚本断言
+- case_id: TC-003-16
+  tp_id: TP-003-16
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认状态推导可脚本断言
+- case_id: TC-003-17
+  tp_id: TP-003-17
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认状态推导可脚本断言
+- case_id: TC-003-18
+  tp_id: TP-003-18
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认状态推导可脚本断言
+- case_id: TC-003-19
+  tp_id: TP-003-19
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认状态推导可脚本断言
+- case_id: TC-003-20
+  tp_id: TP-003-20
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 列表字段/格式可脚本断言
+- case_id: TC-003-21
+  tp_id: TP-003-21
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 列表字段/格式可脚本断言
+- case_id: TC-003-22
+  tp_id: TP-003-22
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 提前生成/批次分配核心规则可脚本断言
+- case_id: TC-003-23
+  tp_id: TP-003-23
+  automation: manual
+  matched:
+  - 闭环
+  reason: 分页非主路径核心
+- case_id: TC-003-24
+  tp_id: TP-003-24
+  automation: manual
+  matched: []
+  reason: 省略/悬浮依赖人工目视，不可闭环
+- case_id: TC-003-25
+  tp_id: TP-003-25
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 列表字段/格式可脚本断言
+- case_id: TC-003-26
+  tp_id: TP-003-26
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 列表字段/格式可脚本断言
+- case_id: TC-003-27
+  tp_id: TP-003-27
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-28
+  tp_id: TP-003-28
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-29
+  tp_id: TP-003-29
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-30
+  tp_id: TP-003-30
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-31
+  tp_id: TP-003-31
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-32
+  tp_id: TP-003-32
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-33
+  tp_id: TP-003-33
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-34
+  tp_id: TP-003-34
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-35
+  tp_id: TP-003-35
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-36
+  tp_id: TP-003-36
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-37
+  tp_id: TP-003-37
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-38
+  tp_id: TP-003-38
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-39
+  tp_id: TP-003-39
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-40
+  tp_id: TP-003-40
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-41
+  tp_id: TP-003-41
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-42
+  tp_id: TP-003-42
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-43
+  tp_id: TP-003-43
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-44
+  tp_id: TP-003-44
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-45
+  tp_id: TP-003-45
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-46
+  tp_id: TP-003-46
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-47
+  tp_id: TP-003-47
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-48
+  tp_id: TP-003-48
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-49
+  tp_id: TP-003-49
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-50
+  tp_id: TP-003-50
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-51
+  tp_id: TP-003-51
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-52
+  tp_id: TP-003-52
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-53
+  tp_id: TP-003-53
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 确认不重建批次核心规则
+- case_id: TC-003-54
+  tp_id: TP-003-54
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-55
+  tp_id: TP-003-55
+  automation: manual
+  matched: []
+  reason: P4 弱感知场景，非高频核心稳定
+- case_id: TC-003-56
+  tp_id: TP-003-56
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-57
+  tp_id: TP-003-57
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-58
+  tp_id: TP-003-58
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-59
+  tp_id: TP-003-59
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-60
+  tp_id: TP-003-60
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 确认不重建批次核心规则
+- case_id: TC-003-61
+  tp_id: TP-003-61
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-62
+  tp_id: TP-003-62
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-63
+  tp_id: TP-003-63
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-64
+  tp_id: TP-003-64
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-65
+  tp_id: TP-003-65
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-66
+  tp_id: TP-003-66
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-67
+  tp_id: TP-003-67
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-68
+  tp_id: TP-003-68
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 异常防护可脚本断言
+- case_id: TC-003-69
+  tp_id: TP-003-69
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-70
+  tp_id: TP-003-70
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 确认不重建批次核心规则
+- case_id: TC-003-71
+  tp_id: TP-003-71
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-72
+  tp_id: TP-003-72
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-73
+  tp_id: TP-003-73
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-74
+  tp_id: TP-003-74
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-75
+  tp_id: TP-003-75
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-76
+  tp_id: TP-003-76
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-77
+  tp_id: TP-003-77
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 确认主流程/状态流转可脚本断言
+- case_id: TC-003-78
+  tp_id: TP-003-78
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-79
+  tp_id: TP-003-79
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认弹窗打开主路径
+- case_id: TC-003-80
+  tp_id: TP-003-80
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-81
+  tp_id: TP-003-81
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 确认场景可脚本断言
+- case_id: TC-003-82
+  tp_id: TP-003-82
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 明细查看可脚本断言
+- case_id: TC-003-83
+  tp_id: TP-003-83
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出主路径可脚本断言
+- case_id: TC-003-84
+  tp_id: TP-003-84
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出主路径可脚本断言
+- case_id: TC-003-85
+  tp_id: TP-003-85
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出主路径可脚本断言
+- case_id: TC-003-86
+  tp_id: TP-003-86
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出主路径可脚本断言
+- case_id: TC-003-87
+  tp_id: TP-003-87
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出主路径可脚本断言
+- case_id: TC-003-88
+  tp_id: TP-003-88
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出主路径可脚本断言
+actions:
+  yaml_updated: true
+  csv_path: 05_case_review/003_补栏确认_测试用例.csv

@@ -1,0 +1,10 @@
+cases:
+- case_id: TC-REQ-011-012
+  result: blocked
+  reason: 【P3前置数据创建】本轮仅创建/核对前置数据，未执行用例；dataKey=alert_012；blocked：whenMissing=approved_fixture_or_auto_create；按
+    businessFields (recordKey, alertConfig, product, deviceId, processed) 查询未命中，无可复用的已存在记录；契约含
+    UI 表单不可设置字段：recordKey, alertConfig, level, product, deviceId, processed, createdAt,
+    tenant, timeBoundary；缺少外部依赖/批准样本：product, deviceId（引用 AUTO_REQ* 实体或 approved-*
+    图片文件，工作区未提供且环境未确认存在）；页面无新增入口（可见按钮：测试园区A, 管理员账户, 首页, 告警记录, 查询, 重置, 刷新, 表头设置, 查看,
+    查看, 查看, 处理）
+  evidence: {}

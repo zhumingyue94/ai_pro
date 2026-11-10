@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.qa/case-review.schema.json",
+  "title": "Case Review Result",
+  "type": "object",
+  "required": ["review"],
+  "additionalProperties": false,
+  "properties": {
+    "review": {
+      "type": "object",
+      "required": ["review_id", "req_id", "module_id", "agent", "mode", "status", "gate_passed", "gate_reasons"],
+      "additionalProperties": true,
+      "properties": {
+        "review_id": {"type": "string", "minLength": 1},
+        "req_id": {"type": "string", "pattern": "^REQ-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"},
+        "module_id": {"type": "string", "minLength": 1},
+        "agent": {"const": "case-review-agent"},
+        "mode": {"const": "report_only"},
+        "status": {"type": "string", "minLength": 1},
+        "gate_passed": {"type": "boolean"},
+        "review_scope": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "design_review": {"enum": ["in_scope"]},
+            "execution_review": {"enum": ["not_in_scope", "out_of_scope", "excluded"]},
+            "ui_execution": {"enum": ["not_in_scope", "out_of_scope", "excluded"]},
+            "automation_execution": {"enum": ["not_in_scope", "out_of_scope", "excluded"]},
+            "pairwise_execution": {"enum": ["not_in_scope", "out_of_scope", "excluded"]},
+            "remote_sync": {"enum": ["not_in_scope", "out_of_scope", "excluded"]}
+          }
+        },
+        "execution_review": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "status": {"enum": ["not_in_scope", "out_of_scope", "excluded"]},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        },
+        "gate_reasons": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "design_gate_passed": {"type": "boolean"},
+        "design_gate_reasons": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": ["not_executed", "blocked", "passed", "failed", "partial"]
+        },
+        "execution_gate_passed": {"type": "boolean"},
+        "overall_status": {
+          "type": "string",
+          "enum": ["design_failed", "design_review_passed", "pending_execution", "execution_failed", "passed", "partial"]
+        },
+        "execution_summary": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "playwright": {"type": "string"},
+            "headed_page": {"type": "string"},
+            "reason": {"type": "string"}
+          }
+        },
+        "review_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["code", "category", "result", "gate_reason", "reason"],
+            "additionalProperties": true,
+            "properties": {
+              "code": {"type": "string", "minLength": 1},
+              "category": {"enum": ["design_violation", "traceability_failure", "input_gate_failure", "evidence_risk", "environment_gap", "execution_blocker"]},
+              "result": {"type": "string", "minLength": 1},
+              "gate_reason": {"type": "boolean"},
+              "reason": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "priority_review": {
+          "type": "object",
+          "required": ["rule_ref", "scope", "case_count", "reviewed_case_count", "unreviewed_case_ids", "distribution", "change_summary", "distribution_observations", "items", "mismatches", "unconfirmed_items", "gate_reasons"],
+          "additionalProperties": true,
+          "properties": {
+            "rule_ref": {"type": "string", "minLength": 1},
+            "scope": {"type": "string", "minLength": 1},
+            "case_count": {"type": "integer", "minimum": 0},
+            "reviewed_case_count": {"type": "integer", "minimum": 0},
+            "unreviewed_case_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "distribution": {"type": "object", "additionalProperties": true},
+            "change_summary": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "changed_case_count": {"type": "integer", "minimum": 0},
+                "unchanged_case_count": {"type": "integer", "minimum": 0}
+              }
+            },
+            "distribution_observations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["code", "severity", "gate_reason", "reason"],
+                "properties": {
+                  "code": {"const": "priority_distribution_observation"},
+                  "severity": {"const": "warning"},
+                  "gate_reason": {"const": false},
+                  "reason": {"type": "string", "minLength": 1}
+                },
+                "additionalProperties": true
+              }
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["case_id", "current_priority", "source_priority", "reviewed_priority", "result", "impact_area", "blocks_core_flow", "causes_key_data_error", "has_workaround", "user_frequency", "reason", "gate_reason"],
+                "additionalProperties": true,
+                "properties": {
+                  "case_id": {"type": "string", "minLength": 1},
+                  "current_priority": {"enum": ["P1", "P2", "P3", "P4"]},
+                  "source_priority": {"enum": ["P1", "P2", "P3", "P4"]},
+                  "reviewed_priority": {"enum": ["P1", "P2", "P3", "P4"]},
+                  "recommended_priority": {"enum": ["P1", "P2", "P3", "P4"]},
+                  "result": {"type": "string", "minLength": 1},
+                  "impact_area": {"type": "string", "minLength": 1},
+                  "blocks_core_flow": {"type": "boolean"},
+                  "causes_key_data_error": {"type": "boolean"},
+                  "has_workaround": {"type": "boolean"},
+                  "user_frequency": {"enum": ["high", "medium", "low", "unknown"]},
+                  "reason": {"type": "string", "minLength": 1},
+                  "gate_reason": {"type": "boolean"}
+                }
+              }
+            },
+            "mismatches": {"type": "array"},
+            "unconfirmed_items": {"type": "array"},
+            "gate_reasons": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+          }
+        },
+        "design_violations": {"type": "array"},
+        "traceability_failures": {"type": "array"},
+        "input_gate_failures": {"type": "array"},
+        "evidence_risks": {"type": "array"},
+        "execution_blockers": {"type": "array"}
+      },
+      "allOf": [
+        {
+          "if": {"required": ["design_gate_passed"]},
+          "then": {"required": ["design_gate_reasons"]}
+        },
+        {
+          "if": {"required": ["execution_status"]},
+          "then": {"required": ["execution_gate_passed"]}
+        }
+      ]
+    }
+  }
+}

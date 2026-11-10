@@ -1,0 +1,33 @@
+{
+    "status":  "validated",
+    "operation":  "delete",
+    "remote_case_id":  51868,
+    "source_case_id":  "TC-REQ-008-046",
+    "target":  {
+                   "project_id":  46,
+                   "product_id":  8,
+                   "module_id":  746
+               },
+    "readback_before":  {
+                            "project":  46,
+                            "product":  8,
+                            "module":  746,
+                            "title":  "只有一条目标时，检查分页边界",
+                            "version":  4
+                        },
+    "delete_response":  {
+                            "status":  "success"
+                        },
+    "readback_after":  {
+                           "status":  "confirmed_not_found",
+                           "message":  "Case does not exist."
+                       },
+    "registry":  {
+                     "action":  "removed_before_remote_delete",
+                     "case_id":  "TC-REQ-008-046",
+                     "zentao_case_id":  51868,
+                     "confirmed_after_remote_delete":  true
+                 },
+    "delete_recreate":  false,
+    "entrypoint":  "../../../../scripts/zentao_create_testcase.py"
+}

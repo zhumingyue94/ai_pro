@@ -1,0 +1,28 @@
+id: REQ-APP-025
+title: APP存发苗间出入库记录
+source_mapping:
+  module_split: REQ-APP-025
+  requirements_spec: REQ-009
+  priority: P1
+  prototype_status: 二期未提供可探索原型，页面契约待补充
+scope:
+  in_scope: [发货确认触发的存发苗间自动出库记录, 出入库记录查询范围, 与发货记录和上孵计划的关联]
+  out_of_scope: [本阶段虚构页面字段/元素ID/接口错误码, 库存手工调整, 非发货业务入库]
+actors: [授权发货角色, 存发苗间管理角色, 场长, 系统管理配置的授权角色]
+rules:
+  - 每次确认发货自动生成出库记录，数量等于本次发货数量。
+  - 类型为出库、方式为自动、单位为只，批次取上孵计划批次。
+  - 操作人和操作时间取雏苗发货记录，养殖客户取当前园区。
+  - 存发苗间由上孵计划关联关系决定；库存不足时按关联排列顺序继续分配，不允许负库存。
+interface_contract:
+  trigger: 雏苗发货确认成功且结果可核对
+  fields: [发货记录标识, 上孵计划批次, 数量, 类型, 方式, 单位, 操作人, 操作时间, 养殖客户, 存发苗间]
+  unresolved: [APP页面路由与元素ID, 查询分页/排序, 权限码, 失败补偿和幂等协议]
+dependencies: [APP发货执行, 上孵计划关联, 存发苗间库存, 园区和养殖客户基础数据]
+risks: [自动出库与发货记录重复或不一致, 多存发苗间分配顺序不明确, 库存不足补偿和重试不明确]
+environment_data:
+  prerequisites: [服务端库存数据, 上孵计划与存发苗间关联, 可回溯发货记录]
+  mutation_boundary: 自动出库是系统业务变更；由发货服务和库存服务责任方保证幂等，测试数据负责人负责清理并记录清理状态。
+security: 不记录账号、密码、Token、Cookie 或未经授权业务数据。
+evidence: page_inventory/page.json中未发现二期专属页面证据
+open_questions: [一期页面入口和现行字段契约, 出库失败后的可见状态与补偿机制]

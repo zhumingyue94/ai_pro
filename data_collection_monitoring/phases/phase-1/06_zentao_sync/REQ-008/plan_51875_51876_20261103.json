@@ -1,0 +1,140 @@
+{
+    "status":  "completed",
+    "mode":  "real_update",
+    "records":  [
+                    {
+                        "case_id":  "TC-REQ-008-053",
+                        "remote_case_id":  51875,
+                        "remote_version":  7,
+                        "project":  46,
+                        "product":  8,
+                        "module":  746,
+                        "title":  "查看 HTTP 表单，检查字段规则",
+                        "type":  "other",
+                        "precondition":  "前置准备：\n1、已取得脱敏 HTTP 新增表单截图；不连接外部服务。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  5,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176519,
+                                          "step":  "点击“新增”按钮并选择“HTTP”",
+                                          "desc":  "点击“新增”按钮并选择“HTTP”",
+                                          "expect":  "新增推送目标表单打开，HTTP 联动字段显示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176520,
+                                          "step":  "查看 HTTP 表单的固定字段和联动字段",
+                                          "desc":  "查看 HTTP 表单的固定字段和联动字段",
+                                          "expect":  "表单显示目标名称、目标描述、目标类型、目标状态、请求地址、请求方法、请求头、请求参数和请求体；HTTP 表单不显示 MQTT 专属的服务地址、用户名、密码、客户端ID和主题字段。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176521,
+                                          "step":  "查看字段标签、默认值和必填标识",
+                                          "desc":  "查看字段标签、默认值和必填标识",
+                                          "expect":  "目标名称、目标类型、请求地址、请求方法和目标状态带必填标识；请求地址协议默认值为“http://”，目标状态默认值为“开启”；目标描述、请求头、请求参数和请求体不因未填写而显示必填标识。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176522,
+                                          "step":  "保持请求地址为空并点击“确定”",
+                                          "desc":  "保持请求地址为空并点击“确定”",
+                                          "expect":  "请求地址字段显示必填校验提示，表单保持打开，未产生业务写入。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "5",
+                                          "id":  176523,
+                                          "step":  "点击“取消”",
+                                          "desc":  "点击“取消”",
+                                          "expect":  "表单关闭，未产生业务写入。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    },
+                    {
+                        "case_id":  "TC-REQ-008-054",
+                        "remote_case_id":  51876,
+                        "remote_version":  7,
+                        "project":  46,
+                        "product":  8,
+                        "module":  746,
+                        "title":  "查看 MQTT 表单，检查字段规则",
+                        "type":  "other",
+                        "precondition":  "前置准备：\n1、已取得脱敏 MQTT 新增表单截图；不连接外部服务。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  5,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176524,
+                                          "step":  "点击“新增”按钮并选择“MQTT”",
+                                          "desc":  "点击“新增”按钮并选择“MQTT”",
+                                          "expect":  "新增推送目标表单打开，MQTT 联动字段显示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176525,
+                                          "step":  "查看 MQTT 表单的固定字段和联动字段",
+                                          "desc":  "查看 MQTT 表单的固定字段和联动字段",
+                                          "expect":  "表单显示目标名称、目标描述、目标类型、目标状态、服务地址、用户名、密码、客户端ID和主题；MQTT 表单不显示 HTTP 专属的请求地址、请求方法、请求头、请求参数和请求体字段。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176526,
+                                          "step":  "查看字段标签、默认值和必填标识",
+                                          "desc":  "查看字段标签、默认值和必填标识",
+                                          "expect":  "目标名称、目标类型、服务地址、主题和目标状态带必填标识；目标状态默认值为“开启”；服务地址显示协议或地址格式提示；用户名和密码不因未填写而显示必填标识。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176527,
+                                          "step":  "保持主题为空并点击“确定”",
+                                          "desc":  "保持主题为空并点击“确定”",
+                                          "expect":  "主题字段显示必填校验提示，表单保持打开，未产生业务写入。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "5",
+                                          "id":  176528,
+                                          "step":  "点击“取消”",
+                                          "desc":  "点击“取消”",
+                                          "expect":  "表单关闭，未产生业务写入。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    }
+                ],
+    "operation":  "in_place_update",
+    "delete_recreate":  false,
+    "entrypoint":  "../../../../scripts/zentao_create_testcase.py",
+    "readback":  "06_zentao_sync/REQ-008/update_51875_51876_20261103.json"
+}

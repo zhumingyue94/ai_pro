@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "req_id": "REQ-PC-042",
+  "req_name": "PC 发货单发货执行",
+  "description": "对齐发货执行页面两个原型实例及其交互状态与指定蓝湖设计页面。原型包含待发货发货单 BL-20260630-01 和发货中发货单 BL-20260630-02 两组状态；重复 state_id 通过 prototype_page_id 区分。",
+  "prototype_source": {
+    "source_file": "02_analysis/pc/page_inventory/page.json",
+    "pages": [
+      {
+        "page_id": "pc-chick-shipping-ship",
+        "page_title": "雏苗发货执行（发货单发货执行） - React 原型",
+        "route": "http://43.143.148.114:18885/biopark-breeding/",
+        "menu_path": ["计划管理", "雏苗发货", "发货执行"],
+        "ship_doc": "BL-20260630-01",
+        "ship_doc_status": "待发货",
+        "states": [
+          {"state_id": "st-default", "state_name": "待发货执行默认态"},
+          {"state_id": "st-filter-progress", "state_name": "计划进度已出雏筛选态"},
+          {"state_id": "st-ship-mode", "state_name": "发货模式态"},
+          {"state_id": "st-location-dialog", "state_name": "发货位置录入弹窗"},
+          {"state_id": "st-location-overlimit", "state_name": "发货数量超限校验态"},
+          {"state_id": "st-draft", "state_name": "位置发货草稿暂存态"},
+          {"state_id": "st-exit-draft-confirm", "state_name": "有草稿退出发货确认弹窗"},
+          {"state_id": "st-complete-confirm", "state_name": "未发完完成发货确认弹窗"},
+          {"state_id": "st-submitted", "state_name": "完成发货提交后态"},
+          {"state_id": "st-reset", "state_name": "刷新恢复初始态"}
+        ]
+      },
+      {
+        "page_id": "pc-chick-shipping-ship-bl02",
+        "page_title": "雏苗发货执行（发货单 BL-20260630-02） - React 原型",
+        "route": "http://43.143.148.114:18885/biopark-breeding/",
+        "menu_path": ["计划管理", "雏苗发货", "发货执行"],
+        "ship_doc": "BL-20260630-02",
+        "ship_doc_status": "发货中",
+        "states": [
+          {"state_id": "st-default", "state_name": "发货中执行默认态"},
+          {"state_id": "st-status-filter", "state_name": "发货状态下拉展开态"},
+          {"state_id": "st-status-shipped", "state_name": "已发货状态筛选结果态"},
+          {"state_id": "st-ship-mode", "state_name": "发货填写模式态"},
+          {"state_id": "st-draft", "state_name": "位置录入暂存态"},
+          {"state_id": "st-complete-confirm", "state_name": "完成发货确认弹层"},
+          {"state_id": "st-submitted", "state_name": "提交后状态流转态"},
+          {"state_id": "st-reset", "state_name": "刷新恢复初始态"}
+        ]
+      }
+    ]
+  },
+  "lanhu_design_source": {
+    "source_dir": "02_analysis/pc/page_inventory/lanhu",
+    "designs": [
+      {"design_id": "555a1f23-38c3-4c5d-b4d4-279130b12ef8", "design_name": "发货执行-发货模式", "source_file": "02_analysis/pc/page_inventory/lanhu/发货执行-发货模式_design.json", "page_id": "lanhu-555a1f23-38c3-4c5d-b4d4-279130b12ef8", "node_count": 404, "max_depth": 1},
+      {"design_id": "096f881a-bda8-4d38-9418-e25389e66ea7", "design_name": "发货执行-栋舍视图-空", "source_file": "02_analysis/pc/page_inventory/lanhu/发货执行-栋舍视图-空_design.json", "page_id": "lanhu-096f881a-bda8-4d38-9418-e25389e66ea7", "node_count": 349, "max_depth": 1},
+      {"design_id": "e54723db-bef7-46b1-be56-4a4b118ae986", "design_name": "发货执行-栋舍总览-富状态", "source_file": "02_analysis/pc/page_inventory/lanhu/发货执行-栋舍总览-富状态_design.json", "page_id": "lanhu-e54723db-bef7-46b1-be56-4a4b118ae986", "node_count": 1115, "max_depth": 10},
+      {"design_id": "11fc8bdd-8360-4104-945f-685ae05be416", "design_name": "发货执行-列表视图", "source_file": "02_analysis/pc/page_inventory/lanhu/发货执行-列表视图_design.json", "page_id": "lanhu-11fc8bdd-8360-4104-945f-685ae05be416", "node_count": 551, "max_depth": 10},
+      {"design_id": "3df6adbd-7318-4216-8657-5c6c6f08282f", "design_name": "发货执行-列表视图-缺省", "source_file": "02_analysis/pc/page_inventory/lanhu/发货执行-列表视图-缺省_design.json", "page_id": "lanhu-3df6adbd-7318-4216-8657-5c6c6f08282f", "node_count": 533, "max_depth": 10},
+      {"design_id": "10f5928a-07c5-47a3-9b1c-637f4ed162d2", "design_name": "完成发货", "source_file": "02_analysis/pc/page_inventory/lanhu/完成发货_design.json", "page_id": "lanhu-10f5928a-07c5-47a3-9b1c-637f4ed162d2", "node_count": 50, "max_depth": 7}
+    ]
+  },
+  "mappings": [
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-default", "req_id": "REQ-PC-042", "lanhu_design_id": "11fc8bdd-8360-4104-945f-685ae05be416", "lanhu_design_name": "发货执行-列表视图", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "设计呈现发货执行列表、上孵计划、发货状态和栋舍分布的默认查看结构。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-filter-progress", "req_id": "REQ-PC-042", "lanhu_design_id": "11fc8bdd-8360-4104-945f-685ae05be416", "lanhu_design_name": "发货执行-列表视图", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "同一发货执行列表结构匹配，但蓝湖静态图未明确记录计划进度=已出雏筛选结果。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-ship-mode", "req_id": "REQ-PC-042", "lanhu_design_id": "555a1f23-38c3-4c5d-b4d4-279130b12ef8", "lanhu_design_name": "发货执行-发货模式", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "设计名称与原型发货模式一致，并覆盖当前上孵计划、当前栋舍、发货中和发货操作区。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-location-dialog", "req_id": "REQ-PC-042", "lanhu_design_id": "555a1f23-38c3-4c5d-b4d4-279130b12ef8", "lanhu_design_name": "发货执行-发货模式", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "发货模式设计覆盖栋舍位置录入场景，但未单独确认原型弹窗状态。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-location-overlimit", "req_id": "REQ-PC-042", "lanhu_design_id": "555a1f23-38c3-4c5d-b4d4-279130b12ef8", "lanhu_design_name": "发货执行-发货模式", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "low", "reason": "属于发货模式数量录入交互，但蓝湖清单未明确展示超限校验提示。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-draft", "req_id": "REQ-PC-042", "lanhu_design_id": "e54723db-bef7-46b1-be56-4a4b118ae986", "lanhu_design_name": "发货执行-栋舍总览-富状态", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "富状态栋舍总览覆盖位置格、累计发货数量及发货记录联动结构。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-exit-draft-confirm", "req_id": "REQ-PC-042", "lanhu_design_id": "555a1f23-38c3-4c5d-b4d4-279130b12ef8", "lanhu_design_name": "发货执行-发货模式", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "low", "reason": "仍属于发货模式操作流程，但未在指定设计中确认有草稿退出确认弹窗。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-complete-confirm", "req_id": "REQ-PC-042", "lanhu_design_id": "10f5928a-07c5-47a3-9b1c-637f4ed162d2", "lanhu_design_name": "完成发货", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "设计明确包含仍有未发货数量提示、继续发货和确认提交操作。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-submitted", "req_id": "REQ-PC-042", "lanhu_design_id": "10f5928a-07c5-47a3-9b1c-637f4ed162d2", "lanhu_design_name": "完成发货", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "设计包含提交成功反馈，但原型还记录进度、状态和发货记录联动。"},
+    {"prototype_page_id": "pc-chick-shipping-ship", "prototype_state_id": "st-reset", "req_id": "REQ-PC-042", "lanhu_design_id": "11fc8bdd-8360-4104-945f-685ae05be416", "lanhu_design_name": "发货执行-列表视图", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "刷新恢复后的目标页面为发货执行列表，但蓝湖未记录原型 mock 数据清理行为。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-default", "req_id": "REQ-PC-042", "lanhu_design_id": "11fc8bdd-8360-4104-945f-685ae05be416", "lanhu_design_name": "发货执行-列表视图", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "发货中单据使用同一执行列表结构，设计与原型功能区一致但单据数据不同。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-status-filter", "req_id": "REQ-PC-042", "lanhu_design_id": "11fc8bdd-8360-4104-945f-685ae05be416", "lanhu_design_name": "发货执行-列表视图", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "设计包含发货状态筛选控件所在列表结构，但未单独呈现下拉展开态。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-status-shipped", "req_id": "REQ-PC-042", "lanhu_design_id": "发货执行-列表视图", "lanhu_design_name": "发货执行-列表视图", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "设计支持发货状态筛选列表，但未明确对应已发货单行及历史记录数量。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-ship-mode", "req_id": "REQ-PC-042", "lanhu_design_id": "555a1f23-38c3-4c5d-b4d4-279130b12ef8", "lanhu_design_name": "发货执行-发货模式", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "发货填写模式与蓝湖发货模式页面直接对应。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-draft", "req_id": "REQ-PC-042", "lanhu_design_id": "e54723db-bef7-46b1-be56-4a4b118ae986", "lanhu_design_name": "发货执行-栋舍总览-富状态", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "富状态栋舍总览与位置录入暂存、累计发货场景匹配。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-complete-confirm", "req_id": "REQ-PC-042", "lanhu_design_id": "10f5928a-07c5-47a3-9b1c-637f4ed162d2", "lanhu_design_name": "完成发货", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "完成发货确认弹层与设计页面名称和确认提交文案一致。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-submitted", "req_id": "REQ-PC-042", "lanhu_design_id": "10f5928a-07c5-47a3-9b1c-637f4ed162d2", "lanhu_design_name": "完成发货", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "设计包含提交成功态，原型额外记录发货中状态、进度和记录联动。"},
+    {"prototype_page_id": "pc-chick-shipping-ship-bl02", "prototype_state_id": "st-reset", "req_id": "REQ-PC-042", "lanhu_design_id": "11fc8bdd-8360-4104-945f-685ae05be416", "lanhu_design_name": "发货执行-列表视图", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "刷新后的目标结构回到发货执行列表，未在静态设计中体现刷新清理机制。"}
+  ],
+  "unmatched": {
+    "prototype_pages": [],
+    "prototype_states": [],
+    "lanhu_designs": []
+  },
+  "summary": {
+    "prototype_page_count": 2,
+    "prototype_state_count": 18,
+    "lanhu_design_count": 6,
+    "mapping_count": 18,
+    "matched_count": 8,
+    "partial_matched_count": 10,
+    "unmatched_prototype_state_count": 0,
+    "unmatched_lanhu_design_count": 0,
+    "coverage_rate": "100%"
+  },
+  "self_check": {
+    "prototype_input_modified": false,
+    "design_inputs_modified": false,
+    "all_prototype_pages_recorded": true,
+    "all_prototype_states_recorded": true,
+    "all_designs_recorded": true,
+    "matched_and_unmatched_recorded": true,
+    "duplicate_state_ids_disambiguated_by_page_id": true,
+    "output_directory": "02_analysis/pc/page_inventory/lanhu_page_mapping",
+    "output_file": "REQ-PC-042_lanhu_page_mapping.json"
+  }
+}

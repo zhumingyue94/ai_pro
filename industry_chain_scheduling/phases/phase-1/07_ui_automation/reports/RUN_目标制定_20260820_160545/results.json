@@ -1,0 +1,73 @@
+{
+  "run_id": "RUN_目标制定_20260820_160545",
+  "module": "目标制定",
+  "req_id": "REQ-002",
+  "zentao_module_id": 669,
+  "environment": {
+    "base_host": "192.168.6.163:66",
+    "headless": "false"
+  },
+  "generated_at": "2026-08-20T16:05:53",
+  "source": "04_testcases/TC_REQ-002.yaml",
+  "cases": [
+    {
+      "case_id": "TC-002-28",
+      "zentao_case_id": 47509,
+      "title": "点击「保存并提交审核」，状态变为待审核",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-002-28",
+      "assertion_scope": "target_goal.goal_table.pending_review_status",
+      "expected": "必填项齐全且合计相等\n新增弹窗保存并提交后状态显示为「待审核」",
+      "actual": "页面或测试数据未就绪",
+      "detail": "年度 2036 已存在但不属于当前 RUN，拒绝修改",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "打开新增弹窗，选择未占用年度，填写并均分",
+          "expected": "必填项齐全且合计相等"
+        },
+        {
+          "action": "点击「保存并提交审核」",
+          "expected": "新增弹窗保存并提交后状态显示为「待审核」"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-28_TP-002-28_blocked_scope.png",
+          "sha256": "d51ab0f3fbf6d40a817e5677eaa4aac7f15982437bb0bf8287c3f54c2e9d2b32"
+        },
+        {
+          "path": "screenshots/TC-002-28_TP-002-28_blocked_full.png",
+          "sha256": "9d82d8dcd5698911238f48636537740718a4fbf6836ae27e90fda2fcb284f42e"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-28_TP-002-28_blocked_scope.png",
+      "started_at": "2026-08-20T16:05:45",
+      "finished_at": "2026-08-20T16:05:53",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_year_2036_pending_review",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_2036",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_target_draft",
+        "execute": "save_and_submit_target",
+        "assertions": [
+          "target_status_is_pending_review"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    }
+  ]
+}

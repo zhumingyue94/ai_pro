@@ -1,0 +1,1953 @@
+{
+  "status": "validated",
+  "product_id": 8,
+  "project_id": 46,
+  "project_context_id": 46,
+  "module": {
+    "name": "数据监听",
+    "id": 745,
+    "path": "iot平台/数据中心/数据监听"
+  },
+  "source_hashes_before": {
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-007.yaml": "3e8cd72c6f5f50e32be85b7a2d668a6a36f109c0ece30cc003308e7b97df9075",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-007.yaml": "57257cde8e4ad2a6934d04841249041be7b99e3fbfdd1d7629394172ed03ea73",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  },
+  "records": [
+    {
+      "case_id": "TC-REQ-007-011",
+      "operation": "update",
+      "remote_case_id": 51738,
+      "readback": {
+        "id": 51738,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "点击停用规则后确认新事件按最新状态处理",
+        "precondition": "前置准备：\n1、已获得隔离规则、事件回读和状态切换批准证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:23:53",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:06",
+        "version": 7,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 7,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174265,
+            "step": "在规则列表中找到目标规则。",
+            "desc": "在规则列表中找到目标规则。",
+            "expect": "页面显示目标规则及其当前状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174266,
+            "step": "点击模板规则的”禁用/停用“按钮。",
+            "desc": "点击模板规则的”禁用/停用“按钮。",
+            "expect": "页面显示规则已禁用或停用，并显示更新后的状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174267,
+            "step": "点击“刷新”或“查询”，查看新产生的事件记录。",
+            "desc": "点击“刷新”或“查询”，查看新产生的事件记录。",
+            "expect": "新事件按照更新后的规则状态处理，页面显示的处理结果与规则状态一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51738,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51738",
+          "text": "点击停用规则后确认新事件按最新状态处理",
+          "type": "root",
+          "children": [
+            {
+              "id": 174265,
+              "text": "在规则列表中找到目标规则。",
+              "type": "sub",
+              "parent": "case_51738",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174265",
+                  "text": "页面显示目标规则及其当前状态。",
+                  "type": "node",
+                  "parent": 174265,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174266,
+              "text": "点击模板规则的”禁用/停用“按钮。",
+              "type": "sub",
+              "parent": "case_51738",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174266",
+                  "text": "页面显示规则已禁用或停用，并显示更新后的状态。",
+                  "type": "node",
+                  "parent": 174266,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174267,
+              "text": "点击“刷新”或“查询”，查看新产生的事件记录。",
+              "type": "sub",
+              "parent": "case_51738",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174267",
+                  "text": "新事件按照更新后的规则状态处理，页面显示的处理结果与规则状态一致。",
+                  "type": "node",
+                  "parent": 174267,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-012",
+      "operation": "update",
+      "remote_case_id": 51739,
+      "readback": {
+        "id": 51739,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "状态切换时确认处理中事件仍按触发时状态处理",
+        "precondition": "前置准备：\n1、已获得批准的处理中事件、状态切换时序和脱敏回读证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:23:54",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:08",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174268,
+            "step": "从目标规则行进入运行记录或事件结果详情。",
+            "desc": "从目标规则行进入运行记录或事件结果详情。",
+            "expect": "运行记录或事件结果详情页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174269,
+            "step": "刷新记录并定位目标事件。",
+            "desc": "刷新记录并定位目标事件。",
+            "expect": "找到事件进入处理流程后发生状态切换的记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174270,
+            "step": "核对事件触发时和处理时的规则状态。",
+            "desc": "核对事件触发时和处理时的规则状态。",
+            "expect": "事件使用触发时已确定的规则状态；缺少运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51739,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51739",
+          "text": "状态切换时确认处理中事件仍按触发时状态处理",
+          "type": "root",
+          "children": [
+            {
+              "id": 174268,
+              "text": "从目标规则行进入运行记录或事件结果详情。",
+              "type": "sub",
+              "parent": "case_51739",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174268",
+                  "text": "运行记录或事件结果详情页面成功打开。",
+                  "type": "node",
+                  "parent": 174268,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174269,
+              "text": "刷新记录并定位目标事件。",
+              "type": "sub",
+              "parent": "case_51739",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174269",
+                  "text": "找到事件进入处理流程后发生状态切换的记录。",
+                  "type": "node",
+                  "parent": 174269,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174270,
+              "text": "核对事件触发时和处理时的规则状态。",
+              "type": "sub",
+              "parent": "case_51739",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174270",
+                  "text": "事件使用触发时已确定的规则状态；缺少运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174270,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-013",
+      "operation": "update",
+      "remote_case_id": 51740,
+      "readback": {
+        "id": 51740,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "设备属性满足条件时确认监听规则被触发",
+        "precondition": "前置准备：\n1、已获得批准的设备属性条件、规则和只读触发结果证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:23:56",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:11",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174271,
+            "step": "定位目标规则行。",
+            "desc": "定位目标规则行。",
+            "expect": "目标规则行已找到。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174272,
+            "step": "进入页面契约定义的事件记录入口。",
+            "desc": "进入页面契约定义的事件记录入口。",
+            "expect": "事件记录页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174273,
+            "step": "查询并定位设备属性测试记录。",
+            "desc": "查询并定位设备属性测试记录。",
+            "expect": "找到批准的设备属性运行记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174274,
+            "step": "核对设备属性值和规则条件。",
+            "desc": "核对设备属性值和规则条件。",
+            "expect": "设备属性值满足规则配置条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174275,
+            "step": "查看触发结果。",
+            "desc": "查看触发结果。",
+            "expect": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51740,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51740",
+          "text": "设备属性满足条件时确认监听规则被触发",
+          "type": "root",
+          "children": [
+            {
+              "id": 174271,
+              "text": "定位目标规则行。",
+              "type": "sub",
+              "parent": "case_51740",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174271",
+                  "text": "目标规则行已找到。",
+                  "type": "node",
+                  "parent": 174271,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174272,
+              "text": "进入页面契约定义的事件记录入口。",
+              "type": "sub",
+              "parent": "case_51740",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174272",
+                  "text": "事件记录页面成功打开。",
+                  "type": "node",
+                  "parent": 174272,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174273,
+              "text": "查询并定位设备属性测试记录。",
+              "type": "sub",
+              "parent": "case_51740",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174273",
+                  "text": "找到批准的设备属性运行记录。",
+                  "type": "node",
+                  "parent": 174273,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174274,
+              "text": "核对设备属性值和规则条件。",
+              "type": "sub",
+              "parent": "case_51740",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174274",
+                  "text": "设备属性值满足规则配置条件。",
+                  "type": "node",
+                  "parent": 174274,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174275,
+              "text": "查看触发结果。",
+              "type": "sub",
+              "parent": "case_51740",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174275",
+                  "text": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174275,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-014",
+      "operation": "update",
+      "remote_case_id": 51741,
+      "readback": {
+        "id": 51741,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "设备事件满足条件时确认监听规则被触发",
+        "precondition": "前置准备：\n1、已获得批准的设备事件、规则和脱敏触发结果证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:23:57",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:13",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174276,
+            "step": "定位目标规则行。",
+            "desc": "定位目标规则行。",
+            "expect": "目标规则行已找到。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174277,
+            "step": "进入页面契约定义的事件记录入口。",
+            "desc": "进入页面契约定义的事件记录入口。",
+            "expect": "事件记录页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174278,
+            "step": "查询并定位设备事件测试记录。",
+            "desc": "查询并定位设备事件测试记录。",
+            "expect": "找到批准的设备事件运行记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174279,
+            "step": "核对设备事件字段和监听条件。",
+            "desc": "核对设备事件字段和监听条件。",
+            "expect": "设备事件字段满足规则配置条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174280,
+            "step": "查看触发结果。",
+            "desc": "查看触发结果。",
+            "expect": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51741,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51741",
+          "text": "设备事件满足条件时确认监听规则被触发",
+          "type": "root",
+          "children": [
+            {
+              "id": 174276,
+              "text": "定位目标规则行。",
+              "type": "sub",
+              "parent": "case_51741",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174276",
+                  "text": "目标规则行已找到。",
+                  "type": "node",
+                  "parent": 174276,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174277,
+              "text": "进入页面契约定义的事件记录入口。",
+              "type": "sub",
+              "parent": "case_51741",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174277",
+                  "text": "事件记录页面成功打开。",
+                  "type": "node",
+                  "parent": 174277,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174278,
+              "text": "查询并定位设备事件测试记录。",
+              "type": "sub",
+              "parent": "case_51741",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174278",
+                  "text": "找到批准的设备事件运行记录。",
+                  "type": "node",
+                  "parent": 174278,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174279,
+              "text": "核对设备事件字段和监听条件。",
+              "type": "sub",
+              "parent": "case_51741",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174279",
+                  "text": "设备事件字段满足规则配置条件。",
+                  "type": "node",
+                  "parent": 174279,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174280,
+              "text": "查看触发结果。",
+              "type": "sub",
+              "parent": "case_51741",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174280",
+                  "text": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174280,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-015",
+      "operation": "update",
+      "remote_case_id": 51742,
+      "readback": {
+        "id": 51742,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "设备状态满足条件时确认监听规则被触发",
+        "precondition": "前置准备：\n1、已获得批准的设备状态、规则和脱敏触发结果证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:23:59",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:16",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174281,
+            "step": "定位目标规则行。",
+            "desc": "定位目标规则行。",
+            "expect": "目标规则行已找到。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174282,
+            "step": "进入页面契约定义的事件记录入口。",
+            "desc": "进入页面契约定义的事件记录入口。",
+            "expect": "事件记录页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174283,
+            "step": "查询并定位设备状态测试记录。",
+            "desc": "查询并定位设备状态测试记录。",
+            "expect": "找到批准的设备状态运行记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174284,
+            "step": "核对设备状态和监听条件。",
+            "desc": "核对设备状态和监听条件。",
+            "expect": "设备状态满足规则配置条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174285,
+            "step": "查看触发结果。",
+            "desc": "查看触发结果。",
+            "expect": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51742,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51742",
+          "text": "设备状态满足条件时确认监听规则被触发",
+          "type": "root",
+          "children": [
+            {
+              "id": 174281,
+              "text": "定位目标规则行。",
+              "type": "sub",
+              "parent": "case_51742",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174281",
+                  "text": "目标规则行已找到。",
+                  "type": "node",
+                  "parent": 174281,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174282,
+              "text": "进入页面契约定义的事件记录入口。",
+              "type": "sub",
+              "parent": "case_51742",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174282",
+                  "text": "事件记录页面成功打开。",
+                  "type": "node",
+                  "parent": 174282,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174283,
+              "text": "查询并定位设备状态测试记录。",
+              "type": "sub",
+              "parent": "case_51742",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174283",
+                  "text": "找到批准的设备状态运行记录。",
+                  "type": "node",
+                  "parent": 174283,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174284,
+              "text": "核对设备状态和监听条件。",
+              "type": "sub",
+              "parent": "case_51742",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174284",
+                  "text": "设备状态满足规则配置条件。",
+                  "type": "node",
+                  "parent": 174284,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174285,
+              "text": "查看触发结果。",
+              "type": "sub",
+              "parent": "case_51742",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174285",
+                  "text": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174285,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-016",
+      "operation": "update",
+      "remote_case_id": 51743,
+      "readback": {
+        "id": 51743,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "单个监听器的全部条件满足时确认规则被触发",
+        "precondition": "前置准备：\n1、已获得单监听器多条件全部满足的批准脱敏证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:24:00",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:18",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174286,
+            "step": "打开目标规则详情。",
+            "desc": "打开目标规则详情。",
+            "expect": "规则详情页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174287,
+            "step": "查看监听器和条件配置。",
+            "desc": "查看监听器和条件配置。",
+            "expect": "页面显示已配置的监听器和条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174288,
+            "step": "进入事件记录页面并刷新记录。",
+            "desc": "进入事件记录页面并刷新记录。",
+            "expect": "事件记录已更新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174289,
+            "step": "核对各条件的执行结果。",
+            "desc": "核对各条件的执行结果。",
+            "expect": "所有批准条件均显示为满足。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174290,
+            "step": "查看规则触发结果。",
+            "desc": "查看规则触发结果。",
+            "expect": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51743,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51743",
+          "text": "单个监听器的全部条件满足时确认规则被触发",
+          "type": "root",
+          "children": [
+            {
+              "id": 174286,
+              "text": "打开目标规则详情。",
+              "type": "sub",
+              "parent": "case_51743",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174286",
+                  "text": "规则详情页面成功打开。",
+                  "type": "node",
+                  "parent": 174286,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174287,
+              "text": "查看监听器和条件配置。",
+              "type": "sub",
+              "parent": "case_51743",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174287",
+                  "text": "页面显示已配置的监听器和条件。",
+                  "type": "node",
+                  "parent": 174287,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174288,
+              "text": "进入事件记录页面并刷新记录。",
+              "type": "sub",
+              "parent": "case_51743",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174288",
+                  "text": "事件记录已更新。",
+                  "type": "node",
+                  "parent": 174288,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174289,
+              "text": "核对各条件的执行结果。",
+              "type": "sub",
+              "parent": "case_51743",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174289",
+                  "text": "所有批准条件均显示为满足。",
+                  "type": "node",
+                  "parent": 174289,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174290,
+              "text": "查看规则触发结果。",
+              "type": "sub",
+              "parent": "case_51743",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174290",
+                  "text": "页面显示对应的规则触发记录；缺少批准运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174290,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-017",
+      "operation": "update",
+      "remote_case_id": 51744,
+      "readback": {
+        "id": 51744,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "单个监听器有一个条件不满足时确认规则不被触发",
+        "precondition": "前置准备：\n1、已获得单监听器至少一个条件不满足的批准脱敏证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:24:02",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:20",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174291,
+            "step": "打开目标规则详情。",
+            "desc": "打开目标规则详情。",
+            "expect": "规则详情页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174292,
+            "step": "查看监听器和条件配置。",
+            "desc": "查看监听器和条件配置。",
+            "expect": "页面显示已配置的监听器和条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174293,
+            "step": "进入事件记录页面并刷新记录。",
+            "desc": "进入事件记录页面并刷新记录。",
+            "expect": "事件记录已更新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174294,
+            "step": "核对不满足条件的记录。",
+            "desc": "核对不满足条件的记录。",
+            "expect": "至少有一个条件显示为不满足。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174295,
+            "step": "查看规则触发结果。",
+            "desc": "查看规则触发结果。",
+            "expect": "页面不显示该次条件校验的成功触发记录；缺少批准运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51744,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51744",
+          "text": "单个监听器有一个条件不满足时确认规则不被触发",
+          "type": "root",
+          "children": [
+            {
+              "id": 174291,
+              "text": "打开目标规则详情。",
+              "type": "sub",
+              "parent": "case_51744",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174291",
+                  "text": "规则详情页面成功打开。",
+                  "type": "node",
+                  "parent": 174291,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174292,
+              "text": "查看监听器和条件配置。",
+              "type": "sub",
+              "parent": "case_51744",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174292",
+                  "text": "页面显示已配置的监听器和条件。",
+                  "type": "node",
+                  "parent": 174292,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174293,
+              "text": "进入事件记录页面并刷新记录。",
+              "type": "sub",
+              "parent": "case_51744",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174293",
+                  "text": "事件记录已更新。",
+                  "type": "node",
+                  "parent": 174293,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174294,
+              "text": "核对不满足条件的记录。",
+              "type": "sub",
+              "parent": "case_51744",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174294",
+                  "text": "至少有一个条件显示为不满足。",
+                  "type": "node",
+                  "parent": 174294,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174295,
+              "text": "查看规则触发结果。",
+              "type": "sub",
+              "parent": "case_51744",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174295",
+                  "text": "页面不显示该次条件校验的成功触发记录；缺少批准运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174295,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-018",
+      "operation": "update",
+      "remote_case_id": 51745,
+      "readback": {
+        "id": 51745,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "多个监听器中任意一个满足条件时确认规则被触发",
+        "precondition": "前置准备：\n1、已获得多监听器中仅一个监听器满足的批准脱敏证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:24:03",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:22",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174296,
+            "step": "打开目标规则详情。",
+            "desc": "打开目标规则详情。",
+            "expect": "规则详情页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174297,
+            "step": "查看监听器配置。",
+            "desc": "查看监听器配置。",
+            "expect": "页面显示各监听器及其条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174298,
+            "step": "进入事件记录页面并刷新记录。",
+            "desc": "进入事件记录页面并刷新记录。",
+            "expect": "事件记录已更新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174299,
+            "step": "核对各监听器的条件结果。",
+            "desc": "核对各监听器的条件结果。",
+            "expect": "至少一个监听器条件满足。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174300,
+            "step": "查看规则触发结果。",
+            "desc": "查看规则触发结果。",
+            "expect": "满足任一条件时页面显示对应触发记录；缺少批准运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51745,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51745",
+          "text": "多个监听器中任意一个满足条件时确认规则被触发",
+          "type": "root",
+          "children": [
+            {
+              "id": 174296,
+              "text": "打开目标规则详情。",
+              "type": "sub",
+              "parent": "case_51745",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174296",
+                  "text": "规则详情页面成功打开。",
+                  "type": "node",
+                  "parent": 174296,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174297,
+              "text": "查看监听器配置。",
+              "type": "sub",
+              "parent": "case_51745",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174297",
+                  "text": "页面显示各监听器及其条件。",
+                  "type": "node",
+                  "parent": 174297,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174298,
+              "text": "进入事件记录页面并刷新记录。",
+              "type": "sub",
+              "parent": "case_51745",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174298",
+                  "text": "事件记录已更新。",
+                  "type": "node",
+                  "parent": 174298,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174299,
+              "text": "核对各监听器的条件结果。",
+              "type": "sub",
+              "parent": "case_51745",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174299",
+                  "text": "至少一个监听器条件满足。",
+                  "type": "node",
+                  "parent": 174299,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174300,
+              "text": "查看规则触发结果。",
+              "type": "sub",
+              "parent": "case_51745",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174300",
+                  "text": "满足任一条件时页面显示对应触发记录；缺少批准运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174300,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-019",
+      "operation": "update",
+      "remote_case_id": 51746,
+      "readback": {
+        "id": 51746,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "多个监听器都不满足条件时确认规则不被触发",
+        "precondition": "前置准备：\n1、已获得多监听器全部不满足的批准脱敏证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:24:05",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:25",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174301,
+            "step": "打开目标规则详情。",
+            "desc": "打开目标规则详情。",
+            "expect": "规则详情页面成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174302,
+            "step": "查看全部监听器配置。",
+            "desc": "查看全部监听器配置。",
+            "expect": "页面显示全部监听器及其条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174303,
+            "step": "进入事件记录页面并刷新记录。",
+            "desc": "进入事件记录页面并刷新记录。",
+            "expect": "事件记录已更新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174304,
+            "step": "核对各监听器的条件结果。",
+            "desc": "核对各监听器的条件结果。",
+            "expect": "全部监听器条件均不满足。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174305,
+            "step": "查看规则触发结果。",
+            "desc": "查看规则触发结果。",
+            "expect": "页面不显示本次条件组合的成功触发记录；缺少批准运行证据时记录为待确认。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51746,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51746",
+          "text": "多个监听器都不满足条件时确认规则不被触发",
+          "type": "root",
+          "children": [
+            {
+              "id": 174301,
+              "text": "打开目标规则详情。",
+              "type": "sub",
+              "parent": "case_51746",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174301",
+                  "text": "规则详情页面成功打开。",
+                  "type": "node",
+                  "parent": 174301,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174302,
+              "text": "查看全部监听器配置。",
+              "type": "sub",
+              "parent": "case_51746",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174302",
+                  "text": "页面显示全部监听器及其条件。",
+                  "type": "node",
+                  "parent": 174302,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174303,
+              "text": "进入事件记录页面并刷新记录。",
+              "type": "sub",
+              "parent": "case_51746",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174303",
+                  "text": "事件记录已更新。",
+                  "type": "node",
+                  "parent": 174303,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174304,
+              "text": "核对各监听器的条件结果。",
+              "type": "sub",
+              "parent": "case_51746",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174304",
+                  "text": "全部监听器条件均不满足。",
+                  "type": "node",
+                  "parent": 174304,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174305,
+              "text": "查看规则触发结果。",
+              "type": "sub",
+              "parent": "case_51746",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174305",
+                  "text": "页面不显示本次条件组合的成功触发记录；缺少批准运行证据时记录为待确认。",
+                  "type": "node",
+                  "parent": 174305,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-007-022",
+      "operation": "update",
+      "remote_case_id": 51749,
+      "readback": {
+        "id": 51749,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "中间动作失败时确认记录失败并继续执行后续动作",
+        "precondition": "前置准备：\n1、已获得中间动作失败及后续动作批准脱敏反馈证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:24:09",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:27",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174306,
+            "step": "打开包含失败动作的规则记录。",
+            "desc": "打开包含失败动作的规则记录。",
+            "expect": "失败动作记录成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174307,
+            "step": "查看失败动作结果。",
+            "desc": "查看失败动作结果。",
+            "expect": "页面明确标记该动作执行失败。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174308,
+            "step": "查看失败动作后的后续动作记录。",
+            "desc": "查看失败动作后的后续动作记录。",
+            "expect": "可以确认后续动作是否继续执行。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174309,
+            "step": "核对整体执行结果。",
+            "desc": "核对整体执行结果。",
+            "expect": "整体结果不会在失败动作存在时被误判为全部成功。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174310,
+            "step": "不触发真实推送或告警。",
+            "desc": "不触发真实推送或告警。",
+            "expect": "本次检查未产生真实推送或告警。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51749,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51749",
+          "text": "中间动作失败时确认记录失败并继续执行后续动作",
+          "type": "root",
+          "children": [
+            {
+              "id": 174306,
+              "text": "打开包含失败动作的规则记录。",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174306",
+                  "text": "失败动作记录成功打开。",
+                  "type": "node",
+                  "parent": 174306,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174307,
+              "text": "查看失败动作结果。",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174307",
+                  "text": "页面明确标记该动作执行失败。",
+                  "type": "node",
+                  "parent": 174307,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174308,
+              "text": "查看失败动作后的后续动作记录。",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174308",
+                  "text": "可以确认后续动作是否继续执行。",
+                  "type": "node",
+                  "parent": 174308,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174309,
+              "text": "核对整体执行结果。",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174309",
+                  "text": "整体结果不会在失败动作存在时被误判为全部成功。",
+                  "type": "node",
+                  "parent": 174309,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174310,
+              "text": "不触发真实推送或告警。",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174310",
+                  "text": "本次检查未产生真实推送或告警。",
+                  "type": "node",
+                  "parent": 174310,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    }
+  ],
+  "source_hashes_after": {
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-007.yaml": "3e8cd72c6f5f50e32be85b7a2d668a6a36f109c0ece30cc003308e7b97df9075",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-007.yaml": "57257cde8e4ad2a6934d04841249041be7b99e3fbfdd1d7629394172ed03ea73",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  }
+}

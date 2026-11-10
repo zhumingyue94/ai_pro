@@ -1,0 +1,3814 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-APP-002
+title: 孵化任务 / 种蛋上孵
+module: 种蛋上孵
+zentao_module_id: 564
+source:
+  csv: reference/种禽孵化管理系统测试用例_app.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: c2fd3298c420afff214d44bae32301e5af935f72c751df18c3cc258cf8252f4f
+  registry_sha256: 3cc6fe827d7ec859f6d89a47de2f07b748df60e8935d6084113b11ff625edd8b
+trace:
+  story: null
+  req: REQ-APP-002
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-35704
+  title: 上孵任务列表页-搜索功能-搜索品种
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 搜索品种
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35704
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35704
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35705
+  title: 上孵任务列表页-搜索功能-输入计划号搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 在搜索框中输入一个已知的计划号
+    expected: 搜索成功
+  - action: 输入计划号搜索结果正确
+    expected: 输入计划号搜索结果正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35705
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35705
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35706
+  title: 上孵任务列表页-搜索功能-输入任务号搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 在搜索框中输入一个已知的任务号
+    expected: 搜索成功
+  - action: 输入任务号搜索结果正确
+    expected: 输入任务号搜索结果正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35706
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35706
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35707
+  title: 上孵任务列表页-搜索功能-输入养殖场搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 在搜索框中输入一个已知的养殖场名称
+    expected: 搜索成功
+  - action: 输入养殖场搜索结果正确
+    expected: 输入养殖场搜索结果正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35707
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35707
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-35708
+  title: 上孵任务列表页-搜索功能-输入批次搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 在搜索框中输入一个已知的批次号
+    expected: 搜索成功
+  - action: 输入批次搜索结果正确
+    expected: 输入批次搜索结果正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35708
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35708
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35709
+  title: 上孵任务列表页-搜索功能-搜索结果按优先级排序
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 在搜索框中输入&#039;树田代孵&#039;；
+    expected: 输入/选择操作完成，页面展示相应内容
+  - action: 点击搜索按钮
+    expected: 系统显示包含&#039;树田代孵&#039;的上孵任务列表，且结果按优先级排序（待执行>已超期>已完成>已取消）
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35709
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35709
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35710
+  title: 上孵任务列表页-搜索功能-输入无效关键词
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 在搜索框中输入不存在的关键词“XXX“; 2. 点击搜索按钮
+    expected: 系统显示“没有找到相关的任务“提示信息
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35710
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35710
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35711
+  title: 上孵任务列表页-搜索功能-使用历史搜索记录
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 使用历史搜索记录
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35711
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35711
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35712
+  title: 上孵任务列表页-搜索功能-搜索历史最多三行，最近的在最前
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 依次搜索4个不同的关键词：A、B、C、D
+    expected: 历史搜索区域最多显示3条记录：D、C、B（最近的在最前）
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 搜索历史最多三行，最近的在最前
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35712
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35712
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-35713
+  title: 上孵任务列表页-搜索功能-搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 搜索若干关键词，确保有搜索历史
+    expected: 搜索历史全部被清空
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35713
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35713
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35714
+  title: 上孵任务列表页-状态切换-待执行
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 点击‘待执行’标签
+    expected: 页面仅显示状态为‘待执行’的任务，包括已超期的任务，显示任务条数数字；
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35714
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35714
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35715
+  title: 上孵任务列表页-状态切换-已完成
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 点击‘已完成’标签
+    expected: 页面仅显示状态为‘已完成’的任务
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35715
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35715
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35716
+  title: 上孵任务列表页-状态切换-已取消
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 点击‘已取消’标签
+    expected: 页面仅显示状态为‘已取消’的任务
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35716
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35716
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35717
+  title: 上孵任务列表页-状态切换-已超期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 点击‘已超期’标签
+    expected: 页面仅显示状态为‘已超期’的任务，且任务条目中标记‘已超期’红色标签
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35717
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35717
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35718
+  title: 上孵任务列表页-状态切换-待执行但超时未执行的任务，显示任务条数数字，数字标红
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 查看“待执行“标签上的任务条数数字
+    expected: “待执行“标签上显示的任务条数数字为红色（当有超时未执行的任务时）
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35718
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35718
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-35719
+  title: 上孵任务列表页-状态切换-待执行的任务，显示任务条数数字
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 查看列表页的待执行的任务，查看tab标题处的数字
+    expected: 待执行的任务，tab标题处显示任务条数数字，与待执行列表中任务数量一样
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35719
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35719
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35720
+  title: 上孵任务列表页-筛选-设置日期范围
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 设置日期范围
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35720
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35720
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35721
+  title: 上孵任务列表页-筛选-选择种蛋信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 首页进入种蛋上孵，点击筛选
+    expected: 进入上孵任务的筛选页面
+  - action: 在“养殖场”下拉框中选择“益兴二场”，点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的上孵任务列表，且仅包含所选养殖场的记录
+  - action: 在“种蛋类型”下拉框中选择“合格蛋”，点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的上孵任务列表，且仅包含所选种蛋类型的记录
+  - action: 在“品种”下拉框选择“科宝”，点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的上孵任务列表，且仅包含所选品种的记录
+  - action: 在“蛋重类型”下拉框选择“大”，点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的上孵任务列表，且仅包含所选蛋重类型的记录
+  - action: 在“周龄”输入框填写“25”，点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的上孵任务列表，且仅包含所填周龄的记录
+  - action: 在“平均蛋重”输入框填写“55”，点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的上孵任务列表，且仅包含所填平均蛋重的记录
+  - action: 在“产蛋日期”日期区间填写“6月1日”~“6月8日”，点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的上孵任务列表，且仅包含所选产蛋日期区间的记录
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35721
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35721
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35722
+  title: 上孵任务列表页-筛选-选择任务状态，任务状态正常显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 首页进入种蛋上孵页面，点击筛选按钮
+    expected: 打开筛选页面
+  - action: 筛选条件中的任务状态选择“已完成”
+    expected: 筛选结果只显示已完成的任务，未执行、已取消的任务不显示
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35722
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35722
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35723
+  title: 上孵任务列表页-筛选-选择告警状态，搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 在筛选区域选择告警状态为“已超期“
+    expected: 在筛选区域选择告警状态为“已超期“，筛选结果只显示已超期的任务
+  - action: 在筛选区域选择告警状态为“正常“
+    expected: 在筛选区域选择告警状态为“正常“，筛选结果不显示已超期的任务
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35723
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35723
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35724
+  title: 上孵任务列表页-筛选-未选择任何条件直接确认
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 未选择任何条件直接确认
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35724
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35724
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35725
+  title: 上孵任务列表页-筛选-查看筛选结果，无数据时显示提示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 填写必填项后，点击确认入库按钮
+    expected: 查看筛选结果，无数据时显示提示
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35725
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35725
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35726
+  title: 上孵任务列表页-筛选-点击重置按钮，筛选条件清空
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 设置多个筛选条件（日期、养殖场、种蛋类型等）
+    expected: 所有筛选条件恢复为默认值/空值
+  - action: 点击重置按钮
+    expected: 列表恢复显示全部任务
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35726
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35726
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35727
+  title: 上孵任务列表页-列表-任务详情跳转-正常场景
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 点击某条任务的标题或‘查看’按钮
+    expected: 页面跳转至该任务的操作详情页，展示详细信息
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35727
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35727
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35728
+  title: 上孵任务列表页-列表-只有未执行的任务显示执行按钮，已取消、已完成的任务显示查看按钮
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 查看待执行任务的条目
+    expected: 待执行任务条目显示“执行“按钮
+  - action: 查看已完成任务的条目
+    expected: 已完成任务条目显示“查看“按钮，不显示“执行“按钮
+  - action: 查看已取消任务的条目
+    expected: 已取消任务条目显示“查看“按钮，不显示“执行“按钮
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35728
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35728
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35729
+  title: 上孵任务列表页-列表-执行跳转-正常场景
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 首页点击种蛋上孵，进入上孵任务列表页面
+    expected: 默认进入待执行的上孵任务列表页
+  - action: 点击未执行任务的执行按钮
+    expected: 跳转到种蛋上孵·任务执行页面
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35729
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35729
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35730
+  title: 上孵任务列表页-列表-任务信息显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 查看列表中某条已完成任务的信息
+    expected: '列表中任务的信息展示正确
+
+      标题：养殖场名称-批次-品种，三字段组合；
+
+      种蛋类型
+
+      周龄
+
+      蛋重 | 蛋重类型
+
+      上孵数量：任务所属计划上孵数量；
+
+      产蛋日期
+
+      上孵时间：任务所属计划上孵时间；
+
+      （可选项）展示应出库蛋库、应入库孵化器，有则展示，没有不展示。'
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35730
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35730
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 1，预期块数量为 9；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: 1. 查看列表中某条已完成任务的信息
+    raw_expected: '1. 列表中任务的信息展示正确
+
+      1、标题：养殖场名称-批次-品种，三字段组合；
+
+      2、种蛋类型
+
+      3、周龄
+
+      4、蛋重 | 蛋重类型
+
+      5、上孵数量：任务所属计划上孵数量；
+
+      6、产蛋日期
+
+      7、上孵时间：任务所属计划上孵时间；
+
+      8、（可选项）展示应出库蛋库、应入库孵化器，有则展示，没有不展示。'
+- id: TC-35731
+  title: 上孵任务列表页-列表-到了上孵时间当天还未执行的任务，状态显示“待执行”
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 找到上孵日期为当天且未执行的任务
+    expected: 任务状态显示为“待执行“
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35731
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35731
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35732
+  title: 上孵任务列表页-列表-过了上孵日期第二天还未执行的任务，状态显示“待执行”，并且状态后显示红色文字“已超期”
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 找到上孵日期已过且未执行的任务
+    expected: 任务状态显示“待执行“，状态后显示红色文字“已超期“
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35732
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35732
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35733
+  title: 上孵任务列表页-列表-上孵日期当天已执行的任务，状态显示“已完成”
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 找到上孵日期为当天且已执行的任务
+    expected: 任务状态显示为“已完成“
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35733
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35733
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35734
+  title: 上孵任务列表页-列表-上孵日期过了才执行的任务，状态显示“已完成”，并且状态后显示红色文字“超期”
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 找到上孵日期已过才执行的任务
+    expected: 任务状态显示“已完成“，状态后显示红色文字“超期“
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35734
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35734
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35735
+  title: 上孵任务列表页-列表-还未执行但是计划被终止的任务，状态显示“已取消”
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 找到计划被终止且未执行的任务
+    expected: 任务状态显示为“已取消“
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35735
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35735
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35736
+  title: 上孵任务列表页-列表-已经执行但是计划被终止的任务，状态显示“已取消”
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 找到计划被终止但已执行的任务
+    expected: 任务状态显示为“已取消“
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35736
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35736
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-35737
+  title: 上孵任务列表页-列表-文字较多的时候省略号展示
+  type: feature
+  auto: 'no'
+  priority: P4
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 查看列表页的文字较多的时候省略号字段
+    expected: 文字较多的时候省略号展示
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35737
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35737
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '4'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35738
+  title: 上孵任务列表页-列表-如果有多个仓库、孵化箱，用省略号标识
+  type: feature
+  auto: 'no'
+  priority: P4
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 找到关联多个仓库或孵化箱的任务
+    expected: 当仓库/孵化箱名称超出显示区域时，以省略号标识，并提供查看全部的方式
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35738
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35738
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '4'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35739
+  title: 执行上孵任务--执行页面计划信息完整性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 查看执行页面计划信息
+    expected: '页面显示完整的任务信息，包括
+
+      任务状态、超期时间、计划上孵日期、计划上孵数量；
+
+      种蛋信息：养殖场、养殖批次、品种、种蛋类型、周龄、蛋重类型、平均蛋重、产蛋日期；
+
+      蛋库信息：仓库名称、库位号、蛋库库存、托盘数、散装数等；
+
+      孵化器信息：孵化车数、已上孵数量、执行前没有选中的孵化器
+
+      计划信息：计划号、组织、孵化场、上孵数量、上孵日期、照蛋日期、出雏日期；
+
+      任务信息：任务号、备注；'
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35739
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35739
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 1，预期块数量为 7；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: 1. 查看执行页面计划信息
+    raw_expected: '1. 页面显示完整的任务信息，包括
+
+      1、任务状态、超期时间、计划上孵日期、计划上孵数量；
+
+      2、种蛋信息：养殖场、养殖批次、品种、种蛋类型、周龄、蛋重类型、平均蛋重、产蛋日期；
+
+      3、蛋库信息：仓库名称、库位号、蛋库库存、托盘数、散装数等；
+
+      4、孵化器信息：孵化车数、已上孵数量、执行前没有选中的孵化器
+
+      5、计划信息：计划号、组织、孵化场、上孵数量、上孵日期、照蛋日期、出雏日期；
+
+      6、任务信息：任务号、备注；'
+- id: TC-35740
+  title: 执行上孵任务-任务状态显示“待执行”
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入孵化任务-种蛋上孵页面
+  - action: 查看目标页面的任务状态字段
+    expected: 任务状态显示“待执行”
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35740
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35740
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35741
+  title: 执行上孵任务-计划上孵日期显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 进入执行任务页面
+  - action: 查看目标页面展示内容
+    expected: 计划上孵日期显示正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35741
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35741
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35742
+  title: 执行上孵任务-计划上孵数量显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 进入执行任务页面
+  - action: 查看目标页面展示内容
+    expected: 计划上孵数量显示正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35742
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35742
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35743
+  title: 执行上孵任务-如果已超期，显示已超期时长
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击已超期任务的“执行“按钮
+    expected: 页面显示已超期时长，如“已超期1天3小时“
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35743
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35743
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35744
+  title: 执行上孵任务-匹配到的蛋库正确，以下任何一个字段不一样的蛋库库位不显示：孵化场、养殖场、养殖批次、种蛋类型、品种、周龄、平均蛋重、蛋重类型、产蛋日期
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 仅显示孵化场、养殖场、养殖批次、种蛋类型、品种、周龄、平均蛋重、蛋重类型、产蛋日期完全匹配的蛋库库位
+  - action: 查看自动匹配的蛋库列表
+    expected: 任一字段不匹配的蛋库库位不显示
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35744
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35744
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35745
+  title: 执行上孵任务-匹配到的蛋库名称、库位号、当前库存显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页
+  - action: 点击未执行任务的“执行“按钮
+    expected: 进入执行上孵任务页面
+  - action: 查看蛋库区域的名称、库位号、当前库存
+    expected: 蛋库名称、库位号、当前库存与数据库中数据一致
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35745
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35745
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35746
+  title: 执行上孵任务-蛋库合计数据=实际上孵数量=下面所有库位上孵数之和
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵，点击未执行任务的“执行“按钮
+    expected: 进入执行上孵任务页面
+  - action: 修改蛋库库位的托盘数/散装数，查看蛋库合计和实际上孵数量
+    expected: 蛋库合计数据等于所有库位上孵数之和
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35746
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35746
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35747
+  title: 执行上孵任务-蛋库列表可以展开和收起
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 点击展开时显示所有蛋库库位明细
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 蛋库列表可以展开和收起
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35747
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35747
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35748
+  title: 执行上孵任务-调整托盘数和散装数
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 修改某个蛋库的托盘数为30，散装数为50
+    expected: 上孵数更新正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35748
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35748
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35749
+  title: 执行上孵任务-蛋库库位点击重置，托盘数、散装数和上孵数回到蛋库初始值
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 修改成功
+  - action: 修改某蛋库的托盘数为50，散装数为30
+    expected: 点击重置后，托盘数、散装数和上孵数恢复到初始值
+  - action: 点击该蛋库的“重置“按钮
+    expected: 操作执行成功，页面状态更新
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35749
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35749
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35750
+  title: 执行上孵任务-蛋库库位点击归零，托盘数、散装数和上孵数变成0
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 进入执行上孵任务页面
+  - action: 点击某蛋库的“归零“按钮
+    expected: 该蛋库的托盘数、散装数和上孵数均变为0
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35750
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35750
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35751
+  title: 执行上孵任务-孵化器显示待分配数量正确=实际上孵数-已分配到孵化器库位的数量
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表
+  - action: 点击未执行任务的“执行“按钮
+    expected: 进入执行上孵任务页面
+  - action: 修改蛋库上孵数，还没有填写孵化器库位的上孵数
+    expected: 待分配数量=实际上孵数
+  - action: 填写孵化器库位的托盘数和散装数，查看孵化器区域的待分配数量
+    expected: 待分配数量=实际上孵数-已分配到孵化器库位的数量
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35751
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35751
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35752
+  title: 执行上孵任务-如果创建上孵计划时没有选择孵化器，孵化器默认带入孵化场的第一个孵化器
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 查看目标页面的如果创建上孵计划时没有选择孵化器，孵化器字段
+    expected: 如果创建上孵计划时没有选择孵化器，孵化器默认带入孵化场的第一个孵化器
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35752
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35752
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35753
+  title: 执行上孵任务-孵化器默认空，点击一键填满，自动选择第一个孵化器，按照孵化器库位容量自动分配库位
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未选择孵化器的上孵任务的“执行“按钮
+    expected: 自动选择第一个启用的孵化器
+  - action: 点击“一键填满“按钮
+    expected: 按照该孵化器的库位容量自动分配所有蛋到库位
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35753
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35753
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35754
+  title: 执行上孵任务-如果创建上孵计划时选择了孵化器，孵化器默认选择计划带入的孵化器
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击一个创建时选择了孵化器的上孵任务的“执行“按钮
+    expected: 孵化器区域默认选中计划创建时选择的孵化器
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35754
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35754
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35755
+  title: 执行上孵任务-如果孵化器默认带入了上孵计划选择的孵化器，点击一键填满，按照孵化器库位容量自动分配库位
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击带入了默认孵化器的上孵任务的“执行“按钮
+    expected: 如果孵化器默认带入了上孵计划选择的孵化器，点击一键填满，按照孵化器库位容量自动分配库位
+  - action: 查看目标页面的如果孵化器字段
+    expected: 如果孵化器默认带入了上孵计划选择的孵化器，点击一键填满，按照孵化器库位容量自动分配库位
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35755
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35755
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35756
+  title: 执行上孵任务-点击孵化器选择框打开孵化器选择弹窗，显示当前孵化场下启用的孵化器，停用的孵化器不显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 弹出孵化器选择弹窗，仅显示当前孵化场下启用状态的孵化器
+  - action: 点击孵化器选择框
+    expected: 已停用的孵化器不在列表中
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35756
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35756
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35757
+  title: 执行上孵任务-孵化器选择弹窗搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页
+  - action: 点击未执行任务的“执行“按钮
+    expected: 进入执行上孵任务页面
+  - action: 点击孵化器选择框
+    expected: 打开孵化器选择弹窗
+  - action: 在弹窗搜索框中输入孵化器名称关键字
+    expected: 搜索结果正确过滤，只显示符合搜索内容的孵化器
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35757
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35757
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35758
+  title: 执行上孵任务-孵化器选择弹窗选择孵化器后，点击下一步，进入库位选择弹窗，已被选择的库位默认被选中
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、已经选择过一次库位
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页
+  - action: 点击未执行任务的“执行“按钮
+    expected: 进入执行上孵任务页面
+  - action: 点击孵化器选择框并选择一个孵化器，点击“下一步“
+    expected: 进入库位选择弹窗
+  - action: 库位选择弹窗中查看库位是否被选中
+    expected: 之前已选择的库位默认处于选中状态
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35758
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35758
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35759
+  title: 执行上孵任务-库位选择弹窗支持多选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 进入库位选择弹窗
+    expected: 进入执行上孵任务页面
+  - action: 依次点击多个库位进行选择
+    expected: 库位选择弹窗支持同时选中多个库位
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35759
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35759
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35760
+  title: 执行上孵任务-库位选择弹窗选择一个或者多个库位后，保存，执行页面的孵化器库位显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 点击未执行任务的执行按钮，
+    expected: 进入执行上孵任务页面
+  - action: 点击孵化器选择框，选择孵化器后点击下一步
+    expected: 进入库位选择弹窗
+  - action: 在库位选择弹窗中选择1个或多个库位，点击“保存“
+    expected: 执行页面孵化器区域正确显示所选库位
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35760
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35760
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35761
+  title: 执行上孵任务-孵化器列表可以展开和收起
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 点击展开时显示所有孵化器库位明细
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 孵化器列表可以展开和收起
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35761
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35761
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35762
+  title: 执行上孵任务-一键分配功能测试
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 进入执行任务页面，点击一键分配按钮
+    expected: 系统自动将待上孵数量按孵化器容量进行合理分配，并更新各孵化器的上孵数
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35762
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35762
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35763
+  title: 执行上孵任务-选择孵化器并绑定库位
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 从下拉框中选择&#039;孵化器一号&#039;，再选择&#039;库位一号&#039;
+    expected: 系统成功绑定该孵化器与指定库位，界面显示对应关系
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35763
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35763
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35764
+  title: 执行上孵任务-删除孵化器库位
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 首页进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页
+  - action: 点击未执行任务的执行按钮
+    expected: 进入执行任务页面
+  - action: 在孵化器区域点击库位的删除按钮
+    expected: 系统移除该行库位，不影响其他已填写的数据
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35764
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35764
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35765
+  title: 执行上孵任务-点击添加库位，打开库位选择弹窗，弹窗中显示孵化器的所有库位。其中当前已选库位默认选中
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵列表页面
+  - action: 点击未执行任务的执行按钮
+    expected: 进入执行上孵任务页面
+  - action: 在执行页面的孵化器区域点击添加库位
+    expected: 打开库位选择弹窗，弹窗中显示孵化器的所有库位。其中当前已选库位默认选中
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35765
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35765
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-35766
+  title: 执行上孵任务-添加库位弹窗中，选择一个或者多个库位后点完成，执行页面显示最新库位
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵列表页面
+  - action: 点击未执行任务的执行按钮
+    expected: 进入执行上孵任务页面
+  - action: 在执行页面的孵化器区域点击添加库位
+    expected: 打开添加库位弹窗
+  - action: 在添加库位弹窗中选择1个或多个库位后，点击完成
+    expected: 完成选择后，执行页面孵化器区域显示更新后的库位列表
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35766
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35766
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-35767
+  title: 执行上孵任务-添加库位后，原本库位设置过的托盘数和散装数不会改变
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵列表页面
+  - action: 点击未执行任务的执行按钮
+    expected: 进入执行上孵任务页面
+  - action: 对已存在的库位设置托盘数为20，散装数为10
+    expected: 库位上孵数显示正确
+  - action: 点击孵化器的添加库位按钮
+    expected: 打开库位选择弹窗
+  - action: 选择库位后，点击完成
+    expected: 添加库位后，原本库位设置过的托盘数和散装数不会改变
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35767
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35767
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35768
+  title: 执行上孵任务-计划号和任务号可复制
+  type: feature
+  auto: 'no'
+  priority: P4
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 计划号和任务号支持复制操作
+  - action: 长按/点击计划号或任务号
+    expected: 操作执行成功，页面状态更新
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35768
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35768
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '4'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35769
+  title: 执行上孵任务-备注输入框非必填，输入的字数多不报错
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 备注为空时不报错
+  - action: 不填写备注
+    expected: 备注输入框非必填，输入的字数多不报错
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 备注输入框非必填，输入的字数多不报错
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35769
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35769
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35770
+  title: 执行上孵任务-底部的上孵总数显示正确=实际上孵数
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 底部上孵总数等于实际上孵数
+  - action: 修改蛋库上孵数
+    expected: 底部上孵总数等于实际上孵数
+  - action: 查看页面底部的上孵总数
+    expected: 底部上孵总数等于实际上孵数
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35770
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35770
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35771
+  title: 执行上孵任务-底部的孵化车数量正确=孵化器库位数
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击未执行任务的“执行“按钮
+    expected: 底部孵化车数量等于孵化器已选择的库位数
+  - action: 选择孵化器库位
+    expected: 输入/选择操作完成，页面展示相应内容
+  - action: 查看页面底部的孵化车数量
+    expected: 输入/选择操作完成，页面展示相应内容
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35771
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35771
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35772
+  title: 上孵任务列表页-执行按钮-可恢复性
+  type: feature
+  auto: 'no'
+  priority: P4
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 可恢复性
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35772
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35772
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '4'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35773
+  title: 执行上孵任务-点击保存，执行页面数据保存，下次进入这个任务显示之前填写的数据
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 修改托盘数和散装数
+    expected: 保存成功
+  - action: 点击“保存“按钮
+    expected: 执行页面数据保存，下次进入这个任务显示之前填写的数据
+  - action: 点击保存
+    expected: 操作执行成功，页面状态更新
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35773
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35773
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35774
+  title: 执行上孵任务-保存为前端保存，清楚记录后就不会再有历史记录
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 填写数据后点击“保存“
+    expected: 清除缓存后，之前保存的前端数据不再存在
+  - action: 清除浏览器缓存（前后端分离场景下的localStorage）
+    expected: 保存为前端保存，清楚记录后就不会再有历史记录
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 保存为前端保存，清楚记录后就不会再有历史记录
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35774
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35774
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35775
+  title: 执行上孵任务-点击立即执行，校验都满足，则执行成功，任务状态变成已完成
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 正确填写蛋库和孵化器数据
+    expected: 校验通过，执行成功
+  - action: 点击立即执行
+    expected: 校验都满足，则执行成功，任务状态变成已完成
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35775
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35775
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35776
+  title: 执行上孵任务-执行成功时的出入库操作：被选中的蛋（计划）从对应种蛋仓库出库并生成出库记录，入库孵化器对应库位并生成入库记录
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 填写完整数据并点击“立即执行“
+    expected: 被选中的种蛋从对应种蛋仓库出库，生成出库记录
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 执行成功时的出入库操作：被选中的蛋（计划）从对应种蛋仓库出库并生成出库记录，入库孵化器对应库位并生成入库记录
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35776
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35776
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35777
+  title: 执行上孵任务-点击确认执行时，需校验待分配数量必须为0，否则无法提交成功
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 使待分配数量不为0（不填满所有孵化器库位）
+    expected: 系统提示待分配数量必须为0，无法提交成功
+  - action: 点击“立即执行“按钮
+    expected: 进入执行任务页面
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35777
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35777
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35778
+  title: 执行上孵任务-点击确认执行时，需校验选择出库的种蛋仓库是否存在，如果不存在则弹框提示，无法提交成功。关闭提示弹框时，页面刷新，展示最新种蛋仓库数据
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 在其他用户/线程中删除对应的种蛋仓库
+    expected: 弹框提示种蛋仓库不存在，无法提交
+  - action: 点击“立即执行“按钮
+    expected: 关闭提示弹框后页面刷新，展示最新数据
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35778
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35778
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35779
+  title: 执行上孵任务-点击确认执行时，需校验选择出库的种蛋仓库库存是否足够，如果不够则弹框提示，无法提交成功。关闭提示弹框时，页面刷新，展示最新种蛋仓库数据
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 在其他用户操作中减少种蛋仓库库存，使其不足以满足上孵数量
+    expected: 弹框提示库存不足，无法提交
+  - action: 点击“立即执行“按钮
+    expected: 关闭提示弹框后页面刷新，展示最新数据
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35779
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35779
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35780
+  title: 执行上孵任务-点击确认执行时判断：如果实际上孵数量与预计上孵数量不相符时，弹框提示进行二次确认，确认后允许执行
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 修改蛋库托盘数/散装数使实际上孵数与计划不一致
+    expected: 弹框提示实际上孵数量与预计数量不符，需二次确认
+  - action: 点击“立即执行“按钮
+    expected: 确认后允许执行
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35780
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35780
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35781
+  title: 执行上孵任务-点击确认执行时，需判断本任务是否已被执行，如果已被别人执行则弹框提示无法提交成功。确认关闭弹框时，页面刷新，展示详情页
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 两个用户同时登录进入同一个待执行的上孵任务
+    expected: 进入执行上孵任务页面
+  - action: 用户A先点击“立即执行“完成操作
+    expected: 用户B弹框提示任务已被执行，无法提交
+  - action: 用户B再点击“立即执行“
+    expected: 关闭弹框后页面刷新展示详情页
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35781
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35781
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35782
+  title: 执行上孵任务-立即执行成功，弹框提示“执行成功”，弹框自动消失，页面刷新返回原上一级页面，此处根据上一级页面的不同需做判断，如列表页、搜索结果页、详情页。
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵列表页面
+  - action: 点击未执行任务的执行按钮
+    expected: 进入执行上孵任务页面
+  - action: 点击确认执行
+    expected: 立即执行成功，弹框提示“执行成功”，弹框自动消失，页面刷新显示详情
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35782
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35782
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35783
+  title: 执行上孵任务-保存成功，弹框提示“保存成功”，弹框自动消失，停留此页面
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入孵化任务-种蛋上孵页面
+  - action: 填写必填项后，点击确认入库按钮
+    expected: 保存成功，弹框提示“保存成功”，弹框自动消失，停留此页面
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35783
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35783
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35784
+  title: 查看上孵任务详情-已取消任务-信息完整性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: app进入孵化任务-种蛋上孵，切换到已取消tab
+    expected: 进入已取消任务列表
+  - action: 点击任务进入详情页
+    expected: 已取消任务的详情页面与未执行任务的执行页信息一致，不显示执行按钮；
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35784
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35784
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35785
+  title: 查看上孵任务详情-已取消状态和时间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 切换到已取消tab，点击任务的查看按钮
+    expected: 进入任务详情页
+  - action: 查看详情页的顶部标题及时间
+    expected: 状态明确标注为“已终止”，显示取消时间;
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35785
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35785
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35786
+  title: 查看上孵任务详情-已取消任务-超时提醒可见
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、任务终止的时候已经超过上孵日期
+  steps:
+  - action: 切换到已取消tab，点击任务的查看按钮
+    expected: 进入任务详情页
+  - action: 在详情页查看顶部的时间
+    expected: 计划终止的时候已经超过上孵日期，页面右侧显示“已超期X天X小时”的红色警告提示，提醒用户该任务已过期
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35786
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35786
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35787
+  title: 查看上孵任务详情-已完成任务-实际执行数据展示
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 进入种蛋上孵，点击任务
+    expected: 进入上孵任务的详情页
+  - action: 查看详情页面顶部标题及时间戳， 检查种蛋信息、蛋库、孵化器等字段内容
+    expected: '页面显示的信息完整，包括：
+
+      计划上孵日期、计划上孵数量；
+
+      种蛋信息：养殖场、养殖批次、品种、种蛋类型、周龄、蛋重类型、平均蛋重、产蛋日期；
+
+      蛋库信息：仓库名称、库位号、蛋库库存、托盘数、散装数等；
+
+      孵化器信息：孵化车数、已上孵数量、孵化器名称、库位号、托盘数、散装数、库位上孵数
+
+      计划信息：计划号、组织、孵化场、上孵数量、上孵日期、照蛋日期、出雏日期；
+
+      任务信息：任务号、实际上孵数量、执行人、完成时间、备注。'
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35787
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35787
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35788
+  title: 查看上孵任务详情-已完成任务-已完成状态和时间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 切换到已完成tab，点击任务的查看按钮
+    expected: 进入已完成任务的查看详情页
+  - action: 查看页面顶部的信息
+    expected: 页面显示已完成状态，完成时间显示正确
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35788
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35788
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35789
+  title: 查看上孵任务详情-已完成任务-超时提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 切换到已完成tab，点击任务的查看按钮
+    expected: 进入查看详情页
+  - action: 查看页面左上角信息
+    expected: 页面显示“已完成”状态，并附带“已超期X天X小时”的提示，说明任务虽完成但延迟
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35789
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35789
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35790
+  title: 查看上孵任务详情-待执行任务-执行按钮可用性
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 进入种蛋上孵，点击待执行任务进入详情页
+    expected: 执行按钮处于可点击状态
+  - action: 查看底部的按钮
+    expected: 点击后应跳转至执行流程或弹出确认对话框，允许用户开始上孵操作
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35790
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35790
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35791
+  title: 查看上孵任务详情-已取消、已完成的任务不显示执行按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入已取消任务详情页
+  - action: 点击已取消任务的“查看“按钮
+    expected: 页面底部不显示“执行“按钮
+  - action: 查看详情页的已取消、已完成的任务不字段
+    expected: 已取消、已完成的任务不显示执行按钮
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35791
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35791
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35792
+  title: 查看上孵任务详情-待执行任务-超时预警显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 切换到待执行tab，点击任务标题
+    expected: 进入查看详情页面
+  - action: 查看详情页的顶部信息
+    expected: 当任务已超时时，页面右侧显示“已超期X天X小时”的红色警告提示，提醒用户及时处理
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35792
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35792
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35939
+  title: 上孵任务列表页-搜索功能-输入空字符串搜索
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 在搜索框中不输入任何内容
+    expected: 输入空字符串搜索
+  - action: 输入空字符串搜索
+    expected: 输入/选择操作完成，页面展示相应内容
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35939
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35939
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35940
+  title: 上孵任务列表页-搜索功能-输入特殊字符搜索
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵列表页
+    expected: 进入种蛋上孵列表页
+  - action: 在搜索框中输入特殊字符：<>&“&#039;
+    expected: 系统正常处理搜索请求，不出现脚本注入或页面崩溃
+  - action: 输入特殊字符搜索
+    expected: 输入特殊字符搜索
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35940
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35940
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35945
+  title: 执行上孵任务-托盘数输入负数校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、存在待执行的上孵任务且蛋库有库存数据
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 点击待执行任务的“执行”按钮
+    expected: 进入执行任务页面
+  - action: 在执行页面的托盘数填写负数
+    expected: 托盘数无法输入负数
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35945
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35945
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35946
+  title: 执行上孵任务-托盘数输入小数校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、存在待执行的上孵任务且蛋库有库存数据
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 点击待执行任务的“执行”按钮
+    expected: 进入执行任务页面
+  - action: 在执行页面的托盘数填写小数
+    expected: 托盘数无法输入小数
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35946
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35946
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35947
+  title: 执行上孵任务-托盘数输入超过库存量
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、存在待执行的上孵任务且蛋库有库存数据
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入上孵任务列表页面
+  - action: 点击待执行任务的“执行”按钮
+    expected: 进入执行任务页面
+  - action: 执行页面填写蛋库的托盘数，托盘数超过了蛋库库存
+    expected: 托盘数输入超过库存量，自动变回库存的最大托盘数
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35947
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35947
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35948
+  title: 执行上孵任务-一键填满时所有孵化器库位已满
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、存在待执行的上孵任务且蛋库有库存数据
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行上孵任务页面
+  - action: 点击待执行任务的“执行“按钮
+    expected: 一键填满时所有孵化器库位已满
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 一键填满时所有孵化器库位已满
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35948
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35948
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35949
+  title: 执行上孵任务-网络中断时点击保存
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、存在待执行的种蛋上孵任务
+  - 3、使用开发者工具模拟网络离线
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行种蛋上孵任务页面
+  - action: 点击待执行任务的“执行“按钮
+    expected: 系统提示网络异常或保存失败
+  - action: 填写部分数据
+    expected: 网络中断时点击保存
+  - action: 断开网络连接
+    expected: 网络处于离线状态
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 网络处于离线状态
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35949
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35949
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-35950
+  title: 执行上孵任务-网络中断时点击立即执行
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 种蛋上孵
+  preconditions:
+  - 1、用户登录成功并且有孵化任务-种蛋上孵菜单权限
+  - 2、存在待执行的种蛋上孵任务
+  - 3、使用开发者工具模拟网络离线
+  steps:
+  - action: 登录后进入孵化任务-种蛋上孵
+    expected: 进入执行种蛋上孵任务页面
+  - action: 点击待执行任务的“执行“按钮
+    expected: 系统提示网络异常，执行失败
+  - action: 填写完整执行数据
+    expected: 任务状态仍为“待执行“
+  - action: 断开网络连接
+    expected: 网络处于离线状态
+  - action: 点击“立即执行“按钮
+    expected: 进入执行任务页面
+  test_data:
+    module: 种蛋上孵
+    zentao_module_id: 564
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 35950
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 35950
+    raw_module: /一期/app/孵化任务/种蛋上孵(#564)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

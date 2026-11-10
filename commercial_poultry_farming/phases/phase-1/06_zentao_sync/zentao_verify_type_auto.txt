@@ -1,0 +1,17 @@
+# verify type/auto project=20 product=5
+# base=http://43.143.148.114:28081
+
+## Sample cases
+48238: type='feature' auto='auto' keywords='TP-002-01,可自动化'
+48239: type='feature' auto='auto' keywords='TP-002-02,可自动化'
+48240: type='feature' auto='auto' keywords='TP-002-03,可自动化'
+
+## auto field distribution
+project20 auto: {"auto": 414, "no": 63}
+product5 auto: {"auto": 414, "no": 63}
+
+## YAML case_type counts (REQ-002..007)
+auto=414 feature=63
+
+## Expectation
+project20 auto['auto'] should be >= 414

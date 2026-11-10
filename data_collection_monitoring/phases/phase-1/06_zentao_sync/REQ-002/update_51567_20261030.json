@@ -1,0 +1,49 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "case_id": "TC-REQ-002-007",
+  "remote_case_id": 51567,
+  "target": {
+    "product_id": 8,
+    "project_id": 46,
+    "module_id": 731,
+    "module_path": "iot平台/设备接入/产品分类"
+  },
+  "source_hashes_before": {
+    "05_case_review/REV_CASE_REQ-002.yaml": "4b35f89a081bdfc9c1ccd9562f671de3ce90cfce1feb90d3da32657e3aad7436",
+    "04_testcases/TC_REQ-002.yaml": "2cc04e35506e52ccddb22368f6b85165d82ed2c6e158c8d9beca162f7b6483da",
+    "config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "01_requirements/模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "01_requirements/禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  },
+  "updated_fields": {
+    "steps": [
+      {
+        "step": "查看第一页分类记录，再点击“下一页”或者“>”这类通用表示下一页的图标。",
+        "expected": "当前页码切换到下一页，列表显示下一页记录，分页状态与当前页一致。"
+      }
+    ]
+  },
+  "readback": {
+    "status": "validated",
+    "id": 51567,
+    "product": 8,
+    "project": 46,
+    "module": 731,
+    "title": "在多页分类列表中切换分页时确认当前页数据和页码同步",
+    "priority": 2,
+    "type": "other",
+    "step_count": 1,
+    "step_text": "查看第一页分类记录，再点击“下一页”或者“&gt;”这类通用表示下一页的图标。",
+    "expected": "当前页码切换到下一页，列表显示下一页记录，分页状态与当前页一致。",
+    "defects": []
+  },
+  "registry": "module_case_map.json unchanged; stable mapping TC-REQ-002-007 -> 51567 retained",
+  "source_hashes_after": {
+    "05_case_review/REV_CASE_REQ-002.yaml": "4b35f89a081bdfc9c1ccd9562f671de3ce90cfce1feb90d3da32657e3aad7436",
+    "04_testcases/TC_REQ-002.yaml": "2cc04e35506e52ccddb22368f6b85165d82ed2c6e158c8d9beca162f7b6483da",
+    "config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "01_requirements/模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "01_requirements/禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  }
+}

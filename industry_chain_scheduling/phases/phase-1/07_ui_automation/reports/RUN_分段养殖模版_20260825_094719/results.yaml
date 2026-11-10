@@ -1,0 +1,830 @@
+run_id: RUN_分段养殖模版_20260825_094719
+module: 分段养殖模版
+req_id: REQ-003
+zentao_module_id: 670
+environment:
+  base_host: 192.168.6.163:66
+  headless: 'true'
+generated_at: '2026-08-25T09:48:15'
+source: 04_testcases/TC_REQ-003.yaml
+cases:
+- case_id: TC-003-06
+  zentao_case_id: 47578
+  title: 仅输入模版名称后点击「查询」，列表按名称过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-06
+  assertion_scope: feeding_template.query.name_filter
+  expected: '模版名称筛选项已填入关键字
+
+    其余筛选项未参与过滤
+
+    列表仅展示模版名称匹配该关键字的记录'
+  actual:
+    keyword: 勿用停用模版
+    result_names:
+    - 勿用停用模版
+    result_count: 1
+  detail: 名称查询结果均匹配 勿用停用模版
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「模版名称」输入已知模版名称关键字
+    expected: 模版名称筛选项已填入关键字
+  - action: 确认「品种」「补栏月份」「状态」为空或未选
+    expected: 其余筛选项未参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示模版名称匹配该关键字的记录
+  screenshots:
+  - path: screenshots/TC-003-06_TP-003-06_assertion_scope.png
+    sha256: 91bb95df0cde48fba2ace02e2133c650e6f591779126c8ba99d477721e506734
+  - path: screenshots/TC-003-06_TP-003-06_assertion_full.png
+    sha256: ff303427c6651f237f172a491b360fbd9993a80688c86f84febc6f5c2210103f
+  screenshot: screenshots/TC-003-06_TP-003-06_assertion_scope.png
+  started_at: '2026-08-25T09:47:20'
+  finished_at: '2026-08-25T09:47:28'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_name
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_template_name
+    assertions:
+    - query_result_rows_contain_name_keyword
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-07
+  zentao_case_id: 47579
+  title: 仅选品种后点击「查询」，列表按品种过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-07
+  assertion_scope: feeding_template.query.breed_filter
+  expected: '品种筛选项已选中
+
+    仅品种参与过滤
+
+    列表仅展示该品种的模版记录'
+  actual:
+    selected_breed: 勿用停用品种
+    result_breeds:
+    - 勿用停用品种
+    result_count: 1
+  detail: 品种查询结果均匹配 勿用停用品种
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「品种」下拉选择某一已知品种
+    expected: 品种筛选项已选中
+  - action: 确认其他筛选项为空
+    expected: 仅品种参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示该品种的模版记录
+  screenshots:
+  - path: screenshots/TC-003-07_TP-003-07_assertion_scope.png
+    sha256: 91bb95df0cde48fba2ace02e2133c650e6f591779126c8ba99d477721e506734
+  - path: screenshots/TC-003-07_TP-003-07_assertion_full.png
+    sha256: c6affa605174f4e039a2dfbfe44ce95f0ace992659d0b22ba56f795039a7450d
+  screenshot: screenshots/TC-003-07_TP-003-07_assertion_scope.png
+  started_at: '2026-08-25T09:47:28'
+  finished_at: '2026-08-25T09:47:38'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_breed
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_breed
+    assertions:
+    - query_result_rows_match_selected_breed
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-08
+  zentao_case_id: 47580
+  title: 仅选补栏月份后点击「查询」，列表按补栏月份过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-08
+  assertion_scope: feeding_template.query.month_filter
+  expected: '补栏月份筛选项已选中
+
+    仅补栏月份参与过滤
+
+    列表仅展示该补栏月份的模版记录'
+  actual:
+    selected_month: 8月
+    result_months:
+    - 8月
+    - 8月
+    - 8月
+    - 8月
+    result_count: 4
+  detail: 补栏月份查询结果均匹配 8月
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「补栏月份」下拉选择某一月份（如3）
+    expected: 补栏月份筛选项已选中
+  - action: 确认其他筛选项为空
+    expected: 仅补栏月份参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示该补栏月份的模版记录
+  screenshots:
+  - path: screenshots/TC-003-08_TP-003-08_assertion_scope.png
+    sha256: 56352a7d8b9527a95ecaa4457417edcb99afc6f949cc15610b4193bda170d6fd
+  - path: screenshots/TC-003-08_TP-003-08_assertion_full.png
+    sha256: d18c134b2d62b964ea8650454978110a2ed417673c95a49f06a4020977891420
+  screenshot: screenshots/TC-003-08_TP-003-08_assertion_scope.png
+  started_at: '2026-08-25T09:47:38'
+  finished_at: '2026-08-25T09:47:47'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_month
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_restock_month
+    assertions:
+    - query_result_rows_match_selected_month
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-09
+  zentao_case_id: 47581
+  title: 仅选状态后点击「查询」，列表按状态过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-09
+  assertion_scope: feeding_template.query.status_filter
+  expected: '状态筛选项为审核通过
+
+    仅状态参与过滤
+
+    列表仅展示状态为「审核通过」的模版记录'
+  actual:
+    selected_status: 审核通过
+    result_statuses:
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    result_count: 20
+  detail: 状态查询结果均匹配 审核通过
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「状态」下拉选择「审核通过」
+    expected: 状态筛选项为审核通过
+  - action: 确认其他筛选项为空
+    expected: 仅状态参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示状态为「审核通过」的模版记录
+  screenshots:
+  - path: screenshots/TC-003-09_TP-003-09_assertion_scope.png
+    sha256: c1bb73618688511262e92ce80d090fc2b02df7e86da859d7eaa74c66779bb985
+  - path: screenshots/TC-003-09_TP-003-09_assertion_full.png
+    sha256: cd16528ee5bc0a4e1fce2b3179160ee3c538bae9578e128d879e9a25b474cde4
+  screenshot: screenshots/TC-003-09_TP-003-09_assertion_scope.png
+  started_at: '2026-08-25T09:47:47'
+  finished_at: '2026-08-25T09:47:55'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_status
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_status
+    assertions:
+    - query_result_rows_match_selected_status
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-10
+  zentao_case_id: 47582
+  title: 选择多条件后点击「查询」，列表按组合条件过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-10
+  assertion_scope: feeding_template.query.combined_filter
+  expected: '多个筛选项均已设置
+
+    列表仅展示同时满足全部已设条件的记录'
+  actual:
+    selected_name: 勿用停用模版
+    selected_breed: 勿用停用品种
+    selected_month: 8月
+    selected_status: 审核通过
+    result_rows:
+    - name: 勿用停用模版
+      breed: 勿用停用品种
+      month: 8月
+      status: 审核通过
+    result_count: 1
+  detail: 组合查询结果同时匹配全部筛选条件
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 同时设置「模版名称」关键字、「品种」、「补栏月份」、「状态」
+    expected: 多个筛选项均已设置
+  - action: 点击「查询」按钮
+    expected: 列表仅展示同时满足全部已设条件的记录
+  screenshots:
+  - path: screenshots/TC-003-10_TP-003-10_assertion_scope.png
+    sha256: 91bb95df0cde48fba2ace02e2133c650e6f591779126c8ba99d477721e506734
+  - path: screenshots/TC-003-10_TP-003-10_assertion_full.png
+    sha256: 03f12e99205abea8f3fa57895f829607092f8fc1598488fa6442287887bce84a
+  screenshot: screenshots/TC-003-10_TP-003-10_assertion_scope.png
+  started_at: '2026-08-25T09:47:55'
+  finished_at: '2026-08-25T09:48:05'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_combined
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_combined_conditions
+    assertions:
+    - query_result_rows_match_all_conditions
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-12
+  zentao_case_id: 47584
+  title: 点击「重置」，查询条件恢复默认并刷新列表
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-12
+  assertion_scope: feeding_template.query.reset
+  expected: '列表按条件过滤
+
+    点击「重置」后各筛选项恢复默认值，列表重新加载'
+  actual:
+    query_values_after_reset:
+      name: ''
+      breed: 请选择品种
+      month: 请选择补栏月份
+      status: 请选择状态
+    row_count: 1
+  detail: 重置后查询条件恢复默认且列表刷新
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 设置查询条件后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 点击「重置」后各筛选项恢复默认值，列表重新加载
+  screenshots:
+  - path: screenshots/TC-003-12_TP-003-12_assertion_scope.png
+    sha256: 10e324d93f8518b62b649a5af0199cddb6ae8f941ee4d14ebe375c3bfa3bfa3b
+  - path: screenshots/TC-003-12_TP-003-12_assertion_full.png
+    sha256: 916da7242d94525df1abf0d2204e865af9f57cf35e4fdcfdc0a153aa4c7f482c
+  screenshot: screenshots/TC-003-12_TP-003-12_assertion_scope.png
+  started_at: '2026-08-25T09:48:05'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_reset
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: reset_query_after_filter
+    assertions:
+    - query_form_restored_to_default
+    - list_refreshed
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-31
+  zentao_case_id: 47603
+  title: 点击快速分配弹窗的确认按钮，快速分配成功且日龄采食起止自动回填
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '快速分配弹窗关闭，主表回填养殖/空栏天数
+
+    起=1，止=1段养殖天数-1
+
+    起=1段养殖天数，止=1段养殖天数+2段养殖天数-1
+
+    起=1段养殖天数+2段养殖天数，止=1段养殖天数+2段养殖天数+3段养殖天数-1'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - index: 1
+    action: 点击「新增」后点击「快速分配」，填写合法整批与各段养殖/空栏天数后点击「确认」
+    expected: 快速分配弹窗关闭，主表回填养殖/空栏天数
+    actual: ''
+  - index: 2
+    action: 查看1段默认生成的日龄采食计划
+    expected: 起=1，止=1段养殖天数-1
+    actual: ''
+  - index: 3
+    action: 查看2段默认生成的日龄采食计划
+    expected: 起=1段养殖天数，止=1段养殖天数+2段养殖天数-1
+    actual: ''
+  - index: 4
+    action: 查看3段默认生成的日龄采食计划
+    expected: 起=1段养殖天数+2段养殖天数，止=1段养殖天数+2段养殖天数+3段养殖天数-1
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-62
+  zentao_case_id: 47634
+  title: 点击「保存」，模版状态=暂存且不提交审核
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '打开新增模版弹窗
+
+    提示保存成功，列表新增/更新该模版且状态为「暂存」，未进入待审核'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - index: 1
+    action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+    actual: ''
+  - index: 2
+    action: 填写完整合法数据（含快速分配、各段至少一方案、占比100%）后点击「保存」
+    expected: 提示保存成功，列表新增/更新该模版且状态为「暂存」，未进入待审核
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-63
+  zentao_case_id: 47635
+  title: 点击「提交」，模版状态变为待审核
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '打开新增模版弹窗
+
+    提示提交成功，列表中该模版状态为「待审核」'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - index: 1
+    action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+    actual: ''
+  - index: 2
+    action: 填写完整合法数据后点击「提交」，并在确认框点「确定」
+    expected: 提示提交成功，列表中该模版状态为「待审核」
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-131
+  zentao_case_id: 47703
+  title: 暂存行点击「提交」弹出确认框
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: 弹出提交确认框（含确定/取消）
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在状态为「暂存」且可提交的记录
+  steps:
+  - index: 1
+    action: 点击暂存行「提交」
+    expected: 弹出提交确认框（含确定/取消）
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-133
+  zentao_case_id: 47705
+  title: 提交确认框点击确定，提示成功且状态变待审核
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '弹出提交确认框
+
+    提示提交成功，记录状态变为「待审核」'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在状态为「暂存」且可提交的记录
+  steps:
+  - index: 1
+    action: 点击暂存行「提交」
+    expected: 弹出提交确认框
+    actual: ''
+  - index: 2
+    action: 点击确认框「确定」
+    expected: 提示提交成功，记录状态变为「待审核」
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-137
+  zentao_case_id: 47709
+  title: 点击「驳回」弹出驳回确认框，包含原因输入框，点击确认按钮后状态变驳回
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '初始审核弹窗不展示原因输入框
+
+    弹出驳回确认框，包含原因输入框
+
+    记录状态变为「驳回」'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  steps:
+  - index: 1
+    action: 在待审核行点击「审核」打开弹窗
+    expected: 初始审核弹窗不展示原因输入框
+    actual: ''
+  - index: 2
+    action: 点击「驳回」
+    expected: 弹出驳回确认框，包含原因输入框
+    actual: ''
+  - index: 3
+    action: 在驳回确认框填写原因后点击确认
+    expected: 记录状态变为「驳回」
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-139
+  zentao_case_id: 47711
+  title: 驳回后列表驳回原因列展示所填内容
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: 展示审核人填写的驳回原因内容
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  - 已执行驳回并填写过原因
+  steps:
+  - index: 1
+    action: 查看列表「驳回原因」列
+    expected: 展示审核人填写的驳回原因内容
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-140
+  zentao_case_id: 47712
+  title: 点击「审核通过」二次确认框后成功
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: 显示二次确认弹窗，点击确定按钮后变审核通过
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  steps:
+  - index: 1
+    action: 打开审核弹窗，点击「审核通过」
+    expected: 显示二次确认弹窗，点击确定按钮后变审核通过
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-141
+  zentao_case_id: 47713
+  title: 审核通过后记录审核人、审核时间
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '弹出确认框（含确定/取消）
+
+    审核通过，列表记录审核操作人和审核通过的时间'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用审核员账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - index: 1
+    action: 点击审批按钮打开弹窗，点击“通过”按钮
+    expected: 弹出确认框（含确定/取消）
+    actual: ''
+  - index: 2
+    action: 确认框点击“确定”
+    expected: 审核通过，列表记录审核操作人和审核通过的时间
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-142
+  zentao_case_id: 47714
+  title: 审核通过后不可编辑、不可删除、不可再次提交
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '无「编辑」「删除」「提交」按钮，有「查看」「复制」
+
+    弹窗字段只读，无法修改保存'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - index: 1
+    action: 查看审核通过行操作列
+    expected: 无「编辑」「删除」「提交」按钮，有「查看」「复制」
+    actual: ''
+  - index: 2
+    action: 点击「查看」打开查看弹窗
+    expected: 弹窗字段只读，无法修改保存
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-143
+  zentao_case_id: 47715
+  title: 点击「删除」弹出确认框
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '弹出删除确认框（含确定/取消）
+
+    提示删除成功，该记录从列表消失'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在可删除的记录/单据测试数据
+  steps:
+  - index: 1
+    action: 点击目标行操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+    actual: ''
+  - index: 2
+    action: 在确认框点击「确定」
+    expected: 提示删除成功，该记录从列表消失
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-145
+  zentao_case_id: 47717
+  title: 删除确认框点击确定，提示成功且记录从列表消失
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: '弹出删除确认框（含确定/取消）
+
+    删除成功，列表不再显示该记录'
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - index: 1
+    action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+    actual: ''
+  - index: 2
+    action: 在确认框点击「确定」
+    expected: 删除成功，列表不再显示该记录
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false
+- case_id: TC-003-149
+  zentao_case_id: 48741
+  title: 复制确认后列表新增一条状态为暂存的模版
+  type: auto
+  auto: auto
+  status: blocked
+  classification: blocked
+  check_id: missing_check_id
+  assertion_scope: missing_assertion_scope
+  expected: 提示复制成功，列表新增1条状态为「暂存」的模版记录
+  actual: 映射契约不完整，未启动浏览器
+  detail: module_case_map.json 缺少已实现 handler/Page Object/data contract/断言契约
+  failure_origin: mapping_contract
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - index: 1
+    action: 在审核通过行点击「复制」，在确认框点击「确定」
+    expected: 提示复制成功，列表新增1条状态为「暂存」的模版记录
+    actual: 未执行
+  screenshots: []
+  screenshot: ''
+  started_at: '2026-08-25T09:48:14'
+  finished_at: '2026-08-25T09:48:14'
+  data_preparation:
+    fixture_type: unregistered
+    creates_data: false
+    cleanup_status: blocked
+  excluded: false

@@ -1,0 +1,724 @@
+review:
+  review_id: REV-CASE-REQ-005-20261022-R4
+  req_id: REQ-005
+  module_id: REQ-005
+  module_id_missing: false
+  review_items:
+  - code: ZENTAO_CASE_005_TARGETS_DELETED
+    category: remote_sync
+    result: passed
+    gate_reason: false
+    reason: 已移除 TC-REQ-005-035 及稳定映射；禅道 51720 已真实删除并立即回读为 confirmed_not_found，未删除重建。
+  gate_passed: true
+  design_gate_passed: true
+  execution_status: validated
+  execution_gate_passed: true
+  gate_reasons: []
+  design_gate_reasons: []
+  review_scope:
+    design_review: in_scope
+    execution_review: excluded
+    ui_execution: excluded
+    automation_execution: excluded
+    pairwise_execution: excluded
+    remote_sync: excluded
+  execution_review:
+    status: excluded
+    reason: report_only；本轮仅完成静态设计、系统性覆盖、Pairwise、自动化可执行性、有头页面证据和 Casely 交付评审，不执行 UI、Playwright、有头浏览器、PICT、CSV 或远程禅道同步。
+  execution_summary:
+    playwright: not_executed
+    headed_page: not_executed
+    pairwise: not_executed
+    remote_sync: validated
+    reason: 36 条用例已按稳定禅道 ID 逐条原位更新、立即回读并校验通过，项目46、产品8、模块734一致。
+    remote_sync_count: 36
+    remote_delete_count: 4
+    evidence_files:
+    - 06_zentao_sync/REQ-005/zentao_sync_result_20261102_req005.json
+    - 06_zentao_sync/REQ-005/source_hashes_20261102_req005.json
+    - 06_zentao_sync/REQ-005/execution_20261102_req005.log
+  source_hashes:
+    04_testcases/TC_REQ-005.yaml: 5001eb52226321551bee9bb571018d34e253780638eda045f6893077ab9a0f58
+    04_testcases/TC_REQ-005.md: 1e04c4ada2ea862c0cf550df443c09eb8fd01bd4af2c527901d5a289fc8a7792
+    02_analysis/REQ-005.yaml: 4f6c63f6be3ca623029110c6c33fc02c8d8f3ffca1491a2782c457b840902933
+    02_analysis/REQ-005.md: 3f75418b01de82c79b0d75b00539527462faeaa57e0039868e89b5ba2dff72cd
+    03_test_plan/TEST_PLAN_REQ-005.yaml: c1de33c97df023025eef7065ba12de2785ffd4407fe4b3db45daf8c64969f8f2
+    03_test_plan/TEST_PLAN_REQ-005.md: 6e9168ef2715ec6bc3cb1f132b78bea5b4f6ce6dfc9111bfc3f69aff81cbbaa3
+    02_analysis/page_inventory/page.json: 3dc281a7c081890b0352ac1adc470b477d6ff0de05ecd114ff9e737959cba6aa
+    config.yaml: 93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164
+  input_summary:
+    testcase_count: 36
+    unique_case_id_count: 36
+    case_id_order: source_order_preserved
+    auto_count: 25
+    automation_blocked_count: 25
+    trace_blocked_count: 37
+    priority_distribution:
+      P1: 12
+      P2: 13
+      P3: 11
+      P4: 0
+    type_distribution:
+      feature: 17
+      interface: 19
+  review_items:
+  - code: ZENTAO_CASE_51726_51727_DELETED
+    category: remote_sync
+    result: passed
+    gate_reason: false
+    reason: 已移除 TC-REQ-005-041、TC-REQ-005-042 及稳定映射；两个目标均已逐条真实删除并立即回读确认不存在，未删除重建。
+  - code: TESTCASE_ATOMICITY_REVIEW
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 已覆盖名称/序列号、产品绑定、状态、父子关系、分组、引用删除、批量事务和权限租户等原子场景；缺失运行时证据不等于设计通过。
+  - code: SYSTEMATIC_COVERAGE_REVIEW
+    category: design_violation
+    result: passed_with_gaps
+    gate_reason: false
+    reason: 已覆盖等价类、边界值、判定表、状态转换和静态 Pairwise；保存中、精确长度边界、排序与上线时间最终语义、跨模块回读仍待确认。
+  - code: PAGE_INVENTORY_MISSING_REQ005
+    category: evidence_risk
+    result: blocked
+    gate_reason: false
+    reason: page.json 没有 REQ-005 专属 page/state/element/table/form/filter/batch/pagination/feedback 对象，不得复用其他模块证据。
+  - code: PAIRWISE_MODEL_INCOMPLETE
+    category: design_violation
+    result: unproven
+    gate_reason: false
+    reason: 已识别 Name、Serial、Product、Status、Hierarchy、Group、Reference、BatchResult、Permission，但缺少完整值域、约束矩阵、组合结果和 case 映射；本轮不执行
+      PICT。
+  - code: AUTOMATION_CONTRACT_BLOCKED
+    category: environment_gap
+    result: blocked
+    gate_reason: false
+    reason: Playwright Python/POM 仅可规划导航和未来只读观察；稳定 locator、批准数据、权限矩阵、失败注入和跨模块回读待确认。
+  - code: HEADED_PAGE_NOT_EXECUTED
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 保持 report_only 且用户禁止 UI 测试；本轮未启动有头浏览器。
+  - code: CROSS_MODULE_EVIDENCE_MISSING
+    category: evidence_risk
+    result: blocked
+    gate_reason: false
+    reason: 产品、插件、父子、分组、业务引用、批量回滚和权限租户需要批准的跨模块回读证据，当前不可执行。
+  - code: TRACEABILITY_PARTIAL
+    category: traceability_failure
+    result: warning
+    gate_reason: false
+    reason: 测试计划正式逐条追溯、REQ-005 页面契约和角色租户矩阵仍待补充；本轮未新增用例，修正了评审统计与交接结论。
+  - code: MODULE_CASE_MAP_REGISTERED
+    category: traceability_failure
+    result: passed
+    gate_reason: false
+    reason: module_case_map.json 已登记 REQ-005 的 40 条用例及稳定禅道映射；本轮删除禅道51714对应用例，需按稳定 ID 删除并回读确认不存在。
+  - code: CASELY_DELIVERY_REVIEWED
+    category: evidence_risk
+    result: passed_with_blockers
+    gate_reason: false
+    reason: YAML/Markdown 应保持 40 条、ID、优先级和字段对齐，原子性与交付结构基本符合 Casely；页面契约缺失导致执行交付阻塞。
+  coverage_review:
+    method:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    - risk_based_review
+    conclusion: 覆盖设计通过但存在页面契约、运行时、跨模块和正式追溯缺口；缺证据项保持 blocked、warning 或待确认，不据此判设计失败。
+    covered:
+    - 页面身份候选与默认列表方向
+    - 名称/序列号/备注
+    - 产品绑定与停用删除联动
+    - 状态与插件一致性方向
+    - 排序与上线时间
+    - 父子层级与循环
+    - 分组幂等与冲突
+    - 引用删除限制
+    - 批量回滚/失败明细/重试
+    - 权限与租户
+    gaps:
+    - REQ-005 专属 page.json
+    - 保存中/重复提交/失败回滚运行时证据
+    - 精确长度与上线时间语义
+    - 跨模块回读
+    - 正式 PDF 逐条页码追溯
+  pairwise_review:
+    status: unproven
+    executed: false
+    parameters:
+    - Name
+    - Serial
+    - Product
+    - Status
+    - Hierarchy
+    - Group
+    - Reference
+    - BatchResult
+    - Permission
+    constraints:
+    - 名称/序列号为空或重复时拒绝
+    - 产品停用/删除保留已有绑定但禁止新增关联
+    - 循环尝试阻止
+    - 父设备有子设备时删除阻止
+    - 有业务引用时删除阻止但编辑/停用允许
+    - 批量单项失败整体回滚并展示明细
+    - 重复分组不新增关系
+    - 未授权或跨租户不得产生成功业务结果
+    conclusion: 只能确认参数候选和静态场景分布，不能宣称 2-way 组合覆盖完成；不执行 PICT、不生成测试点/XMind。
+  automation_review:
+    framework: Playwright Python sync API / pytest-playwright
+    status: blocked
+    safe_scope:
+    - 进入设备管理页面（待确认最终路由）
+    - 确认运行时路由/标题/菜单
+    - 默认列表及已有数据只读观察
+    - 筛选、分页、空状态、表头和脱敏反馈观察
+    blocked_scope:
+    - 新增/编辑保存
+    - 停用/激活
+    - 删除
+    - 父子绑定/解绑/移动
+    - 分组加入/移出
+    - 批量删除/分组
+    - 跨插件/产品/分组回读
+    - 失败注入与回滚验证
+    locator_strategy:
+    - role/name
+    - accessible label
+    - 确认的 data-testid
+    - 可见文本
+    - 表格目标行上下文
+    conclusion: page.json 缺少 REQ-005 专属页面对象和定位器，不能生成或声称可执行通过的自动化套件。
+  headed_page_review:
+    status: blocked
+    collection_status: missing_req005_page_object
+    conclusion: 仅静态评审 REQ-005 分析、计划、用例及 page.json 缺失事实；不启动有头浏览器，不把其他模块证据等同于 REQ-005 执行结果。
+  casely_review:
+    status: passed_with_blockers
+    structure: passed
+    fields: passed
+    atomicity: passed
+    style: passed_with_risk
+    delivery_format: passed
+    markdown_alignment: passed
+    conclusion: YAML 与 Markdown 已按 YAML 事实源同步；本轮删除 TC-REQ-005-006 及禅道 52124，保持 36 条有效用例。
+  priority_review:
+    rule_ref: test-design-enrichment-rule.md
+    scope: all_cases
+    case_count: 36
+    reviewed_case_count: 36
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 11
+        P2: 14
+        P3: 11
+        P4: 0
+      change_summary:
+        changed_case_count: 24
+      unchanged_case_count: 12
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: P1/P2 分布用于风险观察，不单独构成设计门禁；正式业务影响等级和用户频率待确认。
+    items:
+    - case_id: TC-REQ-005-003
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看新增设备名称为空时确认必填错误定位到名称字段
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-007
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看编辑设备序列号时确认字段可修改
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-008
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看重复序列号校验时确认重复值被拒绝
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-009
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看备注为空时确认非必填规则；拆分保存步骤并确认新增成功反馈
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-010
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看备注换行和空白时确认输入边界
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-011
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看备注特殊字符时确认输入边界
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-012
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 查看设备表单时确认页面不展示设备标识字段且提供序列号字段
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-013
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看新增设备选择产品时确认产品必选且设备类型可按产品属性修改
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 本次拆分步骤与期望并修正按钮名称，保留原优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-014
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 编辑已绑定设备时不能更换产品
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 已将原合并步骤拆分为打开编辑表单、查看当前产品和尝试选择其他产品三步；标题和期望改为通俗、可观察的描述。
+      gate_reason: false
+    - case_id: TC-REQ-005-015
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 撤销发布产品后检查已有设备绑定和新建设备可选产品
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-016
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 未激活设备的状态显示为未激活
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-017
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 已连接设备的状态显示为在线
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-018
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 已断开连接设备的状态显示为离线
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-019
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 设备重新连接后状态恢复为在线
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-020
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 设备管理和插件管理设备数弹窗中的在线、离线状态保持一致
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-021
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看设备列表时确认同级设备按排序字段升序排列
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-022
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 核对设备重新上线和离线后的上线时间时确认时间语义正确
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-023
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 父子设备可以使用不同产品
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-024
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 移动父子设备后父子关系仍然有效
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-025
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 上级设备选项不显示父设备
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-026
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 查看存在子设备的父设备删除处理时确认删除被阻止
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；本轮将验证收敛为存在子设备时父设备“删除”按钮不可点击，正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-027
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 给设备加入多个分组并防止重复加入
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 已将原合并步骤拆分为选择设备、加入首个分组、加入第二个分组和重复加入校验四步；标题和期望改为通俗、可观察的描述。
+      gate_reason: false
+    - case_id: TC-REQ-005-028
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 查看批量分组存在冲突时确认失败明细可见
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-030
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: adjusted
+      impact_area: 核对解除全部业务引用后的设备删除条件时确认删除条件解除
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 已删除“已获执行授权/未获执行授权”的分支，仅保留完成删除并确认设备从列表消失的验证；步骤已改为通俗描述。
+      gate_reason: false
+    - case_id: TC-REQ-005-032
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 批量操作失败时确认失败明细可见
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-033
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 修正批量失败条件后确认支持整体重试
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-035
+      current_priority: P3
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 未授权角色访问设备管理时确认不产生成功业务结果
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按用户指定将优先级从P1调整为P2。
+      gate_reason: false
+    - case_id: TC-REQ-005-036
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 跨租户查看设备时确认数据不串租户
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-037
+      current_priority: P3
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 设备名称仅空白时确认必填校验
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-038
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 设备名称非法字符时确认按默认规则处理
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-039
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 序列号非法字符时确认按默认规则处理
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-040
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 新增设备未选择产品时确认必选校验
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 已删除期望中的具体文案待确认，并改为“页面提示必须选择产品，设备不能保存成功”的通俗、可观察描述。
+      gate_reason: false
+    - case_id: TC-REQ-005-041
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 同级排序存在并列值时确认并列规则待确认
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-042
+      current_priority: P3
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 查看上线时间展示时确认时区和格式待确认
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-043
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: added
+      impact_area: 删除设备后使用完全相同表单内容重新创建成功
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 新增删除后使用完全相同表单内容重新创建成功的生命周期场景；执行数据和页面契约待确认。
+      gate_reason: false
+    - case_id: TC-REQ-005-004
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: restored
+      impact_area: 恢复重复设备名称校验用例
+    - case_id: TC-REQ-005-005
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: restored
+      impact_area: 恢复编辑设备名称唯一性校验用例
+    mismatches: []
+    unconfirmed_items:
+    - 正式业务影响等级
+    - 用户频率
+    - REQ-005 页面契约
+    - 精确长度/字符规则
+    - 上线时间来源/时区/格式
+    - 产品/插件/父子/分组/引用/批量契约
+    - 权限租户矩阵
+    gate_reasons: []
+  forbidden_actions:
+  - 读取或生成测试点/XMind
+  - 执行 UI 测试
+  - 执行 Playwright 或有头浏览器
+  - 执行 PICT
+  - 生成 CSV
+  - 写入远程禅道
+  - 提交新增/编辑/停用/激活/删除/父子变更/分组变更/批量操作
+  - 复用其他模块页面证据
+  - 修改注册表或业务数据
+  traceability:
+    module_case_map_registered: false
+    module_id_missing: false
+    requirements_pdf_page_trace: pending
+    input_hashes_recorded: true
+  validation:
+    validator: scripts/validate_case_review.py
+    testcase_markdown_validator: scripts/validate_testcase_markdown.py
+    status: pending_execution

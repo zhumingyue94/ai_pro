@@ -1,0 +1,23 @@
+req_id: REQ-008
+project_id: 46
+product_id: 8
+module_id: 746
+operation: update
+target: project
+source_case_id: TC-REQ-008-008
+remote_case_id: 51830
+change: 删除步骤 2 预期中的“边界包含规则按已确认契约判定。”
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+execution:
+  status: validated
+  operation: update_in_place
+  readback_status: validated
+  steps_validated: 2
+  evidence: update_51830_20261110.json
+registry:
+  mapping_status: registered
+  zentao_case_id: 51830
+source_hashes_after:
+  yaml: 650d8bf565064c213dcf1bcd05ac9da29dab10b09100dff5a877bbd0fbaa9c10
+  markdown: a379bf609ea6aefa867e53e9a94841330b6415def43472ce367a5493af0eb3b9
+  review_yaml: 56c93ef37f44d94ee9ed7026e8c7d97d48e2fe918a3b48ada04303174f547daa

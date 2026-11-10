@@ -1,0 +1,37 @@
+﻿{
+    "status":  "validated",
+    "operation":  "update",
+    "remote_case_id":  51867,
+    "case_id":  "TC-REQ-008-045",
+    "target":  {
+                   "project_id":  46,
+                   "product_id":  8,
+                   "module_id":  746
+               },
+    "remote_version":  6,
+    "step_count":  2,
+    "steps":  [
+                  {
+                      "name":  "1",
+                      "id":  176498,
+                      "step":  "点击“创建日期”输入框打开日期范围选择控件，然后选择结束日期早于开始日期的两个日期",
+                      "desc":  "点击“创建日期”输入框打开日期范围选择控件，然后选择结束日期早于开始日期的两个日期",
+                      "expect":  "两个日期按先后顺序自动回填到“创建日期”输入框的开始日期和结束日期。",
+                      "type":  "step",
+                      "parent":  0,
+                      "grade":  1
+                  },
+                  {
+                      "name":  "2",
+                      "id":  176499,
+                      "step":  "点击“查询”并查看列表",
+                      "desc":  "点击“查询”并查看列表",
+                      "expect":  "页面显示明确的日期范围错误提示或拒绝提交查询，无效日期范围不会更新为有效查询结果，原列表按页面规则保持。",
+                      "type":  "step",
+                      "parent":  0,
+                      "grade":  1
+                  }
+              ],
+    "delete_recreate":  false,
+    "registry_status":  "validated"
+}

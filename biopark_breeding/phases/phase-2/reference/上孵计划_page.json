@@ -1,0 +1,1313 @@
+﻿{
+    "pages":  [
+                  {
+                      "page_id":  "pc-plan-hatching-plan-list",
+                      "route":  "/biopark-breeding/breeding/hatchingplans/hatching-plan",
+                      "title":  "上孵计划",
+                      "menu_path":  [
+                                        "计划管理",
+                                        "上孵计划"
+                                    ],
+                      "states":  [
+                                     {
+                                         "state_id":  "pc-plan-hatching-plan--initial",
+                                         "parent_state_id":  null,
+                                         "elements":  [
+                                                          {
+                                                              "element_id":  "plan-plan-page",
+                                                              "kind":  "page",
+                                                              "name":  "上孵计划",
+                                                              "tag":  "main",
+                                                              "role":  "main",
+                                                              "label":  "上孵计划",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "viewport":  "1600x900",
+                                                                                 "page_size":  "1600x900",
+                                                                                 "horizontal_overflow":  false,
+                                                                                 "zoom":  "none",
+                                                                                 "req_id":  "REQ-PC-001",
+                                                                                 "hatchery":  "南京孵化场",
+                                                                                 "record_count":  12
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "populated"
+                                                                        },
+                                                              "parent_element_id":  null,
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "css",
+                                                                                             "value":  "main",
+                                                                                             "stable":  false,
+                                                                                             "confidence":  "medium"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter",
+                                                              "kind":  "form",
+                                                              "name":  "上孵计划查询",
+                                                              "tag":  "form",
+                                                              "role":  "form",
+                                                              "label":  "筛选条件",
+                                                              "text":  null,
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "populated"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "form",
+                                                                                             "stable":  false,
+                                                                                             "confidence":  "medium"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter-plan-no",
+                                                              "kind":  "input",
+                                                              "name":  "计划号",
+                                                              "tag":  "input",
+                                                              "role":  "textbox",
+                                                              "label":  "计划号",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "placeholder":  "请输入上孵计划号",
+                                                                                 "type":  "text"
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "placeholder",
+                                                                                             "value":  "请输入上孵计划号",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         },
+                                                                                         {
+                                                                                             "strategy":  "label",
+                                                                                             "value":  "计划号",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter-demand-no",
+                                                              "kind":  "input",
+                                                              "name":  "需求号",
+                                                              "tag":  "input",
+                                                              "role":  "textbox",
+                                                              "label":  "需求号",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "placeholder":  "请输入需求号",
+                                                                                 "type":  "text"
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "placeholder",
+                                                                                             "value":  "请输入需求号",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter-hatchery",
+                                                              "kind":  "select",
+                                                              "name":  "孵化场",
+                                                              "tag":  "div",
+                                                              "role":  "combobox",
+                                                              "label":  "孵化场",
+                                                              "text":  "南京孵化场",
+                                                              "attributes":  {
+                                                                                 "widget":  "el-select-tree",
+                                                                                 "selected_key":  "462",
+                                                                                 "filterable":  true
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "populated"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "label",
+                                                                                             "value":  "孵化场",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         },
+                                                                                         {
+                                                                                             "strategy":  "css",
+                                                                                             "value":  ".el-tree-node__content span.pl4px",
+                                                                                             "scope_element_id":  "plan-plan-filter-hatchery",
+                                                                                             "stable":  false,
+                                                                                             "confidence":  "medium",
+                                                                                             "reason":  "树形下拉，叶子节点为 .el-tree-node 下 span.pl4px，需按文本精确点击"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter-set-date",
+                                                              "kind":  "datepicker",
+                                                              "name":  "上孵日期",
+                                                              "tag":  "div",
+                                                              "role":  "group",
+                                                              "label":  "上孵日期",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "range_start_placeholder":  "开始日期",
+                                                                                 "range_end_placeholder":  "结束日期"
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "label",
+                                                                                             "value":  "上孵日期",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter-out-date",
+                                                              "kind":  "datepicker",
+                                                              "name":  "出雏日期",
+                                                              "tag":  "div",
+                                                              "role":  "group",
+                                                              "label":  "出雏日期",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "range_start_placeholder":  "开始日期",
+                                                                                 "range_end_placeholder":  "结束日期"
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "label",
+                                                                                             "value":  "出雏日期",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter-progress",
+                                                              "kind":  "select",
+                                                              "name":  "计划进度",
+                                                              "tag":  "div",
+                                                              "role":  "combobox",
+                                                              "label":  "计划进度",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "placeholder":  "请选择计划进度"
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "placeholder",
+                                                                                             "value":  "请选择计划进度",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-filter-status",
+                                                              "kind":  "select",
+                                                              "name":  "计划状态",
+                                                              "tag":  "div",
+                                                              "role":  "combobox",
+                                                              "label":  "计划状态",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "placeholder":  "请选择计划状态"
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "placeholder",
+                                                                                             "value":  "请选择计划状态",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-query",
+                                                              "kind":  "button",
+                                                              "name":  "查询",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "查询",
+                                                              "text":  "查询",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:查询",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-reset",
+                                                              "kind":  "button",
+                                                              "name":  "重置",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "重置",
+                                                              "text":  "重置",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:重置",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-expand",
+                                                              "kind":  "button",
+                                                              "name":  "展开",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "展开",
+                                                              "text":  "展开",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-filter",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:展开",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-create",
+                                                              "kind":  "button",
+                                                              "name":  "新增",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "新增",
+                                                              "text":  "新增",
+                                                              "attributes":  {
+                                                                                 "variant":  "primary"
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:新增",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-batch-delete",
+                                                              "kind":  "button",
+                                                              "name":  "删除",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "删除",
+                                                              "text":  "删除",
+                                                              "attributes":  {
+                                                                                 "requires_selection":  true
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  false,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "ambiguous",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:删除",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "medium",
+                                                                                             "reason":  "工具栏与行内均有删除按钮，需限定工具栏作用域"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-batch-terminate",
+                                                              "kind":  "button",
+                                                              "name":  "终止",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "终止",
+                                                              "text":  "终止",
+                                                              "attributes":  {
+                                                                                 "requires_selection":  true
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  false,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "ambiguous",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:终止",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "medium",
+                                                                                             "reason":  "工具栏与行内均有终止按钮，需限定工具栏作用域"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-refresh",
+                                                              "kind":  "button",
+                                                              "name":  "刷新",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "刷新",
+                                                              "text":  "刷新",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:刷新",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-col-settings",
+                                                              "kind":  "button",
+                                                              "name":  "表头设置",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "表头设置",
+                                                              "text":  "表头设置",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:表头设置",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-export",
+                                                              "kind":  "button",
+                                                              "name":  "导出",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "导出",
+                                                              "text":  "导出",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:导出",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-import",
+                                                              "kind":  "button",
+                                                              "name":  "导入",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "导入",
+                                                              "text":  "导入",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:导入",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-dispatch",
+                                                              "kind":  "button",
+                                                              "name":  "任务下发",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "任务下发",
+                                                              "text":  "任务下发",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:任务下发",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-draft",
+                                                              "kind":  "button",
+                                                              "name":  "草稿",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "草稿",
+                                                              "text":  "草稿",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "button:草稿",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-table",
+                                                              "kind":  "table",
+                                                              "name":  "上孵计划列表",
+                                                              "tag":  "table",
+                                                              "role":  "table",
+                                                              "label":  "上孵计划列表",
+                                                              "text":  null,
+                                                              "attributes":  {
+                                                                                 "row_count":  12
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  true,
+                                                                            "checked":  null,
+                                                                            "value_state":  "populated"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "role",
+                                                                                             "value":  "table",
+                                                                                             "stable":  false,
+                                                                                             "confidence":  "medium"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-row-edit",
+                                                              "kind":  "button",
+                                                              "name":  "行内编辑",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "编辑",
+                                                              "text":  "编辑",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-table",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "text",
+                                                                                             "value":  "编辑",
+                                                                                             "exact":  true,
+                                                                                             "scope_element_id":  "plan-plan-table",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-row-relate",
+                                                              "kind":  "button",
+                                                              "name":  "行内关联任务",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "关联任务",
+                                                              "text":  "关联任务",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-table",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "text",
+                                                                                             "value":  "关联任务",
+                                                                                             "exact":  true,
+                                                                                             "scope_element_id":  "plan-plan-table",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-row-terminate",
+                                                              "kind":  "button",
+                                                              "name":  "行内终止",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "终止",
+                                                              "text":  "终止",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-table",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "text",
+                                                                                             "value":  "终止",
+                                                                                             "exact":  true,
+                                                                                             "scope_element_id":  "plan-plan-table",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-row-delete",
+                                                              "kind":  "button",
+                                                              "name":  "行内删除",
+                                                              "tag":  "button",
+                                                              "role":  "button",
+                                                              "label":  "删除",
+                                                              "text":  "删除",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "empty"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-table",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "text",
+                                                                                             "value":  "删除",
+                                                                                             "exact":  true,
+                                                                                             "scope_element_id":  "plan-plan-table",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          },
+                                                          {
+                                                              "element_id":  "plan-plan-pagination",
+                                                              "kind":  "pagination",
+                                                              "name":  "上孵计划分页",
+                                                              "tag":  "nav",
+                                                              "role":  "navigation",
+                                                              "label":  "分页",
+                                                              "text":  "共 12 条 20条/页 1 前往 页",
+                                                              "attributes":  {
+
+                                                                             },
+                                                              "state":  {
+                                                                            "visible":  true,
+                                                                            "enabled":  true,
+                                                                            "required":  false,
+                                                                            "readonly":  false,
+                                                                            "checked":  null,
+                                                                            "value_state":  "populated"
+                                                                        },
+                                                              "parent_element_id":  "plan-plan-page",
+                                                              "locator_status":  "available",
+                                                              "locator_candidates":  [
+                                                                                         {
+                                                                                             "strategy":  "css",
+                                                                                             "value":  ".el-pagination",
+                                                                                             "stable":  true,
+                                                                                             "confidence":  "high"
+                                                                                         }
+                                                                                     ]
+                                                          }
+                                                      ],
+                                         "forms":  [
+                                                       {
+                                                           "form_id":  "plan-plan-filter-form",
+                                                           "element_id":  "plan-plan-filter",
+                                                           "field_element_ids":  [
+                                                                                     "plan-plan-filter-plan-no",
+                                                                                     "plan-plan-filter-demand-no",
+                                                                                     "plan-plan-filter-hatchery",
+                                                                                     "plan-plan-filter-set-date",
+                                                                                     "plan-plan-filter-out-date",
+                                                                                     "plan-plan-filter-progress",
+                                                                                     "plan-plan-filter-status"
+                                                                                 ],
+                                                           "submit_element_ids":  [
+                                                                                      "plan-plan-query"
+                                                                                  ],
+                                                           "cancel_element_ids":  [
+                                                                                      "plan-plan-reset",
+                                                                                      "plan-plan-expand"
+                                                                                  ]
+                                                       }
+                                                   ],
+                                         "tables":  [
+                                                        {
+                                                            "table_id":  "plan-plan-table-data",
+                                                            "element_id":  "plan-plan-table",
+                                                            "columns":  [
+                                                                            {
+                                                                                "column_id":  "col-selection",
+                                                                                "name":  "选择",
+                                                                                "header":  "选择",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-hatchery",
+                                                                                "name":  "孵化场",
+                                                                                "header":  "孵化场",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-farm",
+                                                                                "name":  "养殖场",
+                                                                                "header":  "养殖场",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-demand-no",
+                                                                                "name":  "孵化需求号",
+                                                                                "header":  "孵化需求号",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-batch",
+                                                                                "name":  "养殖批次",
+                                                                                "header":  "养殖批次",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-egg-type",
+                                                                                "name":  "种蛋类型",
+                                                                                "header":  "种蛋类型",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-breed",
+                                                                                "name":  "品种",
+                                                                                "header":  "品种",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-set-date",
+                                                                                "name":  "上孵日期",
+                                                                                "header":  "上孵日期",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-week-age",
+                                                                                "name":  "周龄",
+                                                                                "header":  "周龄",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-avg-weight",
+                                                                                "name":  "平均蛋重",
+                                                                                "header":  "平均蛋重",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-weight-type",
+                                                                                "name":  "蛋重类型",
+                                                                                "header":  "蛋重类型",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-lay-date",
+                                                                                "name":  "产蛋日期",
+                                                                                "header":  "产蛋日期",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-plan-count",
+                                                                                "name":  "计划上孵数",
+                                                                                "header":  "计划上孵数",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-actual-count",
+                                                                                "name":  "实际上孵数",
+                                                                                "header":  "实际上孵数",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-incubator",
+                                                                                "name":  "孵化器",
+                                                                                "header":  "孵化器",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-out-date",
+                                                                                "name":  "出雏日期",
+                                                                                "header":  "出雏日期",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-progress",
+                                                                                "name":  "计划进度",
+                                                                                "header":  "计划进度",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-status",
+                                                                                "name":  "计划状态",
+                                                                                "header":  "计划状态",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-plan-no",
+                                                                                "name":  "上孵计划号",
+                                                                                "header":  "上孵计划号",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-actual-set-time",
+                                                                                "name":  "实际上孵时间",
+                                                                                "header":  "实际上孵时间",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-actual-out-time",
+                                                                                "name":  "实际出雏时间",
+                                                                                "header":  "实际出雏时间",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-created-by",
+                                                                                "name":  "创建人",
+                                                                                "header":  "创建人",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-created-at",
+                                                                                "name":  "创建时间",
+                                                                                "header":  "创建时间",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-updated-at",
+                                                                                "name":  "更新时间",
+                                                                                "header":  "更新时间",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-updated-by",
+                                                                                "name":  "更新人",
+                                                                                "header":  "更新人",
+                                                                                "field_element_ids":  [
+
+                                                                                                      ]
+                                                                            },
+                                                                            {
+                                                                                "column_id":  "col-actions",
+                                                                                "name":  "操作",
+                                                                                "header":  "操作",
+                                                                                "field_element_ids":  [
+                                                                                                          "plan-plan-row-edit",
+                                                                                                          "plan-plan-row-relate",
+                                                                                                          "plan-plan-row-terminate",
+                                                                                                          "plan-plan-row-delete"
+                                                                                                      ]
+                                                                            }
+                                                                        ],
+                                                            "row_action_element_ids":  [
+                                                                                           "plan-plan-row-edit",
+                                                                                           "plan-plan-row-relate",
+                                                                                           "plan-plan-row-terminate",
+                                                                                           "plan-plan-row-delete"
+                                                                                       ],
+                                                            "filter_element_ids":  [
+                                                                                       "plan-plan-query",
+                                                                                       "plan-plan-reset",
+                                                                                       "plan-plan-expand"
+                                                                                   ],
+                                                            "pagination_element_ids":  [
+                                                                                           "plan-plan-pagination"
+                                                                                       ]
+                                                        }
+                                                    ],
+                                         "interactions":  [
+                                                              {
+                                                                  "sequence":  1,
+                                                                  "action":  "fill",
+                                                                  "target_element_id":  "plan-plan-filter-hatchery",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-filter-hatchery",
+                                                                                      "strategy":  "label",
+                                                                                      "value":  "孵化场"
+                                                                                  },
+                                                                  "input_data_ref":  "testdata://hatchery/南京孵化场",
+                                                                  "result_state_id":  "pc-plan-hatching-plan--initial",
+                                                                  "expected_observation":  "实测：树形下拉按关键字过滤后点击叶子节点「南京孵化场」(data-key=462)，查询参数 hatcheryId=462"
+                                                              },
+                                                              {
+                                                                  "sequence":  2,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-query",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-query",
+                                                                                      "strategy":  "role",
+                                                                                      "value":  "button:查询"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  "pc-plan-hatching-plan--initial",
+                                                                  "expected_observation":  "按当前筛选条件刷新列表，南京孵化场下共 12 条"
+                                                              },
+                                                              {
+                                                                  "sequence":  3,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-reset",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-reset",
+                                                                                      "strategy":  "role",
+                                                                                      "value":  "button:重置"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  "pc-plan-hatching-plan--initial",
+                                                                  "expected_observation":  "清空筛选条件，恢复默认列表"
+                                                              },
+                                                              {
+                                                                  "sequence":  4,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-expand",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-expand",
+                                                                                      "strategy":  "role",
+                                                                                      "value":  "button:展开"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  "pc-plan-hatching-plan--initial",
+                                                                  "expected_observation":  "展开或收起更多筛选条件"
+                                                              },
+                                                              {
+                                                                  "sequence":  5,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-create",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-create",
+                                                                                      "strategy":  "role",
+                                                                                      "value":  "button:新增"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "实测：打开底部抽屉「新建上孵计划」，展示第一步孵化场选择与第二步计划明细录入；因树形下拉叶子节点选择未形成可提交数据，本次主动关闭抽屉，未提交、未产生数据变更"
+                                                              },
+                                                              {
+                                                                  "sequence":  6,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-import",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-import",
+                                                                                      "strategy":  "role",
+                                                                                      "value":  "button:导入"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "实测：打开「计划导入」弹窗，提示仅允许 xls/xlsx，展示「下载模板」「确定」「取消」；未选择文件且未确认导入，未产生数据变更"
+                                                              },
+                                                              {
+                                                                  "sequence":  7,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-export",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-export",
+                                                                                      "strategy":  "role",
+                                                                                      "value":  "button:导出"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "触发列表导出；本次未下载文件"
+                                                              },
+                                                              {
+                                                                  "sequence":  8,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-col-settings",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-col-settings",
+                                                                                      "strategy":  "role",
+                                                                                      "value":  "button:表头设置"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "打开列配置抽屉；本次未修改列配置"
+                                                              },
+                                                              {
+                                                                  "sequence":  9,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-row-edit",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-row-edit",
+                                                                                      "strategy":  "text",
+                                                                                      "value":  "编辑"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "进入计划编辑态；本次未提交修改"
+                                                              },
+                                                              {
+                                                                  "sequence":  10,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-row-relate",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-row-relate",
+                                                                                      "strategy":  "text",
+                                                                                      "value":  "关联任务"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "打开关联任务视图；本次未执行关联"
+                                                              },
+                                                              {
+                                                                  "sequence":  11,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-row-terminate",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-row-terminate",
+                                                                                      "strategy":  "text",
+                                                                                      "value":  "终止"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "触发计划终止确认；本次未确认，未产生数据变更"
+                                                              },
+                                                              {
+                                                                  "sequence":  12,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-row-delete",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-row-delete",
+                                                                                      "strategy":  "text",
+                                                                                      "value":  "删除"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  null,
+                                                                  "expected_observation":  "触发计划删除确认；本次未确认，未产生数据变更"
+                                                              },
+                                                              {
+                                                                  "sequence":  13,
+                                                                  "action":  "click",
+                                                                  "target_element_id":  "plan-plan-pagination",
+                                                                  "locator_ref":  {
+                                                                                      "element_id":  "plan-plan-pagination",
+                                                                                      "strategy":  "css",
+                                                                                      "value":  ".el-pagination"
+                                                                                  },
+                                                                  "input_data_ref":  null,
+                                                                  "result_state_id":  "pc-plan-hatching-plan--initial",
+                                                                  "expected_observation":  "切换分页；当前共 12 条，单页 20 条，仅 1 页"
+                                                              }
+                                                          ],
+                                         "dom_snapshot":  {
+                                                              "html":  "\u003cmain data-page=\"hatching-plan-list\" data-state=\"initial\" data-route=\"/biopark-breeding/breeding/hatchingplans/hatching-plan\" data-hatchery=\"南京孵化场\" data-viewport=\"1600x900\" data-page-size=\"1600x900\" data-horizontal-overflow=\"false\" data-zoom=\"none\" data-record-count=\"12\"\u003e\u003cnav data-role=\"breadcrumb\"\u003e首页 / 计划管理 / 上孵计划\u003c/nav\u003e\u003ch3 data-role=\"page-title\"\u003e上孵计划\u003c/h3\u003e\u003cform data-role=\"filter-form\"\u003e\u003cel-form-item\u003e\u003clabel\u003e计划号\u003c/label\u003e\u003cinput type=\"text\" placeholder=\"请输入上孵计划号\" /\u003e\u003c/el-form-item\u003e\u003cel-form-item\u003e\u003clabel\u003e需求号\u003c/label\u003e\u003cinput type=\"text\" placeholder=\"请输入需求号\" /\u003e\u003c/el-form-item\u003e\u003cel-form-item\u003e\u003clabel\u003e孵化场\u003c/label\u003e\u003cselect data-selected=\"南京孵化场\" /\u003e\u003c/el-form-item\u003e\u003cel-form-item\u003e\u003clabel\u003e上孵日期\u003c/label\u003e\u003cdate-range\u003e\u003cinput placeholder=\"开始日期\" /\u003e\u003cinput placeholder=\"结束日期\" /\u003e\u003c/date-range\u003e\u003c/el-form-item\u003e\u003cel-form-item\u003e\u003clabel\u003e出雏日期\u003c/label\u003e\u003cdate-range\u003e\u003cinput placeholder=\"开始日期\" /\u003e\u003cinput placeholder=\"结束日期\" /\u003e\u003c/date-range\u003e\u003c/el-form-item\u003e\u003cel-form-item\u003e\u003clabel\u003e计划进度\u003c/label\u003e\u003cselect data-placeholder=\"请选择计划进度\" /\u003e\u003c/el-form-item\u003e\u003cel-form-item\u003e\u003clabel\u003e计划状态\u003c/label\u003e\u003cselect data-placeholder=\"请选择计划状态\" /\u003e\u003c/el-form-item\u003e\u003cbutton data-role=\"filter-submit\"\u003e查询\u003c/button\u003e\u003cbutton data-role=\"filter-cancel\"\u003e重置\u003c/button\u003e\u003cbutton data-role=\"filter-toggle\"\u003e展开\u003c/button\u003e\u003c/form\u003e\u003cdiv data-role=\"toolbar\"\u003e\u003cbutton data-requires-selection=\"true\"\u003e删除\u003c/button\u003e\u003cbutton data-requires-selection=\"true\"\u003e终止\u003c/button\u003e\u003cbutton\u003e刷新\u003c/button\u003e\u003cbutton\u003e表头设置\u003c/button\u003e\u003cbutton\u003e导出\u003c/button\u003e\u003cbutton\u003e导入\u003c/button\u003e\u003cbutton\u003e任务下发\u003c/button\u003e\u003cbutton\u003e草稿\u003c/button\u003e\u003cbutton data-role=\"primary-create\"\u003e新增\u003c/button\u003e\u003c/div\u003e\u003ctable data-role=\"data-table\"\u003e\u003cthead\u003e\u003ctr\u003e\u003cth data-type=\"selection\"\u003e选择\u003c/th\u003e\u003cth\u003e孵化场\u003c/th\u003e\u003cth\u003e养殖场\u003c/th\u003e\u003cth\u003e孵化需求号\u003c/th\u003e\u003cth\u003e养殖批次\u003c/th\u003e\u003cth\u003e种蛋类型\u003c/th\u003e\u003cth\u003e品种\u003c/th\u003e\u003cth\u003e上孵日期\u003c/th\u003e\u003cth\u003e周龄\u003c/th\u003e\u003cth\u003e平均蛋重\u003c/th\u003e\u003cth\u003e蛋重类型\u003c/th\u003e\u003cth\u003e产蛋日期\u003c/th\u003e\u003cth\u003e计划上孵数\u003c/th\u003e\u003cth\u003e实际上孵数\u003c/th\u003e\u003cth\u003e孵化器\u003c/th\u003e\u003cth\u003e出雏日期\u003c/th\u003e\u003cth\u003e计划进度\u003c/th\u003e\u003cth\u003e计划状态\u003c/th\u003e\u003cth\u003e上孵计划号\u003c/th\u003e\u003cth\u003e实际上孵时间\u003c/th\u003e\u003cth\u003e实际出雏时间\u003c/th\u003e\u003cth\u003e创建人\u003c/th\u003e\u003cth\u003e创建时间\u003c/th\u003e\u003cth\u003e更新时间\u003c/th\u003e\u003cth\u003e更新人\u003c/th\u003e\u003cth\u003e操作\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd colspan=\"26\"\u003e存在多条上孵计划记录；业务值已脱敏\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003cnav data-role=\"pagination\"\u003e共 12 条 | 20条/页 | 上一页 | 1 | 下一页 | 前往 1 页\u003c/nav\u003e\u003c/main\u003e",
+                                                              "sha256":  "4669e89ecda2acbc4a20986855d2d0ba747ac890a70a204998da9bfdcc90eaea",
+                                                              "captured_at":  "2026-09-02T12:20:00+08:00"
+                                                          },
+                                         "evidence":  {
+                                                          "status":  "available",
+                                                          "screenshot_paths":  [
+                                                                                   "02_analysis/pc/page_inventory/screenshots/plan-hatching-plan-list-initial-20260902.png"
+                                                                               ],
+                                                          "log_paths":  [
+                                                                            "02_analysis/pc/console.log"
+                                                                        ],
+                                                          "trace_paths":  [
+
+                                                                          ]
+                                                      }
+                                     }
+                                 ]
+                  }
+              ],
+    "source_file":  "D:\\02test_pro\\ui_test\\projects\\biopark_breeding\\phase-1\\02_analysis\\pc\\page\\page-计划管理.json",
+    "extraction_scope":  "REQ-PC-001 only; source and existing target files unchanged",
+    "reference_type":  "phase1_actual_pages"
+}

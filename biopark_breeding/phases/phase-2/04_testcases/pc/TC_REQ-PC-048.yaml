@@ -1,0 +1,842 @@
+req_id: REQ-PC-048
+module: 计划管理 / 上孵计划
+
+trace:
+  req: REQ-PC-048
+  tp: TEST_PLAN-REQ-PC-048
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft_with_reference_blockers
+  source_review: REV_CASE_REQ-PC-048
+  source_inputs:
+  - 02_analysis/pc/REQ-PC-048.yaml
+  - 03_test_plan/pc/TEST_PLAN_REQ-PC-048.yaml
+  - 02_analysis/pc/page_inventory/page.json
+  - 02_analysis/pc/page_inventory/dom/req-pc-047-view-plan-jump-20260904.md
+common_preconditions:
+- id: incubation_plan_page_access
+  name: 上孵计划页面访问前置
+  conditions: []
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 登录成功，进入系统门户或应用入口页
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 进入种禽孵化管理系统主框架，页面显示系统名称或应用标识
+  - action: 在左侧菜单中展开「计划管理」，然后点击「上孵计划」菜单项
+    expected: 页面打开「上孵计划」Tab，Tab 处于选中状态且页面标题或内容区显示「上孵计划」
+cases:
+- id: TC-PC-048-001
+  coverage_ids:
+  - FR-048-01
+  plan_item_ids:
+  - PI-048-01
+  atomic_purpose_ids:
+  - AP-048-01
+  common_preconditions_ref: incubation_plan_page_access
+  title: 进入上孵计划页面并展示需求号列
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 需求号列
+  preconditions:
+  - 准备具备菜单和查询权限的账号、正式 PC Web 环境、可视 Chromium 和包含关联计划的数据
+  steps:
+  - action: 查看计划表头
+    expected: 显示“孵化需求号”列且位于“养殖批次”之前
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/hatching-plan
+    data_prefix: related_plan
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-01
+    status: blocked_target_page_recheck
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-002
+  coverage_ids:
+  - FR-048-01
+  plan_item_ids:
+  - PI-048-02
+  atomic_purpose_ids:
+  - AP-048-02
+  common_preconditions_ref: incubation_plan_page_access
+  title: 空需求号在列表中显示短横线
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 空值展示
+  preconditions:
+  - 准备具备查询权限的账号和需求号为空的授权计划数据
+  steps:
+  - action: 查看需求号为空的计划行
+    expected: “孵化需求号”单元格显示“-”
+  test_data:
+    data_prefix: empty_demand_no
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-02
+    status: blocked_data_target_page
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-003
+  coverage_ids:
+  - FR-048-01
+  plan_item_ids:
+  - PI-048-03
+  atomic_purpose_ids:
+  - AP-048-03
+  common_preconditions_ref: incubation_plan_page_access
+  title: 同一孵化需求多计划复用需求号且不同孵化需求号不重复
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 需求号归属唯一性
+  preconditions:
+  - 准备具备查询权限的账号，以及同一孵化需求对应多个上孵计划、另一个不同孵化需求对应独立计划的授权数据
+  steps:
+  - action: 对照同一孵化需求的多个上孵计划及另一孵化需求的计划
+    expected: 同一孵化需求的多个上孵计划显示相同孵化需求号；不同孵化需求显示不同且不重复的孵化需求号，不将同一孵化需求多计划的相同需求号判定为异常
+  test_data:
+    data_prefix: same_demand_multiple_plans_distinct_demands
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-03
+    status: blocked_data_target_page
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-004
+  coverage_ids:
+  - FR-048-01
+  plan_item_ids:
+  - PI-048-04
+  atomic_purpose_ids:
+  - AP-048-04
+  common_preconditions_ref: incubation_plan_page_access
+  title: 需求号原始显示格式与孵化需求页面一致
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 格式一致性
+  preconditions:
+  - 准备同一需求号在孵化需求和上孵计划中的授权数据
+  steps:
+  - action: 对照同一业务需求号的两处展示
+    expected: 对同一需求号逐字比对两页需求号字段的原始可见文本，字符、大小写、分隔符和前导零均一致；无法取得两页证据时标记 blocked
+  test_data:
+    data_prefix: same_demand_no_cross_page
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-04
+    status: blocked_cross_page_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-005
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-05
+  atomic_purpose_ids:
+  - AP-048-05
+  common_preconditions_ref: incubation_plan_page_access
+  title: 需求号筛选支持模糊命中
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 模糊筛选
+  preconditions:
+  - 准备具备查询权限的账号和至少一条含目标片段的关联计划
+  steps:
+  - action: 在需求号筛选项输入目标片段并点击“查询”
+    expected: 列表展示需求号包含该片段的关联计划
+  test_data:
+    query: fuzzy_demand_fragment
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-05
+    status: blocked_target_page_locator_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-006
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-06
+  atomic_purpose_ids:
+  - AP-048-06
+  common_preconditions_ref: incubation_plan_page_access
+  title: 空字符串查询不触发需求号格式拦截
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 空输入边界
+  preconditions:
+  - 准备具备查询权限的账号和默认列表基线
+  steps:
+  - action: 保持需求号筛选为空并点击“查询”
+    expected: 页面不显示需求号格式校验错误，结果按默认列表规则展示
+  test_data:
+    query: empty
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-06
+    status: blocked_target_page_rule
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-007
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-07
+  atomic_purpose_ids:
+  - AP-048-07
+  common_preconditions_ref: incubation_plan_page_access
+  title: 单字符需求号输入可查询
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 单字符边界
+  preconditions:
+  - 准备具备查询权限的账号和可用于单字符查询的授权数据
+  steps:
+  - action: 输入一个字符并点击“查询”
+    expected: 页面不因长度不足拦截，并显示查询结果区域
+  test_data:
+    query: one_character
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-07
+    status: blocked_target_page_rule_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-008
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-08
+  atomic_purpose_ids:
+  - AP-048-08
+  common_preconditions_ref: incubation_plan_page_access
+  title: 200字以内需求号输入查询不报错
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 输入长度边界
+  preconditions:
+  - 准备具备查询权限的账号、长度不超过200字的需求号输入样本和可观察的查询结果区域
+  steps:
+  - action: 输入不超过200字的需求号内容并点击“查询”
+    expected: 页面不因业务长度触发错误提示，查询动作可提交并显示正式结果或无数据状态；若受控环境、控件证据或正式错误契约未准备则标记 blocked
+  test_data:
+    query: within_200_characters
+    length_constraint: no_business_limit_200_no_error
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-08
+    status: blocked_target_page_rule_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-009
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-09
+  atomic_purpose_ids:
+  - AP-048-09
+  common_preconditions_ref: incubation_plan_page_access
+  title: 任意格式需求号输入不触发业务格式拦截
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 输入格式边界
+  preconditions:
+  - 准备具备查询权限的账号、可清理查询环境和不超过200字的特殊格式输入样本；不将控件技术限制当作业务格式规则
+  steps:
+  - action: 输入已准备的特殊格式样本并点击“查询”
+    expected: 页面不因需求号格式触发业务格式校验错误，查询动作按模糊匹配规则处理并显示正式结果或无数据状态；样本、页面证据或正式错误契约未准备时标记 blocked
+  test_data:
+    query: special_format_within_200_characters
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-09
+    status: blocked_target_page_rule_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-010
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-10
+  atomic_purpose_ids:
+  - AP-048-10
+  common_preconditions_ref: incubation_plan_page_access
+  title: 无匹配需求号显示无数据状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 无匹配
+  preconditions:
+  - 准备具备查询权限的账号和确认不存在的需求号查询条件
+  steps:
+  - action: 输入无匹配需求号并点击“查询”
+    expected: 计划列表显示正式无数据状态
+  test_data:
+    query: unmatched_demand_no
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-10
+    status: blocked_target_page_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-011
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-11
+  atomic_purpose_ids:
+  - AP-048-11
+  common_preconditions_ref: incubation_plan_page_access
+  title: 重置需求号筛选恢复默认列表范围
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 重置
+  preconditions:
+  - 准备具备查询权限的账号、可命中的需求号和默认列表基线
+  steps:
+  - action: 输入需求号并点击“查询”
+    expected: 列表按需求号筛选
+  - action: 点击“重置”
+    expected: 需求号筛选恢复为空，列表恢复默认范围
+  test_data:
+    query: reset_baseline
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-11
+    status: blocked_target_page_locator_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-012
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-12
+  atomic_purpose_ids:
+  - AP-048-12
+  common_preconditions_ref: incubation_plan_page_access
+  title: 刷新后保留需求号筛选值并返回相同结果集合
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 刷新
+  preconditions:
+  - 准备稳定的关联计划数据和查询权限
+  steps:
+  - action: 输入需求号并查询后点击“刷新”
+    expected: 列表重新加载且刷新后的需求号筛选结果与刷新前一致
+  test_data:
+    query: refresh_baseline
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-12
+    status: blocked_target_page_recheck
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-013
+  coverage_ids:
+  - FR-048-03
+  plan_item_ids:
+  - PI-048-13
+  atomic_purpose_ids:
+  - AP-048-13
+  common_preconditions_ref: incubation_plan_page_access
+  title: 同一需求号对应一个计划时结果包含该计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 单计划关联
+  preconditions:
+  - 准备 REQ-PC-047 已授权创建或已存在的单计划关联数据和查询权限
+  steps:
+  - action: 输入需求号并查询
+    expected: 结果包含该需求号关联的唯一上孵计划
+  test_data:
+    data_prefix: one_related_plan
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-13
+    status: blocked_upstream_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-014
+  coverage_ids:
+  - FR-048-03
+  plan_item_ids:
+  - PI-048-14
+  atomic_purpose_ids:
+  - AP-048-14
+  common_preconditions_ref: incubation_plan_page_access
+  title: 同一需求号对应多个计划时结果包含全部计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 多计划关联
+  preconditions:
+  - 准备同一需求号对应多个授权上孵计划且查询权限可用
+  steps:
+  - action: 输入需求号并查询
+    expected: 结果包含该需求号对应的全部关联计划，不以排序顺序作为判定条件
+  test_data:
+    data_prefix: multiple_related_plans
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-14
+    status: blocked_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-015
+  coverage_ids:
+  - FR-048-03
+  plan_item_ids:
+  - PI-048-15
+  atomic_purpose_ids:
+  - AP-048-15
+  common_preconditions_ref: incubation_plan_page_access
+  title: REQ-PC-047创建结果可按需求号承接查询
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 跨需求承接
+  preconditions:
+  - 准备 REQ-PC-047 授权且可清理的创建结果和上孵计划查询权限
+  steps:
+  - action: 输入创建来源需求号并查询
+    expected: 结果显示该创建结果并保留相同孵化需求号关联
+  test_data:
+    dependency: REQ-PC-047
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-15
+    status: blocked_upstream_data_cleanup
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-016
+  coverage_ids:
+  - FR-048-03
+  plan_item_ids:
+  - PI-048-16
+  atomic_purpose_ids:
+  - AP-048-16
+  common_preconditions_ref: incubation_plan_page_access
+  title: 需求号与计划状态组合筛选返回交集结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态组合
+  preconditions:
+  - 准备同一需求号下覆盖不同计划状态的授权计划和已确认状态选项
+  steps:
+  - action: 输入需求号、选择计划状态并点击“查询”
+    expected: 列表仅显示同时满足需求号和所选状态的计划
+  test_data:
+    data_prefix: demand_no_status_intersection
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-16
+    status: blocked_status_enum_data
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-017
+  coverage_ids:
+  - FR-048-04
+  plan_item_ids:
+  - PI-048-17
+  atomic_purpose_ids:
+  - AP-048-17
+  title: 来源需求记录查看计划后回填当前需求号并自动查询
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 行级跳转
+  preconditions:
+  - 准备具备孵化需求查看权限的账号、至少两个可区分需求号的需求行和对应目标页访问权限
+  steps:
+  - action: 登录系统；在左侧菜单中展开「计划管理」，然后点击「孵化需求」菜单项
+    expected: 页面显示孵化需求列表和行级查看计划操作
+  - action: 在指定需求号所在行点击“查看计划”
+    expected: 跳转到“上孵计划”页面，需求号筛选自动回填指定行需求号并自动查询
+  test_data:
+    source_page: /biopark-breeding/breeding/hatchingplans/hatching-demand
+    target_page: /biopark-breeding/breeding/hatchingplans/hatching-plan
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-17
+    status: blocked_target_page_and_permission
+  ui_source:
+    page_id: pc-req-047-view-plan-jump
+    evidence: dependency_available
+- id: TC-PC-048-018
+  coverage_ids:
+  - FR-048-04
+  plan_item_ids:
+  - PI-048-18
+  atomic_purpose_ids:
+  - AP-048-18
+  title: 来源需求跳转后清除其他筛选条件
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 跳转条件清除
+  preconditions:
+  - 准备来源页查看权限、目标页访问权限、预先存在其他筛选条件的可区分授权数据
+  steps:
+  - action: 登录系统并在“上孵计划”设置一个非需求号筛选条件后返回“孵化需求”并打开指定需求行的“查看计划”
+    expected: 跳转回到上孵计划页面
+  - action: 查看跳转后的筛选区域
+    expected: 仅保留当前需求号筛选条件，其他筛选条件均为空
+  test_data:
+    state: stale_filter_cleanup
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-18
+    status: blocked_cross_page_state
+  ui_source:
+    page_id: pc-req-047-view-plan-jump
+    evidence: dependency_available
+- id: TC-PC-048-019
+  coverage_ids:
+  - FR-048-04
+  plan_item_ids:
+  - PI-048-19
+  atomic_purpose_ids:
+  - AP-048-19
+  title: 来源需求跳转使用当前需求而非历史值
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 行级上下文
+  preconditions:
+  - 准备至少两个不同需求号的授权需求行、来源页查看权限和目标页访问权限
+  steps:
+  - action: 登录系统；在左侧菜单中展开「计划管理」，然后点击「孵化需求」菜单项
+    expected: 页面显示至少两个可区分需求行
+  - action: 在非首行目标需求号所在行点击“查看计划”
+    expected: 上孵计划页面回填并自动查询该目标行需求号，不显示首行或历史需求号
+  test_data:
+    state: row_context_isolation
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-19
+    status: blocked_row_scope_target_page
+  ui_source:
+    page_id: pc-req-047-view-plan-jump
+    evidence: dependency_available
+- id: TC-PC-048-020
+  coverage_ids:
+  - FR-048-04
+  plan_item_ids:
+  - PI-048-20
+  atomic_purpose_ids:
+  - AP-048-20
+  common_preconditions_ref: incubation_plan_page_access
+  title: 直接进入上孵计划不携带历史需求号
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 默认入口状态
+  preconditions:
+  - 准备查询权限、默认列表基线和可清理的历史会话状态
+  steps:
+  - action: 查看需求号筛选项
+    expected: 需求号为空，不显示上一条来源行或历史会话的需求号
+  test_data:
+    state: direct_entry_no_stale_value
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-20
+    status: blocked_target_page_state
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-021
+  coverage_ids:
+  - FR-048-01
+  plan_item_ids:
+  - PI-048-21
+  atomic_purpose_ids:
+  - AP-048-21
+  common_preconditions_ref: incubation_plan_page_access
+  title: 新增和导入按钮在本期版本保持可见
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 按钮保留
+  preconditions:
+  - 准备目标版本和具备页面查看权限的账号
+  steps:
+  - action: 查看页面操作区
+    expected: “新增”和“导入”按钮按本期版本口径保持可见
+  test_data:
+    state: current_version_toolbar
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-21
+    status: blocked_target_page_recheck
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-022
+  coverage_ids:
+  - FR-048-01
+  plan_item_ids:
+  - PI-048-22
+  atomic_purpose_ids:
+  - AP-048-22
+  title: 无菜单权限时不显示上孵计划入口
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 菜单权限
+  preconditions:
+  - 准备无上孵计划菜单权限的授权账号和正式环境
+  steps:
+  - action: 登录系统并查看“计划管理”菜单
+    expected: 菜单中不显示“上孵计划”入口
+  test_data:
+    permission: menu_denied
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-22
+    status: blocked_permission_matrix
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-023
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-23
+  atomic_purpose_ids:
+  - AP-048-23
+  title: 无查询权限时显示操作权限提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 查询权限
+  preconditions:
+  - 准备允许进入上孵计划页面但仅拒绝“需求号查询”操作的授权账号和正式环境；若权限模型不支持该粒度则标记 blocked
+  steps:
+  - action: 点击需求号“查询”
+    expected: 页面显示正式“无操作权限”提示，且不将该结果伪装为无数据状态
+  test_data:
+    permission: query_denied
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-23
+    status: blocked_permission_matrix
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-024
+  coverage_ids:
+  - FR-048-04
+  plan_item_ids:
+  - PI-048-24
+  atomic_purpose_ids:
+  - AP-048-24
+  title: 无查看权限时来源需求查看计划入口不可用
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 查看权限
+  preconditions:
+  - 准备具备孵化需求查看权限但无上孵计划查看权限的授权账号、两个需求行和正式环境
+  steps:
+  - action: 登录系统；在左侧菜单中展开「计划管理」，然后点击「孵化需求」菜单项
+    expected: 页面显示需求列表和权限控制后的行级操作
+  - action: 查看目标需求行的“查看计划”入口
+    expected: “查看计划”入口不可用
+  test_data:
+    permission: view_denied
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-24
+    status: blocked_permission_matrix
+  ui_source:
+    page_id: pc-req-047-view-plan-jump
+    evidence: dependency_available
+- id: TC-PC-048-025
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-05
+  atomic_purpose_ids:
+  - AP-048-25
+  common_preconditions_ref: incubation_plan_page_access
+  title: 完整需求号精确输入仅返回对应关联计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 精确筛选
+  preconditions:
+  - 准备具备查询权限的账号、已确认的完整需求号和对应关联计划数据
+  steps:
+  - action: 输入完整需求号并点击“查询”
+    expected: 列表仅显示该完整需求号对应的计划，不显示其他需求号计划
+  test_data:
+    query: exact_demand_no
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-05
+    status: blocked_target_page_data_locator
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-026
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-06
+  atomic_purpose_ids:
+  - AP-048-26
+  title: 查询失败时展示错误提示并保留输入条件
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 查询异常
+  preconditions:
+  - 准备具备查询权限的账号、已确认的查询失败注入方式、正式错误提示契约和不影响其他数据的测试环境
+  steps:
+  - action: 输入合法需求号并按已确认方式触发查询失败
+    expected: 页面显示错误契约规定的查询失败提示，且已输入需求号仍可观察；注入方式或错误契约未确认时标记 blocked
+  test_data:
+    query: controlled_query_failure
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-06
+    status: blocked_failure_simulation_contract
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-027
+  coverage_ids:
+  - FR-048-04
+  plan_item_ids:
+  - PI-048-17
+  atomic_purpose_ids:
+  - AP-048-27
+  title: 来源需求目标页访问失败时显示失败提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 跳转异常
+  preconditions:
+  - 准备具备孵化需求查看权限的账号、已确认的目标页访问失败注入方式、正式失败提示契约和至少两个可区分需求行
+  steps:
+  - action: 登录系统；在左侧菜单中展开「计划管理」，然后点击「孵化需求」菜单项
+    expected: 页面显示至少两个可区分需求行和行级查看计划操作
+  - action: 在目标需求上触发目标页访问失败
+    expected: 显示目标页访问失败提示，不回填其他需求或历史需求号
+  test_data:
+    state: jump_target_failure
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-17
+    status: blocked_failure_simulation_contract
+  ui_source:
+    page_id: pc-req-047-view-plan-jump
+    evidence: dependency_available
+- id: TC-PC-048-028
+  coverage_ids:
+  - FR-048-02
+  plan_item_ids:
+  - PI-048-06
+  atomic_purpose_ids:
+  - AP-048-28
+  common_preconditions_ref: incubation_plan_page_access
+  title: 仅空白需求号按正式输入规则处理
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 空白输入边界
+  preconditions:
+  - 准备具备查询权限的账号、仅由空格组成的需求号输入和默认列表基线；全空白输入的 trim 及查询结果契约尚未确认，本用例标记blocked
+  steps:
+  - action: 在需求号输入框输入仅由空格组成的内容并点击“查询”
+    expected: 页面完成查询请求；由于全空白输入的trim及结果契约尚未确认，本用例保持blocked，不将校验提示、清空列表或默认列表中的任一结果判定为通过
+  test_data:
+    query: whitespace_only
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-06
+    status: blocked_input_rule_confirmation
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+- id: TC-PC-048-029
+  coverage_ids:
+  - FR-048-04
+  plan_item_ids:
+  - PI-048-17
+  atomic_purpose_ids:
+  - AP-048-29
+  title: 无目标页访问权限时直接访问目标页被拒绝
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 直接访问权限
+  preconditions:
+  - 准备具备来源页查看权限但无上孵计划目标页访问权限的授权账号、目标页地址和正式权限契约；权限粒度未确认时标记 blocked
+  steps:
+  - action: 登录系统并直接打开“上孵计划”目标页地址
+    expected: 按正式权限契约显示唯一的拒绝结果，不显示目标页业务数据；契约未确认时标记 blocked
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/hatching-plan
+    permission: direct_target_denied
+  trace:
+    req: REQ-PC-048
+    tp: PI-048-17
+    status: blocked_permission_matrix
+  ui_source:
+    page_id: pc-req-048-hatching-plan
+    evidence: reference_only
+summary:
+  case_count: 29
+  type_counts:
+    feature: 29
+    interface: 0
+  auto_counts:
+    auto: 29
+    'no': 0
+  priority_counts:
+    P1: 16
+    P2: 8
+    P3: 5
+    P4: 0
+  pairwise_model:
+    parameters:
+    - EntryContext
+    - DemandNoState
+    - RelatedPlanCount
+    - PermissionState
+    - FilterAction
+    - JumpRefillState
+    - FailureMode
+
+    coverage: 2-way_design_only
+    execution: not_run

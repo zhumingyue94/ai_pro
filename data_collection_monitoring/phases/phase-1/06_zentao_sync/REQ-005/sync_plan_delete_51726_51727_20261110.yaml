@@ -1,0 +1,33 @@
+req_id: REQ-005
+project_id: 46
+product_id: 8
+module_id: 734
+operation: delete
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+changes:
+- local_case_id: TC-REQ-005-041
+  remote_case_id: 51726
+  operation: delete
+- local_case_id: TC-REQ-005-042
+  remote_case_id: 51727
+  operation: delete
+rebuild: forbidden_and_not_used
+source_hashes_after:
+  yaml: 79bb6cab4a5c69f6183c3ed1bf681f8c56a49a468acaed9a6b3394663df6ecdd
+  markdown: 9be0c9b638fd51dc108ad7b4e51adf1953e38fabf1c5624d80c866ae27237b54
+  review_yaml: d670b52b5fa9a1a735447e89c46814e7d4d2b1ea5906d1a356b9214ea9df815f
+execution:
+  status: validated
+  records:
+  - remote_case_id: 51726
+    operation: delete
+    readback_after: confirmed_not_found
+  - remote_case_id: 51727
+    operation: delete
+    readback_after: confirmed_not_found
+registry:
+  removed_mappings:
+  - TC-REQ-005-041 -> 51726
+  - TC-REQ-005-042 -> 51727
+  remaining_source_case_count: 33

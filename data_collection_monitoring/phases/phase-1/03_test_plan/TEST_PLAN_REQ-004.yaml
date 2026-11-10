@@ -1,0 +1,125 @@
+plan_id: TEST_PLAN-REQ-004
+title: "数据采集监控平台设备分组测试计划"
+status: draft
+source_inputs:
+  - "01_requirements/数据监控平台使用文档.pdf"
+  - "01_requirements/需求变动.md"
+  - "01_requirements/模块拆分清单.md"
+  - "02_analysis/REQ-004.yaml"
+  - "02_analysis/REQ-004.md"
+  - "02_analysis/page_inventory/page.json"
+  - "02_analysis/page_inventory/dom/device-group.html"
+  - "02_analysis/page_inventory/logs/device-group.txt"
+  - "02_analysis/page_inventory/logs/req004-exploration.txt"
+  - "config.yaml"
+  - "../../../.agents/references/test-plan.schema.json"
+trace:
+  story: "设备分组列表、筛选、状态和设备关联规则的限定范围只读验证规划"
+  req: REQ-004
+  project: "数据采集监控平台"
+  version: 1
+  status: draft
+objective: "基于 REQ-004 分析、需求变动、正式需求来源和 page.json 已采集的 device_group 页面事实，规划页面身份、默认列表、分组名称/创建时间筛选、查询、重置、刷新、表头设置、分页、排序、分组字段、设备数量和操作入口的限定范围只读验证；采用等价类、边界值、判定表、状态转换和 Pairwise/2-way 策略，保留 locator_status=partial、表单字段/编辑/删除/状态/设备关联/失败提示/权限契约缺失风险；本阶段只输出测试计划，不执行新增、编辑、删除、停用、恢复、设备加入/移出或接口写入。"
+scope:
+  in_scope:
+    - "运行时确认设备分组页面路由、标题、菜单路径和可达性；以 page.json device_group 页面事实为参考，最终以运行时身份为准。"
+    - "只读观察 device_group_default 状态中的分组名称、创建时间筛选、查询、重置、刷新、表头设置、新增、编辑、删除、七列表格和分页元素。"
+    - "规划名称模糊匹配、大小写、首尾/连续空格、日期组合、空结果、失败提示、筛选后回第一页、分页首末页/页大小、默认创建时间倒序和表头设置展示。"
+    - "规划分组名称、分组状态、分组描述、创建时间、设备数量和操作列的页面级字段契约；当前 page.json 已登记七列，不扩展未登记字段。"
+    - "规划新增弹层只读打开、空提交后取消和字段观察；page.json 已明确 device_group_dialogs_partial，稳定字段 ID、编辑字段、删除确认和保存反馈缺失时不形成完整 CRUD 结论。"
+    - "规划一级分组、名称必填/同层级重复、描述可为空/换行/空白/特殊字符、启用/停用/恢复、设备多分组、数量去重/权限过滤/刷新无缓存、关联删除阻止及时间格式和包含边界的批准只读数据回读。"
+    - "规划查看/维护/设备管理员/平台审计角色、租户隔离、异常提示、加载/异步状态、接口契约和数据安全责任；不以按钮可见性推断权限。"
+  out_scope:
+    - "真实新增、编辑、删除、停用、恢复、设备加入/移出、批量关联、导出和接口写入。"
+    - "设备管理页面内部生命周期、产品绑定和属性实现，多级分组、上下级关系、循环引用及每层数量限制。"
+    - "接口 endpoint、请求/响应字段、错误码、幂等实现、并发实现、数据库、审计实现、性能 SLA 和跨模块内部实现。"
+    - "表头设置持久化、跨页面/重新登录恢复、未授权临时文件验证和未确认的页面字段/按钮/定位器。"
+    - "具体未确认的日期最大跨度、输入长度、错误码、并发、设备关联接口和权限矩阵；不将待确认规则写成已验证事实。"
+    - "测试点、测试用例、CSV、禅道数据和 UI 自动化脚本。"
+strategy:
+  - "采用黑盒、只读、风险优先策略；以 REQ-004-001 至 REQ-004-013、REQ-004.yaml、REQ-004.md 和 page.json device_group 页面为基线。partial 或缺少证据时记录待确认/无法验证/blocked，不据此判失败。"
+  - "使用等价类覆盖 Auth、Permission、Name、Description、DateFilter、GroupState、DeviceRelation、Membership、Action、Result；名称覆盖合法/空/同层级重复/仅空白/首尾和连续空格/特殊字符，描述覆盖空/合法/换行/空白/特殊字符，日期覆盖无条件/单日/合法范围/包含边界/反向/非法/时区边界。"
+  - "使用边界值覆盖名称空和全空白、首尾/连续空格、名称与描述修改、日期 00:00:00/23:59:59、单日/跨月年/最大跨度待确认/时区边界、设备数量 0/1/重复唯一编号/单页容量和容量+1、分页首末页及筛选后回第一页。"
+  - "使用判定表评估名称为空、同层级重复、停用后新设备归属、关联设备删除、停用/改名/恢复允许、设备加入移出立即生效、数量按未删除设备唯一编号去重并受权限过滤、日期起止包含、无权限/会话过期、失败无重试和处理中禁用重复操作。只读阶段仅观察已采集状态和批准回读证据。"
+  - "使用状态转换覆盖未认证->登录页->门户->device_group_default、默认列表->查询中->有结果/暂无数据/失败、分组草稿->校验失败/保存成功/取消、启用->停用->恢复启用、无设备->关联设备->移出/设备删除、有关联设备->删除阻止、无日期->合法范围->无结果/失败/非法范围；不把未采集状态写成事实。"
+  - "Pairwise/2-way 评估 Auth、Permission、Name、Description、DateFilter、DeviceRelation、GroupState、Membership、Action、Result。约束包括只读权限仅允许 query/reset/refresh；新增/编辑且名称为空为 validation_error；有关联设备删除为 blocked_by_reference；停用/恢复及有关联设备 toggle 允许；停用分组 move_device 为 membership_error；反向日期 query 为 validation_error；refresh 为 success。模型用于计划设计，不生成或执行测试数据。"
+  - "Playwright Python/pytest-playwright 仅规划自动化范围：复用 login_page.py 和 portal_navigation.py，优先 role/name、accessible label、确认的 data-testid、page.json 元素语义映射、表格行上下文和可见文本；CSS 只作为最后手段。仅自动化导航、默认列表、筛选/分页/表格/表头/日期面板只读观察和安全取消；编辑、删除确认、状态、设备关联、失败提示因证据不完整保持人工或 blocked。"
+  - "Web 执行采用导航后等待可观察状态、操作前后页面比对、脱敏截图/DOM/日志证据；禁止固定等待、未确认定位器、保存/删除/停用/恢复/设备加入移出、接口写入和绕过权限/安全验证。"
+environment:
+  client: "PC Web"
+  os: "win32；正式执行前记录实际客户端版本"
+  browser: "Chromium；Playwright Python 规划可视模式 headless=False"
+  base_url: "${UI_TEST_URL}"
+  page_path: "/biopark-iot/iot/device/device-group"
+  portal_entry: "数据采集监控平台 / 数据采集 / 设备接入 / 设备分组；page.json 已登记该菜单路径，正式执行以运行时确认结果为准"
+  login: "使用测试账号登录；凭据仅从 UI_TEST_USERNAME、UI_TEST_PASSWORD、UI_TEST_TENANT 运行时读取，不写入计划、日志或证据；需确认正式页面权限、租户和访问范围"
+data:
+  required:
+    - "已批准的只读设备分组访问账号、查看/维护/设备管理员/审计角色和当前租户上下文；不将账号、密码、租户值写入产物。"
+    - "已存在且经授权可读的启用/停用分组、无设备/有关联设备分组、重复设备唯一编号、停用设备、空结果、多页数据和日期边界样本；本计划不造数。"
+    - "可回读设备页面中的设备唯一编号、未删除状态、多分组关系、加入/移出结果和当前权限范围；跨模块未准备时保持待确认。"
+    - "可观察 device_group_default、device_group_columns_expanded、device_group_date_filter_expanded、device_group_dialogs_partial 状态；编辑、删除确认、状态、设备关联、加载和错误提示定位器需执行前确认。"
+  preparation: "由测试、业务/产品、平台权限、研发及设备管理负责人准备脱敏只读数据、租户/权限确认、正式路由和定位器复核、跨模块证据目录；本计划不修改业务数据，清理状态为 not_applicable。"
+roles:
+  - "测试：执行限定范围只读页面、筛选、日期、分页、表头和新增取消观察，不执行写操作。"
+  - "产品/业务负责人：确认分组名称/描述、状态、一级层级、设备多分组、数量、删除和时间筛选口径。"
+  - "平台权限负责人：准备查看/维护/设备管理员/审计角色、租户隔离和访问范围样本。"
+  - "研发：确认正式路由、字段来源、失败/异步反馈、稳定定位器和数量刷新契约。"
+  - "设备管理负责人：提供设备加入/移出、多分组、停用设备、未删除设备和数量去重的批准跨模块回读证据。"
+  - "测试设计：在计划通过后消费范围和策略生成下游测试设计产物。"
+dependencies:
+  - "REQ-001 首页、REQ-003 产品管理：提供入口、门户和产品上下文；不代表依赖模块实现已验收。"
+  - "REQ-005 设备管理、REQ-007 数据监听、REQ-008 数据推送、REQ-009 数据采集、REQ-010 告警配置和首页统计：提供批准的设备关联、权限范围和数量回读证据。"
+  - "登录、权限、租户上下文：控制页面可达性、角色范围和数据隔离。"
+  - "page.json device_group 页面、脱敏 DOM/截图、device-group.txt 和 req004-exploration.txt；页面状态为 partial，新增/编辑/删除为部分观察。"
+  - "公共页面对象 07_ui_automation/pages/common/login_page.py、07_ui_automation/pages/common/portal_navigation.py。"
+  - "运行时配置键 UI_TEST_URL、UI_TEST_USERNAME、UI_TEST_PASSWORD、UI_TEST_TENANT；只引用键名，不复制值。"
+priority: "P0：页面身份/可达性、默认七列表格、名称/日期筛选、查询/重置/刷新、分页、默认倒序、日期面板和新增空提交取消；P1：名称/描述规则、状态停用恢复、设备多分组、数量去重/权限、关联删除阻止和失败反馈；P2：表头展示、编辑/删除确认、审计、并发、时区最大跨度和接口契约待确认"
+risks:
+  - "page.json 页面证据和新增/编辑/删除弹层为 partial；稳定字段 ID、编辑字段、删除确认、保存反馈和状态操作定位缺失，影响 critical；运行时补采，未确认前保持人工/blocked。"
+  - "关联设备误删分组可能造成设备归属和历史记录丢失，影响 critical；只读核验删除阻止，写操作需授权和隔离数据。"
+  - "停用/恢复、多分组立即生效或停用后新设备禁止规则错误，影响 high；核验批准回读，不提交真实变更。"
+  - "设备数量未去重、遗漏停用设备、包含已删除设备或未按权限过滤，影响 high；准备设备唯一编号、状态和权限范围样本。"
+  - "当前用户时区、日期包含边界、倒序和分页规则错误，影响 high；使用批准的日期边界和运行时用户时区证据。"
+  - "名称/描述输入规则、失败提示、重复提交禁用、处理中状态和无重试契约未形成稳定页面证据，影响 medium/high；只读观察，缺失时记录无法验证。"
+  - ".env 和配置可能包含敏感值，影响 high；产物只引用键名，禁止保存地址、账号、密码、租户、Token、Cookie、设备编号、分组名称或未经授权业务数据。"
+open_questions:
+  - "正式 PDF 中 REQ-004 章节与 REQ-004-001 至 REQ-004-013 的逐条追溯关系是否完成？"
+  - "正式环境最终路由、标题和菜单路径是否与 page.json device_group 事实一致？"
+  - "编辑、删除确认、停用/恢复、设备加入/移出和错误提示的实际字段、按钮和稳定定位器是什么？"
+  - "名称首尾空格、连续空格和描述空白的实际保存/展示规则是什么？"
+  - "日期控件的当前用户时区、起止边界、最大跨度、反向输入和默认排序如何通过页面证据确认？"
+  - "设备数量如何确认未删除范围、停用设备计入、设备唯一编号去重、权限过滤和刷新无缓存？"
+  - "一台设备多分组、停用分组禁止新设备归属、加入/移出立即生效的批准跨模块回读如何提供？"
+  - "有关联设备时删除阻止提示及停用、改名、恢复允许的页面反馈是什么？"
+  - "查看/维护/设备管理员/审计角色、租户隔离、权限失败和会话过期矩阵是什么？"
+  - "请求失败、超时、网络异常、权限不足、重复提交和处理中禁用的稳定页面反馈如何观察？"
+entry_criteria:
+  - "REQ-004.yaml、REQ-004.md、需求变动.md、page.json、config.yaml 和 ../../../.agents/references/test-plan.schema.json 可读取，REQ-ID、模块、页面和路由身份一致。"
+  - "已检查并登记 device_group 路由/标题/菜单、device_group_default、device_group_columns_expanded、device_group_date_filter_expanded、device_group_dialogs_partial、七列、筛选和分页元素；partial 与未确认事实已明确为风险。"
+  - "只读账号/权限、租户、脱敏分组/设备关联数据、跨模块回读责任、正式路由和证据目录已准备或转为 report_only 风险。"
+  - "需求追溯、范围责任、系统性设计、Pairwise 约束、自动化边界和停止条件已评审。"
+exit_criteria:
+  - "YAML 通过 test-plan.schema.json，未新增字段且不含 tp/tp_id；Markdown 与 YAML 的范围、策略、风险、准入/准出、证据和套件建议一致。"
+  - "冒烟、定向、全量三个计划层级已定义；未生成测试点、测试用例、CSV、禅道数据或 UI 脚本。"
+  - "page.json partial、弹窗/字段/编辑/删除/状态/设备关联/失败/权限定位缺失、数量统计、时间边界和跨模块契约风险均已记录并交接。"
+  - "范围内页面行为均有可观察结果和证据方案；缺数据、缺权限、缺定位器或未确认契约时记录待确认/无法验证/blocked，不伪造通过或失败。"
+  - "只读验证无业务数据变更；若出现意外写入、未授权数据暴露、主机不匹配、登录/权限失败或关键内容缺失，按停止条件中止并留证。"
+evidence:
+  - "页面事实：page_id=device_group，route=/biopark-iot/iot/device/device-group，title=数据采集 - 设备分组，menu_path=数据采集/设备接入/设备分组，default_state=device_group_default。"
+  - "状态证据：device_group_default、device_group_columns_expanded、device_group_date_filter_expanded；device_group_dialogs_partial 的 locator_status=partial，新增/编辑/删除详情和反馈不完整。"
+  - "DOM：02_analysis/page_inventory/dom/device-group.html；脱敏截图：device-group-capture.png、req004-default-explored.png、req004-columns-expanded.png、req004-date-filter-expanded.png、req004-add-form-20261021.png；日志：device-group.txt、req004-exploration.txt。"
+  - "已登记元素：device_group_add_button、device_group_table、device_group_name、device_group_start_date、device_group_end_date、device_group_query、device_group_reset、device_group_refresh、device_group_columns、device_group_add、device_group_edit、device_group_delete、device_group_page_size、device_group_prev、device_group_page、device_group_next。"
+  - "表格已登记七列：编号、分组名字、分组状态、分组描述、创建时间、设备数量、操作；不扩展未登记的产品、版本或其他字段。"
+  - "新增弹层已观察分组名称、分组描述、启用/停用状态及确定/取消语义；空提交后取消关闭且未保存业务数据；稳定字段 ID=false。"
+  - "执行阶段保存运行时 URL、标题、菜单路径、状态标识、脱敏截图、DOM/可访问性快照、客户端/浏览器版本、时间和必要日志；不保存账号、密码、Token、Cookie、设备编号、分组名称、租户值或未经授权数据。"
+  - "对筛选、日期面板、重置、刷新、分页、表头和新增取消保存操作前后页面状态及数据不变证据；对设备数量、关联删除、状态和权限仅保存批准的脱敏跨模块回读证据。"
+  - "自动化阶段只记录已确认 locator 结果；优先 role/name、accessible label、page.json 元素语义映射、表格行上下文和可见文本，不生成缺失的编辑/删除/状态/设备关联/错误定位器。"
+suites:
+  Smoke: "规划使用可视 Chromium 登录并进入 device_group 页面，确认运行时路由/标题/菜单、七列表格、分组名称/日期筛选、查询/重置/刷新、分页和默认倒序可见，打开表头设置与日期面板后关闭，打开新增弹层后取消并确认无业务数据变更；partial、权限或路由未确认时标记 blocked。"
+  Targeted: "规划名称模糊匹配/大小写/空格、日期包含边界/反向范围、筛选回第一页、空结果/失败提示、分页边界、表头展示、新增字段观察与取消、状态/设备多分组/数量统计/关联删除/权限租户批准回读；编辑、删除确认、状态和设备关联定位缺证据时转人工或无法验证。"
+  Full: "规划 REQ-004-001 至 REQ-004-013 的完整范围、字段与状态等价类、边界值、判定表、状态转换、Pairwise/2-way 组合、七列表格契约、设备关联/数量去重/权限、停用恢复/删除阻止、时间筛选和公共失败反馈回归；真实写入、接口、数据库、性能和未确认页面事实不纳入。"
+next_stage: testcase-generation-agent
+change_log:
+  - date: "2026-10-23"
+    summary: "增加 11 条核心成功/反向闭环计划项；不重复已有查询和入口流程，真实写入及跨模块回读待授权。"

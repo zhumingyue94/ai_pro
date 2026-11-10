@@ -1,0 +1,117 @@
+{
+    "id": 51640,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 732,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "同时输入产品名称和 ProductKey 查询时确认结果满足组合条件",
+    "precondition": "前置准备：\n1、已获得经授权的只读环境、脱敏数据和对应业务规则；未确认内容保持待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开平台菜单并点击“产品管理”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/product”，确认已进入产品管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:48:21",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-27 17:19:43",
+    "version": 5,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "zhumingyue",
+    "lastRunDate": "2026-10-27 17:00:32",
+    "lastRunResult": "pass",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 5,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174347,
+            "step": "在产品名称输入框填写名称条件，并在 ProductKey 输入框填写对应键值。",
+            "desc": "在产品名称输入框填写名称条件，并在 ProductKey 输入框填写对应键值。",
+            "expect": "两个筛选输入框均保留所填条件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 174348,
+            "step": "点击“查询”按钮。",
+            "desc": "点击“查询”按钮。",
+            "expect": "列表只显示同时满足产品名称和 ProductKey 条件的产品。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51640,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51640",
+        "text": "同时输入产品名称和 ProductKey 查询时确认结果满足组合条件",
+        "type": "root",
+        "children": [
+            {
+                "id": 174347,
+                "text": "在产品名称输入框填写名称条件，并在 ProductKey 输入框填写对应键值。",
+                "type": "sub",
+                "parent": "case_51640",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174347",
+                        "text": "两个筛选输入框均保留所填条件。",
+                        "type": "node",
+                        "parent": 174347,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174348,
+                "text": "点击“查询”按钮。",
+                "type": "sub",
+                "parent": "case_51640",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174348",
+                        "text": "列表只显示同时满足产品名称和 ProductKey 条件的产品。",
+                        "type": "node",
+                        "parent": 174348,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

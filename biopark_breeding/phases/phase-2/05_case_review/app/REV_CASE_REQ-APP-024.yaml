@@ -1,0 +1,81 @@
+review:
+  review_id: REV_CASE_REQ-APP-024
+  req_id: REQ-APP-024
+  module_id: REQ-APP-024
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-09'
+  status: completed_with_observations
+  gate_passed: true
+  historical_review_used: false
+  historical_review_deleted_before_review: true
+  skills_applied: [test-design-techniques, pict-test-designer, qa-playwright-py-writer, webapp-testing, casely]
+  scope:
+    case_count: 41
+    ids_unique: true
+    ids_continuous: false
+    id_range: TC-APP-024-002..TC-APP-024-052 (TC-APP-024-001 已按改造方案删除)
+    type_counts: {feature: 41, interface: 0}
+    auto_counts: {auto: 41, 'no': 0}
+    automation_status_counts: {blocked: 41}
+    priority_counts: {P1: 11, P2: 24, P3: 6, P4: 0}
+    trace_status_counts: {designed_with_evidence_boundary: 14, blocked_contract: 3, blocked_business_contract: 2, open_evidence: 5}
+  review_dimensions:
+    systematic_coverage:
+      status: pass_with_observations
+      techniques: [equivalence_partitioning, boundary_value_analysis, decision_table, state_transition, exception_coverage]
+      covered: [not_found, pending, shipping, shipped, externally_confirmed_signed, unconfirmed_signed, empty_records, one_to_three_records, over_three_records, multi_position, completion_mix, descending_submit_time, permission, service_failure, return_context]
+      observations: [性能用例的计时起止、数据规模、网络条件和加载契约未定义。]
+    pairwise:
+      status: covered_with_observations_static_pict_model
+      method: PICT_2_way
+      execution: not_run
+      parameters: [EntryContext, PlanState, RecordCountPartition, RecordCompletionMix, PositionCardinality, SortOrder, FoldState, SignatureConfirmation, PermissionState, ServiceResponse, ReturnContext, PageOwnership]
+      constraints: [NotFound must not expose plan detail or history, Signed status requires explicit external signature confirmation, Record count at most 3 must not show expand/collapse controls, Record count over 3 starts with latest 3 and supports expand then collapse, Unauthorized users must not see plan details or history, Service failure must show failure state not empty-state success, Return must preserve shipment and plan context, Page ownership and route must be confirmed before execution evidence]
+      conclusion: 静态参数与约束覆盖充分；未执行外部 PICT，未生成 PICT 测试集。
+    automation_executability:
+      status: candidate_but_blocked
+      auto_candidate_count: 41
+      automation_executable_count: 0
+      execution_performed: false
+      blockers: [正式环境、授权角色、隔离只读数据和清理责任未准备, 外部签收状态/服务失败注入/不存在计划需要正式契约或 fixture, 正式路由及稳定 locator 尚未确认, 性能用例缺少固定数据和测量边界]
+    headed_page_executability:
+      status: static_review_only
+      browser_started: false
+      target_page: app-plan-shipment-records
+      route: /m/orders/{发货单号}/plan-shipments/{上孵计划内部ID}
+      mapping_summary: {prototype_state_count: 7, matched_count: 2, partial_matched_count: 3, unmatched_prototype_state_count: 2, coverage_rate: '71%'}
+      observations: [两个未找到状态无设计映射, 原型默认全展开且无折叠控件与需求规则冲突, page.json schema_validation 为 input_missing]
+    casely:
+      status: pass_with_observations
+      checks: [yaml_parseability, required_fields, unique_continuous_ids, step_expected_pairing, style_consistency, delivery_format]
+      findings: [YAML 可解析且字段齐备, YAML 锚点需由下游转换器保留展开步骤语义, YAML/Markdown 存在事实漂移, 用例024负向 locator 过宽]
+  findings:
+    - {code: SUMMARY_AUTO_TYPE_COUNT_CONFLICT, category: evidence_risk, severity: medium, action: 将摘要更正为 auto=41并区分feature类型与自动化决策}
+    - {code: TRACE_STATUS_SUMMARY_MISSING, category: evidence_risk, severity: medium, action: 补齐10条合同/业务合同/开放证据状态}
+    - {code: PAGE_MAPPING_COVERAGE_71_PERCENT, category: evidence_risk, severity: medium, action: 补充未找到状态设计证据并确认部分匹配状态}
+    - {code: PROTOTYPE_FOLDING_RULE_CONFLICT, category: evidence_risk, severity: high, action: 业务与研发确认默认三条/展开/收起正式契约}
+    - {code: EXTERNAL_SIGNATURE_CONTRACT_PENDING, category: execution_blocker, severity: high, action: 提供外部签收 fixture 与契约}
+    - {code: SERVICE_ERROR_INJECTION_CONTRACT_PENDING, category: execution_blocker, severity: high, action: 提供失败 fixture、错误契约和清理责任}
+    - {code: PERFORMANCE_MEASUREMENT_BOUNDARY_PENDING, category: execution_blocker, severity: medium, action: 固化数据集、计时边界、网络条件和加载定义}
+    - {code: NEGATIVE_LOCATOR_CONTRACT_PENDING, category: evidence_risk, severity: medium, action: 确认专用负向控件 locator 或无障碍语义}
+  coverage_summary:
+    case_count: 41
+    automation_candidate_count: 41
+    automation_executable_count: 0
+    case_level_blocked_count: 41
+    evidence_open_or_contract_blocked_count: 10
+    formal_ui_execution_performed: false
+    formal_business_data_changed: false
+    yaml_markdown_aligned: false
+  sync_candidates: {case_count: 41, status: blocked_by_execution_readiness, note: 仅生成本地 report_only 资产；未生成 CSV，未写入远程禅道}
+  execution_statement: 仅完成静态结构、覆盖、契约与证据边界评审；未执行 UI、浏览器、Playwright 或 PICT。
+  prohibited_actions_confirmed: {ui_execution: false, csv_generation: false, remote_zentao_write: false, test_point_or_xmind_generation: false}
+  source_hashes:
+    - {path: 04_testcases/app/TC_REQ-APP-024.yaml, sha256: f6ff970c86ba3b6b10e4c014c51fa27cdbe615704fe8d43a0e89cb8b44c078d4}
+    - {path: 04_testcases/app/TC_REQ-APP-024.md, sha256: 82fc992dfa198993c9c0f3225e1d67e71b81c8aa1ff5e1581c0e96fa045b4db9}
+    - {path: 02_analysis/app/REQ-APP-024.yaml, sha256: a90f2e3d220fd83aa49bfdc26ddc44e3edca6ea0dc613f6ad4d21fef987373ba}
+    - {path: 03_test_plan/app/TEST_PLAN_REQ-APP-024.yaml, sha256: 4eb053266719f6be48f92aa64fb9ba7837866ffe44454ccfe8ca69d5727b6ca0}
+    - {path: 02_analysis/app/page_inventory/page.json, sha256: b71e83ad448235d533d2e564fc1ba96a0e7725573e4405f12dcf5d5b1a43893d}
+    - {path: 02_analysis/app/page_inventory/lanhu_page_mapping/REQ-APP-024_lanhu_page_mapping.json, sha256: caeaf7c19e78f40c72cbae9041288b8abfa4ade873b4fb4502a0f5b0a1a4a512}
+  handoff: {path: 05_case_review/app/HANDOFF/REQ-APP-024_HANDOFF.md, module_id: REQ-APP-024}

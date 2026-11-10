@@ -1,0 +1,143 @@
+{
+    "id": 51648,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 732,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "保存产品编辑时确认保存中状态可观察",
+    "precondition": "前置准备：\n1、已准备经授权可读且允许打开编辑页面的产品记录。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开平台菜单并点击“产品管理”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/product”，确认已进入产品管理页面。",
+    "keywords": "",
+    "pri": 3,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:48:32",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-27 16:57:10",
+    "version": 4,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 4,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174333,
+            "step": "在目标产品记录的操作列点击“编辑”按钮。",
+            "desc": "在目标产品记录的操作列点击“编辑”按钮。",
+            "expect": "编辑页面打开并显示允许编辑的字段。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 174334,
+            "step": "在允许编辑的字段输入经批准的修改值。",
+            "desc": "在允许编辑的字段输入经批准的修改值。",
+            "expect": "修改值保留在对应输入控件中。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 174335,
+            "step": "点击“保存”按钮，观察页面在保存过程中的提示和按钮状态。",
+            "desc": "点击“保存”按钮，观察页面在保存过程中的提示和按钮状态。",
+            "expect": "页面显示正在保存的提示，或暂时禁用“保存”按钮，防止重复提交。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51648,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51648",
+        "text": "保存产品编辑时确认保存中状态可观察",
+        "type": "root",
+        "children": [
+            {
+                "id": 174333,
+                "text": "在目标产品记录的操作列点击“编辑”按钮。",
+                "type": "sub",
+                "parent": "case_51648",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174333",
+                        "text": "编辑页面打开并显示允许编辑的字段。",
+                        "type": "node",
+                        "parent": 174333,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174334,
+                "text": "在允许编辑的字段输入经批准的修改值。",
+                "type": "sub",
+                "parent": "case_51648",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174334",
+                        "text": "修改值保留在对应输入控件中。",
+                        "type": "node",
+                        "parent": 174334,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174335,
+                "text": "点击“保存”按钮，观察页面在保存过程中的提示和按钮状态。",
+                "type": "sub",
+                "parent": "case_51648",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174335",
+                        "text": "页面显示正在保存的提示，或暂时禁用“保存”按钮，防止重复提交。",
+                        "type": "node",
+                        "parent": 174335,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

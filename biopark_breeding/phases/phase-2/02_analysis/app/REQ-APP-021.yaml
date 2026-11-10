@@ -1,0 +1,87 @@
+id: REQ-APP-021
+title: APP雏苗发货列表与筛选
+source_mapping:
+  module_split: REQ-APP-021
+  requirements_spec: REQ-005
+  priority: P0
+  rule_precedence: 需求变动.md > 合并需求说明书
+scope:
+  in_scope:
+    - 按系统时间默认加载任务日期
+    - 日期、栋舍、状态卡和关键字筛选
+    - 发货单列表、状态统计、排序和卡片内操作
+    - 无分页移动端列表
+  out_of_scope:
+    - 发货数量和位置提交
+    - 发货记录明细
+    - 存发苗间库存维护
+actors:
+  - 现场发货填报人
+  - 发货组长
+  - 场长
+  - 系统管理配置的授权角色
+rules:
+  - 默认任务日期为系统当天，日期仅在确认后生效；支持昨天、今天、明天及自定义日期。
+  - 状态统计、状态卡和列表数据必须一致；状态筛选仅通过状态卡切换。
+  - 列表按最后更新时间、计划发货日期、发货单号排序。
+  - 搜索范围为发货单号或孵化计划号；无结果显示空状态。
+  - 去发货/继续发货只能出现在对应订单卡片；无关联上孵计划时行内操作为空，不显示发货和明细按钮。
+  - 已发货、已签收状态仅显示发货记录；未获得外部系统明确签收结果不得显示已签收。
+page_contract:
+  pages:
+    - page_id: app-chick-shipping-list
+      route: /m/orders
+      states: [app021-default, app021-date-picker, app021-date-yesterday-result, app021-house-all, app021-house-filter, app021-search-empty, app021-search-result-input, app021-progress, app021-shipped, app021-signed]
+      element_ids: [page-default, date-filter, house-filter, search-entry, status-tabs, order-card-pending, shipment-record-entry, ship-entry, date-dialog, date-reset, date-confirm, date-picker-dialog, date-yesterday-btn, date-today-btn, date-tomorrow-btn, date-wheel-year, date-wheel-month, date-wheel-day, date-yesterday-button, date-yesterday-empty, date-yesterday-tabs, house-dialog, house-option-3, house-all-option, house-filtered-list, search-form, search-input, search-empty-text, search-input-filled, search-result-matched-card, search-result-ship-btn]
+interface_contract:
+  required_data: [系统时间, 发货单, 上孵计划关联, 状态统计, 栋舍基础数据]
+  assumptions: [列表查询返回服务端最新数据, 权限由系统管理角色权限控制]
+boundaries:
+  - 日期边界: 昨天/今天/明天/自定义日期；取消或重置不应改变已生效筛选。
+  - 搜索边界: 空值、精确单号、计划号、无匹配；不得记录原始敏感输入。
+  - 状态边界: 待发货、发货中、已发货、已签收及统计为零。
+risks:
+  - 状态卡统计与列表查询口径不一致。
+  - 返回后筛选条件丢失。
+  - 原型状态与设计映射仅部分匹配。
+dependencies: [孵化排程计划, 雏苗发货单服务, 上孵计划服务, 栋舍基础数据, 外部签收结果]
+environment_data:
+  prerequisites: [授权角色, 可关联上孵计划的发货单, 可验证的日期和状态数据]
+  mutation_boundary: 列表分析不执行业务数据变更；若联调产生数据，责任由测试数据负责人，须确认清理状态。
+security: 不记录账号、密码、Token、Cookie、未授权业务数据；搜索值脱敏。
+evidence: page_inventory/page.json
+open_questions: [状态统计接口与列表接口的统一口径及分页/不分页响应约束]
+
+coverage_targets:
+  - id: COV-APP021-DATE
+    title: 系统日期默认值、日期选择确认与重置
+    source: scope.in_scope[0]; boundaries[0]; page_contract.pages[0].states
+    requirement: REQ-APP-021
+  - id: COV-APP021-FILTER
+    title: 栋舍、状态卡和关键字筛选及空结果
+    source: scope.in_scope[1]; rules[1]; boundaries[1]
+    requirement: REQ-APP-021
+  - id: COV-APP021-STATUS
+    title: 发货状态判定、状态统计与签收边界
+    source: rules[1]; rules[4]; boundaries[2]
+    requirement: REQ-APP-021
+  - id: COV-APP021-CARD
+    title: 发货单列表、卡片字段与实际可发数口径
+    source: scope.in_scope[2]; interface_contract.required_data
+    requirement: REQ-APP-021
+  - id: COV-APP021-SORT
+    title: 列表排序与无分页展示
+    source: scope.in_scope[3]; rules[2]
+    requirement: REQ-APP-021
+  - id: COV-APP021-ACTION
+    title: 卡片内发货、记录入口及无关联计划边界
+    source: rules[3]; scope.in_scope[2]
+    requirement: REQ-APP-021
+  - id: COV-APP021-RETURN
+    title: 筛选条件回显与返回后状态保持
+    source: boundaries[0]; risks[1]
+    requirement: REQ-APP-021
+  - id: COV-APP021-PAGE
+    title: 页面入口、状态页签和已采集页面区块
+    source: evidence; page_contract.pages[0].element_ids
+    requirement: REQ-APP-021

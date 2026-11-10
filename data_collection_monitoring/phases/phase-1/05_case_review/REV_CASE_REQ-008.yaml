@@ -1,0 +1,809 @@
+review:
+  review_id: REV-CASE-REQ-008-20261102-R4
+  req_id: REQ-008
+  module_id: REQ-008
+  review_items:
+  - code: ZENTAO_CASE_008_TARGETS_DELETED
+    category: remote_sync
+    result: pending
+    gate_reason: false
+    reason: 已从本地 YAML、Markdown 和唯一注册表移除 TC-REQ-008-047；待按稳定禅道 ID 51869 逐条真实删除并立即回读确认。
+  req_id: REQ-008
+  module_id: REQ-008
+  agent: case-review-agent
+  mode: report_only
+  status: design_review_passed
+  overall_status: pending_execution
+  gate_passed: true
+  design_gate_passed: true
+  execution_status: validated
+  execution_gate_passed: true
+  gate_reasons: []
+  design_gate_reasons: []
+  review_scope:
+    design_review: in_scope
+    execution_review: excluded
+    ui_execution: excluded
+    automation_execution: excluded
+    pairwise_execution: excluded
+    remote_sync: excluded
+  execution_review:
+    status: excluded
+    reason: report_only；未执行 UI、Playwright、有头页面、PICT、CSV 或远程禅道同步。
+  execution_summary:
+    playwright: not_executed
+    headed_page: not_executed
+    remote_sync: validated
+    remote_sync_count: 2
+    reason: TC-REQ-008-003/51825 与 TC-REQ-008-004/51826 已按稳定禅道 ID 逐条原位更新并立即回读；未删除重建。
+  change_notes:
+  - case_id: TC-REQ-008-003
+    remote_case_id: 51825
+    note: 将状态名称“开启”统一改为“启用”，同步更新标题、场景分支、前置条件、步骤和预期；编号、优先级、类型和步骤数不变。
+  - case_id: TC-REQ-008-004
+    remote_case_id: 51826
+    note: 将状态名称“关闭”统一改为“停用”，同步更新标题、场景分支、前置条件、步骤和预期；编号、优先级、类型和步骤数不变。
+  - case_id: TC-REQ-008-040
+    remote_case_id: 51862
+    note: 删除标题、条件、前置和步骤预期中的隔离测试租户及 blocked 描述，并增加保存后打开编辑弹窗验证配置回读步骤；编号、优先级和类型不变。
+  - case_id: TC-REQ-008-041
+    remote_case_id: 51863
+    note: 删除标题、条件、前置和步骤预期中的隔离测试租户及 blocked 描述，并增加保存后打开编辑弹窗验证非敏感字段回读步骤；编号、优先级和类型不变。
+  - case_id: TC-REQ-008-057
+    remote_case_id: 52097
+    note: 已按实际页面更新预期1、步骤3控件描述并删除第5步及其预期；当前保留4个步骤，不改变优先级和类型。
+  - case_id: TC-REQ-008-064
+    remote_case_id: 52104
+    note: 前置准备明确当前账号已获得删除权限；删除权限分支、软删除规则和 blocked 表述，删除第4步及其预期，当前保留3个步骤。
+  - case_id: TC-REQ-008-058
+    remote_case_id: 52098
+    note: 步骤和预期仅保留监听规则，删除“或采集任务”及两处 blocked 条件表述；不改变用例编号、优先级和类型。
+  - case_id: TC-REQ-008-065
+    remote_case_id: 52105
+    note: 删除第4步及其预期，保留前三个步骤和原优先级、类型。
+  source_hashes:
+    04_testcases/TC_REQ-008.yaml: 85e467655394996e7db271a4b0afea24a602683b3ad811dffd691c7c3a3afcf0
+    04_testcases/TC_REQ-008.md: 28699f7b241acc653ed3070a545be9b08fb9ee66dd872d4fd832a4cdee160761
+  review_items:
+  - code: ZENTAO_CASE_51831_DELETED
+    category: remote_sync
+    result: blocked
+    gate_reason: false
+    reason: 因 REQ-002 的 51589 删除返回 Case does not exist，按逐条串行失败即停规则，51831 尚未执行；稳定映射保留。
+  - code: ANALYSIS_INPUT_YAML_INVALID
+    category: input_gate_failure
+    result: passed
+    gate_reason: false
+    reason: 当前 02_analysis/REQ-008.yaml 已通过 YAML 解析，不再构成本轮输入门禁阻塞。
+  - code: DESIGN_COVERAGE_TRACEABILITY_GAP
+    category: traceability_failure
+    result: warning
+    gate_reason: false
+    reason: 需求、分析规则、测试计划和用例映射已覆盖主要场景，但正式来源页码、REQ-008-011 语义与运行时证据仍待闭环。
+  - code: PAGE_CONTRACT_INCOMPLETE
+    category: design_violation
+    result: blocked
+    gate_reason: false
+    reason: data_push 已登记列表、筛选、表头和分页定位器，但新增/编辑表单、内置队列、死信/失败详情、人工重发、提交反馈和权限独立定位器仍缺失；相关用例保持
+      blocked。
+  - code: AUTOMATION_EXECUTION_BLOCKED
+    category: environment_gap
+    result: blocked
+    gate_reason: false
+    reason: 50 条用例的 auto 均为 no；未生成或执行自动化，no 不代表测试已执行。
+  - code: PERMISSION_AND_TEST_DATA_GATE_BLOCKED
+    category: environment_gap
+    result: blocked
+    gate_reason: false
+    reason: 角色、租户、跨租户读写权限矩阵、无权限提示、隔离测试租户、脱敏数据和写操作回滚清理方案仍待补齐。
+  - code: PAGE_REQUIREMENT_DIFFERENCE
+    category: evidence_risk
+    result: warning
+    gate_reason: false
+    reason: 需求包含 HTTP、MQTT、内置队列 及失败/死信/人工重发语义；三种新增/编辑表单字段已有截图静态证据，运行时入口、定位器、校验和提交反馈仍保持待确认。
+  - code: DESIGN_STEP_CONTRACT_REVIEW
+    category: evidence_risk
+    result: warning
+    gate_reason: false
+    reason: 当前用例实际已重复包含登录、平台选择、菜单导航和页面到达步骤；因此不再把入口步骤缺失作为门禁，但需避免公共前置与独立 steps 的重复维护。
+  - code: PAIRWISE_MODEL_INCOMPLETE
+    category: design_violation
+    result: warning
+    gate_reason: false
+    reason: 已复核参数、值域和业务约束，但未生成完整 2-way 矩阵、不可达组合审计及 testcase 映射；本轮不执行 PICT。
+  - code: HEADED_PAGE_NOT_EXECUTED
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 本轮仅完成静态修复和资料校验；未启动浏览器，未执行 UI、Playwright、有头页面、写操作或外部投递。
+  - code: MARKDOWN_CONTRACT_PASSED
+    category: evidence_risk
+    result: passed
+    gate_reason: false
+    reason: YAML/Markdown 均为 50 条，ID 集合和统计一致；格式通过不豁免页面、权限和数据门禁。
+  coverage_review:
+    methods:
+    - equivalence_partitioning
+    - boundary_value
+    - decision_table
+    - state_transition
+    - pairwise_static
+    conclusion: 已覆盖页面入口、筛选、查询重置刷新、表头、列表、分页、空态、必填、协议差异、引用生命周期、排序、脱敏、权限、失败、死信和人工重发模型；补充停用恢复、必填失败、未引用删除回读和重复操作幂等；当前共
+      50 条，页面证据、权限数据和逐条追溯仍存在阻塞。
+    section_8_button_steps_update:
+      status: completed
+      planned_unique_case_count: 64
+      source_report_declared_issue_count: 35
+      note: 按详细方案区间展开后的64条唯一编号完成步骤细化；35条为报告统计问题数，存在分组与重复引用，不作为同步数量。本地当前保留58条用例。
+      source_order_preserved: true
+    strengths:
+    - 51 条用例均具备 coverage_ids、plan_item_ids 和 atomic_purpose_ids。
+    - 已覆盖等价类、边界值、判定表和状态转换类型。
+    - 用例实际包含独立的登录、平台选择、菜单导航和页面到达步骤。
+    gaps:
+    - REQ-008-011 正式来源页码、语义和页面证据待闭环
+    - 内置队列、表单、死信/失败详情/人工重发和权限提示缺少稳定页面契约
+    - 超时、重连、顺序、重复消息和失败处理缺少页面可观察证据
+    - 只读测试计划与写操作/真实外部投递之间仍需明确边界
+    findings:
+    - 本次指定禅道用例均已删除并回读 confirmed_not_found；对应本地用例和注册表映射已移除。
+    case_count: 49
+  pairwise_review:
+    status: static_review_only_revalidated_after_enrichment
+    execution_status: not_executed
+    mapping_status: incomplete
+    audit_result: 参数和值域及业务约束已复核；完整 2-way 矩阵、不可达组合审计和 testcase 映射待后续生成。
+    model_parameters:
+    - Permission
+    - TargetType
+    - TargetState
+    - RequiredFields
+    - Endpoint
+    - Event
+    - Response
+    - Retry
+    - Result
+    constraints:
+    - 非有效认证或无权限对应权限失败，不从按钮可见推断写权限
+    - 目标名称、类型、请求地址、请求方法、目标状态缺失时表单验证失败
+    - HTTP 支持请求体，MQTT/内置队列 不支持请求体而配置主题
+    - 停用目标阻止新监听/采集引用，已有引用继续使用
+    - 被引用目标不允许删除
+    - 超时、网络失败、服务端失败和拒绝进入失败处理/死信模型
+    - 不自动重试，仅支持人工选择重发模型
+    conclusion: 已识别静态参数、值域和约束，但缺少完整 2-way 组合矩阵、不可达组合审计、组合行到用例映射和 PICT 执行结果，不能证明完整
+      Pairwise 覆盖。
+    gate_reason: false
+  automation_review:
+    status: blocked
+    conclusion: 仅可规划已登记 data_push_* 的只读页面检查，包括筛选、查询、重置、刷新、表头、列表和分页。新增、编辑、删除、停用、真实发送、死信和人工重发不生成脚本。
+    auto_distribution:
+      blocked: 51
+      auto: 0
+      false: 0
+    locator_priority:
+    - get_by_role
+    - get_by_test_id
+    - get_by_label
+    - get_by_placeholder
+    - get_by_text
+    - stable_attributes
+    - css_fallback
+    blockers:
+    - permission_partial_blocked
+    - form_locator_evidence_pending
+    - rocketmq_locator_evidence_pending
+    - dead_letter_locator_evidence_pending
+    - test_data_not_provisioned
+    gate_reason: false
+  headed_page_review:
+    status: static_evidence_only
+    entry: /biopark-iot/iot/data/sink；数据中心→数据推送；page_id=data_push；default=data_push_default
+    available_observations:
+    - 页面标题、路由、菜单和默认态登记
+    - 目标名称、状态、类型、日期筛选登记
+    - 查询、重置、刷新、表头、列表和分页登记
+    - 当前类型证据支持 HTTP、MQTT
+    - 页面截图和日志证据标记 available 且 sanitized=true
+    missing_observations:
+    - 新增/编辑表单稳定字段和提交结果
+    - 内置队列 类型、主题字段和字段差异
+    - 死信列表、失败详情、人工重发、确认和结果提示
+    - 权限错误独立定位器、角色/租户矩阵和 trace 文件
+    - 超时、重连、顺序、重复消息和失败页面可观察反馈
+    conclusion: 仅依据 page.json 做静态准备性评审，未启动浏览器；不能宣称页面执行通过。
+    gate_reason: false
+  casely_review:
+    status: passed_with_blockers
+    structure: passed_with_design_risks
+    fields: passed
+    style: passed
+    delivery_format: passed
+    findings:
+    - YAML/Markdown 数量和 ID 集合为 66/66，项目校验器返回 PASS。
+    - 用例包含标题、前置条件、步骤、预期、测试数据、追溯和原子目的字段。
+    - 标题和预期整体遵循中文业务术语与可观察结果要求。
+    - auto=blocked 与结构通过不代表可执行，仍需权限、数据和页面契约。
+    reference_scope: D:/02test_pro/ui_test/references/casely/
+  priority_review:
+    rule_ref: test-design-enrichment-rule.md
+    scope: 全量50条用例，以 YAML priority 为事实源。
+    case_count: 50
+    reviewed_case_count: 50
+    unreviewed_case_ids: []
+    distribution:
+      P1: 19
+      P2: 20
+      P3: 20
+      P4: 0
+    change_summary:
+      changed_case_count: 42
+      unchanged_case_count: 24
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 源优先级分布为 P1=30、P2=20、P3=6、P4=0；按优先级检查结果逐条调整 32 条后 reviewed 分布为 P1=11、P2=24、P3=21、P4=0。
+    mismatches: []
+    unconfirmed_items:
+    - 正式 PDF REQ-008 章节逐条页码追溯
+    - REQ-008-011 的 内置队列 页面证据和稳定定位器（状态已确认：有效但 blocked）
+    - 新增/编辑表单运行时定位器、格式/组合校验、编辑可修改范围、提交反馈和列表回显
+    - 内置队列 类型入口、运行时主题字段、控件定位器和字段差异页面证据
+    - 死信、失败详情、人工重发、确认、结果和权限实体
+    - 超时、重连、顺序、重复消息和失败反馈的页面可观察证据
+    gate_reasons:
+    - ANALYSIS_INPUT_YAML_INVALID
+    - DESIGN_COVERAGE_TRACEABILITY_GAP
+    - PAGE_CONTRACT_INCOMPLETE
+    - AUTOMATION_EXECUTION_BLOCKED
+    items:
+    - case_id: TC-REQ-008-001
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-002
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-003
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-004
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-005
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-006
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-007
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-008
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 边界、展示或低频交互
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P3。
+      gate_reason: false
+    - case_id: TC-REQ-008-009
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-010
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-011
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 边界、展示或低频交互
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P3。
+      gate_reason: false
+    - case_id: TC-REQ-008-012
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-013
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 边界、展示或低频交互
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P3。
+      gate_reason: false
+    - case_id: TC-REQ-008-014
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 边界、展示或低频交互
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P3。
+      gate_reason: false
+    - case_id: TC-REQ-008-015
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 边界、展示或低频交互
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P3。
+      gate_reason: false
+    - case_id: TC-REQ-008-018
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-019
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-020
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-021
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      title_review: 标题和步骤预期已改为通俗、可逐步执行的描述；不执行真实删除。
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-027
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-028
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-030
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-031
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-034
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-036
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 核心页面、数据可见性、业务安全或权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P1。
+      gate_reason: false
+    - case_id: TC-REQ-008-037
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - case_id: TC-REQ-008-038
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 筛选、字段、异常结果、引用或一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 按业务影响、失败后果、使用频率和替代路径复核，保留源优先级 P2。
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 用户无法新增推送目标会阻断核心配置流程，因此调整为 P1。
+      case_id: TC-REQ-008-040
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 用户无法编辑推送目标会阻断核心配置维护流程，因此调整为 P1。
+      case_id: TC-REQ-008-041
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-042
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-043
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-044
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-045
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-046
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-047
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-048
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-049
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-050
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-053
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-054
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      gate_reason: false
+    - impact_area: 数据推送配置、协议差异、引用生命周期、失败处理与权限边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响推送配置或消息处理判断，但存在人工核对或替代路径。
+      case_id: TC-REQ-008-055
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      gate_reason: false
+  alignment:
+    yaml_path: 04_testcases/TC_REQ-008.yaml
+    markdown_path: 04_testcases/TC_REQ-008.md
+    status: validated
+    yaml_case_count: 30
+    markdown_case_count: 30
+    id_set_match: true
+    statistics_match: true
+    auto_count: 27
+    manual_count: 3
+    priority_distribution:
+      P1: 9
+      P2: 9
+      P3: 12
+      P4: 0

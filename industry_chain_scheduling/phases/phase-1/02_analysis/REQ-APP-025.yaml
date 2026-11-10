@@ -1,0 +1,29 @@
+id: REQ-009
+title: 饲料日需求看板
+parent_req: REQ-000
+module_path: 排程看板 / 饲料日需求看板
+zentao_module_id: 676
+page_url: /biopark-poultry/schedule/plan-schedule/nutrition-plan
+analysis_status: analyzed_with_live_dom_readback
+source_precedence: [PRD, 待澄清项确认清单, REQ-基础数据_page_recon, 需求变动, 栋舍分配最小缓冲与推荐得分逻辑说明, 各段转进转出释放日期计算, 排程计算.xlsx]
+scope:
+  in: [饲料需求日历, 饲料需求汇总Tab, 饲料需求明细Tab, 查询/重置, 导出]
+  out: [饲料计划手工维护, 饲料生产执行, 原料采购]
+requirements:
+  data_source: 排程保存/下推后按日龄采食计划生成的饲料需求
+  roles: [饲料厂负责人, 智控中心小组成员]
+  summary_fields: [需求日期, 饲料, 总数量(吨)]
+  detail_fields: [栋舍, 段区, 料号, 数量(吨), 需求计划号, 补栏计划号, 排程编号]
+  transfer_day_rule: 最新日期说明明确排程系统暂不生成转运日当天饲料计划；实现不同则列为冲突
+  aggregation: 汇总按日期和饲料聚合明细，单位/精度/舍入待接口契约
+page_contract:
+  navigation: 门户 -> 产业链生产排程系统 -> 排程看板 -> 饲料日需求看板
+  views: [日历视图, 列表视图]
+  tabs: [饲料需求汇总, 饲料需求明细]
+  actions: [查询, 重置, 导出]
+interfaces: [REQ-003日龄采食计划, REQ-004制定排程, REQ-005下推, 商品禽养殖系统饲料标准, 饲料系统]
+dependencies: [REQ-003, REQ-004, REQ-005, REQ-013, 商品禽养殖系统, 饲料系统]
+risks: [模版占比/日采食量/补栏量计算链不一致, 转运日缺口造成对账误判, 汇总明细单位精度不一致, 生成/下推延迟]
+open_questions: [转运日补发/重算, 单位换算/舍入, 导出字段与当前Tab/筛选条件]
+prototype_evidence: {source_record: 模块拆分清单与既有REQ-009分析, portal_entry: verified, submenu_dom_readback: verified, route: /biopark-poultry/schedule/plan-schedule/nutrition-plan, title: 饲料需求排程, observed_views: [日历视图, 列表视图], observed_actions: [查询, 重置, 导出], observed_tabs: [饲料需求汇总, 饲料需求明细], observed_summary_headers: [序号, 需求日期, 饲料, 总数量(吨)], observed_query_field: 需求日期, observation_time: 2026-08-27}
+trace: {upstream: [REQ-003, REQ-004, REQ-005], downstream: [REQ-011]}

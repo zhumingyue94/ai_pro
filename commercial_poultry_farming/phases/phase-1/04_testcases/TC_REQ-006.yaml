@@ -1,0 +1,1252 @@
+req_id: REQ-006
+module: 出栏结算
+zentao_module_id: 655
+zentao_product_id: 5
+zentao_project_id: 20
+page_url: /biopark-poultry/production/slaughter-settlement
+trace:
+  req: REQ-006
+  tp: TP_REQ-006
+  project: 商品禽养殖
+  version: 1
+  status: draft
+  source_review: 04_testpoint_review/REV_REQ-006.yaml
+  gate_note: 测点评审已通过；本阶段未跑用例自检/未写 CSV；对齐人工调整版 TP v3
+  tp_version: 3
+summary:
+  case_count: 43
+  priority_counts:
+    P3: 9
+    P2: 24
+    P1: 10
+  feature_counts:
+    查询: 10
+    表格: 19
+    详情: 9
+    导出: 5
+  type_counts:
+    feature: 43
+  auto_counts:
+    auto: 38
+    'no': 5
+cases:
+- id: TC-006-01
+  tp_id: TP-006-01
+  title: 查询区包含「栋舍养殖批次」「出栏月份」条件控件
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  steps:
+  - action: 查看查询区控件
+    expected: 查询区可见「栋舍养殖批次」「出栏月份」两个可操作条件控件
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-01
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48559
+  auto: 'no'
+- id: TC-006-02
+  tp_id: TP-006-02
+  title: 查询区含「查询」「重置」按钮
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  steps:
+  - action: 查看查询区操作按钮
+    expected: 查询区可见「查询」「重置」按钮
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-02
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48560
+  auto: 'no'
+- id: TC-006-03
+  tp_id: TP-006-03
+  title: 「栋舍养殖批次」下拉占位为「请选择养殖批次」且选项来源于补栏确认批次
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 补栏确认侧存在可对账的栋舍养殖批次
+  steps:
+  - action: 点击「栋舍养殖批次」下拉
+    expected: 占位文案为「请选择养殖批次」
+  - action: 展开选项并抽样对照补栏确认批次
+    expected: 可选值与 REQ-003 栋舍养殖批次可对账（抽样）
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-03
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48561
+  auto: auto
+- id: TC-006-04
+  tp_id: TP-006-04
+  title: 「出栏月份」为月份选择控件
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  steps:
+  - action: 点击「出栏月份」
+    expected: 出栏月份可选择年月（月份选择器或等价控件）
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-04
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48562
+  auto: 'no'
+- id: TC-006-05
+  tp_id: TP-006-05
+  title: 仅改条件未点「查询」→ 列表保持原结果；点「查询」后才按新条件过滤
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表当前已有查询结果可作对照
+  steps:
+  - action: 记录当前列表快照后仅改「栋舍养殖批次」或「出栏月份」，不点「查询」
+    expected: 改条件不点查询时列表保持原结果不变
+  - action: 点击「查询」
+    expected: 列表按新条件刷新
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-05
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48563
+  auto: auto
+- id: TC-006-06
+  tp_id: TP-006-06
+  title: 选择有数据批次点「查询」→ 列表仅该批次结算
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在有结算数据的栋舍养殖批次，以及至少一条其他批次对照数据
+  steps:
+  - action: 在「栋舍养殖批次」选择有数据的批次
+    expected: 条件显示已选批次
+  - action: 点击「查询」
+    expected: 结果行「栋舍养殖批次」均等于所选批次；无其他批次行；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-06
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48564
+  auto: auto
+- id: TC-006-07
+  tp_id: TP-006-07
+  title: 选择有数据出栏月份点「查询」→ 列表仅该月结算
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在有结算数据的出栏月份，以及可区分月份的对照数据
+  steps:
+  - action: 在「出栏月份」选择有数据的月份
+    expected: 条件显示已选月份
+  - action: 点击「查询」
+    expected: 结果行「结算日期」所属月份等于所选出栏月份；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-07
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48565
+  auto: auto
+- id: TC-006-08
+  tp_id: TP-006-08
+  title: 批次+出栏月份组合点「查询」→ AND 过滤
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在同时满足某批次+某出栏月份的结算数据，以及仅满足其一的对照数据
+  steps:
+  - action: 选择「栋舍养殖批次」与「出栏月份」后点击「查询」
+    expected: 结果同时满足所选批次与出栏月份（AND）；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-08
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48566
+  auto: auto
+- id: TC-006-09
+  tp_id: TP-006-09
+  title: 查询条件无匹配数据 → 列表空态可辨
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 可构造无匹配的批次或月份组合
+  steps:
+  - action: 选择无匹配数据的「栋舍养殖批次」和/或「出栏月份」后点击「查询」
+    expected: 列表无业务行；空态提示或空表可判定
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-09
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48567
+  auto: auto
+- id: TC-006-10
+  tp_id: TP-006-10
+  title: 点「重置」→ 条件恢复默认并刷新列表
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 已修改过查询条件（非默认）
+  steps:
+  - action: 点击「重置」
+    expected: 条件恢复默认；列表按默认条件刷新；须覆盖标题断言：「重置」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-10
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48568
+  auto: auto
+- id: TC-006-11
+  tp_id: TP-006-11
+  title: 列表标题为「数据列表」
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  steps:
+  - action: 查看列表区域标题
+    expected: 列表区域标题文案为「数据列表」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-11
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48569
+  auto: 'no'
+- id: TC-006-12
+  tp_id: TP-006-12
+  title: 列表列顺序含序号→栋舍→栋舍养殖批次→结算日期→结算只数→结算重量(kg)→上苗数量→均重→总料量→饲养天数→日增重→成活率→料肉比→欧指→操作
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 查看表头从左到右列顺序
+    expected: 表头依次含序号→栋舍→栋舍养殖批次→结算日期→结算只数→结算重量(kg)→上苗数量→均重→总料量→饲养天数→日增重→成活率→料肉比→欧指→操作
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-12
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48570
+  auto: auto
+- id: TC-006-13
+  tp_id: TP-006-13
+  title: 工具栏可见「导出」；行操作可见「详情」；页面无「新增」「编辑」（财务推送）
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 查看工具栏与行操作
+    expected: 工具栏可见「导出」；行内可见「详情」
+  - action: 全页查找「新增」「编辑」入口
+    expected: 全页无新增/编辑结算入口（财务推送）
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-13
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48571
+  auto: auto
+- id: TC-006-14
+  tp_id: TP-006-14
+  title: 列表「结算日期」取自结算表推送字段 → 可与补栏计划出栏日期不一致且仍正常展示
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在结算表结算日期与关联补栏计划出栏日期不一致的结算行（可造数）
+  steps:
+  - action: 抽样查看列表「结算日期」，并对照关联补栏计划的「出栏日期」
+    expected: 列表结算日期等于结算表推送值；可与计划出栏日期不同；页面仍正常展示，无强制一致校验
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-14
+    project: 商品禽养殖
+    version: 2
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48572
+  auto: auto
+- id: TC-006-15
+  tp_id: TP-006-15
+  title: 「结算只数」从其他系统推送，不要求和饲养日志最后一天的存栏数一致
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在结算只数与饲养日志末日存栏不一致的批次数据（可造数）
+  steps:
+  - action: 对照该批次饲养日志最后一天存栏与列表「结算只数」
+    expected: 结算只数可与日志末日存栏不一致；列表仍正常展示；无强制一致校验拦截
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-15
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48573
+  auto: auto
+- id: TC-006-16
+  tp_id: TP-006-16
+  title: 结算只数大于上苗数量时 → 仍正常展示且成活率可大于 100%、无拦截提示
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在结算只数大于上苗数量的结算行（可造数）
+  steps:
+  - action: 定位结算只数>上苗数量的行，查看「成活率」
+    expected: 行可正常展示；成活率按公式可大于 100%；无拦截提示
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-16
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48574
+  auto: auto
+- id: TC-006-17
+  tp_id: TP-006-17
+  title: 「结算重量」从其他系统推送，不要求和饲养日志最后一次转运重量一致
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在结算重量与饲养日志末次转运体重不一致的批次数据（可造数）
+  steps:
+  - action: 对照该批次饲养日志末次转运体重与列表「结算重量(kg)」
+    expected: 结算重量可与末次转运体重不一致；列表仍正常展示；无强制一致校验拦截
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-17
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48575
+  auto: auto
+- id: TC-006-18
+  tp_id: TP-006-18
+  title: 列表「上苗数量」与 REQ-003 该批次初始进苗数量一致
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在可对账的批次：补栏确认有初始进苗数量
+  steps:
+  - action: 抽样对照列表「上苗数量」与补栏确认初始进苗数量
+    expected: 上苗数量与 REQ-003 该批次初始进苗数量一致
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-18
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48576
+  auto: auto
+- id: TC-006-19
+  tp_id: TP-006-19
+  title: 列表「总料量(kg)」= 补栏日期～结算日期（结算表推送）区间 REQ-005 日吃料累计
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在补栏日～结算日区间内有饲养日志日吃料的批次（结算日期取自结算表）
+  steps:
+  - action: 按补栏日期～结算日期（结算表字段）汇总 REQ-005 日吃料，并对照列表「总料量(kg)」
+    expected: 列表「总料量(kg)」等于该区间日吃料之和；不含区间外吃料；不以补栏计划出栏日期为右端点
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-19
+    project: 商品禽养殖
+    version: 2
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48577
+  auto: auto
+- id: TC-006-20
+  tp_id: TP-006-20
+  title: 总料量为空时 → 料肉比与欧指均为空且页面不崩溃
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在总料量为空的结算行
+  steps:
+  - action: 查看该行「料肉比」「欧指」
+    expected: 料肉比为空、欧指为空；页面不崩溃/不白屏
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-20
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48578
+  auto: auto
+- id: TC-006-21
+  tp_id: TP-006-21
+  title: 列表「均重(kg)」= 结算重量(kg) / 结算只数
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在结算只数、结算重量均有值的结算行
+  steps:
+  - action: 按「结算重量(kg)/结算只数」手算均重并对照列表「均重(kg)」
+    expected: 抽样行均重 = 结算重量 / 结算只数（精度与产品展示一致）
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-21
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48579
+  auto: auto
+- id: TC-006-22
+  tp_id: TP-006-22
+  title: 列表「饲养天数」= 结算日期 − 补栏日期（结算日期取自结算表推送）
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在可取得补栏日期与结算表结算日期的批次结算行
+  steps:
+  - action: 取列表「结算日期」与关联补栏日期，按「结算日期−补栏日期」计算并对照列表「饲养天数」
+    expected: 抽样行饲养天数 = 结算表结算日期减补栏日期；与补栏计划出栏日期无关
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-22
+    project: 商品禽养殖
+    version: 2
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48580
+  auto: auto
+- id: TC-006-23
+  tp_id: TP-006-23
+  title: 出栏日龄 = 饲养天数 = 结算日期 − 补栏日期（结算日期取自结算表）
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在可对账饲养天数与结算表结算日期的结算行
+  steps:
+  - action: 对照出栏日龄与列表「饲养天数」（出栏日龄=结算表结算日期−补栏日期）
+    expected: 出栏日龄与饲养天数数值一致（均为结算表结算日期−补栏日期）
+  - action: 对照列表「结算日期」与关联补栏计划「出栏日期」
+    expected: 不要求二者相等；结算日期取自结算表推送字段
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-23
+    project: 商品禽养殖
+    version: 2
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48581
+  auto: auto
+- id: TC-006-24
+  tp_id: TP-006-24
+  title: 列表「日增重(g)」= 均重(kg) × 1000 / 饲养天数
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在均重与饲养天数均有值的结算行
+  steps:
+  - action: 按「均重(kg)×1000/饲养天数」计算并对照列表「日增重(g)」
+    expected: 抽样行日增重 = 均重×1000/饲养天数
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-24
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48582
+  auto: auto
+- id: TC-006-25
+  tp_id: TP-006-25
+  title: 列表「成活率」= 结算只数 / 上苗数量 × 100%
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在结算只数与上苗数量均有值的结算行
+  steps:
+  - action: 按「结算只数/上苗数量×100%」计算并对照列表「成活率」
+    expected: 抽样行成活率可复核；列表值可带%
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-25
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48583
+  auto: auto
+- id: TC-006-26
+  tp_id: TP-006-26
+  title: 列表「料肉比」= 总料量(kg) / 结算重量(kg)
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在总料量与结算重量均有值的结算行
+  steps:
+  - action: 按「总料量(kg)/结算重量(kg)」计算并对照列表「料肉比」
+    expected: 抽样行料肉比 = 总料量/结算重量
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-26
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48601
+  auto: auto
+- id: TC-006-27
+  tp_id: TP-006-27
+  title: 列表「欧指」= (均重×成活率)/(料肉比×出栏日龄)×10000（出栏日龄=结算日期−补栏日期）
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在均重、成活率、料肉比、饲养天数均可计算的结算行
+  steps:
+  - action: 按 (均重×成活率)/(料肉比×出栏日龄)×10000 计算，出栏日龄取该行饲养天数（=结算表结算日期−补栏日期）
+    expected: 列表「欧指」与公式结果一致（精度与产品展示一致）
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-27
+    project: 商品禽养殖
+    version: 2
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48584
+  auto: auto
+- id: TC-006-28
+  tp_id: TP-006-28
+  title: 列表分页展示总条数与页码；切换每页条数后列表刷新
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表数据量足以触发分页
+  steps:
+  - action: 查看分页区
+    expected: 可见总条数与页码
+  - action: 切换每页条数
+    expected: 列表按新每页条数刷新
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-28
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48585
+  auto: auto
+- id: TC-006-29
+  tp_id: TP-006-29
+  title: 超长单元格省略展示且悬停可见全文
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 存在超长文本单元格（可造数）
+  steps:
+  - action: 查看超长单元格展示
+    expected: 超长文本省略显示
+  - action: 鼠标悬停该单元格
+    expected: 悬浮可见全文
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-29
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48586
+  auto: 'no'
+- id: TC-006-30
+  tp_id: TP-006-30
+  title: 行内点「详情」→ 打开标题为「结算详情」的只读弹窗
+  type: feature
+  priority: P1
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 点击某行「详情」
+    expected: 打开弹窗且标题为「结算详情」；无编辑保存控件；须可见：「详情」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-30
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48587
+  auto: auto
+- id: TC-006-31
+  tp_id: TP-006-31
+  title: 结算详情头区展示栋舍/批次/结算日期/结算只数/结算重量等只读字段
+  type: feature
+  priority: P2
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 打开「结算详情」查看头区
+    expected: 头区可见栋舍、栋舍养殖批次、结算日期、结算只数、结算重量(kg) 且不可手改
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-31
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48588
+  auto: auto
+- id: TC-006-32
+  tp_id: TP-006-32
+  title: 结算详情中上苗数量/均重/总料量/饲养天数/日增重/成活率/料肉比/欧指与列表同行一致
+  type: feature
+  priority: P2
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条含计算字段的结算数据
+  steps:
+  - action: 记录列表行上苗数量/均重/总料量/饲养天数/日增重/成活率/料肉比/欧指后打开「详情」
+    expected: 详情上述字段与对应列表行一致（抽样）
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-32
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48589
+  auto: auto
+- id: TC-006-33
+  tp_id: TP-006-33
+  title: 「料肉比」字段名后显示说明图标，鼠标悬浮显示文字“料肉比 = 单只累计采食量(g) / 只当前体重(g)”
+  type: feature
+  priority: P2
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 打开「结算详情」，定位「料肉比」字段名旁说明图标并悬停
+    expected: 说明图标可见；悬浮文案为“料肉比 = 单只累计采食量(g) / 只当前体重(g)”
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-33
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48590
+  auto: auto
+- id: TC-006-34
+  tp_id: TP-006-34
+  title: 「欧指」字段名后显示说明图标，鼠标悬浮显示文字“欧指 = [(体重 × 成活率) / (料肉比 × 出栏日龄)] × 10000”
+  type: feature
+  priority: P2
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 打开「结算详情」，定位「欧指」字段名旁说明图标并悬停
+    expected: 说明图标可见；悬浮文案为“欧指 = [(体重 × 成活率) / (料肉比 × 出栏日龄)] × 10000”
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-34
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48591
+  auto: auto
+- id: TC-006-35
+  tp_id: TP-006-35
+  title: 结算详情含「成品入库明细」子表，列含序号/产品编号/产品名称/规格/数量/单价
+  type: feature
+  priority: P2
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 打开「结算详情」查看「成品入库明细」子表表头
+    expected: 子表可见且列含序号、产品编号、产品名称、规格、数量、单价
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-35
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48592
+  auto: auto
+- id: TC-006-36
+  tp_id: TP-006-36
+  title: 成品入库明细子表无增删行控件且不可编辑
+  type: feature
+  priority: P2
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 打开「结算详情」查看「成品入库明细」子表操作
+    expected: 子表无新增行/删除行入口；单元格不可手改落库
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-36
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48593
+  auto: auto
+- id: TC-006-37
+  tp_id: TP-006-37
+  title: 有成品入库同步数据时子表展示产品行；无数据时子表空态可辨且不报错
+  type: feature
+  priority: P3
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 准备：一条有成品入库同步数据的结算；一条无成品入库数据的结算（可造数）
+  steps:
+  - action: 打开有同步数据结算的「详情」
+    expected: 成品入库明细子表展示产品行（含产品编号/名称等）
+  - action: 打开无数据结算的「详情」
+    expected: 子表空态可辨且不报错/不白屏
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-37
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48594
+  auto: auto
+- id: TC-006-38
+  tp_id: TP-006-38
+  title: 关闭结算详情（遮罩/Esc）→ 弹窗关闭且列表数据不变
+  type: feature
+  priority: P2
+  feature: 详情
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 列表有至少一条结算数据
+  steps:
+  - action: 打开「结算详情」并记录列表快照，再通过遮罩或 Esc 关闭
+    expected: 弹窗关闭；列表行数据与打开前一致
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-38
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48595
+  auto: auto
+- id: TC-006-39
+  tp_id: TP-006-39
+  title: 点「导出」→ 按当前查询条件触发下载
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 当前查询有结算数据
+  steps:
+  - action: 点击「导出」
+    expected: 触发下载；文件数据范围对应当前查询结果；须可见：「导出」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-39
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48596
+  auto: auto
+- id: TC-006-40
+  tp_id: TP-006-40
+  title: 导出文件业务列覆盖列表业务列（不含操作列）
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 当前查询有结算数据
+  steps:
+  - action: 点击「导出」并打开导出文件表头
+    expected: 导出业务列覆盖列表业务列，不含操作列
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-40
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48597
+  auto: auto
+- id: TC-006-41
+  tp_id: TP-006-41
+  title: 当前查询无数据时点「导出」→ 页面不崩溃且不导出误导性业务数据行
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 查询条件无匹配数据（空列表）
+  steps:
+  - action: 在空结果下点击「导出」
+    expected: 页面不崩溃；有明确提示或不导出误导性业务数据行
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-41
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48598
+  auto: auto
+- id: TC-006-42
+  tp_id: TP-006-42
+  title: 导出不改变列表数据与查询条件
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 当前查询有结算数据
+  steps:
+  - action: 记录查询条件与列表快照后点击「导出」完成下载
+    expected: 查询条件与列表快照均不变
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-42
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48599
+  auto: auto
+- id: TC-006-43
+  tp_id: TP-006-43
+  title: 变更查询条件后点「导出」→ 文件范围随新查询结果
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「出栏结算」页面（/biopark-poultry/production/slaughter-settlement）
+  - 至少两组可区分查询结果可导出
+  steps:
+  - action: 变更查询条件并点击「查询」得到新结果集
+    expected: 列表已按新条件刷新
+  - action: 点击「导出」并核对文件范围
+    expected: 导出文件行集合随新查询结果变化；须可见：「导出」
+  test_data:
+    page_url: /biopark-poultry/production/slaughter-settlement
+    data_prefix: AUTO测试_勿用_
+    module: 出栏结算
+    zentao_module_id: 655
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-43
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-006.yaml
+  zentao_case_id: 48600
+  auto: auto

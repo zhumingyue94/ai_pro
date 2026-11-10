@@ -1,0 +1,400 @@
+schema_version: '1.0'
+analysis_id: REQ-002
+module_id: REQ-002
+module_name: 产品分类
+project: 数据采集监控平台
+status: ready_for_scoped_readonly_ui_verification
+source:
+  requirements_pdf: 01_requirements/数据监控平台使用文档.pdf
+  latest_changes: 01_requirements/需求变动.md
+  latest_change_items:
+  - REQ-002-001
+  - REQ-002-002
+  - REQ-002-003
+  - REQ-002-004
+  - REQ-002-005
+  - REQ-002-006
+  - REQ-002-007
+  - REQ-002-008
+  - REQ-002-009
+  - REQ-002-010
+  - REQ-002-011
+  - REQ-002-012
+  - REQ-002-013
+  - REQ-002-014
+  scope_baseline: 01_requirements/模块拆分清单.md
+  page_inventory: 02_analysis/page_inventory/page.json
+  runtime_config: .env/config.yaml；仅引用键名，不记录值
+identity:
+  zentao_module_path: iot平台/设备接入/产品分类
+  zentao_module_id: 731
+  parent_module_id: 727
+  priority: 2
+  route_from_module_inventory: /iot/device/product-category
+  route_from_page_inventory: /biopark-iot/iot/device/product-category
+  page_id: product_category
+  title: 数据采集 - 产品分类
+  menu_path:
+  - 数据采集
+  - 设备接入
+  - 产品分类
+  numbering_note: 源需求变动表当前登记REQ-002-001至010、013至015、017；未登记011/012，不将分析旧编号作为源需求编号。
+scope:
+  in_scope:
+  - 页面身份和可达性
+  - 名称筛选、查询、重置、刷新、列表、空值、分页
+  - 新增/编辑/删除确认层的只读页面契约和取消路径
+  - 名称、描述、状态、排序、创建时间、产品数量规则边界
+  - 唯一编号关联、角色、权限、依赖、风险和数据安全
+  out_of_scope:
+  - 真实业务数据写入执行
+  - 导入、导出、接口写入
+  - 表头设置持久化和交互验收
+  - 跨模块内部实现
+  - 接口测试、数据库实现、性能SLA
+  - 造数和未登记定位器猜测
+  acceptance_boundary:
+  - 以需求变动.md实际登记编号和确认回答为业务基准
+  - 以page.json的product_category页面、状态、元素、表格和脱敏证据为页面基准
+  - 页面可见不等于保存、删除、数量、权限或接口契约已验收
+  - 数据不足时记录无法验证，不据此判失败
+requirements:
+  confirmed:
+    REQ-002-001: 分类名称必填；长度和字符不限制，仅校验不能为空；同租户内允许重名且不提示。
+    REQ-002-002: 分类描述非必填，可为空；支持换行、空白和常见特殊字符。
+    REQ-002-003: 状态含启用、停用、删除；停用分类不可被新产品选择；已有产品保留原分类。
+    REQ-002-004: 创建时间按当前用户时区保存和显示，格式YYYY-MM-DD HH:mm:ss；列表按排序字段升序；不支持按创建时间筛选。
+    REQ-002-005: 产品数量统计当前分类下全部未删除产品，包含停用、不包含已删除；进入页面或手动刷新时更新；不一致时重查实际关联数据。
+    REQ-002-006: 已被产品使用的分类允许改名，历史记录同步新名称；停用保留已有产品原分类；删除前处理全部关联产品。
+    REQ-002-007: 列表展示编号、名称、描述、状态、创建时间、操作；空字段显示-；加载失败显示失败提示。
+    REQ-002-008: 新增默认启用、编辑回显、取消关闭直接返回、保存中禁用提交、重复提交一次、失败保留输入、并发提示刷新重试、删除失败保留数据并说明原因。
+    REQ-002-009: 分类与产品、设备分组及首页统计通过分类唯一编号关联；相关页面和统计在重新进入或手动刷新时更新。
+    REQ-002-010: 表头设置保存到当前用户，重新进入、切换页面或重新登录后保留。
+    REQ-002-011: 确认表用于补充PDF和页面探索未明确内容，不与正式PDF逐条对应。
+    REQ-002-012: 排序为数字输入框，只允许正整数，不限最大值，允许重复；按排序字段升序；标题按系统默认规则。
+    REQ-002-013: 本模块不要求产品数量列或对应列表接口字段，当前六列表格保持不变。
+    REQ-002-014: 需以截图或日志验证停用分类的既有产品显示、新产品选择阻断和分类改名后的跨模块刷新。
+  pending:
+  - 正式PDF REQ-002章节逐条追溯
+  - 排序正整数输入的页面/接口一致性和升序稳定性
+  - 产品数量统计规则与当前六列表格无数量列之间的追踪证据
+  - 删除/停用关联阻断及跨模块运行证据
+  - 失败、并发、重复提交和权限反馈的稳定定位与契约
+  - 当前用户表头设置实际存储与恢复证据
+  - 权限、租户、接口字段、错误码、幂等、并发和审计契约
+page_contract:
+  page_id: product_category
+  route: /biopark-iot/iot/device/product-category
+  title: 数据采集 - 产品分类
+  menu_path:
+  - 数据采集
+  - 设备接入
+  - 产品分类
+  collection_status: partial
+  default_state: product_category_default
+  target:
+    element_id: product_category_state
+    strategy: css
+    value: body
+  states:
+    product_category_default:
+      elements:
+      - product_category_name
+      - product_category_query
+      - product_category_reset
+      - product_category_refresh
+      - product_category_columns
+      - product_category_add
+      - product_category_edit
+      - product_category_delete
+      - product_category_page_size
+      - product_category_prev
+      - product_category_page_1
+      - product_category_page_2
+      - product_category_next
+      - product_category_jump
+    product_category_columns_expanded:
+      parent_state_id: product_category_default
+      element: product_category_columns
+      evidence_status: available
+    product_category_add_form:
+      parent_state_id: product_category_default
+      form_id: product_category_add_form
+      fields:
+      - product_category_add_name
+      - product_category_add_sort
+      - product_category_add_on
+      - product_category_add_off
+      - product_category_add_desc
+      buttons:
+      - product_category_add_submit
+      - product_category_add_cancel
+    product_category_add_validation_error:
+      parent_state_id: product_category_add_form
+      evidence_status: available
+    product_category_edit_form:
+      parent_state_id: product_category_default
+      form_id: product_category_edit_form
+      fields:
+      - product_category_edit_name
+      - product_category_edit_sort
+      - product_category_edit_on
+      - product_category_edit_off
+      - product_category_edit_desc
+      buttons:
+      - product_category_edit_submit
+      - product_category_edit_cancel
+    product_category_delete_confirm:
+      parent_state_id: product_category_default
+      dialog: product_category_delete_dialog
+      buttons:
+      - product_category_delete_cancel
+      - product_category_delete_confirm
+      - product_category_delete_close
+  table:
+    table_id: product_category_table
+    element_id: product_category_table_element
+    columns:
+    - id
+    - name
+    - description
+    - status
+    - created_at
+    - actions
+    headers:
+    - 编号
+    - 名称
+    - 描述
+    - 状态
+    - 创建时间
+    - 操作
+    product_count: not_registered; REQ-002-013 confirms six-column table
+  evidence:
+    page_inventory: 02_analysis/page_inventory/page.json
+    log: 02_analysis/page_inventory/logs/req002-exploration.txt
+    dom_status: not_found_or_placeholder_only
+    sanitized: true
+roles:
+- 分类查看人员
+- 产品分类维护人员
+- 产品管理员
+- 设备分组/平台配置管理员
+- 平台/审计人员
+dependencies:
+  upstream:
+  - REQ-001 首页
+  - 登录/权限/租户上下文
+  downstream:
+  - REQ-003 产品管理
+  - 设备分组
+  - 首页统计
+risks:
+- id: R-002-01
+  level: critical
+  description: 数量统计或刷新不一致影响关联模块
+  mitigation: 只读核对规则和刷新证据
+- id: R-002-02
+  level: critical
+  description: 停用/删除关联分类造成失联
+  mitigation: 验证阻断规则，不执行写操作
+- id: R-002-03
+  level: high
+  description: 改名未同步跨模块名称
+  mitigation: 保留REQ-002-014跨模块证据待补
+- id: R-002-04
+  level: high
+  description: 排序或表头契约不一致
+  mitigation: 核对已确认规则和页面登记差异
+- id: R-002-05
+  level: high
+  description: 失败/并发/重复提交导致数据不一致
+  mitigation: 仅规划反馈和契约验证
+- id: R-002-06
+  level: high
+  description: 页面证据泄露业务或环境信息
+  mitigation: 仅使用脱敏证据和配置键名
+operation_capability:
+- operation: add
+  applicability: applicable
+  evidence: REQ-002-008、product_category_add_form及新增提交按钮
+  success_result: 合法分类保存成功并可在列表回读
+  state_change: 新增分类记录
+  readback_evidence: 成功反馈、列表查询或刷新后记录可见
+  cleanup_owner: 测试/业务负责人；执行前准备可清理的授权数据
+  positive_case_ids:
+  - TC-REQ-002-044
+  negative_case_ids:
+  - TC-REQ-002-045
+  execution_status: execution_blocker
+- operation: edit
+  applicability: applicable
+  evidence: REQ-002-006、REQ-002-008及product_category_edit_form
+  success_result: 合法字段保存成功并回读修改内容
+  state_change: 分类属性更新
+  readback_evidence: 列表或关联页面刷新后显示新值
+  cleanup_owner: 测试/业务负责人
+  positive_case_ids:
+  - TC-REQ-002-046
+  negative_case_ids:
+  - TC-REQ-002-047
+  execution_status: execution_blocker
+- operation: delete
+  applicability: applicable
+  evidence: REQ-002-003、REQ-002-006及product_category_delete_confirm
+  success_result: 无关联分类删除成功且列表不可见
+  state_change: 分类进入删除状态
+  readback_evidence: 成功反馈并查询确认记录不可见
+  cleanup_owner: 测试/业务负责人
+  positive_case_ids:
+  - TC-REQ-002-048
+  negative_case_ids:
+  - TC-REQ-002-019
+  - TC-REQ-002-051
+  execution_status: execution_blocker
+- operation: status_transition
+  applicability: applicable
+  evidence: REQ-002-003、REQ-002-014及新增/编辑状态字段
+  success_result: 启用与停用状态可双向切换并回读
+  state_change: enabled<->disabled
+  readback_evidence: 列表状态及产品选择结果
+  cleanup_owner: 测试/业务负责人
+  positive_case_ids:
+  - TC-REQ-002-049
+  - TC-REQ-002-050
+  negative_case_ids: []
+  execution_status: execution_blocker
+test_design:
+  equivalence_partitions:
+    name:
+    - non_empty
+    - empty
+    - whitespace_only
+    - duplicate_same_tenant
+    description:
+    - empty
+    - multiline
+    - whitespace
+    - special_chars
+    status:
+    - enabled
+    - disabled
+    - deleted
+    sort:
+    - positive_integer
+    - invalid_type
+    - empty
+    association:
+    - none
+    - product
+    - device_group
+    - homepage_statistic
+    action:
+    - query
+    - reset
+    - refresh
+    - add
+    - edit
+    - disable
+    - delete
+    result:
+    - success
+    - validation_error
+    - load_failure
+    - save_failure
+    - conflict
+    - blocked_by_reference
+    - permission_error
+  boundary_candidates:
+  - 名称空/仅空白/任意字符/同租户重名
+  - 描述空/换行/空白/特殊字符
+  - 排序正整数/非法类型/空值/重复
+  - 时间格式和用户时区
+  - 分页首末页和空结果
+  - 关联阻断和跨模块刷新
+  - 保存中重复点击和并发冲突
+  decision_table:
+  - 空名称=>校验失败
+  - 同租户重名=>允许且不提示
+  - 停用=>新产品不可选且既有产品保留
+  - 有关联删除=>阻止
+  - 空字段=>显示-
+  - 加载失败=>失败提示
+  - 保存中=>禁用并只处理一次
+  state_transitions:
+  - 未认证->登录页->门户->product_category_default
+  - 默认->筛选->结果->重置/刷新
+  - 默认->新增/编辑->校验或取消
+  - 默认->删除确认->取消
+  - 启用->停用->关联产品保留/新产品阻断
+  pict_model:
+    parameters:
+    - Auth
+    - Permission
+    - Name
+    - Description
+    - Status
+    - Sort
+    - Association
+    - Action
+    - Result
+    constraints:
+    - IF [Permission] = read_only THEN [Action] IN {query, reset, refresh};
+    - IF [Action] IN {add, edit} AND [Name] IN {empty, whitespace_only} THEN [Result]
+      = validation_error;
+    - IF [Action] IN {add, edit} AND [Name] = duplicate_same_tenant THEN [Result]
+      = success;
+    - IF [Action] = delete AND [Association] != none THEN [Result] = blocked_by_reference;
+    - IF [Sort] = invalid_type THEN [Result] = validation_error;
+automation_plan:
+  framework: Playwright Python sync API / pytest-playwright
+  shared_pages:
+  - 07_ui_automation/pages/common/login_page.py
+  - 07_ui_automation/pages/common/portal_navigation.py
+  safe_actions:
+  - 复用登录态
+  - 进入产品分类
+  - 只读查看筛选/列表/分页
+  - 打开并取消新增/编辑/删除确认层
+  - 读取脱敏页面状态
+  forbidden_actions:
+  - 提交新增
+  - 保存编辑
+  - 确认删除
+  - 写入启停
+  - 导入导出
+  - 持久化表头
+  - 接口写入
+  - 绕过权限或安全验证
+  locator_priority:
+  - role/name
+  - accessible label
+  - confirmed data-testid
+  - page.json element mapping
+  - row context
+  - visible text
+  - CSS last
+  stop_conditions:
+  - 运行配置缺失
+  - 登录失败/人工验证
+  - 主机不匹配
+  - 权限失败
+  - 关键内容缺失
+  - 意外写入提示
+  - 未授权数据暴露
+data_preconditions:
+- 仅引用.env/config.yaml键名，不记录配置值
+- 只读使用已有页面数据，不造数
+- 不得记录账号、密码、Token、Cookie、分类名称、租户值、内部地址或未经授权业务数据
+- 本次数据变更：无；清理状态：not_applicable
+readiness:
+  status: ready_for_scoped_readonly_ui_verification
+  reason: 源确认项已重新归并，页面状态和元素已登记；跨模块证据、失败反馈、权限和接口契约仍待补充。
+handoff:
+  path: 02_analysis/HANDOFF/REQ-002_HANDOFF.md
+  status: ready_for_scoped_readonly_ui_verification
+  next_inputs:
+  - PDF章节追溯
+  - 产品数量追踪证据
+  - 排序和失败反馈
+  - 关联/跨模块证据
+  - 权限租户和接口契约

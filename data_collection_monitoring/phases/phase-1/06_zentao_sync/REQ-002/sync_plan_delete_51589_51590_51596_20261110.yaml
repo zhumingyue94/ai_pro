@@ -1,0 +1,39 @@
+req_id: REQ-002
+project_id: 46
+product_id: 8
+module_id: 731
+operation: delete
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+cases:
+- local_case_id: TC-REQ-002-028
+  remote_case_id: 51589
+- local_case_id: TC-REQ-002-029
+  remote_case_id: 51590
+- local_case_id: TC-REQ-002-033
+  remote_case_id: 51596
+source_hashes_after:
+  yaml: d03b6738629b098f94a23deeedd22fa3e3db9700e3043eb0f021ffa8564bf169
+  markdown: 22a6fa39d8f1c329132bd3c403187df8ea241ab14ddfd5d4a6ca85064a6d1334
+  review_yaml: a7b6b6caa20bbfce559b9bc4a0bd8870339d6e3258a0db0ccd0e48cfdb32b5f8
+execution:
+  status: blocked
+  stop_on_failure: true
+  records:
+  - remote_case_id: 51589
+    local_case_id: TC-REQ-002-028
+    operation: delete
+    status: blocked
+    readback_after: not_confirmed
+    reason: Case does not exist
+  - remote_case_id: 51590
+    local_case_id: TC-REQ-002-029
+    operation: delete
+    status: not_executed
+  - remote_case_id: 51596
+    local_case_id: TC-REQ-002-033
+    operation: delete
+    status: not_executed
+registry:
+  mappings_retained: true
+  reason: No target deletion was confirmed; stable mappings remain registered.

@@ -1,0 +1,342 @@
+schema_version: "1.1"
+
+analysis_id: "REQ-008"
+
+module_id: "REQ-008"
+
+module_name: "数据推送"
+
+project: "数据采集监控平台"
+
+status: "blocked_scoped_readonly_ui_verification"
+
+source:
+
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+
+  latest_changes: "01_requirements/需求变动.md"
+
+  latest_change_range: "REQ-008: 172-187"
+
+  latest_change_items: ["REQ-008-001", "REQ-008-002", "REQ-008-003", "REQ-008-004", "REQ-008-005", "REQ-008-006", "REQ-008-007", "REQ-008-008", "REQ-008-009", "REQ-008-010", "REQ-008-011", "REQ-008-012", "REQ-008-013", "REQ-008-015", "REQ-008-016"]
+
+  scope_baseline: "01_requirements/模块拆分清单.md"
+
+  page_inventory: "02_analysis/page_inventory/page.json"
+
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录具体值"
+
+identity:
+
+  zentao_module_path: "iot平台/数据中心/数据推送"
+
+  zentao_module_id: 746
+
+  parent_module_id: 728
+
+  priority: 8
+
+  priority_band: "P1"
+
+  route: "/iot/data/sink"
+
+  runtime_route: "/biopark-iot/iot/data/sink"
+
+  title: "数据采集 - 数据推送"
+
+  menu_path: ["数据中心", "数据推送"]
+
+  dependency_modules: ["产品管理", "设备管理", "数据监听", "数据采集"]
+
+  discrepancy: "模块清单确认页面存在和路由；字段、权限、接口及运行结果必须以最新确认项和 page.json 证据为准。"
+
+scope:
+
+  in_scope:
+
+    - "页面级只读：默认进入、目标名称/状态/类型/日期筛选、查询、重置、刷新、表头设置、列表和分页。"
+
+    - "推送目标必填/非必填字段、HTTP/MQTT/RocketMQ 类型差异、超时/重连、顺序、重复消息、失败死信、人工重发、引用限制、脱敏和排序规则。"
+
+    - "REQ-008-015：新增/编辑表单字段与新增表单一致；HTTP 包含目标名称、目标描述、目标类型、请求地址、请求方法、请求头、请求参数、请求体和目标状态；MQTT 包含目标名称、目标描述、目标类型、服务地址、用户名、密码、客户端 ID、主题和目标状态；RocketMQ 包含目标名称、目标描述、目标类型、NameServer、AccessKey、SecretKey、消费组、主题、标签和目标状态；各表单提供确定/取消操作。"
+
+    - "REQ-008-016：RocketMQ 与 HTTP/MQTT 的页面字段差异按截图确认项记录；格式/长度/特殊字符/组合校验、编辑可修改范围、提交反馈、重复提交、列表回显和稳定定位器仍待页面证据确认。"
+
+    - "新增、编辑、删除、停用及权限边界的契约分析；本阶段不提交写操作。"
+
+    - "RocketMQ 表单、死信列表、失败详情、人工重发入口和结果提示的页面范围识别。"
+
+  out_of_scope:
+
+    - "API endpoint、状态码、请求/响应结构、接口幂等、审计、异步实现和性能 SLA。"
+
+    - "真实 HTTP/MQTT/RocketMQ 联调、连接测试、消息发送、重放或外部系统污染。"
+
+    - "其他模块页面内部实现；仅保留依赖和责任边界。"
+
+  acceptance_boundary:
+
+    - "业务基准为需求变动.md 最新 REQ-008 和公共确认项。"
+
+    - "页面事实以 page.json 的页面、状态、元素和脱敏 evidence 为准。"
+
+    - "页面可见不等于保存成功、真实投递成功或接口契约已验证。"
+
+    - "REQ-008-011 在当前需求变动、分析产物和 page.json 中均未出现，记录为追溯缺口，不假定其语义。"
+
+page_contract:
+
+  page_id: "data_push"
+
+  route: "/biopark-iot/iot/data/sink"
+
+  title: "数据采集 - 数据推送"
+
+  menu_path: ["数据中心", "数据推送"]
+
+  states:
+
+    data_push_default:
+
+      expected: "筛选、操作、表格和分页可观察；只读检查不产生数据变更。"
+
+      evidence:
+
+        screenshots: ["02_analysis/page_inventory/screenshots/req008-default.png"]
+
+        log: "02_analysis/page_inventory/logs/req008-exploration.txt"
+
+        status: "available"
+
+        sanitized: true
+
+    data_push_status_options:
+
+      expected: "目标状态选项为开启、关闭。"
+
+      evidence:
+
+        screenshots: ["02_analysis/page_inventory/screenshots/req008-status-options.png"]
+
+        log: "02_analysis/page_inventory/logs/req008-exploration.txt"
+
+        status: "available"
+
+        sanitized: true
+
+    data_push_type_options:
+
+      expected: "当前 page.json 观察到 HTTP、MQTT；RocketMQ 需求已确认但页面证据缺失。"
+
+      evidence:
+
+        screenshots: ["02_analysis/page_inventory/screenshots/req008-type-options.png"]
+
+        log: "02_analysis/page_inventory/logs/req008-exploration.txt"
+
+        status: "available"
+
+        sanitized: true
+
+    data_push_columns_options:
+
+      expected: "表头设置可观察列配置，不提交变更。"
+
+      evidence:
+
+        screenshots: ["02_analysis/page_inventory/screenshots/req008-columns.png"]
+
+        log: "02_analysis/page_inventory/logs/req008-exploration.txt"
+
+        status: "available"
+
+        sanitized: true
+
+  elements:
+
+    filters: ["data_push_target_name", "data_push_status", "data_push_type", "data_push_start_date", "data_push_end_date"]
+
+    actions: ["data_push_query", "data_push_reset", "data_push_refresh", "data_push_columns", "data_push_add"]
+
+    row_actions: ["data_push_edit", "data_push_delete"]
+
+    pagination: ["data_push_page_size", "data_push_prev", "data_push_current", "data_push_next", "data_push_jump"]
+
+  table:
+
+    id: "data_push_table"
+
+    element_id: "data_push_table_element"
+
+    columns: ["编号", "目标名称", "目标描述", "目标状态", "目标类型", "创建时间", "操作"]
+
+  forms: []
+
+  missing_or_unverified: ["新增/编辑表单稳定字段 ID", "新增/编辑格式与组合校验", "编辑可修改范围", "提交成功/失败和重复提交反馈", "列表回显", "RocketMQ 类型/主题字段运行时证据", "死信列表", "失败详情", "人工重发入口、确认和结果提示", "权限提示独立 element ID", "trace 文件"]
+
+  locator_rule: "优先使用已确认 data_push_* ID，再使用 role/name、label、文本，CSS 仅兜底；不得复用其他模块定位器。"
+
+business_rules:
+
+  confirmed:
+
+    REQ-008-001: "目标名称、目标类型、请求地址、请求方法、目标状态必填；目标描述、请求头、请求参数、请求体非必填。"
+
+    REQ-008-002: "连接/发送超时按系统默认值；超时标记失败或超时；按默认策略自动重连。"
+
+    REQ-008-003: "HTTP 支持请求体；MQTT 和 RocketMQ 不设置请求体，仅配置主题；其他消息字段按类型默认配置规则。"
+
+    REQ-008-004: "支持 HTTP、MQTT、RocketMQ；QoS、状态码、返回码和断开重连按对应协议默认规则。"
+
+    REQ-008-005: "消息按产生顺序逐条发送；重复消息按事件唯一标识处理；不批量、不限流；按接收方响应确认。"
+
+    REQ-008-006: "失败按类型记录；不自动重试；失败消息直接进入死信；支持人工选择重发；重复发送按系统默认规则。"
+
+    REQ-008-007: "停用目标不可被新监听规则或采集任务选择；已有引用继续使用原配置；被引用目标不可删除。"
+
+    REQ-008-008: "不提供连接测试；技术人员自行对接调通，不纳入本页面测试范围。"
+
+    REQ-008-009: "地址按业务需要展示；证书、密钥、消息内容、返回内容敏感信息脱敏；日志和错误提示不得明文；删除/替换后清理旧值。"
+
+    REQ-008-010: "列表默认创建时间倒序；筛选、分页、刷新后保持创建时间倒序。"
+
+    REQ-008-011: "RocketMQ 页面契约为有效需求但当前页面证据未补齐；保持 blocked，不进入可执行用例。"
+
+    REQ-008-012: "仅验证死信列表、失败详情、人工重发入口、确认和结果提示页面契约及权限定位器；不制造失败、不执行真实重发。"
+
+    REQ-008-013: "允许在隔离测试租户执行新增、编辑、停用、删除页面写操作，但禁止真实 HTTP、MQTT、RocketMQ 外部发送；执行前须补齐权限矩阵、无权限提示和脱敏测试数据。"
+
+    REQ-008-015: "编辑表单与新增表单字段一致；HTTP、MQTT、RocketMQ 字段及必填/选填状态、目标状态默认开启和确定/取消操作按最新表单截图确认；格式、长度、组合校验、编辑可修改范围、提交反馈、重复提交、列表回显和定位器未由截图证明。"
+
+    REQ-008-016: "RocketMQ 表单字段包括 NameServer、AccessKey、SecretKey、消费组、主题和标签；与 HTTP/MQTT 的字段差异按截图记录，页面入口、控件定位器和运行时行为仍 blocked。"
+
+    REQ-008-017: "停用目标仍显示且可恢复；恢复后的新监听/采集引用需恢复可选，具体页面入口和跨模块回读证据待补齐。"
+
+    REQ-008-018: "目标名称、类型、请求地址/服务地址、请求方法或目标状态缺失时提交应被表单校验阻止；实际提示、稳定定位器和提交反馈待页面确认。"
+
+    REQ-008-019: "未被业务引用的目标允许进入删除流程；删除为软删除且列表不显示，成功反馈和刷新后回读待页面确认。"
+
+    REQ-008-020: "同一新增/编辑/停用/删除操作重复提交只生效一次，处理中禁止重复操作；按钮状态、提示和最终回读待页面确认。"
+
+  public_confirmed:
+
+    - "无权限提示没有操作权限；页面和按钮无单独权限。"
+
+    - "默认每页 10 条；筛选回第一页；无结果显示暂无数据。"
+
+    - "查询失败、超时、网络异常或权限不足显示失败提示且无重试入口。"
+
+    - "重复提交只生效一次；处理中禁止重复操作；不缓存；刷新或重新加载获取最新数据。"
+
+    - "删除为软删除且列表不显示；停用仍显示并可恢复；被引用时阻止相关操作；不要求审计记录。"
+
+  pending: ["正式 PDF REQ-008 章节逐条页码追溯", "新增/编辑表单专属字段和稳定 ID", "RocketMQ 类型、主题及字段差异页面证据（REQ-008-011，blocked）", "死信/失败详情/人工重发/确认/结果页面实体和权限（REQ-008-012，仅页面契约）", "角色、租户、跨租户读写权限矩阵、无权限提示定位器和脱敏测试数据", "协议默认参数和重复重发的页面可观察反馈"]
+
+roles:
+
+  - {role: "数据推送管理员", responsibility: "维护推送目标、状态、协议配置和引用边界"}
+
+  - {role: "数据监听/采集管理员", responsibility: "维护事件来源并遵守停用目标不可新选规则"}
+
+  - {role: "平台运维人员", responsibility: "负责外部对接、失败/死信和运行风险；本阶段不联调"}
+
+  - {role: "只读用户", responsibility: "查看授权目标，不执行目标变更"}
+
+permission_status: "partial_blocked"
+
+permission_rule: "不得从菜单可见、按钮存在或页面文本推断写权限；不得绕过角色、租户或安全控制。"
+
+dependencies:
+
+  upstream: ["REQ-003 产品管理", "REQ-005 设备管理", "REQ-007 数据监听", "REQ-009 数据采集", "登录/门户/权限/租户上下文"]
+
+  downstream: ["外部 HTTP 接收端", "外部 MQTT Broker", "外部 RocketMQ", "可能关联 REQ-011 告警记录"]
+
+  note: "依赖为责任范围线索，不代表接口或外部系统行为已验证。"
+
+risks:
+
+  - {id: "R-008-01", level: "high", description: "错误地址、认证、Topic 或消息映射造成误投递或外部污染", control: "只读观察，不保存目标、不发送或重放消息"}
+
+  - {id: "R-008-02", level: "high", description: "权限阻塞被绕过导致越权和结论失真", control: "记录阻塞，不绕过权限"}
+
+  - {id: "R-008-03", level: "high", description: "地址、密钥、消息或响应进入页面产物", control: "脱敏，不写入截图、日志、DOM、报告或下载文件"}
+
+  - {id: "R-008-04", level: "high", description: "失败消息未正确进入死信或人工重发造成重复副作用", control: "仅规划页面证据，不执行真实发送/重放"}
+
+  - {id: "R-008-05", level: "medium", description: "RocketMQ、协议默认参数和表单字段未形成页面契约", control: "维持待确认，不作接口结论"}
+
+test_design:
+
+  equivalence_partitions: ["目标字段完整/分别缺失", "HTTP/MQTT/RocketMQ", "开启/关闭", "合法/错误/不可达/超时地址", "成功/客户端失败/服务端失败/网络失败/拒绝", "唯一/重复/延迟/乱序/突发事件", "可读/可写/拒绝/跨租户", "有结果/无结果/查询失败"]
+
+  boundary_candidates: ["名称、地址、主题、路径、消息体最大值-1/最大值/最大值+1（上限待确认）", "日期空值/同日/开始晚于结束/跨月跨年", "分页空/单条/10条/末页/无结果"]
+
+  decision_tables:
+
+    - {id: "DT-008-01", conditions: ["目标状态", "新建引用或已有引用"], expected: "停用目标不可新选；已有引用继续使用原配置；被引用目标不可删除"}
+
+    - {id: "DT-008-02", conditions: ["目标类型", "请求体/主题字段"], expected: "HTTP 可配置请求体；MQTT/RocketMQ 不配置请求体，仅配置主题"}
+
+    - {id: "DT-008-03", conditions: ["响应结果"], expected: "成功按响应确认；失败分类记录并进入死信；不自动重试；允许人工选择重发"}
+
+    - {id: "DT-008-04", conditions: ["列表操作"], expected: "默认、筛选、分页、刷新均创建时间倒序；筛选回第一页"}
+
+  state_transitions: ["未认证->登录->门户->数据推送默认态", "默认态->查询中->有结果/无结果/失败", "开启->关闭->新引用阻止/已有引用继续", "事件到达->逐条发送->响应/失败->死信->人工选择重发"]
+
+  pict_model:
+
+    parameters: ["Permission", "TargetType", "TargetState", "RequiredFields", "Endpoint", "Event", "Response", "Retry", "Result"]
+
+    values: {Permission: [full_readonly, write, denied, cross_tenant_limited], TargetType: [HTTP, MQTT, RocketMQ], TargetState: [enabled, disabled], RequiredFields: [complete, missing_name, missing_type, missing_address, missing_method, missing_status], Endpoint: [valid, malformed, unreachable, timeout], Event: [unique, duplicate, delayed, out_of_order, burst], Response: [success, client_error, server_error, timeout, network_error, reject], Retry: [none, manual_resend], Result: [visible, validation_failed, permission_failed, delivered, dead_letter, blocked]}
+
+    constraints: ["IF [TargetState] = disabled THEN new reference/delivery is blocked;", "IF [RequiredFields] != complete THEN add/edit validation fails;", "IF [Response] IN {server_error, timeout, network_error, reject} THEN result is dead_letter;", "IF [Retry] = none THEN automatic retry is not expected;", "IF [Permission] IN {denied, cross_tenant_limited} THEN protected action is permission_failed;", "IF [TargetType] IN {MQTT, RocketMQ} THEN request body is not applicable;"]
+
+automation_plan:
+
+  framework: "Playwright Python sync API / pytest-playwright"
+
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+
+  page_ready: ["运行时 URL 为 /biopark-iot/iot/data/sink", "标题包含 数据推送", "data_push_default 可观察", "页面加载完成且无失败提示"]
+
+  allowed: ["复用登录态", "进入数据中心→数据推送", "只读检查筛选、表头、列表、分页和脱敏权限提示"]
+
+  allowed_write: ["隔离测试租户内新增", "编辑", "停用", "删除"]
+
+  forbidden: ["连接测试", "真实 HTTP/MQTT/RocketMQ 外部发送", "发送/重放消息", "捕获 endpoint/认证/载荷", "权限绕过"]
+
+  locator_priority: ["confirmed data_push_* IDs", "get_by_role/name", "get_by_label", "stable text", "CSS last"]
+
+data_preconditions:
+
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 或运行时配置读取，不记录具体值。"
+
+  - "使用已有授权页面数据，不额外造数，不改变业务数据。"
+
+  - "账号、密码、Token、Cookie、证书、密钥、外部地址、消息载荷、响应内容和未经授权业务数据不得写入 page.json、截图、日志、DOM、报告或下载文件。"
+
+  - "页面写操作仅允许在隔离测试租户内执行新增、编辑、停用、删除；权限矩阵、无权限提示定位器和脱敏测试数据补齐前保持 blocked。"
+
+  - "禁止真实 HTTP、MQTT、RocketMQ 外部发送、失败制造和人工重发；任何写操作需具备回滚和清理结果。"
+
+readiness:
+
+  status: "blocked"
+
+  entry_gates:
+    - "角色、租户、跨租户读写权限矩阵已提供并评审"
+    - "无权限提示独立定位器已补齐"
+    - "隔离测试租户和脱敏测试数据已准备"
+    - "页面写操作回滚与清理方案已确认"
+    - "REQ-008-011 RocketMQ 页面证据补齐前保持 blocked"
+    - "REQ-008-012 仅验证页面契约，不制造失败、不执行真实重发"
+
+  reason: "权限矩阵、无权限提示、测试数据和页面写操作清理条件尚未闭合；RocketMQ/表单/死信/人工重发契约仍不完整。"
+
+handoff:
+
+  path: "02_analysis/HANDOFF/REQ-008_HANDOFF.md"
+
+  status: "blocked"
+

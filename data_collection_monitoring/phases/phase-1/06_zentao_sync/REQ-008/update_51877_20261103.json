@@ -1,0 +1,49 @@
+﻿{
+    "status":  "validated",
+    "operation":  "update",
+    "case_id":  "TC-REQ-008-055",
+    "remote_case_id":  51877,
+    "target":  {
+                   "project_id":  46,
+                   "product_id":  8,
+                   "module_id":  746
+               },
+    "priority":  "P2",
+    "remote_priority":  2,
+    "remote_version":  9,
+    "step_count":  3,
+    "steps":  [
+                  {
+                      "name":  "1",
+                      "id":  176500,
+                      "step":  "点击“新增”按钮",
+                      "desc":  "点击“新增”按钮",
+                      "expect":  "新增弹窗打开。",
+                      "type":  "step",
+                      "parent":  0,
+                      "grade":  1
+                  },
+                  {
+                      "name":  "2",
+                      "id":  176501,
+                      "step":  "点击目标类型下拉框并选择“内置队列”",
+                      "desc":  "点击目标类型下拉框并选择“内置队列”",
+                      "expect":  "“主题”输入框标签带必填标识。",
+                      "type":  "step",
+                      "parent":  0,
+                      "grade":  1
+                  },
+                  {
+                      "name":  "3",
+                      "id":  176502,
+                      "step":  "保持主题为空并点击“确定”",
+                      "desc":  "保持主题为空并点击“确定”",
+                      "expect":  "提交后显示“请输入主题”提示，表单保持打开且未产生业务写入。",
+                      "type":  "step",
+                      "parent":  0,
+                      "grade":  1
+                  }
+              ],
+    "delete_recreate":  false,
+    "registry_status":  "validated"
+}

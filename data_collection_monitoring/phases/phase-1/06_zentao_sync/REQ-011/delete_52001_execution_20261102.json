@@ -1,0 +1,17 @@
+{
+  "req_id": "REQ-011",
+  "operation": "delete",
+  "execution_mode": "real_delete",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "local_case_id": "TC-REQ-011-009",
+  "remote_case_id": 52001,
+  "status": "validated",
+  "readback_before": {"remote_case_id": 52001, "product_id": 8, "project_id": 46, "module_id": 749, "title": "查看产品和设备选项时确认失效删除或无权限对象不可作为筛选条件"},
+  "delete_response": {"status": "success"},
+  "readback_after": {"status": "confirmed_not_found"},
+  "registry": {"action": "removed_mapping"},
+  "source_hashes": {
+    "review": "b7830edf4e86b2ffaafa1f3739ca6817f127cfc7b1499c62d1647a15a1d1f43e",
+    "testcases": "1150781cf75d803b16dedc90f03e28db15ab965e048d2db1ffda74485df373e"
+  }
+}

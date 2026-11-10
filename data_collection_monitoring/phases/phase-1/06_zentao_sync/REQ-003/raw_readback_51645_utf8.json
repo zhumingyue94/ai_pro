@@ -1,0 +1,169 @@
+{
+    "id": 51645,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 732,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "发布和撤销发布产品物模型时确认状态正确变化",
+    "precondition": "前置准备：\n1、已获得经授权的产品数据和可操作的产品管理页面。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开平台菜单并点击“产品管理”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/product”，确认已进入产品管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:48:28",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-27 17:14:40",
+    "version": 4,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "zhumingyue",
+    "lastRunDate": "2026-10-27 17:13:57",
+    "lastRunResult": "pass",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 4,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174343,
+            "step": "点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+            "desc": "点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+            "expect": "物模型弹窗成功打开，并显示“发布”按钮。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 174344,
+            "step": "在物模型弹窗中点击“发布”按钮。",
+            "desc": "在物模型弹窗中点击“发布”按钮。",
+            "expect": "物模型发布成功，产品状态变为“已发布”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 174345,
+            "step": "再次点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+            "desc": "再次点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+            "expect": "物模型弹窗成功打开，并显示“撤销发布”按钮。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "4",
+            "id": 174346,
+            "step": "在物模型弹窗中点击“撤销发布”按钮。",
+            "desc": "在物模型弹窗中点击“撤销发布”按钮。",
+            "expect": "撤销发布成功，产品状态变为“未发布”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51645,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51645",
+        "text": "发布和撤销发布产品物模型时确认状态正确变化",
+        "type": "root",
+        "children": [
+            {
+                "id": 174343,
+                "text": "点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+                "type": "sub",
+                "parent": "case_51645",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174343",
+                        "text": "物模型弹窗成功打开，并显示“发布”按钮。",
+                        "type": "node",
+                        "parent": 174343,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174344,
+                "text": "在物模型弹窗中点击“发布”按钮。",
+                "type": "sub",
+                "parent": "case_51645",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174344",
+                        "text": "物模型发布成功，产品状态变为“已发布”。",
+                        "type": "node",
+                        "parent": 174344,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174345,
+                "text": "再次点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+                "type": "sub",
+                "parent": "case_51645",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174345",
+                        "text": "物模型弹窗成功打开，并显示“撤销发布”按钮。",
+                        "type": "node",
+                        "parent": 174345,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174346,
+                "text": "在物模型弹窗中点击“撤销发布”按钮。",
+                "type": "sub",
+                "parent": "case_51645",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174346",
+                        "text": "撤销发布成功，产品状态变为“未发布”。",
+                        "type": "node",
+                        "parent": 174346,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

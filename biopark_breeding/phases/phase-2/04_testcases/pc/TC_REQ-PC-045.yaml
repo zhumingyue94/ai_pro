@@ -1,0 +1,160 @@
+req_id: REQ-PC-045
+module: 存发苗间库存查询
+trace:
+  req: REQ-PC-045
+  tp: TEST_PLAN-REQ-PC-045
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft_with_blocked_cases
+  source_review: REV_CASE_REQ-PC-045
+common_preconditions:
+- id: inventory_query_page_access
+  name: 存发苗间库存查询页面访问前置
+  conditions: []
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 登录成功，进入系统门户或应用入口页
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 进入种禽孵化管理系统主框架，页面显示系统名称或应用标识
+  - action: 在左侧菜单中展开「库存管理」，然后在子菜单中展开「存发苗间」，再点击「库存查询」菜单项
+    expected: 页面打开「库存查询」Tab，Tab 处于选中状态且页面标题或内容区显示「库存查询」
+cases:
+- id: TC-PC-045-009
+  common_preconditions_ref: inventory_query_page_access
+  tp_id: TEST_PLAN-REQ-PC-045
+  coverage_ids:
+  - FR-045-06
+  plan_item_ids:
+  - PI-045-09
+  atomic_purpose_ids:
+  - AP-045-09
+  title: 原库存足够时库存结果按扣减公式计算
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 库存计算
+  preconditions:
+  - 已准备可回读的原库存数量和本存发苗间发货出库数，且原库存大于出库数
+  - 已具备进入库存查询页面的菜单和一期查询/数据权限
+  steps:
+  - action: 查询包含目标存发苗间的库存结果并查看库存数量
+    expected: 页面库存数量等于原库存数量减去本存发苗间发货出库数，且结果为正数
+  test_data:
+    page_url: /biopark-breeding/breeding/stock/chick/chick-inventory
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-PC-045
+    tp: PI-045-09
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_data_environment
+  tp_case_id: TP-PC-045-009
+- id: TC-PC-045-010
+  common_preconditions_ref: inventory_query_page_access
+  tp_id: TEST_PLAN-REQ-PC-045
+  coverage_ids:
+  - FR-045-06
+  plan_item_ids:
+  - PI-045-10
+  atomic_purpose_ids:
+  - AP-045-10
+  title: 原库存与出库数相等时库存结果为零
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 零库存边界
+  preconditions:
+  - 已准备原库存数量与本存发苗间发货出库数相等的可回读脱敏数据
+  - 已具备进入库存查询页面的菜单和一期查询/数据权限
+  steps:
+  - action: 查询目标存发苗间并查看库存数量
+    expected: 页面库存数量显示为 0，且页面不显示负库存数值
+  test_data:
+    page_url: /biopark-breeding/breeding/stock/chick/chick-inventory
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-PC-045
+    tp: PI-045-10
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_data_environment
+  tp_case_id: TP-PC-045-010
+- id: TC-PC-045-013
+  common_preconditions_ref: inventory_query_page_access
+  tp_id: TEST_PLAN-REQ-PC-045
+  coverage_ids:
+  - FR-045-02
+  plan_item_ids:
+  - PI-045-13
+  atomic_purpose_ids:
+  - AP-045-13
+  title: 雏苗发货确认后库存查询反映自动出库数量
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 自动出库联动
+  preconditions:
+  - 已准备可回滚的发货确认前库存基线、发货数量和授权跨模块测试数据
+  - 已明确 REQ-PC-042 发货确认责任人、数据回读责任和清理方案
+  steps:
+  - action: 查询并记录目标存发苗间的库存数量
+    expected: 页面显示发货确认前的库存基线
+  - action: 在已授权的发货确认流程完成一笔目标数量的雏苗发货后，返回库存查询并重新查询目标存发苗间
+    expected: 页面库存结果反映本次发货数量对应的自动出库扣减
+  test_data:
+    page_url: /biopark-breeding/breeding/stock/chick/chick-inventory
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-PC-045
+    tp: PI-045-13
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_dependency_environment_data
+  tp_case_id: TP-PC-045-013
+- id: TC-PC-045-015
+  common_preconditions_ref: inventory_query_page_access
+  tp_id: TEST_PLAN-REQ-PC-045
+  coverage_ids:
+  - FR-045-06
+  plan_item_ids:
+  - PI-045-16
+  atomic_purpose_ids:
+  - AP-045-16
+  title: 库存为零时显示零库存或正式空态而不显示负数
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 零库存空态
+  preconditions:
+  - 已准备库存计算结果为零的授权脱敏数据
+  - 已具备进入库存查询页面的菜单和一期查询/数据权限
+  steps:
+  - action: 查询库存为零的目标存发苗间
+    expected: 页面显示零库存，或显示经正式确认的零库存空态，不显示负库存数值
+  test_data:
+    page_url: /biopark-breeding/breeding/stock/chick/chick-inventory
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-PC-045
+    tp: PI-045-16
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_data_locator
+  tp_case_id: TP-PC-045-015
+summary:
+  type_counts:
+    feature: 4
+    interface: 0
+    auto: 0
+  auto_counts:
+    auto: 4
+    'no': 0
+  priority_counts:
+    P1: 1
+    P2: 2
+    P3: 1
+    P4: 0

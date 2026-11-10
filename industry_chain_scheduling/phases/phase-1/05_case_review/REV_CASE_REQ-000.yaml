@@ -1,0 +1,159 @@
+req_id: REQ-000
+gate_passed: false
+exec_check:
+  command: project-local YAML/JSON/type-sync validation
+  errors: 0
+  warnings: 0
+  exit_code: 0
+  note: 本仓库未提供 check_testcase_executability.py；本轮使用项目内静态验证完成门禁。
+checks:
+- id: CG1
+  name: yaml_json_and_zentao_type_consistency
+  passed: true
+- id: CG5
+  name: tp_coverage_and_registry_ids
+  passed: true
+issues: []
+csv_path: null
+review_status: stale
+csv_invalidation:
+  status: deleted
+  previous_csv_path: 05_case_review/000_系统总览_测试用例.csv
+  reason: 测试用例 CSV 已按项目清理计划删除；历史来源不作为当前有效产物，需重新评审后再导出。
+human:
+  rewrite_approved: false
+  approved_at: '2026-07-14T09:33:44.749631+00:00'
+  approved_by: user
+rewrite:
+  round: 1
+  max_rounds: 3
+  status: done
+  history:
+  - round: 1
+    fixed_case_ids:
+    - TC-000-01
+    - TC-000-02
+    - TC-000-03
+    - TC-000-04
+    - TC-000-05
+    - TC-000-06
+    - TC-000-07
+    - TC-000-08
+    - TC-000-09
+    - TC-000-10
+    - TC-000-11
+    - TC-000-12
+    - TC-000-13
+    - TC-000-14
+    - TC-000-15
+    - TC-000-16
+    at: '2026-07-14T09:33:44.828226+00:00'
+trace:
+  source_tc: 04_testcases/TC_REQ-000.yaml
+  source_tp: 03_testpoints/TP_REQ-000.yaml
+  source_testpoint_review: 04_testpoint_review/REV_REQ-000.yaml
+  source: null # original ZenTao evidence deleted by cleanup
+  project: 产业链生产排程系统
+  status: approved_zentao_type_sync_20260813
+  source_sha256:
+    tc: 8043ba2237abe53f02a7bc8e0144470458a698087224a14ae74aff2899a2b985
+    tp: d2e1c7e785a0460ee5e04025414a2639402049751d39e298ea10fd439ac8140f
+    testpoint_review: 390fd18abc4141702eab1368900f6a99470c34f0c0cd2e8731858a41c514941c
+delta_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  scope: zentao_missing_cases_type_sync
+  case_ids:
+  - TC-000-57
+  - TC-000-58
+  - TC-000-59
+  - TC-000-60
+  - TC-000-61
+  - TC-000-62
+  - TC-000-63
+  - TC-000-64
+  cases_reviewed: 8
+  delta_passed: true
+  results:
+  - case_id: TC-000-57
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-58
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-59
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-60
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-61
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-62
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-63
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-64
+    verdict: pass
+    errors: 0
+    warnings: 0
+  zentao_type_conflicts: []
+  auto_assessment: not_performed; auto and type copied from zentao type/auto
+  page_evidence: [] # original page evidence deleted by cleanup
+  data_safety: no destructive operation; admin-prepared states remain preconditions
+delta_review_note: 2026-08-13 增量评审 8 条；禅道 type/auto 无冲突；gate_passed=True；不执行本地自动化适配性评估
+csv_note: 测试用例 CSV 已按项目清理计划删除；需重新评审通过后再导出，历史文件不作为当前有效产物。
+auto_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  case_ids:
+  - TC-000-05
+  - TC-000-16
+  zentao_case_ids:
+  - 48019
+  - 48030
+  cases_reviewed: 2
+  delta_passed: true
+  local_suitability_assessment: not_performed
+  type_source_conflicts:
+  - 48019
+  raw_auto_field_mismatches: []
+  results:
+  - case_id: TC-000-05
+    zentao_case_id: 48019
+    type: interface
+    auto: 'no'
+    status: type_source_conflict
+    verdict: blocked_type_source_conflict
+  - case_id: TC-000-16
+    zentao_case_id: 48030
+    type: feature
+    auto: 'no'
+    status: synced_by_zentao_type
+    verdict: pass
+field_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  registered_cases: 847
+  mapping: local.type=zentao.type; local.auto=zentao.auto
+  local_suitability_assessment: not_performed_for_registered_cases
+  pending_registry_cases: 5
+  remote_write: false
+  verdict: pass
+csv_source:
+  status: deleted
+  tc_sha256: 8043ba2237abe53f02a7bc8e0144470458a698087224a14ae74aff2899a2b985
+  review_sha256: a84227cc570325ef5dc3b491fc07856dc1b1e1454b5fd197907822e7f81b0d6e
+  generated_at: '2026-08-13T06:53:57.350602+00:00'

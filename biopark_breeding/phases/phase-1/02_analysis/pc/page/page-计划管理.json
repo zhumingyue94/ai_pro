@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0",
+  "capture_id": "PAGE-PC-20260902-PLAN-MANAGEMENT",
+  "captured_at": "2026-09-02T13:10:00+08:00",
+  "capture": {
+    "collector": "agent-browser 0.27.0 (交互探索)",
+    "browser": "Chromium (agent-browser headed)",
+    "headless": false,
+    "environment": {
+      "id": "biopark-breeding-pc-192-168-6-163-66",
+      "os": "Windows",
+      "browser": "Chromium (agent-browser managed)"
+    },
+    "scope": [
+      "计划管理 / 上孵计划（孵化场=南京孵化场）",
+      "计划管理 / 生产报表（孵化场=南京孵化场）"
+    ],
+    "status": "captured",
+    "evidence": {
+      "status": "available",
+      "screenshot_paths": [
+        "02_analysis/pc/screenshots/plan-hatching-plan-list-initial-20260902.png",
+        "02_analysis/pc/screenshots/plan-hatching-report-list-initial-20260902.png"
+      ],
+      "log_paths": ["02_analysis/pc/console.log"],
+      "trace_paths": []
+    }
+  },
+  "sanitization": {
+    "status": "applied",
+    "redacted_fields": [
+      "未采集、未保存账号、密码、Token、Cookie 或登录凭据",
+      "DOM 快照仅保留脱敏后的结构与字段名，表格单元格业务值统一写为「已脱敏」",
+      "列表中的孵化场、养殖场、养殖批次、品种、创建人、更新人等业务数据未落盘",
+      "新增入口已实测打开两步表单但主动关闭未提交；导入入口已实测打开弹窗但未选文件确认，未产生需要清理的业务数据"
+    ]
+  },
+  "pages": [
+    {
+      "page_id": "pc-plan-hatching-plan-list",
+      "route": "/biopark-breeding/breeding/hatchingplans/hatching-plan",
+      "title": "上孵计划",
+      "menu_path": ["计划管理", "上孵计划"],
+      "states": [
+        {
+          "state_id": "pc-plan-hatching-plan--initial",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id": "plan-plan-page", "kind": "page", "name": "上孵计划", "tag": "main", "role": "main", "label": "上孵计划", "text": null, "attributes": {"viewport": "1600x900", "page_size": "1600x900", "horizontal_overflow": false, "zoom": "none", "req_id": "REQ-PC-001", "hatchery": "南京孵化场", "record_count": 12}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": null, "locator_status": "available", "locator_candidates": [{"strategy": "css", "value": "main", "stable": false, "confidence": "medium"}]},
+            {"element_id": "plan-plan-filter", "kind": "form", "name": "上孵计划查询", "tag": "form", "role": "form", "label": "筛选条件", "text": null, "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "form", "stable": false, "confidence": "medium"}]},
+            {"element_id": "plan-plan-filter-plan-no", "kind": "input", "name": "计划号", "tag": "input", "role": "textbox", "label": "计划号", "text": null, "attributes": {"placeholder": "请输入上孵计划号", "type": "text"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "placeholder", "value": "请输入上孵计划号", "stable": true, "confidence": "high"}, {"strategy": "label", "value": "计划号", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-filter-demand-no", "kind": "input", "name": "需求号", "tag": "input", "role": "textbox", "label": "需求号", "text": null, "attributes": {"placeholder": "请输入需求号", "type": "text"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "placeholder", "value": "请输入需求号", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-filter-hatchery", "kind": "select", "name": "孵化场", "tag": "div", "role": "combobox", "label": "孵化场", "text": "南京孵化场", "attributes": {"widget": "el-select-tree", "selected_key": "462", "filterable": true}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "label", "value": "孵化场", "stable": true, "confidence": "high"}, {"strategy": "css", "value": ".el-tree-node__content span.pl4px", "scope_element_id": "plan-plan-filter-hatchery", "stable": false, "confidence": "medium", "reason": "树形下拉，叶子节点为 .el-tree-node 下 span.pl4px，需按文本精确点击"}]},
+            {"element_id": "plan-plan-filter-set-date", "kind": "datepicker", "name": "上孵日期", "tag": "div", "role": "group", "label": "上孵日期", "text": null, "attributes": {"range_start_placeholder": "开始日期", "range_end_placeholder": "结束日期"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "label", "value": "上孵日期", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-filter-out-date", "kind": "datepicker", "name": "出雏日期", "tag": "div", "role": "group", "label": "出雏日期", "text": null, "attributes": {"range_start_placeholder": "开始日期", "range_end_placeholder": "结束日期"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "label", "value": "出雏日期", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-filter-progress", "kind": "select", "name": "计划进度", "tag": "div", "role": "combobox", "label": "计划进度", "text": null, "attributes": {"placeholder": "请选择计划进度"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "placeholder", "value": "请选择计划进度", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-filter-status", "kind": "select", "name": "计划状态", "tag": "div", "role": "combobox", "label": "计划状态", "text": null, "attributes": {"placeholder": "请选择计划状态"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "placeholder", "value": "请选择计划状态", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-query", "kind": "button", "name": "查询", "tag": "button", "role": "button", "label": "查询", "text": "查询", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:查询", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-reset", "kind": "button", "name": "重置", "tag": "button", "role": "button", "label": "重置", "text": "重置", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:重置", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-expand", "kind": "button", "name": "展开", "tag": "button", "role": "button", "label": "展开", "text": "展开", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-filter", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:展开", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-create", "kind": "button", "name": "新增", "tag": "button", "role": "button", "label": "新增", "text": "新增", "attributes": {"variant": "primary"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:新增", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-batch-delete", "kind": "button", "name": "删除", "tag": "button", "role": "button", "label": "删除", "text": "删除", "attributes": {"requires_selection": true}, "state": {"visible": true, "enabled": false, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "ambiguous", "locator_candidates": [{"strategy": "role", "value": "button:删除", "stable": true, "confidence": "medium", "reason": "工具栏与行内均有删除按钮，需限定工具栏作用域"}]},
+            {"element_id": "plan-plan-batch-terminate", "kind": "button", "name": "终止", "tag": "button", "role": "button", "label": "终止", "text": "终止", "attributes": {"requires_selection": true}, "state": {"visible": true, "enabled": false, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "ambiguous", "locator_candidates": [{"strategy": "role", "value": "button:终止", "stable": true, "confidence": "medium", "reason": "工具栏与行内均有终止按钮，需限定工具栏作用域"}]},
+            {"element_id": "plan-plan-refresh", "kind": "button", "name": "刷新", "tag": "button", "role": "button", "label": "刷新", "text": "刷新", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:刷新", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-col-settings", "kind": "button", "name": "表头设置", "tag": "button", "role": "button", "label": "表头设置", "text": "表头设置", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:表头设置", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-export", "kind": "button", "name": "导出", "tag": "button", "role": "button", "label": "导出", "text": "导出", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:导出", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-import", "kind": "button", "name": "导入", "tag": "button", "role": "button", "label": "导入", "text": "导入", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:导入", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-dispatch", "kind": "button", "name": "任务下发", "tag": "button", "role": "button", "label": "任务下发", "text": "任务下发", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:任务下发", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-draft", "kind": "button", "name": "草稿", "tag": "button", "role": "button", "label": "草稿", "text": "草稿", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:草稿", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-table", "kind": "table", "name": "上孵计划列表", "tag": "table", "role": "table", "label": "上孵计划列表", "text": null, "attributes": {"row_count": 12}, "state": {"visible": true, "enabled": true, "required": false, "readonly": true, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "table", "stable": false, "confidence": "medium"}]},
+            {"element_id": "plan-plan-row-edit", "kind": "button", "name": "行内编辑", "tag": "button", "role": "button", "label": "编辑", "text": "编辑", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-table", "locator_status": "available", "locator_candidates": [{"strategy": "text", "value": "编辑", "exact": true, "scope_element_id": "plan-plan-table", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-row-relate", "kind": "button", "name": "行内关联任务", "tag": "button", "role": "button", "label": "关联任务", "text": "关联任务", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-table", "locator_status": "available", "locator_candidates": [{"strategy": "text", "value": "关联任务", "exact": true, "scope_element_id": "plan-plan-table", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-row-terminate", "kind": "button", "name": "行内终止", "tag": "button", "role": "button", "label": "终止", "text": "终止", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-table", "locator_status": "available", "locator_candidates": [{"strategy": "text", "value": "终止", "exact": true, "scope_element_id": "plan-plan-table", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-row-delete", "kind": "button", "name": "行内删除", "tag": "button", "role": "button", "label": "删除", "text": "删除", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-plan-table", "locator_status": "available", "locator_candidates": [{"strategy": "text", "value": "删除", "exact": true, "scope_element_id": "plan-plan-table", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-plan-pagination", "kind": "pagination", "name": "上孵计划分页", "tag": "nav", "role": "navigation", "label": "分页", "text": "共 12 条 20条/页 1 前往 页", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-plan-page", "locator_status": "available", "locator_candidates": [{"strategy": "css", "value": ".el-pagination", "stable": true, "confidence": "high"}]}
+          ],
+          "forms": [
+            {"form_id": "plan-plan-filter-form", "element_id": "plan-plan-filter", "field_element_ids": ["plan-plan-filter-plan-no", "plan-plan-filter-demand-no", "plan-plan-filter-hatchery", "plan-plan-filter-set-date", "plan-plan-filter-out-date", "plan-plan-filter-progress", "plan-plan-filter-status"], "submit_element_ids": ["plan-plan-query"], "cancel_element_ids": ["plan-plan-reset", "plan-plan-expand"]}
+          ],
+          "tables": [
+            {"table_id": "plan-plan-table-data", "element_id": "plan-plan-table", "columns": [
+              {"column_id": "col-selection", "name": "选择", "header": "选择", "field_element_ids": []},
+              {"column_id": "col-hatchery", "name": "孵化场", "header": "孵化场", "field_element_ids": []},
+              {"column_id": "col-farm", "name": "养殖场", "header": "养殖场", "field_element_ids": []},
+              {"column_id": "col-demand-no", "name": "孵化需求号", "header": "孵化需求号", "field_element_ids": []},
+              {"column_id": "col-batch", "name": "养殖批次", "header": "养殖批次", "field_element_ids": []},
+              {"column_id": "col-egg-type", "name": "种蛋类型", "header": "种蛋类型", "field_element_ids": []},
+              {"column_id": "col-breed", "name": "品种", "header": "品种", "field_element_ids": []},
+              {"column_id": "col-set-date", "name": "上孵日期", "header": "上孵日期", "field_element_ids": []},
+              {"column_id": "col-week-age", "name": "周龄", "header": "周龄", "field_element_ids": []},
+              {"column_id": "col-avg-weight", "name": "平均蛋重", "header": "平均蛋重", "field_element_ids": []},
+              {"column_id": "col-weight-type", "name": "蛋重类型", "header": "蛋重类型", "field_element_ids": []},
+              {"column_id": "col-lay-date", "name": "产蛋日期", "header": "产蛋日期", "field_element_ids": []},
+              {"column_id": "col-plan-count", "name": "计划上孵数", "header": "计划上孵数", "field_element_ids": []},
+              {"column_id": "col-actual-count", "name": "实际上孵数", "header": "实际上孵数", "field_element_ids": []},
+              {"column_id": "col-incubator", "name": "孵化器", "header": "孵化器", "field_element_ids": []},
+              {"column_id": "col-out-date", "name": "出雏日期", "header": "出雏日期", "field_element_ids": []},
+              {"column_id": "col-progress", "name": "计划进度", "header": "计划进度", "field_element_ids": []},
+              {"column_id": "col-status", "name": "计划状态", "header": "计划状态", "field_element_ids": []},
+              {"column_id": "col-plan-no", "name": "上孵计划号", "header": "上孵计划号", "field_element_ids": []},
+              {"column_id": "col-actual-set-time", "name": "实际上孵时间", "header": "实际上孵时间", "field_element_ids": []},
+              {"column_id": "col-actual-out-time", "name": "实际出雏时间", "header": "实际出雏时间", "field_element_ids": []},
+              {"column_id": "col-created-by", "name": "创建人", "header": "创建人", "field_element_ids": []},
+              {"column_id": "col-created-at", "name": "创建时间", "header": "创建时间", "field_element_ids": []},
+              {"column_id": "col-updated-at", "name": "更新时间", "header": "更新时间", "field_element_ids": []},
+              {"column_id": "col-updated-by", "name": "更新人", "header": "更新人", "field_element_ids": []},
+              {"column_id": "col-actions", "name": "操作", "header": "操作", "field_element_ids": ["plan-plan-row-edit", "plan-plan-row-relate", "plan-plan-row-terminate", "plan-plan-row-delete"]}
+            ], "row_action_element_ids": ["plan-plan-row-edit", "plan-plan-row-relate", "plan-plan-row-terminate", "plan-plan-row-delete"], "filter_element_ids": ["plan-plan-query", "plan-plan-reset", "plan-plan-expand"], "pagination_element_ids": ["plan-plan-pagination"]}
+          ],
+          "interactions": [
+            {"sequence": 1, "action": "fill", "target_element_id": "plan-plan-filter-hatchery", "locator_ref": {"element_id": "plan-plan-filter-hatchery", "strategy": "label", "value": "孵化场"}, "input_data_ref": "testdata://hatchery/南京孵化场", "result_state_id": "pc-plan-hatching-plan--initial", "expected_observation": "实测：树形下拉按关键字过滤后点击叶子节点「南京孵化场」(data-key=462)，查询参数 hatcheryId=462"},
+            {"sequence": 2, "action": "click", "target_element_id": "plan-plan-query", "locator_ref": {"element_id": "plan-plan-query", "strategy": "role", "value": "button:查询"}, "input_data_ref": null, "result_state_id": "pc-plan-hatching-plan--initial", "expected_observation": "按当前筛选条件刷新列表，南京孵化场下共 12 条"},
+            {"sequence": 3, "action": "click", "target_element_id": "plan-plan-reset", "locator_ref": {"element_id": "plan-plan-reset", "strategy": "role", "value": "button:重置"}, "input_data_ref": null, "result_state_id": "pc-plan-hatching-plan--initial", "expected_observation": "清空筛选条件，恢复默认列表"},
+            {"sequence": 4, "action": "click", "target_element_id": "plan-plan-expand", "locator_ref": {"element_id": "plan-plan-expand", "strategy": "role", "value": "button:展开"}, "input_data_ref": null, "result_state_id": "pc-plan-hatching-plan--initial", "expected_observation": "展开或收起更多筛选条件"},
+            {"sequence": 5, "action": "click", "target_element_id": "plan-plan-create", "locator_ref": {"element_id": "plan-plan-create", "strategy": "role", "value": "button:新增"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "实测：打开底部抽屉「新建上孵计划」，展示第一步孵化场选择与第二步计划明细录入；因树形下拉叶子节点选择未形成可提交数据，本次主动关闭抽屉，未提交、未产生数据变更"},
+            {"sequence": 6, "action": "click", "target_element_id": "plan-plan-import", "locator_ref": {"element_id": "plan-plan-import", "strategy": "role", "value": "button:导入"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "实测：打开「计划导入」弹窗，提示仅允许 xls/xlsx，展示「下载模板」「确定」「取消」；未选择文件且未确认导入，未产生数据变更"},
+            {"sequence": 7, "action": "click", "target_element_id": "plan-plan-export", "locator_ref": {"element_id": "plan-plan-export", "strategy": "role", "value": "button:导出"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "触发列表导出；本次未下载文件"},
+            {"sequence": 8, "action": "click", "target_element_id": "plan-plan-col-settings", "locator_ref": {"element_id": "plan-plan-col-settings", "strategy": "role", "value": "button:表头设置"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "打开列配置抽屉；本次未修改列配置"},
+            {"sequence": 9, "action": "click", "target_element_id": "plan-plan-row-edit", "locator_ref": {"element_id": "plan-plan-row-edit", "strategy": "text", "value": "编辑"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "进入计划编辑态；本次未提交修改"},
+            {"sequence": 10, "action": "click", "target_element_id": "plan-plan-row-relate", "locator_ref": {"element_id": "plan-plan-row-relate", "strategy": "text", "value": "关联任务"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "打开关联任务视图；本次未执行关联"},
+            {"sequence": 11, "action": "click", "target_element_id": "plan-plan-row-terminate", "locator_ref": {"element_id": "plan-plan-row-terminate", "strategy": "text", "value": "终止"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "触发计划终止确认；本次未确认，未产生数据变更"},
+            {"sequence": 12, "action": "click", "target_element_id": "plan-plan-row-delete", "locator_ref": {"element_id": "plan-plan-row-delete", "strategy": "text", "value": "删除"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "触发计划删除确认；本次未确认，未产生数据变更"},
+            {"sequence": 13, "action": "click", "target_element_id": "plan-plan-pagination", "locator_ref": {"element_id": "plan-plan-pagination", "strategy": "css", "value": ".el-pagination"}, "input_data_ref": null, "result_state_id": "pc-plan-hatching-plan--initial", "expected_observation": "切换分页；当前共 12 条，单页 20 条，仅 1 页"}
+          ],
+          "dom_snapshot": {"html": "<main data-page=\"hatching-plan-list\" data-state=\"initial\" data-route=\"/biopark-breeding/breeding/hatchingplans/hatching-plan\" data-hatchery=\"南京孵化场\" data-viewport=\"1600x900\" data-page-size=\"1600x900\" data-horizontal-overflow=\"false\" data-zoom=\"none\" data-record-count=\"12\"><nav data-role=\"breadcrumb\">首页 / 计划管理 / 上孵计划</nav><h3 data-role=\"page-title\">上孵计划</h3><form data-role=\"filter-form\"><el-form-item><label>计划号</label><input type=\"text\" placeholder=\"请输入上孵计划号\" /></el-form-item><el-form-item><label>需求号</label><input type=\"text\" placeholder=\"请输入需求号\" /></el-form-item><el-form-item><label>孵化场</label><select data-selected=\"南京孵化场\" /></el-form-item><el-form-item><label>上孵日期</label><date-range><input placeholder=\"开始日期\" /><input placeholder=\"结束日期\" /></date-range></el-form-item><el-form-item><label>出雏日期</label><date-range><input placeholder=\"开始日期\" /><input placeholder=\"结束日期\" /></date-range></el-form-item><el-form-item><label>计划进度</label><select data-placeholder=\"请选择计划进度\" /></el-form-item><el-form-item><label>计划状态</label><select data-placeholder=\"请选择计划状态\" /></el-form-item><button data-role=\"filter-submit\">查询</button><button data-role=\"filter-cancel\">重置</button><button data-role=\"filter-toggle\">展开</button></form><div data-role=\"toolbar\"><button data-requires-selection=\"true\">删除</button><button data-requires-selection=\"true\">终止</button><button>刷新</button><button>表头设置</button><button>导出</button><button>导入</button><button>任务下发</button><button>草稿</button><button data-role=\"primary-create\">新增</button></div><table data-role=\"data-table\"><thead><tr><th data-type=\"selection\">选择</th><th>孵化场</th><th>养殖场</th><th>孵化需求号</th><th>养殖批次</th><th>种蛋类型</th><th>品种</th><th>上孵日期</th><th>周龄</th><th>平均蛋重</th><th>蛋重类型</th><th>产蛋日期</th><th>计划上孵数</th><th>实际上孵数</th><th>孵化器</th><th>出雏日期</th><th>计划进度</th><th>计划状态</th><th>上孵计划号</th><th>实际上孵时间</th><th>实际出雏时间</th><th>创建人</th><th>创建时间</th><th>更新时间</th><th>更新人</th><th>操作</th></tr></thead><tbody><tr><td colspan=\"26\">存在多条上孵计划记录；业务值已脱敏</td></tr></tbody></table><nav data-role=\"pagination\">共 12 条 | 20条/页 | 上一页 | 1 | 下一页 | 前往 1 页</nav></main>", "sha256": "4669e89ecda2acbc4a20986855d2d0ba747ac890a70a204998da9bfdcc90eaea", "captured_at": "2026-09-02T12:20:00+08:00"},
+          "evidence": {"status": "available", "screenshot_paths": ["02_analysis/pc/screenshots/plan-hatching-plan-list-initial-20260902.png"], "log_paths": ["02_analysis/pc/console.log"], "trace_paths": []}
+        }
+      ]
+    },
+    {
+      "page_id": "pc-plan-hatching-report",
+      "route": "/biopark-breeding/breeding/hatchingplans/hatching-report",
+      "title": "生产报表",
+      "menu_path": ["计划管理", "生产报表"],
+      "states": [
+        {
+          "state_id": "pc-plan-hatching-report--initial",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id": "plan-report-page", "kind": "page", "name": "生产报表", "tag": "main", "role": "main", "label": "生产报表", "text": null, "attributes": {"viewport": "1600x900", "page_size": "1600x900", "horizontal_overflow": false, "zoom": "none", "req_id": "REQ-PC-002", "hatchery": "南京孵化场", "record_count": 5, "multi_level_header": true}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": null, "locator_status": "available", "locator_candidates": [{"strategy": "css", "value": "main", "stable": false, "confidence": "medium"}]},
+            {"element_id": "plan-report-filter", "kind": "form", "name": "生产报表查询", "tag": "form", "role": "form", "label": "筛选条件", "text": null, "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-report-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "form", "stable": false, "confidence": "medium"}]},
+            {"element_id": "plan-report-filter-hatchery", "kind": "select", "name": "孵化场", "tag": "div", "role": "combobox", "label": "孵化场", "text": "南京孵化场", "attributes": {"widget": "el-select-tree", "selected_key": "462", "filterable": true}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "label", "value": "孵化场", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-filter-set-date", "kind": "datepicker", "name": "上孵日期", "tag": "div", "role": "group", "label": "上孵日期", "text": null, "attributes": {"range_start_placeholder": "开始日期", "range_end_placeholder": "结束日期"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "label", "value": "上孵日期", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-filter-candling-date", "kind": "datepicker", "name": "照蛋日期", "tag": "div", "role": "group", "label": "照蛋日期", "text": null, "attributes": {"range_start_placeholder": "开始日期", "range_end_placeholder": "结束日期"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "label", "value": "照蛋日期", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-filter-out-date", "kind": "datepicker", "name": "出雏日期", "tag": "div", "role": "group", "label": "出雏日期", "text": null, "attributes": {"range_start_placeholder": "开始日期", "range_end_placeholder": "结束日期"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "label", "value": "出雏日期", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-filter-farm", "kind": "select", "name": "养殖场", "tag": "div", "role": "combobox", "label": "养殖场", "text": null, "attributes": {"placeholder": "请选择养殖场"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "placeholder", "value": "请选择养殖场", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-filter-batch", "kind": "select", "name": "养殖批次", "tag": "div", "role": "combobox", "label": "养殖批次", "text": null, "attributes": {"placeholder": "请选择养殖批次"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "placeholder", "value": "请选择养殖批次", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-filter-egg-type", "kind": "select", "name": "种蛋类型", "tag": "div", "role": "combobox", "label": "种蛋类型", "text": null, "attributes": {"placeholder": "请选择种蛋类型"}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "placeholder", "value": "请选择种蛋类型", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-query", "kind": "button", "name": "查询", "tag": "button", "role": "button", "label": "查询", "text": "查询", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:查询", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-reset", "kind": "button", "name": "重置", "tag": "button", "role": "button", "label": "重置", "text": "重置", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:重置", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-expand", "kind": "button", "name": "展开", "tag": "button", "role": "button", "label": "展开", "text": "展开", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-filter", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:展开", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-refresh", "kind": "button", "name": "刷新", "tag": "button", "role": "button", "label": "刷新", "text": "刷新", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:刷新", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-col-settings", "kind": "button", "name": "表头设置", "tag": "button", "role": "button", "label": "表头设置", "text": "表头设置", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:表头设置", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-custom-export", "kind": "button", "name": "定制导出", "tag": "button", "role": "button", "label": "定制导出", "text": "定制导出", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "empty"}, "parent_element_id": "plan-report-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "button:定制导出", "stable": true, "confidence": "high"}]},
+            {"element_id": "plan-report-table", "kind": "table", "name": "生产报表列表", "tag": "table", "role": "table", "label": "生产报表列表", "text": null, "attributes": {"row_count": 5}, "state": {"visible": true, "enabled": true, "required": false, "readonly": true, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-report-page", "locator_status": "available", "locator_candidates": [{"strategy": "role", "value": "table", "stable": false, "confidence": "low", "reason": "多级表头，列数与列序随表头设置变化"}]},
+            {"element_id": "plan-report-pagination", "kind": "pagination", "name": "生产报表分页", "tag": "nav", "role": "navigation", "label": "分页", "text": "共 5 条 20条/页 1 前往 页", "attributes": {}, "state": {"visible": true, "enabled": true, "required": false, "readonly": false, "checked": null, "value_state": "populated"}, "parent_element_id": "plan-report-page", "locator_status": "available", "locator_candidates": [{"strategy": "css", "value": ".el-pagination", "stable": true, "confidence": "high"}]}
+          ],
+          "forms": [
+            {"form_id": "plan-report-filter-form", "element_id": "plan-report-filter", "field_element_ids": ["plan-report-filter-hatchery", "plan-report-filter-set-date", "plan-report-filter-candling-date", "plan-report-filter-out-date", "plan-report-filter-farm", "plan-report-filter-batch", "plan-report-filter-egg-type"], "submit_element_ids": ["plan-report-query"], "cancel_element_ids": ["plan-report-reset", "plan-report-expand"]}
+          ],
+          "tables": [
+            {"table_id": "plan-report-table-data", "element_id": "plan-report-table", "columns": [
+              {"column_id": "col-selection", "name": "选择", "header": "选择", "field_element_ids": []},
+              {"column_id": "col-group-set", "name": "上孵", "header": "上孵", "field_element_ids": []},
+              {"column_id": "col-group-candling", "name": "照蛋", "header": "照蛋", "field_element_ids": []},
+              {"column_id": "col-group-out", "name": "出雏", "header": "出雏", "field_element_ids": []},
+              {"column_id": "col-group-score", "name": "成绩", "header": "成绩", "field_element_ids": []},
+              {"column_id": "col-group-plan", "name": "计划信息", "header": "计划信息", "field_element_ids": []},
+              {"column_id": "col-hatchery", "name": "孵化场", "header": "孵化场", "field_element_ids": []},
+              {"column_id": "col-farm", "name": "养殖场", "header": "养殖场", "field_element_ids": []},
+              {"column_id": "col-batch", "name": "养殖批次", "header": "养殖批次", "field_element_ids": []},
+              {"column_id": "col-egg-type", "name": "种蛋类型", "header": "种蛋类型", "field_element_ids": []},
+              {"column_id": "col-breed", "name": "品种", "header": "品种", "field_element_ids": []},
+              {"column_id": "col-set-date", "name": "上孵日期", "header": "上孵日期", "field_element_ids": []},
+              {"column_id": "col-weight-type", "name": "蛋重类型", "header": "蛋重类型", "field_element_ids": []},
+              {"column_id": "col-lay-date", "name": "产蛋日期", "header": "产蛋日期", "field_element_ids": []},
+              {"column_id": "col-week-age", "name": "周龄", "header": "周龄", "field_element_ids": []},
+              {"column_id": "col-avg-weight", "name": "平均蛋重", "header": "平均蛋重", "field_element_ids": []},
+              {"column_id": "col-actual-set-count", "name": "实际上孵数", "header": "实际上孵数", "field_element_ids": []},
+              {"column_id": "col-big-egg", "name": "大蛋", "header": "大蛋", "field_element_ids": []},
+              {"column_id": "col-deformity", "name": "畸形", "header": "畸形", "field_element_ids": []},
+              {"column_id": "col-broken", "name": "破蛋", "header": "破蛋", "field_element_ids": []},
+              {"column_id": "col-set-loss", "name": "损失", "header": "损失", "field_element_ids": []},
+              {"column_id": "col-incubator", "name": "孵化器", "header": "孵化器", "field_element_ids": []},
+              {"column_id": "col-candling-date", "name": "照蛋日期", "header": "照蛋日期", "field_element_ids": []},
+              {"column_id": "col-fertilized", "name": "受精蛋", "header": "受精蛋", "field_element_ids": []},
+              {"column_id": "col-unfertilized", "name": "无精蛋", "header": "无精蛋", "field_element_ids": []},
+              {"column_id": "col-dead-embryo", "name": "死胚", "header": "死胚", "field_element_ids": []},
+              {"column_id": "col-rotten", "name": "臭蛋", "header": "臭蛋", "field_element_ids": []},
+              {"column_id": "col-fert-rate", "name": "受精率", "header": "受精率", "field_element_ids": []},
+              {"column_id": "col-dead-rate", "name": "死胚率", "header": "死胚率", "field_element_ids": []},
+              {"column_id": "col-rotten-rate", "name": "臭蛋率", "header": "臭蛋率", "field_element_ids": []},
+              {"column_id": "col-out-date", "name": "出雏日期", "header": "出雏日期", "field_element_ids": []},
+              {"column_id": "col-healthy", "name": "健雏", "header": "健雏", "field_element_ids": []},
+              {"column_id": "col-weak", "name": "弱雏", "header": "弱雏", "field_element_ids": []},
+              {"column_id": "col-cull", "name": "淘汰", "header": "淘汰", "field_element_ids": []},
+              {"column_id": "col-hair-egg", "name": "毛蛋", "header": "毛蛋", "field_element_ids": []},
+              {"column_id": "col-out-loss", "name": "损失", "header": "损失", "field_element_ids": []},
+              {"column_id": "col-entry-rate", "name": "入键率", "header": "入键率", "field_element_ids": []},
+              {"column_id": "col-fert-healthy-rate", "name": "受健率", "header": "受健率", "field_element_ids": []},
+              {"column_id": "col-cull-rate", "name": "淘汰率", "header": "淘汰率", "field_element_ids": []},
+              {"column_id": "col-hair-rate", "name": "毛蛋率", "header": "毛蛋率", "field_element_ids": []},
+              {"column_id": "col-standard", "name": "受健率标准", "header": "受健率标准", "field_element_ids": []},
+              {"column_id": "col-achieve-rate", "name": "达成率", "header": "达成率", "field_element_ids": []},
+              {"column_id": "col-plan-no", "name": "计划号", "header": "计划号", "field_element_ids": []},
+              {"column_id": "col-created-by", "name": "创建人", "header": "创建人", "field_element_ids": []},
+              {"column_id": "col-created-at", "name": "创建时间", "header": "创建时间", "field_element_ids": []},
+              {"column_id": "col-updated-by", "name": "更新人", "header": "更新人", "field_element_ids": []},
+              {"column_id": "col-updated-at", "name": "更新时间", "header": "更新时间", "field_element_ids": []}
+            ], "row_action_element_ids": [], "filter_element_ids": ["plan-report-query", "plan-report-reset", "plan-report-expand"], "pagination_element_ids": ["plan-report-pagination"]}
+          ],
+          "interactions": [
+            {"sequence": 1, "action": "fill", "target_element_id": "plan-report-filter-hatchery", "locator_ref": {"element_id": "plan-report-filter-hatchery", "strategy": "label", "value": "孵化场"}, "input_data_ref": "testdata://hatchery/南京孵化场", "result_state_id": "pc-plan-hatching-report--initial", "expected_observation": "树形下拉过滤后点击叶子节点「南京孵化场」(data-key=462)"},
+            {"sequence": 2, "action": "click", "target_element_id": "plan-report-query", "locator_ref": {"element_id": "plan-report-query", "strategy": "role", "value": "button:查询"}, "input_data_ref": null, "result_state_id": "pc-plan-hatching-report--initial", "expected_observation": "按筛选条件刷新报表，南京孵化场下共 5 条"},
+            {"sequence": 3, "action": "click", "target_element_id": "plan-report-reset", "locator_ref": {"element_id": "plan-report-reset", "strategy": "role", "value": "button:重置"}, "input_data_ref": null, "result_state_id": "pc-plan-hatching-report--initial", "expected_observation": "清空筛选条件并恢复默认报表"},
+            {"sequence": 4, "action": "click", "target_element_id": "plan-report-expand", "locator_ref": {"element_id": "plan-report-expand", "strategy": "role", "value": "button:展开"}, "input_data_ref": null, "result_state_id": "pc-plan-hatching-report--initial", "expected_observation": "展开或收起更多筛选条件"},
+            {"sequence": 5, "action": "click", "target_element_id": "plan-report-custom-export", "locator_ref": {"element_id": "plan-report-custom-export", "strategy": "role", "value": "button:定制导出"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "进入定制导出配置；本次未执行导出，未下载文件"},
+            {"sequence": 6, "action": "click", "target_element_id": "plan-report-col-settings", "locator_ref": {"element_id": "plan-report-col-settings", "strategy": "role", "value": "button:表头设置"}, "input_data_ref": null, "result_state_id": null, "expected_observation": "打开列配置抽屉；本次未修改列配置"}
+          ],
+          "dom_snapshot": {"html": "<main data-page=\"hatching-report-list\" data-state=\"initial\" data-route=\"/biopark-breeding/breeding/hatchingplans/hatching-report\" data-hatchery=\"南京孵化场\" data-viewport=\"1600x900\" data-page-size=\"1600x900\" data-horizontal-overflow=\"false\" data-zoom=\"none\" data-record-count=\"5\"><nav data-role=\"breadcrumb\">首页 / 计划管理 / 生产报表</nav><h3 data-role=\"page-title\">生产报表</h3><form data-role=\"filter-form\"><el-form-item><label>孵化场</label><select data-selected=\"南京孵化场\" /></el-form-item><el-form-item><label>上孵日期</label><date-range><input placeholder=\"开始日期\" /><input placeholder=\"结束日期\" /></date-range></el-form-item><el-form-item><label>照蛋日期</label><date-range><input placeholder=\"开始日期\" /><input placeholder=\"结束日期\" /></date-range></el-form-item><el-form-item><label>出雏日期</label><date-range><input placeholder=\"开始日期\" /><input placeholder=\"结束日期\" /></date-range></el-form-item><el-form-item><label>养殖场</label><select data-placeholder=\"请选择养殖场\" /></el-form-item><el-form-item><label>养殖批次</label><select data-placeholder=\"请选择养殖批次\" /></el-form-item><el-form-item><label>种蛋类型</label><select data-placeholder=\"请选择种蛋类型\" /></el-form-item><button data-role=\"filter-submit\">查询</button><button data-role=\"filter-cancel\">重置</button><button data-role=\"filter-toggle\">展开</button></form><div data-role=\"toolbar\"><button>刷新</button><button>表头设置</button><button>定制导出</button></div><table data-role=\"data-table\"><thead><tr><th data-type=\"selection\">选择</th><th data-group=\"上孵\">上孵</th><th data-group=\"照蛋\">照蛋</th><th data-group=\"出雏\">出雏</th><th data-group=\"成绩\">成绩</th><th data-group=\"计划信息\">计划信息</th><th>孵化场</th><th>养殖场</th><th>养殖批次</th><th>种蛋类型</th><th>品种</th><th>上孵日期</th><th>蛋重类型</th><th>产蛋日期</th><th>周龄</th><th>平均蛋重</th><th>实际上孵数</th><th>大蛋</th><th>畸形</th><th>破蛋</th><th>损失</th><th>孵化器</th><th>照蛋日期</th><th>受精蛋</th><th>无精蛋</th><th>死胚</th><th>臭蛋</th><th>受精率</th><th>死胚率</th><th>臭蛋率</th><th>出雏日期</th><th>健雏</th><th>弱雏</th><th>淘汰</th><th>毛蛋</th><th>损失</th><th>入键率</th><th>受健率</th><th>淘汰率</th><th>毛蛋率</th><th>受健率标准</th><th>达成率</th><th>计划号</th><th>创建人</th><th>创建时间</th><th>更新人</th><th>更新时间</th></tr></thead><tbody><tr><td colspan=\"48\">存在多条生产报表记录；业务值已脱敏</td></tr></tbody></table><nav data-role=\"pagination\">共 5 条 | 20条/页 | 上一页 | 1 | 下一页 | 前往 1 页</nav></main>", "sha256": "384948c740d8d56be9609f0c2f79b0682ac8ef2cb045dc66bdaed78a279f1060", "captured_at": "2026-09-02T12:25:00+08:00"},
+          "evidence": {"status": "available", "screenshot_paths": ["02_analysis/pc/screenshots/plan-hatching-report-list-initial-20260902.png"], "log_paths": ["02_analysis/pc/console.log"], "trace_paths": []}
+        }
+      ]
+    }
+  ]
+}

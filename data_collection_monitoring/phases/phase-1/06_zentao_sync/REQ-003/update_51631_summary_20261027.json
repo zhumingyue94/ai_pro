@@ -1,0 +1,33 @@
+{
+  "status": "validated",
+  "case_id": "TC-REQ-003-028",
+  "remote_case_id": 51631,
+  "operation": "update",
+  "remote_context": {
+    "project": 46,
+    "product": 8,
+    "module": 732
+  },
+  "title": "查看产品列表时确认产品状态值为已发布或未发布",
+  "step_count": 1,
+  "removed_text": "；不从列表状态推断未登记的版本或兼容性结果",
+  "steps": [
+    {
+      "action": "查看产品列表中的状态列，检查显示的状态值。",
+      "expected": "产品状态字段可见，状态值只能是“已发布”或“未发布”，并与产品实际状态一致。"
+    }
+  ],
+  "defects": [],
+  "readback_source": "raw_readback_51631_utf8.json",
+  "source_hashes_after": {
+    "04_testcases\\TC_REQ-003.yaml": "4bdd396743b87c98721c81da1e60f35f7cbaa39b0300db07690e4caa332df02a",
+    "04_testcases\\TC_REQ-003.md": "518307d4d449265118c4f006d8d34a25482dd64e172cce1c024270c889d4be86",
+    "05_case_review\\REV_CASE_REQ-003.yaml": "8f05de4a2793eae5c13f6d394e4945787ca6b291e544ba9526e6de7786f31243",
+    "05_case_review\\REV_CASE_REQ-003.md": "279f4da65fb1f0256f54a25377d5155309953abaf5a084941f273b1e12c625e6",
+    "05_case_review\\HANDOFF\\REQ-003_HANDOFF.md": "6eb5a87f012744066320aedbfd761bdb7e0a5a5364db7bce217cc9a0eda0a19f",
+    "04_testcases\\HANDOFF\\REQ-003_HANDOFF.md": "9dca87da0cb6dd27cc5eb177385e978713594129d268bce4d7f722975ba76341",
+    "06_zentao_sync\\REQ-003\\HANDOFF\\REQ-003_HANDOFF.md": "7c8f5efab02945a12485fbd990293af57df7f821a69c7324356abce1c3c794bc",
+    "module_case_map.json": "52ba2de908320932834818fabfd9a7e22bc19fa66de5624ea7083bc217f2885c",
+    "06_zentao_sync\\REQ-003\\raw_readback_51631_utf8.json": "9d60873ca50fa75920b6ab5aa8b249f92bc61cca5def3de1c9f0a49979fef64b"
+  }
+}

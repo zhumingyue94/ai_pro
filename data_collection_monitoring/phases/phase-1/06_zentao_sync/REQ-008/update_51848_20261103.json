@@ -1,0 +1,20 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "case_id": "TC-REQ-008-026",
+  "zentao_case_id": 51848,
+  "target": {"import_target": "project", "project_id": 46, "product_id": 8, "module_id": 746},
+  "remote_version": 5,
+  "remote_step_count": 5,
+  "validation": {
+    "readback": "validated",
+    "stable_id_update": true,
+    "delete_recreate": false,
+    "operations_explicit": true,
+    "pagination_operation_explicit": true,
+    "filter_input_operation_explicit": true,
+    "query_operation_explicit": true,
+    "page_reset_result_explicit": true
+  },
+  "definition": "将原合并操作拆分为明确的逐步操作，依次完成翻页、确认非第一页、输入筛选条件、点击查询和检查查询结果。"
+}

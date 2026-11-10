@@ -1,0 +1,15 @@
+{
+  "status": "validated",
+  "operation": "delete",
+  "project_id": 46,
+  "product_id": 8,
+  "module_id": 734,
+  "case_ids": [51689, 51690, 51691],
+  "source_case_ids": ["TC-REQ-005-004", "TC-REQ-005-005", "TC-REQ-005-006"],
+  "records": [
+    {"zentao_case_id": 51689, "status": "confirmed_not_found"},
+    {"zentao_case_id": 51690, "status": "confirmed_not_found"},
+    {"zentao_case_id": 51691, "status": "confirmed_not_found"}
+  ],
+  "policy": "逐条串行删除并立即回读；未删除重建，未创建替代用例；失败即停止。"
+}

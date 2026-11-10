@@ -1,0 +1,119 @@
+req_id: REQ-APP-026
+module: APP存发苗间库存查询
+trace:
+  req: REQ-APP-026
+  project: 种禽孵化管理系统
+  version: 4
+  status: redesigned_after_rev_case
+  tp: TEST_PLAN-REQ-APP-026
+  source_review: REV_CASE_REQ-APP-026
+common_preconditions:
+- id: app_inventory_query_access
+  name: APP存发苗间库存查询页面访问前置
+  steps:
+  - action: 打开小程序并登录，切换到正确的孵化场
+    expected: 进入当前孵化场的小程序首页
+  - action: 进入存发苗间板块，点击“库存查询”入口
+    expected: 进入库存查询页面，并确认页面标题显示“库存查询”
+cases:
+- id: TC-APP-026-001
+  common_preconditions_ref: app_inventory_query_access
+  title: 查询库存等于原库存减本次出库数量
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 库存联动
+  coverage_ids:
+  - COV-APP026-DECREMENT
+  plan_item_ids:
+  - PLAN-APP026-DECREMENT
+  atomic_purpose_ids:
+  - AP-APP026-DECREMENT
+  preconditions:
+  - 已批准发货确认和库存变更窗口
+  - 已准备变更前库存、本次自动出库数量和可回读的库存查询结果
+  steps:
+  - action: 完成一次有效发货确认并回读目标存发苗间的库存数量
+    expected: 查询到的库存数量等于变更前库存减去本次自动出库数量
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-026
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-026
+- id: TC-APP-026-007
+  common_preconditions_ref: app_inventory_query_access
+  title: 查询展示目标存发苗间库存数量
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 库存查询
+  coverage_ids:
+  - COV-APP026-QUERY
+  plan_item_ids:
+  - PLAN-APP026-QUERY
+  atomic_purpose_ids:
+  - AP-APP026-QUERY-QUANTITY
+  preconditions:
+  - 授权查询角色可用
+  - 已准备库存数量明确且大于零的存发苗间
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看目标存发苗间
+    expected: 页面展示该存发苗间的库存数量
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-026
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-026
+- id: TC-APP-026-008
+  title: 零库存显示为0
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 库存查询
+  coverage_ids:
+  - COV-APP026-ZERO
+  plan_item_ids:
+  - PLAN-APP026-ZERO
+  atomic_purpose_ids:
+  - AP-APP026-ZERO
+  preconditions:
+  - 授权查询角色可用
+  - 已准备库存为零且无在途出库的存发苗间
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看该存发苗间的库存数量
+    expected: 该存发苗间的库存数量显示为0
+  test_data:
+    page_url: null
+    data_prefix: 未提供
+  trace:
+    story: null
+    req: REQ-APP-026
+    project: 种禽孵化管理系统
+    version: 4
+    status: blocked_contract
+    tp: TEST_PLAN-REQ-APP-026
+summary:
+  case_count: 14
+  type_counts:
+    feature: 4
+    interface: 10
+  auto_counts:
+    auto: 14
+    'no': 0
+  priority_counts:
+    P1: 1
+    P2: 2
+    P3: 10
+    P4: 1

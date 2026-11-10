@@ -1,0 +1,143 @@
+﻿{
+    "id": 51695,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 734,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "输入备注名称空白，检查单行字段处理",
+    "precondition": "前置准备：\n1、已获得脱敏空白样本及不写入业务数据的观察授权。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+    "keywords": "",
+    "pri": 3,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:57:57",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-11-09 10:08:19",
+    "version": 6,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 6,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176689,
+            "step": "打开设备新增或编辑表单，在备注名称单行输入框输入包含首尾空白的测试值。",
+            "desc": "打开设备新增或编辑表单，在备注名称单行输入框输入包含首尾空白的测试值。",
+            "expect": "单行输入框显示输入值，内容在单行内完整可见。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176690,
+            "step": "使备注名称输入框失去焦点。",
+            "desc": "使备注名称输入框失去焦点。",
+            "expect": "页面按已确认规则保留、裁剪或清除首尾空白，并显示具体字段值或校验提示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 176691,
+            "step": "点击“取消”。",
+            "desc": "点击“取消”。",
+            "expect": "表单关闭，本次备注名称值未写入设备数据。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51695,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51695",
+        "text": "输入备注名称空白，检查单行字段处理",
+        "type": "root",
+        "children": [
+            {
+                "id": 176689,
+                "text": "打开设备新增或编辑表单，在备注名称单行输入框输入包含首尾空白的测试值。",
+                "type": "sub",
+                "parent": "case_51695",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176689",
+                        "text": "单行输入框显示输入值，内容在单行内完整可见。",
+                        "type": "node",
+                        "parent": 176689,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176690,
+                "text": "使备注名称输入框失去焦点。",
+                "type": "sub",
+                "parent": "case_51695",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176690",
+                        "text": "页面按已确认规则保留、裁剪或清除首尾空白，并显示具体字段值或校验提示。",
+                        "type": "node",
+                        "parent": 176690,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176691,
+                "text": "点击“取消”。",
+                "type": "sub",
+                "parent": "case_51695",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176691",
+                        "text": "表单关闭，本次备注名称值未写入设备数据。",
+                        "type": "node",
+                        "parent": 176691,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,88 @@
+plan_id: TEST_PLAN-REQ-APP-022
+title: APP测试计划 - 发货执行
+status: updated_for_complete_coverage
+source_inputs:
+- 01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx
+- 01_requirements/需求变动.md
+- 02_analysis/app/REQ-APP-022.yaml
+- 02_analysis/app/page_inventory/page.json
+- .env
+- ../../../../.agents/references/test-plan.schema.json
+- http://43.143.148.114:18885/biopark-breeding/m/
+trace:
+  story: REQ-006 发货执行
+  req: REQ-APP-022
+  project: 种禽孵化管理系统
+  version: 1
+  status: updated_for_complete_coverage
+objective: 覆盖 APP 发货执行页和发货弹窗的功能、边界、并发、自动出库联动、结果恢复、证据和自动化评估；测试用例已在下游同步交付。
+scope:
+  in_scope:
+  - /m/orders/{发货单号}/execute 执行页计划卡、汇总、进度、实际可发/累计/待分配统计。
+  - page.json 已采集的发货弹窗、列层选择、数量、备注、取消/确认和数量校验状态。
+  - 正整数、待分配数量、服务端最新数量、重复提交、并发、刷新/重查、状态和自动出库联动规划。
+  out_scope:
+  - 列表筛选和发货记录页面展示。
+  - 未在 page.json 中采集的接口路径、错误码、按钮和稳定定位器。
+  - 实际业务提交之外的 UI 脚本生成；本阶段只做自动化范围规划。
+strategy:
+- 使用等价类/边界值覆盖空、0、负数、小数、1、等于待发、超过待发和并发后超发。
+- 使用判定表组合有效列层、数量、待分配数量、计划状态、权限、库存和签收状态。
+- 使用状态转换覆盖执行默认、弹窗、校验失败、成功刷新、发货中和已发货。
+- 使用 Pairwise/2-way 评估计划状态、列、层、数量类别、备注长度、权限和网络结果，并约束无负库存和服务端最新数量校验。
+- Playwright Python 只规划 exec-page、plan-list、ship-dialog 及 page.json 已存在 element_id；优先 combobox/placeholder/text/aria 定位，列层空值校验是原型缺陷，不能当作已实现事实。
+- Web 证据规划为提交前后脱敏截图、状态、DOM、响应/日志按需和 trace；确认发货会变更数据，正式执行必须经授权并登记清理状态。
+environment:
+  client: APP移动端Web/移动端模拟
+  os: win32；正式执行记录实际客户端版本
+  browser: Chromium headed；自动化规划使用 Playwright Python，禁止固定等待
+  base_url: ${UI_TEST_URL}
+  page_path: /m/orders/{发货单号}/execute；原型路由 /m/orders/{发货单号}/execute
+  portal_entry: 种禽孵化管理系统 / APP / 发货执行
+  login: 原型无需登录；正式环境凭据仅从 .env 或运行时环境读取，不写入计划、日志或证据
+data:
+  required:
+  - 待分配数量大于零、为零、已发货和发货中计划。
+  - 园区基础数据中的有效列层及空列/空层边界。
+  - 数量边界、备注空值/15字/超长、服务端数量变化和并发提交样本。
+  - 上孵计划批次、存发苗间关联、库存充足/不足和可回读出库记录。
+  preparation: 发货/库存责任人准备脱敏数据、授权发货角色、并发窗口、幂等验证和清理方案；任何确认发货必须记录责任人、请求结果和清理状态，禁止把凭据写入证据。
+roles:
+- 测试：执行只读验证和经授权的数据变更验证，采集脱敏证据。
+- 发货业务负责人：确认数量、位置、状态和自动出库规则。
+- 研发：确认服务端最新数量、幂等、并发、刷新和错误契约。
+- 库存服务负责人：确认出库分配、库存扣减和不允许负库存。
+- 平台权限/实施：准备角色和环境。
+dependencies:
+- 园区列层基础数据
+- 发货单和上孵计划服务
+- 存发苗间库存与自动出库服务
+- 外部签收/业务状态服务
+priority: P0：数量校验、确认主链路、状态刷新、防重复和不超发；P1：列层/备注/库存联动；P2：兼容性和体验
+risks:
+- page.json 标记列层空值校验为原型缺陷；不得将 app022-validation-no-position 作为通过事实。
+- mock 成功提示不等同真实落库、出库或库存扣减。
+- 重复点击、并发和刷新未知结果可能造成重复记录或超发。
+- 未采集的接口路径、字段和错误码必须保留为待确认，不得编造。
+open_questions:
+- 发货幂等键、重复提交错误码和刷新失败重查协议。
+- 列层空值的后端校验、错误提示及服务端列层数据契约。
+- 自动出库失败补偿、分配明细、库存并发一致性和清理方式。
+entry_criteria:
+- 需求、变动、REQ-APP-022.yaml、page.json、.env 和 Schema 可读取。
+- page.json input_missing/partial_corrected、列层校验缺失和 mock 边界已登记。
+- 授权发货角色、脱敏数据、并发验证和清理责任已确认，未确认项转阻塞。
+exit_criteria:
+- 数量/位置/备注/状态/并发/库存联动范围和证据要求完整。
+- 冒烟、定向、全量只保留计划级内容，未生成测试点、用例或脚本。
+- YAML 通过 Schema，变更责任和清理状态要求已交接。
+evidence:
+- 02_analysis/app/page_inventory/page.json：app-chick-shipment-execute、app022-exec-default、app022-ship-dialog、app022-validation-no-quantity、app022-validation-exceed-quantity、app022-validation-no-position、app022-remark-15-limit、app022-execute-shipped、app022-execute-bl02、app022-bl02-ship-dialog。
+- element_id：exec-page、exec-summary-card、exec-progress、exec-stat-actual、exec-stat-accum、exec-stat-pending、plan-list、plan01-record-btn、plan01-ship-btn、plan02-ship-btn、ship-dialog、ship-dialog-column、ship-dialog-row、ship-dialog-quantity、ship-dialog-remark、ship-dialog-cancel、ship-dialog-confirm、ship-dialog-error-no-qty、ship-dialog-error-exceed、ship-success-toast、ship-dialog-remark-truncated。
+- 既有截图：02_analysis/app/page_inventory/screenshots/req-app-022-execute-default.png、req-app-022-ship-dialog.png、req-app-022-validation-error-no-quantity.png、req-app-022-validation-exceed-quantity.png、req-app-022-no-position-validation.png、req-app-022-remark-15.png、req-app-022-execute-shipped-full.png。
+- 正式执行对数据变更保存脱敏前后状态、回读结果、清理记录；不得保存凭据或 Cookie。
+suites:
+  Smoke: 规划进入执行页、计划统计可见、合法计划弹窗可达、数量正整数校验和取消回退；不提交未授权业务数据。
+  Targeted: 规划数量/列层/备注边界、待分配上限、服务端刷新、重复/并发、状态更新、自动出库、不负库存和失败重查。
+  Full: 规划全部已采集执行状态、判定表、状态转换、Pairwise 组合、跨服务一致性、权限/异常/兼容性及与列表和记录模块回归。
+next_stage: testcase-generation-agent

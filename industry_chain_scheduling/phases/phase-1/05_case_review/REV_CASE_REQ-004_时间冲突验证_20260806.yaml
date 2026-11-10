@@ -1,0 +1,246 @@
+req_id: REQ-004_时间冲突验证_20260806
+module: 制定排程
+feature: 栋舍智能分配（智能分配弹窗·时间冲突提示）
+source_tc: 04_testcases/TC_REQ-004_时间冲突验证_20260806.yaml
+source_tp: 03_testpoints/TP_REQ-004_时间冲突验证_20260806.yaml
+reviewed_at: '2026-08-06'
+reviewer: 用例评审（机械门禁 check_testcase_executability.py --tc + 人工/规则复核）
+gate_passed: true
+gate_note: 机械可执行性门禁通过（errors=0）。存在 1 项「执行前须处理」建议（C04 非二元预期，应标研究中或拆二分枝） 与 1 项措辞告警（C10/E08，假阳性），均不阻塞门禁。标题脱敏可执行、TP→TC
+  1:1 覆盖均达标。
+exec_check:
+  command: python scripts/check_testcase_executability.py --project <proj> --tc 04_testcases/TC_REQ-004_时间冲突验证_20260806.yaml
+  errors: 0
+  warnings: 1
+  exit_code: 0
+checks:
+- id: CG5
+  name: tp_to_tc_coverage
+  passed: true
+  detail: TP-004-C01~C11 各映射 1 条用例（TC-004-C01~C11），1:1 覆盖，无遗漏、无多余。
+- id: E01-E03
+  name: placeholder_blacklist
+  passed: true
+  detail: 无占位/模板机步骤；无空话预期；前置条件无 AUTO测试_勿用_ 等治理口号（符合项目约定，前缀不写入前置）。
+- id: E06
+  name: step_fingerprint_collision
+  passed: true
+  detail: C01~C03/C06~C07 虽骨架同构，但补栏日/上一vs下一计划在步骤 action 中差异化，指纹不碰撞；C05 vs C08 同理。
+- id: E07
+  name: title_assertion_in_body
+  passed: true
+  detail: 标题中的具体断言要素（时间冲突/不可分配/可分配/查看冲突段位/标红失败）均落入步骤或预期正文，遮标题后可独立裁决。
+- id: E08
+  name: consistency_wording
+  passed: false
+  detail: TC-004-C10 标题含「一致」，但步骤3预期用「等于」（非「一致/相同」字面），触发 E08 告警。属假阳性，措辞可优化，不阻塞。
+issues:
+- id: F1
+  severity: resolved
+  code: MODEL_CLARIFIED
+  case_id: TC-004-C04
+  title: 候选补栏日=A段1结束次日(2027-02-17)空栏计入冲突窗仍冲突
+  finding: 用户已明确规则：空栏计入冲突窗，每段以养殖天数+空栏天数整体占用窗。据此 C04 由非二元预期收敛为确定性冲突 （N段1整窗[2/17–3/6]
+    与 A段1整窗[2/3–2/20] 在 [2/17–2/20] 重叠），不再需要二选一或拆分。按用户要求未拆分，保持单条。
+  resolution: 已更新 C04 标题/步骤/预期为确定性冲突；同步修正 TP-004-C04 verify_object 与分析文档。门禁不受影响。
+  blocking: false
+- id: F2
+  severity: warning
+  code: E08
+  case_id: TC-004-C10
+  title: 智能推荐统计「存在冲突 N」与实际冲突栋数一致
+  finding: 标题含「一致」，步骤3预期用「实际冲突卡片数量等于摘要中的 N 值」触发 E08 告警（机械检查器只认「一致/相同」字面）。
+  recommendation: 步骤3预期改为『…实际冲突卡片数量等于摘要中的 N 值，两者一致』即可消除告警。属措辞优化，不阻塞。
+  blocking: false
+- id: F3
+  severity: info
+  code: STRUCT
+  case_id: TC-004-C01~C03,TC-004-C06,C07
+  title: 冲突类用例骨架同构
+  finding: C01/C02/C03（上一计划）与 C06/C07（下一计划）步骤与预期骨架一致，仅补栏日与「上一/下一计划」措辞不同。 这是边界+等价类测试的合理复用；每条日期不同、核心断言（时间冲突+不可分配，或
+    可分配）可独立裁决， 未触发 E06 指纹碰撞，符合标题脱敏原则。
+  recommendation: 保持。落执行时以「时间冲突+不可分配」为硬断言，段位文案「据实记录」作为备注即可。
+  blocking: false
+- id: F4
+  severity: info
+  code: DATA
+  case_id: 全部（A/C 基准数据）
+  title: 基准数据创建与登记
+  finding: 前置「已存在上一计划A / 下一计划C」为写操作数据，按 AGENTS.md 须用 AUTO测试_勿用_ 前缀自造， 执行前先 registry
+    查重 + 实时页面核验，执行后在 07_ui_automation/data/REQ-004.yaml 登记创建/复用/清理状态。 用例前置未写前缀口号（符合规范），此条为执行阶段注意项，非用例缺陷。
+  recommendation: 执行阶段落实；本轮评审不涉及造数。
+  blocking: false
+- id: F5
+  severity: info
+  code: PRIORITY
+  case_id: 全部
+  title: 优先级与测点一致
+  finding: 用例优先级完全沿用测点（C01~C10=P2，C11=P3）。分析设计稿原标 P1 的场景已按项目「业务规则校验=P2」约定下调。 当前 P2
+    与项目优先级规则一致，不强制升 P1。
+  recommendation: 保持；若产品强调冲突检测为核心阻断路径，可评估个别升 P1，但非必需。
+  blocking: false
+- id: F6
+  severity: info
+  code: COVERAGE
+  case_id: 全部
+  title: 覆盖确认
+  finding: TP→TC 1:1 完整覆盖；边界（==、空栏计入、安全空窗）、负向（C05/C08）、多宰杀线（C09）、统计一致（C10）、段位明细（C11）均齐。
+  recommendation: 保持；上轮遗留可选缺口 S4（仅段2/段3 单段冲突）、S5（C09/C10 具体可造数据日期）本轮为用例评审不新增，记录待办。
+  blocking: false
+- id: F7
+  severity: info
+  code: DATE_CORRECTED
+  case_id: TC-004-C08
+  title: 候选处于A/C双计划安全空窗末端(2027-03-05)不冲突
+  finding: 原 C08 用 2027-03-11（"较下一计划-1天"）在空栏计入的整体占用窗模型下实际会与 C 段1整窗[3/25–4/11]重叠 （N段1[3/11–3/28]
+    ∩ [3/25–3/28]）→ 冲突，与"不冲突"预期矛盾。已据整窗扫描将 C08 日期改为 A/C 安全空窗上界 2027-03-05（整段无同段重叠，且与
+    C 段3 留 1 天间隔）。
+  resolution: C08 日期 03-11 → 03-05，标题/步骤同步更新；TP-004-C08 与分析文档一致修正。
+  blocking: false
+summary:
+  case_count: 11
+  pass_mechanical: true
+  must_fix_before_exec: 0
+  warnings: 1
+  infos: 5
+csv_path: null
+review_status: stale
+csv_invalidation:
+  status: deleted
+  previous_csv_path: 05_case_review/004_时间冲突验证_测试用例.csv
+  reason: 测试用例 CSV 已按项目清理计划删除；历史来源不作为当前有效产物，需重新评审后再导出。
+csv_note: 测试用例 CSV 已按项目清理计划删除；需重新评审通过后再导出，历史文件不作为当前有效产物。
+trace:
+  project: 产业链生产排程系统
+  status: approved_zentao_type_sync_20260813
+  independent_namespace: true
+  note: 独立交付物，不影响原 TP_REQ-004.yaml / TC_REQ-004.yaml / REV_CASE_REQ-004.yaml。
+  source: null # original ZenTao evidence deleted by cleanup
+  source_sha256:
+    tc: 94dcb23be72a102a29223265bab4abb204c70a485cd1a72c2247290df0fd6a3c
+auto_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  case_ids:
+  - TC-004-C01
+  - TC-004-C02
+  - TC-004-C03
+  - TC-004-C04
+  - TC-004-C05
+  - TC-004-C06
+  - TC-004-C07
+  - TC-004-C08
+  - TC-004-C09
+  - TC-004-C10
+  - TC-004-C11
+  zentao_case_ids:
+  - 48866
+  - 48867
+  - 48868
+  - 48869
+  - 48870
+  - 48871
+  - 48872
+  - 48873
+  - 48874
+  - 48875
+  - 48876
+  cases_reviewed: 11
+  delta_passed: true
+  local_suitability_assessment: not_performed
+  type_source_conflicts: []
+  raw_auto_field_mismatches:
+  - 48866
+  - 48867
+  - 48868
+  - 48869
+  - 48870
+  - 48871
+  - 48872
+  - 48873
+  - 48874
+  - 48875
+  - 48876
+  results:
+  - case_id: TC-004-C01
+    zentao_case_id: 48866
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C02
+    zentao_case_id: 48867
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C03
+    zentao_case_id: 48868
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C04
+    zentao_case_id: 48869
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C05
+    zentao_case_id: 48870
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C06
+    zentao_case_id: 48871
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C07
+    zentao_case_id: 48872
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C08
+    zentao_case_id: 48873
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C09
+    zentao_case_id: 48874
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C10
+    zentao_case_id: 48875
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+  - case_id: TC-004-C11
+    zentao_case_id: 48876
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    verdict: pass
+field_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  registered_cases: 847
+  mapping: local.type=zentao.type; local.auto=zentao.auto
+  local_suitability_assessment: not_performed_for_registered_cases
+  pending_registry_cases: 5
+  remote_write: false
+  verdict: pass
+csv_source:
+  status: deleted
+  tc_sha256: 94dcb23be72a102a29223265bab4abb204c70a485cd1a72c2247290df0fd6a3c
+  review_sha256: fe37266cc1271c651a9bc13884f0bc030200868f7c91345e0b5cee226e939496
+  generated_at: '2026-08-13T06:53:57.861474+00:00'

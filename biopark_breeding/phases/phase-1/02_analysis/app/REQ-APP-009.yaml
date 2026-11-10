@@ -1,0 +1,124 @@
+schema_version: "1.0"
+req_id: REQ-APP-009
+module_name: "二级蛋库 / 出入库记录"
+zentao_module_id: 571
+platform: app
+analysis_status: analyzed_from_docx_baseline_and_readonly_prototype
+scope:
+  object_scope: 二级蛋库
+  object_scope_evidence: inferred
+  object_scope_basis: "基线将通用出入库记录页面分配到二级蛋库；原型页面使用通用记录名称，首页仅证明二级蛋库入口存在。"
+  included: "出入库记录列表、搜索、筛选、筛选结果、详情的只读查询契约。"
+  excluded: "出入库写入、入库/出库确认、接口实现、权限实现和数据持久化实现。"
+evidence_legend:
+  observed: "实时原型在 networkidle 后的渲染 DOM、页面文本和控件。"
+  static: "DOCX 页面表、Axure 页面树、静态链接或保存的 DOM/page_text。"
+  inferred: "按模块基线和通用页面命名归纳。"
+  open_question: "材料未明确，需确认。"
+inputs:
+  - path: 01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx
+    type: docx
+    sections: ["5.42 出入库记录列表", "5.43 出入库记录搜索", "5.44 出入库记录筛选", "5.45 筛选结果", "5.46 出入库详情"]
+    evidence_level: static
+  - path: 01_requirements/app/模块拆分清单.md
+    type: baseline
+    sections: ["REQ-APP-009", "D-04", "实施边界"]
+    evidence_level: static
+  - path: 01_requirements/app/axure_map.md
+    type: axure_map
+    sections: ["P042", "P043", "P044", "P045", "P046"]
+    evidence_level: static
+  - path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/
+    type: readonly_evidence_run
+    evidence_level: static
+  - path: http://127.0.0.1:5500/
+    type: live_prototype
+    viewport: "430x932"
+    wait: networkidle
+    browser_mode: "headless=False"
+    evidence_level: observed
+source_pages:
+  - {page_id: P042, name: 出入库记录列表, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/出入库记录列表.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-042.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-042.html}]}
+  - {page_id: P043, name: 出入库记录搜索, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/出入库记录搜索.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-043.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-043.html}]}
+  - {page_id: P044, name: 出入库记录筛选, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/出入库记录筛选.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-044.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-044.html}]}
+  - {page_id: P045, name: 筛选结果, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/筛选结果_1.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-045.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-045.html}]}
+  - {page_id: P046, name: 出入库详情, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/出入库详情.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-046.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-046.html}]}
+page_contracts:
+  - page_id: P042
+    name: 出入库记录列表
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: observed, detail: "首页实时文本显示二级蛋蛋库-出入库记录；基线将通用页面分配到本模块。"}, return: {level: static, detail: "静态链接可返回首页/搜索/筛选/详情，实时未复现。"}}
+    query_area: {level: observed, items: [搜索, 筛选, "二级蛋库对象选择（原型未明确）", "自动/手动", "种蛋上孵/销售", "今日/昨日/近一周/近一个月/近3个月/近1年", "入库/出库"], open_question: "默认库、组合逻辑、分页排序未明确。"}
+    list_or_cards: {level: observed, items: [数量, 入库/出库, 计划号, 库位号, 周龄, 平均蛋重/类型, 产蛋日期, 时间, 原因, 种蛋类型, 养殖场-批次-品种, 自动/手动]}
+    form: {level: observed, detail: "未观察到列表内联编辑表单；筛选在 P044。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [搜索, 筛选], static: [进入出入库详情, 返回首页]}
+    status_and_transitions: {observed: [入库, 出库, 自动, 手动], inferred: "记录类型/方式不是库存状态机。", open_question: "记录生成、冲正、权限和持久化未明确。"}
+  - page_id: P043
+    name: 出入库记录搜索
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由 P042 搜索入口进入。"}, return: {level: static, detail: "有结果复用记录卡片，无结果有提示；实际点击未验证。"}}
+    query_area: {level: observed, items: [搜索输入框, 搜索, 历史搜索, 计划号, 任务号, 库位号, 养殖场, 批次, 品种], open_question: "匹配算法、历史搜索持久化和异常提示未明确。"}
+    list_or_cards: {level: observed, detail: "有结果/无结果文本及记录卡片；实时 DOM 存在 search input。"}
+    form: {level: observed, detail: "仅搜索输入。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [搜索, "选择历史搜索词"], static: [进入详情, 返回列表]}
+    status_and_transitions: {observed: [搜索有结果, 搜索无结果], open_question: "网络失败、权限不足提示未明确。"}
+  - page_id: P044
+    name: 出入库记录筛选
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由 P042 筛选入口进入。"}, return: {level: static, detail: "确认进入 P045，重置恢复默认；实际点击未执行。"}}
+    query_area: {level: observed, items: [库, 出入库日期, 养殖场, 品种, 蛋重类型, 出/入库, 出入库方式, 出入库原因, 确认, 重置], detail: "实时 DOM 存在日期、文本和选择控件。"}
+    list_or_cards: {level: observed, detail: "展示筛选前记录卡片预览。"}
+    form: {level: observed, items: [库选择, 日期范围, 养殖场, 品种, 蛋重类型, 出入库类型, 方式, 原因]}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [确认, 重置], static: [进入筛选结果, 返回列表/搜索]}
+    status_and_transitions: {observed: [全部, 入库, 出库, 自动, 手动], open_question: "组合关系、默认值和空筛选行为未明确。"}
+  - page_id: P045
+    name: 筛选结果
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由 P044 确认进入。"}, return: {level: static, detail: "静态链接可返回列表/搜索/筛选或详情，实时未验证。"}}
+    query_area: {level: observed, items: [搜索, 筛选, "二级蛋库对象标题未明确"], detail: "未观察到可编辑表单。"}
+    list_or_cards: {level: observed, detail: "复用 P042 记录卡片并展示无结果文本。"}
+    form: {level: observed, detail: "未观察到内联编辑表单。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [搜索, 筛选], static: [进入详情, 返回列表]}
+    status_and_transitions: {observed: [入库, 出库, 自动, 手动], open_question: "筛选条件回退及分页未明确。"}
+  - page_id: P046
+    name: 出入库详情
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由记录列表/搜索/筛选结果进入。"}, return: {level: static, detail: "返回记录列表；实时未复现。"}}
+    query_area: {level: observed, detail: "未观察到查询区。"}
+    list_or_cards: {level: observed, items: [出入库信息, 种蛋信息, 出/入库, 数量, 方式, 原因, 时间, 计划号, 备注, 操作人, 仓库, 库位, 孵化场]}
+    form: {level: observed, detail: "未观察到可编辑字段。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [复制], static: [复制计划号, 返回记录列表]}
+    status_and_transitions: {observed: [入库, 出库, 自动, 手动], open_question: "计划号、备注、操作人和不可篡改规则未明确。"}
+interfaces:
+  - {name: movement_record_query, direction: read, evidence_level: open_question, observed_contract: "按二级蛋库读取记录列表/详情及筛选结果。", endpoint_or_protocol: "未观察到接口地址、鉴权、分页或排序定义。", candidate_inputs: [二级蛋库标识, 关键词, 计划号, 任务号, 库位号, 养殖场, 批次, 品种, 日期, 出入库类型, 方式, 原因], candidate_outputs: [记录列表, 记录详情, 空结果状态]}
+  - {name: movement_record_detail, direction: read, evidence_level: open_question, observed_contract: "P046 读取单条记录及种蛋、库位信息。", endpoint_or_protocol: "未观察到接口定义。"}
+cross_module_refs:
+  - {ref: REQ-APP-001, module: 首页, zentao_module_id: 556, relation: entry, evidence_level: observed, detail: "首页实时文本显示二级蛋蛋库-出入库记录。"}
+  - {ref: REQ-APP-008, module: 二级蛋库 / 库存查询, zentao_module_id: 570, relation: source_navigation, evidence_level: static}
+  - {ref: REQ-APP-003, module: 孵化任务 / 种蛋照蛋, zentao_module_id: 565, relation: possible_outbound_reason, evidence_level: inferred, detail: "记录出现种蛋上孵，但真实关联需确认。"}
+  - {ref: REQ-APP-010, module: 二级蛋库 / 盘点记录, zentao_module_id: 572, relation: sibling_record, evidence_level: static}
+business_rules:
+  - {id: BR-009-01, rule: "记录区分入库/出库和自动/手动，并展示数量、库位、蛋信息、时间、原因。", evidence_level: observed}
+  - {id: BR-009-02, rule: "详情补充计划号、备注、操作人和场区；计划号是否可空由原型注释表达。", evidence_level: observed}
+  - {id: BR-009-03, rule: "二级蛋库对象边界来自基线，通用页面未证明数据隔离。", evidence_level: inferred}
+  - {id: BR-009-04, rule: "本次仅核对查询页面，不执行出入库写操作。", evidence_level: observed}
+  - {id: BR-009-05, rule: "记录生成、冲正、删除、权限、异常和持久化未定义。", evidence_level: open_question}
+open_questions:
+  - {id: OQ-009-01, question: "二级蛋库与合格蛋库是否按库 ID/类型隔离记录？", impact: high}
+  - {id: OQ-009-02, question: "记录与照蛋任务、库存、盘点的关联键及一致性规则是什么？", impact: high}
+  - {id: OQ-009-03, question: "自动/手动、原因枚举、计划号必填条件和可见权限是什么？", impact: high}
+  - {id: OQ-009-04, question: "日期、分页、排序、搜索、空结果和异常如何处理？", impact: medium}
+  - {id: OQ-009-05, question: "是否允许撤销/冲正，详情是否支持复制或导出？", impact: medium}
+analysis_boundary:
+  read_only: true
+  prohibited_actions: [新增, 编辑, 删除, 入库, 出库, 盘点确认, 任务执行, 远程数据写入]
+  not_claimed: [接口已实现, 权限已实现, 记录生成规则已确认, 页面内导航已真实点击验证]
+handoff:
+  next_owner: 产品/研发/测试设计
+  deliverable_use: "先确认二级蛋库对象隔离和记录生成规则，再补充接口/权限/异常契约。"
+  generated_files: [02_analysis/app/REQ-APP-009.yaml, 02_analysis/app/REQ-APP-009_二级蛋库-出入库记录.md]

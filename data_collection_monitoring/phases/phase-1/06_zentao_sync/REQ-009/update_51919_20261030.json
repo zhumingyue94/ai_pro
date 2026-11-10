@@ -1,0 +1,19 @@
+{
+  "req_id": "REQ-009",
+  "case_id": "TC-REQ-009-041",
+  "remote_case_id": 51919,
+  "operation": "update",
+  "execution_mode": "real_update",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 747},
+  "status": "validated",
+  "readback": {
+    "title": "删除已停止任务时确认确认层和列表结果",
+    "step_count": 5,
+    "step_3": {"action": "再次打开弹窗并确认删除。", "expected": "页面显示删除处理反馈。"},
+    "step_5": {"action": "核对目标任务。", "expected": "确认删除成功后目标任务不再出现在列表中。"},
+    "product": 8, "project": 46, "module": 747
+  },
+  "registry": "registered",
+  "source": "04_testcases/TC_REQ-009.yaml",
+  "source_hash": "ace1c1fa5cd4fe1ba984ee31e1087ab49a3e836ded61f9c6ef27f363433c5010"
+}

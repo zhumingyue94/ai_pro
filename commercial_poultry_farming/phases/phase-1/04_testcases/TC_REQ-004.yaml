@@ -1,0 +1,3046 @@
+req_id: REQ-004
+module: 死淘巡检
+zentao_module_id: 653
+zentao_product_id: 5
+zentao_project_id: 20
+page_url: /biopark-poultry/production/death-inspection
+trace:
+  req: REQ-004
+  tp: TP_REQ-004
+  project: 商品禽养殖
+  version: 1
+  status: draft
+  source_review: 04_testpoint_review/REV_REQ-004.yaml
+  gate_note: 测点评审已通过；本阶段未跑用例自检/未写 CSV；对齐需求变动后测点
+  tp_version: 4
+summary:
+  case_count: 106
+  priority_counts:
+    P1: 22
+    P2: 56
+    P3: 25
+    P4: 3
+  feature_counts:
+    查询: 12
+    表格: 30
+    新增巡检: 32
+    巡检记录: 23
+    导出: 6
+  type_counts:
+    feature: 103
+    auto: 3
+  auto_counts:
+    auto: 95
+    'no': 11
+cases:
+- id: TC-004-01
+  tp_id: TP-004-01
+  title: 查询区包含「巡检日期」条件控件
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 查看查询区对应控件
+    expected: 查询区可见可操作的巡检日期条件
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-01
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48364
+  auto: 'no'
+- id: TC-004-02
+  tp_id: TP-004-02
+  title: 「巡检日期」为日期范围选择控件
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：巡检日期可打开面板并选择起止日期
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-02
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48365
+  auto: auto
+- id: TC-004-03
+  tp_id: TP-004-03
+  title: 进入「死淘巡检」页 → 巡检日期默认最近7天
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 查看查询区对应控件
+    expected: 巡检日期起止等于进入页面时最近7天（含当日规则与产品一致）；须覆盖标题断言：「死淘巡检」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-03
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48366
+  auto: auto
+- id: TC-004-04
+  tp_id: TP-004-04
+  title: 默认最近7天条件下点击「查询」→ 列表仅展示该范围内记录
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条养殖日期落在默认最近7天内；范围外记录不出现；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-04
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48367
+  auto: auto
+- id: TC-004-05
+  tp_id: TP-004-05
+  title: 自定义巡检日期范围后点击「查询」→ 列表按所选起止日期过滤
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表养殖日期均在所选起止日内（含边界日）；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-05
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48368
+  auto: auto
+- id: TC-004-06
+  tp_id: TP-004-06
+  title: 选择跨月巡检日期范围后点击「查询」→ 列表按跨月范围过滤
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：跨月起止日内记录均可查出，起止外不出现；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-06
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48369
+  auto: auto
+- id: TC-004-07
+  tp_id: TP-004-07
+  title: 设置巡检日期后必须点击「查询」才刷新列表结果
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：仅改条件未点查询时列表不按新条件变化；点击查询后变化
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-07
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48370
+  auto: auto
+- id: TC-004-08
+  tp_id: TP-004-08
+  title: 组合条件无匹配数据时列表呈现空态
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：无匹配时列表为空态且页面无报错
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-08
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48371
+  auto: auto
+- id: TC-004-09
+  tp_id: TP-004-09
+  title: 点击「重置」→ 巡检日期恢复默认最近7天并刷新列表
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 将查询条件改为非默认值
+    expected: 条件已变更
+  - action: 点击「重置」
+    expected: 重置后日期恢复默认最近7天，列表按默认条件刷新
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-09
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48372
+  auto: auto
+- id: TC-004-10
+  tp_id: TP-004-10
+  title: 巡检日期范围内首日存在数据 → 查询可命中该日记录
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：起止日均选范围内首日时，该日记录出现在列表
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-10
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48373
+  auto: auto
+- id: TC-004-11
+  tp_id: TP-004-11
+  title: 巡检日期范围内末日存在数据 → 查询可命中该日记录
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：起止日均选范围内末日时，该日记录出现在列表
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-11
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48374
+  auto: auto
+- id: TC-004-12
+  tp_id: TP-004-12
+  title: 自定义超出默认7天的历史区间 → 查询可返回该区间内记录
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  steps:
+  - action: 查看查询区对应控件
+    expected: 所选历史区间内有数据则列表展示，不强制限制在默认7天
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-12
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48375
+  auto: auto
+- id: TC-004-13
+  tp_id: TP-004-13
+  title: 列表字段依次为：养殖日期、栋舍、栋舍养殖批次、日龄、死亡数量、淘汰数量、死淘数量、巡检次数、操作列
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中已有死淘巡检数据
+  steps:
+  - action: 从左到右核对列表表头字段顺序
+    expected: 表头从左到右依次可见：养殖日期、栋舍、栋舍养殖批次、日龄、死亡数量、淘汰数量、死淘数量、巡检次数、操作列；末列为操作列
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-13
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48376
+  auto: auto
+- id: TC-004-14
+  tp_id: TP-004-14
+  title: 列表按「养殖日期+栋舍」分组展示父行
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 同一养殖日期+栋舍聚合为一条父行
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-14
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48377
+  auto: auto
+- id: TC-004-15
+  tp_id: TP-004-15
+  title: 点击父行展开 → 展示该栋舍下各段区子行
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 展开后可见段区子行（如1段/2段/3段），子行归属正确
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-15
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48378
+  auto: auto
+- id: TC-004-16
+  tp_id: TP-004-16
+  title: 点击父行折叠 → 段区子行隐藏
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 折叠后子行不可见，父行仍保留
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-16
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48379
+  auto: auto
+- id: TC-004-17
+  tp_id: TP-004-17
+  title: 段区子行「段区」列展示对应段区名称
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 子行段区值为该行所属段区，与填报数据一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-17
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48380
+  auto: auto
+- id: TC-004-18
+  tp_id: TP-004-18
+  title: 父行「死亡数量」= 各段区子行死亡数量之和
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 父行死亡数量等于其下全部子行死亡数量合计
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-18
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48381
+  auto: auto
+- id: TC-004-19
+  tp_id: TP-004-19
+  title: 父行「淘汰数量」= 各段区子行淘汰数量之和
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 父行淘汰数量等于其下全部子行淘汰数量合计
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-19
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48382
+  auto: auto
+- id: TC-004-20
+  tp_id: TP-004-20
+  title: 父行「死淘数量」= 父行死亡数量 + 父行淘汰数量
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 父行死淘数量等于死亡数量与淘汰数量之和
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-20
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48383
+  auto: auto
+- id: TC-004-21
+  tp_id: TP-004-21
+  title: 段区子行「死淘数量」= 该行死亡数量 + 淘汰数量
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 每一子行死淘数量等于该行死亡+淘汰
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-21
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48384
+  auto: auto
+- id: TC-004-22
+  tp_id: TP-004-22
+  title: 父行「巡检次数」等于该栋舍当日各段区巡检次数汇总展示值
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 父行巡检次数与子行巡检次数汇总一致（口径以页面汇总逻辑为准）
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-22
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48385
+  auto: auto
+- id: TC-004-23
+  tp_id: TP-004-23
+  title: 列表展示「栋舍养殖批次」列
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 列表可见栋舍养殖批次列并可取值或为空
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-23
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48386
+  auto: auto
+- id: TC-004-24
+  tp_id: TP-004-24
+  title: 补栏确认已生成（含待发货）→ 「栋舍养殖批次」展示 PC-yyyy-栋舍编号-xx
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 存在已生成补栏确认（含待发货）且已分配批次的栋舍巡检数据
+  steps:
+  - action: 查看列表「栋舍养殖批次」
+    expected: 展示 PC-yyyy-栋舍编号-xx，与 REQ-003 生成确认时分配值一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-24
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48387
+  auto: auto
+- id: TC-004-25
+  tp_id: TP-004-25
+  title: 补栏确认待发货且已分配批次 → 「栋舍养殖批次」非空展示
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 存在补栏确认待发货且已分配批次的栋舍
+  steps:
+  - action: 查看对应行「栋舍养殖批次」
+    expected: 待发货记录批次列非空且格式正确，不报错
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-25
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48388
+  auto: auto
+- id: TC-004-26
+  tp_id: TP-004-26
+  title: 「日龄」展示为当前养殖天数且不可手改，从补栏日期开始算起
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 日龄只读展示，起算日为补栏日期，与当前养殖天数一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-26
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48389
+  auto: auto
+- id: TC-004-27
+  tp_id: TP-004-27
+  title: 列表死亡/淘汰/死淘数量与填报汇总一致，同一天同一个栋舍养殖批次多次填报，数据累加
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 同日同栋舍养殖批次多次填报后，列表死亡/淘汰/死淘为各次填报累加值
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-27
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48390
+  auto: auto
+- id: TC-004-28
+  tp_id: TP-004-28
+  title: 行内操作列提供「巡检记录」入口
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 父行操作列可见「巡检记录」可点击入口
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-28
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48391
+  auto: auto
+- id: TC-004-29
+  tp_id: TP-004-29
+  title: 工具栏可见「新增巡检」「巡检记录」「导出」入口
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 执行导出相关核对
+    expected: 列表工具栏同时可见上述三个按钮；须覆盖标题断言：「新增巡检」、「巡检记录」、「导出」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-29
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48392
+  auto: auto
+- id: TC-004-30
+  tp_id: TP-004-30
+  title: 同一养殖日期下多栋舍各自独立父行
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 同日不同栋舍不合并为同一父行
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-30
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48393
+  auto: auto
+- id: TC-004-31
+  tp_id: TP-004-31
+  title: 仅有死亡无淘汰时 → 死淘数量等于死亡数量
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 淘汰=0 时死淘=死亡
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-31
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48394
+  auto: auto
+- id: TC-004-32
+  tp_id: TP-004-32
+  title: 仅有淘汰无死亡时 → 死淘数量等于淘汰数量
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 死亡=0 时死淘=淘汰
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-32
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48395
+  auto: auto
+- id: TC-004-33
+  tp_id: TP-004-33
+  title: 死亡与淘汰均为 0 → 死淘数量为 0
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 死亡=0 且淘汰=0 时死淘=0
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-33
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48396
+  auto: auto
+- id: TC-004-34
+  tp_id: TP-004-34
+  title: 列表分页默认展示第1页数据，每页条数与系统默认一致
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 数据量足以触发分页
+  steps:
+  - action: 操作分页控件
+    expected: 默认第1页，每页条数符合系统默认
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-34
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48397
+  auto: 'no'
+- id: TC-004-35
+  tp_id: TP-004-35
+  title: 点击分页「下一页」，列表展示下一页数据
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 数据量足以触发分页
+  steps:
+  - action: 操作分页控件
+    expected: 展示下一页数据，页码递增
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-35
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48398
+  auto: 'no'
+- id: TC-004-36
+  tp_id: TP-004-36
+  title: 点击分页「上一页」，列表展示上一页数据
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 数据量足以触发分页
+  steps:
+  - action: 操作分页控件
+    expected: 展示上一页数据，页码递减
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-36
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48399
+  auto: 'no'
+- id: TC-004-37
+  tp_id: TP-004-37
+  title: 切换每页显示条数后，列表按新条数重新分页展示
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 数据量足以触发分页
+  steps:
+  - action: 操作分页控件
+    expected: 切换后按新每页条数刷新列表
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-37
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48400
+  auto: 'no'
+- id: TC-004-38
+  tp_id: TP-004-38
+  title: 分页区总条数、当前页码与查询结果一致
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 数据量足以触发分页
+  steps:
+  - action: 操作分页控件
+    expected: 总条数、当前页码与实际查询结果一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-38
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48401
+  auto: 'no'
+- id: TC-004-39
+  tp_id: TP-004-39
+  title: 仅一页数据时分页「上一页」「下一页」不可用或隐藏
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 数据量足以触发分页
+  steps:
+  - action: 操作分页控件
+    expected: 首页末页时上一页/下一页不可用或隐藏
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-39
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48402
+  auto: 'no'
+- id: TC-004-40
+  tp_id: TP-004-40
+  title: 表格中单元格字数太多，超过一行的部分用…展示，鼠标悬浮显示全部内容
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 存在超长单元格
+  steps:
+  - action: 定位超长单元格并悬浮查看
+    expected: 超长文本省略显示，悬浮展示全文
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-40
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48403
+  auto: 'no'
+- id: TC-004-41
+  tp_id: TP-004-41
+  title: 父行「段区」列为空
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 父行段区列不展示具体段区名称，为空
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-41
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48404
+  auto: auto
+- id: TC-004-42
+  tp_id: TP-004-42
+  title: 刷新页面后树形展开状态按产品默认（默认折叠或记忆）可复核
+  type: feature
+  priority: P4
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 刷新后展开/折叠行为符合产品默认且无报错
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-42
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48405
+  auto: 'no'
+- id: TC-004-43
+  tp_id: TP-004-43
+  title: 点击工具栏「新增巡检」→ 打开标题为「新增巡检」的弹窗
+  type: feature
+  priority: P1
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 点击工具栏「新增巡检」
+    expected: 弹窗打开且标题文案为「新增巡检」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-43
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48406
+  auto: auto
+- id: TC-004-44
+  tp_id: TP-004-44
+  title: '弹窗中显示说明：饲养人员管理说明
+
+    园区规划是一个栋舍配备3名饲养人员，每人管理一段。但这个方案目前不是最终方案，需配备饲养人员较多。不排除后续需要一名饲养人员管理多栋舍或多段区情况。所以添加饲养人员时需要绑定饲养人员管理的栋舍(可多个)和段区(可多个)，所以移动端到时需要根据饲养人员管理权限进行控制显示栋舍、段区，只显示自己管理的栋舍、段区进行巡棚。电脑端此版本暂可以不考虑。'
+  type: feature
+  priority: P3
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：弹窗内可见饲养人员管理说明固定文案（与需求一致）
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-44
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48407
+  auto: auto
+- id: TC-004-45
+  tp_id: TP-004-45
+  title: 新增巡检弹窗包含「养殖日期」选择控件
+  type: feature
+  priority: P3
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：弹窗内可见养殖日期选择控件
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-45
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48408
+  auto: auto
+- id: TC-004-46
+  tp_id: TP-004-46
+  title: 新增巡检弹窗包含「栋舍」选择控件
+  type: feature
+  priority: P3
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：弹窗内可见栋舍选择控件
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-46
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48409
+  auto: auto
+- id: TC-004-47
+  tp_id: TP-004-47
+  title: 新增巡检弹窗包含「段区」选择控件
+  type: feature
+  priority: P3
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：弹窗内可见段区选择控件
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-47
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48410
+  auto: auto
+- id: TC-004-48
+  tp_id: TP-004-48
+  title: 新增巡检「栋舍」选项来源于当前场区可用栋舍
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：栋舍选项为可用栋舍列表，停用/无关栋舍不出现（按产品规则）
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-48
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48411
+  auto: auto
+- id: TC-004-49
+  tp_id: TP-004-49
+  title: 新增巡检「段区」选项为该栋舍可用段区
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：选择栋舍后段区选项与该栋舍段区配置一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-49
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48412
+  auto: auto
+- id: TC-004-50
+  tp_id: TP-004-50
+  title: 「养殖日期」默认选择今天，不允许编辑
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：养殖日期默认今天且控件不可编辑
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-50
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48413
+  auto: auto
+- id: TC-004-51
+  tp_id: TP-004-51
+  title: 新增巡检弹窗按钮区包含「取消」「确认新增」
+  type: feature
+  priority: P3
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」弹窗后取消/关闭
+    expected: 弹窗底部可见取消与确认新增按钮
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-51
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48414
+  auto: auto
+- id: TC-004-52
+  tp_id: TP-004-52
+  title: 死淘明细表格的列依次为：序号、列、层、死亡数量、淘汰数量、备注说明、操作列
+  type: feature
+  priority: P3
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 可打开「新增巡检」弹窗
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗，查看死淘明细子表表头
+    expected: 死淘明细子表表头从左到右依次可见：序号、列、层、死亡数量、淘汰数量、备注说明、操作列
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-52
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48415
+  auto: auto
+- id: TC-004-53
+  tp_id: TP-004-53
+  title: 死淘明细表格的列是选择框，选项范围来自基础数据-园区信息中的栋舍笼具总列数
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：列下拉选项范围与园区信息中该栋舍笼具总列数一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-53
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48416
+  auto: auto
+- id: TC-004-54
+  tp_id: TP-004-54
+  title: 死淘明细表格的层是选择框，选项范围来自基础数据-园区信息中的养殖层数
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：层下拉选项范围与园区信息中养殖层数一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-54
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48417
+  auto: auto
+- id: TC-004-55
+  tp_id: TP-004-55
+  title: 死亡数量、淘汰数量都是输入框，只能输入整数，并且大于等于0
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：死亡/淘汰仅可输入非负整数
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-55
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48418
+  auto: auto
+- id: TC-004-56
+  tp_id: TP-004-56
+  title: 死淘明细表格的备注说明字数多不报错
+  type: feature
+  priority: P3
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：备注输入长文本保存/展示不报错
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-56
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48419
+  auto: auto
+- id: TC-004-57
+  tp_id: TP-004-57
+  title: 死亡数量、淘汰数量未填视为0
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：死亡/淘汰留空时按0参与计算与提交
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-57
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48420
+  auto: auto
+- id: TC-004-58
+  tp_id: TP-004-58
+  title: 点击「添加行」按钮，死淘明细表格的新增一行
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：点击添加行后子表新增空白可编辑行
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-58
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48421
+  auto: auto
+- id: TC-004-59
+  tp_id: TP-004-59
+  title: 死淘明细表格每一行的列、层必填
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：列或层未填时提交被拦截并提示
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-59
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48422
+  auto: auto
+- id: TC-004-60
+  tp_id: TP-004-60
+  title: 点击行内删除按钮，这行从表格中消失
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：点击删除后该行从子表移除且未保存前不落库
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-60
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48423
+  auto: auto
+- id: TC-004-61
+  tp_id: TP-004-61
+  title: 死淘明细表格中不同行可以选择同一个列和层，不做唯一性校验
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：多行可选相同列+层组合且可成功提交
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-61
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48424
+  auto: auto
+- id: TC-004-62
+  tp_id: TP-004-62
+  title: 填写养殖日期、栋舍、段区后点击「确认新增」→ 弹窗关闭且列表刷新出对应巡检数据
+  type: feature
+  priority: P1
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」弹窗后取消/关闭
+    expected: 确认新增成功后弹窗关闭，列表出现或更新对应养殖日期+栋舍+段区汇总
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-62
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48425
+  auto: auto
+- id: TC-004-63
+  tp_id: TP-004-63
+  title: 「栋舍」未填点击「确认新增」→ 不允许提交并提示
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」并填写合法头区与死淘明细
+    expected: 表单已填合法值
+  - action: 点击「确认新增」
+    expected: 栋舍未填时提交失败，不落库；须覆盖标题断言：「确认新增」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-63
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48426
+  auto: auto
+- id: TC-004-64
+  tp_id: TP-004-64
+  title: 「段区」未填点击「确认新增」→ 不允许提交并提示
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」并填写合法头区与死淘明细
+    expected: 表单已填合法值
+  - action: 点击「确认新增」
+    expected: 段区未填时提交失败，不落库；须覆盖标题断言：「确认新增」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-64
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48427
+  auto: auto
+- id: TC-004-65
+  tp_id: TP-004-65
+  title: 如果死淘明细表格为空点击「确认新增」→ 不允许提交并提示
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」并填写合法头区与死淘明细
+    expected: 表单已填合法值
+  - action: 点击「确认新增」
+    expected: 子表无行时确认新增被拦截并提示
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-65
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48428
+  auto: auto
+- id: TC-004-66
+  tp_id: TP-004-66
+  title: 新增巡检弹窗点击「取消」→ 关闭且不落库
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」弹窗后取消/关闭
+    expected: 取消后弹窗关闭，列表数据无新增变化
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-66
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48429
+  auto: auto
+- id: TC-004-67
+  tp_id: TP-004-67
+  title: 新增巡检弹窗点击关闭图标 → 关闭且不落库
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」弹窗后取消/关闭
+    expected: 关闭后列表数据无新增变化
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-67
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48430
+  auto: auto
+- id: TC-004-68
+  tp_id: TP-004-68
+  title: 对已有巡检数据的栋舍再次新增 → 按产品规则追加或更新汇总可复核
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏日期/发货状态数据态
+  steps:
+  - action: 点击工具栏「新增巡检」打开弹窗并核对控件/子表
+    expected: 页面展示满足：再次确定后列表汇总与产品规则一致（追加明细或更新），不出现重复父行错误
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-68
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48431
+  auto: auto
+- id: TC-004-69
+  tp_id: TP-004-69
+  title: 新增成功后父行死淘数量随新增数据重算
+  type: feature
+  priority: P2
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」并填写合法头区与死淘明细
+    expected: 表单已填合法值
+  - action: 点击「确认新增」
+    expected: 成功后对应父行死亡/淘汰/死淘与最新数据一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-69
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48432
+  auto: auto
+- id: TC-004-70
+  tp_id: TP-004-70
+  title: 确认新增后，巡检记录中增加本次新增的死淘明细表格数据
+  type: feature
+  priority: P1
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 打开「新增巡检」并填写合法头区与死淘明细
+    expected: 表单已填合法值
+  - action: 点击「确认新增」
+    expected: 确认新增成功后，打开巡检记录可见本次新增明细行
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-70
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48433
+  auto: auto
+- id: TC-004-71
+  tp_id: TP-004-71
+  title: 未打开弹窗时页面保持列表展示，不误跳转其他模块
+  type: feature
+  priority: P4
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 具备本条所需补栏/发货数据态（按标题准备）
+  steps:
+  - action: 点击工具栏「新增巡检」
+    expected: 点击新增巡检仅打开本弹窗，URL/模块仍为死淘巡检
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-71
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48434
+  auto: 'no'
+- id: TC-004-101
+  tp_id: TP-004-101
+  title: 补栏日期当天 → 可打开「新增巡检」并确认新增成功
+  type: feature
+  priority: P1
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 存在补栏计划补栏日期=今天的栋舍，可新增巡检
+  steps:
+  - action: 点击「新增巡检」并填写合法数据
+    expected: 弹窗可打开且可填
+  - action: 点击「确认新增」
+    expected: 新增成功落库；补栏日期当天可巡检
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-101
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48435
+  auto: auto
+- id: TC-004-102
+  tp_id: TP-004-102
+  title: 补栏确认状态=待发货 → 仍可新增巡检成功
+  type: feature
+  priority: P1
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 存在补栏确认状态=待发货的栋舍
+  steps:
+  - action: 点击「新增巡检」并确认新增
+    expected: 待发货状态下仍可新增巡检成功，不因未发货拦截
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-102
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48436
+  auto: auto
+- id: TC-004-103
+  tp_id: TP-004-103
+  title: 未发货/发货中 → 仍可新增巡检成功
+  type: feature
+  priority: P1
+  feature: 新增巡检
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 存在补栏确认为未发货或发货中的栋舍
+  steps:
+  - action: 点击「新增巡检」并确认新增
+    expected: 未发货/发货中仍可新增巡检成功
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-103
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48437
+  auto: auto
+- id: TC-004-72
+  tp_id: TP-004-72
+  title: 点击行内「巡检记录」→ 直接打开该行养殖日期+栋舍明细
+  type: feature
+  priority: P1
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：弹窗直接展示该行对应明细，无二次选择步骤；须可见：「巡检记录」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-72
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48438
+  auto: auto
+- id: TC-004-73
+  tp_id: TP-004-73
+  title: 巡检记录弹窗标题为「巡检记录」
+  type: feature
+  priority: P3
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：弹窗标题文案为「巡检记录」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-73
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48439
+  auto: auto
+- id: TC-004-74
+  tp_id: TP-004-74
+  title: 巡检记录可切换段区查看1段、2段、3段的死淘明细
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：切换段区后明细仅展示对应段区笼位记录
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-74
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48440
+  auto: auto
+- id: TC-004-75
+  tp_id: TP-004-75
+  title: 巡检记录明细的列依次是：列数、层数、死亡量、淘汰量、备注说明、巡检人员、巡检时间
+  type: feature
+  priority: P3
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：明细表列顺序与上述字段一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-75
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48441
+  auto: auto
+- id: TC-004-76
+  tp_id: TP-004-76
+  title: 巡检记录明细展示死亡量、淘汰量、死淘量
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：明细行可见死亡量/淘汰量/死淘量
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-76
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48442
+  auto: auto
+- id: TC-004-77
+  tp_id: TP-004-77
+  title: 巡检记录明细展示备注说明、巡检人员、巡检时间
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：明细行可见备注说明、巡检人员、巡检时间
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-77
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48443
+  auto: auto
+- id: TC-004-78
+  tp_id: TP-004-78
+  title: 明细行「死淘量」= 该行「死亡量」+「淘汰量」
+  type: feature
+  priority: P1
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：每一明细行死淘量等于死亡量与淘汰量之和
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-78
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48444
+  auto: auto
+- id: TC-004-79
+  tp_id: TP-004-79
+  title: 巡检记录明细为只读 → 死亡量/淘汰量等不可编辑
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：明细字段不可输入修改，无保存编辑入口
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-79
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48445
+  auto: auto
+- id: TC-004-80
+  tp_id: TP-004-80
+  title: 明细死亡量展示 0 时页面不报错且死淘量按公式计算
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：死亡量=0 时展示正常，死淘量=0+淘汰量
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-80
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48446
+  auto: auto
+- id: TC-004-81
+  tp_id: TP-004-81
+  title: 明细淘汰量展示 0 时页面不报错且死淘量按公式计算
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：淘汰量=0 时展示正常，死淘量=死亡量+0
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-81
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48447
+  auto: auto
+- id: TC-004-82
+  tp_id: TP-004-82
+  title: 明细死亡量/淘汰量为正整数时展示与填报一致
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：正整数死亡量/淘汰量展示正确，死淘量=二者之和
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-82
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48448
+  auto: auto
+- id: TC-004-83
+  tp_id: TP-004-83
+  title: 段区的明细死亡量合计 = 列表同一父行下对应段区的「死亡数量」
+  type: feature
+  priority: P1
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：当前段区明细死亡量合计等于列表对应段区子行死亡数量
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-83
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48449
+  auto: auto
+- id: TC-004-84
+  tp_id: TP-004-84
+  title: 段区的明细淘汰量合计 = 列表同一父行下对应段区的「淘汰数量」
+  type: feature
+  priority: P1
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：当前段区明细淘汰量合计等于列表对应段区子行淘汰数量
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-84
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48450
+  auto: auto
+- id: TC-004-85
+  tp_id: TP-004-85
+  title: 段区的明细死淘量合计 = 列表同一父行下对应段区的「死淘数量」
+  type: feature
+  priority: P1
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：当前段区明细死淘量合计等于列表对应段区子行死淘数量
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-85
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48451
+  auto: auto
+- id: TC-004-86
+  tp_id: TP-004-86
+  title: 明细行数与该栋舍当日已提交笼位巡检记录数一致
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：明细行数等于移动端已提交笼位记录数
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-86
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48452
+  auto: auto
+- id: TC-004-87
+  tp_id: TP-004-87
+  title: 当日无巡检明细时弹窗呈空态且无报错
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：空明细友好展示，页面无异常
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-87
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48453
+  auto: auto
+- id: TC-004-88
+  tp_id: TP-004-88
+  title: 巡检人员展示为移动端或者pc端填报人
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：巡检人员与提交账号/姓名一致（移动端或PC端填报）
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-88
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48454
+  auto: auto
+- id: TC-004-89
+  tp_id: TP-004-89
+  title: 巡检时间展示格式可识别且与提交时间一致
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：巡检时间与移动端提交时间一致，格式可复核
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-89
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48455
+  auto: auto
+- id: TC-004-90
+  tp_id: TP-004-90
+  title: 备注说明与填报备注一致（含空备注）
+  type: feature
+  priority: P2
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：有备注则全文一致；无备注则空展示不报错
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-90
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48456
+  auto: auto
+- id: TC-004-91
+  tp_id: TP-004-91
+  title: 关闭巡检记录弹窗 → 返回列表且列表数据不被弹窗操作改写
+  type: feature
+  priority: P3
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：关闭后回到列表，父行数量未因打开弹窗而变化
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-91
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48457
+  auto: auto
+- id: TC-004-92
+  tp_id: TP-004-92
+  title: 多条明细按巡检时间顺序倒序展示且可完整浏览
+  type: feature
+  priority: P3
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：多行按巡检时间倒序排列，可滚动完整浏览
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-92
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48458
+  auto: auto
+- id: TC-004-93
+  tp_id: TP-004-93
+  title: 巡检记录弹窗无「确定」落库按钮（只读展示）
+  type: feature
+  priority: P3
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：弹窗无提交/保存类落库按钮（与 analysis dialogs 一致）；须可见：「确定」
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-93
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48459
+  auto: auto
+- id: TC-004-94
+  tp_id: TP-004-94
+  title: 打开巡检记录后列表父行仍保持原选中/定位上下文
+  type: feature
+  priority: P4
+  feature: 巡检记录
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 列表中存在可打开巡检记录的行
+  steps:
+  - action: 点击「巡检记录」打开只读弹窗并切换/核对字段
+    expected: 页面展示满足：关闭弹窗后仍能识别原父行位置或等价上下文
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-94
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48460
+  auto: 'no'
+- id: TC-004-95
+  tp_id: TP-004-95
+  title: 点击「导出」→ 无勾选时按当前查询条件导出列表文件
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 至少两组可区分查询结果
+  steps:
+  - action: 变更查询条件并查询得到新结果
+    expected: 列表已刷新
+  - action: 点击导出并核对文件范围
+    expected: 导出行集合与当前查询过滤结果一致（页面无行勾选 UI）
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-95
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48461
+  auto: auto
+- id: TC-004-96
+  tp_id: TP-004-96
+  title: 导出文件包含树形父行与段区子行数据
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 当前查询有可导出数据
+  steps:
+  - action: 点击工具栏导出相关按钮
+    expected: 导出内容含父行及对应段区子行，与页面树形一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-96
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48462
+  auto: auto
+- id: TC-004-97
+  tp_id: TP-004-97
+  title: 导出文件包含页面表格全部业务列（除操作列）
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 当前查询有数据
+  steps:
+  - action: 记录列表业务列（不含操作列）
+    expected: 已记录列清单
+  - action: 点击导出并打开文件
+    expected: 导出列与列表业务列一致，不含操作列
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-97
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48463
+  auto: auto
+- id: TC-004-98
+  tp_id: TP-004-98
+  title: 导出数据的死亡/淘汰/死淘与当前列表展示一致
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 当前查询有数据
+  steps:
+  - action: 记录列表业务列（不含操作列）
+    expected: 已记录列清单
+  - action: 点击导出并打开文件
+    expected: 导出数值与列表对应行列一致
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-98
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48464
+  auto: auto
+- id: TC-004-99
+  tp_id: TP-004-99
+  title: 查询无数据时导出为空文件或友好提示
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 当前查询结果为空
+  steps:
+  - action: 确认列表为空后点击导出相关按钮
+    expected: 空结果导出不导致前端异常
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-99
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48465
+  auto: auto
+- id: TC-004-100
+  tp_id: TP-004-100
+  title: 变更查询条件后再导出 → 文件内容随新条件变化
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 至少两组可区分查询结果
+  steps:
+  - action: 变更查询条件并查询得到新结果
+    expected: 列表已刷新
+  - action: 点击导出并核对文件范围
+    expected: 导出集合等于导出前最近一次查询结果
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-100
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-004.yaml
+  zentao_case_id: 48466
+  auto: auto
+- id: TC-004-104
+  tp_id: null
+  feature: null
+  title: 出栏日期当天 → 可打开「新增巡检」并确认新增成功
+  type: auto
+  priority: P2
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/death-inspection）
+  - 存在补栏计划出栏日期=今天的栋舍，可新增巡检
+  steps:
+  - action: 点击「新增」并填写合法数据
+    expected: 弹窗可打开且可填
+  - action: 点击「确认新增」
+    expected: 新增成功落库；出栏日期当天可巡检
+  trace:
+    story: null
+    req: REQ-004
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48793
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  auto: auto
+  zentao_case_id: 48793
+- id: TC-004-105
+  tp_id: null
+  feature: null
+  title: 选择栋舍养殖批次后点击「查询」→ 列表仅展示该状态记录
+  type: auto
+  priority: P1
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条记录的栋舍批次等于所选栋舍养殖批次；无匹配时列表为空态；须可见：「查询」
+  trace:
+    story: null
+    req: REQ-004
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48814
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  auto: auto
+  zentao_case_id: 48814
+- id: TC-004-106
+  tp_id: null
+  feature: null
+  title: 选择栋舍后点击「查询」→ 列表仅展示该状态记录
+  type: auto
+  priority: P1
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「死淘巡检」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条记录的栋舍等于所选栋舍；无匹配时列表为空态；须可见：「查询」
+  trace:
+    story: null
+    req: REQ-004
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48815
+  test_data:
+    page_url: /biopark-poultry/production/death-inspection
+    data_prefix: AUTO测试_勿用_
+    module: 死淘巡检
+    zentao_module_id: 653
+  auto: auto
+  zentao_case_id: 48815

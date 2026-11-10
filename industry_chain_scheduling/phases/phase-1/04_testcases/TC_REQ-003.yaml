@@ -1,0 +1,4566 @@
+req_id: REQ-003
+module: 分段养殖模版
+zentao_module_id: 670
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-003
+  tp: TP_REQ-003
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-003.yaml
+cases:
+- id: TC-003-01
+  tp_id: TP-003-01
+  title: 查询条件包含「模版名称」「品种」「补栏月份」「状态」字段
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 查看页面查询区域
+    expected: 页面顶部查询区可见筛选项：模版名称、品种、补栏月份、状态四个筛选项
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47573
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-02
+  tp_id: TP-003-02
+  title: 状态下拉选项为暂存、待审核、审核通过、驳回
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 点击「状态」下拉或查看筛选项
+    expected: 打开「状态」下拉，选项列表仅为暂存、待审核、审核通过、驳回
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47574
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-03
+  tp_id: TP-003-03
+  title: 品种下拉选项来源正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「对应筛选项」下拉或查看筛选项
+    expected: 打开「品种」下拉核对后，选项与系统品种数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47575
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-04
+  tp_id: TP-003-04
+  title: 停用的品种也会显示在选项
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「对应筛选项」下拉或查看筛选项
+    expected: 打开「查询区品种」下拉，可见选项含停用品种
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47576
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-05
+  tp_id: TP-003-05
+  title: 补栏月份下拉选项为1~12月
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「对应筛选项」下拉或查看筛选项
+    expected: 打开「补栏月份」下拉，可见选项含1~12月选项
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47577
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-06
+  tp_id: TP-003-06
+  title: 仅输入模版名称后点击「查询」，列表按名称过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「模版名称」输入已知模版名称关键字
+    expected: 模版名称筛选项已填入关键字
+  - action: 确认「品种」「补栏月份」「状态」为空或未选
+    expected: 其余筛选项未参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示模版名称匹配该关键字的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47578
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-07
+  tp_id: TP-003-07
+  title: 仅选品种后点击「查询」，列表按品种过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「品种」下拉选择某一已知品种
+    expected: 品种筛选项已选中
+  - action: 确认其他筛选项为空
+    expected: 仅品种参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示该品种的模版记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47579
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-08
+  tp_id: TP-003-08
+  title: 仅选补栏月份后点击「查询」，列表按补栏月份过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「补栏月份」下拉选择某一月份（如3）
+    expected: 补栏月份筛选项已选中
+  - action: 确认其他筛选项为空
+    expected: 仅补栏月份参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示该补栏月份的模版记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47580
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-09
+  tp_id: TP-003-09
+  title: 仅选状态后点击「查询」，列表按状态过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「状态」下拉选择「审核通过」
+    expected: 状态筛选项为审核通过
+  - action: 确认其他筛选项为空
+    expected: 仅状态参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示状态为「审核通过」的模版记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47581
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-10
+  tp_id: TP-003-10
+  title: 选择多条件后点击「查询」，列表按组合条件过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 同时设置「模版名称」关键字、「品种」、「补栏月份」、「状态」
+    expected: 多个筛选项均已设置
+  - action: 点击「查询」按钮
+    expected: 列表仅展示同时满足全部已设条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47582
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-11
+  tp_id: TP-003-11
+  title: 点击「查询」按钮才触发查询
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区修改任一筛选项（如输入模版名称）但不点击「查询」
+    expected: 列表仍保持修改前的结果，不自动刷新为新条件
+  - action: 点击「查询」按钮
+    expected: 列表按当前筛选项刷新结果
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47583
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-12
+  tp_id: TP-003-12
+  title: 点击「重置」，查询条件恢复默认并刷新列表
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 设置查询条件后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 点击「重置」后各筛选项恢复默认值，列表重新加载
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47584
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-13
+  tp_id: TP-003-13
+  title: 查询无匹配模版名称且品种选测试品种 → 列表展示空状态
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 在「模版名称」输入确定不存在的名称，并选择一测试品种
+    expected: 筛选项已设置且预期无匹配数据
+  - action: 点击「查询」按钮
+    expected: 列表展示空状态（无数据提示），页面无报错
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47585
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-14
+  tp_id: TP-003-14
+  title: 查询有数据且状态审核通过且补栏月份留空 → 列表仅展示审核通过记录
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 状态选择「审核通过」，补栏月份保持未选，可再配合有数据的其他条件
+    expected: 状态=审核通过，补栏月份为空
+  - action: 点击「查询」按钮
+    expected: 列表仅展示审核通过记录；不因补栏月份留空而清空有数据结果
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47586
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-15
+  tp_id: TP-003-15
+  title: 点击「新增」打开弹窗，标题为「新增养殖模版」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「新增」
+    expected: 打开新增模版弹窗，顶部标题文案为「新增养殖模版」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47587
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-16
+  tp_id: TP-003-16
+  title: 顶部的总表单中包含字段：模版名称、品种、补栏月份、养殖天数、状态
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 查看弹窗顶部总表单区域字段
+    expected: 至少包含：模版名称、品种、补栏月份、养殖天数、状态（或状态按规则可不显示）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47588
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-17
+  tp_id: TP-003-17
+  title: 模版名称是输入框
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 查看「模版名称」控件并尝试输入文字
+    expected: 模版名称为文本输入框，可手工输入
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47589
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-17
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-18
+  tp_id: TP-003-18
+  title: 「模版名称」必填
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 将「模版名称」留空，其余可填项按正常值填写（含已执行快速分配）
+    expected: 模版名称仍为空，表单可继续操作
+  - action: 点击「保存」按钮
+    expected: 无法保存，模版名称字段提示必填或页面提示模版名称不能为空
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47590
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-18
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-19
+  tp_id: TP-003-19
+  title: 品种是单选框
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 查看「品种」控件并尝试选择
+    expected: 品种是单选框
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47591
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-19
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-20
+  tp_id: TP-003-20
+  title: 「品种」为选择框且必选
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 用例 TC-003-20 数据态已按场景备好
+  steps:
+  - action: 执行用例 TC-003-20 的页面操作（围绕：「品种」）
+    expected: 操作完成并出现可观察反馈（TC-003-20）
+  - action: 核对用例 TC-003-20 通过标准
+    expected: 通过标准涵盖：「品种」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47592
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-20
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-21
+  tp_id: TP-003-21
+  title: 补栏月份是单选框
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 查看「补栏月份」控件并尝试选择
+    expected: 补栏月份是单选框
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47593
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-21
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-22
+  tp_id: TP-003-22
+  title: 「补栏月份」为选择框且必选
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 用例 TC-003-22 数据态已按场景备好
+  steps:
+  - action: 点击[新增]按钮，打开弹窗
+    expected: 「补栏月份」为选择框，选项为1月~12月
+  - action: 尝试编辑补栏月份
+    expected: 补栏月份置空，保存和提交自动拦截
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47594
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-22
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-23
+  tp_id: TP-003-23
+  title: 总养殖天数不可编辑，通过快速分配自动填入
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击[新增]按钮，打开弹窗，尝试编辑养殖天数字段
+    expected: 总养殖天数字段灰显/只读，无法手工输入
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47595
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-23
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-24
+  tp_id: TP-003-24
+  title: 新增弹窗中的状态显示：暂存或者不显示状态这个字段
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 查看新增弹窗中的「状态」字段展示
+    expected: 状态显示为「暂存」，或该字段在新增弹窗中不展示
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47596
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-24
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-25
+  tp_id: TP-003-25
+  title: 三段养殖标准标题后显示说明文字正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 定位「三段养殖标准」标题旁说明文字
+    expected: 显示说明：补栏当天为0日龄，各段空栏天数从转出日龄次日开始计算
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47597
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-25
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-26
+  tp_id: TP-003-26
+  title: 点击「快速分配」，打开弹窗，标题为「快速分配」，弹窗中显示“分配方案：A₁+B₁ = A₂+B₂ = A₃+B₃(A=养殖天数，B=空栏天数)”
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「快速分配」
+    expected: 打开「快速分配」弹窗，弹窗内可见“分配方案：A₁+B₁ = A₂+B₂ = A₃+B₃(A=养殖天数，B=空栏天数)”
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47598
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-26
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-27
+  tp_id: TP-003-27
+  title: 快速分配弹窗中，1段/2段/3段转出日龄都是数字输入框，只能输入正整数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示整批/各段养殖天数与空栏天数
+  - action: 分别点击1段/2段/3段转出日龄输入框，尝试输入小数或负数
+    expected: 小数和负数自动校正为正数，保存阻断，三段养殖标准中不显示负数或者小数
+  - action: 在允许时输入正整数
+    expected: 对应天数字段可保存为正整数
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47599
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-27
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-28
+  tp_id: TP-003-28
+  title: 快速分配弹窗中最大养殖周期空栏天数只能输入非负整数
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示整批/各段养殖天数与空栏天数
+  - action: 在「最大养殖周期空栏天数」尝试输入负数或小数
+    expected: 仅允许非负整数，非法输入被拦截
+  - action: 输入0或正整数
+    expected: 空栏天数字段接受非负整数
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47600
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-28
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-29
+  tp_id: TP-003-29
+  title: 快速分配弹窗中，3段养殖天数不可输入，只能通过计算自动填入（3段=整批-1段-2段）
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示整批/各段养殖天数与空栏天数
+  - action: 查看「3段养殖天数」控件是否可编辑
+    expected: 3段养殖天数只读，不可手工输入
+  - action: 填写整批、1段、2段养殖天数后观察3段值
+    expected: 3段养殖天数自动等于「整批-1段-2段」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47601
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-29
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-30
+  tp_id: TP-003-30
+  title: 点击快速分配弹窗的取消按钮，不会进行分配
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 打开弹窗后点击取消或关闭
+    expected: 取消后弹窗关闭，主表单未被回填
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47602
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-30
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-31
+  tp_id: TP-003-31
+  title: 点击快速分配弹窗的确认按钮，快速分配成功且日龄采食起止自动回填
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」后点击「快速分配」，填写合法整批与各段养殖/空栏天数后点击「确认」
+    expected: 快速分配弹窗关闭，主表回填养殖/空栏天数
+  - action: 查看1段默认生成的日龄采食计划
+    expected: 起=1，止=1段养殖天数-1
+  - action: 查看2段默认生成的日龄采食计划
+    expected: 起=1段养殖天数，止=1段养殖天数+2段养殖天数-1
+  - action: 查看3段默认生成的日龄采食计划
+    expected: 起=1段养殖天数+2段养殖天数，止=1段养殖天数+2段养殖天数+3段养殖天数-1
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47603
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-31
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-32
+  tp_id: TP-003-32
+  title: 快速分配后，总养殖天数等于各段养殖天数之和
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，填写各段转出日龄与最大空栏天数
+  - action: 查看整批养殖天数的输入框
+    expected: 整批养殖天数的输入框不可编辑，数值=3段转出日龄+1
+  - action: 快速分配弹窗点击「确认」
+    expected: 快速分配弹窗关闭
+  - action: 查看新增模版弹窗的总「养殖天数」
+    expected: 数值等于快速分配中整批养殖天数
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47604
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-32
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-33
+  tp_id: TP-003-33
+  title: 快速分配后，最大养殖周期空栏天数设置为养殖天数最长一段的空栏天数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示各段转出日龄和最大空栏天数输入框
+  - action: 设置各段转出日龄/空栏天数使某一段养殖天数最长，确认后查看主表「最大养殖周期空栏天数」
+    expected: 该值等于养殖天数最长一段对应的空栏天数
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47605
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-33
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-34
+  tp_id: TP-003-34
+  title: 三段养殖标准中的「养殖天数」不可编辑，通过快速分配自动填入
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 打开查看或只读界面，尝试编辑字段
+    expected: 各段养殖天数只读展示，数值由快速分配回填
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47606
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-34
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-35
+  tp_id: TP-003-35
+  title: 三段养殖标准中的「空栏天数」不可编辑，只能通过快速分配填入
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 打开查看或只读界面，尝试编辑字段
+    expected: 各段空栏天数只读展示，数值由快速分配回填
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47607
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-35
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-36
+  tp_id: TP-003-36
+  title: 选择品种和补栏月份后自动带出体重/料比/成活率参考值
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 选择品种和补栏月份
+    expected: 系统自动从养殖标准带出各段体重(kg)/料比/成活率(%)参考值（带入品种和补栏月份符合，并且启用的养殖标准参考值）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47608
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-36
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-37
+  tp_id: TP-003-37
+  title: 「体重(kg)/料比/成活率(%)」带出参考值可手工调整
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 点击新增按钮，已经选择品种和补栏月份
+  steps:
+  - action: 点击快速分配按钮，填写好所有数据后确认
+    expected: 带出的「体重(kg)/料比/成活率(%)」数据可以修改
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47609
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-37
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-38
+  tp_id: TP-003-38
+  title: 1段的转运日龄=1段养殖天数-1
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示整批/各段养殖天数与空栏天数
+  - action: 确认回填后查看「1段转运日龄」
+    expected: 1段转运日龄显示为「1段养殖天数-1」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47610
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-38
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-39
+  tp_id: TP-003-39
+  title: 2段的转运日龄=1段养殖天数+2段养殖天数-1
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示整批/各段养殖天数与空栏天数
+  - action: 确认回填后查看「2段转运日龄」
+    expected: 2段转运日龄=1段养殖天数+2段养殖天数-1
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47611
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-39
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-40
+  tp_id: TP-003-40
+  title: 3段的转运日龄=1段养殖天数+2段养殖天数+3段养殖天数-1
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示整批/各段养殖天数与空栏天数
+  - action: 确认回填后查看「3段转运日龄」
+    expected: 3段转运日龄=1段+2段+3段养殖天数-1
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47612
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-40
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-41
+  tp_id: TP-003-41
+  title: 补栏当天计为0日龄
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 查看三段养殖标准说明或日龄取值说明
+    expected: 明确补栏当天计为0日龄（满24小时计为1日龄）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47613
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-41
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-42
+  tp_id: TP-003-42
+  title: 日龄采食计划列表字段为起、止、饲料、占比
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配后查看任一段日龄采食计划表头
+    expected: 列包含：起、止、饲料、占比
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47614
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-42
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-43
+  tp_id: TP-003-43
+  title: 点击「新增方案」增加一条日龄采食计划
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配后，在某段点击「新增方案」
+    expected: 该段日龄采食计划新增一行方案
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47615
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-43
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-44
+  tp_id: TP-003-44
+  title: 点击「补齐」自动补全饲料的占比，使得占比之和达到100%
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 点击新增进入编辑养殖模版，已选择品种、补栏月份，已完成快速分配
+  steps:
+  - action: 点击日龄采食计划中底部的“+”
+    expected: 新增一行饲料
+  - action: 把第一行饲料的占比比改成60%，然后点击“+补齐”
+    expected: 第二行饲料的占比自动变成40%
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47616
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-44
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-45
+  tp_id: TP-003-45
+  title: 日龄采食计划行点击「删除」移除该方案
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配并至少新增两条方案后，点击其中一行「删除」
+    expected: 该方案行被移除，列表少一行
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47617
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-45
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-46
+  tp_id: TP-003-46
+  title: 同一段下几个方案的起、止时间不能重叠
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配后，在同一段新增两条方案并设置起止日龄区间重叠
+    expected: 页面提示区间重叠或无法保存/保留重叠配置
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47618
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-46
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-47
+  tp_id: TP-003-47
+  title: 同一段下几个方案的起、止时间合起来必须正好是该段的养殖周期，并且连续不能中断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配后，在同一段配置多条方案使其起止连续且并集等于该段养殖周期
+    expected: 同段方案连续无空档，覆盖该段全部养殖天数
+  - action: 刻意制造空档或越界后再点「保存」
+    expected: 无法保存并提示须连续覆盖该段养殖周期
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47619
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-47
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-48
+  tp_id: TP-003-48
+  title: 起、止时间填入的数字不能超过这段区的养殖周期
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配后，将某方案「止」填为大于该段养殖天数上限
+    expected: 输入被校验拦截或保存时提示超出该段养殖周期
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47620
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-48
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-49
+  tp_id: TP-003-49
+  title: 1段的起、止时间：1≤「起」≤「止」≤1段养殖天数-1
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」并完成快速分配
+    expected: 打开新增模版弹窗
+  - action: 编辑1段方案起止，验证仅允许1≤起≤止≤1段养殖天数-1
+    expected: 越界值无法录入或保存被阻断并提示
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47621
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-49
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-50
+  tp_id: TP-003-50
+  title: 2段的起、止时间：1段养殖天数≤「起」≤「止」≤1段养殖天数+2段养殖天数-1
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」并完成快速分配
+    expected: 打开新增模版弹窗
+  - action: 编辑2段方案起止，验证仅允许1段养殖天数≤起≤止≤1段+2段养殖天数-1
+    expected: 越界值无法录入或保存被阻断并提示
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47622
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-50
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-51
+  tp_id: TP-003-51
+  title: 3段的起、止时间：1段养殖天数+2段养殖天数≤「起」≤「止」≤1段养殖天数+2段养殖天数+3段养殖天数-1
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」并完成快速分配
+    expected: 打开新增模版弹窗
+  - action: 编辑3段方案起止，验证仅允许(1段养殖天数+2段养殖天数)≤起≤止≤1段养殖天数+2段养殖天数+3段养殖天数-1
+    expected: 越界值无法录入或保存被阻断并提示
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47623
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-51
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-52
+  tp_id: TP-003-52
+  title: 每个方案默认有一行饲料
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配并「新增方案」后查看饲料行
+    expected: 每个方案默认至少有一行饲料选择
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47624
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-52
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-53
+  tp_id: TP-003-53
+  title: 点击饲料的新增按钮「+」，增加一行饲料
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 在某一方案点击饲料行「+」
+    expected: 该方案下新增多一行饲料
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47625
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-53
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-54
+  tp_id: TP-003-54
+  title: 日龄采食计划「饲料选择框」选项正确，仅含启用态饲料，停用饲料不显示
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 打开日龄方案中「饲料」下拉，核对选项
+    expected: 选项仅含启用态饲料，不出现停用饲料
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47626
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-54
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-55
+  tp_id: TP-003-55
+  title: 同一个方案中新增了多行饲料，不能选择一样的饲料
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 同一方案新增两行饲料并选择相同饲料
+    expected: 第二行选择被拦截或保存时提示同一方案饲料不可重复
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47627
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-55
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-56
+  tp_id: TP-003-56
+  title: 同一方案多饲料混合占比合计为100%
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 同一方案配置多行饲料并调整占比使合计&lt;100%
+    expected: 保存被阻断，提示：1段计划1料号占比之和必须等于100%
+  - action: 同一方案配置多行饲料并调整占比使合计&gt;100%
+    expected: 保存被阻断，提示：1段计划1料号占比之和必须等于100%
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47628
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-56
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-57
+  tp_id: TP-003-57
+  title: 日龄采食计划占比最多保留两位小数
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 在饲料占比输入超过两位小数的数值（如12.345）
+    expected: 自动截断/四舍五入为最多两位小数，或提示小数位超限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47629
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-57
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-58
+  tp_id: TP-003-58
+  title: 点击饲料行的删除按钮，该行删除
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 同一方案存在至少两行饲料时，删除其中一行
+    expected: 该饲料行消失
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47630
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-58
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-59
+  tp_id: TP-003-59
+  title: 点击「补齐」按钮，饲料占比会自动填充使得占比合计达到100%
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 用例 TC-003-59 数据态已按场景备好
+  steps:
+  - action: 执行用例 TC-003-59 的页面操作（围绕：「补齐」）
+    expected: 操作完成并出现可观察反馈（TC-003-59）
+  - action: 核对用例 TC-003-59 通过标准
+    expected: 通过标准涵盖：「补齐」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47631
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-59
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-60
+  tp_id: TP-003-60
+  title: 新增方案条数限制：至少保证3个段区都新增10条方案，保存或提交能不报错
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 完成快速分配后，在1/2/3段各新增至约10条日龄方案并填合法起止与占比
+    expected: 三段均有约10条方案且无校验错误
+  - action: 点击「保存」或「提交」
+    expected: 保存/提交成功，不因方案条数报错
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47632
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-60
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-61
+  tp_id: TP-003-61
+  title: 点击「取消」或关闭，弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 随意填写部分字段后点击「取消」或关闭弹窗
+    expected: 弹窗关闭，列表未新增该模版
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47633
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-61
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-62
+  tp_id: TP-003-62
+  title: 点击「保存」，模版状态=暂存且不提交审核
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 填写完整合法数据（含快速分配、各段至少一方案、占比100%）后点击「保存」
+    expected: 提示保存成功，列表新增/更新该模版且状态为「暂存」，未进入待审核
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47634
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-62
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-63
+  tp_id: TP-003-63
+  title: 点击「提交」，模版状态变为待审核
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 填写完整合法数据后点击「提交」，并在确认框点「确定」
+    expected: 提示提交成功，列表中该模版状态为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47635
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-63
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-64
+  tp_id: TP-003-64
+  title: 保存和提交时校验品种+补栏月份唯一，如果已有一样品种+补栏月份的模版，则不允许新增
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在一条品种=A、补栏月份=M 的模版（任意状态）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 选择与已有模版相同的品种=A、补栏月份=M，并完成其余必填与快速分配、日龄方案（占比合计100%）
+    expected: 表单填写完成，品种与补栏月份与已有模版重复
+  - action: 点击「保存」或「提交」按钮
+    expected: 无法保存/提交，提示该品种+补栏月份组合已存在模版
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47636
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-64
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-65
+  tp_id: TP-003-65
+  title: 保存和提交时校验必填项，任一项未填不允许保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 任选一项必填项（如品种或补栏月份）留空，其余项按可填规则填写
+    expected: 该必填项为空
+  - action: 点击「保存」和「保存并提交」按钮
+    expected: 无法保存，对应必填项出现校验提示或页面提示完善必填项
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47637
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-65
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-66
+  tp_id: TP-003-66
+  title: 保存和提交时需要校验1~3段日龄采食计划的起止时间连贯不中断，正好满足整个养殖周期
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮并填写基础信息，完成「快速分配」使总养殖天数与各段天数有值
+    expected: 新增弹窗打开，各段养殖天数已回填
+  - action: 在日龄采食计划中编辑方案，使1段最后一个「止」与2段第一个「起」之间出现天数空档（不连贯）
+    expected: 段区间日龄起止不连贯，可见空档
+  - action: 点击「保存」和「保存并提交」按钮
+    expected: 无法保存，提示日龄采食计划起止时间不连贯或不覆盖完整养殖周期
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47638
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-66
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-67
+  tp_id: TP-003-67
+  title: 保存和提交时校验日龄采食计划占比合计
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮并完成快速分配与日龄方案基础行
+    expected: 日龄采食计划行可编辑
+  - action: 将某日龄方案中多饲料占比合计改为不等于100%（例如合计90%，且不点击补齐）
+    expected: 该方案饲料占比合计显示不为100%
+  - action: 点击「保存」和「保存并提交」按钮
+    expected: 无法保存，提示饲料占比合计须为100%或占比不合规
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47639
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-67
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-68
+  tp_id: TP-003-68
+  title: 保存和提交时校验每段区至少有一个方案
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮并完成快速分配与基础信息
+    expected: 新增弹窗打开，1/2/3段区可见
+  - action: 删除1段、2段、3段中任意一段下的全部日龄采食计划方案，使该段无方案
+    expected: 删除到剩下最后一个方案时，继续删除提示至少保留一个方案
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47640
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-68
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-69
+  tp_id: TP-003-69
+  title: 保存和提交时校验3段养殖天数之和等于总的养殖天数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」打开弹窗，再点击「快速分配」
+    expected: 打开快速分配弹窗
+  - action: 填写整批养殖天数及1段、2段养殖天数，观察3段养殖天数自动计算值
+    expected: 3段养殖天数=整批-1段-2段，且1+2+3段养殖天数之和等于整批/总养殖天数
+  - action: 点击「确认」回填后，核对待保存主表「总养殖天数」与「1/2/3段养殖天数」后点击「保存」和「保存并提交」按钮
+    expected: 1+2+3段养殖天数之和等于总养殖天数时可保存成功
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47641
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-69
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-70
+  tp_id: TP-003-70
+  title: 保存和提交时校验每一段的养殖天数+空栏天数相等
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」打开弹窗，再点击「快速分配」
+    expected: 打开快速分配弹窗，展示整批与各段养殖/空栏天数
+  - action: 填写使某一段「养殖天数+空栏天数」与其他段之和不相等的数据（破坏 A1+B1=A2+B2=A3+B3）后点击「确认」
+    expected: 分配失败或提示需调整，不向主表回填错误天数
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47642
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-70
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-71
+  tp_id: TP-003-71
+  title: 商品禽养殖接口异常时保存/提交被阻断并提示错误
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  - 商品禽养殖相关接口处于异常或不可用状态（测试环境可模拟）
+  steps:
+  - action: 点击「新增」并选择会触发商品禽养殖带出数据的品种/补栏月份等条件
+    expected: 系统发起商品禽养殖数据请求
+  - action: 在接口返回失败或超时后，继续尝试点击「保存」或「提交」
+    expected: 保存/提交被阻断，页面提示商品禽接口异常或获取数据失败，模版未写入成功状态
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47643
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-71
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-72
+  tp_id: TP-003-72
+  title: 快速分配A1+B1不等于A2+B2时点击「确认」→ 分配失败或提示调整
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」打开弹窗，再点击「快速分配」
+    expected: 打开快速分配弹窗
+  - action: 填写使 A1+B1 不等于 A2+B2 的整批/各段天数后点击「确认」
+    expected: A1+B1 与 A2+B2 数值不相等
+  - action: 观察确认结果
+    expected: 分配失败或提示需调整，主表不回填错误天数
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47644
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-72
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-73
+  tp_id: TP-003-73
+  title: 日龄采食计划饲料占比输入0 → 保存被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮并完成快速分配，进入日龄采食计划编辑
+    expected: 日龄方案饲料占比可输入
+  - action: 将某一饲料占比输入为0
+    expected: 该行占比显示为0
+  - action: 点击「保存」按钮
+    expected: 无法保存，提示占比不合法或须大于0且合计100%
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47645
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-73
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-74
+  tp_id: TP-003-74
+  title: 日龄采食计划饲料占比输入大于100 → 保存被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮并完成快速分配，进入日龄采食计划编辑
+    expected: 日龄方案饲料占比可输入
+  - action: 将某一饲料占比输入为大于100的数值（如101）
+    expected: 该行占比显示为大于100或输入被标红
+  - action: 点击「保存」按钮
+    expected: 无法保存，提示占比不能大于100或不合法
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47646
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-74
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-75
+  tp_id: TP-003-75
+  title: 未执行「快速分配」点击「保存」→ 保存被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮，填写模版名称、品种、补栏月份等可手工项，不点击「快速分配」
+    expected: 总养殖天数及各段养殖/空栏天数仍为空或不可手工填齐
+  - action: 点击「保存」按钮
+    expected: 无法保存，提示需先执行快速分配或完善养殖天数字段
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47647
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-75
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-76
+  tp_id: TP-003-76
+  title: 日龄方案饲料占比合计99%未补齐点击「保存」→ 保存被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮并完成快速分配，配置日龄方案饲料占比合计为99%，不点击补齐
+    expected: 占比合计显示为99%
+  - action: 点击「保存」按钮
+    expected: 无法保存，提示饲料占比合计须为100%或需补齐
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47648
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-76
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-77
+  tp_id: TP-003-77
+  title: 同段日龄方案起止存在空档未连续覆盖 → 保存被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮并完成快速分配，在某一段下新增多条日龄方案
+    expected: 同段存在多条日龄方案
+  - action: 调整同段方案起止，使相邻方案之间出现空档、未连续覆盖该段养殖天数
+    expected: 同段日龄区间存在空档
+  - action: 点击「保存」按钮
+    expected: 无法保存，提示日龄方案须连续覆盖或不允许起止空档
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47649
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-77
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-78
+  tp_id: TP-003-78
+  title: 快速分配弹窗整批养殖天数输入0点击「确认」→ 确认失败
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示整批/各段养殖天数与空栏天数
+  - action: 将「整批养殖天数」输入为0，点击「确认」
+    expected: 确认失败或提示天数不合法，主表不回填0天数据
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47650
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-78
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-79
+  tp_id: TP-003-79
+  title: 鸭品种已快速分配且日龄方案完整点击「保存」→ 模版暂存成功
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 选择鸭品种及补栏月份，完成快速分配与完整日龄方案（占比100%）后点击「保存」
+    expected: 模版暂存成功，列表状态为「暂存」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47651
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-79
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-80
+  tp_id: TP-003-80
+  title: 新增模版选择已存在同品种同补栏月份点击「提交」→ 提交被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在一条品种=A、补栏月份=M 的模版（任意状态）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 选择与已有模版相同的品种=A、补栏月份=M，并完成其余必填与快速分配、日龄方案（占比合计100%）
+    expected: 表单填写完成，品种与补栏月份与已有模版重复
+  - action: 点击「提交」按钮
+    expected: 提交被阻断，提示该品种+补栏月份组合已存在模版，列表不新增待审核记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-80
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-81
+  tp_id: TP-003-81
+  title: 列表字段显示正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 查看列表的一级表头列名及顺序
+    expected: 一级表头依次包含：序号、模版名称、品种、补栏月份、养殖天数、1段养殖、2段养殖、3段养殖、状态、驳回原因、审核人、审核时间、创建人、创建时间、修改人、修改时间（及操作列）
+  - action: 查看1段养殖、2段养殖、3段养殖的二级表头
+    expected: 1段养殖、2段养殖、3段养殖下包含自己表头：养殖(天)、空栏(天)、料比、体重(g)、成活率(%)
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47653
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-81
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-82
+  tp_id: TP-003-82
+  title: 列表展示核心字段且与录入/审核数据一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 打开一条已知模版的查看/编辑核对录入值，再回到列表对照同名字段
+    expected: 列表核心字段与录入/审核数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47654
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-82
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-83
+  tp_id: TP-003-83
+  title: 模版的养殖天数和录入的数据一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 记录弹窗中总养殖天数后关闭，对照列表「养殖天数」列
+    expected: 列表养殖天数与录入值一致
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47655
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-83
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-84
+  tp_id: TP-003-84
+  title: 列表展示1段/2段/3段养殖天数和空栏天数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 查看列表「1段养殖」「2段养殖」「3段养殖」等相关列
+    expected: 展示各段养殖天数，并可见对应空栏天数信息（按列设计）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47656
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-84
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-85
+  tp_id: TP-003-85
+  title: 列表展示成活率(%)
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 查看列表各段成活率列
+    expected: 成活率(%)列有值且与模版数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47657
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-85
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-86
+  tp_id: TP-003-86
+  title: 未提交记录状态显示为暂存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 定位未提交模版行，查看「状态」列
+    expected: 状态显示为「暂存」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47658
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-86
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-87
+  tp_id: TP-003-87
+  title: 已提交审核中记录状态显示为待审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「待审核」的模版
+  steps:
+  - action: 定位已提交未审完的模版行，查看「状态」列
+    expected: 状态显示为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47659
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-87
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-88
+  tp_id: TP-003-88
+  title: 审核通过记录状态显示为审核通过
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 定位审核通过模版行，查看「状态」列
+    expected: 状态显示为「审核通过」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47660
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-88
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-89
+  tp_id: TP-003-89
+  title: 审核驳回记录状态显示为驳回
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「驳回」的模版
+  steps:
+  - action: 定位驳回模版行，查看「状态」列
+    expected: 状态显示为「驳回」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47661
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-89
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-90
+  tp_id: TP-003-90
+  title: 驳回原因列展示审核人填写的原因
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「驳回」的模版
+  steps:
+  - action: 查看驳回行的「驳回原因」列
+    expected: 展示审核人填写的驳回原因文案
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47662
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-90
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-91
+  tp_id: TP-003-91
+  title: 审核通过记录审核人员显示正确，如果审核流设置多个节点，显示多个审核人
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 查看审核通过行的「审核人员」列
+    expected: 显示正确审核人；若审核流多节点则显示多个审核人
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47663
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-91
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-003-92
+  tp_id: TP-003-92
+  title: 驳回记录审核人员显示驳回操作人
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「驳回」的模版
+  steps:
+  - action: 查看驳回行的「审核人员」列
+    expected: 显示执行驳回的操作人
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47664
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-92
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-93
+  tp_id: TP-003-93
+  title: 审核时间显示规则正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 查看审核通过或驳回行的「审核时间」列
+    expected: 显示符合规则的审核时间（有值且格式正确）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47665
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-93
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-94
+  tp_id: TP-003-94
+  title: 暂存/待审核记录不显示驳回原因、审核人、审核时间
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  - 另准备一条「待审核」模版
+  steps:
+  - action: 分别查看「暂存」「待审核」行的驳回原因、审核人员、审核时间列
+    expected: 上述列为空或不展示审核结果信息
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47666
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-94
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-95
+  tp_id: TP-003-95
+  title: 列表「创建人员」「创建时间」列显示正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 查看刚创建模版行的「创建人员」「创建时间」
+    expected: 创建人员为当前操作账号，创建时间接近实际创建时刻
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47667
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-95
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 47667 --format=json
+  zentao_status: normal
+- id: TC-003-96
+  tp_id: TP-003-96
+  title: 列表「修改人」「修改时间」列显示正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 修改模版名称后保存并回到列表
+    expected: 「修改人」「修改时间」更新为本次操作账号与时间
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47668
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-96
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-97
+  tp_id: TP-003-97
+  title: 暂存行仅显示「编辑」「提交」「删除」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 查看「暂存」行操作列按钮
+    expected: 仅显示「编辑」「提交」「删除」，无「审核」「查看」等其他主操作（以实际按钮集为准）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47669
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-97
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-98
+  tp_id: TP-003-98
+  title: 审核通过行显示「查看」「复制」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 查看「审核通过」行操作列
+    expected: 显示「查看」「复制」，不显示「编辑」「删除」「提交」「审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47670
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-98
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-99
+  tp_id: TP-003-99
+  title: 驳回行仅显示「编辑」「删除」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「驳回」的模版
+  steps:
+  - action: 查看「驳回」行操作列
+    expected: 仅显示「编辑」「删除」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47671
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-99
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-100
+  tp_id: TP-003-100
+  title: 非审核人看待审核行仅显示「查看」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「待审核」的模版
+  - 当前登录账号为非该单审核人
+  steps:
+  - action: 查看「待审核」行操作列
+    expected: 仅显示「查看」，无「审核」「编辑」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47672
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-100
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 47672 --format=json
+  zentao_status: normal
+- id: TC-003-101
+  tp_id: TP-003-101
+  title: 审核人看待审核行显示「审核」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「待审核」的模版
+  - 当前登录账号为该单审核人
+  steps:
+  - action: 查看「待审核」行操作列
+    expected: 显示「审核」按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47673
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-101
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 47673 --format=json
+  zentao_status: normal
+- id: TC-003-102
+  tp_id: TP-003-102
+  title: 无匹配记录时列表展示空状态，页面无报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 设置必定无结果的查询条件并点击「查询」
+    expected: 列表展示空状态，页面无报错弹窗
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47674
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-102
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-103
+  tp_id: TP-003-103
+  title: 列表分页默认展示第1页数据，每页条数与系统默认一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表查询结果超过一页（可构造多条模版或调小每页条数）
+  steps:
+  - action: 进入列表查看分页区
+    expected: 默认停留第1页，每页条数为系统默认值
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47675
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-103
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-104
+  tp_id: TP-003-104
+  title: 点击分页「下一页」，列表展示下一页数据
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表查询结果超过一页（可构造多条模版或调小每页条数）
+  steps:
+  - action: 在第1页点击分页「下一页」
+    expected: 列表展示第2页数据，页码变为2
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47676
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-104
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-105
+  tp_id: TP-003-105
+  title: 点击分页「上一页」，列表展示上一页数据
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表查询结果超过一页（可构造多条模版或调小每页条数）
+  steps:
+  - action: 先进入第2页，再点击「上一页」
+    expected: 列表回到第1页数据
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47677
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-105
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-106
+  tp_id: TP-003-106
+  title: 切换每页显示条数后，列表按新条数重新分页展示
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表查询结果超过一页（可构造多条模版或调小每页条数）
+  steps:
+  - action: 将每页条数切换为另一可选值（如10↔20）
+    expected: 列表按新条数重新分页，当前页数据条数不超过新设置
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47678
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-106
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-107
+  tp_id: TP-003-107
+  title: 分页区总条数、当前页码与查询结果一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 执行一次查询后核对分页区「总条数」「当前页」与列表实际行数
+    expected: 总条数、页码与查询结果一致
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47679
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-107
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-108
+  tp_id: TP-003-108
+  title: 仅一页数据时分页「上一页」「下一页」不可用或隐藏
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 构造或筛选后仅一页数据
+  steps:
+  - action: 查看分页「上一页」「下一页」
+    expected: 按钮禁用或隐藏，无法翻到空页
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47680
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-108
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-109
+  tp_id: TP-003-109
+  title: 表格中单元格字数太多，超过一行的部分用…展示，鼠标悬浮显示全部内容
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表存在字段内容超长的模版（如超长模版名称）
+  steps:
+  - action: 观察超长单元格展示
+    expected: 超出一行的部分以省略号「…」显示
+  - action: 鼠标悬浮该单元格
+    expected: 浮层或 tooltip 显示完整内容
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47681
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-109
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-110
+  tp_id: TP-003-110
+  title: 点击「查看」打开弹窗，标题为「查看养殖模版」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「查看」
+    expected: 成功打开查看养殖模版弹窗
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47682
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-110
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-111
+  tp_id: TP-003-111
+  title: 查看弹窗数据与新增/编辑时填写一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 记录某审核通过模版关键字段后点击「查看」
+    expected: 打开查看弹窗
+  - action: 对照查看弹窗中模版名称、品种、补栏月份、各段天数与日龄方案
+    expected: 与录入/审核数据一致，字段只读
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47683
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-111
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-112
+  tp_id: TP-003-112
+  title: 查看弹窗字段只读不可编辑
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 打开查看或只读界面，尝试编辑字段
+    expected: 查看弹窗内全部字段灰显/只读，无法录入
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47684
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-112
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-113
+  tp_id: TP-003-113
+  title: 查看弹窗点击关闭按钮关闭弹窗
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 打开弹窗后点击取消或关闭
+    expected: 点击关闭后返回列表页，弹窗关闭
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47685
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-113
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-114
+  tp_id: TP-003-114
+  title: 点击「编辑」打开弹窗，标题为「编辑养殖模版」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击「编辑」
+    expected: 成功打开编辑养殖模版弹窗
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47686
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-114
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-115
+  tp_id: TP-003-115
+  title: 编辑弹窗「模版名称」可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 修改「模版名称」为新值后点击「保存」
+    expected: 保存成功，列表模版名称更新为新值
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47687
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-115
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-116
+  tp_id: TP-003-116
+  title: 编辑弹窗「品种」「补栏月份」可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 修改「品种」或「补栏月份」为未冲突组合后保存
+    expected: 保存成功，列表对应字段更新
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47688
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-116
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-117
+  tp_id: TP-003-117
+  title: 编辑时变更品种或补栏月份后重新带出参考值
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 变更品种或补栏月份
+    expected: 体重/料比/成活率参考值按新组合重新带出（可再手工改）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47689
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-117
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-118
+  tp_id: TP-003-118
+  title: 编辑弹窗各段养殖/空栏天数依然不可修改，只能通过快速分配进行自动填入
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 尝试直接编辑主表各段养殖天数/空栏天数
+    expected: 字段只读不可手工改
+  - action: 点击「快速分配」修改转出日龄后确认
+    expected: 天数仅能通过快速分配回填更新
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47690
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-118
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-119
+  tp_id: TP-003-119
+  title: 编辑弹窗点击「快速分配」重新分配三段天数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 点击「快速分配」，修改转出日龄后点「确认」
+    expected: 主表三段养殖/空栏天数按新分配结果更新
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47691
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-119
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-120
+  tp_id: TP-003-120
+  title: 编辑弹窗日龄采食计划可增删改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 新增一条日龄方案、修改起止/占比，并删除另一条方案
+    expected: 日龄采食计划支持增删改且界面即时反映
+  - action: 点击「保存」
+    expected: 变更保存成功
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47692
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-120
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-121
+  tp_id: TP-003-121
+  title: 编辑弹窗点击「保存」，变更保存且状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 修改模版名称后点击「保存」
+    expected: 提示保存成功；列表状态仍为「暂存」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47693
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-121
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-122
+  tp_id: TP-003-122
+  title: 编辑保存时校验品种+补栏月份唯一，如果已有一样品种+补栏月份的模版，则不允许新增
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  - 另已存在一条不同模版，品种=A、补栏月份=M
+  steps:
+  - action: 点击目标「暂存」模版行的「编辑」按钮
+    expected: 打开编辑模版弹窗
+  - action: 将品种、补栏月份改为与另一已有模版相同的 A、M，保持其余数据可保存
+    expected: 编辑弹窗中品种+补栏月份与已有模版冲突
+  - action: 点击「保存」按钮
+    expected: 无法保存，提示该品种+补栏月份组合已存在模版
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47694
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-122
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-123
+  tp_id: TP-003-123
+  title: 编辑保存时校验必填项
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 点击暂存模版行的「编辑」按钮
+    expected: 打开编辑模版弹窗
+  - action: 清空一项必填项（如模版名称）
+    expected: 该必填项为空
+  - action: 点击「保存」按钮
+    expected: 无法保存，对应字段提示必填或页面提示完善必填项
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47695
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-123
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-124
+  tp_id: TP-003-124
+  title: 编辑保存时校验1~3段日龄采食计划的起止时间连贯不中断，正好满足整个养殖周期
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 点击暂存模板的编辑按钮
+    expected: 打开编辑模版弹窗
+  - action: 在弹窗中编辑日龄采食计划，使1段日龄采食计划的最后一个「止」和2段日龄采食计划的「起」中间有天数的缺失
+    expected: 段区下日龄采食计划起止时间不连贯
+  - action: 点击保存按钮
+    expected: 无法保存，提示日龄采食计划起止时间不连贯
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47696
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-124
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-125
+  tp_id: TP-003-125
+  title: 编辑保存时校验每段区至少有一个方案
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 点击暂存模板的编辑按钮
+    expected: 打开编辑模版弹窗
+  - action: 在弹窗中删除1段、2段、3段任意一个段区的所有日龄采食计划方案
+    expected: 段区下不显示任何日龄采食计划方案
+  - action: 点击保存按钮
+    expected: 无法保存，提示段区至少有一个方案
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47697
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-125
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-003-126
+  tp_id: TP-003-126
+  title: 编辑保存时校验日龄采食计划占比
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 点击暂存模版行的「编辑」按钮
+    expected: 打开编辑模版弹窗
+  - action: 将某日龄方案饲料占比合计改为不等于100%（不点补齐）
+    expected: 该方案占比合计不为100%
+  - action: 点击「保存」按钮
+    expected: 无法保存，提示饲料占比合计须为100%或占比不合规
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47698
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-126
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-127
+  tp_id: TP-003-127
+  title: 编辑框点提交，校验都通过后提交成功，模版进入待审核状态
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 点击暂存模版行的「编辑」按钮
+    expected: 打开编辑模版弹窗
+  - action: 确认品种+月份唯一、必填完整、各段均有日龄方案、起止连贯、占比合计100%后点击「提交」
+    expected: 弹出提交确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 提示提交成功，关闭弹窗后列表中该模版状态变为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47699
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-127
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-128
+  tp_id: TP-003-128
+  title: 驳回行编辑后点击「提交」，状态变待审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「驳回」的模版
+  steps:
+  - action: 点击驳回行「编辑」，确认数据合法后点击「提交」并确定
+    expected: 提示成功，该模版状态变为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47700
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-128
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-129
+  tp_id: TP-003-129
+  title: 编辑弹窗点击「取消」，弹窗关闭且不保存变更
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「暂存」的模版
+  steps:
+  - action: 在列表找到状态为「暂存」的行，点击操作列「编辑」
+    expected: 打开编辑模版弹窗
+  - action: 修改模版名称后点击「取消」或关闭
+    expected: 弹窗关闭，列表模版名称保持修改前的值
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47701
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-129
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-130
+  tp_id: TP-003-130
+  title: 待审核行点击「编辑」→ 非审核人不可进入编辑
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「待审核」的模版
+  - 当前登录为非审核人
+  steps:
+  - action: 查看待审核行操作列并尝试点击「编辑」（若有）
+    expected: 无「编辑」或点击后无法进入编辑弹窗，仅可查看
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47702
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-130
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 47702 --format=json
+  zentao_status: deprecated
+- id: TC-003-131
+  tp_id: TP-003-131
+  title: 暂存行点击「提交」弹出确认框
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 提交
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在状态为「暂存」且可提交的记录
+  steps:
+  - action: 点击暂存行「提交」
+    expected: 弹出提交确认框（含确定/取消）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47703
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-131
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-132
+  tp_id: TP-003-132
+  title: 提交确认框点击取消，状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 提交
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在状态为「暂存」且可提交的记录
+  steps:
+  - action: 点击暂存行「提交」
+    expected: 弹出提交确认框
+  - action: 点击确认框「取消」
+    expected: 确认框关闭，记录状态仍为「暂存」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47704
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-132
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-133
+  tp_id: TP-003-133
+  title: 提交确认框点击确定，提示成功且状态变待审核
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 提交
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在状态为「暂存」且可提交的记录
+  steps:
+  - action: 点击暂存行「提交」
+    expected: 弹出提交确认框
+  - action: 点击确认框「确定」
+    expected: 提示提交成功，记录状态变为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47705
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-133
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-134
+  tp_id: TP-003-134
+  title: 点击「审核」打开弹窗，标题含审核/审批语义
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 在待审核行点击「审核」
+    expected: 打开审核弹窗，标题含审核或审批语义即可
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47706
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-134
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-135
+  tp_id: TP-003-135
+  title: 审核弹窗数据与新增时填写一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 测试账号新增模版，全部填写好后，记录弹窗的所有数据。弹窗点击[保存并提交]，
+    expected: 新增模版提交成功
+  - action: 审核人登录，点击审核按钮打开弹窗
+    expected: 审核弹窗数据与新增时填写一致
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47707
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-135
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-136
+  tp_id: TP-003-136
+  title: 审核弹窗点击关闭，状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备至少一条待审核的模版
+  steps:
+  - action: 审核人登录，点击待审核模版的[审核]按钮打开弹窗。审核弹窗点击关闭
+    expected: 审核弹窗点击关闭，状态不变
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47708
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-136
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-137
+  tp_id: TP-003-137
+  title: 点击「驳回」弹出驳回确认框，包含原因输入框，点击确认按钮后状态变驳回
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  steps:
+  - action: 在待审核行点击「审核」打开弹窗
+    expected: 初始审核弹窗不展示原因输入框
+  - action: 点击「驳回」
+    expected: 弹出驳回确认框，包含原因输入框
+  - action: 在驳回确认框填写原因后点击确认
+    expected: 记录状态变为「驳回」
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47709
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-137
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-138
+  tp_id: TP-003-138
+  title: 驳回确认框中「原因」为多行文本框且必填
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  steps:
+  - action: 打开审核弹窗后点击「驳回」
+    expected: 弹出驳回确认框，含多行原因输入框
+  - action: 留空原因点击确认
+    expected: 确认被阻断
+  - action: 填写有效原因后点击确认
+    expected: 可正常提交驳回
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47710
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-138
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-139
+  tp_id: TP-003-139
+  title: 驳回后列表驳回原因列展示所填内容
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  - 已执行驳回并填写过原因
+  steps:
+  - action: 查看列表「驳回原因」列
+    expected: 展示审核人填写的驳回原因内容
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47711
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-139
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-140
+  tp_id: TP-003-140
+  title: 点击「审核通过」二次确认框后成功
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  steps:
+  - action: 打开审核弹窗，点击「审核通过」
+    expected: 显示二次确认弹窗，点击确定按钮后变审核通过
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47712
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-140
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-141
+  tp_id: TP-003-141
+  title: 审核通过后记录审核人、审核时间
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用审核员账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击审批按钮打开弹窗，点击“通过”按钮
+    expected: 弹出确认框（含确定/取消）
+  - action: 确认框点击“确定”
+    expected: 审核通过，列表记录审核操作人和审核通过的时间
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47713
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-141
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-142
+  tp_id: TP-003-142
+  title: 审核通过后不可编辑、不可删除、不可再次提交
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 查看审核通过行操作列
+    expected: 无「编辑」「删除」「提交」按钮，有「查看」「复制」
+  - action: 点击「查看」打开查看弹窗
+    expected: 弹窗字段只读，无法修改保存
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47714
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-142
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-143
+  tp_id: TP-003-143
+  title: 点击「删除」弹出确认框
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在可删除的记录/单据测试数据
+  steps:
+  - action: 点击目标行操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 提示删除成功，该记录从列表消失
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47715
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-143
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-144
+  tp_id: TP-003-144
+  title: 删除确认框点击取消，记录不删除
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「取消」
+    expected: 确认框关闭，记录未被删除
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47716
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-144
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-145
+  tp_id: TP-003-145
+  title: 删除确认框点击确定，提示成功且记录从列表消失
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 删除成功，列表不再显示该记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47717
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-145
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-003-146
+  tp_id: TP-003-146
+  title: 暂存/驳回/待审核行操作列不显示「复制」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 复制
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中分别存在状态为「暂存」「驳回」「待审核」的模版各至少一条
+  steps:
+  - action: 依次查看暂存、驳回、待审核行的操作列
+    expected: 三态行操作列均不显示「复制」按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-146
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48738
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48738 --format=json
+  zentao_status: normal
+- id: TC-003-147
+  tp_id: TP-003-147
+  title: 审核通过行点击「复制」弹出确认框
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 复制
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 在审核通过行点击操作列「复制」
+    expected: 弹出复制确认框，文案表达将模版复制为新记录之意（不强校验逐字）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-147
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48739
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48739 --format=json
+  zentao_status: normal
+- id: TC-003-148
+  tp_id: TP-003-148
+  title: 复制确认框点击取消，不生成新模版
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 复制
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版，记录当前列表条数
+  steps:
+  - action: 在审核通过行点击「复制」
+    expected: 弹出复制确认框
+  - action: 在确认框点击「取消」
+    expected: 确认框关闭，列表条数不变，无新增暂存模版
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-148
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48740
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48740 --format=json
+  zentao_status: normal
+- id: TC-003-149
+  tp_id: TP-003-149
+  title: 复制确认后列表新增一条状态为暂存的模版
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 复制
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 在审核通过行点击「复制」，在确认框点击「确定」
+    expected: 提示复制成功，列表新增1条状态为「暂存」的模版记录
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-149
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48741
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48741 --format=json
+  zentao_status: normal
+- id: TC-003-150
+  tp_id: TP-003-150
+  title: 复制生成模版名称为「{源模版名称}-随机后缀」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 复制
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」、模版名称可识别的记录
+  steps:
+  - action: 记录源模版名称后点击「复制」并在确认框点击「确定」
+    expected: 复制成功
+  - action: 在列表找到新增的暂存模版，查看模版名称
+    expected: 新名称符合「{源模版名称}-随机后缀」格式（源名称+连字符+随机后缀），且与源名称不同
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-150
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48742
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48742 --format=json
+  zentao_status: normal
+- id: TC-003-151
+  tp_id: TP-003-151
+  title: 复制生成模版内容与源模版关键字段一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 复制
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」且各段数据完整的模版
+  steps:
+  - action: 点击源模版「查看」，记录品种、补栏月份、各段养殖/空栏天数及日龄采食方案
+    expected: 打开查看弹窗，关键字段可见
+  - action: 关闭查看弹窗，对源模版执行复制并在确认框点击「确定」
+    expected: 复制成功，列表出现新暂存模版
+  - action: 对新暂存模版点击「查看」，对照品种、补栏月份、各段天数与日龄采食方案
+    expected: 与源模版查看弹窗中记录的关键字段一致（名称除外）
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-151
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48743
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48743 --format=json
+  zentao_status: normal
+- id: TC-003-152
+  tp_id: TP-003-152
+  title: 禁用的养殖标准不会带入养殖模板
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 养殖标准引用
+  preconditions:
+  - 1. 使用智控中心测试账号登录系统
+  - 2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 3. 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 选择禁用养殖标准的品种和补栏月份
+    expected: 系统不会从禁用的养殖标准带出各段体重(kg)/料比/成活率(%)参考值，数值默认0
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 自造优先；本条为只读页面核对，执行数据由 RUN 隔离
+      natural_unique_key: AUTO测试_勿用_{RUN_ID}_TC-003-152
+      cleanup_status: not_created_read_only
+    execution_readiness: ready
+  zentao_source:
+    case_id: 48792
+    module_id: 670
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48792 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-152
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48792
+  registry_status: registered
+  zentao_status: normal
+- id: TC-003-153
+  tp_id: TP-003-153
+  title: 修改养殖标准，已有养殖模版的「体重(kg)/料比/成活率(%)」不变
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 养殖标准引用
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备一个养殖模板，带入的是养殖标准A的数据
+  - 制定排程中引用了这个模板
+  steps:
+  - action: 在养殖标准A-目标明细中找到养殖模版每段转运日龄的数据，修改体重、料比、成活率后保存
+    expected: 养殖标准的目标明细更新
+  - action: 查看养殖模板三段养殖标准的体重、料比、成活率
+    expected: 数据不变
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例49113
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 49113
+    module_id: 670
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 49113 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-153
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 49113
+  registry_status: registered
+  zentao_status: normal
+- id: TC-003-154
+  tp_id: TP-003-154
+  title: 快速分配弹窗中，1段/2段/3段养殖天数自动根据转出日龄计算得出
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-apm/apm/scheduling/feeding-template）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 点击「快速分配」按钮
+    expected: 打开快速分配弹窗，展示各段转出日龄与空栏天数
+  - action: 分别点击1段/2段/3段转出日龄输入框，输入正整数并且1段转出日龄<2段转出日龄<3段转出日龄
+    expected: 转出日龄后的养殖天数自动更新
+  - action: 查看1段养殖天数
+    expected: 1段的养殖天数=1段转出日龄+1
+  - action: 查看4段养殖天数
+    expected: 2段的养殖天数=2段转出日龄-1段转出日龄
+  - action: 查看3段养殖天数
+    expected: 3段的养殖天数=3段转出日龄-2段转出日龄
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 自造优先；快速分配输入仅用于当前 RUN，保存后的数据按 RUN 标识隔离
+      natural_unique_key: AUTO测试_勿用_{RUN_ID}_TC-003-154
+      cleanup_status: pending_user_confirmation
+    execution_readiness: precondition_required
+  zentao_source:
+    case_id: 49120
+    module_id: 670
+    type: auto
+    auto: auto
+    detail_command: zentao testcase 49120 --format=json
+    retrieved_at: '2026-08-19'
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-154
+    project: 产业链生产排程系统
+    version: 1
+    status: approved_zentao_missing_local
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 49120
+  registry_status: registered
+  zentao_status: normal
+- id: TC-003-155
+  tp_id: TP-003-155
+  title: 1段养殖周期和转运日龄显示正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖」页面（/biopark-apm/apm/scheduling/feeding-template）
+  - 已点击「新增」打开新增养殖模版弹窗
+  - 已点击快速分配按钮，并且在快速分配弹窗填写后保存
+  steps:
+  - action: 查看三段养殖标准-1段顶部的“养殖”和“转运日龄”的字段数值
+    expected: 页面展示“养殖：m~n日龄”和“转运日龄：n日龄”
+  - action: 核对转运日龄数字
+    expected: n=1段转运日龄=1段养殖天数-1（养殖天数看页面中三段养殖标准-各段的[养殖天数]字段）
+  - action: 核对养殖周期数字
+    expected: m=0，n=1段转运日龄
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 自造优先；新增模版和快速分配数据按 RUN 标识隔离
+      natural_unique_key: AUTO测试_勿用_{RUN_ID}_TC-003-155
+      cleanup_status: pending_user_confirmation
+    execution_readiness: precondition_required
+  zentao_source:
+    case_id: 49121
+    module_id: 670
+    type: auto
+    auto: auto
+    detail_command: zentao testcase 49121 --format=json
+    retrieved_at: '2026-08-19'
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-155
+    project: 产业链生产排程系统
+    version: 1
+    status: approved_zentao_missing_local
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 49121
+  registry_status: registered
+  zentao_status: normal
+- id: TC-003-156
+  tp_id: TP-003-156
+  title: 2段养殖周期和转运日龄显示正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖」页面（/biopark-apm/apm/scheduling/feeding-template）
+  - 已点击「新增」打开新增养殖模版弹窗
+  - 已点击快速分配按钮，并且在快速分配弹窗填写后保存
+  steps:
+  - action: 查看三段养殖标准-2段顶部的“养殖”和“转运日龄”的字段数值
+    expected: 页面展示“养殖：m~n日龄”和“转运日龄：n日龄”
+  - action: 核对转运日龄数字
+    expected: n=2段转运日龄=1段养殖天数+2段养殖天数-1（养殖天数看页面中三段养殖标准-各段的[养殖天数]字段）
+  - action: 核对养殖周期数字
+    expected: m=1段养殖天数，n=2段转运日龄
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 自造优先；新增模版和快速分配数据按 RUN 标识隔离
+      natural_unique_key: AUTO测试_勿用_{RUN_ID}_TC-003-156
+      cleanup_status: pending_user_confirmation
+    execution_readiness: precondition_required
+  zentao_source:
+    case_id: 49122
+    module_id: 670
+    type: auto
+    auto: auto
+    detail_command: zentao testcase 49122 --format=json
+    retrieved_at: '2026-08-19'
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-156
+    project: 产业链生产排程系统
+    version: 1
+    status: approved_zentao_missing_local
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 49122
+  registry_status: registered
+  zentao_status: normal
+- id: TC-003-157
+  tp_id: TP-003-157
+  title: 3段养殖周期和转运日龄显示正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增模版
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖」页面（/biopark-apm/apm/scheduling/feeding-template）
+  - 已点击「新增」打开新增养殖模版弹窗
+  - 已点击快速分配按钮，并且在快速分配弹窗填写后保存
+  steps:
+  - action: 查看三段养殖标准-3段顶部的“养殖”和“转运日龄”的字段数值
+    expected: 页面展示“养殖：m~n日龄”和“转运日龄：n日龄”
+  - action: 核对转运日龄数字
+    expected: n=3段转运日龄=1段的养殖天数+2段的养殖天数+3段的养殖天数-1（养殖天数看页面中三段养殖标准-各段的[养殖天数]字段）
+  - action: 核对养殖周期数字
+    expected: m=1段养殖天数+2段养殖天数，n=3段转运日龄
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 自造优先；新增模版和快速分配数据按 RUN 标识隔离
+      natural_unique_key: AUTO测试_勿用_{RUN_ID}_TC-003-157
+      cleanup_status: pending_user_confirmation
+    execution_readiness: precondition_required
+  zentao_source:
+    case_id: 49123
+    module_id: 670
+    type: auto
+    auto: auto
+    detail_command: zentao testcase 49123 --format=json
+    retrieved_at: '2026-08-19'
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-157
+    project: 产业链生产排程系统
+    version: 1
+    status: approved_zentao_missing_local
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 49123
+  registry_status: registered
+  zentao_status: normal
+summary:
+  type_counts:
+    auto: 153
+    feature: 4
+  auto_counts:
+    auto: 153
+    false: 4
+  registry_counts:
+    registered: 157

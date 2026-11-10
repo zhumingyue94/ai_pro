@@ -1,0 +1,155 @@
+# QA 项目模板配置。
+# 只保留结构和占位符；敏感值必须在运行时从环境变量读取。
+
+project:
+  name: "种禽孵化管理系统"
+  product_id: 1
+  project_id: 29
+  execution_id: null
+
+workflow:
+  current_stage: ""
+  gate_policy: "report_only"
+  enabled_stages:
+    - "02_analysis"
+    - "03_test_plan"
+    - "04_testcases"
+    - "05_case_review"
+    - "06_zentao_sync"
+    - "07_ui_automation"
+    - "08_bug_verification"
+    - "09_regression"
+
+zentao_url_env: "ZENTAO_URL"
+zentao_account_env: "ZENTAO_ACCOUNT"
+zentao_password_env: "ZENTAO_PASSWORD"
+zentao_product_name: "种禽孵化管理系统（智孵管家）"
+zentao_product_id: 1
+zentao_project_name: "种禽孵化管理系统"
+zentao_project_id: 29
+zentao_import_target: "project"
+zentao_auth_mode: "environment"
+zentao_sync:
+  entrypoint: "../../scripts/zentao_create_testcase.py"
+  implementation: "shared"
+  allow_project_cli: false
+  require_readback: true
+  require_registry_update: true
+  require_source_hash: true
+
+testcase:
+  environment:
+    url: "${UI_TEST_URL}"
+    url_env: "UI_TEST_URL"
+    username_env: "UI_TEST_USERNAME"
+    password_env: "UI_TEST_PASSWORD"
+    tenant_env: "UI_TEST_TENANT"
+    credentials_source: ".env"
+  portal_entry_path: "种禽孵化管理系统"
+  portal_app_name: "种禽孵化管理系统"
+  login_precondition: "使用测试账号登录"
+  page_precondition_template: "在 config.yaml 配置的测试环境打开「{module_name}」页面（路径 {page_path}）"
+  login_prerequisite: "使用测试账号登录"
+  data_prefix: "AUTO测试_勿用_"
+  generate:
+    output_dir: "04_testcases"
+    allowed_formats: ["yaml", "md"]
+    forbidden_formats: ["csv"]
+  case_review:
+    output_dir: "05_case_review"
+
+agents:
+  stages:
+    "02_analysis":
+      mode: "skill"
+      skill: "stage-requirements-analysis-agent"
+      input_dir: "01_requirements"
+      output_dir: "02_analysis"
+      requires: ["01_requirements"]
+    "03_test_plan":
+      mode: "skill"
+      skill: "stage-test-plan-agent"
+      input_dir: "02_analysis"
+      output_dir: "03_test_plan"
+      requires: ["02_analysis"]
+    "04_testcases":
+      mode: "skill"
+      skill: "stage-testcase-generation-agent"
+      input_dir: ["02_analysis", "03_test_plan"]
+      output_dir: "04_testcases"
+      allowed_formats: ["yaml", "md"]
+      forbidden_formats: ["csv"]
+      requires: ["02_analysis", "03_test_plan"]
+    "05_case_review":
+      mode: "skill"
+      skill: "stage-case-review-agent"
+      input_dir: "04_testcases"
+      output_dir: "05_case_review"
+      requires: ["04_testcases"]
+    "06_zentao_sync":
+      mode: "authorized_sync"
+      skill: "stage-zentao-sync-agent"
+      input_dir: "05_case_review"
+      output_dir: "06_zentao_sync"
+      registry: "module_case_map.json"
+      requires: ["05_case_review"]
+    "07_ui_automation":
+      mode: "skill"
+      skill: "stage-automation-agent"
+      input_dir: ["04_testcases", "05_case_review", "06_zentao_sync"]
+      output_dir: "07_ui_automation"
+      runtime: "python-playwright"
+      result_document: "case_results.xlsx"
+      bug_report_output: "07_ui_automation/reports/RUN_{timestamp}/bugs_review.yaml"
+      requires: ["06_zentao_sync"]
+    "08_bug_verification":
+      mode: "skill"
+      skill: "stage-bug-verification-agent"
+      input_dir: "07_ui_automation"
+      output_dir: "08_bug_verification"
+      requires: ["07_ui_automation"]
+    "09_regression":
+      mode: "skill"
+      skill: "stage-regression-agent"
+      input_dir: ["04_testcases", "07_ui_automation", "08_bug_verification"]
+      output_dir: "09_regression"
+      requires: ["07_ui_automation", "08_bug_verification"]
+
+event_flows:
+  regression:
+    output_dir: "09_regression"
+    input_dir: ["04_testcases", "07_ui_automation", "08_bug_verification", "module_case_map.json"]
+
+evidence:
+  output_dir: "07_ui_automation/reports"
+  require_run_id: true
+  require_readback: true
+
+data:
+  cleanup_status: "pending_user_confirmation"
+  cleanup_owner: ""
+
+shared_resources:
+  schemas: "../../../schemas"
+  scripts: "../../../scripts"
+
+agent_resources:
+  shared_root: "../../../.agents"
+  local_root: ".agents"
+  precedence: ["local", "shared"]
+  skills: "../../.agents/skills"
+  references: "../../.agents/references"
+  rules: ["../../.agents/rules", ".agents/rules"]
+
+rules:
+  page_block_coverage: "../../.agents/rules/page-block-coverage-rule.md"
+  test_design_enrichment: "../../.agents/rules/test-design-enrichment-rule.md"
+  zentao_case_type: "../../.agents/rules/zentao-case-type-automation-rule.md"
+  ui_execution: "../../.agents/rules/ui-automation-execution-rule.md"
+  ui_bug_review: "../../.agents/rules/ui-execution-bug-review-rule.md"
+  project: "../../.agents/rules/shared-project-contract.mdc"
+
+project_business_rules: []
+
+case_registry:
+  module_aliases: {}

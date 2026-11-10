@@ -1,0 +1,339 @@
+analysis:
+  schema_version: "1.0"
+  analysis_id: "REQ-PC-046"
+  title: "存发苗间出入库记录"
+  stage: "02_analysis"
+  business_partition: "pc"
+  analyzed_at: "2026-09-04T16:00:00+08:00"
+  source_traceability:
+    requirement_document:
+      path: "01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx"
+      requirement_id: "not_defined_in_PC_spec"
+      mapped_requirement_id: "REQ-PC-046"
+      scope_note: "PC 需求说明书明确二期 PC 存发苗间及出入库记录页面本次无页面细节，不补写缺失契约"
+    pc_requirement_document:
+      path: "01_requirements/pc/种禽孵化管理系统二期_PC_需求说明书.docx"
+      scope_note: "一期已开发、二期无页面原型的既有功能延续"
+    module_split:
+      path: "01_requirements/pc/模块拆分清单.md"
+      requirement_id: "REQ-PC-046"
+      module: "PC 存发苗间出入库记录"
+      zentao_alignment: "二期 / pc / 存发苗间 / 出入库记录，模块 ID=715"
+      priority: "P1"
+      lifecycle: "一期已开发、二期无原型、既有功能延续"
+    change_log:
+      path: "01_requirements/需求变动.md"
+      priority_rule: "需求变动.md 优先于需求说明书"
+      applicable_items:
+        - "存发苗间出入库记录为 PC 与 APP 共用业务能力"
+        - "上孵计划确认发货后自动生成存发苗间出库记录"
+        - "出库记录的数量、类型、方式、单位、批次、操作人、操作时间和养殖客户取值规则"
+        - "出库存发苗间由上孵计划关联关系决定，不足时按关联排列顺序继续分配"
+        - "不允许产生负库存"
+  page_inventory:
+    path: "02_analysis/pc/page_inventory/page.json"
+    page_id: "pc-stock-inout-records"
+    capture_id: "PAGE-PC-REQ047-20260904-HEADED-BLOCKED"
+    capture_status: "page.json current batch is blocked; cited page is scope-mismatched historical evidence"
+    observed_sha256_at_task_start: "7BDB2C0258FA6DB98EE989A01070F0FAA3AD4C949DEA7EE795163B7B1E592CA2"
+    evidence_scope: "仅引用页面、状态、元素和证据路径；不复制演示业务值或页面清单中的环境地址"
+  source_conflict_handling:
+    rule: "需求变动.md 优先；当前 page.json 的页面标题和菜单范围与 REQ-PC-046 不匹配"
+    observed_page_title: "出入库记录"
+    observed_menu_path: ["库存管理", "合格蛋蛋库", "出入库记录"]
+    requirement_scope: ["库存管理", "存发苗间", "出入库记录"]
+    conclusion: "正式路由和菜单已确认；一期页面筛选、字段、排序、分页、展开/收起和表头设置沿用，本期仅关注雏苗发货产生的数据是否出现在表格"
+prototype_observation:
+  collection_status: "not_executed_for_REQ-PC-046"
+  reason: "用户限定原型只探索雏苗发货；模块清单将 REQ-PC-046 标记为二期无原型"
+  browser: "not_executed"
+  headless: false
+  page_inventory_evidence:
+    page_id: "pc-stock-inout-records"
+    observed_title: "出入库记录"
+    observed_menu_path: ["库存管理", "合格蛋蛋库", "出入库记录"]
+    states:
+      - state_id: "st-stock-inout-nanjing"
+        evidence_status: "available in page.json"
+        dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-segmented-capture.md"
+        screenshots: ["02_analysis/pc/page_inventory/screenshots/req-pc-046-table-left.png", "02_analysis/pc/page_inventory/screenshots/req-pc-046-table-middle.png", "02_analysis/pc/page_inventory/screenshots/req-pc-046-table-right.png"]
+        interpretation: "历史默认列表证据，不证明存发苗间页面正式契约"
+      - state_id: "st-stock-inout-expanded"
+        evidence_status: "available in page.json"
+        dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-reexplore-expanded.md"
+        screenshot: "02_analysis/pc/page_inventory/screenshots/req-pc-046-reexplore-expanded.png"
+        interpretation: "历史高级筛选展开证据，不证明存发苗间页面正式契约"
+      - state_id: "st-stock-inout-column-settings"
+        evidence_status: "available in page.json"
+        dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-reexplore-column-settings.md"
+        screenshot: "02_analysis/pc/page_inventory/screenshots/req-pc-046-reexplore-column-settings-open.png"
+        interpretation: "历史表头设置观察证据，未修改列配置"
+      - state_id: "st-stock-inout-reset"
+        evidence_status: "available in page.json"
+        dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-reexplore-reset.md"
+        screenshot: "02_analysis/pc/page_inventory/screenshots/req-pc-046-reexplore-nanjing.png"
+        interpretation: "历史重置按钮观察证据，未执行重置"
+    evidence_interpretation: "页面、状态和元素可追溯，但因菜单和业务分区不匹配，只作为范围不匹配证据"
+  data_safety:
+    interaction_scope: "只引用现有 page.json、DOM 路径和截图路径，不访问库存或出入库真实路由"
+    business_submission_executed: false
+    formal_business_data_changed: false
+    data_change_responsibility: "正式页面验证由授权测试责任人执行；本分析不创建、修改或清理业务数据"
+    cleanup_status: "not_applicable；本次未执行页面操作，不产生新增业务数据或下载文件"
+    sanitization: "不写入账号、密码、Token、Cookie、具体环境地址或未经授权业务数据"
+scope:
+  in_scope:
+    - "存发苗间出入库记录的业务范围、业务规则、依赖和页面功能边界"
+    - "只读出入库记录列表及自动出库记录的可见展示"
+    - "孵化场、存发苗间等查询条件，以及查询和重置"
+    - "分页、高级筛选展开/收起、表头设置候选"
+    - "自动出库记录的来源、字段概念和联动影响"
+    - "page.json 页面、状态、元素和证据路径的追溯"
+  out_of_scope:
+    - "REQ-PC-042 发货执行和发货提交"
+    - "REQ-PC-045 存发苗间库存余额计算"
+    - "APP 出入库记录页面及移动端专属规则"
+    - "手工入库、手工出库、库存调整、盘点和业务数据修复"
+    - "记录创建、修改、删除和真实业务数据变更"
+    - "正式页面探索、接口测试、接口脚本、测试用例、CSV 和 UI 自动化脚本"
+requirements_facts:
+  - id: "FR-046-01"
+    statement: "存发苗间出入库记录属于 PC 与 APP 共用业务能力。"
+    source_ref: "需求变动.md 两端共用需求 / 存发苗间业务能力"
+  - id: "FR-046-02"
+    statement: "上孵计划确认发货后，自动生成存发苗间出库记录。"
+    source_ref: "需求变动.md 雏苗发货与存发苗间联动"
+  - id: "FR-046-03"
+    statement: "自动出库记录数量等于本次发货数量，类型为出库，方式为自动，单位为只。"
+    source_ref: "需求变动.md 雏苗发货与存发苗间联动"
+  - id: "FR-046-04"
+    statement: "批次取上孵计划批次，操作人和操作时间取雏苗发货记录，养殖客户取当前园区。"
+    source_ref: "需求变动.md 雏苗发货与存发苗间联动"
+  - id: "FR-046-05"
+    statement: "出库存发苗间由上孵计划关联关系决定；当前存发苗间不足时按关联排列顺序继续分配。"
+    source_ref: "需求变动.md 雏苗发货与存发苗间联动"
+  - id: "FR-046-06"
+    statement: "出库分配不允许产生负库存。"
+    source_ref: "需求变动.md 雏苗发货与存发苗间联动"
+  - id: "FR-046-07"
+    statement: "REQ-PC-046 是一期已开发、二期无原型的既有功能延续。"
+    source_ref: "模块拆分清单.md REQ-PC-046"
+page_contract:
+  formal_page:
+    page_id: "not_in_page_json"
+    title: "存发苗间出入库记录"
+    menu_path: ["库存管理", "存发苗间", "出入库记录"]
+    route: "/biopark-breeding/breeding/stock/chick/chickrecord"
+    route_status: "confirmed_not_explored"
+  historical_evidence_page:
+    page_id: "pc-stock-inout-records"
+    title: "出入库记录"
+    menu_path: ["库存管理", "合格蛋蛋库", "出入库记录"]
+    route_status: "not_used_as_formal_contract"
+  referenced_states:
+    - state_id: "st-stock-inout-nanjing"
+      dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-segmented-capture.md"
+      screenshot: "02_analysis/pc/page_inventory/screenshots/req-pc-046-table-left.png"
+    - state_id: "st-stock-inout-expanded"
+      dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-reexplore-expanded.md"
+      screenshot: "02_analysis/pc/page_inventory/screenshots/req-pc-046-reexplore-expanded.png"
+    - state_id: "st-stock-inout-column-settings"
+      dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-reexplore-column-settings.md"
+      screenshot: "02_analysis/pc/page_inventory/screenshots/req-pc-046-reexplore-column-settings-open.png"
+    - state_id: "st-stock-inout-reset"
+      dom_snapshot: "02_analysis/pc/page_inventory/dom/req-pc-046-reexplore-reset.md"
+      screenshot: "02_analysis/pc/page_inventory/screenshots/req-pc-046-reexplore-nanjing.png"
+  historical_element_candidates:
+    - "page-layout"
+    - "filter-hatchery"
+    - "filter-storage"
+    - "btn-query"
+    - "btn-reset"
+    - "btn-expand"
+    - "btn-collapse"
+    - "filter-advanced"
+    - "btn-column-settings"
+    - "btn-export"
+    - "el-table-stock-inout"
+    - "pagination-page-size"
+    - "pagination-prev"
+    - "pagination-next"
+    - "pagination-page"
+  contract_status: "historical_evidence_only; formal route/menu confirmed; page details inherited from phase1"
+  readonly_contract:
+    confirmed_observation: "仅观察表格是否展示雏苗发货产生的出入库数据"
+    inherited_phase1_actions: ["筛选", "查询", "重置", "分页", "排序", "高级筛选展开/收起", "表头设置"]
+    out_of_scope_actions: ["导出按钮功能", "手工入库", "手工出库", "库存调整", "盘点", "记录修改", "记录删除", "业务数据修复"]
+  permission_contract:
+    status: "confirmed"
+    menu_rule: "菜单无权限时不显示“库存管理 / 存发苗间 / 出入库记录”菜单"
+    query_view_rule: "查询或查看接口无权限时提示“没有操作权限”"
+    rule: "权限由平台角色菜单/接口权限配置，不写死具体角色、权限编码或账号"
+data_contract:
+  source_entities:
+    - entity: "雏苗发货记录"
+      responsibility: "提供自动出库触发、本次发货数量、操作人和操作时间"
+      fields: ["发货数量", "操作人", "操作时间"]
+    - entity: "上孵计划"
+      responsibility: "提供批次及与存发苗间的关联排列关系"
+      fields: ["上孵计划批次", "存发苗间关联", "关联排列顺序"]
+    - entity: "存发苗间库存"
+      responsibility: "提供出库分配时的可用库存约束"
+      fields: ["当前库存数量", "存发苗间"]
+    - entity: "当前园区"
+      responsibility: "提供自动出库记录的养殖客户取值"
+      fields: ["园区"]
+  derived_record:
+    trigger: "上孵计划确认发货"
+    type: "出库"
+    method: "自动"
+    unit: "只"
+    quantity: "本次发货数量"
+    batch: "上孵计划批次"
+    operator: "雏苗发货记录操作人"
+    operation_time: "雏苗发货记录操作时间"
+    customer: "当前园区"
+    target_storage: "由上孵计划关联关系决定"
+    allocation: "当前存发苗间不足时按关联排列顺序继续分配"
+  page_visible_contract:
+    status: "confirmed_for_phase2_observation"
+    observation: "仅确认表格是否展示雏苗发货产生的出入库数据"
+    inherited_phase1_contract: ["筛选", "字段与顺序", "排序", "分页", "高级筛选展开/收起", "表头设置"]
+    out_of_scope: ["导出按钮功能"]
+    empty_or_error_state: "表格无数据、加载失败、记录生成失败或异常数据时显示“暂无数据”"
+    missing: []
+  interface_contract:
+    scope: "out_of_scope"
+    execution_status: "not_executed"
+    not_defined: ["接口路径", "HTTP 方法", "请求体", "响应体", "错误码", "分页协议"]
+systematic_boundary_analysis:
+  equivalence_and_boundary_candidates:
+    - "记录类型：出库、其他类型"
+    - "记录数量：正数、零、异常负数"
+    - "记录来源：自动出库、其他来源"
+    - "存发苗间关联：单个、多个按顺序、无关联"
+    - "库存分配：当前存发苗间足够、不足需继续分配、无法分配"
+    - "查询结果：有数据、单条、多条、无匹配、加载失败"
+    - "筛选结果：默认、单条件、多条件、无匹配"
+    - "分页：首、中、末页及无分页"
+    - "高级筛选：展开、收起"
+    - "权限：有菜单/查看权限、无菜单权限、无查看权限"
+  decision_table_dimensions:
+    - "是否由上孵计划确认发货触发"
+    - "是否存在有效上孵计划与存发苗间关联"
+    - "当前存发苗间库存是否足够"
+    - "是否需要按关联顺序继续分配"
+    - "查询是否成功且存在匹配记录"
+    - "是否具备菜单和查看权限"
+  state_transition_candidates:
+    - "页面进入 → 默认记录列表"
+    - "设置筛选 → 查询结果 → 分页浏览"
+    - "展开高级筛选 → 高级筛选区域 → 收起高级筛选"
+    - "打开表头设置 → 观察配置状态 → 返回列表"
+    - "无数据/加载失败 → 空状态或异常状态"
+    - "发货确认 → 自动生成出库记录 → 出入库记录可查询"
+  pict_parameter_candidates:
+    parameters:
+      - name: "RecordType"
+        values: ["Outbound", "OtherType", "NotProvided"]
+      - name: "RecordSource"
+        values: ["AutoFromShipment", "OtherSource", "NotProvided"]
+      - name: "StorageRelation"
+        values: ["Single", "OrderedMultiple", "None", "NotProvided"]
+      - name: "AllocationState"
+        values: ["CurrentStorageSufficient", "ContinueNextStorage", "CannotAllocate", "NotProvided"]
+      - name: "QueryFilter"
+        values: ["Default", "SingleCondition", "MultipleConditions", "NoMatch", "NotProvided"]
+      - name: "QueryResult"
+        values: ["HasData", "Empty", "LoadFailed", "NotProvided"]
+      - name: "PaginationState"
+        values: ["NoPagination", "FirstPage", "MiddlePage", "LastPage", "NotProvided"]
+      - name: "AdvancedFilterState"
+        values: ["Collapsed", "Expanded", "NotProvided"]
+      - name: "PermissionState"
+        values: ["MenuAllowed", "MenuDenied", "ViewAllowed", "ViewDenied", "NotProvided"]
+      - name: "DataLoadState"
+        values: ["Loaded", "Empty", "Failed", "NotExecuted"]
+    constraints:
+      - "只有上孵计划确认发货后才生成自动出库记录"
+      - "自动出库记录的数量等于本次发货数量"
+      - "当前存发苗间不足时才进入下一个关联存发苗间"
+      - "出库分配不得产生负库存"
+      - "当前页面证据范围不匹配，不得将合格蛋蛋库字段直接当作存发苗间正式字段"
+    design_boundary_status: "analysis_candidate_only; not test cases"
+roles:
+  - role: "存发苗间出入库记录查看人员"
+    capability: "查看自动生成的出库记录并使用正式页面提供的查询功能"
+    permission_status: "菜单、查询和查看权限规则已确认，不绑定具体角色"
+  - role: "孵化场发货相关人员"
+    capability: "通过发货确认触发出库记录来源；不在本需求页面执行发货"
+    permission_status: "由 REQ-PC-042 分析，不在本需求固化"
+  - role: "产品/研发/测试/实施/业务培训人员"
+    capability: "评审和验收出入库记录业务边界"
+    permission_status: "不形成正式权限矩阵结论"
+automation_boundary_plan:
+  locator_priority: ["get_by_role", "get_by_label", "get_by_test_id", "scoped_semantic_locator"]
+  locator_status: "历史候选；page.json 页面范围不匹配正式 REQ-PC-046"
+  locator_candidates: ["page-layout", "filter-hatchery", "filter-storage", "btn-query", "btn-reset", "btn-expand", "btn-collapse", "filter-advanced", "btn-column-settings", "btn-export", "el-table-stock-inout", "pagination-page-size", "pagination-prev", "pagination-next", "pagination-page"]
+  future_preconditions:
+    - "正式页面确认后重新核对 role、label 或正式 data-testid"
+    - "不将历史合格蛋蛋库元素 ID 直接用于存发苗间自动化脚本"
+    - "自动化使用可视浏览器 headless=False"
+    - "不在脚本中写入凭据或真实业务数据"
+dependencies:
+  - dependency: "REQ-PC-042 发货单发货执行"
+    impact: "提供确认发货事件、本次发货数量、操作人和操作时间"
+    status: "analysis_dependency"
+  - dependency: "REQ-PC-045 存发苗间库存查询"
+    impact: "提供存发苗间库存约束的参考"
+    status: "phase1_reference_only"
+  - dependency: "上孵计划与存发苗间关联关系"
+    impact: "决定自动出库目标和不足时的分配顺序"
+    status: "required_business_data_not_provided"
+  - dependency: "存发苗间、园区、上孵计划和自动出库记录测试数据"
+    impact: "支持正式页面的记录查询和展示"
+    status: "required_test_data_not_provided"
+environment_and_data:
+  prototype:
+    status: "not_executed_for_REQ-PC-046"
+    scope_restriction: "本次原型仅允许探索雏苗发货"
+    evidence_source: "02_analysis/pc/page_inventory/page.json"
+  real_test_environment:
+    url_source: ".env or authorized runtime configuration; concrete value not recorded"
+    credentials_source: "runtime secure configuration; not recorded"
+    authorization: "平台角色菜单/接口权限配置；无菜单权限不显示菜单，无查询/查看权限提示“没有操作权限”"
+    formal_route: "/biopark-breeding/breeding/stock/chick/chickrecord"
+    data_prerequisites: "授权的自动出库记录、上孵计划关联、存发苗间库存和可查询测试数据未提供"
+  data_lifecycle:
+    created: "not applicable"
+    modified: "not applicable"
+    cleaned: "not applicable"
+    responsibility: "授权测试责任人负责未来测试数据的准备、变更和清理"
+risks:
+  - risk: "page.json 页面范围不匹配"
+    impact: "现有元素、字段和菜单不能直接证明存发苗间出入库记录页面契约"
+    mitigation: "保留页面、状态和元素作为历史证据；正式页面确认后重新采集或核对"
+  - risk: "二期页面无原型且 page.json 页面范围不匹配"
+    impact: "无法将当前历史元素直接作为正式页面定位器；一期页面细节需在测试计划阶段核对"
+    mitigation: "正式路由和菜单按已确认口径记录；筛选、字段和交互按一期继承，本期仅验证表格数据展示"
+  - risk: "自动出库记录生成和跨存发苗间分配依赖 REQ-PC-042 与真实业务数据"
+    impact: "仅凭页面清单无法验证记录数量、分配顺序和非负库存"
+    mitigation: "测试计划阶段准备授权数据并核对页面可见结果；本阶段不执行接口验证"
+  - risk: "历史证据包含导出入口"
+    impact: "可能将一期按钮功能误纳入本期范围"
+    mitigation: "明确导出属于一期，本期不考虑按钮功能；历史 btn-export 仅保留为证据"
+interface_contract:
+  scope: "out_of_scope"
+  execution_status: "not_executed"
+  known_concepts_only: ["自动出库记录", "出库数量", "出库类型", "出库方式", "单位", "批次", "操作人", "操作时间", "养殖客户", "存发苗间关联顺序"]
+  not_defined: ["接口路径", "HTTP 方法", "请求体", "响应体", "错误码", "分页协议"]
+  prohibition: "不得根据 page.json、DOM 或截图演示值补写接口契约"
+workflow_gate:
+  policy: "report_only"
+  gate_passed: false
+  gate_reasons:
+    - "正式测试数据、页面执行环境和数据清理责任未提供"
+    - "正式权限配置未提供，需在页面功能测试阶段准备授权账号和权限场景"
+  continuation: "allowed"
+  pipeline_summary: "completed_with_gate_issues"
+open_questions: []

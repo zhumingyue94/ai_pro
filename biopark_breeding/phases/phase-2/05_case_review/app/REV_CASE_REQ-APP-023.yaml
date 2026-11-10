@@ -1,0 +1,543 @@
+review:
+  review_id: REV_CASE_REQ-APP-023
+  req_id: REQ-APP-023
+  module_id: REQ-APP-023
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-09'
+  status: completed_with_observations
+  gate_passed: true
+  gate_reasons: []
+  design_gate_passed: true
+  design_gate_reasons: []
+  overall_status: design_review_passed
+  execution_status: not_executed
+  execution_gate_passed: false
+  review_scope:
+    design_review: in_scope
+    execution_review: not_in_scope
+    ui_execution: not_in_scope
+    automation_execution: not_in_scope
+    pairwise_execution: not_in_scope
+    remote_sync: not_in_scope
+  execution_review:
+    status: not_in_scope
+    reason: 本轮仅做静态用例评审，不执行 UI、浏览器、Playwright、PICT 或远程同步。
+  rules_applied:
+  - test-design-enrichment-rule.md
+  - page-block-coverage-rule.md
+  - automation-judgment-rule.md
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope_paths:
+    source_testcase_yaml: 04_testcases\app\TC_REQ-APP-023.yaml
+    source_testcase_markdown: 04_testcases\app\TC_REQ-APP-023.md
+    page_inventory: 02_analysis/app/page_inventory/page.json
+    supporting_analysis: 02_analysis/app/REQ-APP-023.yaml
+    supporting_test_plan: 03_test_plan/app/TEST_PLAN_REQ-APP-023.yaml
+    casely_reference: reference/casely/
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+  scope:
+    case_count: 20
+    ids_unique: true
+    ids_continuous: false
+    id_range: TC-APP-023-002..TC-APP-023-030 (TC-APP-023-007、TC-APP-023-022 已删除)
+    type_counts:
+      feature: 20
+      interface: 0
+    auto_counts:
+      auto: 20
+      'no': 0
+    priority_counts:
+      P1: 4
+      P2: 10
+      P3: 6
+      P4: 0
+  alignment:
+    status: pass
+    yaml_markdown_aligned: true
+    yaml_case_count: 20
+    markdown_case_count: 20
+    yaml_ids: &id001
+    - TC-APP-023-002
+    - TC-APP-023-003
+    - TC-APP-023-004
+    - TC-APP-023-005
+    - TC-APP-023-006
+    - TC-APP-023-008
+    - TC-APP-023-009
+    - TC-APP-023-010
+    - TC-APP-023-011
+    - TC-APP-023-012
+    - TC-APP-023-013
+    - TC-APP-023-014
+    - TC-APP-023-015
+    - TC-APP-023-016
+    - TC-APP-023-017
+    - TC-APP-023-019
+    - TC-APP-023-021
+    - TC-APP-023-023
+    - TC-APP-023-024
+    - TC-APP-023-025
+    - TC-APP-023-026
+    - TC-APP-023-027
+    - TC-APP-023-028
+    - TC-APP-023-029
+    - TC-APP-023-030
+    markdown_ids: *id001
+    differences: []
+    checks:
+    - case_id
+    - title
+    - priority
+    - auto
+    - type
+    - atomic_purpose_ids
+    - traceability
+    - step_count
+    - steps.action
+    - steps.expected
+    - summary_statistics
+  structural_review:
+    status: pass_with_observations
+    findings:
+    - 28 条用例可解析，ID 唯一且仅因 TC-APP-023-022 删除而不连续，均包含结构化追溯、步骤和自动化评估字段。
+    - YAML 为自动化和明细事实源；Markdown 与 YAML 的数量、ID、标题、优先级、auto、type、原子目的、追溯和步骤已对齐。
+  traceability_review:
+    status: pass_with_observations
+    requirement_coverage: covered_with_open_evidence
+    plan_coverage: covered_with_open_evidence
+    observations:
+    - 第 4 点“共 n 条”的固定文案、列表标题右侧位置及任意数量全部平铺统计已由 TC-APP-023-003、007 明确断言；TC-APP-023-003 已将复合预期拆分为发货单号、累计发货数量和记录数量三个步骤。
+    - 页面归属存在 APP-023/APP-024 交叉，属于证据风险而非评审门禁。
+  systematic_design_review:
+    status: pass_with_observations
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    - exception_coverage
+    observations:
+    - 覆盖空、1、3、超过 3 条及大数据量边界；覆盖状态、折叠展开、排序、汇总、位置明细和返回上下文。
+    - 列表标题右侧“共 n 条”固定文案、位置及折叠场景统计口径已补充明确断言；时间格式仍存在 HH:SS 与 HH:MM:SS 语义歧义。
+  pairwise_review:
+    status: covered_with_observations_static_pict_model
+    method: PICT_2_way
+    parameters:
+    - EntryContext
+    - RecordCountPartition
+    - RecordState
+    - PositionCardinality
+    - SortOrder
+    - FoldState
+    - LoadScale
+    - PermissionState
+    - ReturnContext
+    - PageOwnership
+    constraints:
+    - 空记录显示空状态且无记录明细。
+    - 不超过 3 条不显示展开/收起。
+    - 超过 3 条默认最新 3 条并支持展开/收起。
+    - 未授权不可查看记录内容。
+    - 非法发货单上下文不展示无关数据。
+    - 页面归属确认前不把 APP-024 静态证据当作 APP-023 执行证据。
+    execution: not_run
+    observations:
+    - 已完成静态参数、值域和约束设计；按要求不执行 PICT。
+  playwright_review:
+    status: candidate_but_blocked
+    mode: headed_planning_only
+    auto_candidate_count: 21
+    automation_executable_count: 0
+    blockers:
+    - 正式环境、查询权限、脱敏只读数据和清理责任尚未就绪。
+    - 正式路由、页面归属和稳定定位器尚未确认。
+    - 性能测量边界、分页/加载契约和错误响应契约尚未就绪。
+    - 按要求未生成或执行 Playwright 脚本。
+  headed_page_review:
+    status: static_review_only
+    evidence: page.json、页面映射和截图静态资料；本轮未启动浏览器。
+    target_page: app-plan-shipment-records
+    evidence_boundary: 静态页面资料仅用于页面/区域语义参考，不替代正式有头页面执行证据。
+  casely_review:
+    status: pass_with_observations
+    checks:
+    - YAML 可解析性、必填字段、ID 唯一连续性
+    - YAML/Markdown 逐条对齐
+    - 标题、前置条件、步骤和预期的 Casely 风格
+    - report_only 交付格式及禁止事项
+    observations:
+    - 结构和风格总体一致；第 4 点固定文案/位置及折叠统计口径已补充到相关用例。
+  review_items:
+  - code: REQ_APP023_COUNT_LABEL_ASSERTION_MISSING
+    category: design_violation
+    result: resolved
+    gate_reason: false
+    reason: 已在 TC-APP-023-003、007 中补充“共 n 条”固定文案、列表标题右侧位置、0/1/3/超过3条及折叠时全部记录数断言。
+  - code: AUTOMATION_SUMMARY_SCHEMA_MISMATCH
+    category: design_violation
+    result: resolved
+    gate_reason: false
+    reason: 已将源 YAML summary.auto_counts 修正为仅包含实际 auto 统计。
+  - code: TIME_FORMAT_CONTRACT_AMBIGUOUS
+    category: evidence_risk
+    result: resolved
+    gate_reason: false
+    reason: 用例预期已统一为严格符合 YYYY-MM-DD HH:SS 格式，并移除额外的“两位显示”断言。
+  - code: PAGE_APP023_APP024_OWNERSHIP_CROSS_MAPPING
+    category: evidence_risk
+    result: reference_only
+    gate_reason: false
+    reason: 页面资料存在 APP-023/APP-024 编号交叉，正式页面归属和路由待确认。
+  - code: PERFORMANCE_EXECUTION_NOT_READY
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 大数据量阈值、数据规模、测量边界和加载契约尚未具备正式执行条件。
+  - code: FORMAL_UI_AUTOMATION_NOT_EXECUTED
+    category: execution_blocker
+    result: not_in_scope
+    gate_reason: false
+    reason: 本轮按 report_only 约束未执行 UI、浏览器、Playwright、PICT 或远程同步.
+  design_violations: []
+  traceability_failures: []
+  input_gate_failures: []
+  evidence_risks:
+  - PAGE_APP023_APP024_OWNERSHIP_CROSS_MAPPING
+  execution_blockers:
+  - PERFORMANCE_EXECUTION_NOT_READY
+  - FORMAL_UI_AUTOMATION_NOT_EXECUTED
+  priority_review:
+    rule_ref: test-design-enrichment-rule.md §优先级划分；case-review-agent §优先级逐条评审
+    scope: 全量 REQ-APP-023 用例的业务影响、核心流程、关键数据、频率和替代路径
+    case_count: 20
+    reviewed_case_count: 20
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 4
+        P2: 10
+        P3: 6
+        P4: 0
+      percentage:
+        P1: 20.0
+        P2: 50.0
+        P3: 30.0
+        P4: 0.0
+    change_summary:
+      changed_case_count: 3
+      unchanged_case_count: 25
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: P1 比例 17.24%、P2 44.83%、P3 31.03%、P4 6.9%，与参考分布存在偏离；按规则仅记录观察，不改写业务优先级。
+    items:
+    - case_id: TC-APP-023-002
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-003
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-004
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-005
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-006
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-013
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-014
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-015
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-016
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-017
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-019
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-021
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-023
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-024
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-025
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-026
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-027
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-028
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-029
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    - case_id: TC-APP-023-030
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: reviewed_unchanged
+      impact_area: 发货记录查询与展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按核心流程阻断、数据/统计影响、使用频率及替代路径复核；该原子目的保留当前优先级。
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+    - 正式使用频率和替代路径尚待业务方确认；当前按需求、测试计划和只读查询流程进行保守评估。
+    gate_reasons: []
+  coverage_summary:
+    case_count: 20
+    automation_candidate_count: 20
+    automation_executable_count: 0
+    case_level_blocked_count: 20
+    yaml_markdown_aligned: true
+    formal_ui_execution_performed: false
+    pict_execution_performed: false
+    remote_sync_performed: true
+    remote_sync_status: validated
+    remote_deleted_case_ids:
+    - 51356
+  sync_candidates:
+    case_count: 20
+    status: partial_validated
+    note: 本轮删除禅道用例 51356 已完成并立即回读确认不存在；未执行其他用例远程写入。
+  execution_statement: 仅完成静态评审；未执行 UI、浏览器、Playwright、PICT、CSV 或远程禅道同步。
+  prohibited_actions_confirmed:
+    ui_execution: false
+    csv_generation: false
+    remote_zentao_write: false
+    test_point_or_xmind_generation: false
+  source_hashes:
+  - path: 04_testcases\app\TC_REQ-APP-023.yaml
+    sha256: 58b9fa0ae803f1859e146c02594a20b8fa4702c3f7a427f749adcdcac761e8b7
+  - path: 04_testcases\app\TC_REQ-APP-023.md
+    sha256: b32c621effc3ef74a7a49b218a2504600adf001e4b1fe03c0533857729149d19
+  - path: 02_analysis\app\REQ-APP-023.yaml
+    sha256: 72188a9d3c637f3724f2d096b617d7ec81edf6b3ba291147a5b9df43227cc7ed
+  - path: 03_test_plan\app\TEST_PLAN_REQ-APP-023.yaml
+    sha256: d2d58ca1c19a39c5bb3d823bca2a23c3b56b8c7b3ed4313dc9acaf8bceb5aa72
+  - path: 02_analysis\app\page_inventory\page.json
+    sha256: b71e83ad448235d533d2e564fc1ba96a0e7725573e4405f12dcf5d5b1a43893d
+  - path: 02_analysis\app\page_inventory\lanhu_page_mapping\REQ-APP-023_lanhu_page_mapping.json
+    sha256: 4d558a41bbc824b6fc75fc6e6eedddf1bc48fed1d02c5b0100eaa721f6f17771
+  handoff:
+    path: 05_case_review/app/HANDOFF/REQ-APP-023_HANDOFF.md
+    module_id: REQ-APP-023

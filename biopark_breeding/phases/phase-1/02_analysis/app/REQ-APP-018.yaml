@@ -1,0 +1,83 @@
+schema_version: "1.0"
+req_id: "REQ-APP-018"
+module_name: "次品库 / 库存查询"
+zentao_module_id: 580
+platform: "app"
+analysis_status: "analyzed_from_docx_baseline_and_readonly_local_evidence"
+scope:
+  object_scope: "次品库"
+  object_scope_evidence: "static"
+  object_scope_basis: "基线明确 REQ-APP-018 为次品库/库存查询；DOCX 和 P072 均明确页面名为次品库列表。"
+  included: "P072 次品库列表及其只读库存卡片契约。"
+  excluded: "次品入库、次品盘点、次品出库确认、记录写入、接口实现、权限实现和持久化实现。"
+evidence_legend:
+  observed: "实时原型在 networkidle 后的渲染 DOM、页面文本和控件；本轮实时会话因浏览器占用/定位超时未补充。"
+  static: "DOCX 页面表、模块拆分清单、axure_map.md、既有 RUN 的 DOM/page_text/截图路径。"
+  inferred: "由模块基线或页面复用关系归纳。"
+  open_question: "材料未明确，需确认。"
+inputs:
+  - path: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+    type: "docx"
+    sections: ["5.72 次品库列表"]
+    pages: ["P072"]
+    evidence_level: "static"
+  - path: "01_requirements/app/模块拆分清单.md"
+    type: "baseline"
+    sections: ["REQ-APP-018", "D-02", "D-04", "实施边界"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_map.md"
+    type: "axure_map"
+    sections: ["P072"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/"
+    type: "readonly_evidence_run"
+    evidence_level: "static"
+  - path: "http://127.0.0.1:5500/"
+    type: "live_prototype"
+    viewport: "430x932"
+    wait: "networkidle"
+    browser_mode: "headless=False"
+    evidence_level: "open_question"
+    note: "本轮未完成实时页面补充核对；不把实时会话当作已观察证据。"
+source_pages:
+  - {page_id: "P072", name: "次品库列表", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-072.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-072.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P072"}]}
+page_contracts:
+  - page_id: "P072"
+    name: "次品库列表"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "首页显示次品库/库存查询入口，页面表将 P072 作为首页入口页面。"}, return: {level: "static", detail: "页面存在首页、次品入库、次品盘点、次品出库、出入库记录列表及确认入库/盘点单库位静态链接；返回栈未确认。"}}
+    query_area: {level: "static", items: ["次品库一号/二号/三号（页面文本可见）", "次品类型/数量列表"], open_question: "仓库切换控件、默认库、分页排序和查询输入未明确。"}
+    list_or_cards: {level: "static", items: ["7 种次品类型样例：无精蛋、死胚蛋、大蛋、小蛋、毛蛋、破损蛋、弱雏", "数量", "入库", "盘点", "出库", "出入库记录/记录入口"]}
+    form: {level: "static", detail: "未观察到库存查询表单或内联编辑；页面为库存卡片/列表。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["入库", "盘点", "出库", "出入库记录", "记录", "返回首页"]}
+    status_and_transitions: {level: "static", values: ["数量为 0", "数量大于 0"], transition: "原型明确某次品数量为 0 时出库不可操作；入库/盘点/出库为入口动作，不代表本 REQ 执行。", open_question: "数量更新时点和并发规则未明确。"}
+interfaces:
+  - {name: "次品库存查询", direction: "read", evidence_level: "open_question", observed_contract: "读取次品库按次品类型分组的库存数量及仓库入口。", endpoint_or_protocol: "未观察到接口地址、鉴权、分页、排序或错误码。", candidate_inputs: ["次品库标识"], candidate_outputs: ["次品类型列表", "库存数量", "入库/盘点/出库/记录入口状态"]}
+  - {name: "次品库存写入", direction: "write", evidence_level: "open_question", observed_contract: "P072 仅显示动作入口；写入由 REQ-APP-019/020 相关页面承接，不在本 REQ 执行。", endpoint_or_protocol: "未观察到接口；不得据此调用或实现写操作。"}
+cross_module_refs:
+  - {ref: "REQ-APP-001", module: "首页", zentao_module_id: 556, relation: "entry", evidence_level: "static"}
+  - {ref: "REQ-APP-019", module: "次品库 / 出入库记录", zentao_module_id: 581, relation: "movement_actions", evidence_level: "static"}
+  - {ref: "REQ-APP-020", module: "次品库 / 盘点记录", zentao_module_id: 582, relation: "inventory_count_actions", evidence_level: "static"}
+  - {ref: "REQ-APP-003", module: "孵化任务 / 种蛋照蛋", zentao_module_id: 565, relation: "possible_defect_source", evidence_level: "inferred", detail: "基线列为依赖模块，实际数量生成来源待确认。"}
+business_rules:
+  - {id: "BR-018-01", rule: "次品类型始终展示，原型样例包含 7 种类型；类型枚举是否固定仍需确认。", evidence_level: "static"}
+  - {id: "BR-018-02", rule: "次品卡片展示库存数量及入库、盘点、出库、出入库记录/记录入口。", evidence_level: "static"}
+  - {id: "BR-018-03", rule: "当某次品数量为 0 时，出库不可操作。", evidence_level: "static"}
+  - {id: "BR-018-04", rule: "P072 次品没有点击跳转详情；库存查询不等同于次品类型详情页。", evidence_level: "static"}
+  - {id: "BR-018-05", rule: "本分析只读，不执行入库、出库、盘点或记录写入。", evidence_level: "observed"}
+  - {id: "BR-018-06", rule: "数量计算、更新时点、权限、接口、异常和持久化未确认。", evidence_level: "open_question"}
+open_questions:
+  - {id: "OQ-018-01", question: "次品类型是否固定为 7 种，类型字典由谁维护？", impact: "high"}
+  - {id: "OQ-018-02", question: "库存数量的单位、汇总口径、实时性、负数和并发更新规则是什么？", impact: "high"}
+  - {id: "OQ-018-03", question: "数量为 0 时仅禁用出库还是需要提示；入库/盘点入口的权限状态如何表达？", impact: "high"}
+  - {id: "OQ-018-04", question: "次品数量与照蛋任务、出入库记录、盘点记录的关联键和一致性规则是什么？", impact: "medium"}
+  - {id: "OQ-018-05", question: "空库、接口失败、权限不足、加载中和多库切换如何展示？", impact: "medium"}
+analysis_boundary:
+  read_only: true
+  prohibited_actions: ["新增", "编辑", "删除", "入库", "出库", "盘点确认", "任务执行", "远程数据写入"]
+  not_claimed: ["实时页面本轮已成功逐页点击", "接口已实现", "权限已实现", "库存计算已确认", "出库禁用状态已在实时环境复现"]
+handoff:
+  next_owner: "产品/研发/测试设计"
+  deliverable_use: "先确认次品类型字典、库存口径、零库存动作状态和跨模块一致性，再进入测试点设计。"
+  generated_files: ["02_analysis/app/REQ-APP-018.yaml", "02_analysis/app/REQ-APP-018_次品库-库存查询.md"]

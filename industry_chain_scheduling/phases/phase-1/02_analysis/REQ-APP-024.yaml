@@ -1,0 +1,28 @@
+id: REQ-008
+title: 孵化日看板
+parent_req: REQ-000
+module_path: 排程看板 / 孵化日看板
+zentao_module_id: 675
+page_url: /biopark-poultry/schedule/plan-schedule/hatch-plan
+analysis_status: analyzed_with_live_dom_readback
+source_precedence: [PRD, 待澄清项确认清单, REQ-基础数据_page_recon, 需求变动, 栋舍分配最小缓冲与推荐得分逻辑说明, 各段转进转出释放日期计算, 排程计算.xlsx]
+scope:
+  in: [上孵计划日历汇总, 上孵计划列表明细, 导出]
+  out: [孵化计划手工新增/修改, 孵化生产执行]
+requirements:
+  data_source: 排程审批通过后下推的孵化排程计划
+  roles: [孵化场负责人, 智控中心小组成员]
+  list_columns: [序号, 上孵日期, 上孵品种, 孵化计划号, 补栏计划号, 上孵蛋数(万枚), 合计(万枚), 补栏栋舍, 补栏日期, 补栏时间, 补栏数量(万只), 补栏苗重(g), 计划状态, 排程编号]
+  aggregation: 日历按日汇总上孵蛋数；列表呈现栋舍、补栏和计划关联明细
+  date_dependency: 上孵/补栏关联日期使用最新排程日期基线
+page_contract:
+  navigation: 门户 -> 产业链生产排程系统 -> 排程看板 -> 孵化日看板
+  views: [日历视图, 列表视图]
+  actions: [查询, 重置, 导出]
+  drilldown: 日历与列表的点击下钻/筛选联动待页面契约确认
+interfaces: [REQ-005孵化计划下推, REQ-003分段养殖模版, 商品禽养殖/孵化系统]
+dependencies: [REQ-003, REQ-005, 商品禽养殖系统]
+risks: [日历汇总与列表合计不一致, 日期边界导致关联错配, 下推延迟导致空态误判]
+open_questions: [点击下钻形态, 上孵蛋数/合计单位与精度, 孵化执行态是否回写本页]
+prototype_evidence: {source_record: 模块拆分清单与既有REQ-008分析, portal_entry: verified, submenu_dom_readback: verified, route: /biopark-poultry/schedule/plan-schedule/hatch-plan, title: 孵化计划排程, observed_views: [日历视图, 列表视图], observed_actions: [查询, 重置, 导出], observed_list_headers: [序号, 上孵日期, 上孵品种, 孵化计划号, 补栏计划号, 上孵蛋数(万枚), 合计(万枚), 补栏栋舍, 补栏日期, 补栏时间, 补栏数量(万只), 补栏苗重(g), 计划状态, 排程编号], observation_time: 2026-08-27}
+trace: {upstream: [REQ-003, REQ-005], downstream: [REQ-011, REQ-016]}

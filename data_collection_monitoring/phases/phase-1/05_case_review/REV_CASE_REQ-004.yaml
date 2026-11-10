@@ -1,0 +1,619 @@
+review:
+  review_id: REV-CASE-REQ-004-20261022-R2
+  req_id: REQ-004
+  module_id: REQ-004
+  module_id_missing: false
+  agent: case-review-agent
+  mode: report_only
+  status: design_review_passed_with_blockers
+  overall_status: pending_execution
+  gate_passed: true
+  design_gate_passed: true
+  execution_status: remote_sync_validated
+  execution_gate_passed: true
+  gate_reasons: []
+  design_gate_reasons: []
+  review_scope:
+    design_review: in_scope
+    execution_review: excluded
+    ui_execution: excluded
+    automation_execution: excluded
+    pairwise_execution: excluded
+    remote_sync: validated
+  execution_review:
+    status: not_executed
+    reason: 本轮完成静态用例设计、模板、Markdown、原子性和编号校验；未执行 UI/Playwright；禅道同步待稳定映射核对后逐条原位更新并回读。
+  execution_summary:
+    playwright: not_executed
+    headed_page: not_executed
+    remote_sync: validated
+    remote_sync_count: 17
+    testcase_count: 34
+    priority_distribution: &id001
+      P1: 11
+      P2: 9
+      P3: 14
+      P4: 0
+    auto_count: 27
+    manual_count: 7
+  remote_delete_count: 6
+  input_summary:
+    testcase_count: 34
+    priority_distribution: *id001
+    auto_count: 27
+    manual_count: 7
+  review_items:
+  - code: ZENTAO_CASE_51678_EXPECTATION_REFINED
+    category: remote_sync
+    result: pending
+    gate_reason: false
+    reason: TC-REQ-004-028（禅道 51678）已删除预期中的“按清理方案删除测试分组”；待按稳定 ID 原位更新并立即回读确认。
+  - code: ZENTAO_CASE_51677_EXPECTATION_REFINED
+    category: remote_sync
+    result: passed
+    gate_reason: false
+    reason: TC-REQ-004-027（禅道 51677）已删除两条预期中的指定表述；已按稳定 ID 原位更新并立即回读确认，未删除重建。
+  - code: ZENTAO_CASE_51675_51676_DELETED
+    category: remote_sync
+    result: passed
+    gate_reason: false
+    reason: 已移除 TC-REQ-004-025、TC-REQ-004-026 及稳定映射；两个目标均已逐条真实删除并立即回读确认不存在，未删除重建。
+  - code: ANALYSIS_INPUT_YAML_INVALID
+    category: input_gate_failure
+    result: blocked
+    gate_reason: false
+    reason: REQ-004 分析 YAML 在 roles 列表与 permission_status 之间结构未闭合，PyYAML 解析失败；本轮不擅自修复分析输入。
+  - code: SCENARIO_COVERAGE_REVIEWED
+    category: design_violation
+    result: passed_with_gaps
+    gate_reason: false
+    reason: 35 条用例覆盖页面身份、七列表头、筛选、分页、名称/描述边界、状态、设备关系、数量统计、权限和异常方向；最大日期跨度、保存反馈、并发、删除失败和跨模块回读仍待确认。
+  - code: CASE_ATOMICITY_REVIEWED
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 名称空白、日期筛选、重置刷新、状态迁移和异常反馈等复合场景已拆分为单一业务目的，步骤与预期相邻。
+  - code: PAIRWISE_COVERAGE_UNPROVEN
+    category: design_violation
+    result: unproven
+    gate_reason: false
+    reason: 已识别 Auth、Permission、Name、Description、DateFilter、GroupState、DeviceRelation、Membership、Action、Result，但缺少完整值域、约束矩阵和 case 映射；本轮未执行 PICT。
+  - code: PAGE_EVIDENCE_PARTIAL
+    category: evidence_risk
+    result: partial
+    gate_reason: false
+    reason: device_group 默认列表、七列、筛选、分页和新增部分证据可用；编辑/删除完整弹层、反馈、状态和跨模块回读仍为 partial 或待确认。
+  - code: AUTOMATION_READINESS_BLOCKED
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 35 条用例均有结构化自动化评估但均 blocked；稳定 locator、批准数据、权限矩阵、失败注入和跨模块回读待确认。
+  - code: HEADED_PAGE_READINESS_BLOCKED
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 本轮仅静态评审 page.json、DOM、截图和日志；编辑、删除、状态、设备关联、失败提示和权限证据不完整，不启动有头浏览器。
+  - code: CROSS_MODULE_CONTRACT_PENDING
+    category: input_gate_failure
+    result: blocked
+    gate_reason: false
+    reason: 设备多分组、停用后禁止新归属、数量去重/权限过滤、关联删除阻止和立即生效规则缺批准跨模块回读；不以缺证据判设计失败。
+  - code: SOURCE_TRACEABILITY_PENDING
+    category: traceability_failure
+    result: blocked
+    gate_reason: false
+    reason: 正式 PDF REQ-004 章节尚未完成逐条页码追溯；需求变动、分析、计划和用例已形成静态链路，正式源证据仍待补齐。
+  - code: CASELY_DELIVERY_REVIEWED
+    category: evidence_risk
+    result: passed_with_blockers
+    gate_reason: false
+    reason: YAML/Markdown 应保持 35 条、ID、优先级和字段对齐，原子性与交付结构基本符合 Casely；公共 HANDOFF 若有旧统计需后续维护者同步。
+  coverage_review:
+    method:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    - risk_based_review
+    conclusion: 静态设计覆盖设备分组入口、列表、筛选、分页、设备关系、启停、增删改及边界；运行时仍未执行。
+    covered:
+    - 页面身份与默认七列表格
+    - 名称/日期筛选
+    - 查询/重置/刷新
+    - 表头和分页
+    - 名称/描述边界
+    - 状态停用/恢复
+    - 设备多分组
+    - 数量去重/权限过滤
+    - 关联删除阻断
+    - 日期包含边界
+    - 权限/租户
+    gaps:
+    - 保存中/重复提交/并发冲突
+    - 删除失败反馈
+    - 最大日期跨度与时区
+    - 设备立即生效回读
+    - 正式 PDF 逐条页码追溯
+    case_count: 34
+  pairwise_review:
+    status: unproven
+    executed: false
+    parameters:
+    - Auth
+    - Permission
+    - Name
+    - Description
+    - DateFilter
+    - GroupState
+    - DeviceRelation
+    - Membership
+    - Action
+    - Result
+    constraints:
+    - 只读权限限制为 query/reset/refresh
+    - 名称为空新增/编辑返回校验失败
+    - 有关联设备删除被阻断
+    - 停用/恢复允许
+    - 停用分组移动设备返回成员关系错误
+    - 反向日期返回校验错误
+    - 刷新成功
+    conclusion: 只能确认参数候选和静态场景分布，不能宣称 2-way 组合覆盖完成；不执行 PICT、不生成测试点/XMind。
+  automation_review:
+    framework: Playwright Python sync API / pytest-playwright
+    status: blocked
+    safe_scope:
+    - 进入设备分组页面
+    - 确认路由/标题/菜单
+    - 名称/日期筛选、重置、刷新
+    - 表头、日期面板和分页只读观察
+    - 打开新增弹层后取消
+    blocked_scope:
+    - 新增保存
+    - 编辑保存
+    - 删除确认提交
+    - 停用/恢复
+    - 设备加入/移出
+    - 跨模块数量回读
+    - 失败注入
+    locator_strategy:
+    - role/name
+    - accessible label
+    - page.json locator candidates
+    - 表格行上下文
+    - 已确认可见文本
+    conclusion: page.json 仅提供部分稳定定位器，不能生成或声称可执行通过的自动化套件。
+  headed_page_review:
+    status: blocked
+    collection_status: partial
+    conclusion: 仅静态评审 page.json、DOM、截图和探索日志；不启动有头浏览器，不把既有证据等同于本轮执行结果。
+  casely_review:
+    status: passed_with_blockers
+    structure: passed
+    fields: passed
+    atomicity: passed
+    style: passed_with_risk
+    delivery_format: passed
+    markdown_alignment: pending_revalidation
+    conclusion: 以当前 YAML 为事实源；须通过项目 Markdown 校验器后确认最终交付。
+  priority_review:
+    rule_ref: test-design-enrichment-rule.md
+    scope: 全量40条用例，以 YAML priority 为事实源。
+    case_count: 40
+    reviewed_case_count: 40
+    unreviewed_case_ids: []
+    distribution:
+      P1: 11
+      P2: 9
+      P3: 20
+      P4: 0
+    change_summary:
+      changed_case_count: 24
+      unchanged_case_count: 22
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: P1/P2 分布用于风险观察，不单独构成设计门禁；正式业务影响等级和用户频率待确认。
+    items:
+    - case_id: TC-REQ-004-001
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 页面可达性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 按用户指定将优先级从P1调整为P2。
+      gate_reason: false
+    - case_id: TC-REQ-004-002
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: changed
+      impact_area: 列表字段
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-003
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 分页
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-004
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: changed
+      impact_area: 名称筛选
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-005
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: changed
+      impact_area: 日期筛选
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-007
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: changed
+      impact_area: 分页
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-008
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: changed
+      impact_area: 排序时间
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-009
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 新增表单
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-010
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 删除限制
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-011
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 设备关系
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-012
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: changed
+      impact_area: 数量统计
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 统计全部未删除设备，覆盖在线、离线、未激活设备，并按设备唯一编号去重；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-016
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 名称边界
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-019
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 组合筛选
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-020
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 组合筛选
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-022
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 日期异常
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-023
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 列表操作
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-024
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: changed
+      impact_area: 列表操作
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-025
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 字段校验
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-026
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 字段校验
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-027
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 字段校验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-028
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: changed
+      impact_area: 字段校验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-029
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 删除限制
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 实际契约为删除无关联设备的分组后显示成功反馈，并刷新或重新查询确认该记录从列表消失；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-030
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 状态迁移
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-031
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 状态迁移
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-032
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 状态迁移
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 逐条复核后保留源优先级；正式业务影响、用户频率和运行时证据仍需确认。
+      gate_reason: false
+    - case_id: TC-REQ-004-046
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: added
+      impact_area: 删除设备分组后使用完全相同表单内容重新创建成功
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 新增删除后使用完全相同表单内容重新创建成功的生命周期场景；执行数据和页面契约待确认。
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+    - 正式业务影响等级
+    - 用户频率
+    - 名称/描述保存规则
+    - 日期时区与跨度
+    - 设备关联和数量契约
+    - 权限租户矩阵
+    gate_reasons: []
+  forbidden_actions:
+  - 读取或生成测试点/XMind
+  - 执行 UI 测试
+  - 执行 Playwright 或有头浏览器
+  - 执行 PICT
+  - 生成 CSV
+  - 写入远程禅道
+  - 提交新增/编辑/删除/停用/恢复/设备加入移出
+  - 修改注册表或业务数据
+  traceability:
+    module_case_map_registered: true
+    module_id_missing: false
+    requirements_pdf_page_trace: pending
+    input_hashes_recorded: true
+  validation:
+    validator: scripts/validate_case_review.py
+    testcase_markdown_validator: scripts/validate_testcase_markdown.py
+    status: pending_execution
+sync_items:
+- case_id: TC-REQ-004-001
+- case_id: TC-REQ-004-002
+- case_id: TC-REQ-004-003
+- case_id: TC-REQ-004-004
+- case_id: TC-REQ-004-005
+- case_id: TC-REQ-004-007
+- case_id: TC-REQ-004-008
+- case_id: TC-REQ-004-009
+- case_id: TC-REQ-004-010
+- case_id: TC-REQ-004-011
+- case_id: TC-REQ-004-012
+- case_id: TC-REQ-004-016
+- case_id: TC-REQ-004-019
+- case_id: TC-REQ-004-020
+- case_id: TC-REQ-004-021
+- case_id: TC-REQ-004-022
+- case_id: TC-REQ-004-023
+- case_id: TC-REQ-004-024
+- case_id: TC-REQ-004-025
+- case_id: TC-REQ-004-026
+- case_id: TC-REQ-004-027
+- case_id: TC-REQ-004-028
+- case_id: TC-REQ-004-029
+- case_id: TC-REQ-004-030
+- case_id: TC-REQ-004-031
+- case_id: TC-REQ-004-032
+- case_id: TC-REQ-004-033
+- case_id: TC-REQ-004-034
+- case_id: TC-REQ-004-036
+- case_id: TC-REQ-004-037
+- case_id: TC-REQ-004-038
+- case_id: TC-REQ-004-039
+- case_id: TC-REQ-004-040
+- case_id: TC-REQ-004-043
+- case_id: TC-REQ-004-044
+- case_id: TC-REQ-004-045

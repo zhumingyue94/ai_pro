@@ -1,0 +1,140 @@
+schema_version: "1.0"
+req_id: "REQ-APP-020"
+module_name: "次品库 / 盘点记录"
+zentao_module_id: 582
+platform: "app"
+analysis_status: "analyzed_from_docx_baseline_and_readonly_local_evidence"
+scope:
+  object_scope: "次品库"
+  object_scope_evidence: "static"
+  object_scope_basis: "基线明确 REQ-APP-020 为次品库/盘点记录；P074 为次品盘点入口，P081-P085 为次品盘点记录链路。"
+  included: "P074、P081-P085 的盘点表单字段和只读记录查询契约；不执行确认盘点。"
+  excluded: "确认盘点、库存调整、记录写入、入库/出库、任务执行、接口实现、权限实现和持久化实现。"
+evidence_legend:
+  observed: "实时原型在 networkidle 后的渲染 DOM、页面文本和控件；本轮实时会话因浏览器占用/定位超时未补充。"
+  static: "DOCX 页面表、模块拆分清单、axure_map.md、既有 RUN 的 DOM/page_text/截图路径。"
+  inferred: "由模块基线、页面链路或通用页面命名归纳。"
+  open_question: "材料未明确，需确认。"
+inputs:
+  - path: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+    type: "docx"
+    sections: ["5.74 次品盘点", "5.81 盘点记录列表", "5.82 盘点记录搜索", "5.83 盘点记录筛选", "5.84 筛选结果", "5.85 盘点详情"]
+    pages: ["P074", "P081", "P082", "P083", "P084", "P085"]
+    evidence_level: "static"
+  - path: "01_requirements/app/模块拆分清单.md"
+    type: "baseline"
+    sections: ["REQ-APP-020", "D-04", "实施边界"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_map.md"
+    type: "axure_map"
+    sections: ["P074", "P081", "P082", "P083", "P084", "P085"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/"
+    type: "readonly_evidence_run"
+    evidence_level: "static"
+  - path: "http://127.0.0.1:5500/"
+    type: "live_prototype"
+    viewport: "430x932"
+    wait: "networkidle"
+    browser_mode: "headless=False"
+    evidence_level: "open_question"
+    note: "本轮未完成实时页面补充核对；不把实时会话当作已观察证据。"
+source_pages:
+  - {page_id: "P074", name: "次品盘点", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-074.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-074.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P074"}]}
+  - {page_id: "P081", name: "盘点记录列表", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-081.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-081.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P081"}]}
+  - {page_id: "P082", name: "盘点记录搜索", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-082.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-082.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P082"}]}
+  - {page_id: "P083", name: "盘点记录筛选", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-083.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-083.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P083"}]}
+  - {page_id: "P084", name: "筛选结果", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-084.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-084.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P084"}]}
+  - {page_id: "P085", name: "盘点详情", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-085.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-085.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P085"}]}
+page_contracts:
+  - page_id: "P074"
+    name: "次品盘点"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P072 次品库列表进入；静态链接返回 P072。"}, return: {level: "static", detail: "返回次品库列表；确认结果未验证。"}}
+    query_area: {level: "static", detail: "未观察到查询区。"}
+    list_or_cards: {level: "static", items: ["盘点时间", "操作人", "孵化场/次品库", "当前库存", "次品类型"]}
+    form: {level: "static", items: ["盘点数量（必填）", "当前库存（默认库存数字）", "盘点备注", "次品类型"]}
+    dialogs: {level: "static", detail: "未观察到独立弹窗；页面有确认盘点按钮。"}
+    actions: {observed: [], static: ["确认盘点", "调整盘点数量", "返回次品库列表"]}
+    status_and_transitions: {level: "static", values: ["默认库存", "盘点数量", "确认盘点"], transition: "确认后记录和库存调整未验证。"}
+  - page_id: "P081"
+    name: "盘点记录列表"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由首页或 P072 进入；可进入搜索、筛选、详情。"}, return: {level: "static", detail: "可返回首页；返回栈未确认。"}}
+    query_area: {level: "static", items: ["次品库一号/二号/三号", "今日/昨日/近一周/近一个月/近3个月/近1年", "次品类型", "是否差异：是/否", "搜索", "筛选"], open_question: "默认值、分页排序和条件关系未明确。"}
+    list_or_cards: {level: "static", items: ["数量", "盘点时间", "差异数量", "次品类型"]}
+    form: {level: "static", detail: "未观察到列表内联编辑表单。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入盘点详情", "返回首页"]}
+    status_and_transitions: {level: "static", values: ["有差异", "无差异", "是", "否"], transition: "差异结果不等同于已确认或已调整。"}
+  - page_id: "P082"
+    name: "盘点记录搜索"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P081 搜索进入。"}, return: {level: "static", detail: "可返回列表或详情。"}}
+    query_area: {level: "static", items: ["关键词", "次品类型", "养殖场", "批次", "品种", "代孵/树田代孵历史词", "搜索"], open_question: "匹配范围、历史词、输入即查和空结果未明确；原型注释建议本期可只按输入关键词查询。"}
+    list_or_cards: {level: "static", detail: "有结果展示盘点时间、差异数量和次品类型；无结果文案存在于注释证据。"}
+    form: {level: "static", items: ["关键词输入框"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "选择历史词", "进入详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["搜索有结果", "搜索无结果"], open_question: "网络/权限异常未定义。"}
+  - page_id: "P083"
+    name: "盘点记录筛选"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P081/P082 筛选进入。"}, return: {level: "static", detail: "确认进入 P084；重置行为未明确。"}}
+    query_area: {level: "static", items: ["次品库", "盘点日期", "次品类型", "养殖场", "品种", "是否差异：全部/是/否", "确认", "重置"], open_question: "样例含周龄/蛋重等跨对象字段，次品库实际筛选字段、必填和组合逻辑待确认。"}
+    list_or_cards: {level: "static", detail: "展示筛选前记录预览。"}
+    form: {level: "static", items: ["库选择", "盘点日期", "次品类型", "养殖场", "批次", "品种", "是否差异"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["确认", "重置", "进入筛选结果", "返回列表/搜索"]}
+    status_and_transitions: {level: "static", values: ["全部", "是", "否"], open_question: "空筛选、无结果、失败提示未定义。"}
+  - page_id: "P084"
+    name: "筛选结果"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P083 确认进入。"}, return: {level: "static", detail: "可回列表、搜索、筛选或详情；条件回显未确认。"}}
+    query_area: {level: "static", items: ["搜索", "筛选"], open_question: "分页排序和条件回显未明确。"}
+    list_or_cards: {level: "static", items: ["盘点时间", "差异数量", "次品类型"]}
+    form: {level: "static", detail: "未观察到内联编辑表单。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入盘点详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["有差异", "无差异"], open_question: "结果快照一致性未定义。"}
+  - page_id: "P085"
+    name: "盘点详情"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P081-P084 记录卡片进入。"}, return: {level: "static", detail: "返回盘点记录列表。"}}
+    query_area: {level: "static", detail: "未观察到查询区。"}
+    list_or_cards: {level: "static", items: ["种蛋/次品信息：养殖场/批次/品种/种蛋类型/周龄/蛋重/产蛋日期（有则显示）", "仓库信息：孵化场/次品库", "盘点信息：库存/盘点数量/差异数量/盘点时间/备注/操作人/是否差异", "次品类型"]}
+    form: {level: "static", detail: "未观察到可编辑字段；确认盘点/库存调整不在本只读契约。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["返回盘点记录列表"]}
+    status_and_transitions: {level: "static", values: ["是否差异：是"], open_question: "确认、复核、调整、撤销和权限未明确。"}
+interfaces:
+  - {name: "次品盘点记录查询", direction: "read", evidence_level: "open_question", observed_contract: "读取次品库盘点记录列表、关键词结果、筛选结果和详情。", endpoint_or_protocol: "未观察到接口地址、鉴权、分页、排序或错误码。", candidate_inputs: ["次品库标识", "关键词", "次品类型", "养殖场", "批次", "品种", "盘点日期", "是否差异"], candidate_outputs: ["盘点记录卡片列表", "空结果状态", "盘点详情"]}
+  - {name: "次品盘点写入或库存调整", direction: "write", evidence_level: "open_question", observed_contract: "P074 有确认盘点按钮；本分析不执行确认或调整。", endpoint_or_protocol: "未观察到接口；不得据此调用或实现写操作。"}
+cross_module_refs:
+  - {ref: "REQ-APP-001", module: "首页", zentao_module_id: 556, relation: "entry", evidence_level: "static"}
+  - {ref: "REQ-APP-018", module: "次品库 / 库存查询", zentao_module_id: 580, relation: "inventory_snapshot", evidence_level: "static", detail: "P072 提供库存数量，P074/P085 展示当前库存/盘点差异。"}
+  - {ref: "REQ-APP-019", module: "次品库 / 出入库记录", zentao_module_id: 581, relation: "sibling_record", evidence_level: "static"}
+  - {ref: "REQ-APP-003", module: "孵化任务 / 种蛋照蛋", zentao_module_id: 565, relation: "possible_source", evidence_level: "inferred", detail: "页面含种蛋相关信息，实际来源待确认。"}
+business_rules:
+  - {id: "BR-020-01", rule: "次品盘点表单展示默认库存、盘点数量、盘点时间、操作人、仓库、备注和次品类型，并有确认盘点动作。", evidence_level: "static"}
+  - {id: "BR-020-02", rule: "盘点记录列表支持按次品库、时间、次品类型、是否差异查询，并展示盘点时间和差异数量。", evidence_level: "static"}
+  - {id: "BR-020-03", rule: "详情展示库存、盘点数量、差异数量、操作人、备注、是否差异及次品信息。", evidence_level: "static"}
+  - {id: "BR-020-04", rule: "差异是结果属性，不自动等同于盘点确认或库存调整完成。", evidence_level: "inferred"}
+  - {id: "BR-020-05", rule: "次品库对象边界来自基线，通用页面字段未证明库隔离规则。", evidence_level: "inferred"}
+  - {id: "BR-020-06", rule: "本分析只读，不确认盘点、不调整库存、不执行入库/出库。", evidence_level: "observed"}
+  - {id: "BR-020-07", rule: "差异计算、确认、复核、调整、撤销、权限、接口、异常和持久化未确认。", evidence_level: "open_question"}
+open_questions:
+  - {id: "OQ-020-01", question: "库存、盘点数量、差异数量的计算时点、精度、负数和并发规则是什么？", impact: "high"}
+  - {id: "OQ-020-02", question: "确认盘点是否触发库存调整、复核或状态流转，是否允许撤销？", impact: "high"}
+  - {id: "OQ-020-03", question: "次品库、次品类型、盘点记录和库存的隔离键及一致性规则是什么？", impact: "high"}
+  - {id: "OQ-020-04", question: "P083 应使用哪些次品字段，样例中的种蛋字段是否为复用占位？", impact: "high"}
+  - {id: "OQ-020-05", question: "搜索、日期、是否差异、分页排序、空结果、失败、权限不足如何处理？", impact: "medium"}
+  - {id: "OQ-020-06", question: "盘点确认、库存调整和详情是否受角色权限控制，操作人/备注是否可修改？", impact: "medium"}
+analysis_boundary:
+  read_only: true
+  prohibited_actions: ["新增", "编辑", "删除", "确认盘点", "库存调整", "入库", "出库", "任务执行", "远程数据写入"]
+  not_claimed: ["实时页面本轮已成功逐页点击", "确认盘点已执行", "接口已实现", "权限已实现", "库存调整已验证", "差异状态机已确认"]
+handoff:
+  next_owner: "产品/研发/测试设计"
+  deliverable_use: "先确认差异计算、盘点确认/复核/调整、字段归属、权限和异常契约，再进入测试点设计。"
+  generated_files: ["02_analysis/app/REQ-APP-020.yaml", "02_analysis/app/REQ-APP-020_次品库-盘点记录.md"]

@@ -1,0 +1,811 @@
+req_id: REQ-PC-044
+module: 雏苗发货导出
+trace:
+  req: REQ-PC-044
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft_with_blocked_cases
+  source_review: REV_CASE_REQ-PC-044
+  source_inputs:
+  - 02_analysis/pc/REQ-PC-044.yaml
+  - 03_test_plan/pc/TEST_PLAN_REQ-PC-044.yaml
+  - 02_analysis/pc/page_inventory/page.json
+common_preconditions:
+- id: delivery_export_page
+  name: 雏苗发货导出页面访问前置
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 成功登录系统
+  - action: 从应用门户进入种禽孵化管理系统
+    expected: 成功进入系统门户或应用入口页
+  - action: 在左侧菜单中展开「计划管理」，然后点击「雏苗发货」菜单项进入「雏苗发货」列表页
+    expected: 打开「雏苗发货」页面，显示筛选区、状态统计区、列表和「导出」按钮。
+cases:
+- id: TC-PC-044-002
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-02
+  atomic_purpose_ids:
+  - AP-044-02
+  title: 单条件筛选后仅导出筛选结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态卡筛选导出
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备状态卡筛选有结果的雏苗发货数据。
+  steps:
+  - action: 应用一个状态卡筛选并查询，点击「导出」
+    expected: 显示确认提示且当前筛选条件保持生效。
+    step: 1
+  - action: 在确认提示中点击「确认」
+    expected: 下载内容仅对应当前状态卡筛选结果。
+    step: 2
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_单条件状态卡
+    filter: single_status_card
+    data_state: has_data
+  trace:
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-002
+- id: TC-PC-044-003
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-03
+  atomic_purpose_ids:
+  - AP-044-03
+  title: 多条件筛选后仅导出交集结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 多条件联动
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备同时满足日期、栋舍、品种和普通有效关键字条件的记录，以及至少一条仅满足部分条件的对照记录。
+  steps:
+  - action: 输入日期、栋舍、品种和普通有效关键字筛选值并查询
+    expected: 列表仅显示同时满足日期、栋舍、品种和普通有效关键字条件的记录。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含多条件交集结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    filter: multiple_conditions
+    data_state: has_data
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-export-filter-keyword
+    element_ids:
+    - el-filter-date-start
+    - el-filter-date-end
+    - el-filter-house
+    - el-filter-breed
+    - el-filter-keyword
+    - el-btn-export
+    - el-table
+  trace:
+    req: REQ-PC-044
+    status: blocked_data_locator
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-003
+- id: TC-PC-044-004
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-04
+  atomic_purpose_ids:
+  - AP-044-04
+  title: 关键字完整匹配筛选结果导出
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 关键字筛选
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备关键字“育雏A”的完整匹配记录、仅部分包含该关键字的记录和不匹配记录。
+  steps:
+  - action: 在“关键字”输入框输入“育雏A”并查询
+    expected: 列表显示完整匹配记录，不显示部分匹配或不匹配记录。
+    step: 1
+  - action: 点击「导出」按钮并点击「确认」
+    expected: 下载文件仅包含关键字完整匹配结果。
+    step: 2
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    filter: keyword_exact_match
+    data_state: has_data
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-export-filter-keyword
+    element_ids:
+    - el-filter-keyword
+    - el-btn-export
+    - el-table
+  trace:
+    req: REQ-PC-044
+    status: blocked_data_environment
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-004
+- id: TC-PC-044-005
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-05
+  atomic_purpose_ids:
+  - AP-044-05
+  title: 筛选无结果时按相同确认流程导出表头文件
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 空结果导出
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备不会匹配任何记录的筛选条件。
+  steps:
+  - action: 输入无匹配筛选条件并查询
+    expected: 列表显示“暂无数据”，并保留筛选条件。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 仍显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件“发货单.xls”，文件首行表头名称与顺序和页面列表列标题一致。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    filter: no_result
+    data_state: empty
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-default
+    element_ids:
+    - el-btn-export
+    - el-table
+  trace:
+    req: REQ-PC-044
+    status: blocked_data_environment_locator
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-005
+- id: TC-PC-044-006
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-03
+  plan_item_ids:
+  - PI-044-06
+  atomic_purpose_ids:
+  - AP-044-06
+  title: 确认导出当前结果的全部字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 确认导出
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备有结果的雏苗发货列表和页面表格字段清单。
+  steps:
+  - action: 查看雏苗发货列表的表格字段
+    expected: 页面显示本次导出应包含的完整字段集合。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件字段集合不缺失页面表格中的任何导出字段。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_有结果列表
+    historical_states_excluded:
+    - st-export-scope-options
+    - st-export-field-options
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-default
+    element_ids:
+    - el-btn-export
+  trace:
+    req: REQ-PC-044
+    status: blocked_locator
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-006
+- id: TC-PC-044-007
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-03
+  plan_item_ids:
+  - PI-044-07
+  atomic_purpose_ids:
+  - AP-044-07
+  title: 取消导出后不下载
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 取消导出
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备有结果列表，并记录列表、统计和筛选条件的操作前状态。
+  steps:
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 1
+  - action: 点击“取消”
+    expected: 确认提示关闭，且不发生文件下载。
+    step: 2
+  - action: 查看列表、统计和筛选条件
+    expected: 页面数据、统计数量和筛选条件与操作前一致。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    filter: any
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-default
+    element_ids:
+    - el-btn-export
+    - el-table
+    - el-stats-all
+    - el-stats-pending
+    - el-stats-shipping
+    - el-stats-shipped
+    - el-stats-signed
+  trace:
+    req: REQ-PC-044
+    status: blocked_environment_locator
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-007
+- id: TC-PC-044-008
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-04
+  plan_item_ids:
+  - PI-044-08
+  atomic_purpose_ids:
+  - AP-044-08
+  title: 导出文件字段顺序和名称与页面表格一致
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 字段契约
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备有结果列表和页面表格字段清单。
+  steps:
+  - action: 点击「导出」按钮并点击「确认」
+    expected: 下载文件“发货单.xls”。
+    step: 1
+  - action: 打开下载文件并对照页面表格
+    expected: 文件字段的显示名称和排列顺序与页面表格逐项一致。
+    step: 2
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    file: 发货单.xls
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-default
+    element_ids:
+    - el-table
+    - el-btn-export
+  trace:
+    req: REQ-PC-044
+    status: blocked_data_download
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-008
+- id: TC-PC-044-009
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-05
+  plan_item_ids:
+  - PI-044-09
+  atomic_purpose_ids:
+  - AP-044-09
+  title: 导出文件名和格式固定为发货单.xls
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 文件属性
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备有结果列表。
+  steps:
+  - action: 点击「导出」按钮并点击「确认」
+    expected: 下载文件成功生成。
+    step: 1
+  - action: 查看下载文件名和扩展名
+    expected: 文件名为“发货单.xls”，扩展名为“.xls”，中文文件名未出现乱码、替换字符或问号。
+    step: 2
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    download_dir: controlled_temp_dir
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-default
+    element_ids:
+    - el-btn-export
+  trace:
+    req: REQ-PC-044
+    status: blocked_environment_download
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-009
+- id: TC-PC-044-012
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-07
+  plan_item_ids:
+  - PI-044-12
+  atomic_purpose_ids:
+  - AP-044-12
+  title: 确认导出不改变列表统计和筛选条件
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 只读边界
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备有结果的筛选条件，并记录操作前列表、统计和筛选条件。
+  steps:
+  - action: 应用指定筛选条件并查询
+    expected: 列表显示筛选结果，状态统计和筛选条件可见。
+    step: 1
+  - action: 点击「导出」按钮并点击「确认」
+    expected: 下载当前筛选结果的导出文件。
+    step: 2
+  - action: 对照导出前后的列表、统计和筛选条件
+    expected: 列表数据、状态统计和已应用筛选条件均未改变。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_有结果筛选
+    filter: valid_applied_filter
+  ui_source:
+    page_id: pc-chick-shipping
+    state_id: st-default
+    element_ids:
+    - el-table
+    - el-stats-all
+    - el-stats-pending
+    - el-stats-shipping
+    - el-stats-shipped
+    - el-stats-signed
+    - el-filter-date-start
+    - el-filter-date-end
+    - el-filter-house
+    - el-filter-breed
+    - el-filter-keyword
+    - el-btn-export
+  trace:
+    req: REQ-PC-044
+    status: blocked_environment_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-012
+- id: TC-PC-044-014
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-14
+  atomic_purpose_ids:
+  - AP-044-14
+  title: 全部状态卡筛选后导出当前结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态卡筛选导出
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备五类状态卡均有可核对数据。
+  steps:
+  - action: 选择全部状态卡
+    expected: 列表结果与全部状态卡统计一致。
+    step: 1
+  - action: 点击「导出」并确认
+    expected: 仅导出当前全部状态卡结果；确认框、下载和文件回读证据待确认。
+    step: 2
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_全部状态卡
+    filter: all_status_cards
+    data_state: has_data
+  trace:
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-014
+- id: TC-PC-044-015
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-14
+  atomic_purpose_ids:
+  - AP-044-14
+  title: 待发货状态卡筛选后仅导出当前结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态卡筛选
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备至少一条「待发货」状态记录，以及一条其他状态对照记录。
+  steps:
+  - action: 点击「待发货」状态卡并查询
+    expected: 列表仅显示「待发货」状态记录，其他状态对照记录不显示。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含「待发货」状态筛选结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_待发货状态
+    filter: status_pending
+    data_state: has_data
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-014
+- id: TC-PC-044-016
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-15
+  atomic_purpose_ids:
+  - AP-044-15
+  title: 发货中状态卡筛选后仅导出当前结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态卡筛选
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备至少一条「发货中」状态记录，以及一条其他状态对照记录。
+  steps:
+  - action: 点击「发货中」状态卡并查询
+    expected: 列表仅显示「发货中」状态记录，其他状态对照记录不显示。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含「发货中」状态筛选结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_发货中状态
+    filter: status_shipping
+    data_state: has_data
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-015
+- id: TC-PC-044-017
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-16
+  atomic_purpose_ids:
+  - AP-044-16
+  title: 已发货状态卡筛选后仅导出当前结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态卡筛选
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备至少一条「已发货」状态记录，以及一条其他状态对照记录。
+  steps:
+  - action: 点击「已发货」状态卡并查询
+    expected: 列表仅显示「已发货」状态记录，其他状态对照记录不显示。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含「已发货」状态筛选结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_已发货状态
+    filter: status_shipped
+    data_state: has_data
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-016
+- id: TC-PC-044-018
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-17
+  atomic_purpose_ids:
+  - AP-044-17
+  title: 已签收状态卡筛选后仅导出当前结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态卡筛选
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备至少一条「已签收」状态记录，以及一条其他状态对照记录。
+  steps:
+  - action: 点击「已签收」状态卡并查询
+    expected: 列表仅显示「已签收」状态记录，其他状态对照记录不显示。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含「已签收」状态筛选结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_已签收状态
+    filter: status_signed
+    data_state: has_data
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-017
+- id: TC-PC-044-019
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-18
+  atomic_purpose_ids:
+  - AP-044-18
+  title: 单日日期范围筛选后仅导出当前结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 日期筛选边界
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备单日日期范围内的记录，以及日期范围外的对照记录。
+  steps:
+  - action: 将开始日期和结束日期设置为同一天并查询
+    expected: 列表仅显示日期范围内的记录，范围外对照记录不显示。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含当前日期范围筛选结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_单日日期
+    filter: date_single_day
+    data_state: has_data
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-018
+- id: TC-PC-044-020
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-19
+  atomic_purpose_ids:
+  - AP-044-19
+  title: 跨日日期范围筛选后仅导出当前结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 日期筛选边界
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备跨日日期范围内的记录，以及日期范围外的对照记录。
+  steps:
+  - action: 设置包含多个日期的开始日期和结束日期并查询
+    expected: 列表仅显示日期范围内的记录，范围外对照记录不显示。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含当前日期范围筛选结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_跨日日期
+    filter: date_cross_day
+    data_state: has_data
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-019
+- id: TC-PC-044-021
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-20
+  atomic_purpose_ids:
+  - AP-044-20
+  title: 部分匹配关键字筛选后导出当前结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 关键字筛选边界
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备一个仅部分包含关键字的记录集合，以及完整匹配和不匹配的对照记录。
+  steps:
+  - action: 输入部分关键字并查询
+    expected: 列表仅显示部分包含该关键字的记录，不纳入完整匹配或不匹配等价类的断言。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件仅包含部分匹配关键字的筛选结果。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_关键字部分匹配
+    filter: keyword_partial_match
+    data_state: has_data
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-020
+- id: TC-PC-044-022
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-21
+  atomic_purpose_ids:
+  - AP-044-21
+  title: 空关键字筛选后导出当前结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 关键字筛选边界
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备有数据记录，且关键字输入框保持为空。
+  - 已准备 1 条状态为「已发货」且日期在上述范围内的排除记录“SHIP-EMPTY-003”，以及 1 条状态为「待发货」但日期在上述范围外的排除记录“SHIP-EMPTY-004”。
+  steps:
+  - action: 将状态设置为「待发货」、开始日期设置为“2026-09-01”、结束日期设置为“2026-09-30”，保持“关键字”输入框为空并查询
+    expected: 空关键字不新增关键字过滤条件，列表结果仅受已应用的状态和日期条件约束。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件范围与空关键字条件下的当前列表结果一致。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_空关键字_状态日期交集
+    filter: keyword_empty_with_status_date
+    data_state: has_data
+    expected_record_ids:
+    - SHIP-EMPTY-001
+    - SHIP-EMPTY-002
+    excluded_record_ids:
+    - SHIP-EMPTY-003
+    - SHIP-EMPTY-004
+    expected_count: 2
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+  tp_case_id: TP-PC-044-021
+- id: TC-PC-044-023
+  tp_id: TEST_PLAN-REQ-PC-044
+  coverage_ids:
+  - FR-044-01
+  plan_item_ids:
+  - PI-044-22
+  atomic_purpose_ids:
+  - AP-044-22
+  title: 无匹配关键字筛选后导出当前结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 关键字筛选边界
+  preconditions:
+  - 测试账号具备雏苗发货菜单和导出权限。
+  - 已准备至少一条记录，并确认输入的关键字不会匹配任何记录。
+  steps:
+  - action: 输入无匹配关键字并查询
+    expected: 列表显示“暂无数据”，并保留关键字条件。
+    step: 1
+  - action: 点击「导出」按钮
+    expected: 显示“是否确认导出全部数据项？”确认提示。
+    step: 2
+  - action: 点击「确认」
+    expected: 下载文件导出范围为空；表头契约由空结果用例单独验证。
+    step: 3
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: 待确认_关键字无匹配
+    filter: keyword_no_match
+    data_state: empty
+  trace:
+    story: null
+    req: REQ-PC-044
+    tp: TEST_PLAN-REQ-PC-044
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked_environment_permission_data
+  common_preconditions_ref: delivery_export_page
+summary:
+  type_counts:
+    feature: 20
+  interface: 0
+  auto_counts:
+    auto: 20
+    'no': 0
+  priority_counts:
+    P1: 9
+    P2: 11
+    P3: 0
+    P4: 0

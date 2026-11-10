@@ -1,0 +1,3588 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-017
+title: 库存查询
+module: 库存查询
+zentao_module_id: 539
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-017
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-38244
+  title: 导出功能-导出数据准确性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 导出文件中的各个字段数据正确，与页面显示一致
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出文件对比页面数据
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38244
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38244
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38245
+  title: 导出功能-表头字段与页面一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 导出文件的表头字段和页面表格一致：孵化场、仓库、仓库类型、次品类型、当前库存
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出文件查看表头
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38245
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38245
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38246
+  title: 导出功能-文件格式为excel
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 导出的文件为excel格式，后缀xls或者xlsx
+  - action: 点击导出按钮
+    expected: ''
+  - action: 查看下载的文件格式
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38246
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38246
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38247
+  title: 导出功能-未选中默认全选导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在多条次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 默认全选操作，导出全部次品数据
+  - action: 不勾选任何次品
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38247
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38247
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38248
+  title: 导出功能-选中次品导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在多条次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 导出选中次品的仓库信息表
+  - action: 勾选部分次品
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38248
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38248
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38249
+  title: 批量盘点-盘点数等于库存数无操作
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、某次品当前库存数量为50
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 盘点保存成功，不做任何出入库操作，没有出入库记录产生，库存数量保持50
+  - action: 保持该次品的盘点数为默认值50（等于库存数）
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38249
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38249
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38250
+  title: 批量盘点-盘点数小于库存数产生出库记录
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、某次品当前库存数量为50
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 盘点保存成功，产生盘点出库记录，出库数量为差值20，库存数量更新为30
+  - action: 将该次品的盘点数修改为&#039;30&#039;（小于库存数50）
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38250
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38250
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38251
+  title: 批量盘点-盘点数大于库存数产生入库记录
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、某次品当前库存数量为50
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 盘点保存成功，产生盘点入库记录，入库数量为差值30，库存数量更新为80
+  - action: 将该次品的盘点数修改为&#039;80&#039;（大于库存数50）
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38251
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38251
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38252
+  title: 批量盘点-盘点数输入0
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 校验通过，盘点保存成功，库存数量更新为0
+  - action: 在某个次品的盘点数输入框中输入&#039;0&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38252
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38252
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38253
+  title: 批量盘点-盘点数输入正整数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 校验通过，该次品盘点成功
+  - action: 在某个次品的盘点数输入框中输入正整数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38253
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38253
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38254
+  title: 批量盘点-盘点数默认值填充库存数量
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 盘点数输入框默认填写当前库存数量
+  - action: 查看盘点数输入框的默认值
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38254
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38254
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38255
+  title: 批量盘点-表格次品类型动态展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选多种次品类型的数据
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 次品类型列为只读字段，动态展示勾选的次品类型
+  - action: 查看表格中的次品类型列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38255
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38255
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38256
+  title: 批量盘点-表格仓库只读显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 仓库列为只读字段，显示勾选的次品所属仓库
+  - action: 查看表格中的仓库列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38256
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38256
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38257
+  title: 批量盘点-表格孵化场只读显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量盘点弹窗
+    expected: 孵化场列为只读字段，显示勾选的次品所属孵化场
+  - action: 查看表格中的孵化场列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38257
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38257
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38258
+  title: 批量盘点-打开批量盘点弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹出批量次品蛋盘点弹窗，弹窗标题为&#039;批量次品蛋盘点&#039;
+  - action: 勾选多条次品数据
+    expected: ''
+  - action: 点击批量盘点按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38258
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38258
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38259
+  title: 批量盘点-跨孵化场仓库选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在多个孵化场和仓库的次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 可以成功选择不同孵化场、不同仓库的次品进行批量盘点
+  - action: 勾选不同孵化场、不同仓库的多个次品
+    expected: ''
+  - action: 点击批量盘点按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38259
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38259
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38260
+  title: 批量盘点-未选择次品点击盘点提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹框提示&#039;请选择种蛋&#039;
+  - action: 不勾选任何次品
+    expected: ''
+  - action: 点击批量盘点按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38260
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38260
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38261
+  title: 批量出库-出库数超过库存数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 打开批量出库弹窗
+    expected: 提示错误，出库数不能超过当前库存数
+  - action: 在出库数输入框中输入大于库存数的数字
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38261
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38261
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38262
+  title: 批量出库-出库数输入正整数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 打开批量出库弹窗
+    expected: 校验通过，该次品出库成功
+  - action: 在某个次品的出库数输入框中输入小于等于库存数的正整数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38262
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38262
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38263
+  title: 批量出库-出库数默认值根据库存核算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量出库弹窗
+    expected: 出库数输入框默认值根据当前库存数量自动核算
+  - action: 查看出库数输入框的默认值
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38263
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38263
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38264
+  title: 批量出库-表格次品类型动态展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选多种次品类型的数据
+  steps:
+  - action: 打开批量出库弹窗
+    expected: 次品类型列为只读字段，动态展示勾选的次品类型
+  - action: 查看表格中的次品类型列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38264
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38264
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38265
+  title: 批量出库-表格仓库只读显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量出库弹窗
+    expected: 仓库列为只读字段，显示勾选的次品所属仓库
+  - action: 查看表格中的仓库列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38265
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38265
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38266
+  title: 批量出库-表格孵化场只读显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量出库弹窗
+    expected: 孵化场列为只读字段，显示勾选的次品所属孵化场
+  - action: 查看表格中的孵化场列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38266
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38266
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38267
+  title: 批量出库-出库原因选择其他
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 在批量出库弹窗中，在出库原因下拉框中选择&#039;其他&#039;
+    expected: 校验通过后批量出库成功
+  - action: 填写部分次品的出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38267
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38267
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38268
+  title: 批量出库-出库原因选择更换仓库
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 在批量出库弹窗中，在出库原因下拉框中选择&#039;更换仓库&#039;
+    expected: 校验通过后批量出库成功
+  - action: 填写部分次品的出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38268
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38268
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38269
+  title: 批量出库-出库原因选择销毁
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 在批量出库弹窗中，在出库原因下拉框中选择&#039;销毁&#039;
+    expected: 校验通过后批量出库成功
+  - action: 填写部分次品的出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38269
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38269
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38270
+  title: 批量出库-出库原因选择销售
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 在批量出库弹窗中，在出库原因下拉框中选择&#039;销售&#039;
+    expected: 校验通过后批量出库成功，产生的出库记录显示正确
+  - action: 填写部分次品的出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38270
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38270
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38271
+  title: 批量出库-打开批量出库弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹出批量次品蛋盘点弹窗，弹窗标题为&#039;批量次品蛋盘点&#039;
+  - action: 勾选多条次品数据
+    expected: ''
+  - action: 点击批量出库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38271
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38271
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38272
+  title: 批量出库-跨孵化场仓库选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在多个孵化场和仓库的次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 可以成功选择不同孵化场、不同仓库的次品进行批量出库
+  - action: 勾选不同孵化场、不同仓库的多个次品
+    expected: ''
+  - action: 点击批量出库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38272
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38272
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38273
+  title: 批量出库-未选择次品点击出库提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹框提示&#039;请选择种蛋&#039;
+  - action: 不勾选任何次品
+    expected: ''
+  - action: 点击批量出库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38273
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38273
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38274
+  title: 批量入库-二次确认机制
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品并填写入库数
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 弹出二次确认提示框，询问是否确认批量入库
+  - action: 填写入库数和入库原因
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38274
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38274
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38275
+  title: 批量入库-入库数输入0不产生记录
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 入库数为0的次品不会进行入库操作，不会产生出入库记录
+  - action: 保持某个次品的入库数为默认值0
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38275
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38275
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38276
+  title: 批量入库-入库数输入正整数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 校验通过，该次品入库成功
+  - action: 在某个次品的入库数输入框中输入正整数如&#039;100&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38276
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38276
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38277
+  title: 批量入库-入库数默认值为0
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 入库数输入框默认值为0
+  - action: 查看入库数输入框的默认值
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38277
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38277
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38278
+  title: 批量入库-每行对应孵化场仓库组合
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选多个孵化场和仓库的次品
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 每行对应一个孵化场和仓库组合，每个次品类型对应一个输入框
+  - action: 查看表格的行结构
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38278
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38278
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38279
+  title: 批量入库-表格次品类型动态展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选多种次品类型的数据
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 次品类型列为只读字段，动态展示勾选的次品类型（无精蛋、死胚蛋、大蛋、小蛋、毛蛋、破损蛋、弱雏）
+  - action: 查看表格中的次品类型列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38279
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38279
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38280
+  title: 批量入库-表格仓库只读显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 仓库列为只读字段，显示勾选的次品所属仓库
+  - action: 查看表格中的仓库列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38280
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38280
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38281
+  title: 批量入库-表格孵化场只读显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 打开批量入库弹窗
+    expected: 孵化场列为只读字段，显示勾选的次品所属孵化场
+  - action: 查看表格中的孵化场列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38281
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38281
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38282
+  title: 批量入库-入库原因选择其他
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 在批量入库弹窗中，在入库原因下拉框中选择&#039;其他&#039;
+    expected: 二次确认后批量入库成功
+  - action: 填写部分次品的入库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38282
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38282
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38283
+  title: 批量入库-入库原因选择种蛋挑选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 在批量入库弹窗中，在入库原因下拉框中选择&#039;种蛋挑选&#039;
+    expected: 二次确认后批量入库成功，只有填写了入库数的次品产生出入库记录
+  - action: 填写部分次品的入库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38283
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38283
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38284
+  title: 批量入库-打开批量入库弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已勾选次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹出批量次品蛋入库弹窗，弹窗标题为&#039;批量次品蛋入库&#039;
+  - action: 勾选多条次品数据
+    expected: ''
+  - action: 点击批量入库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38284
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38284
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38285
+  title: 批量入库-跨孵化场仓库选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在多个孵化场和仓库的次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 可以成功选择不同孵化场、不同仓库的次品进行批量入库
+  - action: 勾选不同孵化场、不同仓库的多个次品
+    expected: ''
+  - action: 点击批量入库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38285
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38285
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38286
+  title: 批量入库-未选择次品点击入库提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹框提示&#039;请选择种蛋&#039;
+  - action: 不勾选任何次品
+    expected: ''
+  - action: 点击批量入库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38286
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38286
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38287
+  title: 单行盘点-盘点数等于库存数无操作
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、当前库存数量为50
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 盘点保存成功，不做任何出入库操作，没有出入库记录产生，库存数量保持50
+  - action: 点击某行的盘点按钮
+    expected: ''
+  - action: 保持盘点数为默认值50（等于库存数）
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38287
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38287
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38288
+  title: 单行盘点-盘点数小于库存数产生出库记录
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、当前库存数量为50
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 盘点保存成功，产生盘点出库记录，出库数量为差值20，库存数量更新为30
+  - action: 点击某行的盘点按钮
+    expected: ''
+  - action: 在盘点数输入框中输入&#039;30&#039;（小于库存数50）
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38288
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38288
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38289
+  title: 单行盘点-盘点数大于库存数产生入库记录
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、当前库存数量为50
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 盘点保存成功，产生盘点入库记录，入库数量为差值30，库存数量更新为80
+  - action: 点击某行的盘点按钮
+    expected: ''
+  - action: 在盘点数输入框中输入&#039;80&#039;（大于库存数50）
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38289
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38289
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38290
+  title: 单行盘点-盘点数输入0
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 校验通过，盘点保存成功，库存数量更新为0
+  - action: 点击某行的盘点按钮
+    expected: ''
+  - action: 在盘点数输入框中输入&#039;0&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38290
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38290
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38291
+  title: 单行盘点-盘点数输入正整数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 校验通过，盘点保存成功
+  - action: 点击某行的盘点按钮
+    expected: ''
+  - action: 在盘点数输入框中输入正整数如&#039;100&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38291
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38291
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38292
+  title: 单行盘点-盘点数默认值
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 盘点数输入框默认显示当前库存数量
+  - action: 点击某行的盘点按钮
+    expected: ''
+  - action: 查看盘点数输入框
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38292
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38292
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38293
+  title: 单行盘点-只读字段显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 仓库、次品类型、库存数字段为必填且只读，显示当前次品所属信息和库存数量
+  - action: 点击某行的盘点按钮
+    expected: ''
+  - action: 查看弹窗中的只读字段
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38293
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38293
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38294
+  title: 单行盘点-打开盘点弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹出次品蛋盘点弹窗，弹窗标题为&#039;次品蛋盘点&#039;
+  - action: 找到一条次品数据
+    expected: ''
+  - action: 点击该行的盘点按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38294
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38294
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38295
+  title: 单行盘点-始终显示盘点按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 所有次品行都显示盘点操作按钮，无论库存数量是否为0
+  - action: 查看任意次品行的操作列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38295
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38295
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38296
+  title: 记录页面-数据显示正确性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限<br />
+  - 2、已进入单一类型出入库记录页面
+  steps:
+  - action: 查看表格中的数据
+    expected: 表格中每列的数据显示正确，符合该次品的历史出入库记录
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38296
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38296
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38297
+  title: 单行记录-点击跳转到记录页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 跳转到该次品的历史出入库记录页面
+  - action: 找到一条次品数据
+    expected: ''
+  - action: 点击该行的记录按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38297
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38297
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38298
+  title: 单行出库-出库原因未选无法保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 提示错误，出库原因为必填项
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 填写出库数但不选择出库原因
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38298
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38298
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38299
+  title: 单行出库-出库原因选择其他
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 二次确认后出库保存成功
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 在出库原因下拉框中选择&#039;其他&#039;
+    expected: ''
+  - action: 填写出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38299
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38299
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38300
+  title: 单行出库-出库原因选择更换仓库
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 二次确认后出库保存成功
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 在出库原因下拉框中选择&#039;更换仓库&#039;
+    expected: ''
+  - action: 填写出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38300
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38300
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38301
+  title: 单行出库-出库原因选择销毁
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 二次确认后出库保存成功
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 在出库原因下拉框中选择&#039;销毁&#039;
+    expected: ''
+  - action: 填写出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38301
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38301
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38302
+  title: 单行出库-出库原因选择销售
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 二次确认后出库保存成功
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 在出库原因下拉框中选择&#039;销售&#039;
+    expected: ''
+  - action: 填写出库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38302
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38302
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38303
+  title: 单行出库-出库数超过库存数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 提示错误，出库数不能超过库存数
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 在出库数输入框中输入大于库存数的数字
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38303
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38303
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38304
+  title: 单行出库-出库数输入正整数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 校验通过，出库成功
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 在出库数输入框中输入小于等于库存数的正整数如&#039;50&#039;
+    expected: ''
+  - action: 选择出库原因
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38304
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38304
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38305
+  title: 单行出库-只读字段显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 孵化场、仓库、次品类型、库存数字段为必填且只读，显示当前次品所属信息和库存数量
+  - action: 点击某行的出库按钮
+    expected: ''
+  - action: 查看弹窗中的只读字段
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38305
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38305
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38306
+  title: 单行出库-打开出库弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在库存数量大于0的次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹出次品出库弹窗，弹窗标题为&#039;次品入库&#039;
+  - action: 找到一条库存数量大于0的次品数据
+    expected: ''
+  - action: 点击该行的出库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38306
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38306
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38307
+  title: 单行出库-无库存时不显示按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在库存数量为0的次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 该行不显示出库操作按钮，无法进行出库操作
+  - action: 查看库存数量为0的次品行
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38307
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38307
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38308
+  title: 单行出库-有库存时显示按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在库存数量大于0的次品数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 该行显示出库操作按钮
+  - action: 查看库存数量大于0的次品行
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38308
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38308
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38309
+  title: 单行入库-二次确认机制
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹出二次确认提示框，询问是否确认入库
+  - action: 点击某行的入库按钮
+    expected: ''
+  - action: 填写完整的入库信息
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38309
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38309
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38310
+  title: 单行入库-入库原因未选无法保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 提示错误，入库原因为必填项
+  - action: 点击某行的入库按钮
+    expected: ''
+  - action: 填写入库数但不选择入库原因
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38310
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38310
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38311
+  title: 单行入库-入库原因选择其他
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 二次确认后入库保存成功
+  - action: 点击某行的入库按钮
+    expected: ''
+  - action: 在入库原因下拉框中选择&#039;其他&#039;
+    expected: ''
+  - action: 填写入库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38311
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38311
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38312
+  title: 单行入库-入库原因选择种蛋挑选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 二次确认后入库保存成功
+  - action: 点击某行的入库按钮
+    expected: ''
+  - action: 在入库原因下拉框中选择&#039;种蛋挑选&#039;
+    expected: ''
+  - action: 填写入库数
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38312
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38312
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38313
+  title: 单行入库-入库数输入正整数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 二次确认后入库保存成功，库存数量更新
+  - action: 点击某行的入库按钮
+    expected: ''
+  - action: 在入库数输入框中输入正整数如&#039;100&#039;
+    expected: ''
+  - action: 选择入库原因
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38313
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38313
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38314
+  title: 单行入库-只读字段显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 孵化场、仓库、次品类型字段为必填且只读，显示当前次品所属信息
+  - action: 点击某行的入库按钮
+    expected: ''
+  - action: 查看弹窗中的只读字段
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38314
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38314
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38315
+  title: 单行入库-打开入库弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、表格中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 弹出次品入库弹窗，弹窗标题为&#039;次品入库&#039;
+  - action: 找到一条次品数据
+    expected: ''
+  - action: 点击该行的入库按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38315
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38315
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38316
+  title: 表格显示-零库存展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在某些次品类型库存为0
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 没有数量的次品类型，数量显示为0
+  - action: 查找库存数量为0的次品类型
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38316
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38316
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38317
+  title: 表格显示-次品类型完整性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 次品类型包含7种固定类型：无精蛋、死胚蛋、大蛋、小蛋、毛蛋、破损蛋、弱雏
+  - action: 查看次品类型列的数据
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38317
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38317
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38318
+  title: 表格显示-仓库类型固定显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 仓库类型列固定显示&#039;次品库&#039;
+  - action: 查看仓库类型列
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38318
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38318
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38319
+  title: 表格显示-权限范围数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、当前账号有特定的孵化场权限范围
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示当前登录账号权限范围内的孵化场下的仓库次品库存数据
+  - action: 查看表格中显示的次品库存数据
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38319
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38319
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38320
+  title: 表格显示-表头字段验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表头显示7个字段：勾选框、孵化场、仓库、仓库类型、次品类型、当前库存、操作
+  - action: 查看表格表头
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38320
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38320
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38321
+  title: 表格上方合计-显示总库存数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格上方显示所有次品的当前库存总数
+  - action: 查看表格上方的合计信息
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38321
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38321
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38322
+  title: 重置按钮-自动执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、已设置筛选条件并执行搜索
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 重置后自动执行搜索，表格显示全部数据，无需再次点击搜索按钮
+  - action: 设置筛选条件并点击搜索
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38322
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38322
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38323
+  title: 次品类型筛选-弱雏
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在弱雏类型的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示次品类型为弱雏的库存数据
+  - action: 在次品类型下拉框中选择&#039;弱雏&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38323
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38323
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38324
+  title: 次品类型筛选-破损蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在破损蛋类型的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示次品类型为破损蛋的库存数据
+  - action: 在次品类型下拉框中选择&#039;破损蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38324
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38324
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38325
+  title: 次品类型筛选-毛蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在毛蛋类型的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示次品类型为毛蛋的库存数据
+  - action: 在次品类型下拉框中选择&#039;毛蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38325
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38325
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38326
+  title: 次品类型筛选-小蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在小蛋类型的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示次品类型为小蛋的库存数据
+  - action: 在次品类型下拉框中选择&#039;小蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38326
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38326
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38327
+  title: 次品类型筛选-大蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在大蛋类型的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示次品类型为大蛋的库存数据
+  - action: 在次品类型下拉框中选择&#039;大蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38327
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38327
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38328
+  title: 次品类型筛选-死胚蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在死胚蛋类型的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示次品类型为死胚蛋的库存数据
+  - action: 在次品类型下拉框中选择&#039;死胚蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38328
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38328
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38329
+  title: 次品类型筛选-无精蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在无精蛋类型的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示次品类型为无精蛋的库存数据
+  - action: 在次品类型下拉框中选择&#039;无精蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38329
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38329
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38330
+  title: 仓库筛选-选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、仓库管理页面存在启用的仓库数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 下拉选项中显示仓库管理页面所有启用的仓库数据
+  - action: 点击仓库下拉选择框
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38330
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38330
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38331
+  title: 仓库筛选-正常多选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在多个仓库的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示选中仓库对应的次品库存数据
+  - action: 在仓库下拉选择框中选择多个仓库
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38331
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38331
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38332
+  title: 孵化场筛选-选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、孵化场管理页面存在启用的孵化场数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 下拉选项中显示孵化场管理页面所有启用的孵化场数据
+  - action: 点击孵化场下拉选择框
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38332
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38332
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38333
+  title: 孵化场筛选-正常多选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有次品库库存查询菜单权限
+  - 2、系统中存在多个孵化场的次品库存数据
+  steps:
+  - action: 登录后进入库存管理-次品库-库存查询
+    expected: 表格中只显示选中孵化场对应的次品库存数据
+  - action: 在孵化场下拉选择框中选择多个孵化场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 库存查询
+    zentao_module_id: 539
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38333
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38333
+    raw_module: /一期/pc/库存管理/次品库/库存查询(#539)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

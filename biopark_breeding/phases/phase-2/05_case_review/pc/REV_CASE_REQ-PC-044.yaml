@@ -1,0 +1,217 @@
+review:
+  review_id: REV_CASE-REQ-PC-044
+  req_id: REQ-PC-044
+  module_id: REQ-PC-044
+  navigation_wording_update_20261014:
+    scope: 仅修改公共前置步骤和步骤 action 文案
+    changed_common_precondition: delivery_export_page
+    changed_case_count: 19
+    unchanged_fields: 标题、expected、用例级前置条件、优先级、统计、追踪关系及其他字段
+    yaml_markdown_alignment: passed
+    template_validation: pre_existing_common_precondition_conditions_shape_issue
+    source_hashes_after_update:
+      testcase_yaml: e0e669308bdaea864b153acc7c7106d42e2863e8a8edf0aa792443b894497d98
+      testcase_markdown: 15eb72ad17cb5bdbeb2e1b5a3000c8f99c75ac24fd7f3fd4ad9142aafddfb796
+    zentao_sync: completed
+    zentao_sync_scope: 19 registered cases referencing delivery_export_page
+    zentao_module_id: 739
+    zentao_readback: all selected updates returned validated; titles, steps, expected results, preconditions, product, project, execution and module matched
+  deletion_change_49808_49820_49818:
+    date: '2026-10-09'
+    deleted_zentao_case_ids: [49808, 49820, 49818]
+    deleted_source_case_ids: [TC-PC-044-001, TC-PC-044-013, TC-PC-044-011]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/pc/delete_response_49808_49820_49818_20261009.json
+      - 06_zentao_sync/pc/readback_delete_49808_49820_49818_20261009.json
+  deletion_change_51346_51347_51348:
+    date: '2026-10-09'
+    deleted_zentao_case_ids: [51346, 51347, 51348]
+    deleted_source_case_ids: [TC-PC-044-024, TC-PC-044-025, TC-PC-044-026]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/pc/delete_response_51346_51347_51348_20261009.json
+      - 06_zentao_sync/pc/readback_delete_51346_51347_51348_20261009.json
+  agent: case-review-agent
+  mode: report_only
+  status: design_review_passed
+  gate_passed: true
+  gate_reasons: []
+  design_gate_passed: true
+  design_gate_reasons: []
+  execution_status: not_executed
+  execution_gate_passed: false
+  overall_status: pending_execution
+  review_scope:
+    design_review: in_scope
+    execution_review: not_in_scope
+    ui_execution: not_in_scope
+    automation_execution: not_in_scope
+    pairwise_execution: not_in_scope
+    remote_sync: not_in_scope
+  execution_review:
+    status: not_in_scope
+    reason: "按 report_only 要求不执行 UI、自动化或 Pairwise 运行。"
+  summary: "评审当前 20 条用例，覆盖 FR-044-01~07。结构字段、YAML/MD 交付和页面引用总体通过；发现 PI/AP 未注册、原生确认框与下载证据缺口。无设计门禁失败。"
+  frozen_sources:
+    testcase_yaml: 04_testcases/pc/TC_REQ-PC-044.yaml
+    testcase_markdown: 04_testcases/pc/TC_REQ-PC-044.md
+    analysis_yaml: 02_analysis/pc/REQ-PC-044.yaml
+    test_plan_yaml: 03_test_plan/pc/TEST_PLAN_REQ-PC-044.yaml
+    page_json: 02_analysis/pc/page_inventory/page.json
+    source_hashes:
+      testcase_yaml: c7218fda4cac68b68c02cc925082530d378d3e5944b33e112d47bc7c98aeb913
+      testcase_markdown: e3797c4a0144ad890c671e3c77079decfd124c0836b52f302c3b11651eb0537a
+      analysis_yaml: f26083102fd54a746e948e470c8ec4f67a751972d2c795067a790e89cdd6c568
+      test_plan_yaml: 04fb2b258373c53a9fa7e1a3a883195c029ab9ca2d5485a115db773dda895f76
+      page_json: 2d1ee96de735f18ec1d4073f47e818179201051059da6a22ed41ccef7b830c7d
+  review_items:
+    - code: RI-01
+      category: traceability_failure
+      result: fail_with_observations
+      gate_reason: false
+      reason: "当前 20 条用例引用 PI-044-02~23 与 AP-044-02~23，但测试计划和分析文件没有对应注册段；FR-044-01~07 可追溯。"
+      severity: major
+      recommendation: "补充 plan_items/atomic_purposes 注册，或修正用例引用。"
+    - code: RI-02
+      category: evidence_risk
+      result: pass_with_observations
+      gate_reason: false
+      reason: "当前确认提示为原生 confirm，page.json 未单独建模确认框；下载成功状态也无独立页面证据。"
+      severity: major
+      recommendation: "执行前确认 dialog 文案/处理方式和 download 事件，禁止补造 element_id。"
+    - code: RI-03
+      category: environment_gap
+      result: pass_with_observations
+      gate_reason: false
+      reason: "当前 20 条用例均为 decision=auto、status=blocked；正式数据、权限、环境或定位证据尚未齐备。"
+      severity: major
+      recommendation: "准备授权测试账号、脱敏数据、正式 URL 和受控下载目录。"
+    - code: RI-04
+      category: design_violation
+      result: pass_with_observations
+      gate_reason: false
+      reason: "022~023 的日期端点和单侧日期契约仍待需求确认，已显式保持 blocked，不应猜测结果。"
+      severity: observation
+      recommendation: "需求确认后补充明确预期和可执行数据基线。"
+    - code: RI-05
+      category: evidence_risk
+      result: pass_with_observations
+      gate_reason: false
+      reason: "007、008、021、023 依赖受控下载目录及文件名、扩展名和表头回读；当前仅有设计层断言。"
+      severity: major
+      recommendation: "固化下载目录、清理责任和文件属性断言方案。"
+    - code: RI-06
+      category: evidence_risk
+      result: pass_with_observations
+      gate_reason: false
+      reason: "page.json 的 pc-chick-shipping 入口、列表、筛选和状态卡元素均可引用；确认框和下载结果不在已采集元素中。"
+      severity: observation
+      recommendation: "维持页面事实边界，正式执行前补充可观察状态证据。"
+  coverage_review:
+    fr_coverage:
+      FR-044-01: {cases: 16, status: covered}
+      FR-044-02: {cases: 1, status: covered}
+      FR-044-03: {cases: 2, status: covered}
+      FR-044-04: {cases: 2, status: covered_with_blocked_case}
+      FR-044-05: {cases: 2, status: covered_with_blocked_case}
+      FR-044-06: {cases: 2, status: covered}
+      FR-044-07: {cases: 2, status: covered}
+    techniques:
+      boundary_value: "日期单日/跨日/端点/单侧，关键字空/精确/部分/无匹配，结果 0/1/多条，文件名和扩展名边界。"
+      equivalence_partitioning: "状态卡、权限、确认动作和有数据/空数据等价类已覆盖。"
+      decision_table: "菜单权限×导出权限×筛选×空结果×确认×下载×数据不变核心组合已覆盖。"
+      state_transition: "覆盖 st-default 与已采集导出相关状态；当前确认框和下载状态未单独采集。"
+    verdict: pass_with_observations
+  pairwise_review:
+    method: Pairwise / 2-way
+    execution: not_executed
+    report_only: true
+    parameters:
+      StatusCard: [all, pending, shipping, shipped, signed]
+      DateRange: [none, single_day, cross_day, open_ended, endpoint]
+      Keyword: [empty, exact, partial, no_match]
+      House: [any, specific]
+      Breed: [any, specific]
+      MenuPermission: [has, none]
+      ExportPermission: [has, none]
+      ConfirmAction: [confirm, cancel]
+      DataState: [has_data, empty]
+      FileProperty: [filename, ext, content]
+    constraints:
+      - "MenuPermission=none 时导出入口不可见。"
+      - "ExportPermission=none 时显示没有操作权限且不下载。"
+      - "ConfirmAction=cancel 时不下载且列表/统计/筛选不变。"
+      - "DataState=empty 且确认时仍下载仅含表头文件。"
+      - "FileProperty 仅在有导出权限且确认时生效。"
+    assessment: "现有用例在状态、日期和关键字上接近穷举，但权限×确认×数据状态×文件属性的正交组合未以完整 2-way 矩阵证明；建议补充或在后续设计中精简重复场景。"
+  automation_review:
+    decision: auto
+    status: blocked
+    reason_codes: [locator_evidence_pending, test_data_not_provisioned, permission_not_ready, environment_not_ready]
+    playwright_assessment: "结构可使用 Playwright Python：进入列表、应用筛选、监听 page.on('dialog')、expect_download、校验 suggested_filename 和文件内容；当前不执行。"
+    blockers:
+      - "原生 confirm 未建模，需确认 dialog 文案和处理契约。"
+      - "下载结果无独立 locator，需受控下载目录和回读方案。"
+      - "正式数据、权限、环境和 022~023 需求确认未就绪。"
+  headed_page_review:
+    method: "静态 page_inventory 证据评审；未启动浏览器，未执行 UI 测试。"
+    page_id: pc-chick-shipping
+    route: /biopark-breeding/breeding/hatchingplans/delivery
+    elements_present: [el-btn-export, el-table, el-filter-date-start, el-filter-date-end, el-filter-house, el-filter-breed, el-filter-keyword, el-stats-all, el-stats-pending, el-stats-shipping, el-stats-shipped, el-stats-signed]
+    states_present: [st-default, st-export-filter-keyword, st-export-scope-options, st-export-field-options]
+    gaps: ["系统确认提示未单独采集", "下载成功结果未单独采集"]
+    verdict: pass_with_observations
+  casely_review:
+    structure_field_completeness: pass
+    style_consistency: pass
+    delivery_format: pass
+    yaml_markdown_alignment: "20/20 用例 ID、标题、优先级、类型和 auto 字段一致。"
+    traceability_format: pass_with_observations
+    prohibited_language: pass
+  priority_review:
+    rule_ref: ../../../../.agents/rules/test-design-enrichment-rule.md
+    scope: "全部当前 REQ-PC-044 用例"
+    case_count: 20
+    reviewed_case_count: 20
+    unreviewed_case_ids: []
+    distribution:
+      source: {P1: 9, P2: 11, P3: 0, P4: 0}
+      reviewed: {P1: 9, P2: 11, P3: 0, P4: 0}
+    change_summary: {changed_case_count: 0, unchanged_case_count: 20}
+    distribution_observations:
+      - code: priority_distribution_observation
+        severity: warning
+        gate_reason: false
+        reason: "P1 覆盖权限、确认、只读、空结果和分页等高风险分支，P2 覆盖常规筛选和文件属性，分布与当前风险描述一致。"
+    items:
+      - {case_id: TC-PC-044-002, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: filter, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 多条件交集筛选导出，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-003, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: filter, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 关键字完整匹配筛选导出，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-004, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: empty_result, blocks_core_flow: false, causes_key_data_error: true, has_workaround: false, user_frequency: medium, reason: 空结果仍需生成表头文件，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-005, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: export, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 确认后导出结果，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-006, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: export, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 筛选导出范围，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-007, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: fields, blocks_core_flow: false, causes_key_data_error: true, has_workaround: false, user_frequency: medium, reason: 全部字段导出契约，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-008, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: filename, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 中文文件名和扩展名，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-009, current_priority: P1, source_priority: P1, reviewed_priority: P1, recommended_priority: P1, result: 一致, impact_area: permission, blocks_core_flow: true, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 无导出权限是高风险权限边界，保持 P1。, gate_reason: false}
+      - {case_id: TC-PC-044-010, current_priority: P1, source_priority: P1, reviewed_priority: P1, recommended_priority: P1, result: 一致, impact_area: permission, blocks_core_flow: true, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 无菜单权限是入口边界，保持 P1。, gate_reason: false}
+      - {case_id: TC-PC-044-012, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: confirmation, blocks_core_flow: true, causes_key_data_error: false, has_workaround: true, user_frequency: high, reason: 确认提示不提供字段或范围选择，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-014, current_priority: P1, source_priority: P1, reviewed_priority: P1, recommended_priority: P1, result: 一致, impact_area: status, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 发货中状态卡筛选，优先级保持 P1。, gate_reason: false}
+      - {case_id: TC-PC-044-015, current_priority: P1, source_priority: P1, reviewed_priority: P1, recommended_priority: P1, result: 一致, impact_area: status, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 已发货状态卡筛选，优先级保持 P1。, gate_reason: false}
+      - {case_id: TC-PC-044-016, current_priority: P1, source_priority: P1, reviewed_priority: P1, recommended_priority: P1, result: 一致, impact_area: status, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 已签收状态卡筛选，优先级保持 P1。, gate_reason: false}
+      - {case_id: TC-PC-044-017, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: date, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 单日日期筛选，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-018, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: date, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 跨日日期筛选，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-019, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: keyword, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 部分匹配关键字筛选，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-020, current_priority: P1, source_priority: P1, reviewed_priority: P1, recommended_priority: P1, result: 一致, impact_area: keyword, blocks_core_flow: false, causes_key_data_error: true, has_workaround: false, user_frequency: high, reason: 空关键字与交集筛选边界，保持 P1。, gate_reason: false}
+      - {case_id: TC-PC-044-021, current_priority: P1, source_priority: P1, reviewed_priority: P1, recommended_priority: P1, result: 一致, impact_area: empty_result, blocks_core_flow: true, causes_key_data_error: true, has_workaround: false, user_frequency: medium, reason: 无匹配结果导出边界，保持 P1。, gate_reason: false}
+      - {case_id: TC-PC-044-022, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: date, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: low, reason: 日期端点规则待确认，优先级保持 P2。, gate_reason: false}
+      - {case_id: TC-PC-044-023, current_priority: P2, source_priority: P2, reviewed_priority: P2, recommended_priority: P2, result: 一致, impact_area: date, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: low, reason: 单侧日期规则待确认，优先级保持 P2。, gate_reason: false}
+    mismatches: []
+    unconfirmed_items: [TC-PC-044-022, TC-PC-044-023]
+    gate_reasons: []
+  design_violations: []
+  traceability_failures: ["RI-01: PI/AP 未注册"]
+  input_gate_failures: []
+  evidence_risks: ["RI-02: 原生确认框和下载结果证据缺口", "RI-05: 文件回读环境未固化"]
+  execution_blockers: ["正式数据/权限/环境未就绪", "022~023 需求确认未完成"]

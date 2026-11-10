@@ -1,0 +1,34 @@
+req_id: REQ-004
+project_id: 46
+product_id: 8
+module_id: 733
+operation: update
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+changes:
+- local_case_id: TC-REQ-004-027
+  remote_case_id: 51677
+  removed_expectation_fragments:
+  - 或显示具体校验提示。
+  - 或页面定义的空值文本；
+  resulting_expectations:
+  - 名称字段有值，描述字段为空，表单提交完成。
+  - 若保存成功，分组记录存在，描述显示为空；按清理方案删除测试分组。
+rebuild: forbidden_and_not_used
+source_hashes_after:
+  yaml: 3a37ac1b83e150dad9b2fa52d21cc1b2e81eed490a691af37eb8481f263e642f
+  markdown: d7aa0a061b8a9ff823fc4736789c9b3fbe0b45a7fbaccfc322cdcd36a3b1651a
+  review_yaml: 84bf83a954cd99c7e9d95d5d0e80157d987e4336a7ecf1b6b363822cd54f1cb5
+execution:
+  status: validated
+  records:
+  - remote_case_id: 51677
+    local_case_id: TC-REQ-004-027
+    operation: update
+    readback_after: validated
+    defects: []
+registry:
+  mapping_status: registered
+  last_step_count: 2
+  last_step_sync_status: validated
+  last_step_sync_at: 2026-11-10

@@ -1,0 +1,1448 @@
+req_id: REQ-015
+module: 栋舍管理
+zentao_module_id: 684
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-015
+  tp: TP_REQ-015
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-015.yaml
+cases:
+- id: TC-015-01
+  tp_id: TP-015-01
+  title: 查询条件包含「栋舍编码」「栋舍名称」「状态」字段
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 查看页面查询区域
+    expected: 页面顶部查询区可见筛选项：栋舍编码、栋舍名称、状态三个筛选项
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48150
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-02
+  tp_id: TP-015-02
+  title: 状态下拉选项为启用、停用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「状态」下拉或查看筛选项
+    expected: 打开「状态」下拉，选项列表仅为启用、停用两种选项
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48151
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-03
+  tp_id: TP-015-03
+  title: 仅输入栋舍编码后点击「查询」，列表按编码过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中存在可按「栋舍编码」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「栋舍编码」，其余条件留空
+    expected: 仅「栋舍编码」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「栋舍编码」条件的记录
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48152
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-04
+  tp_id: TP-015-04
+  title: 仅输入栋舍名称后点击「查询」，列表按名称过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中存在可按「栋舍名称」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「栋舍名称」，其余条件留空
+    expected: 仅「栋舍名称」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「栋舍名称」条件的记录
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48153
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-05
+  tp_id: TP-015-05
+  title: 仅选状态后点击「查询」，列表按状态过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中存在可按「状态」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「状态」，其余条件留空
+    expected: 仅「状态」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「状态」条件的记录
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48154
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-06
+  tp_id: TP-015-06
+  title: 组合编码+名称+状态后点击「查询」，列表按 AND 过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在可组合区分的测试数据
+  steps:
+  - action: 同时设置多个查询条件
+    expected: 各筛选项均已设置
+  - action: 点击「查询」按钮
+    expected: 列表仅显示同时满足全部条件的记录
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48155
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-07
+  tp_id: TP-015-07
+  title: 点击「查询」按钮才触发查询
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中已有数据
+  steps:
+  - action: 修改筛选项但不点「查询」
+    expected: 列表不随输入自动变成新条件结果
+  - action: 点击「查询」按钮
+    expected: 列表按当前条件刷新
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48156
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-08
+  tp_id: TP-015-08
+  title: 点击「重置」，查询条件清空并刷新列表
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 设置查询条件后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 点击「重置」后栋舍编码、栋舍名称、状态恢复默认，列表按默认条件重新加载
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48157
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-09
+  tp_id: TP-015-09
+  title: 点击「新增」打开新增弹窗
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增弹窗/表单
+  - action: 查看表单字段
+    expected: 关键字段齐全且可编辑性符合页面设计（对照标题字段）
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48158
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-10
+  tp_id: TP-015-10
+  title: 新增弹窗「栋舍编码」系统预填且前缀为 DS
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 查看「栋舍编码」字段值并尝试修改
+    expected: 「栋舍编码」已系统预填，且编码前缀为 DS，字段可修改（若产品规定编辑态另论，以新增弹窗为准）
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48159
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-11
+  tp_id: TP-015-11
+  title: 新增弹窗「栋舍名称」必填
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 准备栋舍测试数据
+  steps:
+  - action: 点击「新增」打开表单，将「栋舍名称」留空后点击保存
+    expected: 无法保存，「栋舍名称」提示必填
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48160
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-12
+  tp_id: TP-015-12
+  title: 新增未填名称点确定提示「栋舍名称不能为空」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 不填写「栋舍名称」（保持为空），点击「确定」
+    expected: 保存被阻断，页面提示「栋舍名称不能为空」
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48161
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-13
+  tp_id: TP-015-13
+  title: 「关联线体编码」「关联线体名称」为手工输入无引用弹窗
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「新增」打开弹窗，定位「关联线体编码」「关联线体名称」
+    expected: 两字段为手工输入框，无引用/选择弹窗入口
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48162
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-14
+  tp_id: TP-015-14
+  title: 「面积(㎡)」可录入正数数值
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「新增」，在「面积(㎡)」输入正数（如 100）
+    expected: 输入被接受，字段显示该正数
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48163
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-15
+  tp_id: TP-015-15
+  title: 「设计容量(万只)」可录入含小数的正数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「新增」，在「设计容量(万只)」输入含小数的正数（如 1.5）
+    expected: 输入被接受，字段显示该数值
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48164
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-16
+  tp_id: TP-015-16
+  title: 新增填写必填项及扩展字段后点确定保存成功
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 准备栋舍测试数据
+  steps:
+  - action: 点击「新增」打开表单，将「必填项」留空后点击保存
+    expected: 无法保存，「必填项」提示必填
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48165
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-17
+  tp_id: TP-015-17
+  title: 新增点「取消」弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「新增」打开新增弹窗并填写部分字段
+    expected: 新增弹窗打开且字段有输入
+  - action: 点击「取消」
+    expected: 弹窗关闭，列表未新增对应记录
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48166
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-17
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-18
+  tp_id: TP-015-18
+  title: 新增将栋舍编码改为库中已存在编码点「确定」，触发唯一性拦截
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 库中已存在一条栋舍记录（记下其栋舍编码）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 将「栋舍编码」改为库中已存在的值，填写其余必填项后点击「确定」
+    expected: 保存被拦截并提示唯一性冲突（或同等错误提示），列表未新增重复编码
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48167
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-18
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-19
+  tp_id: TP-015-19
+  title: 新增栋舍名称填库中已存在名称点「确定」，触发唯一性拦截
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 库中已存在一条栋舍记录（记下其栋舍名称）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 「栋舍名称」填写为库中已存在的名称，填写其余必填项后点击「确定」
+    expected: 保存被拦截并提示名称唯一性冲突，列表未新增重复名称
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48168
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-19
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-20
+  tp_id: TP-015-20
+  title: 列表展示核心列字段齐全且顺序正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中至少有一条栋舍数据
+  steps:
+  - action: 查看列表表头
+    expected: 表头包含核心列：栋舍编码、栋舍名称、面积(㎡)、设计容量(万只)、状态等核心列，字段齐全且顺序符合需求/原型
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48169
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-20
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-21
+  tp_id: TP-015-21
+  title: 列表展示数据与新增/编辑录入一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 刚完成一条新增或编辑并记住录入值
+  steps:
+  - action: 回到列表核对刚保存记录的各字段
+    expected: 列表展示的编码、名称及业务字段与刚才录入内容一致
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48170
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-21
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-22
+  tp_id: TP-015-22
+  title: 状态列展示启用/停用且与档案一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表同时存在启用与停用栋舍
+  steps:
+  - action: 查看列表「状态」列
+    expected: 分别显示「启用」「停用」，并与档案状态一致
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48171
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-22
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-23
+  tp_id: TP-015-23
+  title: 面积(㎡)、设计容量(万只)列数值展示正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 存在已录入面积与设计容量的栋舍
+  steps:
+  - action: 查看该行「面积(㎡)」「设计容量(万只)」列
+    expected: 数值与录入一致
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48172
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-23
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-24
+  tp_id: TP-015-24
+  title: 启用行操作列显示「编辑」「停用」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中存在状态为「启用」的记录
+  steps:
+  - action: 查看「启用」行操作列
+    expected: 操作列按钮为：编辑、停用（不多出主操作）
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48173
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-24
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-25
+  tp_id: TP-015-25
+  title: 未勾选行时批量删除/启用/停用按钮 disabled
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 确认未勾选任何行，查看批量「删除」「启用」「停用」按钮
+    expected: 未勾选时三按钮均为 disabled / 不可点击
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48174
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-25
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-26
+  tp_id: TP-015-26
+  title: 无匹配记录时列表展示空状态，页面无报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 构造无数据查询结果或清空数据后查看列表
+    expected: 展示空状态，无前端报错
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48175
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-26
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-27
+  tp_id: TP-015-27
+  title: 列表分页默认展示第1页且可切换页码
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 查看分页区总条数与当前页
+    expected: 分页信息与列表结果一致
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48176
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-27
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-28
+  tp_id: TP-015-28
+  title: 点击「编辑」打开弹窗且「栋舍编码」只读不可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「编辑」
+    expected: 核对后：启用行点编辑打开编辑弹窗，栋舍编码字段灰显或不可编辑
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48177
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-28
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-29
+  tp_id: TP-015-29
+  title: 编辑弹窗「栋舍名称」可修改且必填
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在可编辑的栋舍测试数据
+  steps:
+  - action: 点击「编辑」打开表单
+    expected: 编辑表单打开
+  - action: 按本条规则构造违规输入（空必填/重复唯一键/越界等）
+    expected: 表单处于违规态
+  - action: 点击「保存」或「确定」
+    expected: 无法保存，页面给出对应校验提示
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48178
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-29
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-30
+  tp_id: TP-015-30
+  title: 编辑弹窗可修改栋舍类型、关联线体、面积、设计容量、状态、备注
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在可编辑的栋舍/单据
+  steps:
+  - action: 点击「编辑」打开弹窗
+    expected: 编辑弹窗打开
+  - action: 修改标题涉及字段并保存
+    expected: 保存成功，列表对应字段更新
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48179
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-30
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-31
+  tp_id: TP-015-31
+  title: 编辑修改后点确定保存成功且列表回写
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 准备完整合法的栋舍数据
+  steps:
+  - action: 打开新增/编辑填写合法完整数据后点击「保存」
+    expected: 提示保存成功，列表状态/字段符合预期
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48180
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-31
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-32
+  tp_id: TP-015-32
+  title: 编辑点「取消」弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在可编辑的栋舍
+  steps:
+  - action: 点击「编辑」打开弹窗并修改某一字段
+    expected: 编辑弹窗打开且字段已改动
+  - action: 点击「取消」
+    expected: 弹窗关闭，列表该行数据未保存修改
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48181
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-32
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-33
+  tp_id: TP-015-33
+  title: 启用行点击「停用」弹出确认「确定要停用该栋舍吗？」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在状态为「启用」的栋舍
+  steps:
+  - action: 在启用行点击操作列「停用」
+    expected: 弹出确认框，文案为「确定要停用该栋舍吗？」
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48182
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-33
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-34
+  tp_id: TP-015-34
+  title: 停用确认框点击取消，状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在可切换启停的栋舍记录
+  steps:
+  - action: 点击「停用」或「启用」
+    expected: 弹出确认框
+  - action: 点击「取消」
+    expected: 状态不变化
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48183
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-34
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-35
+  tp_id: TP-015-35
+  title: 停用确认框点击确定，提示成功且状态变停用
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在状态为「启用」的栋舍，并已打开停用确认框
+  steps:
+  - action: 在停用确认框点击「确定」
+    expected: 提示成功，该行状态变为「停用」
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48184
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-35
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-36
+  tp_id: TP-015-36
+  title: 勾选停用行点批量「启用」，状态变启用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在至少一条「停用」状态的栋舍
+  steps:
+  - action: 勾选一条或多条停用行，点击批量「启用」
+    expected: 所选行状态变为「启用」
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48185
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-36
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-37
+  tp_id: TP-015-37
+  title: 勾选启用行点批量「停用」，状态变停用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表存在至少一条「启用」状态的栋舍
+  steps:
+  - action: 勾选一条或多条启用行，点击批量「停用」
+    expected: 所选行状态变为「停用」
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48186
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-37
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-38
+  tp_id: TP-015-38
+  title: 勾选全为启用行点「删除」toast「选择的数据均为启用状态，无法删除」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「删除」
+    expected: 操作后：仅勾选启用态栋舍点删除，toast 提示「选择的数据均为启用状态，无法删除」，无确认框且记录不删除
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48187
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-38
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-39
+  tp_id: TP-015-39
+  title: 勾选含停用行点「删除」弹出确认框
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48188
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-39
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-40
+  tp_id: TP-015-40
+  title: 删除确认框点击取消，记录不删除
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「取消」
+    expected: 确认框关闭，记录未被删除
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48189
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-40
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-41
+  tp_id: TP-015-41
+  title: 删除确认框点击确定，提示成功且记录从列表消失
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 删除成功，列表不再显示该记录
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48190
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-41
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-42
+  tp_id: TP-015-42
+  title: 点击「同步数据」打开同步弹窗
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「同步数据」
+    expected: 打开同步数据弹窗
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48191
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-42
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-43
+  tp_id: TP-015-43
+  title: 同步弹窗表头列为源数据编码、品种名称、来源系统
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「同步数据」打开同步弹窗
+    expected: 同步弹窗打开
+  - action: 查看同步弹窗表头/列
+    expected: 可见列包含：源数据编码、品种名称、来源系统（以页面实际列名为准）
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48192
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-43
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-44
+  tp_id: TP-015-44
+  title: 同步弹窗输入关键字点「搜索」，列表按关键字过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 同步源列表中存在可搜索的关键字数据
+  steps:
+  - action: 点击「同步数据」打开同步弹窗
+    expected: 同步弹窗打开
+  - action: 在搜索框输入关键字并点击「搜索」
+    expected: 源数据列表按编码或名称关键字过滤
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48193
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-44
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-45
+  tp_id: TP-015-45
+  title: 同步弹窗点「重置」，关键字清空并恢复列表
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 打开同步弹窗，输入关键字并搜索出过滤结果
+    expected: 列表处于过滤态
+  - action: 点击「重置」
+    expected: 关键字清空，源数据列表恢复默认
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48194
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-45
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-46
+  tp_id: TP-015-46
+  title: 同步弹窗可勾选一行或多行源数据
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 同步弹窗源列表有数据
+  steps:
+  - action: 打开同步弹窗，勾选一行
+    expected: 该行被勾选
+  - action: 再勾选另一行
+    expected: 可同时勾选多行源数据
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48195
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-46
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-47
+  tp_id: TP-015-47
+  title: 同步弹窗未勾选行时「提交」disabled
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 打开同步弹窗并确认未勾选任何源数据行
+    expected: 「提交」按钮为 disabled / 不可点击
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48196
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-47
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-48
+  tp_id: TP-015-48
+  title: 同步弹窗点「取消」关闭且不写入本系统
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 记住当前主列表栋舍条数/关键数据
+  steps:
+  - action: 打开同步弹窗后点击「取消」
+    expected: 弹窗关闭，主列表栋舍数据无变更
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48197
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-48
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-49
+  tp_id: TP-015-49
+  title: 中台接口可用时勾选源数据点「提交」同步成功
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 中台接口可用，且存在本系统尚未同步的源数据
+  steps:
+  - action: 打开同步弹窗，勾选一条新源数据，点击「提交」
+    expected: 同步成功，本系统列表新增对应记录，源编码回填为中台源数据编码
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48198
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-49
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-50
+  tp_id: TP-015-50
+  title: 中台接口可用时同步成功后列表字段回填正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 查看列表表头
+    expected: 表头列名及顺序与需求所列一致
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48199
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-50
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-51
+  tp_id: TP-015-51
+  title: 同步弹窗表头「品种名称」列是否应为栋舍名称待复核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 点击「同步数据」打开同步弹窗
+    expected: 同步弹窗打开
+  - action: 查看表头「品种名称」列文案
+    expected: 记录实际列名；是否应为栋舍名称以后续产品确认为准（本步以可见表头为准作对照）
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48200
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-51
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-52
+  tp_id: TP-015-52
+  title: 同步弹窗勾选本系统已存在对应源数据编码的中台源点「提交」，按源数据编码唯一性提示冲突或跳过且无法重复写入
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 本系统已存在与中台某源编码对应的记录
+  steps:
+  - action: 打开同步弹窗，勾选该已存在对应关系的中台源，点击「提交」
+    expected: 按源数据编码唯一性提示冲突或跳过，列表不重复写入
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48201
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-52
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-53
+  tp_id: TP-015-53
+  title: 同步弹窗一次勾选未同步新源与已同步旧源点「提交」，新源写入成功、旧源按唯一性跳过且列表无重复行
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 同步源中同时存在未同步新源与已同步旧源
+  steps:
+  - action: 打开同步弹窗，同时勾选一条新源与一条旧源，点击「提交」
+    expected: 新源写入成功；旧源按唯一性跳过；列表无重复行
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48202
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-53
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-015-54
+  tp_id: TP-015-54
+  title: 同步结果与手工已存在栋舍编码/源编码冲突时按规则拦截无法重复写入
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 同步数据
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 手工新增记录的编码/源编码与待同步源存在冲突可能
+  steps:
+  - action: 执行同步并提交会与手工记录冲突的源数据
+    expected: 按规则拦截，无法重复写入
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48203
+  trace:
+    story: null
+    req: REQ-015
+    tp: TP-015-54
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+summary:
+  type_counts:
+    auto: 54
+  auto_counts:
+    auto: 54
+  registry_counts:
+    registered: 54

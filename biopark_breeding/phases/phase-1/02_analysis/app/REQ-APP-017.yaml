@@ -1,0 +1,127 @@
+schema_version: "1.0"
+req_id: "REQ-APP-017"
+module_name: "存发苗间 / 盘点记录"
+zentao_module_id: 579
+platform: "app"
+analysis_status: "analyzed_from_docx_baseline_and_readonly_local_evidence"
+scope:
+  object_scope: "存发苗间"
+  object_scope_evidence: "inferred"
+  object_scope_basis: "基线将 P104-P108 的盘点记录页面分配给存发苗间；页面字段包含鸡苗信息和存发苗间仓库信息。"
+  included: "P104-P108 的盘点记录列表、搜索、筛选、筛选结果、详情只读契约。"
+  excluded: "盘点数量提交/确认、库存调整、入库/出库、远程写入、接口实现、权限实现和持久化实现。"
+evidence_legend:
+  observed: "实时原型在 networkidle 后的渲染 DOM、页面文本和控件；本轮实时会话因浏览器占用/定位超时未补充。"
+  static: "DOCX 页面表、模块拆分清单、axure_map.md、既有 RUN 的 DOM/page_text/截图路径。"
+  inferred: "按基线模块归属或通用页面命名归纳。"
+  open_question: "材料未明确，需确认。"
+inputs:
+  - path: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+    type: "docx"
+    sections: ["5.104 盘点记录列表", "5.105 盘点记录搜索", "5.106 盘点记录筛选", "5.107 筛选结果", "5.108 盘点详情"]
+    pages: ["P104", "P105", "P106", "P107", "P108"]
+    evidence_level: "static"
+  - path: "01_requirements/app/模块拆分清单.md"
+    type: "baseline"
+    sections: ["REQ-APP-017", "D-04", "实施边界"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_map.md"
+    type: "axure_map"
+    sections: ["P104", "P105", "P106", "P107", "P108"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/"
+    type: "readonly_evidence_run"
+    evidence_level: "static"
+  - path: "http://127.0.0.1:5500/"
+    type: "live_prototype"
+    viewport: "430x932"
+    wait: "networkidle"
+    browser_mode: "headless=False"
+    evidence_level: "open_question"
+    note: "本轮未完成实时页面补充核对；不把实时会话当作已观察证据。"
+source_pages:
+  - {page_id: "P104", name: "盘点记录列表", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-104.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-104.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P104"}]}
+  - {page_id: "P105", name: "盘点记录搜索", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-105.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-105.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P105"}]}
+  - {page_id: "P106", name: "盘点记录筛选", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-106.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-106.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P106"}]}
+  - {page_id: "P107", name: "筛选结果", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-107.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-107.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P107"}]}
+  - {page_id: "P108", name: "盘点详情", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-108.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-108.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P108"}]}
+page_contracts:
+  - page_id: "P104"
+    name: "盘点记录列表"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "页面表显示由首页进入；基线将页面归属存发苗间。"}, return: {level: "static", detail: "可进入搜索、筛选、详情并返回首页；返回栈未确认。"}}
+    query_area: {level: "static", items: ["存发苗间一号/二号/三号", "今日/昨日/近一周/近一个月/近3个月/近1年", "是否差异：是/否", "搜索", "筛选"], open_question: "默认仓库、日期默认值、分页排序和多条件关系未明确。"}
+    list_or_cards: {level: "static", items: ["数量", "鸡苗平均苗重", "出苗日期", "盘点时间", "差异数量", "养殖场-批次-品种", "盘点来源/备注样例"]}
+    form: {level: "static", detail: "未观察到列表内联编辑表单；搜索和筛选分别位于 P105/P106。"}
+    dialogs: {level: "static", detail: "未观察到盘点确认弹窗；权限和异常弹窗未定义。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入盘点详情", "返回首页"]}
+    status_and_transitions: {level: "static", values: ["有差异", "无差异", "是", "否"], transition: "差异是结果属性，不等于已确认或已调整状态。"}
+  - page_id: "P105"
+    name: "盘点记录搜索"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P104 搜索进入。"}, return: {level: "static", detail: "可返回列表或详情；实际跳转未补充复现。"}}
+    query_area: {level: "static", items: ["关键词输入", "养殖场", "批次", "品种", "代孵/树田代孵历史词", "搜索"], open_question: "搜索匹配、历史词保存、输入即查和空结果提示未明确；原型注释建议本期按输入关键词查询即可。"}
+    list_or_cards: {level: "static", detail: "有结果展示平均苗重、出苗日期、盘点时间、差异数量和养殖场-批次-品种；无结果文案存在于注释证据。"}
+    form: {level: "static", items: ["关键词输入框"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "选择历史搜索词", "进入详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["搜索有结果", "搜索无结果"], open_question: "网络失败和权限不足提示未明确。"}
+  - page_id: "P106"
+    name: "盘点记录筛选"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P104/P105 筛选入口进入。"}, return: {level: "static", detail: "确认进入 P107；重置后默认值和返回行为未明确。"}}
+    query_area: {level: "static", items: ["存发苗间", "盘点日期范围", "养殖场", "品种", "平均苗重", "是否差异：全部/是/否", "确认", "重置"], open_question: "字段必填、日期边界、单位、组合逻辑和空结果未明确。"}
+    list_or_cards: {level: "static", detail: "展示筛选前记录卡片预览。"}
+    form: {level: "static", items: ["仓库选择", "盘点日期", "养殖场", "品种", "平均苗重", "是否差异"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["确认", "重置", "进入筛选结果", "返回列表/搜索"]}
+    status_and_transitions: {level: "static", values: ["全部", "是", "否"], open_question: "差异筛选与库存/盘点提交的关系未明确。"}
+  - page_id: "P107"
+    name: "筛选结果"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P106 确认进入。"}, return: {level: "static", detail: "可返回列表、搜索、筛选或详情；条件回显未确认。"}}
+    query_area: {level: "static", items: ["搜索", "筛选"], open_question: "筛选条件回显、清空条件、分页和排序未明确。"}
+    list_or_cards: {level: "static", items: ["鸡苗平均苗重", "出苗日期", "盘点时间", "差异数量", "养殖场-批次-品种", "盘点来源/备注样例"]}
+    form: {level: "static", detail: "未观察到内联编辑表单。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入盘点详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["有差异", "无差异"], open_question: "结果快照与库存实时一致性未定义。"}
+  - page_id: "P108"
+    name: "盘点详情"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P104/P105/P106/P107 的记录卡片进入。"}, return: {level: "static", detail: "静态链接返回盘点记录列表。"}}
+    query_area: {level: "static", detail: "未观察到查询区。"}
+    list_or_cards: {level: "static", items: ["鸡苗信息：养殖场/批次/品种/出苗日期/平均苗重/库存/鸡苗类型", "仓库信息：孵化场/存发苗间", "盘点信息：库存/盘点数量/差异数量/盘点时间/备注/操作人/是否差异"]}
+    form: {level: "static", detail: "未观察到可编辑字段；盘点数量提交不属于本模块只读详情范围。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["返回盘点记录列表"]}
+    status_and_transitions: {level: "static", values: ["是否差异：是"], open_question: "盘点确认、库存调整、复盘/撤销和权限未明确。"}
+interfaces:
+  - {name: "苗间盘点记录查询", direction: "read", evidence_level: "open_question", observed_contract: "读取存发苗间盘点记录列表、关键词结果、筛选结果和详情。", endpoint_or_protocol: "未观察到接口地址、鉴权、分页、排序或错误码。", candidate_inputs: ["存发苗间标识", "关键词", "养殖场", "批次", "品种", "平均苗重", "盘点日期", "是否差异"], candidate_outputs: ["盘点记录卡片列表", "空结果状态", "盘点详情"]}
+  - {name: "苗间盘点写入或库存调整", direction: "write", evidence_level: "open_question", observed_contract: "P104-P108 展示既有盘点结果；确认盘点/库存调整不在本只读分析范围。", endpoint_or_protocol: "未观察到接口；不得据此调用或实现写操作。"}
+cross_module_refs:
+  - {ref: "REQ-APP-001", module: "首页", zentao_module_id: 556, relation: "entry", evidence_level: "static"}
+  - {ref: "REQ-APP-015", module: "存发苗间 / 库存查询", zentao_module_id: 577, relation: "inventory_snapshot", evidence_level: "inferred", detail: "详情同时展示库存和盘点数量，关联键及更新时间待确认。"}
+  - {ref: "REQ-APP-016", module: "存发苗间 / 出入库记录", zentao_module_id: 578, relation: "sibling_record", evidence_level: "static"}
+  - {ref: "REQ-APP-004", module: "孵化任务 / 种蛋出雏", zentao_module_id: 566, relation: "possible_chick_source", evidence_level: "inferred", detail: "鸡苗来源可能与出雏任务相关，材料未确认。"}
+business_rules:
+  - {id: "BR-017-01", rule: "盘点卡片展示鸡苗平均苗重、出苗日期、盘点时间、差异数量和养殖场-批次-品种。", evidence_level: "static"}
+  - {id: "BR-017-02", rule: "P106 提供存发苗间、日期、鸡苗信息和是否差异筛选，存在确认和重置动作。", evidence_level: "static"}
+  - {id: "BR-017-03", rule: "详情展示库存、盘点数量和差异数量，并展示操作人、备注和是否差异；差异值不自动等同于已调整。", evidence_level: "static"}
+  - {id: "BR-017-04", rule: "存发苗间对象边界来自基线，通用页面字段未单独证明数据隔离。", evidence_level: "inferred"}
+  - {id: "BR-017-05", rule: "本分析只读，不确认盘点、不调整库存、不执行入库/出库。", evidence_level: "observed"}
+  - {id: "BR-017-06", rule: "盘点生成、确认、调整、撤销、权限、异常、接口和持久化未确认。", evidence_level: "open_question"}
+open_questions:
+  - {id: "OQ-017-01", question: "盘点记录按存发苗间/库位的隔离键是什么，默认仓库如何确定？", impact: "high"}
+  - {id: "OQ-017-02", question: "库存、盘点数量、差异数量的计算时点、精度和负数规则是什么？", impact: "high"}
+  - {id: "OQ-017-03", question: "盘点是否需要确认、复核、库存调整或可撤销，相关权限如何定义？", impact: "high"}
+  - {id: "OQ-017-04", question: "关键词、日期、平均苗重、是否差异筛选及分页排序、空结果、异常如何处理？", impact: "medium"}
+  - {id: "OQ-017-05", question: "盘点记录与库存、出入库、出雏任务的关联键及一致性规则是什么？", impact: "medium"}
+analysis_boundary:
+  read_only: true
+  prohibited_actions: ["新增", "编辑", "删除", "盘点确认", "库存调整", "入库", "出库", "任务执行", "远程数据写入"]
+  not_claimed: ["实时页面本轮已成功逐页点击", "接口已实现", "权限已实现", "盘点写入已验证", "差异处理状态机已确认"]
+handoff:
+  next_owner: "产品/研发/测试设计"
+  deliverable_use: "先确认对象隔离、差异计算和盘点确认/调整规则，再进入测试点设计。"
+  generated_files: ["02_analysis/app/REQ-APP-017.yaml", "02_analysis/app/REQ-APP-017_存发苗间-盘点记录.md"]

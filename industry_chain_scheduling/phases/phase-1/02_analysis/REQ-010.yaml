@@ -1,0 +1,27 @@
+id: REQ-010
+title: 栋舍补栏看板
+parent_req: REQ-000
+module_path: 排程看板 / 栋舍补栏看板
+zentao_module_id: 677
+page_url: /biopark-poultry/schedule/barn-schedule
+analysis_status: analyzed_with_live_dom_readback
+source_precedence: [PRD, 待澄清项确认清单, REQ-基础数据_page_recon, 需求变动, 栋舍分配最小缓冲与推荐得分逻辑说明, 各段转进转出释放日期计算, 排程计算.xlsx]
+scope:
+  in: [园区栋舍补栏甘特图, 年度/跨月时间线, 甘特条目补栏信息悬浮框]
+  out: [甘特图内编辑, 栋舍策略配置, 栋舍排程视图明细表/热力图]
+requirements:
+  data_source: 补栏排程下推结果
+  roles: [园区总经理, 智控中心小组成员, 养殖区负责人]
+  visualization: 按栋舍展示补栏时间线和占用，支持多栋舍并行、跨月、跨年
+  tooltip: 点击补栏条目展示补栏情况；字段清单待产品契约
+  date_baseline: 转进/转出/释放日期采用最新排程计算.xlsx；释放日与下一批转进边界须与REQ-016一致
+page_contract:
+  navigation: 门户 -> 产业链生产排程系统 -> 排程看板 -> 栋舍补栏看板
+  view: 甘特图
+  actions: [点击补栏条目, 悬浮框关闭或移出]
+interfaces: [REQ-004制定排程, REQ-005补栏下推, REQ-015栋舍管理]
+dependencies: [REQ-004, REQ-005, REQ-015, REQ-016日期/占用口径]
+risks: [大数据量渲染, 跨年日期边界, tooltip字段不完整, 与REQ-016概览/明细口径分裂]
+open_questions: [tooltip字段与触发方式, 年度时间轴/缩放/空态, 释放日占用和下一批转进规则]
+prototype_evidence: {source_record: 模块拆分清单、Q-009与既有REQ-010分析, portal_entry: verified, submenu_dom_readback: verified, route: /biopark-poultry/schedule/barn-schedule, title: 栋舍排程, observed_view: 甘特图, observed_year: 2026, observed_barns: 24, observed_axis: [1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月], observed_batch_data: true, observation_time: 2026-08-27}
+trace: {upstream: [REQ-004, REQ-005, REQ-015], related: [REQ-016], downstream: [REQ-011]}

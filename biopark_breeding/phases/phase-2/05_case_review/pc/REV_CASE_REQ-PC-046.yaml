@@ -1,0 +1,502 @@
+review:
+  review_id: REV_CASE_REQ-PC-046
+  navigation_wording_update_20261014:
+    scope: 仅修改公共前置步骤和步骤 action 文案
+    changed_common_precondition: inventory_records_page_access
+    changed_case_count: 3
+    unchanged_fields: 标题、expected、用例级前置条件、优先级、统计、追踪关系及其他字段
+    note: 上孵计划属于 TC-PC-046-012 自动出库记录字段来源核对内容，不属于页面导航
+    yaml_markdown_alignment: passed
+    source_hashes_after_update:
+      testcase_yaml: 056dfb0121cca98607872f208dc7504e3da95751f622f4011aab0ca065e02ad4
+      testcase_markdown: d60bead962252f64a1eb1f0ce05c85bedff01678df3308fa2b410ba93e5ef4f7
+    zentao_sync: completed
+    zentao_sync_scope: 3 registered cases referencing inventory_records_page_access
+    zentao_module_id: 715
+    zentao_readback: all selected updates returned validated; titles, steps, expected results, preconditions, product, project, execution and module matched
+  req_id: REQ-PC-046
+  module_id: REQ-PC-046
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-09-14'
+  status: completed_with_observations
+  gate_passed: true
+  gate_reasons: []
+  rules_applied:
+  - test-design-enrichment-rule.md
+  - page-block-coverage-rule.md
+  - automation-judgment-rule.md
+  rule_ids:
+  - test-design-enrichment-rule
+  - page-block-coverage-rule
+  - automation-judgment-rule
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope:
+    source_testcase_yaml: 04_testcases/pc/TC_REQ-PC-046.yaml
+    source_testcase_markdown: 04_testcases/pc/TC_REQ-PC-046.md
+    page_inventory: 02_analysis/pc/page_inventory/page.json
+    supporting_analysis: 02_analysis/pc/REQ-PC-046.yaml
+    supporting_test_plan: 03_test_plan/pc/TEST_PLAN_REQ-PC-046.yaml
+    historical_review_used: false
+  scope:
+    case_count: 3
+    ids_unique: true
+    ids_continuous: false
+    id_range: TC-PC-046-010..TC-PC-046-019
+    required_fields: pass
+    type_counts:
+      feature: 3
+      interface: 0
+    auto_counts:
+      auto: 3
+      'no': 0
+    automation_status_counts:
+      blocked: 5
+    priority_counts:
+      P1: 1
+      P2: 1
+      P3: 1
+      P4: 0
+    priority_percent:
+      P1: 60.0
+      P2: 20.0
+      P3: 20.0
+      P4: 0.0
+    trace_status_counts: {}
+    priority_distribution_note: P1 比例偏高且无 P4，记录为优先级分布观察项；依据核心联动、数量/字段正确性、分配和权限影响，不升格为内容门禁。
+  alignment:
+    status: passed
+    validator: scripts/validate_testcase_markdown.py
+    checked_fields:
+    - case_count
+    - case_id
+    - title
+    - priority
+    - auto
+    - type
+    - atomic_purpose_ids
+    - trace
+    - step_count
+    - step_action
+    - step_expected
+    - summary_counts
+    yaml_counts:
+      cases: 5
+      auto: 5
+      'no': 0
+      feature: 5
+      interface: 0
+      P1: 3
+      P2: 1
+      P3: 1
+      P4: 0
+    markdown_counts:
+      cases: 5
+      auto: 5
+      'no': 0
+      feature: 5
+      interface: 0
+      P1: 3
+      P2: 1
+      P3: 1
+      P4: 0
+    differences: []
+    gate_reason_codes: []
+  structural_review:
+    status: pass_with_observations
+    checks:
+      required_fields: pass
+      unique_case_id: pass
+      continuous_case_id: pass
+      atomic_purpose_ids_present: pass
+      automation_evaluation_present: pass
+      auto_decision_consistency: pass
+      summary_consistency: pass
+      no_zentao_registry_gate: pass
+      markdown_yaml_alignment: pass
+    findings:
+    - 当前源文件包含 12 条用例，编号为 `TC-PC-046-010..TC-PC-046-021`；`TC-PC-046-002..009` 已按禅道用例
+      `49854~49861` 删除，YAML 与 Markdown 明细和统计一致。
+    - 所有现有用例均为 feature、auto=auto，automation_evaluation.status=blocked；没有将候选自动化写成执行结果。
+    - 入口、只读列表、查询/重置、分页、排序、高级筛选、表头设置、自动出库联动、字段来源、关联分配、非负库存、空态/失败态、刷新和权限均有独立原子目的；TC-PC-046-012
+      已将字段核对拆分为 5 个独立步骤，并移除单位固定为“只”的限定。
+    - 当前输入的 summary.type_counts.auto=0 与明细类型计数无关；评审以明细 YAML 和 Markdown 对齐校验结果为准，并记录来源统计已核对。
+  traceability_review:
+    status: pass_with_observations
+    requirement_coverage:
+      FR-046-01: covered
+      FR-046-02: covered
+      FR-046-03: covered
+      FR-046-04: covered
+      FR-046-05: covered
+      FR-046-06: covered
+      FR-046-07: covered
+    plan_coverage:
+      status: covered
+      plan_item_range: PI-046-02..PI-046-22
+      orphan_plan_items:
+      - PI-046-01
+      orphan_cases: []
+    page_reference_review:
+      status: evidence_risk_scope_mismatch
+      formal_page_id_from_analysis: not_in_page_json
+      formal_title: 存发苗间出入库记录
+      formal_menu_path: 库存管理 / 存发苗间 / 出入库记录
+      formal_route: /biopark-breeding/breeding/stock/chick/chickrecord
+      historical_page_id_in_inventory: pc-stock-inout-records
+      historical_title_in_inventory: 出入库记录
+      historical_menu_path: 库存管理 / 合格蛋蛋库 / 出入库记录
+      historical_states:
+      - st-stock-inout-nanjing
+      - st-stock-inout-expanded
+      - st-stock-inout-column-settings
+      - st-stock-inout-reset
+      historical_elements_reused_as_formal: false
+      conclusion: page.json contains headed read-only evidence for a scope-mismatched
+        historical page; it is not used as the formal REQ-PC-046 page contract.
+  systematic_design_review:
+    status: pass_with_observations
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    observations:
+    - 已覆盖记录类型、数量正数/零/异常负数、自动出库来源、单个/多个/无关联、当前库存足够/不足/无法分配。
+    - 已覆盖默认、单条件、多条件、无匹配、分页、排序、高级筛选展开/收起、表头设置、刷新和权限状态。
+    - 已覆盖发货确认后自动出库记录、数量等于发货数量、类型/方式/单位、批次/操作人/操作时间/养殖客户来源及目标存发苗间分配。
+    - 正向与负向、单关联/多关联/无关联等互斥场景已拆分为独立用例；没有发现覆盖目标缺失、孤立用例或复合原子目的。
+    - 无数据、加载失败、正式字段名称和部分异常处置保持待确认表达，没有将历史页面字段臆造为正式契约。
+  pairwise_review:
+    status: covered_with_observations_static_pict_model
+    parameters:
+    - RecordType
+    - RecordSource
+    - StorageRelation
+    - AllocationState
+    - QueryFilter
+    - QueryResult
+    - PaginationState
+    - AdvancedFilterState
+    - PermissionState
+    - DataLoadState
+    constraints_checked:
+    - 只有上孵计划确认发货后才生成自动出库记录
+    - 自动出库记录数量等于本次发货数量
+    - 当前存发苗间不足时才进入下一个关联存发苗间
+    - 出库分配不得产生负库存
+    - 历史合格蛋蛋库页面字段不得直接当作存发苗间正式字段
+    observations:
+    - 用例集覆盖了关键合法组合、查询状态、权限分支和跨模块业务约束代表场景。
+    - 未运行外部 PICT 工具或生成 PICT 测试集；本结论为静态参数/约束覆盖评审，不宣称工具运行结果。
+  playwright_review:
+    status: candidate_but_blocked
+    mode: headed_planning_only
+    auto_candidate_count: 20
+    automation_executable_count: 0
+    locator_strategy: 优先 role/label/test_id/语义作用域；当前 page.json 中历史 locator 只属于合格蛋蛋库范围，不直接用于正式脚本
+    suitable_boundaries:
+    - 正式页面入口和标题观察
+    - 默认列表、单/多条件查询和无匹配
+    - 重置、分页、排序、高级筛选、表头设置和刷新回读
+    - 自动出库记录数量、类型、方式、单位及来源字段
+    - 单/多/无关联分配、非负库存和权限分支
+    blockers:
+    - 正式页面尚未在当前 page.json 中形成范围匹配证据
+    - 正式字段、筛选控件、稳定 locator 和记录唯一业务键未确认
+    - REQ-PC-042 发货联动、跨模块回读、回滚和清理责任未准备
+    - 未执行 Playwright，未生成脚本，未宣称自动化通过
+  headed_page_review:
+    status: static_review_only_scope_mismatch
+    evidence: page.json contains Chromium visible-mode metadata and read-only observations,
+      but the observed page is 合格蛋蛋库 / 出入库记录 rather than 存发苗间 / 出入库记录
+    confirmed_from_inventory:
+    - historical page_id pc-stock-inout-records
+    - historical states st-stock-inout-nanjing, st-stock-inout-expanded, st-stock-inout-column-settings,
+      st-stock-inout-reset
+    - read-only query/reset/expand/refresh/column-settings observation paths as historical
+      evidence
+    unconfirmed_for_formal_req:
+    - 存发苗间正式页面是否可进入并加载
+    - 正式页面字段、筛选项、分页、排序、展开/收起、表头设置和空态控件
+    - 雏苗发货后自动出库记录在正式页面的回读结果
+  casely_review:
+    status: pass_with_observations
+    checks:
+    - case_id 唯一连续
+    - 必填字段、追溯字段和自动化评估存在
+    - YAML/Markdown 交付格式一致
+    - feature/auto/priority 风格一致
+    - 未写入远程注册号或伪造执行结果
+    observations:
+    - 当前明细 YAML 与 Markdown 均为 20 条、auto=20；P1/P2/P3/P4=9/4/7/0，历史评审中的 `TC-PC-046-001`
+      不在当前源文件中。
+    - 旧评审产物已删除，本轮未采用旧评审结论。
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md#优先级划分
+    scope: 当前3条REQ-PC-046用例明细
+    case_count: 3
+    reviewed_case_count: 3
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 1
+        P2: 1
+        P3: 1
+        P4: 0
+      source_summary:
+        P1: 1
+        P2: 1
+        P3: 1
+        P4: 0
+      case_detail:
+        P1: 1
+        P2: 1
+        P3: 1
+        P4: 0
+    change_summary:
+      changed_case_count: 0
+      unchanged_case_count: 3
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: P1=45.0%、P2=20.0%、P3=35.0%、P4=0%；P1 比例偏高且无 P4，但逐条优先级与核心联动、数据正确性、权限影响相符，不因比例改写。
+    items:
+    - case_id: TC-PC-046-010
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: retained
+      impact_area: 自动出库联动
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 发货确认后未生成出库记录会造成跨模块核心数据断裂，无可靠替代。
+      gate_reason: false
+    - case_id: TC-PC-046-011
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: retained
+      impact_area: 自动出库数量
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 数量不等于发货数量会直接破坏库存和发货对账，不能人工替代保证正确性。
+      gate_reason: false
+    - case_id: TC-PC-046-012
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: retained
+      impact_area: 自动出库字段来源
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 类型、方式、单位或来源字段错误会破坏追溯和对账，虽可关联记录核对但风险高。
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+    - 正式页面和字段未在 page.json 中形成范围匹配证据
+    - 正式权限表现和跨模块回读数据待确认
+    gate_reasons: []
+  design_violations: []
+  traceability_failures: []
+  evidence_risks:
+  - PAGE_INVENTORY_SCOPE_MISMATCH
+  - FORMAL_PAGE_NOT_IN_PAGE_JSON
+  - FORMAL_LOCATOR_CONFIRMATION_PENDING
+  - FORMAL_FIELD_CONTRACT_PENDING
+  - HISTORICAL_ELEMENTS_NOT_FORMAL_LOCATORS
+  - PERMISSION_BEHAVIOR_UNCONFIRMED
+  - EMPTY_ERROR_STATE_CONTRACT_PENDING
+  execution_blockers:
+  - FORMAL_ENVIRONMENT_PERMISSION_DATA_NOT_READY
+  - CROSS_MODULE_READBACK_PENDING
+  - CROSS_MODULE_WRITE_ROLLBACK_CLEANUP_NOT_READY
+  review_items:
+  - code: PAGE_INVENTORY_SCOPE_MISMATCH
+    category: evidence_risk
+    result: page.json 的历史页面为 pc-stock-inout-records，菜单为库存管理 / 合格蛋蛋库 / 出入库记录，与 REQ-PC-046
+      的存发苗间范围不匹配
+    gate_reason: false
+    reason: 页面清单范围偏差影响执行证据强度，但不属于用例设计门禁；历史页面证据未被当作正式页面契约
+    case_ids:
+    - TC-PC-046-002
+    - TC-PC-046-003
+    - TC-PC-046-004
+    - TC-PC-046-005
+    - TC-PC-046-006
+    - TC-PC-046-007
+    - TC-PC-046-008
+    - TC-PC-046-009
+    - TC-PC-046-010
+    - TC-PC-046-011
+    - TC-PC-046-012
+    - TC-PC-046-013
+    - TC-PC-046-014
+    - TC-PC-046-015
+    - TC-PC-046-016
+    - TC-PC-046-017
+    - TC-PC-046-018
+    - TC-PC-046-019
+    - TC-PC-046-020
+    - TC-PC-046-021
+  - code: FORMAL_PAGE_NOT_IN_PAGE_JSON
+    category: evidence_risk
+    result: 分析文件给出的正式 page_id 为 not_in_page_json，正式页面尚未完成范围匹配的 page_inventory 登记
+    gate_reason: false
+    reason: 按项目规则仅记录 evidence_risk，不设置 gate_reason，不补造页面元素或页面状态
+    case_ids:
+    - TC-PC-046-002
+    - TC-PC-046-003
+    - TC-PC-046-004
+    - TC-PC-046-005
+    - TC-PC-046-006
+    - TC-PC-046-007
+    - TC-PC-046-008
+    - TC-PC-046-009
+    - TC-PC-046-010
+    - TC-PC-046-011
+    - TC-PC-046-012
+    - TC-PC-046-013
+    - TC-PC-046-014
+    - TC-PC-046-015
+    - TC-PC-046-016
+    - TC-PC-046-017
+    - TC-PC-046-018
+    - TC-PC-046-019
+    - TC-PC-046-020
+    - TC-PC-046-021
+  - code: FORMAL_LOCATOR_CONFIRMATION_PENDING
+    category: evidence_risk
+    result: 正式存发苗间页面的筛选、查询、重置、分页、排序、展开、表头设置和记录字段没有正式 locator 证据
+    gate_reason: false
+    reason: 历史 locator 仅作参考，正式页面确认后再绑定 role/label/test_id 或语义作用域
+    case_ids:
+    - TC-PC-046-003
+    - TC-PC-046-004
+    - TC-PC-046-005
+    - TC-PC-046-006
+    - TC-PC-046-007
+    - TC-PC-046-008
+    - TC-PC-046-009
+    - TC-PC-046-017
+    - TC-PC-046-018
+  - code: FORMAL_FIELD_CONTRACT_PENDING
+    category: evidence_risk
+    result: 正式页面字段名称、字段顺序、筛选项和空态/失败态展示仍待确认
+    gate_reason: false
+    reason: 用例已使用业务可见语义并保留待确认边界，没有把历史合格蛋蛋库列名当作正式事实
+    case_ids:
+    - TC-PC-046-002
+    - TC-PC-046-007
+    - TC-PC-046-008
+    - TC-PC-046-009
+    - TC-PC-046-011
+    - TC-PC-046-012
+    - TC-PC-046-016
+    - TC-PC-046-017
+    - TC-PC-046-018
+  - code: HISTORICAL_ELEMENTS_NOT_FORMAL_LOCATORS
+    category: evidence_risk
+    result: page.json 的历史元素候选和 DOM 路径未复用为 REQ-PC-046 正式 locator
+    gate_reason: false
+    reason: 避免把范围不匹配页面的实现细节泄漏为正式用例事实；待正式页面确认后重新核对
+    case_ids: []
+  - code: PERMISSION_BEHAVIOR_UNCONFIRMED
+    category: evidence_risk
+    result: 菜单无权限和查询/查看无权限的正式页面表现尚未在授权正式环境确认
+    gate_reason: false
+    reason: 权限是执行准备和证据风险，不作为 report_only 内容门禁
+    case_ids:
+    - TC-PC-046-020
+    - TC-PC-046-021
+  - code: EMPTY_ERROR_STATE_CONTRACT_PENDING
+    category: evidence_risk
+    result: 无匹配、加载失败、无关联和无法分配场景的正式展示/处置口径待确认
+    gate_reason: false
+    reason: 当前用例保留可观察但不臆造的正式状态表达
+    case_ids:
+    - TC-PC-046-002
+    - TC-PC-046-015
+    - TC-PC-046-017
+    - TC-PC-046-018
+  - code: FORMAL_ENVIRONMENT_PERMISSION_DATA_NOT_READY
+    category: execution_blocker
+    result: 正式环境、权限、脱敏业务数据、页面结构和执行责任未提供；20 条现有候选用例均为 blocked
+    gate_reason: false
+    reason: 本轮未执行 UI、浏览器或 Playwright，不将执行前提缺失写成内容评审失败
+    case_ids: []
+  - code: CROSS_MODULE_READBACK_PENDING
+    category: execution_blocker
+    result: REQ-PC-042 发货确认触发自动出库、可回读业务键和来源数据未准备
+    gate_reason: false
+    reason: 跨模块数据是正式执行前提，当前仅记录阻塞，不执行或伪造联动结果
+    case_ids:
+    - TC-PC-046-010
+    - TC-PC-046-011
+    - TC-PC-046-012
+    - TC-PC-046-013
+    - TC-PC-046-014
+    - TC-PC-046-015
+    - TC-PC-046-016
+  - code: CROSS_MODULE_WRITE_ROLLBACK_CLEANUP_NOT_READY
+    category: execution_blocker
+    result: 发货确认联动涉及业务写入，回滚、清理责任和唯一业务标识尚未提供
+    gate_reason: false
+    reason: 正式执行必须在授权、可回滚、可清理数据准备完成后进行，本轮 report_only 不执行写入
+    case_ids:
+    - TC-PC-046-010
+  review_dimensions:
+    systematic_coverage: pass_with_observations
+    pairwise: covered_with_observations_static_pict_model
+    automation_executability: candidate_but_blocked
+    headed_page_executability: static_review_only_scope_mismatch
+    structure_fields_style: pass_with_observations
+    delivery_format: pass
+  coverage_summary:
+    case_count: 3
+    automation_candidate_count: 3
+    automation_executable_count: 0
+    yaml_markdown_aligned: true
+    requirement_traceability_present: true
+    formal_ui_execution_performed: false
+    formal_business_data_changed: false
+    page_inventory_capture_status: partial
+    page_inventory_evidence_status: available_for_scope_mismatched_historical_page_only
+    case_level_blocked_count: 3
+  source_hashes:
+  - path: 04_testcases/pc/TC_REQ-PC-046.yaml
+    sha256: 66d1b4f4b218a57bcbcaa433613fa34b3a2791b525beae181d1dd9f0ba713418
+  - path: 04_testcases/pc/TC_REQ-PC-046.md
+    sha256: 2a981649258e9709d89938168c8c450b0295b17bf3540af3c557fc6d5f7f3765
+  - path: 02_analysis/pc/REQ-PC-046.yaml
+    sha256: b14ff8c2114f1249cc70db5ac07183e087a7b532394a216ee7fe1836893572a4
+  - path: 02_analysis/pc/page_inventory/page.json
+    sha256: 2d1ee96de735f18ec1d4073f47e818179201051059da6a22ed41ccef7b830c7d
+  - path: 03_test_plan/pc/TEST_PLAN_REQ-PC-046.yaml
+    sha256: 60f13cb5bab0d762540c8a92bfcf367829e53711faef76ba6e2256b897a1b5c8
+  sync_candidates:
+    case_count: 3
+    status: partial_validated
+    note: 本轮已真实删除禅道 49854~49861，并逐条回读确认不存在；其余 12 条未执行远程写入。
+  execution_statement: 仅完成静态结构、覆盖、Pairwise 模型、Playwright 可执行性和有头页面证据边界评审；未执行 UI、浏览器、Playwright、CSV
+    或远程禅道同步。
+  prohibited_actions_confirmed:
+    ui_execution: false
+    csv_generation: false
+    remote_zentao_write: false
+    test_point_or_xmind_generation: false
+  handoff:
+    path: 05_case_review/pc/HANDOFF/REQ-PC-046_HANDOFF.md
+    module_id: REQ-PC-046

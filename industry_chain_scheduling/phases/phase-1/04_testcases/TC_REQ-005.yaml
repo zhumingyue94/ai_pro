@@ -1,0 +1,2399 @@
+req_id: REQ-005
+module: 排程审批
+zentao_module_id: 672
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-005
+  tp: TP_REQ-005
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-005.yaml
+cases:
+- id: TC-005-01
+  tp_id: TP-005-01
+  title: 查询条件包含「计划月份」「计划状态」「宰杀线」字段
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 查看页面查询区域
+    expected: 页面顶部查询区可见筛选项：计划月份、计划状态、宰杀线三个筛选项
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47882
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-02
+  tp_id: TP-005-02
+  title: 计划状态下拉选项为待审核、审核通过、驳回
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 点击「状态」下拉或查看筛选项
+    expected: 打开「计划状态」下拉，选项列表仅为待审核、审核通过、驳回，不含暂存
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47883
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-03
+  tp_id: TP-005-03
+  title: 宰杀线下拉选项来源正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 点击「对应筛选项」下拉或查看筛选项
+    expected: 打开「宰杀线」下拉核对后，选项与系统宰杀线配置一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47884
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-04
+  tp_id: TP-005-04
+  title: 仅选计划月份后点击「查询」，列表按月份过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表中存在可按「计划月份」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「计划月份」，其余条件留空
+    expected: 仅「计划月份」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「计划月份」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47885
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-05
+  tp_id: TP-005-05
+  title: 仅选计划状态后点击「查询」，列表按状态过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表中存在可按「计划状态」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「计划状态」，其余条件留空
+    expected: 仅「计划状态」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「计划状态」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47886
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-06
+  tp_id: TP-005-06
+  title: 仅选宰杀线后点击「查询」，列表按宰杀线过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表中存在可按「宰杀线」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「宰杀线」，其余条件留空
+    expected: 仅「宰杀线」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「宰杀线」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47887
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-07
+  tp_id: TP-005-07
+  title: 选择多条件后点击「查询」，列表按组合条件过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表存在可组合区分的测试数据
+  steps:
+  - action: 同时设置多个查询条件
+    expected: 各筛选项均已设置
+  - action: 点击「查询」按钮
+    expected: 列表仅显示同时满足全部条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47888
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-08
+  tp_id: TP-005-08
+  title: 点击「查询」按钮才触发查询
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表中已有数据
+  steps:
+  - action: 修改筛选项但不点「查询」
+    expected: 列表不随输入自动变成新条件结果
+  - action: 点击「查询」按钮
+    expected: 列表按当前条件刷新
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47889
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-09
+  tp_id: TP-005-09
+  title: 点击「重置」，查询条件恢复默认并刷新列表
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 设置查询条件后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 点击「重置」后各筛选项恢复默认值，列表重新加载
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47890
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-10
+  tp_id: TP-005-10
+  title: 查询无匹配月份且状态选待审核 → 列表展示空状态
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 设置无匹配查询条件且状态选「待审核」后点击「查询」
+    expected: 列表展示空状态；查询状态为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47891
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-11
+  tp_id: TP-005-11
+  title: 查询有数据月且状态已审核通过且宰杀线选择一号宰杀线 → 列表仅展示匹配记录
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 存在状态「审核通过」及其他状态的可区分数据
+  steps:
+  - action: 设置有数据条件且状态选「审核通过」、宰杀线选一号宰杀线后点击「查询」
+    expected: 列表仅展示匹配「审核通过」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47892
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-12
+  tp_id: TP-005-12
+  title: 查询有数据月且状态驳回且宰杀线留空 → 列表仅展示该月驳回记录
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 存在状态为「驳回」及其他状态的测试数据
+  steps:
+  - action: 状态选择「驳回」，年度等其余条件按标题设置（可留空）后点击「查询」
+    expected: 列表仅展示状态为「驳回」的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47893
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-13
+  tp_id: TP-005-13
+  title: 统计卡片展示总计划数、待审核、驳回、审核通过数量
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 统计卡片
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：统计卡片展示总计划数、待审核、驳回、审核通过数量）
+  steps:
+  - action: 选择月份，其他查询条件都留空，点击查询按钮然后查看统计区域
+    expected: 统计卡片展示总计划数、待审核、驳回、已下推数量
+  - action: 记录总计划数、待审核、驳回、审核通过的数量
+    expected: 总计划数=N、待审核=D、驳回=F、审核通过=P
+  - action: 进入[制定排程]菜单页，选择同月份，其他查询条件留空，点击查询按钮后查看表格数据。核对总计划数
+    expected: 表格分页显示共N条=排程审批页面的总计划数N
+  - action: 进入[制定排程]菜单页，[计划月份]选择同月份并且[计划状态]选待审核，其他查询条件留空，点击查询按钮后查看表格数据。核对待审核数量
+    expected: 表格分页显示共D条=排程审批页面的待审核数D
+  - action: 进入[制定排程]菜单页，[计划月份]选择同月份并且[计划状态]选驳回，其他查询条件留空，点击查询按钮后查看表格数据。核对驳回数量
+    expected: 表格分页显示共F条=排程审批页面的驳回数F
+  - action: 进入[制定排程]菜单页，[计划月份]选择同月份并且[计划状态]选审核通过，其他查询条件留空，点击查询按钮后查看表格数据。核对审核通过数量
+    expected: 表格分页显示P条=排程审批页面的审核通过数P
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47894
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-14
+  tp_id: TP-005-14
+  title: 列表字段显示正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 查看列表表头，列表是多表头，先看一级表头
+    expected: 表头列名依次为：序号、宰杀日期、计划编号、宰杀线、宰杀量(万只)、宰杀只重(kg)、状态、养殖栋舍、下推结果、错误信息、上苗日期、养殖品种、补栏量(万羽)、苗重(g)、栋舍1段、栋舍2段、栋舍3段、上孵日期、上孵数量(万枚)、审核员、驳回原因、审核时间、创建人、创建时间、操作
+  - action: 查看栋舍1段、栋舍2段、栋舍3段下的子表头
+    expected: 栋舍1段、栋舍2段、栋舍3段下都有子表头：养殖(天)、空栏(天)、转运体重(g)、转运料比
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47895
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-15
+  tp_id: TP-005-15
+  title: 「列表」展示核心字段且与源排程数据一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 列表存在已知录入内容的记录测试数据
+  steps:
+  - action: 记录某一个计划编号行的所有数据
+    expected: 记录行内所有字段数据
+  - action: 进入「制定」页面（/biopark-apm/apm/scheduling/make-schedule），切换到对应月份，查看表格中相同计划编号的数据
+    expected: 与记录的数据进行对比，匹配到的字段数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47896
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-16
+  tp_id: TP-005-16
+  title: 列表不展示暂存状态记录
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 在制定排程找一个暂存状态的数据
+  steps:
+  - action: 查看「排程审批」页面表格所有数据
+    expected: 不存在状态为「暂存」的数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47897
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-17
+  tp_id: TP-005-17
+  title: 提交还在审核中的计划，状态列显示待审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 准备可观察到状态「待审核」的数据（或可构造该结果态）
+  steps:
+  - action: 按本条场景操作后查看状态展示（目标态「待审核」）
+    expected: 状态表现为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47898
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-17
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-18
+  tp_id: TP-005-18
+  title: 审核通过的计划，状态列显示审核通过
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 审核人点击审批按钮打开弹窗，点击通过并且确认后，回到排程审批表格查看状态
+    expected: 通过的排程，状态显示「审核通过」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47899
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-18
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-19
+  tp_id: TP-005-19
+  title: 审核驳回的计划，状态显示为驳回
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表中存在应为「驳回」的记录记录
+  steps:
+  - action: 定位该行查看状态列
+    expected: 状态显示为「驳回」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47900
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-19
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-20
+  tp_id: TP-005-20
+  title: 驳回的计划「驳回原因」列展示审核人填写内容
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：驳回的计划「驳回原因」列展示审核人填写内容）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈；验收关注：驳回原因、驳回
+  - action: 核对通过标准
+    expected: 通过标准可判定：驳回的计划「驳回原因」列展示审核人填写内容
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47901
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-20
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-21
+  tp_id: TP-005-21
+  title: 审核通过/驳回记录展示审核人员、审核时间
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 审核人先完成审批，分别审核通过和驳回的
+  steps:
+  - action: 核对状态为驳回、审核通过的审核人和审核时间字段
+    expected: 通过标准可判定：审核通过/驳回记录展示审核人员、审核时间
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47902
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-21
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-22
+  tp_id: TP-005-22
+  title: 待审核记录不显示驳回原因、审核人、审核时间
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：待审核记录不显示驳回原因、审核人、审核时间）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈；验收关注：待审核、驳回
+  - action: 核对通过标准
+    expected: 通过标准可判定：待审核记录不显示驳回原因、审核人、审核时间
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47903
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-22
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-23
+  tp_id: TP-005-23
+  title: 列表「创建人员」「创建时间」列显示正确
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 刚创建或刚修改过一条测试记录
+  steps:
+  - action: 查看该行「创建人员」「创建时间」或「修改人员」「修改时间」列
+    expected: 人员为当前操作账号，时间接近实际操作时刻且显示正确
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47904
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-23
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 47904 --format=json
+  zentao_status: normal
+- id: TC-005-24
+  tp_id: TP-005-24
+  title: 非审核人查看各行操作列仅显示「查看」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 非审核人查看目标行操作列
+    expected: 操作列按钮为：查看（不多出主操作）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47905
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-24
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-25
+  tp_id: TP-005-25
+  title: 列表行不可直接审核，须进入详情页操作
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：列表行不可直接审核，须进入详情页操作）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈
+  - action: 核对通过标准
+    expected: 通过标准可判定：列表行不可直接审核，须进入详情页操作
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47906
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-25
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-26
+  tp_id: TP-005-26
+  title: 智控中心账号列表行仅可「查看」不可审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 使用指定角色账号登录
+  steps:
+  - action: 查看列表行操作列
+    expected: 该角色下列表行仅可「查看」，不出现「审核」按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47907
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-26
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-27
+  tp_id: TP-005-27
+  title: 查询无匹配时「列表」展示空状态，页面无报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 构造无数据查询结果或清空数据后查看列表
+    expected: 展示空状态，无前端报错
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47908
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-27
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-28
+  tp_id: TP-005-28
+  title: 列表分页默认展示第1页数据，每页条数与系统默认一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 用例 TC-005-28 数据态已按场景备好
+  steps:
+  - action: 执行用例 TC-005-28 的页面操作（围绕：列表分页默认展示第1页数据，每页条数与系统默认一致）
+    expected: 操作完成并出现可观察反馈（TC-005-28）
+  - action: 核对用例 TC-005-28 通过标准
+    expected: 通过标准涵盖：列表分页默认展示第1页数据，每页条数与系统默认一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47909
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-28
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-29
+  tp_id: TP-005-29
+  title: 点击分页「下一页」，列表展示下一页数据
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 用例 TC-005-29 数据态已按场景备好
+  steps:
+  - action: 执行用例 TC-005-29 的页面操作（围绕：「下一页」）
+    expected: 操作完成并出现可观察反馈（TC-005-29）
+  - action: 核对用例 TC-005-29 通过标准
+    expected: 通过标准涵盖：「下一页」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47910
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-29
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-30
+  tp_id: TP-005-30
+  title: 点击分页「上一页」，列表展示上一页数据
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 当前位于第2页或之后
+  steps:
+  - action: 点击「上一页」
+    expected: 回到上一页数据与页码
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47911
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-30
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-31
+  tp_id: TP-005-31
+  title: 切换每页显示条数后，列表按新条数重新分页展示
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 用例 TC-005-31 数据态已按场景备好
+  steps:
+  - action: 执行用例 TC-005-31 的页面操作（围绕：切换每页显示条数后，列表按新条数重新分页展示）
+    expected: 操作完成并出现可观察反馈（TC-005-31）
+  - action: 核对用例 TC-005-31 通过标准
+    expected: 通过标准涵盖：切换每页显示条数后，列表按新条数重新分页展示
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47912
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-31
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-32
+  tp_id: TP-005-32
+  title: 分页区总条数、当前页码与查询结果一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已查询出已知规模结果
+  steps:
+  - action: 查看分页区总条数与当前页码并对照列表
+    expected: 分页总条数和当前页码能对上本次查询结果，不出现错页
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47913
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-32
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-33
+  tp_id: TP-005-33
+  title: 仅一页数据时分页「上一页」「下一页」不可用或隐藏
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 用例 TC-005-33 数据态已按场景备好
+  steps:
+  - action: 执行用例 TC-005-33 的页面操作（围绕：「上一页」、「下一页」）
+    expected: 操作完成并出现可观察反馈（TC-005-33）
+  - action: 核对用例 TC-005-33 通过标准
+    expected: 通过标准涵盖：「上一页」、「下一页」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47914
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-33
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-34
+  tp_id: TP-005-34
+  title: 「表格」单元格超长文本省略展示，鼠标悬浮显示全部内容
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 存在超长文本字段的数据
+  steps:
+  - action: 观察超长单元格
+    expected: 超出部分以省略号展示
+  - action: 鼠标悬停该单元格
+    expected: 浮层显示完整内容
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47915
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-34
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-35
+  tp_id: TP-005-35
+  title: 同一日期存在多条宰杀线时，「列表」显示多行且「宰杀日期」「状态」列合并单元格样式正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：同一日期存在多条宰杀线时，「列表」显示多行且「宰杀日期」「状态」列合并单）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈；验收关注：宰杀日期
+  - action: 核对通过标准
+    expected: 通过标准可判定：同一日期存在多条宰杀线时，「列表」显示多行且「宰杀日期」「状态」列合并单
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47916
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-35
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-36
+  tp_id: TP-005-36
+  title: 点击「查看」进入排程审批详情页
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表存在可查看的记录
+  steps:
+  - action: 点击「查看」
+    expected: 进入排程审批详情页（或对应详情页）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47917
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-36
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-37
+  tp_id: TP-005-37
+  title: 详情页展示「批量审核」按钮
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 点击审批按钮打开弹窗
+    expected: 审核月度计划页面含[批量审核]按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47918
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-37
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-38
+  tp_id: TP-005-38
+  title: 详情页点击「返回列表」回到审批列表
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已从列表点击[审批]或者[查看]按钮进入详情页
+  steps:
+  - action: 在详情页点击「返回列表」
+    expected: 回到排程审批列表页
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47919
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-38
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-39
+  tp_id: TP-005-39
+  title: 详情页各区块字段只读不可编辑
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  steps:
+  - action: 从列表点击[审批]或者[查看]按钮进入详情页，尝试编辑字段
+    expected: 详情页所有字段不可编辑，仅可浏览
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47920
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-39
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-40
+  tp_id: TP-005-40
+  title: 「月度看板」展示当月日历格子
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 点击“审核月度计划”进入页面
+    expected: 审核月度计划页面的「月度看板」展示当月日历格子
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47921
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-40
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-41
+  tp_id: TP-005-41
+  title: 切换「计划月份」后「月度看板」与月度宰杀目标同步刷新
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：切换「计划月份」后「月度看板」与月度宰杀目标、已分配同步刷新）
+  steps:
+  - action: 点击“审核月度计划”进入页面
+    expected: 进入审核月度计划页面
+  - action: 切换「计划月份」
+    expected: 「月度看板」与月度宰杀目标同步刷新
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47922
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-41
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-42
+  tp_id: TP-005-42
+  title: 左上角的状态显示正确，切换月份后如果当月有待审核的日计划就显示待审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 当月存在待审核日计划
+  steps:
+  - action: 点击“审核月度计划”进入页面。查看左上角状态，并切换到有待审核日计划的月份
+    expected: 左上角状态显示正确；当月有待审核日计划时显示「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47923
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-42
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-43
+  tp_id: TP-005-43
+  title: 无任何宰杀线排程记录的日期显示「待排」（日历UI标签）
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击“审核月度计划”进入页面
+  steps:
+  - action: 查看没有任何计划的日期
+    expected: 没有计划的日期显示：待排
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47924
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-43
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-44
+  tp_id: TP-005-44
+  title: 该日存在待审核排程时看板显示「待审核」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击“审核月度计划”进入页面
+  steps:
+  - action: 查看有待审核计划的日期
+    expected: 有待审核计划的日期显示：待审核
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47925
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-44
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-45
+  tp_id: TP-005-45
+  title: 该日存在审核通过排程时看板显示「审核通过」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击“审核月度计划”进入页面
+  steps:
+  - action: 查看有审核通过计划的日期
+    expected: 有审核通过计划的日期显示：审核通过
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47926
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-45
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-46
+  tp_id: TP-005-46
+  title: 该日存在驳回排程时看板显示「驳回」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击“审核月度计划”进入页面
+  steps:
+  - action: 查看有驳回计划的日期
+    expected: 有驳回计划的日期显示：驳回
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47927
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-46
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-47
+  tp_id: TP-005-47
+  title: 提交月度审核的时候该日是待排，提交后新增了排程，审核页面不会显示暂存的日计划。但是日计划提交后，审核页面会显示新提交的日计划
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击“审核月度计划”进入页面
+  steps:
+  - action: 先在制定月度排程的页面点击[提交月度审核]按钮并且确认提交
+    expected: 该月的所有暂存、驳回计划全部变成待审核
+  - action: 再次进入制定月度排程页面，在同一月度的待排日期下新增宰杀线排程，填写完整后点击[保存当日计划]
+    expected: 新增的日计划保存成功，状态为暂存
+  - action: 进入排程审批页面查看表格数据
+    expected: 排程审核页面不显示暂存的日计划
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47928
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-47
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-48
+  tp_id: TP-005-48
+  title: 重复提交月度审核，已提交的日计划不会重复提交，只会把新增的暂存提交。审核页面不会区分第几次提交月度审核，全量展示提交未审核的日计划
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：重复提交月度审核，已提交的日计划不会重复提交，只会把新增的暂存提交。审核）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈；验收关注：暂存
+  - action: 核对通过标准
+    expected: 通过标准可判定：重复提交月度审核，已提交的日计划不会重复提交，只会把新增的暂存提交。审核
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47929
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-48
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-49
+  tp_id: TP-005-49
+  title: 同一日期多条宰杀线排程时，分多行展示
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 存在同一日期有多条宰杀线排程
+  steps:
+  - action: 点击[审核月度计划]进入页面，查看月度看板
+    expected: 同一日期多条宰杀线排程时，分多行展示
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47930
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-49
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-50
+  tp_id: TP-005-50
+  title: 看板区域展示当月目标宰杀量（只读）
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 点击[审核月度计划]按钮进入页面，查看月度看板右上角的“月度宰杀目标”，记录年度、月份和月度宰杀目标数据
+    expected: 记录年度Y、月份M和月度宰杀目标数据N
+  - action: 进入[目标制定]菜单页面，切换年度到Y，然后查看列表中对应月度M的数据
+    expected: 目标制定中月份M的数据 = 月度宰杀目标N
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47931
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-50
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-51
+  tp_id: TP-005-51
+  title: 看板区域展示当月已分配宰杀量（只读）
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：看板区域展示当月已分配宰杀量（只读））
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈
+  - action: 核对通过标准
+    expected: 通过标准可判定：看板区域展示当月已分配宰杀量（只读）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47932
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-51
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-52
+  tp_id: TP-005-52
+  title: 待审核日期可被勾选参与批量审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 点击[审核月度计划]进入页面，尝试在月度看板勾选待审核的日期
+    expected: 待审核日期可被勾选参与批量审核
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47933
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-52
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-53
+  tp_id: TP-005-53
+  title: 审核通过/驳回日期不可被勾选
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-月度看板
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  steps:
+  - action: 点击[审核月度计划]进入页面，尝试在月度看板勾选审核通过/驳回的日期
+    expected: 审核通过/驳回日期不可被勾选
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47934
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-53
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-54
+  tp_id: TP-005-54
+  title: 选中一个日期，日计划明细标题后展示当日的日期
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 详情-日计划明细
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：选中一个日期，日计划明细标题后展示当日的日期）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈
+  - action: 核对通过标准
+    expected: 通过标准可判定：选中一个日期，日计划明细标题后展示当日的日期
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47935
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-54
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-55
+  tp_id: TP-005-55
+  title: 显示日计划下所有的宰杀线，每个宰杀线为一个tab，tab标题后显示状态
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 详情-日计划明细
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  steps:
+  - action: 点击[审核月度计划]进入页面，点击有多个宰杀线的日期，下滑查看日计划明细区域
+    expected: 显示日计划下所有的宰杀线，每个宰杀线为一个tab，tab标题后显示状态
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47936
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-55
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-56
+  tp_id: TP-005-56
+  title: 日计划明细展示「宰杀信息」且与源数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 详情-日计划明细
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  steps:
+  - action: 点击[审核月度计划]进入页面，点击有多个宰杀线的日期，下滑查看日计划明细区域
+    expected: 日计划明细展示「宰杀信息」且与制定排程页面数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47937
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-56
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-57
+  tp_id: TP-005-57
+  title: 日计划明细展示「上苗信息」且与源数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 详情-日计划明细
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  steps:
+  - action: 点击[审核月度计划]进入页面，点击有多个宰杀线的日期，下滑查看日计划明细区域
+    expected: 日计划明细展示「上苗信息」与制定排程页面数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47938
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-57
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-58
+  tp_id: TP-005-58
+  title: 日计划明细展示「三段养殖标准」且与源数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 详情-日计划明细
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  steps:
+  - action: 点击[审核月度计划]进入页面，点击有多个宰杀线的日期，下滑查看日计划明细区域
+    expected: ''
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47939
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-58
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-59
+  tp_id: TP-005-59
+  title: 日计划明细展示「孵化信息」且与源数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 详情-日计划明细
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  steps:
+  - action: 点击[审核月度计划]进入页面，点击有多个宰杀线的日期，下滑查看日计划明细区域
+    expected: ''
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47940
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-59
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-60
+  tp_id: TP-005-60
+  title: 日计划明细展示「饲料需求」明细表与制定排程的查看页面一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 详情-日计划明细
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 存在可打开详情的排程单据
+  steps:
+  - action: 点击[审核月度计划]进入页面，点击有多个宰杀线的日期，下滑查看日计划明细区域
+    expected: ''
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47941
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-60
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-61
+  tp_id: TP-005-61
+  title: 点击「全选」选中当月所有待审核日期
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已点击[审核月度计划]进入审核月度计划页面
+  steps:
+  - action: 点击月度看板最右侧的「全选」
+    expected: 执行全选后，所有待审核日期行均处于勾选态
+  - action: 点击「取消选择」清空已勾选日期
+    expected: 点击「取消选择」清空已勾选日期
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47942
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-61
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-62
+  tp_id: TP-005-62
+  title: 点击「取消选择」清空已勾选日期
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已点击[审核月度计划]进入审核月度计划页面
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈；验收关注：取消选择
+  - action: 核对通过标准
+    expected: 通过标准可判定：点击「取消选择」清空已勾选日期
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47943
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-62
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-63
+  tp_id: TP-005-63
+  title: 未勾选任何日期点击「批量审核」→ 将审核这个月度的待审核计划
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已点击[审核月度计划]进入审核月度计划页面
+  steps:
+  - action: 未勾选任何日期，点击「批量审核」
+    expected: 批量审核弹窗显示：未勾选具体日期，将审核整个月度计划。
+  - action: 选择驳回，填写原型并且确认驳回
+    expected: 当月所有待审核计划状态更新为驳回
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47944
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-63
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-64
+  tp_id: TP-005-64
+  title: 勾选单个待审核日期后点击「批量审核」弹出审核弹窗
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用审核人员账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已点击[审核月度计划]进入审核月度计划页面
+  steps:
+  - action: 勾选某个待审核日期，点击「批量审核」
+    expected: 成功打开批量审核弹窗
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47945
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-64
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-65
+  tp_id: TP-005-65
+  title: 勾选多个待审核日期后点击「批量审核」，弹窗展示选中日期汇总
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已点击[审核月度计划]进入审核月度计划页面
+  steps:
+  - action: 勾选多个待审核日期，点击「批量审核」
+    expected: 批量审核弹窗中展示：已勾选N个待审核日期，将按日批量审核
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47946
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-65
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-66
+  tp_id: TP-005-66
+  title: 批量审核弹窗点击关闭/取消，审核状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 打开新增或编辑并修改字段
+    expected: 表单有未保存变更
+  - action: 点击「取消」或关闭
+    expected: 弹窗关闭，列表数据未因本次变更改变
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47947
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-66
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-67
+  tp_id: TP-005-67
+  title: 批量审核选择「通过」后选中日期计划直接变审核通过
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用审核人员账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 勾选待审核日期后点击「批量审核」，在弹窗选择「通过」
+    expected: 无二次确认弹窗，直接提示成功且选中日期状态变审核通过
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47948
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-67
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-68
+  tp_id: TP-005-68
+  title: 批量审核点击「驳回」后在驳回确认框显示原因输入框
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用审核人员账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 勾选待审核日期后点击「批量审核」，在弹窗点击「驳回」
+    expected: 弹出驳回确认框，显示原因输入框
+  - action: 原因输入框留空尝试确认
+    expected: 确认被阻断，输入框提示请输入内容
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47949
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-68
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-69
+  tp_id: TP-005-69
+  title: 驳回原因为空点击确认 → 驳回被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击[审核月度计划]进入页面
+  steps:
+  - action: 选择某个待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 弹窗中选择驳回，不填写原因，点击[确认驳回]按钮
+    expected: 驳回被阻断，驳回原因输入框显示提示文字“请填写驳回原因”
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47950
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-69
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-70
+  tp_id: TP-005-70
+  title: 驳回原因输入最短有效内容后确认，驳回成功
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击[审核月度计划]进入页面
+  steps:
+  - action: 选择某个待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 弹窗中选择驳回，填写原因，点击[确认驳回按钮]
+    expected: 驳回成功
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47951
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-70
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-71
+  tp_id: TP-005-71
+  title: 驳回原因输入超长文本时不报错且可提交
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击[审核月度计划]进入页面
+  steps:
+  - action: 选择某个待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 弹窗中选择驳回，原因填写最少100字，点击[确认驳回]按钮
+    expected: 驳回原因输入超长文本时不报错且可提交
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47952
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-71
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-72
+  tp_id: TP-005-72
+  title: 驳回确认后选中日期计划状态变驳回
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击[审核月度计划]进入页面
+  steps:
+  - action: 选择某个待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 弹窗中选择驳回，填写原因，点击[确认驳回]按钮
+    expected: 驳回确认后选中日期计划状态变驳回
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47953
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-72
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-73
+  tp_id: TP-005-73
+  title: 驳回后列表「驳回原因」列展示所填内容
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-apm/apm/scheduling/schedule-approval）
+  - 已经点击[审核月度计划]进入页面
+  steps:
+  - action: 选择某个待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 弹窗中选择驳回，填写原因，点击[确认驳回]按钮
+    expected: 驳回确认后弹窗关闭，列表中选中日期计划状态变驳回
+  - action: 查看列表中驳回状态计划的「驳回原因」
+    expected: 列表中驳回原因与填写的原因一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47954
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-73
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-74
+  tp_id: TP-005-74
+  title: 审核通过/驳回后记录审核人员、审核时间
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 刚完成通过或驳回的单据
+  steps:
+  - action: 查看列表「审核人员」「审核时间」列
+    expected: 审核人员为实际操作账号，审核时间接近操作时刻
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47955
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-74
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-75
+  tp_id: TP-005-75
+  title: 同日存在多条宰杀线排程，驳回其中一条则当天全部宰杀线一并驳回
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 存在待审批排程，当前为审核人
+  steps:
+  - action: 打开待审单据执行驳回
+    expected: 单据状态变为「驳回」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47956
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-75
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-76
+  tp_id: TP-005-76
+  title: 同日存在多条宰杀线排程，审核通过则当天全部宰杀线一并通过
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 同日存在多条宰杀线待审排程，当前为审核人
+  steps:
+  - action: 对该日执行审核通过
+    expected: 当天全部宰杀线排程一并通过
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47957
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-76
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-77
+  tp_id: TP-005-77
+  title: 已下推日期不可再次发起批量审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：已下推日期不可再次发起批量审核）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈；验收关注：已下推
+  - action: 核对通过标准
+    expected: 通过标准可判定：已下推日期不可再次发起批量审核
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47958
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-77
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-78
+  tp_id: TP-005-78
+  title: 勾选待审核日且选择通过、下推全部成功 → 状态变已下推
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用审核人员账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 用例 TC-005-78 数据态已按场景备好
+  steps:
+  - action: 勾选待审核日期后点击「批量审核」，在弹窗选择「通过」
+    expected: 日计划状态变成审核通过，推送状态为待推送
+  - action: 后台推送成功
+    expected: 日计划的推送状态变成：推送成功
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47959
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-78
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: 'no'
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 47959 --format=json
+  zentao_status: normal
+- id: TC-005-79
+  tp_id: TP-005-79
+  title: 勾选待审核日且选择通过、下推部分失败 → 状态不为已下推且界面报错
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 用例 TC-005-79 数据态已按场景备好
+  steps:
+  - action: 执行用例 TC-005-79 的页面操作（围绕：「待审核」、「已下推」）
+    expected: 操作完成并出现可观察反馈（TC-005-79）
+  - action: 核对用例 TC-005-79 通过标准
+    expected: 通过标准涵盖：「待审核」、「已下推」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47960
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-79
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-80
+  tp_id: TP-005-80
+  title: 审核通过后下推「宰杀计划」成功
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已点击[审核月度计划]进入页面
+  steps:
+  - action: 勾选待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 选择通过，点击确认通过
+    expected: 计划状态变成审批通过，下推结果变成“推送成功”，记录计划编号和宰杀日期
+  - action: 点击左侧菜单栏顶部“产业链生产排程系统”图标回到门户页面
+    expected: 门户页面应用列表可见“宰杀管理系统”入口
+  - action: 门户页点击“宰杀管理系统”，然后进入[宰杀计划]菜单
+    expected: '[宰杀计划]页面可见表格'
+  - action: 切换到宰杀日期所在月份，查看表格中的“排程编号”列
+    expected: 找到排程编号和之前记录的计划编号一样的数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47961
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-80
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-005-81
+  tp_id: TP-005-81
+  title: 审核通过后下推到商品禽养殖管理系统的「补栏计划」成功
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已点击[审核月度计划]进入页面
+  steps:
+  - action: 勾选待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 选择通过，点击确认通过
+    expected: 计划状态变成审批通过，下推结果变成“推送成功”，记录计划编号和补栏日期
+  - action: 点击左侧菜单栏顶部“产业链生产排程系统”图标回到门户页面
+    expected: 门户页面应用列表可见“商品禽养殖管理系统”入口
+  - action: 门户页点击“商品禽养殖管理系统”，然后进入[补栏计划]菜单
+    expected: '[补栏计划]页面可见表格'
+  - action: 切换到补栏日期所在月份，查看表格中的“排程编号”列
+    expected: 找到排程编号和之前记录的计划编号一样的数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47962
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-81
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-82
+  tp_id: TP-005-82
+  title: 审核通过后下推「孵化排程计划」成功
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已点击[审核月度计划]进入页面
+  steps:
+  - action: 勾选待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 选择通过，点击确认通过
+    expected: 计划状态变成审批通过，下推结果变成“推送成功”，记录计划编号和上孵日期
+  - action: 点击左侧菜单栏顶部“产业链生产排程系统”图标回到门户页面
+    expected: 门户页面应用列表可见“种禽孵化管理系统”入口
+  - action: 门户页点击“种禽孵化管理系统”，然后进入[上孵计划]菜单
+    expected: '[上孵计划]页面可见表格'
+  - action: 切换到上孵日期所在月份，查看表格中的“排程编号”列
+    expected: 找到排程编号和之前记录的计划编号一样的数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47963
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-82
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-005-83
+  tp_id: TP-005-83
+  title: 审核通过后下推「饲料日需求计划」成功
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已点击[审核月度计划]进入页面
+  steps:
+  - action: 勾选待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 选择通过，点击确认通过
+    expected: 计划状态变成审批通过，下推结果变成“推送成功”，记录计划编号和补栏日期
+  - action: 点击左侧菜单栏顶部“产业链生产排程系统”图标回到门户页面
+    expected: 门户页面应用列表可见“饲料管理系统”入口
+  - action: 门户页点击“饲料管理系统”，然后进入[饲喂计划]菜单
+    expected: '[饲喂计划]页面可见表格'
+  - action: 切换到补栏日期所在月份，查看表格中的“排程编号”列
+    expected: 找到排程编号和之前记录的计划编号一样的数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47964
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-83
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-005-84
+  tp_id: TP-005-84
+  title: 驳回操作不触发任何下推
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用审核人账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 已点击[审核月度计划]进入页面
+  steps:
+  - action: 勾选待审核日期，点击批量审核按钮
+    expected: 打开批量审核弹窗
+  - action: 选择驳回，填写原因后点击确认驳回
+    expected: 计划状态变成驳回，下推结果显示空
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47965
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-84
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-85
+  tp_id: TP-005-85
+  title: 下推全部失败时界面明确报错，不静默成功
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：下推全部失败时界面明确报错，不静默成功）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈
+  - action: 核对通过标准
+    expected: 通过标准可判定：下推全部失败时界面明确报错，不静默成功
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47966
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-85
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-005-86
+  tp_id: TP-005-86
+  title: 下推失败时排程状态保持审核通过，下推结果为推送失败并且显示错误信息
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 存在待审核计划，下推失败场景可复现
+  steps:
+  - action: 触发下推失败后查看排程状态
+    expected: 排程状态保持「审核通过」，下推结果显示：推送失败，错误信息列显示原因
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47967
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-86
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-005-87
+  tp_id: TP-005-87
+  title: 下推失败后支持人工重试下推
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 下推
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 按场景准备数据态（与验收点相关：下推失败后支持人工重试下推）
+  steps:
+  - action: 进入页面，定位本条场景对应的查询区/列表行/按钮或表单字段并完成操作
+    expected: 操作成功，界面出现可观察反馈
+  - action: 核对通过标准
+    expected: 通过标准可判定：下推失败后支持人工重试下推
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47968
+  trace:
+    story: null
+    req: REQ-005
+    tp: TP-005-87
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+summary:
+  type_counts:
+    auto: 86
+    feature: 1
+  auto_counts:
+    auto: 86
+    false: 1
+  registry_counts:
+    registered: 87

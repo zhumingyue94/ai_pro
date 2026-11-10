@@ -1,0 +1,685 @@
+id: REQ-PC-030
+title: 蛋重类型管理
+module_path: 基础数据 / 蛋重类型管理
+trace:
+  story: null
+  req: REQ-PC-030
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: simple_config
+testpoint_template: 简单配置
+summary: 基础数据 / 蛋重类型管理基于当前 PC 5500 原型与需求章节重新分析。
+in_scope:
+- 当前模块实际页面的查询区、列表、表单、弹窗、按钮、状态和页面板块
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 测试点、测试用例、CSV、UI 脚本
+- 真实接口/数据库/权限实现
+- 原型未确认的业务事实
+business_rules:
+- id: BR-001
+  rule: 1、蛋重类型编号，系统规则自动生成，规则此处不做特殊限制说明； 2、蛋重类型名称，手动输入；
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 蛋重类型管理
+- id: BR-002
+  rule: 复选框
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 蛋重类型管理
+- id: BR-003
+  rule: 关键字查询
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 蛋重类型管理
+- id: BR-004
+  rule: 1、状态：启用、停用两种状态，停用操作时，后续系统操作中不再出现该停用状态选项，已存在数据不受影响； 2、启用/停用操作：停用状态下为启用操作按钮，启用状态下为停用操作按钮；单行操作，相当于选中改行数据进行操作，点击有弹框，确认是否启用/停用；
+    3、删除：该条数据，逻辑删除，停用状态下，有删除操作，启用状态下无操作按钮； 4、修改：全部状态下可修改，可修改蛋重类型名称、平均蛋重、状态。修改只会影响修改后的新建项，不影响已经使用的数据
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 蛋重类型管理
+- id: BR-005
+  rule: 1、新建：操作与复选框无关，点击有弹框，蛋重类型编号系统自动生成，状态默认选中启用； 2、启用、停用：操作需选中，否则弹框提示；点击有弹框，确认是否启用/停用，无论选中项为什么状态，统一执行操作并生效； 3、删除：操作需选中，否则弹框提示；点击有弹框，确认是否删除，逻辑删除，删除的同时状态改为停用状态；
+    4、导出：导出筛选条件下的列表内容。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 蛋重类型管理
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces:
+- name: 页面内导航
+  type: prototype_navigation
+  source_module: live prototype
+  targets:
+  - 上孵计划列表
+  - 仓库全景图（待定）
+  - 仓库管理
+  - 出入库记录
+  - 出雏器全景图（待定）
+  - 出雏器管理
+  - 受健率标准管理
+  - 品种管理
+  - 存发苗间管理
+  - 孵化周期管理
+  - 孵化器全景图（待定）
+  - 孵化器管理
+  - 库存查询
+  - 生产报表
+  - 盘点记录
+  - 种蛋上孵任务
+  - 种蛋出雏任务
+  - 种蛋照蛋任务
+  - 蛋重类型管理
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 真实接口、权限、异常提示和字段校验规则是什么？
+  impact: 影响正式契约与下游测试点
+  owner: 产品/研发
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: observed
+    observed_page_count: 1
+    unmapped_pages: []
+    interaction_boundary: 页面树导航和 DOM 观察，未执行写操作
+  page_chrome:
+  - page: 蛋重类型管理
+    title: 蛋重类型管理
+    url: http://127.0.0.1:5500/%E8%9B%8B%E9%87%8D%E7%B1%BB%E5%9E%8B%E7%AE%A1%E7%90%86.html
+    notes: live DOM
+  page_block_specs:
+  - id: CHROME
+    name: 页面壳层
+    fields:
+    - 蛋重类型管理
+    data_source: live DOM
+    coverage:
+    - l1
+    - l2
+  - id: CONTROLS
+    name: 当前页面控件
+    fields:
+    - checkbox
+    - 请输入蛋重类型编号
+    - 请输入蛋重类型名称
+    - 请选择状态 启用 停用
+    - 请输入平均蛋重
+    data_source: live DOM visible controls
+    coverage:
+    - l1
+    - l2
+    - l3
+  - id: NOTES
+    name: 原型注释
+    fields:
+    - 1、蛋重类型编号，系统规则自动生成，规则此处不做特殊限制说明； 2、蛋重类型名称，手动输入；
+    - 复选框
+    - 关键字查询
+    - 1、状态：启用、停用两种状态，停用操作时，后续系统操作中不再出现该停用状态选项，已存在数据不受影响； 2、启用/停用操作：停用状态下为启用操作按钮，启用状态下为停用操作按钮；单行操作，相当于选中改行数据进行操作，点击有弹框，确认是否启用/停用；
+      3、删除：该条数据，逻辑删除，停用状态下，有删除操作，启用状态下无操作按钮； 4、修改：全部状态下可修改，可修改蛋重类型名称、平均蛋重、状态。修改只会影响修改后的新建项，不影响已经使用的数据
+    - 1、新建：操作与复选框无关，点击有弹框，蛋重类型编号系统自动生成，状态默认选中启用； 2、启用、停用：操作需选中，否则弹框提示；点击有弹框，确认是否启用/停用，无论选中项为什么状态，统一执行操作并生效； 3、删除：操作需选中，否则弹框提示；点击有弹框，确认是否删除，逻辑删除，删除的同时状态改为停用状态；
+      4、导出：导出筛选条件下的列表内容。
+    data_source: requirement/prototype annotations
+    coverage:
+    - l1
+    - l2
+  - id: DIALOGS
+    name: 页面弹窗
+    fields:
+    - 蛋重类型新建/编辑/删除弹框
+    - 修改蛋重类型
+    - 删除蛋重类型
+    data_source: page-specific hidden widgets
+    coverage:
+    - l1
+    - l2
+    - l3
+  query_field_specs: []
+  form_field_specs:
+  - name: checkbox
+    control: checkbox
+    editable: true
+    required: null
+    scope: 蛋重类型管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  - name: 请输入蛋重类型编号
+    control: text
+    editable: true
+    required: null
+    scope: 蛋重类型管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  - name: 请输入蛋重类型名称
+    control: text
+    editable: true
+    required: null
+    scope: 蛋重类型管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  - name: 请选择状态 启用 停用
+    control: select-one
+    editable: true
+    required: null
+    scope: 蛋重类型管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  - name: 请输入平均蛋重
+    control: text
+    editable: true
+    required: null
+    scope: 蛋重类型管理
+    source: live DOM control
+    validation: 需求/原型未明确
+  button_semantics:
+    上孵计划:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋上孵:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋照蛋:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋出雏:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    品种管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    蛋重类型管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    库存查询:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出入库记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    盘点记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库全景图:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    生产报表:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    存发苗间管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化周期管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    受健率标准管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    修改:
+      action: edit
+      summary: 打开编辑路径
+    停用:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    删除:
+      action: delete
+      summary: 执行删除路径，具体确认规则见业务规则
+    启用:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    新建:
+      action: create
+      summary: 打开新建路径
+    确认:
+      action: confirm
+      summary: 确认当前弹窗或表单动作
+    取消:
+      action: cancel
+      summary: 关闭当前弹窗或撤销未确认变更
+  nested_dialogs:
+  - id: 蛋重类型新建/编辑/删除弹框
+    type: confirm
+    trigger: page-specific prototype control
+    title: 蛋重类型新建/编辑/删除弹框
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 新建蛋重类型
+    - 确认
+    - 取消
+    - '*蛋重类型编号：'
+    - '*蛋重类型名称：'
+    - '*状态：'
+    - 启用
+    - 停用
+    - '*平均蛋重：'
+    - ＜
+    - 自动生成编号
+    - 注释：1、已填过的，平均蛋重数字组合数据，做唯一性判断，不可重复创建；2、最小蛋重、最大蛋重二者填一个即可创建，不要求全部必填。
+    - ≤
+    - N
+    - 修改蛋重类型
+    - 确认
+    - 取消
+    - '*蛋重类型编号：'
+    - '*状态：'
+    - 启用
+    - 停用
+    - 自动生成编号
+    - '*蛋重类型名称：'
+    - '*状态：'
+    - 启用
+    - 停用
+    - '*平均蛋重：'
+    - ＜
+    - 注释：平均蛋重数字做唯一性判断
+    - ≤
+    - N
+    - 删除蛋重类型
+    - 是否确认删除？
+    - 确认
+    - 取消
+    - 启用蛋重类型
+    - 是否确认启用？
+    - 确认
+    - 取消
+    - 停用蛋重类型
+    buttons: &id001
+    - 确认
+    - 取消
+    - 删除
+  - id: 修改蛋重类型
+    type: input
+    trigger: page-specific prototype control
+    title: 修改蛋重类型
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 修改蛋重类型
+    - 确认
+    - 取消
+    - '*蛋重类型编号：'
+    - '*状态：'
+    - 启用
+    - 停用
+    - 自动生成编号
+    - '*蛋重类型名称：'
+    - '*状态：'
+    - 启用
+    - 停用
+    - '*平均蛋重：'
+    - ＜
+    - 注释：平均蛋重数字做唯一性判断
+    - ≤
+    - N
+    buttons: &id002
+    - 确认
+    - 取消
+  - id: 删除蛋重类型
+    type: confirm
+    trigger: page-specific prototype control
+    title: 删除蛋重类型
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - 删除蛋重类型
+    - 是否确认删除？
+    - 确认
+    - 取消
+    buttons: &id003
+    - 确认
+    - 取消
+    - 删除
+  sub_tables: []
+  table_column_specs:
+  - name: 智孵管家管理平台
+    order: 1
+  - name: 上孵计划
+    order: 2
+  - name: 种蛋上孵
+    order: 3
+  - name: 种蛋照蛋
+    order: 4
+  - name: 种蛋出雏
+    order: 5
+  - name: 品种管理
+    order: 6
+  - name: 蛋重类型管理
+    order: 7
+  - name: 合格蛋蛋库
+    order: 8
+  - name: 次品库
+    order: 9
+  - name: 生产报表
+    order: 10
+  - name: 仓库管理
+    order: 11
+  - name: 存发苗间管理
+    order: 12
+  - name: 孵化器管理
+    order: 13
+  - name: 出雏器管理
+    order: 14
+  - name: 孵化周期管理
+    order: 15
+  - name: 养殖场管理
+    order: 16
+  - name: 孵化场管理
+    order: 17
+  - name: 组织管理
+    order: 18
+  - name: 用户管理
+    order: 19
+  - name: 存发苗间
+    order: 20
+  - name: 库存查询
+    order: 21
+  - name: 出入库记录
+    order: 22
+  - name: 孵化器全景
+    order: 23
+  - name: 出雏器全景
+    order: 24
+  - name: 受健率标准管理
+    order: 25
+  - name: 二级蛋蛋库
+    order: 26
+  - name: 首页/一级菜单/二级菜单/三级菜单…
+    order: 27
+  - name: 蛋重类型编号
+    order: 28
+  - name: 蛋重类型名称
+    order: 29
+  - name: 平均蛋重
+    order: 30
+  computed_fields:
+  - name: 原型派生/回填字段
+    formula: 1、蛋重类型编号，系统规则自动生成，规则此处不做特殊限制说明； 2、蛋重类型名称，手动输入；
+    editable: false
+  - name: 原型派生/回填字段
+    formula: 1、新建：操作与复选框无关，点击有弹框，蛋重类型编号系统自动生成，状态默认选中启用； 2、启用、停用：操作需选中，否则弹框提示；点击有弹框，确认是否启用/停用，无论选中项为什么状态，统一执行操作并生效； 3、删除：操作需选中，否则弹框提示；点击有弹框，确认是否删除，逻辑删除，删除的同时状态改为停用状态；
+      4、导出：导出筛选条件下的列表内容。
+    editable: false
+  save_validations:
+  - rule: 1、新建：操作与复选框无关，点击有弹框，蛋重类型编号系统自动生成，状态默认选中启用； 2、启用、停用：操作需选中，否则弹框提示；点击有弹框，确认是否启用/停用，无论选中项为什么状态，统一执行操作并生效； 3、删除：操作需选中，否则弹框提示；点击有弹框，确认是否删除，逻辑删除，删除的同时状态改为停用状态；
+      4、导出：导出筛选条件下的列表内容。
+    when:
+    - 保存
+    - 确认
+    - 提交
+    message: 需求/原型规则，具体错误文案需确认
+  ui_components:
+  - input/select/button
+  - modal_confirm
+  - table
+  cross_module_refs:
+  - field: 页面内导航
+    source_module: live prototype
+    dialog: 页面打开链接
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 上孵计划列表
+    - 仓库全景图（待定）
+    - 仓库管理
+    - 出入库记录
+    - 出雏器全景图（待定）
+    - 出雏器管理
+    - 受健率标准管理
+    - 品种管理
+    - 存发苗间管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 孵化器管理
+    - 库存查询
+    - 生产报表
+    - 盘点记录
+    - 种蛋上孵任务
+    - 种蛋出雏任务
+    - 种蛋照蛋任务
+    - 蛋重类型管理
+  detail_table_specs: []
+  concurrency_checks: []
+  role_coverage: skip
+  observed_pages:
+  - page: 蛋重类型管理
+    nodeurl: 蛋重类型管理.html
+    title: 蛋重类型管理
+    frame_url: http://127.0.0.1:5500/%E8%9B%8B%E9%87%8D%E7%B1%BB%E5%9E%8B%E7%AE%A1%E7%90%86.html
+    body_line_count: 187
+    body_lines:
+    - 智孵管家管理平台
+    - 计划管理
+    - 上孵计划
+    - 孵化管理
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 库存管理
+    - 品种管理
+    - 蛋重类型管理
+    - 合格蛋蛋库
+    - 次品库
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 养殖场管理
+    - 孵化场管理
+    - 组织管理
+    - 用户管理
+    - 存发苗间
+    - 库存查询
+    - 出入库记录
+    - 孵化器全景
+    - 出雏器全景
+    - 基础数据
+    - 受健率标准管理
+    - 二级蛋蛋库
+    - 首页/一级菜单/二级菜单/三级菜单…
+    - 蛋重类型编号
+    - 蛋重类型名称
+    - 平均蛋重
+    - 状态
+    - 创建时间
+    - 操作
+    - '01'
+    - 特小
+    - 48≤N＜53
+    - 启用
+    - 2025.12.19 17:24:00
+    - '02'
+    - 小
+    - 53≤N＜56
+    - 停用
+    - 中
+    - 56≤N＜59
+    - 大
+    - 59≤N
+    - 修改
+    - 删除
+    - 新建
+    - 导出
+    - 蛋重类型编号：
+    - 蛋重类型：
+    - 状态：
+    - 请选择状态
+    - 搜索
+    - 重置
+    - 平均蛋重：
+    - 注释：
+    - 1、蛋重类型编号，系统规则自动生成，规则此处不做特殊限制说明；
+    - 2、蛋重类型名称，手动输入；
+    - 复选框
+    - 注释：关键字查询
+    - 1、状态：启用、停用两种状态，停用操作时，后续系统操作中不再出现该停用状态选项，已存在数据不受影响；
+    - 2、启用/停用操作：停用状态下为启用操作按钮，启用状态下为停用操作按钮；单行操作，相当于选中改行数据进行操作，点击有弹框，确认是否启用/停用；
+    - 3、删除：该条数据，逻辑删除，停用状态下，有删除操作，启用状态下无操作按钮；
+    - 4、修改：全部状态下可修改，可修改蛋重类型名称、平均蛋重、状态。修改只会影响修改后的新建项，不影响已经使用的数据
+    - 1、新建：操作与复选框无关，点击有弹框，蛋重类型编号系统自动生成，状态默认选中启用；
+    - 2、启用、停用：操作需选中，否则弹框提示；点击有弹框，确认是否启用/停用，无论选中项为什么状态，统一执行操作并生效；
+    - 3、删除：操作需选中，否则弹框提示；点击有弹框，确认是否删除，逻辑删除，删除的同时状态改为停用状态；
+    - 4、导出：导出筛选条件下的列表内容。
+    annotations:
+    - 1、蛋重类型编号，系统规则自动生成，规则此处不做特殊限制说明； 2、蛋重类型名称，手动输入；
+    - 复选框
+    - 关键字查询
+    - 1、状态：启用、停用两种状态，停用操作时，后续系统操作中不再出现该停用状态选项，已存在数据不受影响； 2、启用/停用操作：停用状态下为启用操作按钮，启用状态下为停用操作按钮；单行操作，相当于选中改行数据进行操作，点击有弹框，确认是否启用/停用；
+      3、删除：该条数据，逻辑删除，停用状态下，有删除操作，启用状态下无操作按钮； 4、修改：全部状态下可修改，可修改蛋重类型名称、平均蛋重、状态。修改只会影响修改后的新建项，不影响已经使用的数据
+    - 1、新建：操作与复选框无关，点击有弹框，蛋重类型编号系统自动生成，状态默认选中启用； 2、启用、停用：操作需选中，否则弹框提示；点击有弹框，确认是否启用/停用，无论选中项为什么状态，统一执行操作并生效； 3、删除：操作需选中，否则弹框提示；点击有弹框，确认是否删除，逻辑删除，删除的同时状态改为停用状态；
+      4、导出：导出筛选条件下的列表内容。
+    controls:
+    - tag: INPUT
+      id: u3146_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3147_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3148_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3216_input
+      type: text
+      value: 请输入蛋重类型编号
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3218_input
+      type: text
+      value: 请输入蛋重类型名称
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u3220_input
+      type: select-one
+      value: 请选择状态
+      text: 请选择状态 启用 停用
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u3224_input
+      type: text
+      value: 请输入平均蛋重
+      text: ''
+      disabled: false
+      visible: true
+    dialogs:
+    - label: 蛋重类型新建/编辑/删除弹框
+      id: u3150
+      text: 新建蛋重类型 确认 取消 *蛋重类型编号： *蛋重类型名称： *状态： 启用 停用 *平均蛋重： ＜ 自动生成编号 注释：1、已填过的，平均蛋重数字组合数据，做唯一性判断，不可重复创建；2、最小蛋重、最大蛋重二者填一个即可创建，不要求全部必填。
+        ≤ N 修改蛋重类型 确认 取消 *蛋重类型编号： *状态： 启用 停用 自动生成编号 *蛋重类型名称： *状态： 启用 停用 *平均蛋重： ＜ 注释：平均蛋重数字做唯一性判断 ≤ N 删除蛋重类型 是否确认删除？ 确认 取消
+        启用蛋重类型 是否确认启用？ 确认 取消 停用蛋重类型 是否确认停用？ 确认 取消
+      buttons: *id001
+    - label: 修改蛋重类型
+      id: u3150_state1
+      text: 修改蛋重类型 确认 取消 *蛋重类型编号： *状态： 启用 停用 自动生成编号 *蛋重类型名称： *状态： 启用 停用 *平均蛋重： ＜ 注释：平均蛋重数字做唯一性判断 ≤ N
+      buttons: *id002
+    - label: 删除蛋重类型
+      id: u3150_state2
+      text: 删除蛋重类型 是否确认删除？ 确认 取消
+      buttons: *id003
+    buttons:
+    - 上孵计划
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 出入库记录
+    - 盘点记录
+    - 仓库全景图
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景
+    - 出雏器全景
+    - 受健率标准管理
+    - 修改
+    - 停用
+    - 删除
+    - 启用
+    - 新建
+    - 确认
+    - 取消
+    static_actions:
+    - 上孵计划列表
+    - 种蛋上孵任务
+    - 种蛋照蛋任务
+    - 种蛋出雏任务
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 盘点记录
+    - 仓库全景图（待定）
+    - 出入库记录
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 出雏器全景图（待定）
+    - 受健率标准管理
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-030
+  outputs:
+  - 02_analysis/pc/REQ-PC-030.yaml
+  - 02_analysis/pc/REQ-PC-030_蛋重类型管理.md
+  gate: passed
+  next_agent: testpoint-agent
+  blockers: []

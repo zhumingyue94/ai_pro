@@ -1,0 +1,89 @@
+id: REQ-PC-036
+title: 养殖场管理
+module_path: 基础数据 / 养殖场管理
+trace:
+  story: null
+  req: REQ-PC-036
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: standard_crud
+testpoint_template: 标准CRUD审核
+summary: 基础数据 / 养殖场管理在当前 PC 原型中未发现独立页面，保留范围缺口分析。
+in_scope:
+- 模块范围与原型缺口
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 测试点、测试用例、CSV、UI 脚本
+- 真实接口/数据库/权限实现
+- 原型未确认的业务事实
+business_rules:
+- id: BR-001
+  rule: 当前页面未捕获明确业务注释，业务规则需产品确认。
+  source: not_captured
+  applies_to: []
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces: []
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 真实接口、权限、异常提示和字段校验规则是什么？
+  impact: 影响正式契约与下游测试点
+  owner: 产品/研发
+  blocking: true
+- id: OQ-002
+  question: 范围基线模块无独立 PC 原型页面，是否由外部系统提供或需要补充原型？
+  impact: 无法生成页面级契约
+  owner: 产品/项目经理
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: not_captured
+    observed_page_count: 0
+    unmapped_pages: []
+    interaction_boundary: 页面树导航和 DOM 观察，未执行写操作
+  page_chrome: []
+  page_block_specs: []
+  query_field_specs: []
+  form_field_specs: []
+  button_semantics: {}
+  nested_dialogs: []
+  sub_tables: []
+  table_column_specs: []
+  computed_fields: []
+  save_validations: []
+  ui_components: []
+  cross_module_refs: []
+  detail_table_specs: []
+  concurrency_checks: []
+  role_coverage: skip
+  observed_pages: []
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-036
+  outputs:
+  - 02_analysis/pc/REQ-PC-036.yaml
+  - 02_analysis/pc/REQ-PC-036_养殖场管理.md
+  gate: failed
+  next_agent: none
+  blockers:
+  - 当前范围基线模块无独立原型页面，未生成虚构页面契约。

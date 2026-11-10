@@ -1,0 +1,939 @@
+req_id: REQ-010
+module: 告警配置
+trace:
+  req: REQ-010
+  version: '1'
+  status: blocked_scoped_readonly_ui_verification
+  source_review: REQ-010 analysis and TEST_PLAN-REQ-010; latest REQ-010-001..044;
+    REV_CASE_REQ-010-20261023
+  tp: TEST_PLAN-REQ-010
+  project: 数据采集监控平台
+common_preconditions:
+- id: CP-REQ-010-001
+  name: 登录并进入告警配置页面
+  conditions:
+  - 已准备可登录的测试账号和告警配置页面访问权限。
+  steps:
+  - action: 完成应用门户登录，或复用已有的有效登录态。
+    expected: 登录成功或已有登录态有效，可以正常访问应用门户。
+  - action: 在应用门户选择“数据采集监控平台”。
+    expected: 成功进入数据采集监控平台，并显示对应的平台菜单区域。
+  - action: 展开“告警中心”菜单并点击“告警配置”菜单。
+    expected: 告警配置页面成功加载，确认已进入告警配置页面。
+cases:
+- id: TC-REQ-010-002
+  coverage_ids:
+  - COV-010-L2-filter-name
+  plan_item_ids:
+  - PLAN-010-filter-name
+  scenario_branch: 配置名称精确筛选
+  atomic_purpose_ids:
+  - AP-010-002
+  title: 按配置名称查询，检查匹配结果
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 配置名称筛选
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和已授权的脱敏配置列表数据。
+  steps:
+  - action: 在配置名称输入框输入已授权的配置名称并点击“查询”
+    expected: 输入框保留查询值，列表刷新完成。
+  - action: 查看列表结果
+    expected: 每条记录的配置名称与查询条件匹配，不匹配的配置不显示。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-003
+  coverage_ids:
+  - COV-010-L2-filter-status
+  plan_item_ids:
+  - PLAN-010-filter-status
+  scenario_branch: 启用状态筛选
+  atomic_purpose_ids:
+  - AP-010-003
+  title: 按启用状态查询，检查配置状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 配置状态筛选
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和已授权的启用配置数据。
+  steps:
+  - action: 在配置状态下拉框选择“启用”并点击“查询”
+    expected: 状态控件回显“启用”，列表完成刷新。
+  - action: 查看列表状态列
+    expected: 每条记录的配置状态均为“启用”。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-004
+  coverage_ids:
+  - COV-010-L2-filter-status
+  plan_item_ids:
+  - PLAN-010-filter-status
+  scenario_branch: 停用状态筛选
+  atomic_purpose_ids:
+  - AP-010-004
+  title: 按停用状态查询，检查配置状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 配置状态筛选
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和已授权的停用配置数据。
+  steps:
+  - action: 在配置状态下拉框选择“停用”并点击“查询”
+    expected: 状态控件回显“停用”，列表完成刷新。
+  - action: 查看列表状态列
+    expected: 每条记录的配置状态均为“停用”。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-005
+  coverage_ids:
+  - COV-010-L2-filter-date-start
+  - COV-010-L2-filter-date-end
+  plan_item_ids:
+  - PLAN-010-filter-date-start
+  - PLAN-010-filter-date-end
+  scenario_branch: 创建日期范围筛选
+  atomic_purpose_ids:
+  - AP-010-005
+  title: 按创建日期范围查询，检查日期自动回填和筛选结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 创建日期范围筛选
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 已进入告警配置页面，并准备至少一条创建日期落在所选范围内的脱敏配置数据。
+  steps:
+  - action: 点击筛选字段“创建日期”的输入框
+    expected: 打开日期范围选择器，页面显示开始日期和结束日期的选择区域。
+  - action: 在日期范围选择器中依次选择两个日期，先选择较早日期，再选择较晚日期
+    expected: 输入框按日期先后顺序自动回填开始日期和结束日期，不受日期选择点击顺序影响。
+  - action: 点击“查询”
+    expected: 列表完成刷新，筛选条件保留创建日期范围。
+  - action: 查看列表记录的创建日期
+    expected: 列表记录的创建日期均处于自动回填的开始日期和结束日期范围内。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；准备范围内和范围外创建日期记录
+- id: TC-REQ-010-007
+  coverage_ids:
+  - COV-010-L2-query-reset
+  plan_item_ids:
+  - PLAN-010-query-reset
+  scenario_branch: 重置筛选回第一页
+  atomic_purpose_ids:
+  - AP-010-007
+  title: 重置筛选条件，检查列表回到第一页
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 重置
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限、至少两页脱敏配置数据，且已存在筛选条件和非第一页状态。
+  steps:
+  - action: 设置配置名称、状态和日期条件并跳转到非第一页
+    expected: 控件显示设置值，分页显示非第一页。
+  - action: 点击“重置”
+    expected: 名称、状态和日期恢复默认值，当前页回到第一页，列表按默认条件显示。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-010
+  coverage_ids:
+  - COV-010-L2-table
+  plan_item_ids:
+  - PLAN-010-table
+  scenario_branch: 列表字段展示
+  atomic_purpose_ids:
+  - AP-010-010
+  title: 查看配置列表，检查字段和脱敏内容
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 配置列表
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和已授权的脱敏配置数据。
+  steps:
+  - action: 查看告警配置列表
+    expected: 列表显示配置名称、告警级别、配置状态、接收人、接收类型和操作列。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-014
+  coverage_ids:
+  - COV-010-L2-empty
+  plan_item_ids:
+  - PLAN-010-empty
+  scenario_branch: 无结果空态
+  atomic_purpose_ids:
+  - AP-010-014
+  title: 查询无匹配配置，检查空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 空结果
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和不会暴露业务数据的无匹配筛选条件。
+  steps:
+  - action: 输入确认无匹配的筛选条件并点击“查询”
+    expected: 列表显示“暂无数据”或等价空状态，不保留旧结果。
+  - action: 查看筛选条件
+    expected: 输入条件仍回显，空状态与当前条件一致。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-016
+  coverage_ids:
+  - COV-010-L2-add-form
+  plan_item_ids:
+  - PLAN-010-add-form
+  scenario_branch: 新增表单字段展示
+  atomic_purpose_ids:
+  - AP-010-016
+  title: 打开新增窗口，检查表单字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 新增表单
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和新增表单只读观察权限。
+  steps:
+  - action: 点击“新增”
+    expected: 新增窗口打开，显示名称、描述、告警级别、配置状态、接收用户和接收类型字段，以及确定、取消控件。
+  - action: 点击“取消”
+    expected: 新增窗口关闭，列表记录和筛选条件不变。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-017
+  coverage_ids:
+  - COV-010-L2-edit-form
+  plan_item_ids:
+  - PLAN-010-edit-form
+  scenario_branch: 编辑表单字段展示
+  atomic_purpose_ids:
+  - AP-010-017
+  title: 打开编辑窗口，检查字段回填
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 编辑表单
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和已授权配置的编辑表单只读观察权限。
+  steps:
+  - action: 在已授权配置行点击“编辑”
+    expected: 编辑窗口打开，名称、描述、级别、状态、接收用户和接收类型回填当前脱敏值。
+  - action: 点击“取消”
+    expected: 编辑窗口关闭，列表字段和配置状态不变。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-018
+  coverage_ids:
+  - COV-010-L2-delete-dialog
+  plan_item_ids:
+  - PLAN-010-delete-dialog
+  scenario_branch: 删除确认取消
+  atomic_purpose_ids:
+  - AP-010-018
+  title: 取消删除操作，检查配置保持
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 删除确认
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备告警配置页面访问权限和已授权配置行的删除确认层只读观察权限。
+  steps:
+  - action: 在已授权配置行点击“删除”，等待确认层显示
+    expected: 确认层显示待删除配置相关信息，并提供“取消”和“确定”按钮。
+  - action: 点击“取消”
+    expected: 确认层关闭，原配置仍显示在列表中。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-020
+  coverage_ids:
+  - COV-010-L2-field-contract
+  plan_item_ids:
+  - PLAN-010-field-contract
+  scenario_branch: 告警级别状态接收类型枚举
+  atomic_purpose_ids:
+  - AP-010-020
+  title: 打开配置表单，检查级别、状态和接收类型
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 字段枚举
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备新增或编辑表单的只读观察权限，页面中的接收人和通知信息已脱敏。
+  steps:
+  - action: 打开新增或编辑窗口，展开“告警级别”下拉框，查看可选项
+    expected: 告警级别只显示“信息”“警告”“错误”三个中文选项。
+  - action: 展开“配置状态”控件，查看可选项
+    expected: 配置状态只显示“启用”“停用”两个选项。
+  - action: 展开“接收类型”控件，查看可选项
+    expected: 接收类型显示短信、邮箱、站内信等已确认选项，不显示 Webhook、队列等无效类型。
+  - action: 关闭控件和窗口，不保存
+    expected: 页面关闭后列表不产生新增或修改，原有数据保持不变。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-021
+  coverage_ids:
+  - COV-010-L2-required-validation
+  plan_item_ids:
+  - PLAN-010-required-validation
+  scenario_branch: 基础必填校验
+  atomic_purpose_ids:
+  - AP-010-021
+  title: 不填写必填项，检查表单提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 必填校验
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备获批的脱敏表单校验观察证据，表单处于未保存状态。
+  steps:
+  - action: 打开表单，保持告警级别、接收用户或接收类型中的目标必填项为空，点击“确定”
+    expected: 对应字段显示明确必填提示，表单不关闭。
+  - action: 查看其他已填写字段
+    expected: 已输入的脱敏内容保留，未生成保存成功结果。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-024
+  coverage_ids:
+  - COV-010-L3-reference-delete
+  plan_item_ids:
+  - PLAN-010-reference-delete
+  scenario_branch: 已引用配置删除限制
+  atomic_purpose_ids:
+  - AP-010-024
+  title: 删除已引用配置，检查删除限制
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 引用限制
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备已引用配置的脱敏状态证据和删除反馈页面观察证据。
+  steps:
+  - action: 定位一条已被其他功能使用的配置
+    expected: 列表显示该配置的名称及已确认的引用标识或使用状态。
+  - action: 点击该行“删除”，等待反馈
+    expected: 显示删除确认层或明确的引用限制提示，配置没有直接从列表消失。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-025
+  coverage_ids:
+  - COV-010-L3-reference-edit-disable
+  plan_item_ids:
+  - PLAN-010-reference-edit-disable
+  scenario_branch: 已引用配置编辑和状态修改
+  atomic_purpose_ids:
+  - AP-010-025
+  title: 修改已引用配置状态，检查保存结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 引用状态操作
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备已引用配置的脱敏状态证据和操作权限矩阵。
+  steps:
+  - action: 定位已引用配置并点击“编辑”
+    expected: 编辑窗口打开，配置字段正确回填。
+  - action: 将配置状态切换为“开启”或“停用”，点击“保存”
+    expected: 显示保存成功提示，窗口关闭或保持页面定义状态。
+  - action: 刷新或重新查询目标配置
+    expected: 配置状态为本次选择值，编号和其他未修改字段保持不变。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-026
+  coverage_ids:
+  - COV-010-L3-permission
+  plan_item_ids:
+  - PLAN-010-permission
+  scenario_branch: 只读权限边界
+  atomic_purpose_ids:
+  - AP-010-026
+  title: 只读用户查看配置，检查受保护操作权限
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 只读权限
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备正式只读角色和授权租户矩阵；权限提示与操作可见性待确认。
+  steps:
+  - action: 使用只读账号查看授权租户内配置列表
+    expected: 可以查看授权数据，未授权租户数据不显示。
+  - action: 查看新增、编辑、删除和启停入口
+    expected: 受保护操作按权限规则隐藏、禁用或点击后显示明确无权限提示，不能提交变更。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-028
+  coverage_ids:
+  - COV-010-L3-feedback
+  plan_item_ids:
+  - PLAN-010-feedback
+  scenario_branch: 字段校验反馈
+  atomic_purpose_ids:
+  - AP-010-028
+  title: 提交配置时检查必填字段提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 字段校验
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备经批准的脱敏表单校验观察证据；表单处于未保存状态。
+  steps:
+  - action: 打开新增或编辑窗口，缺少一个必填字段后点击“确定”
+    expected: 页面提示这个必填项没有填写，提交不成功，窗口仍然打开。
+  - action: 查看其他输入内容
+    expected: 已经填写的内容还在，可以补齐必填项后继续提交。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-034
+  coverage_ids:
+  - COV-010-L3-permission
+  plan_item_ids:
+  - PLAN-010-permission
+  scenario_branch: 跨租户查看边界
+  atomic_purpose_ids:
+  - AP-010-034
+  title: 切换租户后查看配置，检查数据隔离
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 租户隔离
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。
+  steps:
+  - action: 使用跨租户测试账号查询当前授权租户
+    expected: 列表只显示当前租户可见配置。
+  - action: 切换到另一个已批准租户并重新查询
+    expected: 列表随租户变化，新租户不显示原租户配置。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-036
+  coverage_ids:
+  - COV-010-L3-permission
+  plan_item_ids:
+  - PLAN-010-permission
+  scenario_branch: 新增权限边界
+  atomic_purpose_ids:
+  - AP-010-036
+  title: 无新增权限用户查看新增入口，检查权限状态
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 新增权限
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。
+  steps:
+  - action: 使用无新增权限账号查看页面
+    expected: “新增”入口隐藏或禁用；若可点击，显示明确无权限提示且不打开可提交表单。
+  - action: 返回配置列表
+    expected: 列表和原有配置数据不发生变化。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-037
+  coverage_ids:
+  - COV-010-L3-permission
+  plan_item_ids:
+  - PLAN-010-permission
+  scenario_branch: 编辑权限边界
+  atomic_purpose_ids:
+  - AP-010-037
+  title: 无编辑权限用户查看编辑入口，检查权限状态
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 编辑权限
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。
+  steps:
+  - action: 使用无编辑权限账号定位目标配置行
+    expected: “编辑”入口隐藏或禁用；若可点击，显示明确无权限提示且不提交修改。
+  - action: 重新读取目标配置
+    expected: 配置字段、状态和编号保持不变。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-038
+  coverage_ids:
+  - COV-010-L3-permission
+  plan_item_ids:
+  - PLAN-010-permission
+  scenario_branch: 删除权限边界
+  atomic_purpose_ids:
+  - AP-010-038
+  title: 无删除权限用户查看删除入口，检查权限状态
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 删除权限
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。
+  steps:
+  - action: 使用无删除权限账号定位目标配置行
+    expected: “删除”入口隐藏或禁用；若可点击，显示明确无权限提示且不删除配置。
+  - action: 刷新列表并按编号查找
+    expected: 目标配置仍存在且字段未改变。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-039
+  coverage_ids:
+  - COV-010-L3-permission
+  plan_item_ids:
+  - PLAN-010-permission
+  scenario_branch: 启停权限边界
+  atomic_purpose_ids:
+  - AP-010-039
+  title: 无启停权限用户查看状态操作，检查权限状态
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 启停权限
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。
+  steps:
+  - action: 使用无启停权限账号定位配置状态操作
+    expected: 启用或停用入口隐藏、禁用或点击后显示明确无权限提示。
+  - action: 重新查询目标配置
+    expected: 配置状态与操作前一致，没有产生状态变更。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-042
+  coverage_ids:
+  - COV-010-L3-feedback
+  plan_item_ids:
+  - PLAN-010-feedback
+  scenario_branch: 重复提交反馈
+  atomic_purpose_ids:
+  - AP-010-042
+  title: 重复点击保存，检查重复提交控制
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 重复操作
+  common_preconditions_ref: CP-REQ-010-001
+  preconditions:
+  - 具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。
+  steps:
+  - action: 打开新增或编辑窗口
+    expected: 新增或编辑窗口正常打开，表单字段和“确定”按钮可见。
+  - action: 填写批准的脱敏配置
+    expected: 脱敏配置内容填写成功，表单处于可提交状态。
+  - action: 点击“确定”，在提交处理中立即再次点击同一按钮
+    expected: 第二次操作被按钮禁用、明确提示或幂等处理，不产生第二条配置。
+  - action: 刷新列表并按配置标识查找
+    expected: 只存在一条本次配置结果，字段没有重复写入。
+  tp_id: TEST_PLAN-REQ-010
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+- id: TC-REQ-010-045
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-create-success
+  auto: auto
+  priority: P1
+  preconditions: &id001
+  - 使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。
+  tp_id: TEST_PLAN-REQ-010
+  test_data: &id002
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-脱敏数据；具体值待确认
+  trace: &id003
+    req: REQ-010
+    project: 数据采集监控平台
+    version: '1'
+    status: blocked_scoped_readonly_ui_verification
+    source_review: REV_CASE_REQ-010-20261023-R2
+  coverage_ids:
+  - COV-010-L3-create-success
+  scenario_branch: 新增保存成功
+  atomic_purpose_ids:
+  - AP-010-045
+  title: 新增告警配置，检查保存结果
+  type: feature
+  feature: 新增保存成功闭环
+  steps:
+  - action: 点击“新增”，填写批准的名称、描述、级别、状态、接收用户和接收类型
+    expected: 必填控件均回显输入值，表单允许提交。
+  - action: 点击“保存”或“确定”
+    expected: 显示处理中状态；保存成功后显示明确成功提示并关闭窗口。
+  - action: 刷新或重新查询并定位新配置
+    expected: 列表显示新配置，字段与提交值一致。
+- id: TC-REQ-010-046
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-edit-success
+  auto: auto
+  priority: P1
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-edit-success
+  scenario_branch: 编辑保存成功
+  atomic_purpose_ids:
+  - AP-010-046
+  title: 编辑告警配置，检查保存结果
+  type: feature
+  feature: 编辑保存成功闭环
+  steps:
+  - action: 定位可编辑配置并点击“编辑”
+    expected: 编辑窗口打开，当前字段值正确回填。
+  - action: 修改批准的字段并点击“保存”
+    expected: 显示处理中状态，保存成功后显示明确成功提示并关闭窗口。
+  - action: 刷新或重新查询目标配置
+    expected: 修改字段显示新值，配置编号保持不变。
+- id: TC-REQ-010-047
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-receiver-zero
+  auto: auto
+  priority: P2
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-receiver-zero
+  scenario_branch: 接收用户必填校验
+  atomic_purpose_ids:
+  - AP-010-047
+  title: 不选择接收用户，检查必填校验
+  type: feature
+  feature: 接收用户必填校验
+  steps:
+  - action: 打开表单，填写其他必填项但不选择接收用户
+    expected: 接收用户控件保持空值。
+  - action: 点击“保存”或“确定”
+    expected: 配置不保存，接收用户字段显示“接收用户不能为空”或页面定义的等价提示。
+  - action: 选择批准用户后再次提交
+    expected: 接收用户必填提示消失，页面进入明确的保存结果状态。
+- id: TC-REQ-010-051
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-name-invalid
+  auto: auto
+  priority: P3
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-name-invalid
+  scenario_branch: 配置名称非法字符
+  atomic_purpose_ids:
+  - AP-010-051
+  title: 输入非法配置名称，检查校验反馈
+  type: feature
+  feature: 配置名称非法字符
+  steps:
+  - action: 在配置名称输入框输入批准规则之外的字符并触发失焦校验
+    expected: 页面显示明确非法字符提示或拒绝非法字符，输入框状态可判定。
+  - action: 点击“取消”关闭窗口
+    expected: 非法输入未保存，列表配置不变。
+- id: TC-REQ-010-053
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-description-format
+  auto: auto
+  priority: P3
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-description-format
+  scenario_branch: 描述内容边界
+  atomic_purpose_ids:
+  - AP-010-053
+  title: 描述为空时，检查字段反馈
+  type: feature
+  feature: 描述内容边界
+  steps:
+  - action: 打开表单并保持描述为空，触发失焦或提交校验
+    expected: 显示描述字段是否必填的明确结果；若允许为空，不显示错误提示。
+  - action: 点击“取消”
+    expected: 表单关闭，未产生配置变更。
+- id: TC-REQ-010-056
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-delete-unreferenced
+  auto: auto
+  priority: P1
+  preconditions:
+  - 已登录系统，并具备告警配置的默认操作权限。
+  - 已准备一条未被其他功能使用的告警配置。
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-delete-unreferenced
+  scenario_branch: 未引用配置删除
+  atomic_purpose_ids:
+  - AP-010-056
+  title: 删除未引用告警配置，检查列表移除
+  type: feature
+  feature: 未引用配置删除闭环
+  steps:
+  - action: 定位已确认未被其他功能使用的配置并点击“删除”，等待确认层
+    expected: 确认层显示目标配置名称或唯一标识以及“确定”“取消”按钮。
+  - action: 点击“确定”
+    expected: 显示明确删除成功提示，确认层关闭。
+  - action: 刷新或重新查询列表
+    expected: 目标配置不再显示，列表加载正常。
+- id: TC-REQ-010-058
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-disable-transition
+  auto: auto
+  priority: P1
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-disable-transition
+  scenario_branch: 开启到停用
+  atomic_purpose_ids:
+  - AP-010-058
+  title: 将开启配置改为停用，检查状态更新
+  type: feature
+  feature: 开启到停用成功闭环
+  steps:
+  - action: 定位状态为“开启”的配置并点击“编辑”
+    expected: 编辑窗口打开，当前状态显示“开启”。
+  - action: 将状态改为“停用/关闭”并点击“保存”
+    expected: 显示保存成功提示，窗口关闭或完成提交。
+  - action: 刷新或重新查询目标配置
+    expected: 目标配置状态更新为“停用/关闭”。
+- id: TC-REQ-010-059
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-enable-transition
+  auto: auto
+  priority: P1
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-enable-transition
+  scenario_branch: 停用到开启
+  atomic_purpose_ids:
+  - AP-010-059
+  title: 将停用配置改为开启，检查状态更新
+  type: feature
+  feature: 停用到开启成功闭环
+  steps:
+  - action: 定位状态为“停用”的配置并点击“编辑”
+    expected: 编辑窗口打开，当前状态显示“停用”。
+  - action: 将状态改为“启用/开启”并点击“保存”
+    expected: 显示保存成功提示，窗口关闭或完成提交。
+  - action: 刷新或重新查询目标配置
+    expected: 目标配置状态更新为“启用/开启”。
+- id: TC-REQ-010-061
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-receiver-many
+  auto: auto
+  priority: P3
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-receiver-many
+  scenario_branch: 接收用户数量边界
+  atomic_purpose_ids:
+  - AP-010-061
+  title: 选择多个接收用户并提交，检查列表显示用户
+  type: feature
+  feature: 接收用户保存与列表展示
+  steps:
+  - action: 打开表单并选择多个批准接收用户
+    expected: 每个用户显示为已选标签或等价状态，数量与实际选择一致。
+  - action: 提交表单
+    expected: 表单保存成功，列表显示已选择的接收用户。
+- id: TC-REQ-010-062
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-name-over-limit
+  auto: auto
+  priority: P3
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-name-over-limit
+  scenario_branch: 接收用户数量边界
+  atomic_purpose_ids:
+  - AP-010-062
+  title: 输入超长配置名称，检查校验反馈
+  type: feature
+  feature: 配置名称长度超限
+  steps:
+  - action: 在配置名称输入框输入超过批准最大长度的值并触发失焦校验
+    expected: 页面拒绝超长值、截断超出内容或显示明确长度提示。
+  - action: 点击“取消”
+    expected: 超长值未保存，列表配置不变。
+- id: TC-REQ-010-063
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-description-single-line
+  auto: auto
+  priority: P3
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-description-single-line
+  scenario_branch: 接收用户数量边界
+  atomic_purpose_ids:
+  - AP-010-063
+  title: 输入单行描述，检查字段反馈
+  type: feature
+  feature: 描述单行内容
+  steps:
+  - action: 在描述输入框输入一条单行内容并触发失焦
+    expected: 描述内容保留为单行，控件类型和格式符合页面定义。
+  - action: 点击“取消”
+    expected: 单行描述未保存，列表不变。
+- id: TC-REQ-010-064
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-description-newline
+  auto: auto
+  priority: P3
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-description-newline
+  scenario_branch: 接收用户数量边界
+  atomic_purpose_ids:
+  - AP-010-064
+  title: 输入换行描述，检查字段反馈
+  type: feature
+  feature: 描述换行内容
+  steps:
+  - action: 在描述输入框输入包含换行的内容并触发失焦
+    expected: 换行被保留、转换或拒绝，页面呈现结果与已确认格式规则一致。
+  - action: 点击“取消”
+    expected: 换行内容未保存，列表不变。
+- id: TC-REQ-010-065
+  common_preconditions_ref: CP-REQ-010-001
+  plan_item_ids:
+  - COV-010-L3-description-over-limit
+  auto: auto
+  priority: P3
+  preconditions: *id001
+  tp_id: TEST_PLAN-REQ-010
+  test_data: *id002
+  trace: *id003
+  coverage_ids:
+  - COV-010-L3-description-over-limit
+  scenario_branch: 接收用户数量边界
+  atomic_purpose_ids:
+  - AP-010-065
+  title: 输入超长描述，检查校验反馈
+  type: feature
+  feature: 描述长度超限
+  steps:
+  - action: 在描述输入框输入超过批准最大长度的内容并触发校验
+    expected: 页面拒绝、截断或提示超长，错误信息明确指向描述字段。
+  - action: 点击“取消”
+    expected: 超长描述未保存，列表内容不变。
+- id: TC-REQ-010-066
+  common_preconditions_ref: CP-REQ-010-001
+  coverage_ids:
+  - COV-010-DELETE-RECREATE-L3
+  plan_item_ids:
+  - PLAN-010-DELETE-RECREATE
+  atomic_purpose_ids:
+  - AP-010-DELETE-RECREATE
+  scenario_branch: 删除后同表单内容重新创建
+  title: 删除后使用相同内容重新创建，检查重建结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 删除后同表单重建
+  preconditions:
+  - 已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。
+  - 已记录删除前表单字段：配置名称、描述、级别、状态、接收类型及接收用户；删除后使用相同值，不使用原系统生成的唯一标识。
+  steps:
+  - action: 在隔离环境创建一条测试配置并记录名称、描述、级别、状态、接收类型和接收用户
+    expected: 创建成功，回读字段与提交值一致。
+  - action: 删除该配置并确认删除，刷新列表
+    expected: 显示删除成功提示，目标配置不再出现在列表中。
+  - action: 再次打开新增窗口，填写删除前记录的相同字段并提交
+    expected: 新配置保存成功，不出现重复或残留数据冲突。
+  - action: 刷新列表并回读新配置
+    expected: 字段与删除前记录一致；按批准方案清理测试数据。
+  test_data:
+    page_url: /biopark-iot/iot/alert/config
+    data_prefix: REQ-010-DELETE-RECREATE-

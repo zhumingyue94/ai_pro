@@ -1,0 +1,3255 @@
+req_id: REQ-007
+module: 养殖标准
+zentao_module_id: 656
+zentao_product_id: 5
+zentao_project_id: 20
+page_url: /biopark-poultry/basic/target
+trace:
+  req: REQ-007
+  tp: TP_REQ-007
+  project: 商品禽养殖
+  version: 1
+  status: draft
+  source_review: 04_testpoint_review/REV_REQ-007.yaml
+  gate_note: 测点评审已通过；本阶段未跑用例自检/未写 CSV
+summary:
+  case_count: 114
+  priority_counts:
+    P1: 18
+    P2: 80
+    P3: 16
+  feature_counts:
+    查询: 11
+    新增目标: 16
+    表格: 13
+    编辑: 12
+    删除: 5
+    目标明细: 14
+    导入目标明细: 31
+    导出: 11
+  type_counts:
+    feature: 113
+    auto: 1
+  auto_counts:
+    auto: 93
+    'no': 21
+cases:
+- id: TC-007-01
+  tp_id: TP-007-01
+  title: 查询区包含「标准名称」「状态」条件控件
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 查看页面顶部查询区
+    expected: 查询区可见「标准名称」「状态」两个可操作条件控件
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-01
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48602
+  auto: 'no'
+- id: TC-007-02
+  tp_id: TP-007-02
+  title: 「状态」下拉选项为启用、禁用
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 点击查询区「状态」下拉
+    expected: 选项可见「启用」「禁用」（可含「请选择」占位）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-02
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48603
+  auto: auto
+- id: TC-007-03
+  tp_id: TP-007-03
+  title: 仅标准名称关键字点「查询」→ 列表名称模糊匹配
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表中已存在名称可区分的养殖标准记录（至少一条名称含目标关键字、一条不含）
+  steps:
+  - action: 在「标准名称」输入目标关键字
+    expected: 输入框显示该关键字
+  - action: 点击「查询」
+    expected: 列表仅展示标准名称包含该关键字的记录；无匹配时列表呈现空态
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-03
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48604
+  auto: auto
+- id: TC-007-04
+  tp_id: TP-007-04
+  title: 状态=启用点「查询」→ 仅启用记录
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 系统中同时存在启用与禁用状态的养殖标准
+  steps:
+  - action: 「状态」选择「启用」
+    expected: 状态条件显示为启用
+  - action: 点击「查询」
+    expected: 列表每条状态均为启用
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-04
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48605
+  auto: auto
+- id: TC-007-05
+  tp_id: TP-007-05
+  title: 状态=禁用点「查询」→ 仅禁用记录
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 系统中同时存在启用与禁用状态的养殖标准
+  steps:
+  - action: 「状态」选择「禁用」
+    expected: 状态条件显示为禁用
+  - action: 点击「查询」
+    expected: 列表每条状态均为禁用
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-05
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48606
+  auto: auto
+- id: TC-007-06
+  tp_id: TP-007-06
+  title: 名称+状态组合查询结果同时满足
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在可同时满足名称关键字与目标状态的记录，以及仅满足其一的记录
+  steps:
+  - action: 输入标准名称关键字并选择目标状态
+    expected: 条件区显示已填名称与状态
+  - action: 点击「查询」
+    expected: 列表记录同时满足名称模糊匹配与所选状态
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-06
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48607
+  auto: auto
+- id: TC-007-07
+  tp_id: TP-007-07
+  title: 点击「重置」→ 条件清空且列表恢复默认
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 随意填写「标准名称」并选择「状态」后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 标准名称与状态条件清空，列表恢复默认未过滤（或全量）结果
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-07
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48608
+  auto: auto
+- id: TC-007-08
+  tp_id: TP-007-08
+  title: 查询无匹配 → 空态可辨认
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 输入一个确定无匹配的标准名称关键字
+    expected: 输入框显示该关键字
+  - action: 点击「查询」
+    expected: 列表为空态且可辨认（无数据/空提示）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-08
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48609
+  auto: auto
+- id: TC-007-09
+  tp_id: TP-007-09
+  title: 查询区含「查询」「重置」按钮
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 查看页面顶部查询区操作按钮
+    expected: 查询区可见「查询」按钮与「重置」按钮，且均可点击
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-09
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48610
+  auto: 'no'
+- id: TC-007-10
+  tp_id: TP-007-10
+  title: 仅改查询条件未点「查询」→ 列表保持原结果；点「查询」后才按新条件过滤
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表已有一组查询结果
+  steps:
+  - action: 修改「标准名称」或「状态」但不点击「查询」
+    expected: 列表仍保持修改前的查询结果
+  - action: 点击「查询」
+    expected: 列表才按新条件过滤
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-10
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48611
+  auto: auto
+- id: TC-007-11
+  tp_id: TP-007-11
+  title: 「标准名称」可输入模糊关键字
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 在「标准名称」输入框输入任意关键字片段
+    expected: 可正常输入，控件为可编辑文本框
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-11
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48612
+  auto: 'no'
+- id: TC-007-12
+  tp_id: TP-007-12
+  title: 工具栏点「新增目标」→ 打开弹窗，标题为「新增目标」
+  type: feature
+  priority: P1
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 点击列表工具栏「新增目标」
+    expected: 弹出对话框，对话框标题文案等于「新增目标」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-12
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48613
+  auto: auto
+- id: TC-007-13
+  tp_id: TP-007-13
+  title: 新增目标含标准名称/适用品种/适用月份/状态，所有字段必填
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 点击「新增目标」打开弹窗
+    expected: 弹窗含标准名称、适用品种、适用月份、状态四个字段且均为必填标识
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-13
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48614
+  auto: auto
+- id: TC-007-14
+  tp_id: TP-007-14
+  title: 标准名称占位为「请输入标准名称」
+  type: feature
+  priority: P3
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 点击「新增目标」
+    expected: 标准名称输入框占位文案为「请输入标准名称」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-14
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48615
+  auto: 'no'
+- id: TC-007-15
+  tp_id: TP-007-15
+  title: 标准名称输入框字数输入100字以内，保存不报错（或者限制输入字数）
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 点击「新增目标」，在标准名称输入不超过100字的内容，并填齐其他必填项
+    expected: 可录入
+  - action: 点击「确定」
+    expected: 保存成功不报错；或输入框限制无法超过100字（两种之一稳定可复现）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-15
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48616
+  auto: auto
+- id: TC-007-16
+  tp_id: TP-007-16
+  title: 标准名称可以重复
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已存在一条标准名称为「AUTO重复名A」的记录
+  steps:
+  - action: 新增另一条标准，标准名称同为「AUTO重复名A」，品种月份与已有不冲突，状态启用
+    expected: 可填写
+  - action: 点击「确定」
+    expected: 保存成功，列表出现两条同名标准
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-16
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48617
+  auto: auto
+- id: TC-007-17
+  tp_id: TP-007-17
+  title: 适用品种、适用月份支持多选
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」，分别对适用品种、适用月份多选至少2个选项
+    expected: 字段以多选标签展示所选值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-17
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48618
+  auto: auto
+- id: TC-007-18
+  tp_id: TP-007-18
+  title: 适用品种选择框支持搜索选项
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」，点击适用品种下拉并输入已有品种关键字
+    expected: 选项列表按关键字过滤可选
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-18
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48619
+  auto: auto
+- id: TC-007-19
+  tp_id: TP-007-19
+  title: 适用品种选项来自基础数据-品种管理中启用的品种，停用的不显示
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 基础数据-品种管理中存在至少一个启用品种与一个停用品种
+  steps:
+  - action: 打开「新增目标」，展开适用品种下拉
+    expected: 仅显示启用品种；停用品种不在选项中
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-19
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48620
+  auto: auto
+- id: TC-007-20
+  tp_id: TP-007-20
+  title: 适用月份选项覆盖1月–12月
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」，展开适用月份下拉
+    expected: 选项覆盖1月–12月共12项
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-20
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48621
+  auto: auto
+- id: TC-007-21
+  tp_id: TP-007-21
+  title: 状态为启用/禁用单选（无审核态）
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」，查看状态控件
+    expected: 状态为启用/禁用单选（或等价二选一），无审核/暂存等态
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-21
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48622
+  auto: auto
+- id: TC-007-22
+  tp_id: TP-007-22
+  title: 新增目标弹窗按钮为「取消」「确定」
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」
+    expected: 弹窗底部按钮为「取消」「确定」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-22
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48623
+  auto: 'no'
+- id: TC-007-23
+  tp_id: TP-007-23
+  title: 必填未填点「确定」→ 拦截不落库
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」，故意留空至少一个必填字段后点击「确定」
+    expected: 拦截不落库，必填提示可见，列表无新增行
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-23
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48624
+  auto: auto
+- id: TC-007-24
+  tp_id: TP-007-24
+  title: 合法主字段点「确定」→ 列表新增成功
+  type: feature
+  priority: P1
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」，填写不冲突的标准名称、适用品种、适用月份，状态选启用后点「确定」
+    expected: 提示成功；列表新增该行且主字段与录入一致
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-24
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48625
+  auto: auto
+- id: TC-007-25
+  tp_id: TP-007-25
+  title: 新增时品种×月份与已有标准重叠 → 拦截不允许保存
+  type: feature
+  priority: P1
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已存在标准占用某品种×月份组合
+  steps:
+  - action: 新增时选择与已有标准重叠的品种×月份组合并点「确定」
+    expected: 拦截不允许保存，有明确提示
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-25
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48626
+  auto: auto
+- id: TC-007-26
+  tp_id: TP-007-26
+  title: 新增时品种×月份无重叠 → 可保存成功
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 新增时选择与库内无重叠的品种×月份组合并点「确定」
+    expected: 保存成功，列表可见新记录
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-26
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48627
+  auto: auto
+- id: TC-007-27
+  tp_id: TP-007-27
+  title: 点「取消」→ 关闭不落库
+  type: feature
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 打开「新增目标」并填写部分字段后点击「取消」
+    expected: 弹窗关闭；列表无对应新增记录
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-27
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48628
+  auto: auto
+- id: TC-007-28
+  tp_id: TP-007-28
+  title: 列表标题为「数据列表」
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 查看列表区域标题
+    expected: 列表标题文案为「数据列表」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-28
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48629
+  auto: 'no'
+- id: TC-007-29
+  tp_id: TP-007-29
+  title: 列顺序：标准名称→适用品种→适用月份→状态→操作
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 查看数据列表表头从左到右
+    expected: 列顺序为：标准名称→适用品种→适用月份→状态→操作
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-29
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48630
+  auto: auto
+- id: TC-007-30
+  tp_id: TP-007-30
+  title: 行操作含目标明细/编辑/删除
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表至少有一条记录
+  steps:
+  - action: 查看任一行操作列
+    expected: 可见「目标明细」「编辑」「删除」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-30
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48631
+  auto: 'no'
+- id: TC-007-31
+  tp_id: TP-007-31
+  title: 启用/禁用状态标签样式可区分
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表同时有启用与禁用记录
+  steps:
+  - action: 对比启用行与禁用行的状态展示
+    expected: 启用/禁用标签样式可区分
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-31
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48632
+  auto: 'no'
+- id: TC-007-32
+  tp_id: TP-007-32
+  title: 适用品种/月份以多选标签展示
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在适用品种或适用月份为多项的记录
+  steps:
+  - action: 查看该行适用品种/适用月份单元格
+    expected: 以多选标签形式展示多项值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-32
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48633
+  auto: 'no'
+- id: TC-007-33
+  tp_id: TP-007-33
+  title: 列表主字段与已保存主记录一致
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已知一条刚保存的主记录字段值
+  steps:
+  - action: 在列表定位该标准
+    expected: 标准名称、适用品种、适用月份、状态与已保存主记录一致
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-33
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48634
+  auto: auto
+- id: TC-007-34
+  tp_id: TP-007-34
+  title: 禁用状态记录仍可在列表展示并可打开编辑/明细
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在禁用状态标准
+  steps:
+  - action: 在列表找到禁用记录并分别点击「编辑」「目标明细」
+    expected: 可打开编辑弹窗与目标明细弹窗
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-34
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48635
+  auto: auto
+- id: TC-007-35
+  tp_id: TP-007-35
+  title: 长文本省略且可悬浮查看
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在名称或标签过长的记录
+  steps:
+  - action: 查看过长单元格，并将鼠标悬停在省略文本上
+    expected: 单元格省略显示；悬浮可查看完整内容
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-35
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48636
+  auto: 'no'
+- id: TC-007-36
+  tp_id: TP-007-36
+  title: 启用记录状态文案为启用
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在启用记录
+  steps:
+  - action: 查看该行状态列
+    expected: 状态文案为「启用」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-36
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48637
+  auto: auto
+- id: TC-007-37
+  tp_id: TP-007-37
+  title: 禁用记录状态文案为禁用
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在禁用记录
+  steps:
+  - action: 查看该行状态列
+    expected: 状态文案为「禁用」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-37
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48638
+  auto: auto
+- id: TC-007-38
+  tp_id: TP-007-38
+  title: 禁用的养殖标准不能被引用，启用的标准可以被引用（例如排程计划-养殖模版一样品种+月份匹配不到禁用的养殖标准）
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 准备一条启用标准与一条禁用标准（品种+月份已知）
+  - 下游排程/养殖模版具备按品种+月份匹配养殖标准的能力（或等价环境）
+  steps:
+  - action: 在下游新建引用并选择与启用标准匹配的品种+月份
+    expected: 可匹配到启用标准
+  - action: 再尝试匹配禁用标准的品种+月份
+    expected: 匹配不到该禁用标准
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-38
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48639
+  auto: 'no'
+- id: TC-007-39
+  tp_id: TP-007-39
+  title: 分页展示总条数与页码
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表数据多于一页或至少可见分页区
+  steps:
+  - action: 查看列表底部分页区
+    expected: 可见总条数与页码信息
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-39
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48640
+  auto: auto
+- id: TC-007-40
+  tp_id: TP-007-40
+  title: 切换每页条数后列表刷新
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表有多条数据
+  steps:
+  - action: 切换每页条数（如10/20）
+    expected: 列表按新页大小刷新展示
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-40
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48641
+  auto: auto
+- id: TC-007-41
+  tp_id: TP-007-41
+  title: 行内「编辑」→ 标题「编辑目标」并回填四字段
+  type: feature
+  priority: P1
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在可编辑标准
+  steps:
+  - action: 点击行内「编辑」
+    expected: 弹窗标题为「编辑目标」，标准名称/适用品种/适用月份/状态回填为当前值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-41
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48642
+  auto: auto
+- id: TC-007-42
+  tp_id: TP-007-42
+  title: 修改标准名称后「确定」保存成功
+  type: feature
+  priority: P1
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在可编辑标准
+  steps:
+  - action: 打开编辑，修改标准名称为新名称后点「确定」
+    expected: 保存成功；列表该行标准名称更新为新名称
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-42
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48643
+  auto: auto
+- id: TC-007-43
+  tp_id: TP-007-43
+  title: 编辑切换启用↔禁用可保存
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在可编辑标准
+  steps:
+  - action: 打开编辑，将状态在启用与禁用间切换后点「确定」
+    expected: 保存成功；列表状态与切换后一致
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-43
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48644
+  auto: auto
+- id: TC-007-44
+  tp_id: TP-007-44
+  title: 编辑造成品种×月份与其他标准重叠 → 拦截
+  type: feature
+  priority: P1
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在两条标准，编辑其一使其品种×月份与另一条重叠
+  steps:
+  - action: 在编辑弹窗调整品种/月份造成与其他标准重叠后点「确定」
+    expected: 拦截不允许保存
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-44
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48645
+  auto: auto
+- id: TC-007-45
+  tp_id: TP-007-45
+  title: 编辑去掉重叠月份后可保存成功
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 编辑中曾出现重叠拦截的场景或可构造重叠后去掉冲突月份
+  steps:
+  - action: 编辑去掉冲突月份/品种使无重叠后点「确定」
+    expected: 保存成功
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-45
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48646
+  auto: auto
+- id: TC-007-46
+  tp_id: TP-007-46
+  title: 编辑弹窗无明细表
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在记录
+  steps:
+  - action: 点击「编辑」
+    expected: 弹窗内无0–42目标明细表；仅主记录字段
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-46
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48647
+  auto: 'no'
+- id: TC-007-47
+  tp_id: TP-007-47
+  title: 编辑目标按钮为「取消」「确定」
+  type: feature
+  priority: P3
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在记录
+  steps:
+  - action: 打开「编辑目标」
+    expected: 弹窗按钮为「取消」「确定」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-47
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48648
+  auto: 'no'
+- id: TC-007-48
+  tp_id: TP-007-48
+  title: 编辑点「取消」→ 不保存
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在记录，记下当前标准名称
+  steps:
+  - action: 打开编辑并修改标准名称后点「取消」
+    expected: 弹窗关闭；列表标准名称仍为修改前
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-48
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48649
+  auto: auto
+- id: TC-007-49
+  tp_id: TP-007-49
+  title: 必填清空点「确定」→ 拦截
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在记录
+  steps:
+  - action: 打开编辑，清空某一必填字段后点「确定」
+    expected: 拦截不保存，必填提示可见
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-49
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48650
+  auto: auto
+- id: TC-007-50
+  tp_id: TP-007-50
+  title: 编辑可增删品种/月份标签后保存（无冲突时）
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在无冲突风险的标准
+  steps:
+  - action: 打开编辑，增删适用品种或适用月份标签（保持无冲突）后点「确定」
+    expected: 保存成功；列表标签与编辑后一致
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-50
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48651
+  auto: auto
+- id: TC-007-51
+  tp_id: TP-007-51
+  title: 编辑保存后不影响历史引用记录，新引用这个养殖标准才会使用编辑后的数据
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 目标标准已被下游引用（历史引用存在）
+  - 记下编辑前字段快照
+  steps:
+  - action: 打开「编辑」，修改标准名称（或其他主字段）后点「确定」
+    expected: 本页列表显示编辑后的新值
+  - action: 打开已存在的下游历史引用记录查看所引用标准字段
+    expected: 历史引用侧仍为编辑前快照，未被本次编辑覆盖
+  - action: 在下游新建一条引用并匹配该标准
+    expected: 新建引用使用编辑后的标准数据
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-51
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48652
+  auto: 'no'
+- id: TC-007-52
+  tp_id: TP-007-52
+  title: 禁用养殖标准不影响历史引用记录，但是无法继续新增引用（例如排程系统新建的养殖模版无法匹配到这个禁用的养殖标准）
+  type: feature
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 目标标准当前启用且已有历史引用
+  - 下游可新建养殖模版/排程并按品种+月份匹配标准
+  steps:
+  - action: 打开「编辑」，将状态改为禁用后点「确定」
+    expected: 列表该行状态文案为「禁用」
+  - action: 打开原有下游历史引用记录
+    expected: 历史引用仍可正常打开，不因禁用而强制失效
+  - action: 在排程/养殖模版侧按该标准的品种+月份尝试新建匹配
+    expected: 新建匹配不到该禁用养殖标准
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-52
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48653
+  auto: 'no'
+- id: TC-007-53
+  tp_id: TP-007-53
+  title: 行内「删除」→ 确认框标题「提示」且文案含标准名称
+  type: feature
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在名称为已知值的标准
+  steps:
+  - action: 点击该行「删除」
+    expected: 弹出确认框，标题为「提示」，文案包含该标准名称
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-53
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48654
+  auto: auto
+- id: TC-007-54
+  tp_id: TP-007-54
+  title: 删除点「确定」→ 列表该行消失
+  type: feature
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在可删除的自建标准（记下名称）
+  steps:
+  - action: 点击「删除」后在确认框点「确定」
+    expected: 该行从列表消失
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-54
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48655
+  auto: auto
+- id: TC-007-55
+  tp_id: TP-007-55
+  title: 删除点「取消」→ 记录仍在
+  type: feature
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在可删除标准
+  steps:
+  - action: 点击「删除」后在确认框点「取消」
+    expected: 确认框关闭；该记录仍在列表
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-55
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48656
+  auto: auto
+- id: TC-007-56
+  tp_id: TP-007-56
+  title: 行内「删除」确认后 → 列表该行消失且无强制引用拦截弹窗
+  type: feature
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准（可与是否被引用无关，按澄清：删除无强制引用拦截）
+  steps:
+  - action: 点击「删除」并确认「确定」
+    expected: 列表该行消失，且未弹出强制引用拦截类对话框
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-56
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48657
+  auto: auto
+- id: TC-007-57
+  tp_id: TP-007-57
+  title: 删除后不影响历史引用记录，新引用才会使用编辑后的数据
+  type: feature
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 目标标准已被下游历史引用
+  steps:
+  - action: 删除该标准并确认
+    expected: 本页列表该行消失
+  - action: 核对历史引用记录仍可访问/不受强制清空
+    expected: 历史引用不受影响；新引用不可再选该标准
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-57
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48658
+  auto: 'no'
+- id: TC-007-58
+  tp_id: TP-007-58
+  title: 行内「目标明细」→ 标题「目标明细 - {标准名称}」
+  type: feature
+  priority: P1
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准，记下标准名称
+  steps:
+  - action: 点击该行「目标明细」
+    expected: 弹窗标题格式为「目标明细 - {标准名称}」，其中{标准名称}为该行实际标准名称
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-58
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48659
+  auto: auto
+- id: TC-007-59
+  tp_id: TP-007-59
+  title: 明细固定43行，日龄0–42只读
+  type: feature
+  priority: P1
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开「目标明细」
+    expected: 表格固定43行；日龄列为0–42且不可编辑
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-59
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48660
+  auto: auto
+- id: TC-007-60
+  tp_id: TP-007-60
+  title: 明细按日龄正序排列，日龄数字连贯
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开「目标明细」，自上而下核对中国日龄列
+    expected: 日龄按0,1,…,42正序且连续无跳号
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-60
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48661
+  auto: auto
+- id: TC-007-61
+  tp_id: TP-007-61
+  title: 明细列含日龄+16维共17列
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开「目标明细」查看表头
+    expected: 含日龄+16维参数共17列（含单位文案，与模板同构）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-61
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48662
+  auto: 'no'
+- id: TC-007-62
+  tp_id: TP-007-62
+  title: 非日龄列可number录入
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开「目标明细」，在非日龄列输入数字
+    expected: 可录入数字；日龄列仍不可改
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-62
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48663
+  auto: auto
+- id: TC-007-63
+  tp_id: TP-007-63
+  title: 日采食量(g)、累计采食量(g)、日增重(g)、目标温度(℃)只能填1位小数
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开目标明细，对日采食量(g)/累计采食量(g)/日增重(g)/目标温度(℃)尝试输入超过1位小数
+    expected: 最多保留1位小数，或超位数被拦截/截断（规则稳定可复现）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-63
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48664
+  auto: auto
+- id: TC-007-64
+  tp_id: TP-007-64
+  title: 料肉比、水料比、日死淘率(%)、成活率(%)、饲料成本(元/只)、用药成本(元/只)、风冷系数、湿热系数只能填2位小数
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开目标明细，对料肉比、水料比、日死淘率(%)、成活率(%)、饲料成本、用药成本、风冷系数、湿热系数尝试超过2位小数
+    expected: 最多保留2位小数，或超位数被拦截/截断（规则稳定可复现）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-64
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48665
+  auto: auto
+- id: TC-007-65
+  tp_id: TP-007-65
+  title: 日死淘率/成活率/目标湿度(%)边界0与100可接受，超过100拦截或纠正
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 将日死淘率/成活率/目标湿度(%)分别试填0与100后保存明细
+    expected: 0与100可接受并保存成功
+  - action: 再试填超过100的值后保存
+    expected: 拦截或纠正为合法范围，不脏写非法值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-65
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48666
+  auto: auto
+- id: TC-007-66
+  tp_id: TP-007-66
+  title: 明细全0或空列可「保存明细」成功
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开目标明细，将可编辑列清为空或填0后点「保存明细」
+    expected: 保存成功，无必填拦截（日龄除外）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-66
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48667
+  auto: auto
+- id: TC-007-67
+  tp_id: TP-007-67
+  title: 禁止增删行使行数偏离43
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 打开目标明细，尝试增加或删除行
+    expected: 无有效增删行使行数偏离43；行数保持43
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-67
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48668
+  auto: auto
+- id: TC-007-68
+  tp_id: TP-007-68
+  title: 目标温度/湿度/风冷/湿热可录入并保存
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 修改目标温度、目标湿度、风冷系数、湿热系数后点「保存明细」
+    expected: 保存成功；重开后四字段为刚保存值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-68
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48669
+  auto: auto
+- id: TC-007-69
+  tp_id: TP-007-69
+  title: 弹窗按钮含导出/Excel导入/取消/保存明细
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 点击行内「目标明细」打开弹窗，查看底部/工具区按钮（含导出）
+    expected: 可见「导出」「Excel导入」「取消」「保存明细」四个按钮
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-69
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48670
+  auto: 'no'
+- id: TC-007-70
+  tp_id: TP-007-70
+  title: 修改后「保存明细」→ 重开数据仍在
+  type: feature
+  priority: P1
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准
+  steps:
+  - action: 修改若干明细单元格后点「保存明细」，关闭后再打开同一标准目标明细
+    expected: 修改后的值仍在
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-70
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48671
+  auto: auto
+- id: TC-007-71
+  tp_id: TP-007-71
+  title: 未保存点「取消」→ 重开不保留修改
+  type: feature
+  priority: P2
+  feature: 目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 列表存在标准，记下某单元格原值
+  steps:
+  - action: 修改该单元格后点「取消」关闭，再打开目标明细
+    expected: 该单元格仍为修改前的值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-71
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48672
+  auto: auto
+- id: TC-007-72
+  tp_id: TP-007-72
+  title: 点「Excel导入」→ 打开「导入目标明细」
+  type: feature
+  priority: P1
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 点击「Excel导入」
+    expected: 打开「导入目标明细」向导
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-72
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48673
+  auto: auto
+- id: TC-007-73
+  tp_id: TP-007-73
+  title: 步骤1含下载模板与字段说明（日龄必填=是，其余否）
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 点击「Excel导入」进入步骤1
+    expected: 可见下载模板入口；字段说明含日龄必填=是，其余字段必填=否
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-73
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48674
+  auto: 'no'
+- id: TC-007-74
+  tp_id: TP-007-74
+  title: 模板字段说明的列依次为：字段名、显示名、类型、必填、备注，字段名、显示名、类型、备注与原型一致
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 点击「Excel导入」进入步骤1，查看字段说明表表头从左到右
+    expected: 列依次为：字段名、显示名、类型、必填、备注，字段名、显示名、类型、备注与原型一致
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-74
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48675
+  auto: 'no'
+- id: TC-007-75
+  tp_id: TP-007-75
+  title: 下载模板sheet名为「目标明细」且表头17列含单位与顺序正确
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 点击「下载模板」并打开文件
+    expected: sheet名为「目标明细」；表头17列含单位且顺序正确
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-75
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48676
+  auto: auto
+- id: TC-007-76
+  tp_id: TP-007-76
+  title: 下载模板可含样例行且不强制满43行
+  type: feature
+  priority: P3
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 下载模板并查看数据行
+    expected: 可含样例行；不强制已满43行
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-76
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48677
+  auto: 'no'
+- id: TC-007-77
+  tp_id: TP-007-77
+  title: 「下载模板」成功获得可打开文件
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 点击「下载模板」
+    expected: 成功获得可本地打开的 Excel 文件
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-77
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48678
+  auto: auto
+- id: TC-007-78
+  tp_id: TP-007-78
+  title: 「下一步」进入上传步；提示仅xlsx/xls；可「上一步」返回
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 在步骤1点「下一步」
+    expected: 进入上传步；提示仅支持xlsx/xls
+  - action: 点击「上一步」
+    expected: 返回步骤1
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-78
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48679
+  auto: auto
+- id: TC-007-79
+  tp_id: TP-007-79
+  title: 合法43行Excel导入成功 → 明细回写一致
+  type: feature
+  priority: P1
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传合法的43行（日龄0–42）目标明细Excel并完成导入
+    expected: 导入成功；明细回写与文件一致
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-79
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48680
+  auto: auto
+- id: TC-007-80
+  tp_id: TP-007-80
+  title: 日龄大于42/负数/非数字 → 导入失败并提示
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 分别准备含日龄>42、负数、非数字的文件并上传导入
+    expected: 导入失败并有明确提示
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-80
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48681
+  auto: auto
+- id: TC-007-81
+  tp_id: TP-007-81
+  title: 日龄重复 → 导入失败并提示
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传含重复日龄的文件
+    expected: 导入失败并提示日龄重复
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-81
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48682
+  auto: auto
+- id: TC-007-82
+  tp_id: TP-007-82
+  title: 缺行 → 按日龄导入对应行，缺少的行保留原本数据
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  - 明细中已有部分日龄行非空值，记下未出现在文件中的日龄原值
+  steps:
+  - action: 上传仅含部分日龄行的文件并导入
+    expected: 文件中日龄行被更新；缺少的日龄行保留导入前原值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-82
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48683
+  auto: auto
+- id: TC-007-83
+  tp_id: TP-007-83
+  title: 多行 → 失败
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传行数超过允许（如>43或多余日龄行）的文件
+    expected: 导入失败并提示
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-83
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48684
+  auto: auto
+- id: TC-007-84
+  tp_id: TP-007-84
+  title: 缺列 → 导入对应列，缺少的列保留原本数据
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  - 记下将被缺失列对应的原单元格值
+  steps:
+  - action: 上传缺少部分数据列但含日龄的文件并导入
+    expected: 已有列回写成功；缺少的列保留导入前原值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-84
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48685
+  auto: auto
+- id: TC-007-85
+  tp_id: TP-007-85
+  title: 错误sheet → 正常导入第一个sheet，不校验sheet名称
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传第一个sheet数据合法但sheet名不是「目标明细」的文件
+    expected: 仍导入第一个sheet成功，不因sheet名失败
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-85
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48686
+  auto: auto
+- id: TC-007-86
+  tp_id: TP-007-86
+  title: 多sheet且含合法「目标明细」→ 始终读第一个sheet
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传多sheet文件：第一个sheet为待导入数据，后续sheet名为「目标明细」且内容不同
+    expected: 导入结果等于第一个sheet内容
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-86
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48687
+  auto: auto
+- id: TC-007-87
+  tp_id: TP-007-87
+  title: 仅填日龄其余空 → 允许成功（非日龄非必填）
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传仅填日龄、其余列为空的合法文件
+    expected: 允许导入成功
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-87
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48688
+  auto: auto
+- id: TC-007-88
+  tp_id: TP-007-88
+  title: 某行日龄空 → 导入失败
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传存在日龄为空的数据行文件
+    expected: 导入失败
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-88
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48689
+  auto: auto
+- id: TC-007-89
+  tp_id: TP-007-89
+  title: 纯数字小数/数值0可导入回写；带%文本失败或自动去掉%
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传含纯数字/0的文件
+    expected: 可导入回写
+  - action: 再上传同列带%文本的文件
+    expected: 导入失败或自动去掉%后回写（行为稳定可复现）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-89
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48690
+  auto: auto
+- id: TC-007-90
+  tp_id: TP-007-90
+  title: 未改动的下载模板（仅样例少行）→ 与缺行规则一致
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  - 明细中部分日龄行已有非空值，记下未出现在模板样例中的日龄原值
+  steps:
+  - action: 下载模板后不改动，直接上传该样例少行文件并完成导入
+    expected: 与缺行规则一致：模板中有的日龄行被更新，其余日龄行保留导入前原值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-90
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48691
+  auto: auto
+- id: TC-007-91
+  tp_id: TP-007-91
+  title: 导入成功后「保存明细」→ 持久化；未保存关闭行为可观察
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 导入成功后点击「保存明细」，关闭再打开
+    expected: 导入值已持久化
+  - action: 另测：导入成功后不点保存明细直接关闭再打开
+    expected: 可核对是否回退为导入前（行为可观察）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-91
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48692
+  auto: auto
+- id: TC-007-92
+  tp_id: TP-007-92
+  title: 再次导入合法全表 → 覆盖
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 先后导入两份不同的合法全表
+    expected: 第二次导入后明细等于第二份文件内容（覆盖）
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-92
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48693
+  auto: auto
+- id: TC-007-93
+  tp_id: TP-007-93
+  title: 上传非xls/xlsx → 拒绝或格式错误提示
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 在上传步选择非xls/xlsx文件
+    expected: 拒绝上传或提示格式错误
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-93
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48694
+  auto: auto
+- id: TC-007-94
+  tp_id: TP-007-94
+  title: 导入含多余未知列 → 忽略未知列
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传在合法列之外增加未知列的文件
+    expected: 已知列导入成功；未知列被忽略且不导致失败
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-94
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48695
+  auto: auto
+- id: TC-007-95
+  tp_id: TP-007-95
+  title: 列名齐全但顺序打乱 → 按列名成功
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传列名齐全但列顺序打乱的文件
+    expected: 按列名映射导入成功
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-95
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48696
+  auto: auto
+- id: TC-007-96
+  tp_id: TP-007-96
+  title: 表头用dayAge等英文名 → 失败
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传表头为dayAge等英文名的文件
+    expected: 导入失败
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-96
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48697
+  auto: auto
+- id: TC-007-97
+  tp_id: TP-007-97
+  title: Excel同时含超范围日龄与非数字 → 导入失败不部分脏写
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传同时含超范围日龄与非数字的文件
+    expected: 整单导入失败，不部分脏写
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-97
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48698
+  auto: auto
+- id: TC-007-98
+  tp_id: TP-007-98
+  title: 结果步显示成功导入的数量和总记录数量
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 完成一次导入进入结果步
+    expected: 结果页显示成功导入数量与总记录数量
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-98
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48699
+  auto: auto
+- id: TC-007-99
+  tp_id: TP-007-99
+  title: 结果步含重新导入/完成
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 进入导入结果步
+    expected: 可见「重新导入」「完成」按钮
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-99
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48700
+  auto: auto
+- id: TC-007-100
+  tp_id: TP-007-100
+  title: 结果步点完成按钮回到目标明细
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 在结果步点击「完成」
+    expected: 关闭向导并回到目标明细弹窗
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-100
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48701
+  auto: auto
+- id: TC-007-101
+  tp_id: TP-007-101
+  title: 结果步点重新导入按钮回到步骤1，之前的导入记录不保存
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 导入成功进入结果步后点「重新导入」（且未先点保存明细）
+    expected: 回到步骤1；目标明细未持久化本次导入
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-101
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48702
+  auto: auto
+- id: TC-007-102
+  tp_id: TP-007-102
+  title: 导入中有失败数据，允许部分导入成功数据，失败的数据被拦截
+  type: feature
+  priority: P2
+  feature: 导入目标明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传部分行合法、部分行非法的文件并导入
+    expected: 合法行回写成功；非法行被拦截，对应行不脏写
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-102
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48703
+  auto: auto
+- id: TC-007-103
+  tp_id: TP-007-103
+  title: 目标明细内点「导出」→ 触发下载
+  type: feature
+  priority: P1
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 点击目标明细内「导出」
+    expected: 触发文件下载
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-103
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48704
+  auto: auto
+- id: TC-007-104
+  tp_id: TP-007-104
+  title: 导出文件名为完整「{标准名称}.xlsx」
+  type: feature
+  priority: P1
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开标准名称已知的标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 点击「导出」并查看下载文件名
+    expected: 文件名为完整「{标准名称}.xlsx」
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-104
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48705
+  auto: auto
+- id: TC-007-105
+  tp_id: TP-007-105
+  title: 导出sheet名为「目标明细」且表头17列与导入模板同构
+  type: feature
+  priority: P1
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 导出并打开文件
+    expected: sheet名为「目标明细」；表头17列与导入模板同构
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-105
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48706
+  auto: auto
+- id: TC-007-106
+  tp_id: TP-007-106
+  title: 导出数据为43行日龄0–42
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 导出并打开文件
+    expected: 数据为43行，日龄覆盖0–42
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-106
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48707
+  auto: auto
+- id: TC-007-107
+  tp_id: TP-007-107
+  title: 导出内容为已保存数据：修改未点保存明细再导出 → 不含未保存修改
+  type: feature
+  priority: P1
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  - 记下某单元格已保存值
+  steps:
+  - action: 修改该单元格但不点「保存明细」，直接点「导出」并打开文件
+    expected: 文件中该单元格仍为已保存旧值，不含未保存修改
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-107
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48708
+  auto: auto
+- id: TC-007-108
+  tp_id: TP-007-108
+  title: 保存明细后再导出 → 文件含最新已保存值
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 修改明细并点「保存明细」，再点「导出」打开文件
+    expected: 文件含刚保存的最新值
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-108
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48709
+  auto: auto
+- id: TC-007-109
+  tp_id: TP-007-109
+  title: 列表页无「导出」入口
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  steps:
+  - action: 在养殖标准列表页（未打开目标明细）查看工具栏是否存在「导出」
+    expected: 列表工具栏无「导出」入口
+  - action: 打开任一行「目标明细」查看是否存在「导出」
+    expected: 目标明细弹窗内可见「导出」按钮
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-109
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48710
+  auto: auto
+- id: TC-007-110
+  tp_id: TP-007-110
+  title: 导出不改变弹窗内明细数据
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 记下弹窗内某单元格值后点「导出」
+    expected: 下载完成后弹窗内该值不变
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-110
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48711
+  auto: auto
+- id: TC-007-111
+  tp_id: TP-007-111
+  title: 空/全0已保存明细仍可导出成功
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 存在已保存为空或全0的目标明细标准
+  steps:
+  - action: 打开其目标明细并点「导出」
+    expected: 导出成功可得到文件
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-111
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48712
+  auto: auto
+- id: TC-007-112
+  tp_id: TP-007-112
+  title: 导出文件数值与弹窗已保存明细一致（对账抽样）
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 导出文件后抽样对比若干单元格与弹窗已保存值
+    expected: 抽样单元格与弹窗已保存明细一致
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-112
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48713
+  auto: auto
+- id: TC-007-113
+  tp_id: TP-007-113
+  title: 连续两次导出均可成功且不报错
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗，且明细已有已保存数据
+  steps:
+  - action: 连续点击两次「导出」
+    expected: 两次均可成功下载且不报错
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  trace:
+    story: null
+    req: REQ-007
+    tp: TP-007-113
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-007.yaml
+  zentao_case_id: 48714
+  auto: auto
+- id: TC-007-114
+  tp_id: null
+  feature: null
+  title: 上传行的日龄不按顺序排列 → 导入成功，按日龄导入对应行
+  type: auto
+  priority: P3
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「养殖标准」页面（/biopark-poultry/basic/target）
+  - 已打开某标准的「目标明细」弹窗
+  steps:
+  - action: 上传行的日龄乱序，不是按日龄从小到大排列
+    expected: 导入成功，弹窗中日龄从小到大排列，按日龄导入对应行
+  trace:
+    story: null
+    req: REQ-007
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48863
+  test_data:
+    page_url: /biopark-poultry/basic/target
+    data_prefix: AUTO测试_勿用_
+    module: 养殖标准
+    zentao_module_id: 656
+  auto: auto
+  zentao_case_id: 48863

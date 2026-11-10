@@ -1,0 +1,37 @@
+
+id: REQ-016
+title: 栋舍排程视图
+parent_req: REQ-000
+module_path: 排程看板 / 栋舍排程视图
+zentao_module_id: 719
+page_url: /biopark-poultry/schedule/barn-schedule-board
+analysis_status: analyzed_with_live_dom_readback
+source_precedence: [PRD, 待澄清项确认清单, REQ-基础数据_page_recon, 需求变动, 栋舍分配最小缓冲与推荐得分逻辑说明, 各段转进转出释放日期计算, 排程计算.xlsx]
+scope:
+  in: [栋舍排程明细表, 栋舍排程甘特视图, 月度热力日历, 年/月筛选, 图例, 共N栋, 空态]
+  out: [排程新增/编辑, 栋舍策略配置, 智能推荐得分入口, 图表直接编辑]
+requirements:
+  data_source: REQ-004/REQ-005栋舍占用与分段日期，结合REQ-015栋舍档案
+  roles: [园区总经理, 智控中心小组成员, 养殖区负责人]
+  filters: 年、月；默认与制定排程计划月份一致
+  count: 当月明细无数据时共0栋；有明细时计数与行数据一致；甘特/热力可跨月有其他月份数据
+  legend: [1段, 2段, 3段, 消杀]
+  detail_table: [栋舍, 状态, 1段补栏/转出/释放日期, 2段转进/转出/释放日期, 3段转进/转出/释放日期]
+  gantt: 查询月前后一个月；栋舍/段纵轴；月份刻度/今日线横轴；缩小/标准/放大；展示养殖/消杀/间隔天数
+  heatmap: 上月/当月/下月；栋舍·段纵轴；1~31日横轴；tooltip含栋号、段次、日期
+  date_baseline:
+    - 1段转进=补栏日；1段转出=补栏日+1段养殖天数-1；1段释放=补栏日+1段养殖天数+1段空栏天数-1
+    - 2段转进=1段转出；2段转出=补栏日+1段养殖天数+2段养殖天数-1；2段释放=补栏日+1段养殖天数+2段养殖天数+2段空栏天数-1
+    - 3段转进=2段转出；3段转出/出栏=补栏日+1段养殖天数+2段养殖天数+3段养殖天数-1；3段释放再加3段空栏天数
+    - 同一栋舍下一批计划按最新排程计算.xlsx的释放日次日可转进说明处理
+page_contract:
+  navigation: 门户 -> 产业链生产排程系统 -> 排程看板 -> 栋舍排程视图
+  default_tab: 明细表格
+  tabs: [明细表格, 甘特视图, 月度热力日历]
+  close: 右上角关闭；无底部操作栏
+interfaces: [REQ-004栋舍占用, REQ-005下推, REQ-010栋舍补栏看板, REQ-015栋舍管理]
+dependencies: [REQ-003, REQ-004, REQ-005, REQ-010, REQ-015]
+risks: [日期基线偏移, 当月空态与跨月数据并存造成误判, 31日/时区边界, 大量栋舍缩放和tooltip性能]
+open_questions: [共N栋完整口径, 释放/转运/空栏条块边界, tooltip/空态字段, 新增REQ-016的产品/禅道验收边界]
+prototype_evidence: {source_record: 模块拆分清单、需求变动、REQ-004既有原型分析, portal_entry: verified, submenu_dom_readback: verified, route: /biopark-poultry/schedule/barn-schedule-board, title: 栋舍排程视图, observed_filters: [养殖年份, 养殖月份], observed_tabs: [明细表格, 甘特视图, 月度热力日历], observed_detail_headers: [栋舍, 状态, 1段育雏, 2段育成, 3段育肥, 补栏日期, 转出日期, 释放日期, 转进日期], observed_gantt_controls: [缩小, 标准, 放大], observed_heatmap_months: [2026-06, 2026-07, 2026-08], observed_rows: 栋舍·段, observation_time: 2026-08-27}
+trace: {upstream: [REQ-003, REQ-004, REQ-005, REQ-015], related: [REQ-010], downstream: [REQ-011]}

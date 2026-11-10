@@ -1,0 +1,386 @@
+﻿用例编号,所属模块,用例函数名称,标题,前置条件,预期,步骤,结果,错误原因,截图路径
+TC-002-01,目标制定,test_tc_002_01,查询条件包含「年度」「状态」字段,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）",页面顶部查询区可见筛选项：年度、状态两个筛选项,1. 查看页面顶部查询区域,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-04,目标制定,test_tc_002_04,仅选年度后点击「查询」，列表按年度过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在可按「年度」区分的测试数据","仅「年度」有值
+列表仅展示符合该「年度」条件的记录","1. 在查询区仅设置「年度」，其余条件留空
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-05,目标制定,test_tc_002_05,仅选状态后点击「查询」，列表按状态过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在可按「状态」区分的测试数据","仅「状态」有值
+列表仅展示符合该「状态」条件的记录","1. 在查询区仅设置「状态」，其余条件留空
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-06,目标制定,test_tc_002_06,选择年度+状态后点击「查询」，列表按组合条件过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表存在可组合区分的测试数据","各筛选项均已设置
+列表仅显示同时满足全部条件的记录","1. 同时设置多个查询条件
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-08,目标制定,test_tc_002_08,点击「重置」，年度/状态恢复默认并刷新列表,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","列表按条件过滤
+点击「重置」后筛选项回到默认，列表按默认条件重新加载","1. 设置非默认的年度与状态后点击「查询」
+2. 点击「重置」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-12,目标制定,test_tc_002_12,点击「新增目标」打开弹窗，标题为「新增年度目标」,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）",弹窗顶部文案为「新增年度目标」,1. 点击「新增目标」按钮,blocked,handler 模块不可导入：tests.case_handlers:test_tc_002_12；未启动浏览器。,
+TC-002-20,目标制定,test_tc_002_20,点击「按月度平均分配」，12个月份均分且合计=年度宰杀量,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","字段填写成功
+执行均分后：年度宰杀量均分到1~12月，末月补差，合计等于年度宰杀量","1. 打开新增弹窗，选择未占用目标年度，输入年度宰杀量 120
+2. 点击「按月度平均分配」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-27,目标制定,test_tc_002_27,点击「暂存」保存目标，状态=暂存且不提交审核,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中已存在状态为「暂存」的记录","必填项齐全且合计相等
+点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」","1. 打开新增弹窗，选择未占用年度，填写年度宰杀量并均分
+2. 点击「暂存」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-28,目标制定,test_tc_002_28,点击「保存并提交审核」，状态变为待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","必填项齐全且合计相等
+新增弹窗保存并提交后状态显示为「待审核」","1. 打开新增弹窗，选择未占用年度，填写并均分
+2. 点击「保存并提交审核」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-75,目标制定,test_tc_002_75,暂存行点击「提交」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中已存在状态为「暂存」的记录",弹出提交确认框，文案表达将目标提交审核的意图（不强校验逐字）,1. 在暂存行点击「提交」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-77,目标制定,test_tc_002_77,提交确认框点击确定，提示成功且状态变待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在应为「待审核」的记录记录",状态显示为「待审核」,1. 定位该行查看状态列,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-84,目标制定,test_tc_002_84,点击「驳回」弹出驳回确认框，填写原因并确认后状态变驳回,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","弹出驳回确认框
+驳回成功，记录状态变为「驳回」","1. 打开审核弹窗，点击「驳回」
+2. 在驳回确认框填写原因后点击确认",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-85,目标制定,test_tc_002_85,驳回原因为空被阻断；填写后列表驳回原因列展示,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","确认被阻断，状态仍为待审核
+驳回成功
+展示所填驳回原因","1. 打开审核弹窗→点击驳回→驳回确认框留空原因点确认
+2. 填写有效原因后再次确认驳回
+3. 查看列表「驳回原因」列",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-86,目标制定,test_tc_002_86,点击「审核通过」直接成功，无二次确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）",无二次确认弹窗，直接提示成功且状态变为「审核通过」,1. 打开审核弹窗，点击「审核通过」或「通过」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-87,目标制定,test_tc_002_87,审核通过后记录审核人、审核时间,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","状态=审核通过
+通过后落库：写入审核人员与审核时间","1. 完成审核通过操作
+2. 查看列表审核人员与审核时间",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-88,目标制定,test_tc_002_88,点击「删除」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）",弹出删除确认框，文案表达删除意图即可（如是否删除所选中数据）,1. 在可删除行点击「删除」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-002-90,目标制定,test_tc_002_90,删除确认框点击确定，提示成功且记录从列表消失,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在可删除的记录/单据测试数据",提示删除成功，记录从列表消失,1. 在删除确认框点击「确定」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-06,分段养殖模版,test_tc_003_06,仅输入模版名称后点击「查询」，列表按名称过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）","模版名称筛选项已填入关键字
+其余筛选项未参与过滤
+列表仅展示模版名称匹配该关键字的记录","1. 在查询区「模版名称」输入已知模版名称关键字
+2. 确认「品种」「补栏月份」「状态」为空或未选
+3. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-07,分段养殖模版,test_tc_003_07,仅选品种后点击「查询」，列表按品种过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）","品种筛选项已选中
+仅品种参与过滤
+列表仅展示该品种的模版记录","1. 在查询区「品种」下拉选择某一已知品种
+2. 确认其他筛选项为空
+3. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-08,分段养殖模版,test_tc_003_08,仅选补栏月份后点击「查询」，列表按补栏月份过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）","补栏月份筛选项已选中
+仅补栏月份参与过滤
+列表仅展示该补栏月份的模版记录","1. 在查询区「补栏月份」下拉选择某一月份（如3）
+2. 确认其他筛选项为空
+3. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-09,分段养殖模版,test_tc_003_09,仅选状态后点击「查询」，列表按状态过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）","状态筛选项为审核通过
+仅状态参与过滤
+列表仅展示状态为「审核通过」的模版记录","1. 在查询区「状态」下拉选择「审核通过」
+2. 确认其他筛选项为空
+3. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-10,分段养殖模版,test_tc_003_10,选择多条件后点击「查询」，列表按组合条件过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）","多个筛选项均已设置
+列表仅展示同时满足全部已设条件的记录","1. 同时设置「模版名称」关键字、「品种」、「补栏月份」、「状态」
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-12,分段养殖模版,test_tc_003_12,点击「重置」，查询条件恢复默认并刷新列表,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）","列表按条件过滤
+点击「重置」后各筛选项恢复默认值，列表重新加载","1. 设置查询条件后点击「查询」
+2. 点击「重置」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-31,分段养殖模版,test_tc_003_31,点击快速分配弹窗的确认按钮，快速分配成功且日龄采食起止自动回填,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 准备可填写的品种、补栏月份及日龄采食计划测试数据","快速分配弹窗关闭，主表回填养殖/空栏天数
+起=1，止=1段养殖天数-1
+起=1段养殖天数，止=1段养殖天数+2段养殖天数-1
+起=1段养殖天数+2段养殖天数，止=1段养殖天数+2段养殖天数+3段养殖天数-1","1. 点击「新增」后点击「快速分配」，填写合法整批与各段养殖/空栏天数后点击「确认」
+2. 查看1段默认生成的日龄采食计划
+3. 查看2段默认生成的日龄采食计划
+4. 查看3段默认生成的日龄采食计划",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-62,分段养殖模版,test_tc_003_62,点击「保存」，模版状态=暂存且不提交审核,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 准备可填写的品种、补栏月份及日龄采食计划测试数据","打开新增模版弹窗
+提示保存成功，列表新增/更新该模版且状态为「暂存」，未进入待审核","1. 点击「新增」按钮
+2. 填写完整合法数据（含快速分配、各段至少一方案、占比100%）后点击「保存」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-63,分段养殖模版,test_tc_003_63,点击「提交」，模版状态变为待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 准备可填写的品种、补栏月份及日龄采食计划测试数据","打开新增模版弹窗
+提示提交成功，列表中该模版状态为「待审核」","1. 点击「新增」按钮
+2. 填写完整合法数据后点击「提交」，并在确认框点「确定」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-131,分段养殖模版,test_tc_003_131,暂存行点击「提交」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中存在状态为「暂存」且可提交的记录",弹出提交确认框（含确定/取消）,1. 点击暂存行「提交」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-133,分段养殖模版,test_tc_003_133,提交确认框点击确定，提示成功且状态变待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中存在状态为「暂存」且可提交的记录","弹出提交确认框
+提示提交成功，记录状态变为「待审核」","1. 点击暂存行「提交」
+2. 点击确认框「确定」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-137,分段养殖模版,test_tc_003_137,点击「驳回」弹出驳回确认框，包含原因输入框，点击确认按钮后状态变驳回,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 存在待审核记录，当前账号为审核人","初始审核弹窗不展示原因输入框
+弹出驳回确认框，包含原因输入框
+记录状态变为「驳回」","1. 在待审核行点击「审核」打开弹窗
+2. 点击「驳回」
+3. 在驳回确认框填写原因后点击确认",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-139,分段养殖模版,test_tc_003_139,驳回后列表驳回原因列展示所填内容,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 存在待审核记录，当前账号为审核人
+4. 已执行驳回并填写过原因",展示审核人填写的驳回原因内容,1. 查看列表「驳回原因」列,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-140,分段养殖模版,test_tc_003_140,点击「审核通过」二次确认框后成功,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 存在待审核记录，当前账号为审核人",显示二次确认弹窗，点击确定按钮后变审核通过,1. 打开审核弹窗，点击「审核通过」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-141,分段养殖模版,test_tc_003_141,审核通过后记录审核人、审核时间,"1. 使用审核员账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）","弹出确认框（含确定/取消）
+审核通过，列表记录审核操作人和审核通过的时间","1. 点击审批按钮打开弹窗，点击“通过”按钮
+2. 确认框点击“确定”",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-142,分段养殖模版,test_tc_003_142,审核通过后不可编辑、不可删除、不可再次提交,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中已存在状态为「审核通过」的模版","无「编辑」「删除」「提交」按钮，有「查看」「复制」
+弹窗字段只读，无法修改保存","1. 查看审核通过行操作列
+2. 点击「查看」打开查看弹窗",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-143,分段养殖模版,test_tc_003_143,点击「删除」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中存在可删除的记录/单据测试数据","弹出删除确认框（含确定/取消）
+提示删除成功，该记录从列表消失","1. 点击目标行操作列「删除」
+2. 在确认框点击「确定」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-145,分段养殖模版,test_tc_003_145,删除确认框点击确定，提示成功且记录从列表消失,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）","弹出删除确认框（含确定/取消）
+删除成功，列表不再显示该记录","1. 在列表找到目标状态行，点击操作列「删除」
+2. 在确认框点击「确定」",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-04,制定排程,test_tc_004_04,仅选计划月份后点击「查询」，列表按月份过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 列表中已存在不同计划月份的日计划数据（便于对照）","计划月份条件已选中
+列表中仅出现满足「所选月份的排程记录」条件的行，其余行不出现","1. 在查询区仅选择一个「计划月份」，其他条件留空
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-05,制定排程,test_tc_004_05,仅选计划状态后点击「查询」，列表按状态过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 列表中已存在不同计划状态的日计划数据","计划状态条件已选中
+列表中仅出现满足「所选状态的排程记录」条件的行，其余行不出现","1. 在查询区仅选择一个「计划状态」，其他条件留空
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-06,制定排程,test_tc_004_06,仅选宰杀线后点击「查询」，列表按宰杀线过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 列表中已存在不同宰杀线的日计划数据","宰杀线条件已选中
+列表区域：列表仅展示所选宰杀线的排程记录","1. 在查询区仅选择一个「宰杀线」，其他条件留空
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-07,制定排程,test_tc_004_07,选择多条件后点击「查询」，列表按组合条件过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 列表中已存在可组合过滤的排程数据","三个查询条件均已设置
+列表区域：列表按计划月份/状态/宰杀线组合条件正确过滤","1. 在查询区同时选择「计划月份」「计划状态」「宰杀线」
+2. 点击「查询」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-09,制定排程,test_tc_004_09,点击「重置」，查询条件恢复默认并刷新列表,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）","列表已按条件过滤展示
+列表区域：各查询条件恢复默认，列表重新加载","1. 在查询区设置计划月份、计划状态、宰杀线后点击「查询」
+2. 点击查询区「重置」按钮",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-51,制定排程,test_tc_004_51,选择品种并引用对应「分段养殖模版」后自动带出养殖天数/空栏天数/三段标准,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/create）","待排日期下有一条未保存的默认宰杀排程
+打开选择养殖模版弹窗
+带出的成活率/空栏天数/三段标准与养殖模板数据一致","1. 点击“制定月度排程”按钮进入页面，选择一个待排日期。
+2. 点击日计划编辑-上苗信息-养殖品种模版的输入框区域
+3. 弹窗中选择一个模版，点击确定",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-55,制定排程,test_tc_004_55,「补栏量(万羽)」=宰杀量/成活率，精确到只,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写","数值已记录
+页面展示：补栏量按宰杀量/成活率计算且精确到只","1. 记录宰杀量与成活率数值
+2. 查看「补栏量(万羽)」计算结果",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-57,制定排程,test_tc_004_57,「补栏日期」=宰杀日期-总养殖天数+1,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写","数值已记录
+页面展示：补栏日期=宰杀日期-总养殖总天数+1","1. 记录宰杀日期与模版养殖总天数
+2. 查看「补栏日期」计算结果",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-69,制定排程,test_tc_004_69,「上孵数量(万枚)」=补栏量/孵化率/健雏率，精确到只,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写","数值已记录
+页面展示：上孵数量按补栏量/孵化率/健雏率计算且精确到只","1. 记录补栏量、孵化率、健雏率
+2. 查看「上孵数量(万枚)」计算结果",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-77,制定排程,test_tc_004_77,保存时按宰杀线生成排程编号 JH-YYYYMMDD-流水(01~99),"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写","各宰杀线生成排程编号
+操作完成后：保存时按宰杀线生成排程编号 JH-YYYYMMDD-流水(01~99)","1. 点击「保存当日计划」
+2. 查看生成的排程编号格式",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-81,制定排程,test_tc_004_81,点击「保存当日计划」，当日排程状态=暂存,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写",操作完成后：保存当日后记录状态=暂存,1. 点击「保存当日计划」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-144,制定排程,test_tc_004_144,编辑页点击「保存并提交」，日计划提交成功，进入审核，日计划状态变成「待审核」,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已从列表点击「编辑」进入编辑页（暂存或驳回记录）",操作完成后：保存并提交后日计划状态变待审核,1. 修改后点击「保存并提交」并在确认框确认,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-148,制定排程,test_tc_004_148,制定页点击「提交月度审核」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已进入制定排程设置页，当月存在可提交的暂存计划",弹出提交确认框（含确定/取消）,1. 在制定页点击「提交月度审核」按钮,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-150,制定排程,test_tc_004_150,提交月度审核确认后当月的暂存计划状态变待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已进入制定排程设置页，当月存在暂存日计划",操作完成后：确认后当月暂存记录变待审核,1. 点击「提交月度审核」并在确认框点击「确定」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-160,制定排程,test_tc_004_160,点击「删除」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 列表中已存在状态为「暂存」的日计划",弹出删除确认框（含确定/取消）,1. 在制定排程列表表格中点击某一暂存计划操作列的「删除」按钮,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-162,制定排程,test_tc_004_162,删除确认框点击确定，该宰杀线排程从列表消失,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已对暂存日计划点击「删除」并弹出确认框",列表区域：确定后该宰杀线记录从列表删除,1. 在删除确认框中点击「确定」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-01,宰杀线管理,test_tc_014_01,查询条件包含「宰杀线编码」「宰杀线名称」「状态」字段,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",页面顶部查询区可见筛选项：宰杀线编码、宰杀线名称、状态三个筛选项,1. 查看页面查询区域,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-02,宰杀线管理,test_tc_014_02,状态下拉选项为启用、停用,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",打开「状态」下拉，选项列表仅为启用、停用两种选项,1. 点击「状态」下拉或查看筛选项,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-03,宰杀线管理,test_tc_014_03,填写宰杀线编码+名称+状态后点击「查询」，列表按AND条件过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表中已有测试数据",列表结果与所设条件一致,1. 在查询区填写本条涉及的筛选项后点击「查询」,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-04,宰杀线管理,test_tc_014_04,点击「查询」按钮才触发查询,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表中已有数据","列表不随输入自动变成新条件结果
+列表按当前条件刷新","1. 修改筛选项但不点「查询」
+2. 点击「查询」按钮",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-05,宰杀线管理,test_tc_014_05,点击「重置」，查询条件清空并刷新列表,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","列表按条件过滤
+点击「重置」后筛选项回到默认，列表按默认条件重新加载","1. 设置查询条件后点击「查询」
+2. 点击「重置」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-06,宰杀线管理,test_tc_014_06,点击「新增」打开新增弹窗,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","打开新增弹窗/表单
+关键字段齐全且可编辑性符合页面设计（对照标题字段）","1. 点击「新增」按钮
+2. 查看表单字段",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-07,宰杀线管理,test_tc_014_07,新增弹窗宰杀线编码系统自动预填且可修改,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","新增弹窗打开
+「宰杀线编码」已由系统预填且可手工修改","1. 点击「新增」打开新增弹窗
+2. 查看「宰杀线编码」字段值并尝试修改",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-08,宰杀线管理,test_tc_014_08,新增留空宰杀线名称点确定，提示「宰杀线名称不能为空」,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","新增弹窗打开
+保存被阻断，页面提示「宰杀线名称不能为空」","1. 点击「新增」打开新增弹窗
+2. 不填写「宰杀线名称」（保持为空），点击「确定」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-09,宰杀线管理,test_tc_014_09,填写宰杀线名称等必填项点确定，新增保存成功,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 准备宰杀线测试数据",提示保存成功，弹窗关闭，表格中可见新增的宰杀线编码,1. 点击「新增」打开表单，将「必填项」填写后点击保存,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-10,宰杀线管理,test_tc_014_10,新增点「取消」，弹窗关闭且不保存,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","新增弹窗打开且字段有输入
+弹窗关闭，列表未新增对应记录","1. 点击「新增」打开新增弹窗并填写部分字段
+2. 点击「取消」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-11,宰杀线管理,test_tc_014_11,新增单日产能(万只)留空，保存成功,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",保存成功，列表新增记录且单日产能按空/默认规则展示,1. 点击「新增」打开弹窗，填写宰杀线名称，单日产能(万只)留空，点击「确定」,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-12,宰杀线管理,test_tc_014_12,新增单日产能(万只)输入0，保存后列表展示0,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表中至少有一条宰杀线数据",表头包含核心列：宰杀线编码、宰杀线名称、单日产能(万只)、排序、状态，字段齐全且顺序符合需求/原型,1. 查看列表表头,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-13,宰杀线管理,test_tc_014_13,新增单日产能(万只)输入正数112.0000，列表展示一致,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","打开新增弹窗
+保存成功，列表「单日产能(万只)」显示与录入一致（112.0000）","1. 点击「新增」
+2. 填写宰杀线名称，单日产能(万只)输入 112.0000，点击「确定」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-14,宰杀线管理,test_tc_014_14,新增排序留空，保存成功,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",保存成功，列表新增记录,1. 点击「新增」，填写宰杀线名称，排序留空，点击「确定」,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-15,宰杀线管理,test_tc_014_15,新增排序输入0，保存后列表展示0,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","打开新增弹窗
+排序输入框显示 0
+保存成功，列表中新增行的「排序」列显示为 0","1. 点击「新增」按钮
+2. 在「排序」输入框输入 0
+3. 填写必填的宰杀线名称后点击「确定」保存",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-16,宰杀线管理,test_tc_014_16,新增排序输入正整数1，列表展示一致,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","打开新增弹窗
+保存成功，列表该行「排序」显示为 1","1. 点击「新增」
+2. 填写宰杀线名称，排序输入 1，点击「确定」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-17,宰杀线管理,test_tc_014_17,新增将宰杀线编码改为库中已存在编码点「确定」，触发唯一性拦截,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 库中已存在一条宰杀线记录（记下其宰杀线编码）","新增弹窗打开
+保存被拦截并提示唯一性冲突（或同等错误提示），列表未新增重复编码","1. 点击「新增」打开新增弹窗
+2. 将「宰杀线编码」改为库中已存在的值，填写其余必填项后点击「确定」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-18,宰杀线管理,test_tc_014_18,新增宰杀线名称填库中已存在名称点「确定」，触发唯一性拦截,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 库中已存在一条宰杀线记录（记下其宰杀线名称）","新增弹窗打开
+保存被拦截并提示名称唯一性冲突，列表未新增重复名称","1. 点击「新增」打开新增弹窗
+2. 「宰杀线名称」填写为库中已存在的名称，填写其余必填项后点击「确定」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-19,宰杀线管理,test_tc_014_19,列表列字段依次为勾选、宰杀线编码、宰杀线名称、单日产能(万只)、排序、状态、备注、创建时间、更新时间、创建人、更新人、操作,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",表头列名依次为：勾选、宰杀线编码、宰杀线名称、单日产能(万只)、排序、状态、备注、创建时间、更新时间、创建人、更新人、操作,1. 查看列表表头,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-20,宰杀线管理,test_tc_014_20,列表宰杀线编码、名称、单日产能(万只)、排序与录入一致,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 刚完成一条新增或编辑并记住录入值",列表展示的编码、名称及业务字段与刚才录入内容一致,1. 回到列表核对刚保存记录的各字段,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-21,宰杀线管理,test_tc_014_21,启用状态行操作列显示「编辑」「停用」,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表存在状态为「启用」的宰杀线",操作列显示「编辑」「停用」入口,1. 查看该启用行操作列,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-22,宰杀线管理,test_tc_014_22,无匹配记录时列表展示空状态，页面无报错,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",展示空状态，无前端报错,1. 构造无数据查询结果或清空数据后查看列表,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-23,宰杀线管理,test_tc_014_23,列表分页默认展示第1页，总条数与查询结果一致,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 结果集足够分页",列表按新条数重新分页,1. 切换每页显示条数,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-24,宰杀线管理,test_tc_014_24,点击「编辑」打开编辑弹窗,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表存在可编辑的宰杀线/单据","编辑弹窗打开
+保存成功，列表对应字段更新","1. 点击「编辑」打开弹窗
+2. 修改标题涉及字段后保存",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-25,宰杀线管理,test_tc_014_25,编辑弹窗宰杀线编码只读不可修改,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",核对后：编辑弹窗中宰杀线编码输入框为只读，不可手工修改,1. 打开查看或只读界面，尝试编辑字段,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-26,宰杀线管理,test_tc_014_26,编辑修改名称/单日产能(万只)/排序后点确定，列表数据更新,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表存在可编辑的启用宰杀线","编辑弹窗打开
+保存成功，列表对应行名称/单日产能/排序已更新为修改后的值","1. 点击操作列「编辑」打开弹窗
+2. 修改宰杀线名称、单日产能(万只)、排序后点击「确定」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-27,宰杀线管理,test_tc_014_27,编辑点「取消」，弹窗关闭且不保存,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表存在可编辑的宰杀线","编辑弹窗打开且字段已改动
+弹窗关闭，列表该行数据未保存修改","1. 点击「编辑」打开弹窗并修改某一字段
+2. 点击「取消」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-28,宰杀线管理,test_tc_014_28,启用行点击「停用」，弹出确认「确定要停用该宰杀线吗？」,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表存在状态为「启用」的宰杀线",弹出确认框，文案为「确定要停用该宰杀线吗？」,1. 在启用行点击操作列「停用」,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-29,宰杀线管理,test_tc_014_29,停用确认框点确定，状态变为停用,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表中存在应为「停用」的宰杀线记录",状态显示为「停用」,1. 定位该行查看状态列,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-30,宰杀线管理,test_tc_014_30,停用确认框点取消，状态保持启用,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表存在可切换启停的宰杀线记录","弹出确认框
+状态不变化","1. 点击「停用」或「启用」
+2. 点击「取消」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-31,宰杀线管理,test_tc_014_31,未勾选行时批量「删除」「启用」「停用」按钮不可用,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","未勾选时批量「删除」按钮不可点击，或点击后提示未勾选任何行
+未勾选时批量「启用」按钮不可用，或点击后提示未勾选任何行
+未勾选时批量「停用」按钮不可用，或点击后提示未勾选任何行","1. 确认列表无任何行处于勾选状态，观察工具栏批量「删除」按钮
+2. 确认未勾选任何行，观察或点击批量「启用」按钮
+3. 确认未勾选任何行，观察或点击批量「停用」按钮",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-32,宰杀线管理,test_tc_014_32,勾选停用行点批量「启用」，状态变为启用,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+3. 列表存在至少一条「停用」状态的宰杀线",所选行状态变为「启用」,1. 勾选一条或多条停用行，点击批量「启用」,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-33,宰杀线管理,test_tc_014_33,勾选启用行点批量「删除」，toast提示「选择的数据均为启用状态，无法删除」,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",操作后：仅勾选启用状态记录点击删除，页面toast提示「选择的数据均为启用状态，无法删除」且记录未删除,1. 点击「删除」,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-34,宰杀线管理,test_tc_014_34,已选≥1条时批量「删除」按钮可点击,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）",界面上可见：勾选至少一条记录后，工具栏「删除」按钮由禁用变为可点,1. 点击「删除」,ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-014-35,宰杀线管理,test_tc_014_35,勾选停用态记录后点击「删除」，弹出确认框或删除成功,"1. 使用智控中心测试账号登录系统
+2. 进入「宰杀线管理」页面（/apm/bases/slaughter-line）","弹出删除确认框（含确定/取消）
+删除成功，列表不再显示该记录","1. 在列表找到目标状态行，点击操作列「删除」
+2. 在确认框点击「确定」",ignored,"执行异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-003-149,分段养殖模版,test_tc_003_149,复制确认后列表新增一条状态为暂存的模版,"1. 使用智控中心测试账号登录系统
+2. 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+3. 列表中已存在状态为「审核通过」的模版",提示复制成功，列表新增1条状态为「暂存」的模版记录,1. 在审核通过行点击「复制」，在确认框点击「确定」,ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-175,制定排程,test_tc_004_175,智能推荐-选择候选或「选择 X 栋」后养殖栋舍回填,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态","打开「智能推荐栋舍」弹窗
+列表出现选中态，【全周期校验】预览栋号与所选一致
+弹窗关闭，「养殖栋舍」回填所选栋号","1. 月度看板选择待排日期，日计划编辑区点击养殖品种，选择一个模板，点击[智能推荐]
+2. 选择可分配栋舍
+3. 点击「选择 X 栋」或等效确认",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-176,制定排程,test_tc_004_176,智能推荐-栋舍顺序优先下匹配度分数正确,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态","展示各候选「匹配度 XX 分」
+各候选匹配度得分：100-d*5 （d = b - bmin ： 候选栋舍距离最小可用栋号的顺序距离) 示例：候选栋舍是2栋、6栋、11栋，则bmin=2， 2栋的匹配度= 100-(2-2)*5=100 11栋的匹配度=100-(11-2)*5=55分","1. 点击养殖栋舍的输入框打开「智能推荐栋舍」弹窗，策略为「栋舍顺序优先」
+2. 核对最优推荐与各候选分数",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",
+TC-004-223,制定排程,test_tc_004_223,智能推荐-最小空闲优先下匹配度分数正确,"1. 使用智控中心测试账号登录系统
+2. 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+3. 已点击「制定排程」进入制定排程设置页
+4. 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态","展示各候选「匹配度 XX 分」
+记录候选栋舍的最小空闲天数MinGap 示例：候选栋舍是2栋（最小空闲2天）、6栋（最小空闲3天）、11栋（最小空闲2天）
+栋舍顺序得分SeqScore ：100-d*5（d = b - bmin ： 候选栋舍距离最小可用栋号的顺序距离) 示例： 2栋的匹配度= 100-(2-2)*5=100分 6栋的匹配度= 100-(6-2)*5=80分 11栋的匹配度=100-(11-2)*5=55分
+计算最小空闲天数匹配度得分score： (100-MinGap*5) * 80% + SeqScore * 20% 示例： 2栋的匹配度= (100-2*5) * 80% + 100* 20%=92分 6栋的匹配度= (100-3*5) * 80% + 80* 20%=84分 11栋的匹配度= (100-2*5) * 80% + 55 * 20%=82
+页面栋舍的匹配度得分和上一步计算得到的score一致","1. 点击养殖栋舍的输入框打开「智能推荐栋舍」弹窗，策略为「最小空闲优先」
+2. 记录最佳推荐与各个可分配栋舍的最小空闲天数
+3. 计算栋舍顺序得分
+4. 计算最优推荐与各候选分数
+5. 核对页面的匹配度分数",ignored,"脚本异常：AttributeError(""'NoneType' object has no attribute 'url'"")",

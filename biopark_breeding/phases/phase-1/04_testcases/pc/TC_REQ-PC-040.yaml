@@ -1,0 +1,1574 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-040
+title: 停用删除限制（跨模块规则）
+module: 停用删除限制
+zentao_module_id: 587
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-040
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-37801
+  title: 删除：没被上孵计划、种蛋仓库、基础数据使用，可以删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖批次菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖批次
+    expected: 进入养殖批次页面
+  - action: 在养殖批次列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37801
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37801
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37802
+  title: 删除：被基础数据其他管理页面使用，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖批次菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖批次
+    expected: 进入养殖批次页面
+  - action: 在养殖批次列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37802
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37802
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37803
+  title: 删除：被种蛋仓库使用过有出入库记录和盘点记录，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖批次菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖批次
+    expected: 进入养殖批次页面
+  - action: 在养殖批次列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37803
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37803
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37804
+  title: 删除：被上孵计划使用过，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖批次菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖批次
+    expected: 进入养殖批次页面
+  - action: 在养殖批次列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37804
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37804
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37805
+  title: 停用：无约束
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖批次菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-养殖批次
+    expected: 进入养殖批次页面
+  - action: 在养殖批次列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37805
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37805
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37806
+  title: 删除：没被上孵计划、种蛋仓库、基础数据使用，可以删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖场管理
+    expected: 进入养殖场管理页面
+  - action: 在养殖场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37806
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37806
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37807
+  title: 删除：被基础数据其他管理页面使用，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖场管理
+    expected: 进入养殖场管理页面
+  - action: 在养殖场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37807
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37807
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37808
+  title: 删除：被种蛋仓库使用过有出入库记录和盘点记录，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖场管理
+    expected: 进入养殖场管理页面
+  - action: 在养殖场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37808
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37808
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37809
+  title: 删除：被上孵计划使用过，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-养殖场管理
+    expected: 进入养殖场管理页面
+  - action: 在养殖场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37809
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37809
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37810
+  title: 停用：无约束
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有养殖场管理菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-养殖场管理
+    expected: 进入养殖场管理页面
+  - action: 在养殖场管理列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37810
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37810
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37811
+  title: 删除：没被上孵计划、种蛋仓库、基础数据使用，可以删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-孵化场管理
+    expected: 进入孵化场管理页面
+  - action: 在孵化场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37811
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37811
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37812
+  title: 删除：被基础数据其他管理页面使用，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-孵化场管理
+    expected: 进入孵化场管理页面
+  - action: 在孵化场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37812
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37812
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37813
+  title: 删除：被种蛋仓库使用过有出入库记录和盘点记录，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-孵化场管理
+    expected: 进入孵化场管理页面
+  - action: 在孵化场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37813
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37813
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37814
+  title: 删除：被上孵计划使用过，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化场管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-孵化场管理
+    expected: 进入孵化场管理页面
+  - action: 在孵化场管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37814
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37814
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37815
+  title: 停用：无约束
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化场管理菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-孵化场管理
+    expected: 进入孵化场管理页面
+  - action: 在孵化场管理列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37815
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37815
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37816
+  title: 删除：有出入库记录无法删除，没有出入库记录可以删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 进入出雏器管理页面
+  - action: 在出雏器管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37816
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37816
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37817
+  title: 停用：被占用无法停用，未占用可以停用
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 进入出雏器管理页面
+  - action: 在出雏器管理列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37817
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37817
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37818
+  title: 删除：没有出入库记录，也没有被上孵计划选中，可以删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化器管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-孵化器管理
+    expected: 进入孵化器管理页面
+  - action: 在孵化器管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37818
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37818
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37819
+  title: 删除：上孵计划选中这个孵化器无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化器管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-孵化器管理
+    expected: 进入孵化器管理页面
+  - action: 在孵化器管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37819
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37819
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37820
+  title: 删除：有出入库记录无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化器管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-孵化器管理
+    expected: 进入孵化器管理页面
+  - action: 在孵化器管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37820
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37820
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37821
+  title: 停用：有无实时库存可以停用，有库存无法停用
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有孵化器管理菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-孵化器管理
+    expected: 进入孵化器管理页面
+  - action: 在孵化器管理列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37821
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37821
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37822
+  title: 删除：有出入库记录无法删除，没有出入库记录可以删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 进入存发苗间管理页面
+  - action: 在存发苗间管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37822
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37822
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37823
+  title: 停用：无实时库存可以停用，有库存无法停用
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限<br />
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 无库存可以停用
+  - action: 在存发苗间管理列表中选择要停用的数据
+    expected: 有库存不能停用
+  - action: 点击停用按钮
+    expected: ''
+  - action: 确认停用操作
+    expected: ''
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37823
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37823
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37824
+  title: 删除：有出入库记录无法删除，没有出入库记录可以删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有仓库管理-次品蛋菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-仓库管理-次品蛋
+    expected: 进入仓库管理-次品蛋页面
+  - action: 在仓库管理-次品蛋列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37824
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37824
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37825
+  title: 停用：有无实时库存可以停用，有库存无法停用
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有仓库管理-次品蛋菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-仓库管理-次品蛋
+    expected: 进入仓库管理-次品蛋页面
+  - action: 在仓库管理-次品蛋列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37825
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37825
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37826
+  title: 删除：有出入库记录无法删除，没有出入库记录可以删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有仓库管理-二级蛋库菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-仓库管理-二级蛋库
+    expected: 进入仓库管理-二级蛋库页面
+  - action: 在仓库管理-二级蛋库列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37826
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37826
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37827
+  title: 停用：有无实时库存可以停用，有库存无法停用
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有仓库管理-二级蛋库菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-仓库管理-二级蛋库
+    expected: 进入仓库管理-二级蛋库页面
+  - action: 在仓库管理-二级蛋库列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37827
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37827
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37828
+  title: 删除：有出入库记录或者盘点记录无法删除，没有出入库记录和盘点记录可以删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有仓库管理-合格蛋库菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-仓库管理-合格蛋库
+    expected: 进入仓库管理-合格蛋库页面
+  - action: 在仓库管理-合格蛋库列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37828
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37828
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37829
+  title: 停用：无实时库存可以停用，有库存无法停用
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有仓库管理-合格蛋库菜单权限<br />
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-仓库管理-合格蛋库
+    expected: 有库存无法停用
+  - action: 在仓库管理-合格蛋库列表中选择要停用的数据
+    expected: 无库存可以停用
+  - action: 点击停用按钮
+    expected: ''
+  - action: 确认停用操作
+    expected: ''
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37829
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37829
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37830
+  title: 删除：没被上孵计划、出入库记录、盘点记录，可以删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在蛋重类型管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37830
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37830
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37831
+  title: 删除：种蛋仓库有出入库记录，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在蛋重类型管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37831
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37831
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37832
+  title: 删除：被上孵计划使用，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在蛋重类型管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37832
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37832
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37833
+  title: 停用：无约束
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在蛋重类型管理列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37833
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37833
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37834
+  title: 删除：没被上孵计划、出入库记录、盘点记录，可以删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在品种管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37834
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37834
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37835
+  title: 删除：种蛋仓库有出入库记录，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在品种管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37835
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37835
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37836
+  title: 删除：被上孵计划使用，无法删除
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、系统中存在可删除的数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在品种管理列表中找到要删除的数据
+    expected: 打开删除确认弹窗
+  - action: 点击删除按钮
+    expected: 确认删除
+  - action: 在确认弹窗中点击确认
+    expected: 删除成功，数据不再显示
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37836
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37836
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37837
+  title: 停用：无约束
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 停用删除限制
+  preconditions:
+  - 1、用户登录成功并且有品种管理菜单权限
+  - 2、系统中存在可停用的数据
+  steps:
+  - action: 登录后进入基础数据-品种管理
+    expected: 进入品种管理页面
+  - action: 在品种管理列表中选择要停用的数据
+    expected: 停用操作成功
+  - action: 点击停用按钮
+    expected: 系统提示停用成功
+  - action: 确认停用操作
+    expected: 已停用的数据在列表中标识为停用状态
+  test_data:
+    module: 停用删除限制
+    zentao_module_id: 587
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-040
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37837
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37837
+    raw_module: /一期/pc/停用删除限制(#587)
+    raw_type: 接口测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

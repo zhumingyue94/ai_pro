@@ -1,0 +1,37 @@
+req_id: REQ-010
+product_id: 8
+project_id: 46
+module_id: 748
+operation: delete
+zentao_case_ids:
+- 51935
+- 51970
+- 51971
+- 51976
+- 51977
+- 51979
+source_case_ids:
+- TC-REQ-010-008
+- TC-REQ-010-043
+- TC-REQ-010-044
+- TC-REQ-010-049
+- TC-REQ-010-050
+- TC-REQ-010-052
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+rebuild: forbidden_and_not_used
+local_source_case_count_after: 41
+source_hashes_after:
+  yaml: bff174267b91a10fcf4a684cfd2ab466e1b85c8d0ad3ef6b53236e564f6a9c89
+  markdown: c708e7f3af4afd74fb3a1e96b64f60672a3ed12ac7890ee531919d02f0ebf9ed
+  review_yaml: d536fbe5ddada9115c824ed33f6e79cb5cdb538e2ab07d80c9a457a50b7c0765
+execution:
+  51935: blocked_case_already_absent; readback_not_found_confirmed
+  51970: validated; readback_not_found_confirmed
+  51971: validated; readback_not_found_confirmed
+  51976: validated; readback_not_found_confirmed
+  51977: validated; readback_not_found_confirmed
+  51979: validated; readback_not_found_confirmed
+registry:
+  action: removed_six_mappings_after_confirmed_absence
+  status: validated

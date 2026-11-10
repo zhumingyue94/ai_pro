@@ -1,0 +1,321 @@
+analysis:
+  schema_version: "1.0"
+  analysis_id: "REQ-PC-048"
+  title: "PC 上孵计划需求号关联与筛选"
+  stage: "02_analysis"
+  business_partition: "pc"
+  analyzed_at: "2026-09-08T00:00:00+08:00"
+  source_traceability:
+    requirement_document:
+      path: "01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx"
+      requirement_id: "REQ-PC-048"
+      mapping_status: "由 PC 模块拆分清单映射；以需求变动.md的最新条款覆盖冲突"
+    module_split:
+      path: "01_requirements/pc/模块拆分清单.md"
+      requirement_id: "REQ-PC-048"
+      module: "PC 上孵计划"
+      zentao_alignment: "二期 / pc / 计划管理 / 上孵计划，模块 ID=724"
+      priority: "P0"
+      lifecycle: "一期已开发、二期无独立原型、既有功能延续"
+    change_log:
+      path: "01_requirements/需求变动.md"
+      applicable_items:
+        - "上孵计划表格增加‘孵化需求号’字段"
+        - "上孵计划增加需求号筛选条件"
+        - "承接孵化需求创建的计划"
+        - "从孵化需求跳转后默认按当前需求号筛选"
+    page_inventory:
+      path: "02_analysis/pc/page_inventory/page.json"
+      direct_page_status: "二期无独立上孵计划原型"
+      referenced_page: "pc-req-047-hatching-demand"
+      referenced_states:
+        - "st-req-047-list-default"
+        - "st-req-047-view-plan-jump"
+      evidence_status: "available_for_dependency_only"
+  source_conflict_handling:
+    rule: "需求变动.md优先；page.json仅作为已采集页面事实，不推导未采集的二期页面细节"
+    conclusion: "本需求已确认需求号筛选、孵化需求号列展示、需求号异常展示、计划状态过滤和跳转自动查询规则；不臆造上孵计划一期页面的其他字段或接口"
+  prototype_observation:
+    collection_status: "no_independent_prototype"
+    scope: "仅探索雏苗发货原型；REQ-PC-048复用REQ-PC-047既有只读查看计划跳转证据"
+    page_inventory_evidence:
+      source_page_id: "pc-req-047-hatching-demand"
+      source_states:
+        - state_id: "st-req-047-list-default"
+          role: "孵化需求列表及行级操作上下文"
+        - state_id: "st-req-047-view-plan-jump"
+          role: "行级查看计划跳转至上孵计划并回填需求号"
+      target_route_path: "/biopark-breeding/breeding/hatchingplans/hatching-plan"
+      target_page_evidence: "page.json仅记录跳转目标和需求号回填，不构成二期独立原型"
+  scope:
+    in_scope:
+      - "上孵计划列表增加并展示孵化需求号字段"
+      - "上孵计划按需求号筛选、查询、重置及结果范围"
+      - "REQ-PC-047创建的计划能够以需求号关联并在上孵计划中承接"
+      - "从孵化需求行查看计划跳转后，目标页需求号筛选默认回填"
+      - "需求号模糊匹配、无匹配、空值、重复/来源异常、多计划和计划状态过滤的业务边界"
+      - "本期暂时保留新增和导入按钮；后期隐藏规划不纳入本期测试"
+      - "角色菜单权限和查询/查看接口权限的页面边界"
+      - "page.json页面、状态和元素ID的可追溯引用"
+    out_of_scope:
+      - "产业链生产排程系统推送接口实现及协议"
+      - "上孵计划完整新增、编辑、删除、终止、下发、导入、导出；本期仅记录新增和导入按钮暂时保留，后期隐藏规划不纳入本期测试"
+      - "REQ-PC-047创建计划弹窗内部字段规则；仅作为上游依赖"
+      - "雏苗发货、库存、出入库、APP功能"
+      - "数据库字段、HTTP方法、请求/响应体、错误码和接口测试"
+      - "二期独立上孵计划原型未提供的页面状态和元素"
+      - "账号、密码、Token、Cookie及未经授权业务数据"
+  requirements_facts:
+    - id: "FR-048-01"
+      statement: "上孵计划表格增加‘孵化需求号’字段，用于体现计划所属孵化需求。"
+      source: "module_split_and_change_log"
+      source_ref: "模块拆分清单.md REQ-PC-048；需求变动.md REQ-PC-048"
+    - id: "FR-048-02"
+      statement: "上孵计划提供需求号筛选条件，采用模糊匹配，输入长度和格式均不限制。"
+      source: "module_split_and_change_log"
+      source_ref: "模块拆分清单.md REQ-PC-048；需求变动.md REQ-PC-048"
+    - id: "FR-048-03"
+      statement: "上孵计划承接由孵化需求创建的计划，并保留需求号关联。"
+      source: "module_split"
+      source_ref: "模块拆分清单.md REQ-PC-047/048"
+    - id: "FR-048-04"
+      statement: "从孵化需求行查看计划跳转上孵计划时，自动查询当前需求号，其他筛选条件不保留。"
+      source: "change_log_and_user_confirmation"
+      source_ref: "需求变动.md REQ-PC-048；用户补充答案；page.json / st-req-047-view-plan-jump"
+  business_rules:
+    - id: "BR-048-01"
+      rule: "需求号是孵化需求与上孵计划之间的关联上下文；创建来源为孵化需求的计划必须可按该需求号识别。"
+    - id: "BR-048-02"
+      rule: "需求号筛选采用模糊匹配，输入长度和格式均不限制；命中时展示匹配范围内的关联计划，无匹配时展示无数据。"
+    - id: "BR-048-03"
+      rule: "孵化需求号列位于养殖批次列之前，空值显示‘-’，显示格式与孵化需求页面中的需求号一致，本需求不单独校验格式。"
+    - id: "BR-048-04"
+      rule: "重置需求号筛选后恢复默认列表范围；默认排序等一期行为不在本期新增定义。"
+    - id: "BR-048-05"
+      rule: "一个需求号对应多个上孵计划时，筛选结果应包含全部关联计划，不要求排序；分页沿用一期且不纳入本期测试；状态按计划状态筛选框过滤。"
+    - id: "BR-048-06"
+      rule: "从孵化需求跳转时自动查询触发跳转的当前需求号，其他筛选条件不保留，不得使用全局首行或历史残留值。"
+    - id: "BR-048-07"
+      rule: "需求号为空、重复或来源异常时显示‘-’；上孵计划仍可正常创建但不关联孵化需求。本期暂时保留新增和导入按钮，后期规划隐藏。"
+    - id: "BR-048-08"
+      rule: "无菜单权限时菜单不显示；无查询或查看接口权限时由平台返回‘无操作权限’，正式页面提示待授权环境核对。"
+  roles_and_permissions:
+    permission_model: "系统管理的角色菜单权限和接口权限控制；不写死角色名称、权限编码或账号"
+    roles:
+      - role: "上孵计划查看人员"
+        capability: "进入上孵计划并按需求号查询"
+        status: "业务角色概念，正式角色待配置确认"
+      - role: "孵化需求查看人员"
+        capability: "从需求行发起查看计划跳转"
+        status: "由REQ-PC-047提供上下文，正式权限待确认"
+      - role: "上孵计划创建人员"
+        capability: "承接REQ-PC-047创建的计划结果"
+        status: "创建动作属于REQ-PC-047，本需求只分析关联承接"
+  page_contract:
+    direct_page:
+      page_id: "未提供独立page_id"
+      menu_path: ["计划管理", "上孵计划"]
+      route_path: "/biopark-breeding/breeding/hatchingplans/hatching-plan"
+      evidence_status: "dependency_reference_only"
+    source_page:
+      page_id: "pc-req-047-hatching-demand"
+      menu_path: ["计划管理", "孵化需求"]
+      states:
+        - state_id: "st-req-047-list-default"
+          element_ids:
+            - "el-page-req-047"
+            - "el-filter-demand-no-req-047"
+            - "el-table-req-047"
+            - "el-btn-view-plan-req-047"
+            - "el-pagination-req-047"
+        - state_id: "st-req-047-view-plan-jump"
+          element_ids:
+            - "el-page-hatching-plan-047"
+            - "el-filter-demand-no-jump-047"
+            - "el-btn-query-jump-047"
+            - "el-table-hatching-plan-047"
+            - "el-toolbar-hatching-plan-047"
+          observed_contract: "行级查看计划跳转目标页并自动回填需求号；page.json记录的当前样例结果为0条，仅代表采集环境数据状态"
+    required_target_elements:
+      - "需求号筛选控件：二期独立page.json元素ID未提供，正式页面需补采并确认稳定定位器"
+      - "孵化需求号表格列：二期独立page.json元素ID未提供，正式页面需补采并确认列可见性"
+  interface_contract_boundary:
+    status: "business_boundary_only"
+    known_sources:
+      - "REQ-PC-047孵化需求行上下文"
+      - "上孵计划列表查询结果"
+      - "上孵计划需求号关联字段"
+    not_defined:
+      - "列表查询接口路径、方法、请求/响应字段和分页协议；分页属于一期且不纳入本期测试"
+      - "创建计划写入需求号的接口契约"
+      - "跨页跳转参数传递、编码和错误处理"
+      - "权限接口、错误码、幂等和重试规则"
+    prohibition: "不得从页面清单、DOM、截图或演示值推导接口契约"
+  data_contract:
+    input_entities:
+      - entity: "孵化需求"
+        responsibility: "提供需求号及创建/查看计划的业务上下文"
+        field_status: "需求号关联已明确；完整字段映射待一期/接口资料确认"
+      - entity: "当前孵化需求行"
+        responsibility: "提供跳转时默认回填的需求号"
+    derived_entities:
+      - entity: "上孵计划"
+        responsibility: "承接REQ-PC-047创建结果并保存所属需求号关联"
+        persistence_status: "本次未执行创建、暂存或确认，未验证落库"
+    data_rules:
+      - "需求号筛选值来源于用户查询或当前需求行跳转上下文"
+      - "需求号无匹配时结果为空"
+      - "同一需求号的多个计划应被同一筛选条件覆盖"
+  systematic_boundary_analysis:
+    equivalence_and_boundary_candidates:
+      - "需求号：模糊命中、无匹配、空值、任意长度、任意格式、重复或来源异常"
+      - "关联计划：无计划、单计划、多计划；跨页属于一期分页行为，不纳入本期测试"
+      - "页面数据：有数据、无数据、加载失败"
+      - "筛选流程：首次进入、模糊查询、重置、刷新"
+      - "跳转上下文：当前行需求号自动查询、其他筛选条件不保留、错误回填、历史值污染"
+      - "权限：菜单可见/不可见、查询允许/拒绝、查看跳转允许/拒绝"
+    decision_table_dimensions:
+      - "触发来源是直接进入还是孵化需求行跳转"
+      - "当前用户是否拥有菜单和查询/查看权限"
+      - "需求号是否为空、模糊命中、无匹配或重复/来源异常"
+      - "匹配计划数量为0、1或多个，以及计划状态筛选条件"
+      - "重置后是否恢复默认列表；跳转后其他筛选条件不保留"
+    state_transition_candidates:
+      - "上孵计划进入 → 默认列表"
+      - "输入需求号 → 查询 → 命中/无数据"
+      - "查询结果 → 重置 → 默认列表"
+      - "孵化需求行 → 查看计划 → 上孵计划页 → 需求号回填 → 自动查询 → 仅保留需求号条件的查询结果"
+      - "无权限菜单/接口 → 不显示/无操作权限"
+    pict_parameter_candidates:
+      parameters:
+        - name: "EntryContext"
+          values: ["DirectPlanPage", "DemandRowJump"]
+        - name: "DemandNoState"
+          values: ["Empty", "FuzzyMatch", "NoMatch", "DuplicateOrSourceAnomaly"]
+        - name: "RelatedPlanCount"
+          values: ["Zero", "One", "Multiple", "CrossPageExcludedFromCurrentTest"]
+        - name: "PermissionState"
+          values: ["MenuAndQueryAllowed", "MenuDenied", "QueryDenied", "ViewDenied"]
+        - name: "FilterAction"
+          values: ["Query", "Reset", "Refresh", "NotExecuted"]
+        - name: "JumpRefillState"
+          values: ["CorrectCurrentDemandNo", "WrongDemandNo", "NotRefilled", "StaleValue"]
+      constraints:
+        - "EntryContext=DemandRowJump时，JumpRefillState应为CorrectCurrentDemandNo"
+        - "DemandNoState=NoMatch时，RelatedPlanCount必须为Zero"
+        - "PermissionState=MenuDenied时，不应可进入上孵计划菜单"
+        - "PermissionState=QueryDenied时，查询结果应为权限提示而非业务空数据"
+        - "FilterAction=Reset时，不应继续使用已提交的需求号筛选条件"
+      design_boundary_status: "analysis_candidate_only"
+  automation_boundary_plan:
+    locator_priority: ["get_by_role", "get_by_label", "get_by_test_id", "row_scoped_semantic_locator"]
+    known_stable_ids_from_page_json:
+      - "el-filter-demand-no-req-047"
+      - "el-btn-view-plan-req-047"
+      - "el-filter-demand-no-jump-047"
+      - "el-btn-query-jump-047"
+      - "el-table-hatching-plan-047"
+    target_locator_gap:
+      - "上孵计划独立页面的需求号筛选和孵化需求号列尚无专属page.json元素ID"
+      - "正式自动化前必须补采目标页面状态并确认稳定定位器"
+    boundary_rules:
+      - "孵化需求行的查看计划按钮必须按需求号或行级唯一键限定作用域"
+      - "跳转目标筛选控件必须以目标页面/表单作用域定位"
+      - "不得使用全局第一个查看计划按钮或全局第一个需求号输入框"
+      - "运行环境凭据只能来自安全运行时配置，不写入脚本、日志、DOM或报告"
+      - "写入场景需授权、可回收数据和明确清理责任后才允许规划执行"
+  dependencies:
+    - dependency: "REQ-PC-047 孵化需求与逐行创建上孵计划"
+      impact: "提供需求号来源、行级跳转和创建计划上下文"
+      status: "analysis_dependency"
+    - dependency: "一期上孵计划页面"
+      impact: "提供既有列表、字段、筛选和权限继承规则"
+      status: "phase1_reference_required"
+    - dependency: "产业链生产排程系统"
+      impact: "提供孵化需求来源数据"
+      status: "business_dependency; interface_not_defined"
+    - dependency: "平台角色菜单/接口权限配置"
+      impact: "控制菜单、查询和查看能力"
+      status: "configuration_not_provided"
+    - dependency: "授权且可清理的需求号/上孵计划数据"
+      impact: "支持模糊命中、无匹配、空值/重复/来源异常、多计划、计划状态过滤和跳转自动查询验证"
+      status: "data_not_provided"
+  environment_and_data_preconditions:
+    prototype:
+      url_scope: "仅按用户要求探索雏苗发货原型；REQ-PC-048无独立原型"
+      evidence_source: "02_analysis/pc/page_inventory/page.json"
+      limitation: "不得将REQ-PC-047跳转证据扩大解释为完整二期上孵计划页面证据"
+    real_test_environment:
+      route_path: "/biopark-breeding/breeding/hatchingplans/hatching-plan"
+      authorization: "由平台角色菜单/接口权限配置，具体角色和权限编码待提供"
+      credentials: "安全运行时提供，分析产物不记录"
+    data_prerequisites:
+      - "至少一个有需求号关联的上孵计划"
+      - "一个无匹配需求号查询条件"
+      - "同一需求号对应多个计划的数据；跨页属于一期分页行为，不纳入本期测试"
+      - "可从孵化需求行发起跳转的授权数据"
+      - "可验证菜单/查询/查看权限边界的授权角色"
+    data_lifecycle:
+      created: "本次未创建持久化业务数据"
+      modified: "本次未修改既有业务数据"
+      cleaned: "not_applicable"
+      responsibility: "未来正式验证由授权测试责任人负责准备、变更、回收和清理确认"
+  risks:
+    - risk: "二期无独立上孵计划原型"
+      impact: "无法确认新增列、筛选控件和全部页面状态的真实交互"
+      mitigation: "补采目标页面；当前仅保留业务规则和依赖证据"
+    - risk: "一期页面继承规则未提供"
+      impact: "排序、分页、默认筛选、错误提示等非新增行为可能被误判"
+      mitigation: "测试计划阶段核对一期页面和正式需求"
+    - risk: "跳转回填可能使用错误行或历史残留"
+      impact: "查询到错误需求的计划，破坏需求追溯"
+      mitigation: "行级定位并校验回填值来源"
+    - risk: "需求号字段与查询字段映射未形成接口契约"
+      impact: "页面显示、查询和创建承接可能不一致"
+      mitigation: "由产品/研发补充接口和数据字典；本分析不臆造"
+    - risk: "正式权限和测试数据未提供"
+      impact: "无法验证无权限、无数据和多计划边界"
+      mitigation: "授权测试责任人准备角色矩阵和可清理数据"
+  open_questions:
+    - id: "OQ-048-01"
+      question: "上孵计划页面的正式需求号筛选控件类型和定位器是什么？业务匹配规则已确认：模糊匹配，输入长度和格式均不限制。"
+      owner: "产品/研发"
+      status: "已确认业务规则，待补充页面事实"
+    - id: "OQ-048-02"
+      question: "孵化需求号列的正式页面元素 ID 和列配置定位器是什么？业务规则已确认：列位于养殖批次之前，空值显示‘-’，格式与孵化需求页面一致。"
+      owner: "产品/研发"
+      status: "已确认业务规则，待补充页面事实"
+    - id: "OQ-048-03"
+      question: "一期页面的分页实现细节是什么？业务规则已确认：多计划不要求排序，分页沿用一期且不纳入本期测试，状态按计划状态筛选框过滤。"
+      owner: "产品/业务"
+      status: "已确认业务规则，分页细节属一期边界"
+    - id: "OQ-048-04"
+      question: "跳转后目标页的正式自动查询触发时机和元素定位器是什么？业务规则已确认：自动查询当前需求号，其他筛选条件不保留。"
+      owner: "产品/研发"
+      status: "已确认业务规则，待补充页面事实"
+    - id: "OQ-048-05"
+      question: "异常需求号场景的正式页面元素和数据来源追踪细节是什么？业务规则已确认：显示‘-’，计划可正常创建但不关联孵化需求；本期新增和导入按钮暂时保留，后期规划隐藏。"
+      owner: "产品/业务"
+      status: "已确认业务规则，待补充页面事实"
+  workflow_gate:
+    policy: "report_only"
+    gate_passed: false
+    gate_reasons:
+      - "二期独立页面及目标页元素ID未提供"
+      - "一期页面具体实现、正式权限和可清理测试数据未提供"
+      - "需求号字段/筛选接口技术契约未提供；业务规则已由用户确认"
+    continuation: "allowed"
+    pipeline_summary: "completed_with_gate_issues"
+  handoff:
+    next_agent: "stage-test-plan-agent"
+    outputs:
+      - "02_analysis/pc/REQ-PC-048.yaml"
+      - "02_analysis/pc/REQ-PC-048_上孵计划需求号关联与筛选.md"
+      - "02_analysis/pc/HANDOFF.md"
+    instructions:
+      - "先补采上孵计划正式页面，登记页面、状态和元素ID"
+      - "核对一期列表字段、筛选、排序和权限继承规则；分页沿用一期且不纳入本期测试"
+      - "准备需求号模糊命中、无匹配、空值/重复/来源异常、多计划、计划状态过滤、跳转自动查询和权限数据"
+      - "确认本期新增和导入按钮暂时保留，后期隐藏规划不纳入本期测试"
+      - "任何创建/修改数据必须由授权责任人准备并确认清理状态"
+      - "不扩展为接口测试；接口契约待单独输入"

@@ -1,0 +1,921 @@
+req_id: REQ-013
+module: 饲料管理
+zentao_module_id: 682
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-013
+  tp: TP_REQ-013
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-013.yaml
+cases:
+- id: TC-013-01
+  tp_id: TP-013-01
+  title: 查询条件包含「饲料编号」「饲料名称」「状态」字段
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 查看页面查询区域
+    expected: 页面顶部查询区可见筛选项：饲料编号、饲料名称、状态三个筛选项
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48080
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-02
+  tp_id: TP-013-02
+  title: 状态下拉选项为启用、停用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 点击「状态」下拉或查看筛选项
+    expected: 打开「状态」下拉，选项列表仅为启用、停用两种选项，默认空（请选择）
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48081
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-03
+  tp_id: TP-013-03
+  title: 仅填饲料名称后点击「查询」，列表按名称过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表中存在可按「饲料名称」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「饲料名称」，其余条件留空
+    expected: 仅「饲料名称」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「饲料名称」条件的记录
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48082
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-04
+  tp_id: TP-013-04
+  title: 填写编号+名称+状态组合条件后点击「查询」，列表按组合条件过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在可组合区分的测试数据
+  steps:
+  - action: 同时设置多个查询条件
+    expected: 各筛选项均已设置
+  - action: 点击「查询」按钮
+    expected: 列表仅显示同时满足全部条件的记录
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48083
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-05
+  tp_id: TP-013-05
+  title: 点击「查询」按钮才触发查询
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表中已有数据
+  steps:
+  - action: 修改筛选项但不点「查询」
+    expected: 列表不随输入自动变成新条件结果
+  - action: 点击「查询」按钮
+    expected: 列表按当前条件刷新
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48084
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-06
+  tp_id: TP-013-06
+  title: 点击「重置」，查询条件恢复默认并刷新列表
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 设置查询条件后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 点击「重置」后筛选项回到默认，列表按默认条件重新加载
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48085
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-07
+  tp_id: TP-013-07
+  title: 查询区是否包含「备注」条件待确认（open_question）
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 查看页面查询区域
+    expected: 备注：侦察 DOM 曾见「请输入备注」，是否正式查询条件待产品确认
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48086
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-08
+  tp_id: TP-013-08
+  title: 点击「新增」打开新增弹窗
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增弹窗/表单
+  - action: 查看表单字段
+    expected: 关键字段齐全且可编辑性符合页面设计（对照标题字段）
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48087
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-09
+  tp_id: TP-013-09
+  title: 新增弹窗「饲料编号」系统自动预填且可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 查看「饲料编号」字段值并尝试修改
+    expected: 「饲料编号」已由系统预填且可手工修改
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48088
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-10
+  tp_id: TP-013-10
+  title: 新增空表点「确定」，提示「饲料名称不能为空」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 不填写「饲料名称」（保持为空），点击「确定」
+    expected: 保存被阻断，页面提示「饲料名称不能为空」
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48089
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-11
+  tp_id: TP-013-11
+  title: 填写必填项后点击「确定」，保存成功且列表展示新饲料
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 准备饲料测试数据
+  steps:
+  - action: 点击「新增」打开表单，将「必填项」留空后点击保存
+    expected: 无法保存，「必填项」提示必填
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48090
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-12
+  tp_id: TP-013-12
+  title: 新增弹窗点击「取消」，弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 点击「新增」打开新增弹窗并填写部分字段
+    expected: 新增弹窗打开且字段有输入
+  - action: 点击「取消」
+    expected: 弹窗关闭，列表未新增对应记录
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48091
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-13
+  tp_id: TP-013-13
+  title: 新增将饲料编号改为库中已存在编号点「确定」，触发唯一性拦截
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 库中已存在一条饲料记录（记下其饲料编号）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 将「饲料编号」改为库中已存在的值，填写其余必填项后点击「确定」
+    expected: 保存被拦截并提示唯一性冲突（或同等错误提示），列表未新增重复编码
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48092
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-14
+  tp_id: TP-013-14
+  title: 新增饲料名称填库中已存在名称点「确定」，触发唯一性拦截
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 库中已存在一条饲料记录（记下其饲料名称）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 「饲料名称」填写为库中已存在的名称，填写其余必填项后点击「确定」
+    expected: 保存被拦截并提示名称唯一性冲突，列表未新增重复名称
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48093
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-15
+  tp_id: TP-013-15
+  title: 列表展示饲料编号、饲料名称、状态、备注等核心字段与录入一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在已知录入内容的饲料测试数据
+  steps:
+  - action: 对照录入值查看列表对应列
+    expected: 列表核心字段与录入/业务数据一致
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48094
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-16
+  tp_id: TP-013-16
+  title: 启用状态行操作列显示「编辑」「停用」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在状态为「启用」的饲料
+  steps:
+  - action: 查看该启用行操作列
+    expected: 操作列显示「编辑」「停用」入口
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48095
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-17
+  tp_id: TP-013-17
+  title: 未勾选行时工具栏「删除」「启用」「停用」为 disabled
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 确认未勾选任何行，查看工具栏「删除」「启用」「停用」
+    expected: 三按钮均为 disabled / 不可点击
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48096
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-17
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-18
+  tp_id: TP-013-18
+  title: 勾选至少一行后工具栏「删除」「启用」「停用」可点击
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表至少有一条饲料数据
+  steps:
+  - action: 勾选至少一行后查看工具栏「删除」「启用」「停用」
+    expected: 三按钮变为可点击
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48097
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-18
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-19
+  tp_id: TP-013-19
+  title: 查询无匹配时列表展示空状态，页面无报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 构造无数据查询结果或清空数据后查看列表
+    expected: 展示空状态，无前端报错
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48098
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-19
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-20
+  tp_id: TP-013-20
+  title: 列表分页默认展示第1页数据，每页条数与系统默认一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 结果集足够分页
+  steps:
+  - action: 切换每页显示条数
+    expected: 列表按新条数重新分页
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48099
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-20
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-21
+  tp_id: TP-013-21
+  title: 点击「刷新」，列表重新加载当前查询结果
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 设置某一查询条件并点击「查询」使列表处于过滤态
+    expected: 列表显示过滤结果
+  - action: 点击工具栏「刷新」
+    expected: 列表按当前查询条件重新加载，数据刷新
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48100
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-21
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-22
+  tp_id: TP-013-22
+  title: 点击「编辑」打开编辑弹窗
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在可编辑的饲料/单据
+  steps:
+  - action: 点击「编辑」打开弹窗
+    expected: 编辑弹窗打开
+  - action: 修改标题涉及字段并保存
+    expected: 保存成功，列表对应字段更新
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48101
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-22
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-23
+  tp_id: TP-013-23
+  title: 编辑弹窗「饲料编号」只读不可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 打开查看或只读界面，尝试编辑字段
+    expected: 核对后：编辑弹窗中饲料编号输入框为只读，不可手工修改
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48102
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-23
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-24
+  tp_id: TP-013-24
+  title: 编辑修改饲料名称/状态/备注后保存，列表数据更新
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 准备完整合法的饲料数据
+  steps:
+  - action: 打开新增/编辑填写合法完整数据后点击「保存」
+    expected: 提示保存成功，列表状态/字段符合预期
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48103
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-24
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-25
+  tp_id: TP-013-25
+  title: 编辑弹窗点击「取消」，弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在可编辑的饲料
+  steps:
+  - action: 点击「编辑」打开弹窗并修改某一字段
+    expected: 编辑弹窗打开且字段已改动
+  - action: 点击「取消」
+    expected: 弹窗关闭，列表该行数据未保存修改
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48104
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-25
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-26
+  tp_id: TP-013-26
+  title: 启用行点击「停用」弹出确认框，文案为「确定要停用该饲料吗？」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在状态为「启用」的饲料
+  steps:
+  - action: 在启用行点击操作列「停用」
+    expected: 弹出确认框，文案为「确定要停用该饲料吗？」
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48105
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-26
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-27
+  tp_id: TP-013-27
+  title: 停用确认框点击「取消」，状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在可切换启停的饲料记录
+  steps:
+  - action: 点击「停用」或「启用」
+    expected: 弹出确认框
+  - action: 点击「取消」
+    expected: 状态不变化
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48106
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-27
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-28
+  tp_id: TP-013-28
+  title: 停用确认框点击「确定」，提示成功且状态变为停用
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在状态为「启用」的饲料，并已打开停用确认框
+  steps:
+  - action: 在停用确认框点击「确定」
+    expected: 提示成功，该行状态变为「停用」
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48107
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-28
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-29
+  tp_id: TP-013-29
+  title: 勾选多条停用记录后点击「启用」，所选行状态变为启用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在多条「停用」状态的饲料
+  steps:
+  - action: 勾选多条停用记录，点击「启用」
+    expected: 所选行状态变为「启用」
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48108
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-29
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-30
+  tp_id: TP-013-30
+  title: 勾选多条启用记录后点击「停用」，所选行状态变为停用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在多条「启用」状态的饲料
+  steps:
+  - action: 勾选多条启用记录，点击「停用」
+    expected: 所选行状态变为「停用」
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48109
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-30
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-31
+  tp_id: TP-013-31
+  title: 所选均为启用态点击「删除」，toast 提示「选择的数据均为启用状态，无法删除」且无确认框
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表存在可勾选的「启用」状态饲料，且本次不勾选停用行
+  steps:
+  - action: 仅勾选启用状态行，点击「删除」
+    expected: 出现 toast 提示「选择的数据均为启用状态，无法删除」，不弹出删除确认框，记录未被删除
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48110
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-31
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-32
+  tp_id: TP-013-32
+  title: 勾选停用态记录后点击「删除」，弹出确认框或删除成功（路径待测）
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 删除成功，列表不再显示该记录
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48111
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-32
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-33
+  tp_id: TP-013-33
+  title: 已选≥1条时批量「删除」按钮可点击
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 点击「删除」
+    expected: 界面上可见：勾选至少一条记录后，工具栏「删除」按钮由禁用变为可点
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48112
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-33
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-013-34
+  tp_id: TP-013-34
+  title: 未勾选行时批量「删除」按钮不可用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 确认未勾选任何行，观察工具栏批量「删除」按钮
+    expected: 未勾选时批量「删除」按钮不可用或不可点击
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48113
+  trace:
+    story: null
+    req: REQ-013
+    tp: TP-013-34
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+summary:
+  type_counts:
+    auto: 33
+    feature: 1
+  auto_counts:
+    auto: 33
+    false: 1
+  registry_counts:
+    registered: 34

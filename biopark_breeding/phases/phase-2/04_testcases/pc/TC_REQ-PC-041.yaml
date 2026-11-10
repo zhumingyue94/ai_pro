@@ -1,0 +1,2111 @@
+req_id: REQ-PC-041
+module: 雏苗发货列表与筛选
+trace:
+  req: REQ-PC-041
+  tp: TEST_PLAN-REQ-PC-041
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+  source_review: TEST_PLAN-REQ-PC-041
+common_preconditions:
+- id: delivery_list_page_access_steps
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 系统登录成功并进入应用门户
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 成功进入种禽孵化管理系统主框架并显示系统标识
+  - action: 在左侧菜单中展开「计划管理」，然后点击「雏苗发货」菜单项进入雏苗发货列表页
+    expected: 页面显示查询条件区、状态统计卡区、列表区域和分页条
+cases:
+- id: TC-PC-041-001
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-01
+  title: 通过计划管理菜单进入雏苗发货列表页后展示页面主要板块
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 查看页面主体区域布局
+    expected: 页面自上而下展示查询条件区、状态统计卡区、标题为「雏苗发货」的表格区域和分页条
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-002
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 查询条件区展示四个查询条件和查询、重置两个按钮
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 查看查询条件区内的查询条件项
+    expected: 查询条件区展示「计划发货日期」的开始日期与结束日期两个日期输入框、「栋舍」下拉、「品种」下拉、名称为「单号」的关键字输入框，以及「查询」按钮和「重置」按钮，共四个查询条件
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-003
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 首次进入列表页时查询条件保持默认状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 查看查询条件区各条件的初始值
+    expected: 「计划发货日期」开始日期与结束日期均显示当天日期，格式为年-月-日；「栋舍」显示「全部」；「品种」显示「全部」；「单号」输入框为空并展示占位文字“请输入发货单号或孵化需求号”
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-004
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 栋舍下拉选项包含全部及栋舍基础数据中的有效和停用栋舍
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供当前租户下栋舍基础数据的全量有效及停用栋舍清单，并准备至少一条历史发货记录关联停用栋舍作为核对依据
+  steps:
+  - action: 点击查询条件区的「栋舍」下拉，展开选项列表
+    expected: 选项列表第一项为「全部」，其余各项与栋舍基础数据中当前租户下的有效及停用栋舍逐一对应，无缺失项、无重复项；选择停用栋舍后可查询出关联的历史发货记录
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-005
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 品种下拉选项包含全部及品种基础数据中的有效和停用品种
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供当前租户下品种基础数据的全量有效及停用品种清单，并准备至少一条历史发货记录关联停用品种作为核对依据
+  steps:
+  - action: 点击查询条件区的「品种」下拉，展开选项列表
+    expected: 选项列表第一项为「全部」，其余各项与品种基础数据中当前租户下的有效及停用品种逐一对应，无缺失项、无重复项
+  - action: 选择停用品种并查询
+    expected: 列表显示与该停用品种关联的历史发货记录
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-006
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 结束日期等于开始日期时查询结果仅包含该日期的发货单
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备计划发货日期为目标单日且该日发货单不少于一条的脱敏数据，并准备计划发货日期在该日之外的对照数据
+  steps:
+  - action: 通过日期控件将「计划发货日期」开始日期与结束日期均选择为同一目标日期，点击「查询」
+    expected: 列表刷新，列表内每一行的「计划发货日期」均为该目标日期，不出现该日期之外的发货单，分页总数与该日发货单数量一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-007
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 有效跨日日期范围查询结果仅包含该范围内的发货单
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备计划发货日期落在目标跨日范围内、以及早于该范围和晚于该范围的脱敏对照数据
+  steps:
+  - action: 通过日期控件将「计划发货日期」开始日期选择为范围起始日、结束日期选择为范围结束日，点击「查询」
+    expected: 列表刷新，列表内每一行的「计划发货日期」均不早于范围起始日且不晚于范围结束日，范围外的发货单不再出现
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-008
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 结束日期早于开始日期的组合无法提交查询
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 通过日期控件将「计划发货日期」开始日期选择为较晚日期后，展开结束日期控件并尝试选择早于该开始日期的日期
+    expected: 结束日期控件中早于开始日期的日期处于不可选状态，无法选中并生成结束日期早于开始日期的查询组合
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-009
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 关键字输入完整发货单号时仅返回该发货单
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备发货单号唯一且可完整核对的脱敏发货单数据
+  steps:
+  - action: 在「单号」输入框内输入目标发货单的完整发货单号，点击「查询」
+    expected: 列表刷新后仅展示一行数据，该行「发货单号」列的值与输入的完整发货单号完全一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-010
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 关键字输入完整孵化需求号时仅返回关联的发货单
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供孵化需求号的正式格式说明及可完整核对的关联发货单样本
+  steps:
+  - action: 在「单号」输入框内输入目标记录的完整孵化需求号，点击「查询」
+    expected: 列表刷新后仅展示关联该孵化需求号的发货单，每行「孵化需求号」列的值与输入的完整孵化需求号一致；发货单号作为列表业务标识，不与孵化需求号混用
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-011
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 关键字输入编号片段时返回包含该片段的全部发货单
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备发货单号共享同一编号片段且数量不少于两条的脱敏数据
+  steps:
+  - action: 在「单号」输入框内输入目标发货单号的一个连续片段，点击「查询」
+    expected: 列表刷新后展示不少于一行数据，每一行的「发货单号」列值均包含所输入的编号片段
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-012
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 关键字超过200字时仍可提交查询并显示结果
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 在「单号」输入框内输入任意长度的关键字内容，点击「查询」
+    expected: 输入框不限制关键字字数且未出现长度超限校验提示，系统按业务规则正常处理查询
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-013
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 日期范围栋舍品种与关键字组合查询结果为各条件的交集
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备同时满足目标日期范围、目标栋舍、目标品种和关键字片段的脱敏发货单，以及仅满足其中部分条件的对照数据
+  steps:
+  - action: 将「计划发货日期」设置为目标日期范围，「栋舍」选择为目标栋舍，「品种」选择为目标品种，「单号」输入目标关键字片段，点击「查询」
+    expected: 列表刷新后每一行同时满足所选日期范围、所选栋舍、所选品种和关键字片段四个条件，仅满足部分条件的对照发货单不再出现
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-014
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 点击查询后状态卡和列表分页按条件刷新
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备不同计划发货日期下的脱敏发货单，且切换日期范围后状态卡计数会发生变化
+  - 测试环境已准备不同计划发货日期下的脱敏发货单，且切换日期范围后结果条数会发生变化
+  steps:
+  - action: 记录当前五张状态卡计数、列表行数与分页条总条数，将「计划发货日期」改为另一目标日期范围后点击「查询」
+    expected: 五张状态卡的计数均按新提交条件重新计算并展示；列表刷新后每一行的计划发货日期均落在新范围内，范围外记录不再展示；分页条总条数等于新条件下的结果总数
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-015
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 在第二页提交查询后分页回到第一页
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备查询结果超过一页的脱敏发货单数据
+  steps:
+  - action: 点击分页条的页码「2」进入第二页，确认当前页码为二后点击「查询」
+    expected: 查询完成后分页条当前页码回到「1」，列表展示新条件下的第一页数据
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-016
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-11
+  title: 点击重置后查询条件恢复为默认状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 将「计划发货日期」改为目标历史日期范围，「栋舍」改为目标栋舍，「品种」改为目标品种，并在「单号」输入目标关键字，点击「重置」
+    expected: 「计划发货日期」开始日期与结束日期均恢复为当天日期
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-017
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-11
+  title: 在第二页点击重置后分页回到第一页
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备默认条件下结果超过一页的脱敏发货单数据
+  steps:
+  - action: 点击分页条的页码「2」进入第二页，确认当前页码为二后点击「重置」
+    expected: 分页条当前页码回到「1」，列表展示默认条件下的第一页数据
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-018
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-01
+  title: 分页条展示的总条数与列表结果条数一致
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备默认条件下结果超过一页的脱敏发货单数据
+  steps:
+  - action: 查看分页条展示的总条数文案，并与全部状态卡计数进行核对
+    expected: 分页条总条数与全部状态卡计数一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-019
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-01
+  title: 切换页码后已应用的筛选条件保持不变
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备目标筛选条件下结果超过一页的脱敏发货单数据
+  steps:
+  - action: 将「栋舍」改为目标栋舍并点击「查询」，记录结果总条数后点击分页条页码「2」
+    expected: 进入第二页后，「计划发货日期」「栋舍」「品种」「单号」仍保留查询时的值；分页条总条数等于查询结果总数
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-020
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-01
+  title: 列表按计划发货日期从早到晚升序排列
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备计划发货日期覆盖多个不同日期且一页内不少于三行的脱敏发货单数据
+  steps:
+  - action: 设置可覆盖多个计划发货日期的查询条件并点击「查询」，自上而下读取列表每一行的「计划发货日期」
+    expected: 相邻两行中上一行的计划发货日期不晚于下一行的计划发货日期，列表整体按计划发货日期从早到晚排列
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-021
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-01
+  title: 计划发货日期相同的记录按发货单号升序排列
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备计划发货日期相同且状态不同、发货单号不同的脱敏发货单，且同日期记录不少于三行
+  steps:
+  - action: 设置仅命中该目标日期的查询条件并点击「查询」，自上而下读取计划发货日期相同各行的「发货单号」与「状态」
+    expected: 计划发货日期相同的相邻行中，上一行的发货单号在升序字典序上不大于下一行的发货单号，排列顺序不随各行状态取值变化
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-022
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-01
+  title: 状态统计区展示五张状态卡
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 查看列表上方的状态统计区
+    expected: 状态统计区自左向右依次展示「全部」、「待发货」、「发货中」、「已发货」、「已签收」五张状态卡，每张状态卡显示状态名称与对应数量
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-023
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 全部状态卡数量等于当前筛选条件下的结果总数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可在一页内展示完整的脱敏发货单数据
+  steps:
+  - action: 设置目标筛选条件并点击「查询」，记录「全部」状态卡的数量与分页条总条数
+    expected: 「全部」状态卡的数量与分页条总条数相等
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-024
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 待发货状态卡数量等于当前筛选结果中待发货状态的记录数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备同一筛选条件下待发货记录可在一页内统计完整的脱敏数据
+  steps:
+  - action: 设置目标筛选条件并点击「查询」，记录「待发货」状态卡数量，并翻页统计列表中「状态」列为「待发货」的行数
+    expected: 「待发货」状态卡数量与逐页累计的待发货行数之和相等
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-025
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 发货中状态卡数量等于当前筛选结果中发货中状态的记录数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备同一筛选条件下发货中记录可在一页内统计完整的脱敏数据
+  steps:
+  - action: 设置目标筛选条件并点击「查询」，记录「发货中」状态卡数量，并翻页统计列表中「状态」列为「发货中」的行数
+    expected: 「发货中」状态卡数量与逐页累计的发货中行数之和相等
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-026
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 已发货状态卡数量等于当前筛选结果中已发货状态的记录数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备同一筛选条件下已发货记录可在一页内统计完整的脱敏数据
+  steps:
+  - action: 设置目标筛选条件并点击「查询」，记录「已发货」状态卡数量，并翻页统计列表中「状态」列为「已发货」的行数
+    expected: 「已发货」状态卡数量与逐页累计的已发货行数之和相等
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-027
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 已签收状态卡数量等于当前筛选结果中已签收状态的记录数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备同一筛选条件下已签收记录可在一页内统计完整的脱敏数据
+  steps:
+  - action: 设置目标筛选条件并点击「查询」，记录「已签收」状态卡数量，并翻页统计列表中「状态」列为「已签收」的行数
+    expected: 「已签收」状态卡数量与逐页累计的已签收行数之和相等
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-028
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 状态数量为0时对应状态卡仍然展示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备使某一状态在当前筛选条件下记录数为0的脱敏数据
+  steps:
+  - action: 设置使目标状态记录数为0的筛选条件并点击「查询」，查看该状态对应的状态卡
+    expected: 该状态卡仍展示在状态统计区中，数量显示为0；状态卡顺序与默认状态卡顺序相同
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-029
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 点击待发货状态卡后列表仅展示待发货记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备包含待发货状态在内的多种状态脱敏发货单数据
+  steps:
+  - action: 点击状态统计区的「待发货」状态卡
+    expected: 「待发货」状态卡处于选中状态，列表中每一行的「状态」列均为「待发货」，其他状态的发货单不再出现
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-030
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 点击发货中状态卡后列表仅展示发货中记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备包含发货中状态在内的多种状态脱敏发货单数据
+  steps:
+  - action: 点击状态统计区的「发货中」状态卡
+    expected: 「发货中」状态卡处于选中状态，列表中每一行的「状态」列均为「发货中」，其他状态的发货单不再出现
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-031
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 点击已发货状态卡后列表仅展示已发货记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备包含已发货状态在内的多种状态脱敏发货单数据
+  steps:
+  - action: 点击状态统计区的「已发货」状态卡
+    expected: 「已发货」状态卡处于选中状态，列表中每一行的「状态」列均为「已发货」，其他状态的发货单不再出现
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-032
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 点击已签收状态卡后列表仅展示已签收记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备包含已签收状态在内的多种状态脱敏发货单数据
+  steps:
+  - action: 点击状态统计区的「已签收」状态卡
+    expected: 「已签收」状态卡处于选中状态，列表中每一行的「状态」列均为「已签收」，其他状态的发货单不再出现
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-033
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 点击全部状态卡后列表恢复展示全部记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备包含多种状态的脱敏发货单数据
+  steps:
+  - action: 先点击「已签收」状态卡，再点击「全部」状态卡
+    expected: 「全部」状态卡处于选中状态，列表恢复展示当前筛选条件下的全部记录，分页条总条数与「全部」状态卡数量一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-034
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-03
+  title: 切换状态卡后五张状态卡的计数不随当前状态卡变化
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备包含多种状态的脱敏发货单数据
+  steps:
+  - action: 记录五张状态卡的计数，点击「待发货」状态卡后再次记录五张状态卡的计数
+    expected: 切换状态卡后五张状态卡的计数与切换前完全一致，未把当前点击的状态作为条件再次叠加统计
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-035
+  coverage_ids:
+  - CV-041-01
+  - CV-041-02
+  plan_item_ids:
+  - PI-041-01
+  - PI-041-03
+  atomic_purpose_ids:
+  - AP-01
+  title: 列表表头按序展示十五个业务字段列
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 查看「雏苗发货」表格的表头
+    expected: 表格按序展示「发货单号」「计划发货日期」「栋舍」「品种」「状态」「计划上苗数」「发货进度（已发货数/实际可发数）」「待发货数」「计划苗重(g)」「平均苗重(g)」「创建时间」「最后更新时间」「孵化需求号」「孵化场」「操作」十五个列名；列名可读取且与当前页面字段定义一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-036
+  coverage_ids:
+  - CV-041-02
+  plan_item_ids:
+  - PI-041-03
+  atomic_purpose_ids:
+  - AP-04
+  title: 列表计划发货日期计划上苗数和计划苗重与排程下推数据一致
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供同一业务键在产业链生产排程系统中的计划发货日期、栋舍、品种、计划上苗数、计划苗重授权样本
+  steps:
+  - action: 按目标业务键查询出发货单，逐行核对「计划发货日期」、「栋舍」、「品种」、「计划上苗数」、「计划苗重」的取值
+    expected: 每一行的上述五个字段取值与产业链生产排程系统中同一业务键的下推数据逐条一致，无数值偏差、单位偏差和字段错位
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-037
+  coverage_ids:
+  - CV-041-03
+  plan_item_ids:
+  - PI-041-04
+  atomic_purpose_ids:
+  - AP-05
+  title: 列表孵化需求号列的值符合规定的编号格式
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供孵化需求号正式格式说明，并准备符合与不符合该格式的可核对样本
+  steps:
+  - action: 查询出目标发货单，逐行核对「孵化需求号」列的取值
+    expected: 每一行的孵化需求号均符合已 `FH-YYYYMMDD-xx` 格式
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-039
+  coverage_ids:
+  - CV-041-04
+  plan_item_ids:
+  - PI-041-05
+  atomic_purpose_ids:
+  - AP-06
+  title: 列表最后更新时间在完成发货后同步为完成发货时间
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供发货单状态变更记录与完成发货时间的授权样本，并明确最后更新时间的触发事件与时区
+  steps:
+  - action: 查询出目标发货单，逐行核对「最后更新时间」列的取值
+    expected: 每一行的最后更新时间与同一发货单最近一次业务状态变更时间一致，未发生状态变更的发货单保持原有取值
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-040
+  coverage_ids:
+  - CV-041-05
+  plan_item_ids:
+  - PI-041-06
+  atomic_purpose_ids:
+  - AP-07
+  title: 发货单孵化场取当前租户第一个启用孵化场且不匹配停用孵化场
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 已准备具备雏苗发货列表菜单权限且所属租户有明确孵化场授权范围的账号
+  - 测试环境已提供当前租户按配置顺序排列的多个孵化场，其中第一个为启用状态，另有启用孵化场和停用孵化场作为比对样本
+  steps:
+  - action: 查询出全部可访问发货单，逐行核对「孵化场」列的取值，并与当前租户孵化场配置顺序和状态对照
+    expected: 每一行的孵化场均自动取当前租户配置顺序中的第一个启用孵化场；不匹配其他启用孵化场，也不匹配任何停用孵化场或其他租户孵化场
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-041
+  coverage_ids:
+  - CV-041-06
+  plan_item_ids:
+  - PI-041-07
+  atomic_purpose_ids:
+  - AP-08
+  title: 列表发货单号与商品禽养殖系统中的补栏计划号一致
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供同一业务键在商品禽养殖系统中的补栏计划号脱敏样本及关联字段说明
+  steps:
+  - action: 查询出目标发货单，记录「发货单号」列的取值并与商品禽养殖系统中的补栏计划号逐条比对
+    expected: 每一行的发货单号与商品禽养殖系统中同一业务键的补栏计划号一一对应，无错配与缺失
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-042
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-09
+  title: 列表发货进度列的值等于已发货数除以实际可发数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供实际可发数与已发货数均可独立核对的授权发货单样本
+  steps:
+  - action: 查询出目标发货单，读取「发货进度（已发货数/实际可发数）」列展示的已发货数与实际可发数，并核对进度百分比
+    expected: 每行进度百分比等于该行已发货数除以实际可发数的结果，页面展示的已发货数与实际可发数与关联上孵计划、发货记录一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-043
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-09
+  title: 列表待发货数列的值等于实际可发数减去已发货数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已提供实际可发数与已发货数均可独立核对的授权发货单样本
+  steps:
+  - action: 查询出目标发货单，读取「待发货数」列取值与「发货进度（已发货数/实际可发数）」列展示的实际可发数、已发货数
+    expected: 每行待发货数等于该行实际可发数减去已发货数的差值，与发货执行页可发货数量口径一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-044
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-10
+  title: 实际可发数为0的发货单发货进度展示为0%
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备关联上孵计划实际出雏总数为0的授权发货单样本，并由产品确认该场景的展示口径
+  steps:
+  - action: 查询出实际可发数为0的目标发货单，查看该行「发货进度（已发货数/实际可发数）」列与「待发货数」列
+    expected: 该行实际可发数展示为0，发货进度展示为0%，待发货数按产品确认的口径展示，页面未出现除0错误提示或空白值
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-045
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-10
+  title: 未产生发货记录时待发货数等于实际可发数
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备实际可发数大于0且尚未产生任何发货记录的授权发货单样本
+  steps:
+  - action: 查询出目标发货单，查看该行「发货进度（已发货数/实际可发数）」列与「待发货数」列
+    expected: 该行已发货数展示为0，待发货数与实际可发数相等，发货进度展示为0%
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-046
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-02
+  title: 进度为0%时状态为待发货
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 发货进度为0%的授权发货单
+  steps:
+  - action: 查询目标发货单，查看发货进度和状态列
+    expected: 该记录发货进度为0%，状态列显示「待发货」
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: status_pending
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-047
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-02
+  title: 进度大于0%且小于100%时状态为发货中
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 发货进度大于0%且小于100%的授权发货单
+  steps:
+  - action: 查询目标发货单，查看发货进度和状态列
+    expected: 该记录发货进度大于0%且小于100%，状态列显示「发货中」
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: status_in_progress_partial
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-048
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-02
+  title: 进度100%但未全部出雏时状态为发货中
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 发货进度为100%且存在未完成上孵计划的授权发货单
+  steps:
+  - action: 查询目标发货单，查看上孵计划出雏状态和状态列
+    expected: 该记录发货进度为100%但上孵计划未全部出雏，状态列显示「发货中」
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: status_in_progress_incomplete
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-049
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-02
+  title: 进度100%且全部出雏但存在未签收计划时状态为已发货
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 发货进度为100%、全部上孵计划已出雏且存在已发货未签收计划的授权发货单
+  steps:
+  - action: 查询目标发货单，查看出雏、签收状态和状态列
+    expected: 该记录状态列显示「已发货」
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: status_shipped
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-050
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-02
+  title: 进度100%且全部出雏并全部签收时状态为已签收
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 发货进度为100%、全部上孵计划已出雏且全部计划已签收的授权发货单
+  steps:
+  - action: 查询目标发货单，查看出雏、签收状态和状态列
+    expected: 该记录状态列显示「已签收」
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: status_signed
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-051
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-02
+  title: 未全部出雏时即使发货进度100%且外部计划全部签收仍为发货中
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试环境已准备发货进度100%、上孵计划仅部分出雏且商品禽养殖管理系统已将全部上孵计划确认签收的发货单
+  steps:
+  - action: 查询目标发货单，核对上孵计划出雏结果、外部系统签收结果和列表「状态」列
+    expected: 即使发货进度为100%且外部系统已确认全部签收，只要上孵计划尚未全部出雏，列表状态仍显示「发货中」，不得显示「已签收」
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-052
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-02
+  title: 列表状态列文字仅为合法的四种状态枚举值
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏发货单数据
+  steps:
+  - action: 查询出可见发货单，逐行读取「状态」列的文字
+    expected: 每一行的状态列文字均为待发货、发货中、已发货、已签收中的一种，不出现空值、未知状态或其他超出规定的状态文字
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-053
+  coverage_ids:
+  - CV-041-09
+  plan_item_ids:
+  - PI-041-10
+  atomic_purpose_ids:
+  - AP-12
+  title: 四种状态标签的展示样式符合视觉规范
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备覆盖四种状态的脱敏发货单数据，并取得产品与设计确认的状态视觉规范
+  steps:
+  - action: 查询出包含四种状态标签的可见发货单，对比标签的文字颜色、背景色与样式
+    expected: 四种状态标签的文字、颜色、背景色、边框及其他视觉样式符合产品确认的视觉规范
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-054
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-02
+  atomic_purpose_ids:
+  - AP-16-03
+  title: 状态为已发货的行展示明细入口
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备状态为已发货的授权发货单
+  steps:
+  - action: 查询出目标已发货记录，在该行的「操作」列中查看明细入口
+    expected: 该行操作列展示可点击的明细入口，入口处于可操作状态，未置灰、未隐藏
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-055
+  coverage_ids:
+  - CV-041-10
+  plan_item_ids:
+  - PI-041-11
+  atomic_purpose_ids:
+  - AP-13
+  title: 列表区域展示可用的导出入口
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据
+  steps:
+  - action: 查看列表标题所在区域的按钮
+    expected: 列表区域展示「导出」按钮，按钮处于可点击状态，未置灰、未隐藏
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: draft
+- id: TC-PC-041-056
+  coverage_ids:
+  - CV-041-08
+  plan_item_ids:
+  - PI-041-09
+  atomic_purpose_ids:
+  - AP-11
+  title: 查询条件无匹配结果时列表不展示数据行并展示空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试账号已分配雏苗发货列表查询、筛选和状态统计权限；具体权限范围待确认
+  - 测试环境已准备可查询的脱敏雏苗发货单数据，并取得产品确认的空状态提示文案
+  steps:
+  - action: 在「单号」输入框内输入确认不存在的编号，点击「查询」
+    expected: 列表区域不展示任何数据行，展示产品确认的空状态提示，分页条总条数为0，五张状态卡计数均为0，页面未出现报错
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-060
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-10
+  title: 至少一条上孵计划发货进度100%时展示平均苗重
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试环境已准备关联上孵计划中至少一条发货进度达到100%的发货单
+  steps:
+  - action: 查询目标发货单并读取关联上孵计划发货进度及列表「平均苗重(g)」列
+    expected: 只要至少一条关联上孵计划的发货进度达到100%，该发货单的「平均苗重(g)」列展示有效数据，不因其他计划仍未达到100%而隐藏
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-061
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-09
+  title: 平均苗重仅统计已发货和已签收上孵计划并排除待发货和发货中（未完成上孵）计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试环境已准备同一发货单关联的已发货、已签收、待发货和发货中上孵计划，并可核对各计划平均苗重和实际可发数
+  steps:
+  - action: 查询目标发货单，核对已发货、已签收、待发货和发货中（未完成上孵）计划的苗重及平均苗重
+    expected: 仅已发货和已签收计划参与平均苗重计算；待发货和发货中（未完成上孵）计划完全排除，改变被排除计划的苗重不应改变列表平均苗重
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-062
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-09
+  title: 平均苗重按实际可发数加权计算
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试账号已分配「种禽孵化管理系统」应用权限
+  - 测试账号已分配「计划管理 > 雏苗发货」菜单权限
+  - 测试环境已准备至少两条已发货或已签收上孵计划，平均苗重和实际可发数均可核对，且各计划平均苗重不同
+  steps:
+  - action: 查询目标发货单，记录每条已发货/已签收上孵计划的平均苗重和实际可发数并手工计算期望值
+    expected: 列表「平均苗重(g)」等于 SUM(单个已发货/已签收上孵计划平均苗重×实际可发数)/SUM(已发货/已签收上孵计划实际可发数)，结果按页面规定精度展示
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: weighted_average_formula
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-063
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-10
+  title: 无有效上孵计划时平均苗重展示为空值、短横线或0
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备无已发货或已签收有效上孵计划的授权发货单
+  steps:
+  - action: 查询目标发货单，查看平均苗重列
+    expected: 无有效上孵计划时不发生除0错误，平均苗重展示为空值、短横线或0，且结果稳定一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: avg_weight_no_valid_plan
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-064
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-10
+  title: 有效实际可发数合计为0时平均苗重按确认规则展示
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备存在有效上孵计划且有效实际可发数合计为0的授权发货单
+  steps:
+  - action: 查询目标发货单，查看平均苗重列
+    expected: 有效实际可发数合计为0时不发生除0错误，平均苗重显示“-”，且列表结果稳定一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: avg_weight_zero_available
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-065
+  coverage_ids:
+  - CV-041-07
+  plan_item_ids:
+  - PI-041-08
+  atomic_purpose_ids:
+  - AP-10
+  title: 平均苗重有效计划分母为0时不发生除零错误
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备有效计划实际可发数合计为0的授权发货单
+  steps:
+  - action: 查询分母为0的目标发货单，查看平均苗重列及浏览器页面状态
+    expected: 页面不发生除零错误，平均苗重显示“-”，且其他列表字段按测试数据中的字段值显示
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: average_weight_zero_denominator
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-067
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-16-01
+  title: 已到计划发货日期的待发货记录展示发货和明细入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备计划发货日期不晚于当前业务日期、状态为待发货且实际可发数大于0的授权发货单
+  steps:
+  - action: 查看符合上述条件的待发货记录的操作入口
+    expected: 该记录同时展示可用的“发货”和“明细”入口，两个入口均可操作
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: due_date_pending_delivery
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-068
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-01
+  atomic_purpose_ids:
+  - AP-16-02
+  title: 发货中记录同时展示发货和明细入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备计划发货日期不晚于当前业务日期、状态为发货中且仍存在待发货数量的授权发货单
+  steps:
+  - action: 查看符合上述条件的发货记录的操作入口
+    expected: 该记录同时展示可用的“发货”和“明细”入口，两个入口均可操作
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: due_date_in_progress_with_pending
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-069
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-02
+  atomic_purpose_ids:
+  - AP-16-03
+  title: 已发货记录仅展示明细入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备状态为已发货且具备明细数据的授权发货单
+  steps:
+  - action: 查看符合上述条件的已发货记录的发货和明细入口
+    expected: 该记录仅展示可用的“明细”入口，不展示“发货”入口，明细内容与该发货记录一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: shipped_delivery_row
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-070
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-02
+  atomic_purpose_ids:
+  - AP-16-04
+  title: 已签收记录仅展示明细入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备状态为已签收且具备明细数据的授权发货单
+  steps:
+  - action: 查看符合上述条件的已签收记录的发货和明细入口
+    expected: 该记录仅展示可用的“明细”入口，不展示“发货”入口，明细内容与该发货记录一致
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: received_delivery_row
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-071
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-02
+  atomic_purpose_ids:
+  - AP-16-05
+  title: 待发货且未到计划发货日期时不展示任何业务操作入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备计划发货日期晚于当前业务日期、状态为待发货且实际可发数大于0的授权发货单
+  steps:
+  - action: 查看符合上述条件的未来日期发货记录的操作入口
+    expected: 该待发货记录不展示“发货”或“明细”入口，操作列无任何业务操作按钮
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: future_due_date_delivery
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-072
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-02
+  atomic_purpose_ids:
+  - AP-16-02
+  title: 进度100%但未全部出雏时状态和按钮仍按发货中规则处理
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备发货进度100%、上孵计划未全部出雏且存在待确认入口规则的授权发货单
+  steps:
+  - action: 查看符合上述条件的发货记录状态及操作入口
+    expected: 只要上孵计划未全部出雏，列表状态仍为“发货中”；记录同时展示“发货”和“明细”入口，两个入口均可操作
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: full_progress_incomplete_hatching
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+- id: TC-PC-041-073
+  coverage_ids:
+  - CV-041-01
+  plan_item_ids:
+  - PI-041-02
+  atomic_purpose_ids:
+  - AP-16-06
+  title: 没有任何上孵计划的发货单不展示发货和明细入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 雏苗发货列表与筛选
+  common_preconditions_ref: delivery_list_page_access_steps
+  preconditions:
+  - 测试环境已准备没有任何上孵计划关联、状态为待发货且实际可发数大于0的授权发货单
+  steps:
+  - action: 查看符合上述条件的发货记录的操作入口
+    expected: 该发货单不展示“发货”或“明细”入口，操作列无任何业务操作按钮，且不存在可点击的对应入口
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/delivery
+    data_prefix: BL-
+    case_data: delivery_without_hatching_plan
+  trace:
+    story: null
+    req: REQ-PC-041
+    tp: TEST_PLAN-REQ-PC-041
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+  tp_id: TC-PC-041-073
+summary:
+  type_counts:
+    auto: 67
+    feature: 73
+    interface: 0
+  auto_counts:
+    auto: 66
+    'no': 6
+  priority_counts:
+    P1: 10
+    P2: 28
+    P3: 35
+    P4: 0

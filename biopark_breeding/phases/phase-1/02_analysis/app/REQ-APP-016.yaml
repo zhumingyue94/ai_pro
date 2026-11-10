@@ -1,0 +1,127 @@
+schema_version: "1.0"
+req_id: "REQ-APP-016"
+module_name: "存发苗间 / 出入库记录"
+zentao_module_id: 578
+platform: "app"
+analysis_status: "analyzed_from_docx_baseline_and_readonly_local_evidence"
+scope:
+  object_scope: "存发苗间"
+  object_scope_evidence: "inferred"
+  object_scope_basis: "基线将 P099-P103 的通用出入库记录页面分配给存发苗间；页面字段以鸡苗信息和存发苗间仓库信息为对象证据。"
+  included: "P099-P103 的列表、搜索、筛选、筛选结果、详情只读契约。"
+  excluded: "入库/出库确认、任务执行、远程写入、接口实现、权限实现和数据持久化实现。"
+evidence_legend:
+  observed: "实时原型在 networkidle 后的渲染 DOM、页面文本和控件；本轮实时会话因浏览器占用/定位超时未补充。"
+  static: "DOCX 页面表、模块拆分清单、axure_map.md、既有 RUN 的 DOM/page_text/截图路径。"
+  inferred: "由基线模块归属或通用页面契约归纳，不能当作已确认业务事实。"
+  open_question: "材料未明确，需产品/研发确认。"
+inputs:
+  - path: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+    type: "docx"
+    sections: ["5.99 出入库记录列表", "5.100 出入库记录搜索", "5.101 出入库记录筛选", "5.102 筛选结果", "5.103 出入库详情"]
+    pages: ["P099", "P100", "P101", "P102", "P103"]
+    evidence_level: "static"
+  - path: "01_requirements/app/模块拆分清单.md"
+    type: "baseline"
+    sections: ["REQ-APP-016", "D-04", "实施边界"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_map.md"
+    type: "axure_map"
+    sections: ["P099", "P100", "P101", "P102", "P103"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/"
+    type: "readonly_evidence_run"
+    evidence_level: "static"
+  - path: "http://127.0.0.1:5500/"
+    type: "live_prototype"
+    viewport: "430x932"
+    wait: "networkidle"
+    browser_mode: "headless=False"
+    evidence_level: "open_question"
+    note: "本轮未完成实时页面补充核对；不把实时会话当作已观察证据。"
+source_pages:
+  - {page_id: "P099", name: "出入库记录列表", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-099.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-099.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P099"}]}
+  - {page_id: "P100", name: "出入库记录搜索", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-100.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-100.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P100"}]}
+  - {page_id: "P101", name: "出入库记录筛选", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-101.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-101.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P101"}]}
+  - {page_id: "P102", name: "筛选结果", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-102.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-102.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P102"}]}
+  - {page_id: "P103", name: "出入库详情", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-103.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-103.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P103"}]}
+page_contracts:
+  - page_id: "P099"
+    name: "出入库记录列表"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "页面表和静态链接显示由首页进入；基线把该通用页面归属存发苗间。"}, return: {level: "static", detail: "可返回首页、搜索、筛选或详情；返回栈和返回按钮样式未确认。"}}
+    query_area: {level: "static", items: ["存发苗间一号/二号/三号", "出入库方式：自动/手动", "出入库原因：种蛋出雏/销售", "时间快捷项：今日/昨日/近一周/近一个月/近3个月/近1年", "出/入库：入库/出库", "搜索", "筛选"], open_question: "默认仓库、组合条件、分页和排序未明确。"}
+    list_or_cards: {level: "static", items: ["数量", "入库或出库", "鸡苗平均苗重", "出苗日期", "入库/出库时间", "原因", "养殖场-批次-品种", "自动/手动", "计划号（样例存在）"]}
+    form: {level: "static", detail: "未观察到列表内联编辑表单；查询输入和筛选表单分别位于 P100/P101。"}
+    dialogs: {level: "static", detail: "未观察到业务确认弹窗；是否存在网络错误或权限弹窗未定义。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入出入库详情", "返回首页"]}
+    status_and_transitions: {level: "static", values: ["入库", "出库", "自动", "手动"], transition: "记录类型和方式可见；记录生成、冲正和删除状态未定义。"}
+  - page_id: "P100"
+    name: "出入库记录搜索"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P099 搜索进入。"}, return: {level: "static", detail: "可返回列表或详情；实际跳转未补充复现。"}}
+    query_area: {level: "static", items: ["关键词输入", "计划号", "养殖客户", "养殖场", "批次", "品种", "代孵/树田代孵历史词", "搜索"], open_question: "历史搜索保存、匹配范围、是否输入即查和空结果提示需要确认；原型注释建议本期可仅按输入关键词查询。"}
+    list_or_cards: {level: "static", detail: "有结果时展示鸡苗出入库记录卡片；无结果文案存在于页面注释证据。"}
+    form: {level: "static", items: ["关键词输入框"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "选择历史搜索词", "进入详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["搜索有结果", "搜索无结果"], open_question: "网络失败、权限不足、取消搜索和历史持久化未明确。"}
+  - page_id: "P101"
+    name: "出入库记录筛选"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P099/P100 的筛选入口进入。"}, return: {level: "static", detail: "确认进入 P102；重置后默认值和返回列表行为未确认。"}}
+    query_area: {level: "static", items: ["存发苗间", "出入库日期范围", "养殖场", "品种", "平均苗重", "操作类型：全部/入库/出库", "出入库方式：全部/自动/手动", "出入库原因：全部/种蛋出雏/其他", "确认", "重置"], open_question: "字段是否必填、日期边界、平均苗重单位和条件组合逻辑未明确。"}
+    list_or_cards: {level: "static", detail: "筛选页展示记录卡片预览。"}
+    form: {level: "static", items: ["仓库选择", "日期范围", "养殖场", "品种", "平均苗重", "操作类型", "出入库方式", "出入库原因"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["确认", "重置", "进入筛选结果", "返回列表/搜索"]}
+    status_and_transitions: {level: "static", values: ["全部", "入库", "出库", "自动", "手动"], open_question: "空筛选、无结果和接口失败提示未明确。"}
+  - page_id: "P102"
+    name: "筛选结果"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P101 确认进入。"}, return: {level: "static", detail: "可回到列表/搜索/筛选或详情；筛选条件是否回显未确认。"}}
+    query_area: {level: "static", items: ["搜索", "筛选"], open_question: "当前条件回显、清空条件、分页和排序未明确。"}
+    list_or_cards: {level: "static", items: ["鸡苗平均苗重", "出苗日期", "入库/出库时间", "原因", "养殖场-批次-品种", "自动/手动", "计划号"]}
+    form: {level: "static", detail: "未观察到内联编辑表单。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["入库", "出库", "自动", "手动"], open_question: "筛选结果快照与实时数据一致性未定义。"}
+  - page_id: "P103"
+    name: "出入库详情"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P099/P100/P101/P102 的记录卡片进入。"}, return: {level: "static", detail: "静态链接返回出入库记录列表；返回栈未确认。"}}
+    query_area: {level: "static", detail: "未观察到查询区。"}
+    list_or_cards: {level: "static", items: ["出/入库", "数量", "方式", "原因", "时间", "计划号（出库场景有则显示并可复制）", "备注", "操作人", "养殖客户（出库场景可能有）", "鸡苗信息：养殖场/养殖批次/品种/出苗日期/平均苗重/库存/鸡苗类型", "仓库信息：孵化场/存发苗间"]}
+    form: {level: "static", detail: "未观察到可编辑字段。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗；复制反馈未定义。"}
+    actions: {observed: [], static: ["复制计划号（有计划号时）", "返回出入库记录列表"]}
+    status_and_transitions: {level: "static", values: ["入库", "出库", "自动", "手动"], open_question: "详情只读性、不可篡改、计划号可空规则和记录关联键未明确。"}
+interfaces:
+  - {name: "苗间出入库记录查询", direction: "read", evidence_level: "open_question", observed_contract: "读取存发苗间出入库记录列表、关键词结果、筛选结果和单条详情。", endpoint_or_protocol: "未观察到接口地址、鉴权、分页、排序或错误码。", candidate_inputs: ["存发苗间标识", "关键词", "计划号", "养殖客户", "养殖场", "批次", "品种", "平均苗重", "日期范围", "出入库类型", "方式", "原因"], candidate_outputs: ["记录卡片列表", "空结果状态", "记录详情"]}
+  - {name: "苗间入出库写入", direction: "write", evidence_level: "open_question", observed_contract: "P099/P103 只展示记录，写入入口不属于本 REQ 的只读范围。", endpoint_or_protocol: "未观察到接口；不得据此实现或调用写操作。"}
+cross_module_refs:
+  - {ref: "REQ-APP-001", module: "首页", zentao_module_id: 556, relation: "entry", evidence_level: "static", detail: "页面表将 P099 入口关联首页。"}
+  - {ref: "REQ-APP-015", module: "存发苗间 / 库存查询", zentao_module_id: 577, relation: "inventory_source", evidence_level: "inferred", detail: "记录对象应与存发苗间库存查询保持对象边界，但关联键未定义。"}
+  - {ref: "REQ-APP-004", module: "孵化任务 / 种蛋出雏", zentao_module_id: 566, relation: "possible_inbound_source", evidence_level: "inferred", detail: "页面展示入库原因“种蛋出雏”；是否由该任务生成需确认。"}
+  - {ref: "REQ-APP-017", module: "存发苗间 / 盘点记录", zentao_module_id: 579, relation: "sibling_record", evidence_level: "static", detail: "同一存发苗间对象的盘点记录模块。"}
+business_rules:
+  - {id: "BR-016-01", rule: "记录卡片区分入库/出库、自动/手动，并展示鸡苗平均苗重、出苗日期、时间、原因、养殖场-批次-品种等信息。", evidence_level: "static"}
+  - {id: "BR-016-02", rule: "P101 提供存发苗间、日期、鸡苗信息和出入库维度的筛选；确认和重置动作存在于原型证据。", evidence_level: "static"}
+  - {id: "BR-016-03", rule: "详情中出库记录可能展示养殖客户，入库记录不一定展示；计划号按原型注释可有条件展示并提供复制入口。", evidence_level: "static"}
+  - {id: "BR-016-04", rule: "存发苗间对象归属来自基线，通用页面字段未单独证明数据隔离规则。", evidence_level: "inferred"}
+  - {id: "BR-016-05", rule: "本分析只覆盖只读查询和详情，不执行入库、出库或其他业务写操作。", evidence_level: "observed"}
+  - {id: "BR-016-06", rule: "接口、权限、分页、排序、异常提示、持久化、记录生成和冲正规则未在材料中确认。", evidence_level: "open_question"}
+open_questions:
+  - {id: "OQ-016-01", question: "存发苗间记录是否按仓库 ID/类型隔离，默认仓库是什么？", impact: "high"}
+  - {id: "OQ-016-02", question: "入库原因“种蛋出雏”、出库原因和自动/手动方式的完整枚举及来源是什么？", impact: "high"}
+  - {id: "OQ-016-03", question: "记录与出雏任务、库存和盘点记录的关联键及一致性规则是什么？", impact: "high"}
+  - {id: "OQ-016-04", question: "关键词搜索、历史词、日期/平均苗重条件、分页排序和空结果/异常如何处理？", impact: "medium"}
+  - {id: "OQ-016-05", question: "是否允许撤销/冲正或导出，详情和计划号复制是否受权限控制？", impact: "medium"}
+analysis_boundary:
+  read_only: true
+  prohibited_actions: ["新增", "编辑", "删除", "入库", "出库", "盘点确认", "任务执行", "远程数据写入"]
+  not_claimed: ["实时页面本轮已成功逐页点击", "接口已实现", "权限已实现", "写入流程已验证", "状态机已确认"]
+handoff:
+  next_owner: "产品/研发/测试设计"
+  deliverable_use: "先确认存发苗间对象隔离、记录生成来源、筛选契约和只读权限，再进入测试点设计。"
+  generated_files: ["02_analysis/app/REQ-APP-016.yaml", "02_analysis/app/REQ-APP-016_存发苗间-出入库记录.md"]

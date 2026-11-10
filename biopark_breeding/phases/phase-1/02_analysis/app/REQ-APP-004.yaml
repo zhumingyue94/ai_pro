@@ -1,0 +1,211 @@
+id: REQ-APP-004
+title: 种蛋出雏
+module_path: app / 孵化任务 / 种蛋出雏
+zentao_module_id: 566
+status: draft
+summary: 种蛋出雏任务列表、搜索、筛选、详情和执行流程的 APP 页面契约。
+inputs:
+  requirement_docx: 01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx
+  baseline: 01_requirements/app/模块拆分清单.md
+  prototype: http://127.0.0.1:5500/
+  static_map: 01_requirements/app/axure_map.md
+  evidence_run: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/
+scope:
+  source_pages: [P018, P019, P020, P021, P022, P023, P024, P025]
+  source_page_names: [出雏任务列表, 出雏任务搜索, 出雏任务筛选, 出雏任务筛选结果, 出雏任务详情-待执行, 执行出雏任务, 出雏任务详情-已完成, 出雏任务详情-已取消]
+  evidence_levels:
+    observed: 8 个页面均通过直接页面 URL 在 430x932 可视浏览器中完成 networkidle 后检查渲染文本和控件；未点击执行/保存/新增/删除。
+    static: DOCX P018-P025 页面表、axure_map.md 对应章节和 RUN page-018 至 page-025 证据。
+    inferred: 照蛋受精蛋结果→出雏→存发苗间/次品库的流程关系；未据此虚构库存接口。
+    open_question: 真实接口、受健率标准来源、结果校验、库存写入、权限和异常规则。
+  evidence_paths:
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-018.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-018.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-018.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-019.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-019.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-019.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-020.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-020.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-020.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-021.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-021.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-021.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-022.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-022.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-022.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-023.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-023.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-023.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-024.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-024.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-024.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-025.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-025.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-025.txt
+pages:
+  - id: P018
+    name: 出雏任务列表
+    source: observed+static
+    entry: 首页“种蛋出雏”入口。
+    query_area: 搜索种蛋出雏任务、筛选入口、待执行/已完成/已取消/已超期状态切换。
+    list_or_cards: 养殖场-批次-品种、计划出雏日期、出雏数量、种蛋类型、周龄、平均蛋重/蛋重类型、产蛋日期、出雏器名称、状态；待执行出雏数按照蛋任务受精结果展示的注释为 static。
+    forms: 不适用。
+    popups: 筛选入口可进入 P020；实际弹窗形态未确认。
+    buttons_actions: 搜索、筛选、执行、查看、卡片查看、出雏器全景入口。
+    states_transitions: 待执行/已完成/已取消；待执行超时为已超期告警。
+    return_path: 首页→列表；进入搜索、筛选、详情、执行，返回来源列表。
+  - id: P019
+    name: 出雏任务搜索
+    source: observed+static
+    entry: P018 搜索入口。
+    query_area: 计划号/任务号/养殖场/批次/品种关键字；历史搜索和搜索按钮。
+    list_or_cards: 出雏结果卡片，显示照蛋/出雏数量、出雏器、状态及执行/查看。
+    forms: 搜索输入；搜索历史最多三行的注释为 static。
+    popups: 未观察到。
+    buttons_actions: 搜索、历史项、垃圾筐删除、执行/查看、卡片查看。
+    states_transitions: 有结果/无结果；待执行、已超期、已完成、已取消排序规则为 static。
+    return_path: 返回 P018；结果进入 P022/P023/P024/P025。
+  - id: P020
+    name: 出雏任务筛选
+    source: observed+static
+    entry: P018 筛选入口。
+    query_area: 计划出雏日期快捷范围/日期项、养殖场、种蛋类型、品种、蛋重类型、周龄、平均蛋重、任务状态、告警状态。
+    list_or_cards: 背景任务卡片；确认后结果在 P021。
+    forms: 选择项和周龄/平均蛋重录入；日期选择单选注释可见。
+    popups: 未确认是弹层还是独立页。
+    buttons_actions: 确认、重置、返回列表/搜索。
+    states_transitions: 全部/待执行/已完成/已取消与正常/已超期组合。
+    return_path: 确认→P021；重置清空项；返回 P018/P019。
+  - id: P021
+    name: 出雏任务筛选结果
+    source: observed+static
+    entry: P020 确认后。
+    query_area: 搜索、筛选入口。
+    list_or_cards: 按条件调整的出雏任务卡片，含执行/查看、出雏器和鸡苗仓库信息。
+    forms: 不适用。
+    popups: 未观察到。
+    buttons_actions: 搜索、筛选、执行/查看、卡片查看、出雏器入口。
+    states_transitions: 与 P018 状态/告警规则相同。
+    return_path: 返回 P018/P019/P020 或进入详情/执行。
+  - id: P022
+    name: 出雏任务详情-待执行
+    source: observed+static
+    entry: P018/P019/P021 待执行任务。
+    query_area: 未观察到。
+    list_or_cards: 种蛋信息、计划号/任务号；出雏器、出雏车数量、库位列表；计划出雏日期和出雏数量。出雏数来自照蛋任务结果受精蛋数的注释为 static。
+    forms: 只读展示，未观察到可编辑字段。
+    popups: 未观察到。
+    buttons_actions: 复制计划号/任务号、执行、出雏器入口。
+    states_transitions: 待执行可带已超期；执行进入 P023。
+    return_path: 返回 P018；执行成功后的来源页返回规则为 static。
+  - id: P023
+    name: 执行出雏任务
+    source: observed+static
+    entry: P022 或列表待执行执行按钮。
+    query_area: 未观察到。
+    list_or_cards: 种蛋/计划/任务信息；出雏器来源；出雏结果和目标库存。
+    forms: 健雏、平均苗重、弱雏、毛蛋、淘汰雏数值；存发苗间/次品库选择；执行人和备注；损失、入健率、受健率、淘汰率、毛蛋率、达成率等计算展示。
+    popups: 原型注释提到保存成功/执行成功提示和二次确认；未执行验证。
+    buttons_actions: 数量加减、存发苗间/次品库选择、保存、立即执行、出雏入口。
+    states_transitions: 待执行→已完成预期；已超期告警可并存；受健率标准注释为待定。
+    return_path: 保存留本页；执行成功返回来源列表/结果/详情为 static。
+  - id: P024
+    name: 出雏任务详情-已完成
+    source: observed+static
+    entry: P018/P019/P021 已完成查看。
+    query_area: 未观察到。
+    list_or_cards: 种蛋/计划/任务信息；出雏器已出库；健雏、平均苗重、存发苗间、受健率、入健率、弱雏、毛蛋、次品库、淘汰雏、损失和达成率等结果；完成时间/超期信息。
+    forms: 不适用，只读。
+    popups: 未观察到。
+    buttons_actions: 复制、出雏器/苗间入口、返回列表；执行未观察到。
+    states_transitions: 已完成；结果比率的公式来自 static 注释。
+    return_path: 返回来源列表。
+  - id: P025
+    name: 出雏任务详情-已取消
+    source: observed+static
+    entry: P018/P019/P021 已取消查看。
+    query_area: 未观察到。
+    list_or_cards: 种蛋/计划/任务信息；出雏器、出雏车及库位；取消时间/操作人字段未在当前页面稳定展示。
+    forms: 不适用，只读。
+    popups: 未观察到。
+    buttons_actions: 复制、出雏器入口、返回列表；执行未观察到。
+    states_transitions: 已取消；可保留历史已超期告警。
+    return_path: 返回来源列表。
+interfaces:
+  - id: APP-HATCH-TASK-QUERY
+    type: data_query
+    evidence: observed+static
+    target: P018-P021
+    contract: 返回出雏任务卡片、计划日期/数量、出雏器及状态；接口、分页、排序协议未提供。
+  - id: APP-HATCH-RESULT-READ
+    type: cross_module_read
+    evidence: observed+static
+    target: REQ-APP-003 / 照蛋结果、app / 出雏器、app / 存发苗间、app / 次品库
+    contract: 读取受精蛋结果和出雏目标；真实接口与一致性策略未确认。
+  - id: APP-HATCH-EXECUTE
+    type: business_write
+    evidence: static+open_question
+    target: 出雏器出库、存发苗间/次品库入库、出雏结果和任务状态
+    contract: 原型描述执行后更新结果和库存；本次未执行。
+cross_module_refs:
+  - ref: REQ-APP-001
+    relation: 首页入口
+    evidence: observed+static
+  - ref: REQ-APP-003
+    relation: 出雏数量来自照蛋任务受精蛋结果
+    evidence: static+inferred
+  - ref: app / 出雏器 / 库存查询
+    relation: 出雏来源设备/库位
+    evidence: observed+static
+  - ref: app / 存发苗间 / 库存查询
+    relation: 健雏入库目标
+    evidence: observed+static
+  - ref: app / 次品库 / 库存查询
+    relation: 弱雏/淘汰等次品去向展示
+    evidence: observed+static
+business_rules:
+  - id: BR-APP-004-01
+    evidence: static
+    rule: 列表展示计划出雏日期；待执行出雏数量为照蛋任务执行结果中的受精蛋数，作为实际待出雏数量。
+  - id: BR-APP-004-02
+    evidence: static
+    rule: 出雏执行需录入健雏、平均苗重、存发苗间、弱雏、毛蛋、次品库、淘汰雏；数值初始为 0，最大不能超过待出雏数量总量。
+  - id: BR-APP-004-03
+    evidence: static
+    rule: 损失=出雏数-健雏-弱雏-毛蛋-淘汰雏；入健率、受健率、淘汰率、毛蛋率、达成率按原型公式展示；受健率标准处于待定状态。
+  - id: BR-APP-004-04
+    evidence: static
+    rule: 健雏目标为存发苗间，弱雏/相关次品进入次品库的页面选择；淘汰雏是否入库以原型页面呈现和开放问题为准，不补充后端规则。
+  - id: BR-APP-004-05
+    evidence: static+open_question
+    rule: 保存/立即执行后的提示、库存变化、任务完成和返回路径为原型契约，因未执行不视为实现事实。
+open_questions:
+  - id: OQ-APP-004-01
+    evidence: open_question
+    question: 受健率标准由哪个模块/接口提供，标准按养殖场、品种、批次还是其他维度匹配？
+    impact: 影响受健率、达成率和页面计算。
+  - id: OQ-APP-004-02
+    evidence: open_question
+    question: 健雏、弱雏、毛蛋、淘汰雏的数量上限、合计约束、平均苗重单位/精度和负数/空值校验是什么？
+    impact: 影响执行表单与结果一致性。
+  - id: OQ-APP-004-03
+    evidence: open_question
+    question: 存发苗间/次品库多行分配、库位容量、库存出入库和失败回滚如何定义？
+    impact: 影响跨模块写入和异常恢复。
+  - id: OQ-APP-004-04
+    evidence: open_question
+    question: 出雏任务取消入口、权限、取消后出雏器库存与照蛋结果如何处理？
+    impact: 影响已取消详情和状态机。
+  - id: OQ-APP-004-05
+    evidence: open_question
+    question: 保存是草稿还是仅前端临时状态，保存后是否允许继续编辑、谁可见、何时持久化？
+    impact: 影响页面状态和权限设计。
+out_of_scope:
+  - 不执行保存、立即执行、出雏器出库、苗间/次品入库、任务状态变更或任何业务写入。
+  - 不创建测试点、用例、脚本、截图、Trace 或 CSV。
+handoff:
+  agent: analyze-agent
+  outputs: [02_analysis/app/REQ-APP-004.yaml, 02_analysis/app/REQ-APP-004_种蛋出雏.md]
+  next_gate: 需求/测点评审通过后再进入下游阶段。
+  verification_status: P018-P025 原型存在性、渲染文本和控件已核对；真实执行、接口和回读未验证。

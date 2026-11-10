@@ -1,0 +1,1440 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-009
+title: 盘点记录
+module: 盘点记录
+zentao_module_id: 532
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-009
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-38334
+  title: 导出功能-数据准确性验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、表格中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 导出文件中各个字段数据与页面表格显示一致，数据准确
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出的Excel文件查看数据
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38334
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38334
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38335
+  title: 导出功能-表头字段一致性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、表格中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 导出文件的表头字段与页面表格一致，包含19个字段
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出的Excel文件查看表头
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38335
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38335
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38336
+  title: 导出功能-文件格式验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、表格中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 导出的文件为Excel格式，后缀为xls或xlsx
+  - action: 点击导出按钮
+    expected: ''
+  - action: 查看下载的文件
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38336
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38336
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38337
+  title: 导出功能-筛选后导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、已设置筛选条件并执行搜索
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 导出的Excel文件中只包含筛选后的数据
+  - action: 设置筛选条件并点击搜索
+    expected: ''
+  - action: 不勾选任何记录，点击导出按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38337
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38337
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38338
+  title: 导出功能-未勾选默认全选导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、表格中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 导出的Excel文件中包含全部库位信息，默认全选操作
+  - action: 不勾选任何记录
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38338
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38338
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38339
+  title: 导出功能-勾选导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、表格中存在可勾选的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 导出的Excel文件中只包含勾选的库位信息
+  - action: 勾选一条或多条盘点记录
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38339
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38339
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38340
+  title: 表格显示-权限范围数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、当前账号有特定的仓库权限范围
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示当前登录账号权限范围内的仓库盘点记录
+  - action: 查看表格中显示的盘点记录
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38340
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38340
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38341
+  title: 表格显示-差异数量计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 差异数量正确显示为盘点数量减去库存数量的结果
+  - action: 查看差异数量列
+    expected: ''
+  - action: 验证差异数量=盘点数量-库存数量
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38341
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38341
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38342
+  title: 表格显示-是否差异显示否
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在差异数量等于0的盘点记录
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 差异数量等于0的记录，是否差异显示&#039;否&#039;
+  - action: 查找差异数量等于0的记录
+    expected: ''
+  - action: 查看是否差异列
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38342
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38342
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38343
+  title: 表格显示-是否差异显示是
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在差异数量不等于0的盘点记录
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 差异数量不等于0的记录，是否差异显示&#039;是&#039;
+  - action: 查找差异数量不等于0的记录
+    expected: ''
+  - action: 查看是否差异列
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38343
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38343
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38344
+  title: 表格显示-盘点数量显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 盘点数量显示盘点时填入的数量
+  - action: 查看盘点数量列
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38344
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38344
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38345
+  title: 表格显示-库存数量显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 库存数量显示盘点之前的库存数量
+  - action: 查看库存数量列
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38345
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38345
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38346
+  title: 表格显示-数据显示正确性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中每列数据显示与数据库一致，符合业务规则
+  - action: 查看表格中的数据行
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38346
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38346
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38347
+  title: 表格显示-表头字段验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表头显示19个字段：盘点时间、孵化场、仓库、仓库类型、库位号、养殖场、养殖批次、品种、产蛋日期、蛋重类型、平均蛋重、周龄、种蛋类型、库存数量、盘点数量、是否差异、差异数量、操作人、备注
+  - action: 查看表格表头
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38347
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38347
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38348
+  title: 重置按钮-自动执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、已设置筛选条件并执行搜索
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 重置后自动执行搜索，表格显示全部数据，无需再次点击搜索按钮
+  - action: 设置筛选条件并点击搜索
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38348
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38348
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38349
+  title: 操作人筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在包含指定操作人的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示操作人包含搜索内容的盘点记录数据
+  - action: 在操作人输入框中输入存在的操作人姓名
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38349
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38349
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38350
+  title: 仓库类型筛选-选择合格蛋蛋库
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在合格蛋蛋库类型的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示仓库类型为合格蛋蛋库的盘点记录数据
+  - action: 在仓库类型下拉框中选择&#039;合格蛋蛋库&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38350
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38350
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38351
+  title: 种蛋类型筛选-选择合格蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在合格蛋类型的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示种蛋类型为合格蛋的盘点记录数据
+  - action: 在种蛋类型下拉框中选择&#039;合格蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38351
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38351
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38352
+  title: 产蛋日期筛选-正常选择区间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在指定产蛋日期范围内的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示产蛋日期在选定日期范围内的数据
+  - action: 在产蛋日期时间区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38352
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38352
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38353
+  title: 蛋重类型筛选-选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、蛋重类型管理页面存在启用的蛋重类型数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 下拉选项中显示蛋重类型管理页面所有启用的蛋重类型数据
+  - action: 点击蛋重类型下拉选择框
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38353
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38353
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38354
+  title: 蛋重类型筛选-正常单选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在指定蛋重类型的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示选中蛋重类型对应的盘点记录数据
+  - action: 在蛋重类型下拉选择框中选择一个蛋重类型
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38354
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38354
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38355
+  title: 平均蛋重筛选-正常输入数字
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在指定平均蛋重的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示平均蛋重符合搜索条件的盘点记录数据
+  - action: 在平均蛋重输入框中输入数字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38355
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38355
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38356
+  title: 周龄筛选-正常输入数字
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在指定周龄的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示周龄符合搜索条件的盘点记录数据
+  - action: 在周龄输入框中输入数字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38356
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38356
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38357
+  title: 品种筛选-选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、品种管理页面存在启用的品种数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 下拉选项中显示品种管理页面所有启用的品种数据
+  - action: 点击品种下拉选择框
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38357
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38357
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38358
+  title: 品种筛选-正常单选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在指定品种的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示选中品种对应的盘点记录数据
+  - action: 在品种下拉选择框中选择一个品种
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38358
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38358
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38359
+  title: 养殖批次筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在包含指定养殖批次的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示养殖批次包含搜索内容的盘点记录数据
+  - action: 在养殖批次输入框中输入存在的养殖批次
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38359
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38359
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38360
+  title: 养殖场筛选-选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、养殖场管理页面存在启用的养殖场数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 下拉选项中显示养殖场管理页面所有启用的养殖场数据
+  - action: 点击养殖场下拉选择框
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38360
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38360
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38361
+  title: 养殖场筛选-正常单选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在指定养殖场的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示选中养殖场对应的盘点记录数据
+  - action: 在养殖场下拉选择框中选择一个养殖场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38361
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38361
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38362
+  title: 盘点日期筛选-正常选择区间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在指定日期范围内的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示盘点时间在选定日期范围内的数据
+  - action: 在盘点日期时间区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38362
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38362
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38363
+  title: 是否差异筛选-选择否
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在无差异的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示差异数量等于0的盘点记录数据
+  - action: 在是否差异下拉框中选择&#039;否&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38363
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38363
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38364
+  title: 是否差异筛选-选择是
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在有差异的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示差异数量不等于0的盘点记录数据
+  - action: 在是否差异下拉框中选择&#039;是&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38364
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38364
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38365
+  title: 库位号筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在包含指定库位号的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示库位号包含搜索内容的盘点记录数据
+  - action: 在库位号输入框中输入存在的库位号
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38365
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38365
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38366
+  title: 仓库筛选-选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限<br />
+  - 2、仓库管理页面存在启用的仓库数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 下拉选项中显示仓库管理页面所有的仓库数据
+  - action: 点击仓库下拉选择框
+    expected: 停用的显示，删除的不显示
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38366
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38366
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38367
+  title: 仓库筛选-正常多选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在多个仓库的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示选中仓库对应的盘点记录数据
+  - action: 在仓库下拉选择框中选择多个仓库
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38367
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38367
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38368
+  title: 孵化场筛选-选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限<br />
+  - 2、孵化场管理页面存在启用的孵化场数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 下拉选项中显示孵化场管理页面所有的孵化场数据
+  - action: 点击孵化场下拉选择框
+    expected: 停用的显示，删除的不显示
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38368
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38368
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38369
+  title: 孵化场筛选-正常多选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有合格蛋库盘点记录菜单权限
+  - 2、系统中存在多个孵化场的盘点记录数据
+  steps:
+  - action: 登录后进入库存管理-合格蛋库-盘点记录
+    expected: 表格中只显示选中孵化场对应的盘点记录数据
+  - action: 在孵化场下拉选择框中选择多个孵化场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 532
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-009
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38369
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38369
+    raw_module: /一期/pc/库存管理/合格蛋库/盘点记录(#532)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

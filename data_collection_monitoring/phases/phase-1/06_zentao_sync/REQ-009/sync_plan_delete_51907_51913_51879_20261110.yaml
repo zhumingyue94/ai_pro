@@ -1,0 +1,34 @@
+req_id: REQ-009
+product_id: 8
+project_id: 46
+module_id: 747
+operation: delete
+source_yaml: 04_testcases/TC_REQ-009.yaml
+source_markdown: 04_testcases/TC_REQ-009.md
+case_ids:
+  - source_case_id: TC-REQ-009-022
+    zentao_case_id: 51907
+    operation: delete
+    status: validated
+    result: confirmed_not_found
+  - source_case_id: TC-REQ-009-035
+    zentao_case_id: 51913
+    operation: delete
+    status: validated
+    result: confirmed_not_found
+  - source_case_id: TC-REQ-009-001
+    zentao_case_id: 51879
+    operation: delete
+    status: validated
+    result: confirmed_not_found
+source_hashes_after:
+  yaml: 4896d3fd81167e50ca1436187ec3d7878f1c82a40c284801c9dd50b56a8c0094
+  markdown: 6196778f1112918a0eca8b291cb446fe24e2b7845d36794c46f0b71f80462b64
+  review_yaml: c13180eff1b2240f3d31e460138cd5b05635df8a6de0186e71fc603b139173ff
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+execution_evidence:
+  - 06_zentao_sync/REQ-009/delete_51907_20261110.json
+  - 06_zentao_sync/REQ-009/delete_51913_20261110.json
+  - 06_zentao_sync/REQ-009/delete_51879_20261110.json
+registry_action: removed_after_each_confirmed_not_found
+rebuild: forbidden_and_not_used

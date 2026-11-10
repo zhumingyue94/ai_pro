@@ -1,0 +1,92 @@
+plan_id: TEST_PLAN-REQ-APP-023
+title: APP测试计划 - 发货单发货记录
+status: confirmed_rules_pending_evidence
+source_inputs:
+- 01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx
+- 01_requirements/需求变动.md
+- 02_analysis/app/REQ-APP-023.yaml
+- 02_analysis/app/page_inventory/page.json
+- 02_analysis/app/page_inventory/lanhu_page_mapping/REQ-APP-023_lanhu_page_mapping.json
+- .env
+- ../../../../.agents/references/test-plan.schema.json
+- http://43.143.148.114:18885/biopark-breeding/m/
+trace:
+  story: REQ-007 发货单发货记录
+  req: REQ-APP-023
+  project: 种禽孵化管理系统
+  version: 2
+  status: confirmed_rules_pending_evidence
+objective: 规划当前发货单记录查询、排序、汇总、位置明细、折叠规则、性能和返回条件的测试范围与证据；仅输出测试计划。
+confirmed_rules:
+- 超过3条记录时默认展示最新3条；提供“展开全部”，展开后提供“收起”，收起后恢复展示最新3条。
+- 不超过3条记录时不提供“展开全部”和“收起”。
+- “全部记录”指当前发货单全部历史记录。
+- 上孵计划无法批量提交，不设计相同提交时间下的二级排序用例。
+- 大数据量记录区域加载阈值为2s。
+scope:
+  in_scope:
+  - 当前发货单空记录/有记录页面、累计发货、记录数量、计划号、本次数量、剩余未发和位置明细。
+  - 提交时间倒序、多位置记录、1-3条/超过3条记录、默认折叠3条和展开全部的需求验证规划。
+  - 大数据量加载、返回列表保留日期/栋舍/状态/搜索关键字/页签的规划。
+  out_scope:
+  - 创建、修改、删除发货记录和发货提交。
+  - 上孵计划记录页面的独立业务规则，由 REQ-APP-024 承接。
+  - page.json 未确认的接口分页、错误码、稳定定位器和页面字段。
+strategy:
+- 使用等价类和边界值覆盖空、1-3条、超过3条、全部记录、多位置和同时间记录。
+- 使用状态转换覆盖列表到记录页、空态/有记录态、折叠/展开、返回列表和条件恢复。
+- 使用判定表评估记录数量、位置数量、记录状态和返回上下文。
+- 使用 Pairwise/2-way 评估记录集、状态、位置数量、加载规模、来源页面和浏览器组合。
+- Playwright Python 仅规划 page.json 已出现的 app-plan-shipment-records 及 app023-records-empty/app023-records-populated 证据；页面与 APP-024 状态交叉，执行前必须按发货单上下文确认。
+- 证据规划为脱敏截图、DOM、加载/网络日志按需、trace和前后条件对照；不生成自动化脚本。
+environment:
+  client: APP移动端Web/移动端模拟
+  os: win32；正式执行记录实际客户端版本
+  browser: Chromium headed；自动化规划使用 Playwright Python，禁止固定等待
+  base_url: ${UI_TEST_URL}
+  page_path: /m/orders/{发货单号}/shipments；原型页面由 page.json 的 app-plan-shipment-records 证据承载
+  portal_entry: 种禽孵化管理系统 / APP / 发货记录
+  login: 原型无需登录；正式环境凭据仅从 .env 或运行时环境读取，不写入计划、日志或证据
+data:
+  required:
+  - 无记录、1-3条、超过3条和多位置发货记录。
+  - 有效发货单上下文、按提交时间排序的数据和原列表筛选条件。
+  - 大数据量查询响应和返回条件恢复样本。
+  preparation: 测试数据负责人准备脱敏只读数据、记录排序基准、返回上下文和性能观测口径；本模块不执行业务变更，联调数据清理状态必须登记。
+roles:
+- 测试：执行查询、展示、性能和证据规划。
+- 业务负责人：确认记录字段、排序和折叠规则。
+- 研发：确认页面归属、加载策略、接口响应和定位器。
+- 平台权限/实施：准备授权查询角色。
+dependencies:
+- 雏苗发货记录服务
+- 上孵计划服务和列层基础数据
+- 发货单列表筛选上下文
+priority: P1：记录可达、汇总、空态、排序和明细；P2：折叠性能、返回条件、兼容性
+risks:
+- page.json 为 input_missing 且采集状态 partial_corrected。
+- APP-023 页面与 APP-024 状态编号/结构交叉，可能导致追踪和自动化误判。
+- 原型默认全部展开且缺少折叠/展开控件，正式实现证据待确认。
+- 大数据量加载策略和接口契约未提供，不能编造分页或错误码。
+open_questions:
+- 正式页面路由、发货单上下文和唯一定位器。
+- 大数据量分页/分段加载和正式性能观测证据。
+- 默认折叠3条、展开全部和收起控件的正式实现及状态证据。
+entry_criteria:
+- 需求、变动、REQ-APP-023.yaml、page.json、映射文件、.env 和 Schema 可读取。
+- 页面编号交叉、折叠控件缺失和 partial 风险已登记。
+- 脱敏只读数据、权限、证据目录和清理责任已确认。
+exit_criteria:
+- 查询范围、记录边界、性能、返回条件、风险和证据要求完整。
+- 三类套件已定义且无测试点/用例/脚本。
+- YAML 通过 Schema，正式页面归属待确认项已交接。
+evidence:
+- page.json：app-plan-shipment-records、app023-records-empty、app023-records-populated。
+- element_id：pending-page、shipping-records、record1-status、record1-pos1、shipped-record、record-complete、position-detail。
+- 映射：02_analysis/app/page_inventory/lanhu_page_mapping/REQ-APP-023_lanhu_page_mapping.json。
+- 既有截图：02_analysis/app/page_inventory/screenshots/req-app-023-records-empty.png、req-app-023-records-shipped.png；正式执行保存脱敏查询证据。
+suites:
+  Smoke: 规划从列表进入记录页、空态/有记录态、汇总信息可见、位置明细可达和返回列表可达。
+  Targeted: 规划记录数量边界、排序、多位置、折叠规则、返回条件、大数据量加载和页面归属阻塞。
+  Full: 规划全部已采集记录状态、状态转换、判定表、Pairwise、性能、兼容性和与执行/上孵计划记录边界回归。
+next_stage: testcase-generation-agent

@@ -1,0 +1,261 @@
+id: REQ-005
+title: 排程审批
+parent_req: REQ-000
+zentao_module_id: null
+page_url: /biopark-poultry/schedule/plan-schedule/approval
+summary: 对已提交排程进行月度/按日审核；详情页查看日计划明细后执行审核，通过自动下推宰杀/补栏/孵化/饲料四类业务计划。
+in_scope:
+- 列表查询（计划月份/状态/宰杀线）
+- 查看详情进入月度看板+日计划明细
+- 批量审核/按日勾选审核
+- 审核通过自动下推四类计划
+- 驳回须填写原因；同日多条宰杀线一并驳回
+out_scope:
+- 列表行直接审核（须进详情页）
+- 饲料生产计划（饲料系统自行生成）
+- 饲料原料采购计划（饲料系统自行生成）
+business_rules:
+- 列表仅展示待审核/审核通过(已下推)/驳回状态
+- 审核最小维度：天；同日任一条宰杀线驳回则当天全部驳回
+- 审核通过自动下推：宰杀计划、补栏计划、孵化计划、饲料日需求计划
+- 驳回必须说明具体原因
+- 已下推计划变更须走「调整排程审批流程」（线下处理部分见 REQ-004 out_scope）
+calendar_ui_rules:
+- 单据状态枚举：暂存/待审核/已下推/驳回（与列表一致）
+- 「待排」：该日期尚无宰杀线排程记录时的日历空位 UI 标签，非数据库单据状态
+- 有排程记录时，看板显示对应单据状态
+integration_failure_handling:
+- 审核通过触发下推；任一下游失败时界面明确报错，不静默成功
+- 排程状态保持「待审核」或进入可识别的失败态（不回滚为已通过/已下推）
+- 支持人工重试下推；部分成功场景需人工核对下游工单
+- 具体实现以开发为准，测试点标记「待定」
+roles:
+- 园区总经理（审核）
+- 智控中心小组成员（查看）
+interfaces:
+- 页面 /biopark-poultry/schedule/plan-schedule/approval
+- 详情页 /plan-schedule/approval/view
+- 各日看板（下推目标）
+risks:
+- 同日多宰杀线联动驳回边界
+- 下推失败回滚与幂等
+clarifications:
+- id: Q-005
+  question: 审批下推失败时状态回滚与重试机制？
+  conclusion: 失败时按测试建议处理，测试点中标记（待定）
+  date: '2026-07-10'
+- id: Q-008
+  question: 月度看板「待排」与列表状态映射？
+  conclusion: 该日期还没有任何宰杀线排程记录，只是日历上的「空位/未排产」展示，不是数据库里的单据状态
+  date: '2026-07-10'
+open_questions:
+- 批量审核与单日审核的权限是否一致？
+test_scope_suggestion:
+- P1：详情页审核通过/驳回及下推
+- P1：同日多宰杀线联动驳回
+- P2：批量审核与勾选审核
+- P2：详情页展示饲料需求明细
+- P2：月度看板状态展示（含「待排」空位）
+- 待定：下推失败容错（见 integration_failure_handling）
+prototype_verification:
+  query_fields:
+  - 计划月份
+  - 计划状态
+  - 宰杀线
+  table_columns: 同制定排程列表（计划编号字段名略有差异）
+  buttons:
+  - 查询
+  - 重置
+  - 查看
+  detail_buttons:
+  - 返回列表
+  - 批量审核
+  - 全选
+  - 取消选择
+  detail_sections:
+  - 月度看板
+  - 月度宰杀目标
+  - 已分配
+  - 日计划明细
+  - 宰杀信息
+  - 上苗信息
+  - 三段养殖标准
+  - 孵化信息
+  - 饲料需求
+  detail_url_pattern: /plan-schedule/approval/view?planId=
+trace:
+  story: null
+  project: 产业链生产排程系统
+  version: 4
+  status: draft
+  req: REQ-005
+  tp: null
+push_payload:
+  宰杀排程计划:
+  - 宰杀线
+  - 宰杀日期
+  - 宰杀量
+  - 宰杀均重
+  商品禽养殖排程计划:
+  - 补栏栋舍
+  - 补栏日期
+  - 养殖品种
+  - 补栏数量
+  - 补栏苗重
+  - 养殖天数
+  - 各段养殖天数
+  - 各段空栏天数
+  - 转运体重
+  - 转运料比
+  - 每段日龄用料标准
+  孵化排程计划:
+  - 补栏栋舍
+  - 品种
+  - 数量
+  - 苗重
+  - 上孵日期
+  - 上孵蛋数
+  - 上孵蛋品种
+  饲料日需求计划:
+  - 需求栋舍
+  - 需求段区
+  - 需求料号
+  - 需求日期
+  - 需求料量
+design_artifacts:
+  state_transitions:
+  - name: 排程审批状态（列表可见）
+    states:
+    - 待审核
+    - 已下推
+    - 驳回
+    legal:
+    - from: 待审核
+      to: 已下推
+      trigger: 审核通过+下推成功
+    - from: 待审核
+      to: 驳回
+      trigger: 审核驳回
+    notes: 列表不展示暂存；制定页暂存记录在审批列表不可见
+  - name: 下推失败态
+    states:
+    - 待审核
+    - 下推失败
+    notes: Q-005 待定：失败保持待审核或可识别失败态，禁止静默成功
+  decision_tables:
+  - name: 列表查询
+    conditions:
+    - 计划月份
+    - 计划状态
+    - 宰杀线
+    rules:
+    - when: 多条件
+      then: AND 过滤；默认仅待审核/已下推/驳回
+  - name: 同日多宰杀线驳回
+    conditions:
+    - 当日宰杀线条数
+    - 驳回操作
+    rules:
+    - when: 同日任一条驳回
+      then: 当天全部宰杀线一并驳回
+  - name: 审核方式
+    conditions:
+    - 批量审核
+    - 按日勾选
+    - 全选
+    rules:
+    - when: 批量审核
+      then: 选中多日/多线一并处理
+    - when: 按日勾选
+      then: 最小审核维度=天
+  - name: 下推四类计划
+    conditions:
+    - 审核结果
+    rules:
+    - when: 通过
+      then: 下推宰杀/补栏/孵化/饲料日需求
+    - when: 驳回
+      then: 须填原因，不下推
+  - name: 批量审核弹窗
+    conditions:
+    - 操作
+    rules:
+    - when: 点击驳回
+      then: 弹出驳回确认框，原因必填
+    - when: 点击通过
+      then: 无二次确认，直接下推
+  bva_fields:
+  - field: 驳回原因
+    type: text
+    boundaries:
+    - 空
+    - 最短有效
+    - 超长文本
+  - field: 勾选审核日数
+    type: integer
+    boundaries:
+    - 0
+    - 1
+    - 当月全部
+  combinatorial_blocks:
+  - name: 列表查询
+    pict_eligible: true
+    parameters:
+      计划月份:
+      - 有数据月
+      - 无匹配月
+      - 空
+      计划状态:
+      - 待审核
+      - 已下推
+      - 驳回
+      - 空
+      宰杀线:
+      - 线A
+      - 线B
+      - 空
+  - name: 详情页审核
+    pict_eligible: true
+    parameters:
+      审核动作:
+      - 通过
+      - 驳回
+      同日宰杀线数:
+      - '1'
+      - '2'
+      - 多
+      下推结果:
+      - 全部成功
+      - 部分失败
+      - 全部失败
+      驳回原因:
+      - 已填
+      - 未填
+    constraints:
+    - IF 驳回且原因未填 THEN 提交<>成功
+    - IF 下推失败 THEN 状态<>已下推
+requirements_delta:
+- date: '2026-07-22'
+  source: 01_requirements/需求变动.md
+  summary: 批量审核弹窗交互同目标制定
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  note: 权限测点统一见 REQ-000（TP-000-17 起）
+audit_dialog:
+  批量审核:
+    initial:
+      reason_field: false
+    reject:
+      trigger: 点击驳回
+      dialog: 驳回确认框
+      reason_field: required
+    approve:
+      trigger: 点击通过
+      confirm_dialog: false
+permission_scope:
+  owner: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-005
+  testpoints_ref: 03_testpoints/TP_REQ-000.yaml
+  actions:
+  - 查询
+  - 审核

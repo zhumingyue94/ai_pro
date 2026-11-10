@@ -1,0 +1,2380 @@
+req_id: REQ-002
+module: 目标制定
+zentao_module_id: 669
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-002
+  tp: TP_REQ-002
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-002.yaml
+cases:
+- id: TC-002-01
+  tp_id: TP-002-01
+  title: 查询条件包含「年度」「状态」字段
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看页面顶部查询区域
+    expected: 页面顶部查询区可见筛选项：年度、状态两个筛选项
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47482
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-02
+  tp_id: TP-002-02
+  title: 年度下拉选项范围合理
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 点击「年度」下拉框
+    expected: 打开「年度」下拉，选项年份范围合理（具体范围待产品确认）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47483
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-03
+  tp_id: TP-002-03
+  title: 状态下拉选项为暂存、待审核、审核通过、驳回
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 点击「状态」下拉框
+    expected: 打开「状态」下拉，选项列表仅为暂存、待审核、审核通过、驳回四种选项
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47484
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-04
+  tp_id: TP-002-04
+  title: 仅选年度后点击「查询」，列表按年度过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中存在可按「年度」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「年度」，其余条件留空
+    expected: 仅「年度」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「年度」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47485
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-05
+  tp_id: TP-002-05
+  title: 仅选状态后点击「查询」，列表按状态过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中存在可按「状态」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「状态」，其余条件留空
+    expected: 仅「状态」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「状态」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47486
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-06
+  tp_id: TP-002-06
+  title: 选择年度+状态后点击「查询」，列表按组合条件过滤
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表存在可组合区分的测试数据
+  steps:
+  - action: 同时设置多个查询条件
+    expected: 各筛选项均已设置
+  - action: 点击「查询」按钮
+    expected: 列表仅显示同时满足全部条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47487
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-07
+  tp_id: TP-002-07
+  title: 点击「查询」按钮才触发查询
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 修改年度或状态条件但不点击「查询」
+    expected: 列表不因改条件自动刷新
+  - action: 点击「查询」按钮
+    expected: 更改筛选项后列表不立刻变化；点击「查询」后才按新条件过滤
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47488
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-08
+  tp_id: TP-002-08
+  title: 点击「重置」，年度/状态恢复默认并刷新列表
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 设置非默认的年度与状态后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」按钮
+    expected: 点击「重置」后筛选项回到默认，列表按默认条件重新加载
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47489
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-09
+  tp_id: TP-002-09
+  title: 查询无匹配年度且状态选暂存 → 列表展示空状态
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 设置无匹配查询条件且状态选「暂存」后点击「查询」
+    expected: 列表展示空状态；查询状态为「暂存」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47490
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-10
+  tp_id: TP-002-10
+  title: 查询有数据年且状态驳回且年度留空 → 列表仅展示驳回记录
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 存在状态「驳回」及其他状态的可区分数据
+  steps:
+  - action: 设置有数据条件且状态选「驳回」后点击「查询」
+    expected: 列表仅展示匹配「驳回」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47491
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-11
+  tp_id: TP-002-11
+  title: 查询有数据年且状态审核通过且年度留空 → 列表仅展示审核通过记录
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 存在状态「审核通过」及其他状态的可区分数据
+  steps:
+  - action: 设置有数据条件且状态选「审核通过」后点击「查询」
+    expected: 列表仅展示匹配「审核通过」条件的记录
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47492
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-12
+  tp_id: TP-002-12
+  title: 点击「新增目标」打开弹窗，标题为「新增年度目标」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 点击「新增目标」按钮
+    expected: 弹窗顶部文案为「新增年度目标」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47493
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-13
+  tp_id: TP-002-13
+  title: 「目标年度」为选择框且选项范围合理
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 点击「新增目标」
+    expected: 打开新增年度目标弹窗
+  - action: 查看「目标年度」控件
+    expected: 表单中目标年度控件为下拉选择，选项范围合理
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47494
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-14
+  tp_id: TP-002-14
+  title: 「目标年度」单选
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗并操作「目标年度」
+    expected: 控件为单选下拉
+  - action: 尝试选择/确认仅一个年份
+    expected: 表单约束：目标年度仅能选择一个年份
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47495
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-15
+  tp_id: TP-002-15
+  title: 「目标年度」必填
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，目标年度留空并填写其他可填项
+    expected: 表单保持未选年度
+  - action: 点击「暂存」或「保存并提交审核」
+    expected: 校验：未选目标年度时不允许保存
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47496
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-16
+  tp_id: TP-002-16
+  title: 「年度宰杀量(万只)」仅可输入正数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，在「年度宰杀量(万只)」尝试输入非数字/负数/空
+    expected: 非法输入被限制或不接受
+  - action: 输入正数如 120
+    expected: 表单中年度宰杀量控件为数字输入框，只能输入正数
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47497
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-17
+  tp_id: TP-002-17
+  title: 「年度宰杀量(万只)」必填
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 准备记录测试数据
+  steps:
+  - action: 点击「新增」打开表单，将「年度宰杀量(万只)」留空后点击保存
+    expected: 无法保存，「年度宰杀量(万只)」提示必填
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47498
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-17
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-18
+  tp_id: TP-002-18
+  title: 月度分配列表字段为月份、月度宰杀量(万只)、占比
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，查看月度宰杀量分配列表表头
+    expected: 弹窗内月度宰杀量分配列表列顺序为月份、月度宰杀量(万只)、占比
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47499
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-18
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-19
+  tp_id: TP-002-19
+  title: 月度宰杀量仅可输入正数
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗并填写年度宰杀量
+    expected: 弹窗可编辑月度行
+  - action: 在各月「月度宰杀量」尝试输入非法值后输入正数
+    expected: 表单约束：各月月度宰杀量只能输入正数
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47500
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-19
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-20
+  tp_id: TP-002-20
+  title: 点击「按月度平均分配」，12个月份均分且合计=年度宰杀量
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，选择未占用目标年度，输入年度宰杀量 120
+    expected: 字段填写成功
+  - action: 点击「按月度平均分配」
+    expected: 执行均分后：年度宰杀量均分到1~12月，末月补差，合计等于年度宰杀量
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47501
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-20
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-21
+  tp_id: TP-002-21
+  title: 均分无法整除时末月自动补全剩余宰杀量
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，输入无法被12整除的年度宰杀量如 100
+    expected: 字段填写成功
+  - action: 点击「按月度平均分配」
+    expected: 均分规则：其他月份取整，最后一个月补全剩余量，各月合计=年度宰杀量
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47502
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-21
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-22
+  tp_id: TP-002-22
+  title: 月份占比=月度宰杀量/年度宰杀量，显示正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗并完成均分或填写月度量
+    expected: 各月有数值
+  - action: 核对各月占比=月度宰杀量/年度宰杀量
+    expected: 界面展示：占比计算公式正确并随月度宰杀量更新
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47503
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-22
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-23
+  tp_id: TP-002-23
+  title: 占比最多保留两位小数
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗完成均分后查看占比列小数位
+    expected: 界面展示：占比显示最多两位小数
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47504
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-23
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-24
+  tp_id: TP-002-24
+  title: 占比末月自动补全使合计为100%
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗并点击「按月度平均分配」
+    expected: 均分完成后：各月占比合计不足100%时，末月占比自动补全（如8.33%×11后末月8.37%）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47505
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-24
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-25
+  tp_id: TP-002-25
+  title: 月度宰杀量超出年度宰杀量时自动校准
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，输入年度宰杀量 100
+    expected: 年度量=100
+  - action: 在某一月输入大于100的月度宰杀量
+    expected: 输入校验：单月输入超出年度宰杀量时无法填写或自动校准
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47506
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-25
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-26
+  tp_id: TP-002-26
+  title: 点击「取消」或关闭，弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗并填写部分字段
+    expected: 弹窗有未保存数据
+  - action: 点击「取消」或关闭弹窗
+    expected: 取消或关闭后弹窗消失，且未新增暂存/待审核记录
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47507
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-26
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-27
+  tp_id: TP-002-27
+  title: 点击「暂存」保存目标，状态=暂存且不提交审核
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 打开新增弹窗，选择未占用年度，填写年度宰杀量并均分
+    expected: 必填项齐全且合计相等
+  - action: 点击「暂存」
+    expected: 点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47508
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-27
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-28
+  tp_id: TP-002-28
+  title: 点击「保存并提交审核」，状态变为待审核
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，选择未占用年度，填写并均分
+    expected: 必填项齐全且合计相等
+  - action: 点击「保存并提交审核」
+    expected: 新增弹窗保存并提交后状态显示为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47509
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-28
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-29
+  tp_id: TP-002-29
+  title: 保存时校验必填项，任一项未填不允许保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，故意留空目标年度或年度宰杀量
+    expected: 存在未填必填项
+  - action: 点击「暂存」或「保存并提交审核」
+    expected: 校验拦截：目标年度或年度宰杀量等必填项未填时，暂存/提交均被阻断并提示
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47510
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-29
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-30
+  tp_id: TP-002-30
+  title: 保存时校验月度合计=年度宰杀量，不等不允许提交
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，填写年度宰杀量后手动改乱月度使合计≠年度
+    expected: 月度合计与年度不等
+  - action: 点击「保存并提交审核」
+    expected: 提交校验：12个月宰杀量合计须等于年度宰杀量，否则不允许提交（规则待定则以系统为准）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47511
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-30
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-31
+  tp_id: TP-002-31
+  title: 同一年份只能存在一条年度目标
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 确认列表已存在某年度目标记录
+    expected: 该年度已有记录
+  - action: 点击「新增目标」，选择同一目标年度并尝试保存
+    expected: 业务约束：列表中已有某年份目标时（任意状态），无法再新增同年度目标
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47512
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-31
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-32
+  tp_id: TP-002-32
+  title: 同年份目标删除后可重新新增
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 准备：对某年度暂存/驳回目标执行删除并确认成功
+    expected: 该年度记录已从列表消失
+  - action: 点击「新增目标」，选择同一年度并暂存成功
+    expected: 业务约束：仅与表格现存记录比对；已删除的同年度记录不阻止重新新增
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47513
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-32
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-33
+  tp_id: TP-002-33
+  title: 「年度宰杀量(万只)」输入0点击「暂存」→ 保存被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 准备记录测试数据
+  steps:
+  - action: 点击「新增」打开表单，将「年度宰杀量(万只)」输入为0后点击保存/暂存
+    expected: 无法保存，「年度宰杀量(万只)」触发校验或保存被阻断
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47514
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-33
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-34
+  tp_id: TP-002-34
+  title: 「年度宰杀量(万只)」输入负数点击「保存」→ 保存被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 准备记录测试数据
+  steps:
+  - action: 点击「新增」打开表单，将「年度宰杀量(万只)」输入负数后点击保存
+    expected: 无法保存，「年度宰杀量(万只)」触发校验或保存被阻断
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47515
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-34
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-35
+  tp_id: TP-002-35
+  title: 新增目标未点击「按月度平均分配」且月度合计不等于年度量 → 提交被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增目标
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开新增弹窗，选择未占用目标年度，输入年度宰杀量 120
+    expected: 字段填写成功
+  - action: 点击「按月度平均分配」
+    expected: 提交校验：月度合计与年度宰杀量不等时不允许提交审核
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47516
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-35
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-36
+  tp_id: TP-002-36
+  title: 列表展示核心字段且与录入/审核数据一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看目标列表表头与数据行
+    expected: 列表表头与数据：含序号、年度、年度宰杀量、月度分配、状态、驳回原因、审核人员、审核时间、创建人、创建时间、操作；数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47517
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-36
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-37
+  tp_id: TP-002-37
+  title: 月度分配列展示12个月宰杀量且与录入一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看列表「月度分配」列展示内容
+    expected: 列表「月度分配」列美观展示12个月目标，与新增/编辑时填写一致
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47518
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-37
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-38
+  tp_id: TP-002-38
+  title: 状态列不同状态标签样式与设计一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看不同状态行的状态标签样式
+    expected: 状态标签样式：暂存/待审核/审核通过/驳回标签样式符合设计
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47519
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-38
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-39
+  tp_id: TP-002-39
+  title: 未提交记录状态显示为暂存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 查看仅暂存未提交的记录状态列
+    expected: 仅暂存未提交的记录状态显示为「暂存」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47520
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-39
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-40
+  tp_id: TP-002-40
+  title: 已提交审核中记录状态显示为待审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看已提交未审结记录的状态列
+    expected: 已提交未审结记录状态显示为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47521
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-40
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-41
+  tp_id: TP-002-41
+  title: 审核通过记录状态显示为审核通过
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看已审核通过记录的状态列
+    expected: 审核通过记录状态显示为「审核通过」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47522
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-41
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-42
+  tp_id: TP-002-42
+  title: 审核驳回记录状态显示为驳回
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看已驳回记录的状态列
+    expected: 驳回记录状态显示为「驳回」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47523
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-42
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-43
+  tp_id: TP-002-43
+  title: 驳回原因列展示审核人填写的原因
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看驳回记录的「驳回原因」列
+    expected: 状态判定：驳回记录的驳回原因列展示审核时填写内容（可为空）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47524
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-43
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-44
+  tp_id: TP-002-44
+  title: 审核通过记录审核人员显示正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看审核通过记录的「审核人员」列
+    expected: 状态判定：审核通过记录展示正确审核人（多人审核时展示规则待定）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47525
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-44
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-45
+  tp_id: TP-002-45
+  title: 驳回记录审核人员显示驳回操作人
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看驳回记录的「审核人员」列
+    expected: 状态判定：驳回记录展示执行驳回的审核人名称
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47526
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-45
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-46
+  tp_id: TP-002-46
+  title: 审核时间显示规则正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 分别查看审核通过与驳回记录的「审核时间」
+    expected: 时间列展示：审核通过显示最后通过时间；驳回显示驳回时间
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47527
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-46
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-47
+  tp_id: TP-002-47
+  title: 暂存/待审核记录不显示驳回原因、审核人、审核时间
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 查看暂存行与待审核行的驳回原因/审核人/审核时间列
+    expected: 列表展示规则：暂存、待审核行驳回原因/审核人员/审核时间列为空或隐藏
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47528
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-47
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-48
+  tp_id: TP-002-48
+  title: 创建人、创建时间显示正确
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 刚创建或刚修改过一条测试记录
+  steps:
+  - action: 查看该行「创建人员」「创建时间」或「修改人员」「修改时间」列
+    expected: 人员为当前操作账号，时间接近实际操作时刻且显示正确
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47529
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-48
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-49
+  tp_id: TP-002-49
+  title: 审核时间、创建时间格式为YYYY-MM-DD HH:MM:SS
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看审核时间、创建时间字段格式
+    expected: 时间列格式校验：时间字段格式统一为YYYY-MM-DD HH:MM:SS
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47530
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-49
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-50
+  tp_id: TP-002-50
+  title: 暂存行仅显示「编辑」「提交」「删除」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 查看暂存行操作列按钮
+    expected: 操作列权限：暂存行操作列为编辑、提交、删除，不显示查看、审核
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47531
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-50
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-51
+  tp_id: TP-002-51
+  title: 审核通过行仅显示「查看」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看审核通过行操作列按钮
+    expected: 操作列权限：审核通过行仅展示查看，无编辑/删除/提交/审核
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47532
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-51
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-52
+  tp_id: TP-002-52
+  title: 驳回行仅显示「编辑」「删除」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看驳回行操作列按钮
+    expected: 操作列权限：驳回行操作列为编辑、删除，不显示提交/查看/审核
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47533
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-52
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-53
+  tp_id: TP-002-53
+  title: 非审核人看待审核行仅显示「查看」
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 使用非审核人账号查看待审核行操作列
+    expected: 权限表现：当前用户非审核人时，待审核行仅显示查看
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47534
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-53
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-54
+  tp_id: TP-002-54
+  title: 审核人看待审核行显示「审核」
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 使用审核人账号查看待审核行操作列
+    expected: 界面上可见：当前用户是审核人时，待审核行显示审核按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47535
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-54
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-55
+  tp_id: TP-002-55
+  title: 审核通过目标在达成看板「宰杀目标」Tab数据一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 确认存在审核通过的年度目标
+    expected: 列表有审核通过记录
+  - action: 进入达成看板「宰杀目标」Tab 核对同年度数据
+    expected: 联动核对：达成看板对应年度宰杀目标与各月目标/实际与审核通过数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47536
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-55
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-002-56
+  tp_id: TP-002-56
+  title: 无匹配记录时列表展示空状态，页面无报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 设置必定无匹配的查询条件并点击「查询」
+    expected: 无匹配数据
+  - action: 观察列表区域
+    expected: 无匹配数据时页面展示空状态提示，控制台无 JS 报错
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47537
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-56
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-57
+  tp_id: TP-002-57
+  title: 点击「查看」打开弹窗，标题为「查看年度目标」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 在可查看行点击「查看」
+    expected: 核对后界面显示：弹窗标题为「查看年度目标」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47538
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-57
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-58
+  tp_id: TP-002-58
+  title: 查看弹窗数据与新增/编辑时填写一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开查看弹窗，核对目标年度、年度宰杀量、月度分配与源数据
+    expected: 字段回显：目标年度、年度宰杀量、月度分配与源数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47539
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-58
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-59
+  tp_id: TP-002-59
+  title: 查看弹窗字段只读不可编辑
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开查看弹窗，尝试编辑各字段
+    expected: 查看弹窗内全部字段只读，无法修改
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47540
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-59
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-60
+  tp_id: TP-002-60
+  title: 查看弹窗点击关闭按钮关闭弹窗
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查看
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开查看弹窗后点击关闭
+    expected: 点击关闭后弹窗消失，列表记录状态保持不变
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47541
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-60
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-61
+  tp_id: TP-002-61
+  title: 点击「编辑」打开弹窗，标题为「编辑年度目标」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 在可编辑行点击「编辑」
+    expected: 核对后界面显示：弹窗标题为「编辑年度目标」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47542
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-61
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-62
+  tp_id: TP-002-62
+  title: 编辑弹窗「目标年度」可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，修改「目标年度」
+    expected: 编辑弹窗内：目标年度可修改
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47543
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-62
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-63
+  tp_id: TP-002-63
+  title: 编辑弹窗「年度宰杀量」可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，修改「年度宰杀量」
+    expected: 编辑弹窗内：年度宰杀量可修改
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47544
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-63
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-64
+  tp_id: TP-002-64
+  title: 编辑弹窗显示已分配进度条，全部分配为绿色
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，将月度全部分配完毕后查看进度条颜色
+    expected: 进度条表现：已全部分配时显示绿色
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47545
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-64
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-002-65
+  tp_id: TP-002-65
+  title: 编辑弹窗进度条有剩余时显示黄色
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，使月度合计小于年度后查看进度条颜色
+    expected: 进度条表现：仍有未分配量时显示黄色
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47546
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-65
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-002-66
+  tp_id: TP-002-66
+  title: 进度条已分配/剩余数量计算正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，对照年度量与月度合计核对进度条数字
+    expected: 进度区计算：已分配=月度合计；剩余=年度宰杀量-已分配；年度宰杀量=上方输入值
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47547
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-66
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-67
+  tp_id: TP-002-67
+  title: 编辑弹窗月度宰杀量可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，修改任一月份宰杀量
+    expected: 表单约束：各月月度宰杀量可编辑
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47548
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-67
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-68
+  tp_id: TP-002-68
+  title: 编辑弹窗点击「按月度平均分配」重新均分
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗并修改年度宰杀量
+    expected: 年度量已变
+  - action: 点击「按月度平均分配」
+    expected: 编辑态均分后：各月重新分配，进度条变为已全部分配
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47549
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-68
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-69
+  tp_id: TP-002-69
+  title: 编辑时修改月度宰杀量进度条实时更新
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，修改月度宰杀量后观察进度条
+    expected: 编辑即时刷新：修改任一月宰杀量后进度条即时刷新
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47550
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-69
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-70
+  tp_id: TP-002-70
+  title: 编辑保存时校验必填项
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，清空必填项后点击保存/提交
+    expected: 编辑保存校验：必填项未填则阻断
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47551
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-70
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-71
+  tp_id: TP-002-71
+  title: 编辑保存时校验月度合计=年度宰杀量
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开编辑弹窗，使月度合计≠年度宰杀量后尝试提交
+    expected: 编辑提交校验：12月合计须等于年度宰杀量（待定则以系统为准）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47552
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-71
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-72
+  tp_id: TP-002-72
+  title: 驳回行编辑后保存并提交，状态变待审核
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 在驳回行点击「编辑」，修改数据后保存并提交审核
+    expected: 界面上可见：驳回记录在编辑弹窗修改后通过提交操作进入待审核（非列表行提交按钮）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47553
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-72
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-73
+  tp_id: TP-002-73
+  title: 待审核行点击「编辑」→ 制定人不可进入编辑
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 使用制定人账号在待审核行尝试点击「编辑」
+    expected: 权限表现：待审核行制定人视角无编辑入口或编辑不可用
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47554
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-73
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-74
+  tp_id: TP-002-74
+  title: 驳回行点击「暂存」保存后状态仍为暂存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 在驳回行点击「编辑」后点击「暂存」
+    expected: 驳回记录编辑后暂存状态显示为「暂存未直接变待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47555
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-74
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-75
+  tp_id: TP-002-75
+  title: 暂存行点击「提交」弹出确认框
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 提交
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 在暂存行点击「提交」
+    expected: 弹出提交确认框，文案表达将目标提交审核的意图（不强校验逐字）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47556
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-75
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-76
+  tp_id: TP-002-76
+  title: 提交确认框点击取消，状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 提交
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 存在可提交的暂存单据
+  steps:
+  - action: 点击「提交」，在确认框点「确定」
+    expected: 提示成功，状态变为待审核或与业务规则一致
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47557
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-76
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-77
+  tp_id: TP-002-77
+  title: 提交确认框点击确定，提示成功且状态变待审核
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 提交
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中存在应为「待审核」的记录记录
+  steps:
+  - action: 定位该行查看状态列
+    expected: 状态显示为「待审核」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47558
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-77
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-78
+  tp_id: TP-002-78
+  title: 审核通过行不可再次「提交」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 提交
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看审核通过行操作列是否存在「提交」
+    expected: 界面上可见：审核通过行无提交按钮或提交不可用
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47559
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-78
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-79
+  tp_id: TP-002-79
+  title: 点击「审核」打开弹窗，标题含审核/审批语义
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 存在待审核记录
+  steps:
+  - action: 在待审核行点击「审核」打开弹窗
+    expected: 打开审核弹窗，标题含「审核」或「审批」等语义即可
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47560
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-79
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-80
+  tp_id: TP-002-80
+  title: 审核弹窗数据与新增时填写一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开审核弹窗，核对目标年度、年度宰杀量、月度分配
+    expected: 字段回显：目标年度、年度宰杀量、月度分配与提交数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47561
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-80
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-81
+  tp_id: TP-002-81
+  title: 审核弹窗无原因控件，点驳回后出现驳回确认框含原因输入
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开审核弹窗，查看表单区域
+    expected: 初始审核弹窗不展示原因/驳回原因输入框
+  - action: 点击「驳回」按钮
+    expected: 弹出驳回确认框，含多行原因输入框
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47562
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-81
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-82
+  tp_id: TP-002-82
+  title: 驳回确认框中原因输入长文本时不报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开审核弹窗后点击「驳回」
+    expected: 弹出驳回确认框
+  - action: 在驳回确认框原因输入框录入较长文本
+    expected: 可正常录入，界面不报错
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47563
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-82
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-83
+  tp_id: TP-002-83
+  title: 审核弹窗点击关闭，状态不变
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开审核弹窗后点击关闭
+    expected: 关闭审核弹窗后不产生审核结果，记录仍为待审核
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47564
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-83
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-84
+  tp_id: TP-002-84
+  title: 点击「驳回」弹出驳回确认框，填写原因并确认后状态变驳回
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开审核弹窗，点击「驳回」
+    expected: 弹出驳回确认框
+  - action: 在驳回确认框填写原因后点击确认
+    expected: 驳回成功，记录状态变为「驳回」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47565
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-84
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-85
+  tp_id: TP-002-85
+  title: 驳回原因为空被阻断；填写后列表驳回原因列展示
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开审核弹窗→点击驳回→驳回确认框留空原因点确认
+    expected: 确认被阻断，状态仍为待审核
+  - action: 填写有效原因后再次确认驳回
+    expected: 驳回成功
+  - action: 查看列表「驳回原因」列
+    expected: 展示所填驳回原因
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47566
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-85
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-86
+  tp_id: TP-002-86
+  title: 点击「审核通过」直接成功，无二次确认框
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 打开审核弹窗，点击「审核通过」或「通过」
+    expected: 无二次确认弹窗，直接提示成功且状态变为「审核通过」
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47567
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-86
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-87
+  tp_id: TP-002-87
+  title: 审核通过后记录审核人、审核时间
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 审核
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 完成审核通过操作
+    expected: 状态=审核通过
+  - action: 查看列表审核人员与审核时间
+    expected: 通过后落库：写入审核人员与审核时间
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47568
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-87
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-88
+  tp_id: TP-002-88
+  title: 点击「删除」弹出确认框
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 在可删除行点击「删除」
+    expected: 弹出删除确认框，文案表达删除意图即可（如是否删除所选中数据）
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47569
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-88
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-89
+  tp_id: TP-002-89
+  title: 删除确认框点击取消，记录不删除
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中存在可删除的记录/单据测试数据
+  steps:
+  - action: 在删除确认框点击「取消」
+    expected: 确认框关闭，记录未删除
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47570
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-89
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-90
+  tp_id: TP-002-90
+  title: 删除确认框点击确定，提示成功且记录从列表消失
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中存在可删除的记录/单据测试数据
+  steps:
+  - action: 在删除确认框点击「确定」
+    expected: 提示删除成功，记录从列表消失
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47571
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-90
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-002-91
+  tp_id: TP-002-91
+  title: 审核通过行点击「删除」→ 无删除入口或操作被阻断
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 查看审核通过行操作列是否存在「删除」或尝试删除
+    expected: 界面上可见：审核通过行无删除按钮或删除不可用
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47572
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-91
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+summary:
+  type_counts:
+    auto: 82
+    feature: 9
+  auto_counts:
+    auto: 82
+    false: 9
+  registry_counts:
+    registered: 91

@@ -1,0 +1,659 @@
+schema_version: '1.0'
+req_id: REQ-002
+module: 产品分类
+trace:
+  req: REQ-002
+  tp: TEST_PLAN_REQ-002
+  project: 数据采集监控平台
+  version: 1
+  status: blocked_by_execution_evidence
+  source_review: REQ-002 case review
+common_preconditions:
+- id: CP-REQ-002-001
+  name: 登录并进入产品分类页面
+  conditions:
+  - 测试环境配置 UI_TEST_URL、UI_TEST_USERNAME、UI_TEST_PASSWORD 和 UI_TEST_TENANT。
+  - 测试账号具备产品分类页面访问权限，浏览器为 Chromium。
+  steps:
+  - action: 完成应用门户登录，或复用已有的有效登录态。
+    expected: 登录成功或已有登录态有效，可以正常访问应用门户。
+  - action: 在应用门户选择“数据采集监控平台”。
+    expected: 成功进入数据采集监控平台，并显示对应的平台菜单区域。
+  - action: 展开“设备接入”菜单并点击“产品分类”菜单。
+    expected: 产品分类页面成功加载，浏览器地址包含“/biopark-iot/iot/device/product-category”，确认已进入产品分类页面。
+cases:
+- id: TC-REQ-002-002
+  coverage_ids:
+  - COV-002-L2
+  plan_item_ids:
+  - PLAN-002
+  scenario_branch: 列表字段与空值展示
+  atomic_purpose_ids:
+  - AP-002
+  title: 查看产品分类列表，检查表头和空字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 列表字段
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备经授权可读且至少包含一个空描述或空字段的分类列表数据。
+  steps:
+  - action: 等待列表加载完成。
+    expected: 页面显示分类记录或明确空结果状态。
+  - action: 查看列表表头。
+    expected: 表头包含编号、分类名称、描述、状态、创建时间和操作列。
+  - action: 查看空描述分类记录。
+    expected: 描述为空时显示“-”或页面定义的统一空值占位符，不显示 `null`。
+- id: TC-REQ-002-003
+  coverage_ids:
+  - COV-003-L2
+  plan_item_ids:
+  - PLAN-003
+  scenario_branch: 名称非空筛选
+  atomic_purpose_ids:
+  - AP-003
+  title: 按分类名称查询，检查匹配结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 名称查询
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已知一个经授权可读的分类名称及其租户范围。
+  steps:
+  - action: 在分类名称筛选框输入已存在的分类名称并点击“查询”。
+    expected: 列表仅显示名称满足页面匹配规则的分类记录。
+  - action: 查看查询结果。
+    expected: 每条结果均符合输入名称条件，不匹配分类不出现在当前结果中。
+- id: TC-REQ-002-004
+  coverage_ids:
+  - COV-004-L3
+  plan_item_ids:
+  - PLAN-004
+  scenario_branch: 空名称查询结果
+  atomic_purpose_ids:
+  - AP-004
+  title: 查询不存在的分类，检查空结果
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 空结果
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已确认测试租户中不存在该查询条件对应的分类数据。
+  steps:
+  - action: 在分类名称筛选框输入确认不存在的名称并点击“查询”。
+    expected: 输入值保留，列表显示明确空结果文本。
+  - action: 查看列表和分页区域。
+    expected: 列表不显示其他分类，结果总数为 0 或分页按空结果规则隐藏。
+- id: TC-REQ-002-005
+  coverage_ids:
+  - COV-005-L2
+  plan_item_ids:
+  - PLAN-005
+  scenario_branch: 重置查询条件
+  atomic_purpose_ids:
+  - AP-005
+  title: 重置分类筛选，检查条件和列表
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 查询重置
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 列表存在可查询数据，且已具备一个可输入的分类名字条件。
+  steps:
+  - action: 输入已存在的分类名称并点击“查询”。
+    expected: 输入框保留值，列表显示符合条件的分类。
+  - action: 点击“重置”。
+    expected: 分类名称输入框恢复为空，列表重新加载。
+  - action: 查看重置后的列表。
+    expected: 列表恢复默认查询结果，分页回到默认页码。
+- id: TC-REQ-002-006
+  coverage_ids:
+  - COV-006-L2
+  plan_item_ids:
+  - PLAN-006
+  scenario_branch: 手动刷新列表
+  atomic_purpose_ids:
+  - AP-006
+  title: 刷新产品分类列表，检查页面和数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 列表刷新
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 页面存在经授权可读的产品分类列表数据。
+  steps:
+  - action: 记录当前页码和目标分类，点击“刷新”。
+    expected: 列表重新加载，页面仍位于产品分类页面。
+  - action: 查看刷新后的列表。
+    expected: 数据按刷新规则显示，目标分类字段与刷新前一致，不出现重复记录。
+- id: TC-REQ-002-010
+  coverage_ids:
+  - COV-010-L2
+  plan_item_ids:
+  - PLAN-010
+  scenario_branch: 新增表单默认状态
+  atomic_purpose_ids:
+  - AP-010
+  title: 打开新增分类表单，检查状态默认值
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 新增表单
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 具备打开产品分类新增表单的页面访问权限。
+  steps:
+  - action: 点击“新增”。
+    expected: 表单打开，显示分类名称、排序值、描述、状态、保存和取消控件。
+  - action: 查看状态控件。
+    expected: 状态默认显示“开启”或页面定义的启用状态，名称等输入字段为空。
+- id: TC-REQ-002-011
+  coverage_ids:
+  - COV-011-L3
+  plan_item_ids:
+  - PLAN-011
+  scenario_branch: 新增名称为空校验
+  atomic_purpose_ids:
+  - AP-011
+  title: 新增分类名称为空，检查必填提示
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 名称必填校验
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得仅用于验证表单校验的明确授权，且不会产生业务写入。
+  steps:
+  - action: 点击“新增”，保持分类名称为空，填写其他必要字段并点击“保存”。
+    expected: 名称字段显示明确必填提示，表单保持打开且未保存成功。
+  - action: 查询列表。
+    expected: 不出现名称为空的新分类记录。
+- id: TC-REQ-002-012
+  coverage_ids:
+  - COV-012-L3
+  plan_item_ids:
+  - PLAN-012
+  scenario_branch: 分类排序非数字类型校验
+  atomic_purpose_ids:
+  - AP-012
+  title: 新增分类输入非数字排序值，检查字段校验
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 分类排序
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得仅用于验证排序字段校验的明确授权，且不会保存业务数据。
+  steps:
+  - action: 打开新增表单，在排序值输入框输入字母等非数字字符。
+    expected: 输入框拒绝非法字符，或显示明确格式错误提示。
+  - action: 点击“保存”。
+    expected: 表单不提交成功，列表不出现非法排序值记录。
+- id: TC-REQ-002-013
+  coverage_ids:
+  - COV-013-L2
+  plan_item_ids:
+  - PLAN-013
+  scenario_branch: 新增表单取消
+  atomic_purpose_ids:
+  - AP-013
+  title: 取消新增分类，检查表单和列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 新增取消
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 页面存在经授权可读的分类列表数据。
+  steps:
+  - action: 点击“新增”，输入测试名称和描述但不保存，点击“取消”。
+    expected: 表单关闭并返回列表，本次输入未写入系统。
+  - action: 查看列表。
+    expected: 分类记录及产品关联数据与操作前一致。
+- id: TC-REQ-002-014
+  coverage_ids:
+  - COV-014-L2
+  plan_item_ids:
+  - PLAN-014
+  scenario_branch: 编辑表单回显和取消
+  atomic_purpose_ids:
+  - AP-014
+  title: 编辑已有分类，检查字段回显和取消结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 编辑表单
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备经授权可读且允许打开编辑表单的既有分类记录。
+  steps:
+  - action: 在目标分类行点击“编辑”。
+    expected: 表单打开，名称、排序值、状态和描述回填当前数据。
+  - action: 修改允许编辑的字段但点击“取消”。
+    expected: 表单关闭，未保存修改不写入系统。
+  - action: 重新查询目标分类。
+    expected: 各字段保持修改前值。
+- id: TC-REQ-002-015
+  coverage_ids:
+  - COV-015-L2
+  plan_item_ids:
+  - PLAN-015
+  scenario_branch: 删除确认取消
+  atomic_purpose_ids:
+  - AP-015
+  title: 打开并取消删除确认层，检查分类保留
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 删除确认
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备经授权可读且允许查看删除确认层的分类记录。
+  steps:
+  - action: 在目标分类行点击“删除”。
+    expected: 显示确认层，包含目标分类标识及“确定”“取消”控件。
+  - action: 点击“取消”。
+    expected: 确认层关闭，目标分类仍显示在列表中。
+  - action: 刷新并查询目标分类。
+    expected: 分类名称、状态和关联数据未改变。
+- id: TC-REQ-002-016
+  coverage_ids:
+  - COV-016-L3
+  plan_item_ids:
+  - PLAN-016
+  scenario_branch: 创建时间格式与排序
+  atomic_purpose_ids:
+  - AP-016
+  title: 查看分类列表，检查时间格式和排序
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 时间与排序规则
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备至少两条经授权可读且排序值不同的产品分类数据，并已确认执行用户时区。
+  steps:
+  - action: 查看创建时间列。
+    expected: 时间按统一格式显示，例如 `YYYY-MM-DD HH:mm:ss`，并符合页面时区规则。
+  - action: 比较相邻分类的排序值。
+    expected: 分类按排序值从小到大排列。
+  - action: 查看排序值相同的分类。
+    expected: 每条记录可通过唯一编号区分，次级顺序按已确认规则显示。
+- id: TC-REQ-002-017
+  coverage_ids:
+  - COV-017-L3
+  plan_item_ids:
+  - PLAN-017
+  scenario_branch: 停用分类关联规则
+  atomic_purpose_ids:
+  - AP-017
+  title: 停用分类后，检查已有产品和新产品选择限制
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 停用关联规则
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得经授权的停用分类、既有关联产品和产品选择页面只读证据。
+  steps:
+  - action: 将已关联产品的目标分类改为“停用”并保存。
+    expected: 显示保存成功提示，列表状态变为“停用”。
+  - action: 打开产品新增表单的分类选择器。
+    expected: 停用分类不出现在可选列表，或选项禁用且不能回填。
+  - action: 查询原有关联产品。
+    expected: 已有关联产品仍保留该分类关系。
+- id: TC-REQ-002-018
+  coverage_ids:
+  - COV-018-L3
+  plan_item_ids:
+  - PLAN-018
+  scenario_branch: 关联分类改名同步
+  atomic_purpose_ids:
+  - AP-018
+  title: 修改分类名称后，检查关联页面名称
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 跨模块名称同步
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得经授权的已关联分类及其下游页面脱敏回读证据。
+  steps:
+  - action: 在分类管理中修改目标分类名称并保存。
+    expected: 显示保存成功提示，分类列表显示新名称。
+  - action: 返回产品管理页面并查询关联产品。
+    expected: 产品分类字段显示新名称，不显示旧名称。
+  - action: 刷新关联产品详情。
+    expected: 产品详情中的分类名称与分类管理页面一致；按清理方案恢复原名称。
+- id: TC-REQ-002-019
+  coverage_ids:
+  - COV-019-L3
+  plan_item_ids:
+  - PLAN-019
+  scenario_branch: 有关联分类删除阻断
+  atomic_purpose_ids:
+  - AP-019
+  title: 删除有关联产品的分类，检查删除限制
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 关联删除阻断
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得经授权的有关联分类及其关联产品只读证据。
+  steps:
+  - action: 在有关联产品的分类行点击“删除”。
+    expected: 显示确认层或直接显示不能删除的明确提示。
+  - action: 在确认层点击“确定”（页面提供确认层时）。
+    expected: 显示存在关联产品的删除限制提示，分类未被删除。
+  - action: 刷新并查询分类。
+    expected: 分类和关联产品均保留，关联关系未被清除。
+  trace:
+    operation_capability: delete
+    success_evidence: 关联删除被阻断且关联数据保留
+- id: TC-REQ-002-021
+  coverage_ids:
+  - COV-021-L3
+  plan_item_ids:
+  - PLAN-021
+  scenario_branch: 只读权限边界
+  atomic_purpose_ids:
+  - AP-021
+  title: 使用分类查看账号，检查页面和操作权限
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 权限与租户边界
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得分类查看人员账号、维护人员账号及其正式权限矩阵。
+  steps:
+  - action: 使用仅有分类查看权限的账号进入产品分类页面。
+    expected: 页面显示账号授权范围内的分类数据。
+  - action: 使用名称筛选并点击“查询”，再点击“刷新”。
+    expected: 查询和刷新可执行，结果仍限制在授权范围内。
+  - action: 查看新增、编辑和删除控件。
+    expected: 无权操作按钮隐藏或禁用；若仍可点击，显示明确无权限提示且数据不变。
+- id: TC-REQ-002-026
+  coverage_ids:
+  - COV-026-L3
+  plan_item_ids:
+  - PLAN-003
+  scenario_branch: 名称仅空白查询
+  atomic_purpose_ids:
+  - AP-026
+  title: 查询空白分类名称，检查输入和结果
+  type: feature
+  auto: 'auto'
+  priority: P3
+  feature: 名称空白边界
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 页面存在可查询的分类列表；空白名称查询规则待业务确认。
+  steps:
+  - action: 在分类名称筛选框输入仅包含空格的值并点击“查询”。
+    expected: 输入框显示页面实际保留值或恢复为空；列表显示明确查询结果或校验提示。
+  - action: 查看查询结果。
+    expected: 结果与已确认的空白输入规则一致；未确认规则时记录实际提示和列表状态，不将未确认行为判定为通过。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: ''
+- id: TC-REQ-002-027
+  coverage_ids:
+  - COV-003-L2
+  plan_item_ids:
+  - PLAN-003
+  scenario_branch: 名称特殊字符查询
+  atomic_purpose_ids:
+  - AP-027
+  title: 使用特殊字符查询分类，检查匹配结果
+  type: feature
+  auto: 'auto'
+  priority: P3
+  feature: 名称特殊字符
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备经授权可读且名称包含常见特殊字符的分类数据。
+  steps:
+  - action: 在分类名称筛选框输入包含特殊字符的已知条件并点击“查询”。
+    expected: 输入值按页面规则显示，查询完成后返回结果或明确格式提示。
+  - action: 查看结果名称。
+    expected: 返回记录均满足已确认的字符匹配规则，不出现无关分类。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: ''
+- id: TC-REQ-002-030
+  coverage_ids:
+  - COV-030-L3
+  plan_item_ids:
+  - PLAN-002
+  scenario_branch: 描述为空
+  atomic_purpose_ids:
+  - AP-030
+  title: 查看空描述分类，检查空值占位
+  type: feature
+  auto: 'auto'
+  priority: P3
+  feature: 描述空值
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得经授权可读且描述为空的分类数据。
+  steps:
+  - action: 查询描述为空的分类并查看描述列。
+    expected: 描述列显示“-”或页面定义的空值占位符，不显示 `null` 或未定义文本。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: ''
+- id: TC-REQ-002-044
+  coverage_ids:
+  - COV-044-L3
+  plan_item_ids:
+  - PLAN-044
+  scenario_branch: 合法新增成功回读
+  atomic_purpose_ids:
+  - AP-044
+  title: 新增合法产品分类，检查成功提示和列表回读
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 新增成功闭环
+  trace:
+    operation_capability: add
+    success_evidence: 提交成功反馈并在列表回读新增记录
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已获得新增写入授权并准备可清理的合法分类数据。
+  steps:
+  - action: 点击“新增”，输入唯一名称、正整数排序值和描述并选择启用状态。
+    expected: 表单显示输入值，名称和排序值等必填字段均有有效值。
+  - action: 点击“保存”。
+    expected: 显示新增成功提示，表单关闭或进入完成状态。
+  - action: 刷新列表并查询测试名称。
+    expected: 列表出现一条目标分类，名称、排序值、描述和状态与输入值一致。
+  - action: 按清理方案删除测试分类。
+    expected: 测试分类从列表移除，环境恢复执行前状态。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: AUTO测试_勿用_
+- id: TC-REQ-002-046
+  coverage_ids:
+  - COV-046-L3
+  plan_item_ids:
+  - PLAN-046
+  scenario_branch: 编辑成功回读
+  atomic_purpose_ids:
+  - AP-046
+  title: 编辑产品分类，检查成功提示和字段回读
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 编辑成功闭环
+  trace:
+    operation_capability: edit
+    success_evidence: 保存成功反馈并回读修改值
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备允许编辑且可恢复原值的分类记录并获得编辑写入授权。
+  steps:
+  - action: 在目标分类行点击“编辑”。
+    expected: 编辑表单正确回填当前字段。
+  - action: 修改名称、排序值、描述或状态中的批准字段并点击“保存”。
+    expected: 显示编辑成功提示，表单关闭或进入完成状态。
+  - action: 刷新列表并查询修改后的名称。
+    expected: 列表显示修改后的字段值，唯一编号保持不变。
+  - action: 按清理方案恢复或删除测试分类。
+    expected: 测试数据清理完成。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: AUTO测试_勿用_
+- id: TC-REQ-002-047
+  coverage_ids:
+  - COV-047-L3
+  plan_item_ids:
+  - PLAN-047
+  scenario_branch: 编辑名称空白校验
+  atomic_purpose_ids:
+  - AP-047
+  title: 编辑分类名称为空或空白，检查保存校验
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 编辑名称校验
+  trace:
+    operation_capability: edit
+    success_evidence: 保存被拒绝且原数据不变
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备允许编辑的分类记录并获得编辑写入授权。
+  steps:
+  - action: 打开目标分类编辑表单，将名称清空或输入仅空白字符并点击“保存”。
+    expected: 名称字段显示明确必填提示，表单保持打开且保存失败。
+  - action: 刷新列表并查询目标分类。
+    expected: 原名称、排序值、状态和描述保持不变。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: ''
+- id: TC-REQ-002-048
+  coverage_ids:
+  - COV-048-L3
+  plan_item_ids:
+  - PLAN-048
+  scenario_branch: 无关联分类删除成功
+  atomic_purpose_ids:
+  - AP-048
+  title: 删除无关联产品分类，检查成功反馈和列表
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 无关联删除成功闭环
+  trace:
+    operation_capability: delete
+    success_evidence: 删除成功反馈且列表不可见
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备无产品及设备分组关联且可删除的分类记录并获得删除授权。
+  steps:
+  - action: 在无关联产品的测试分类行点击“删除”。
+    expected: 显示确认层，包含目标分类标识以及“确定”“取消”控件。
+  - action: 点击确认层“确定”。
+    expected: 显示删除成功提示，确认层关闭。
+  - action: 刷新列表并查询原名称。
+    expected: 目标分类不可见，其他分类记录不受影响。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: AUTO测试_勿用_
+- id: TC-REQ-002-049
+  coverage_ids:
+  - COV-049-L3
+  plan_item_ids:
+  - PLAN-049
+  scenario_branch: 启用转停用
+  atomic_purpose_ids:
+  - AP-049
+  title: 停用产品分类，检查状态和既有关联
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 停用状态流转
+  trace:
+    operation_capability: status_transition
+    success_evidence: 停用成功反馈、状态回读及关联校验
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备启用分类及既有产品关联数据并确认可恢复状态。
+  steps:
+  - action: 打开启用分类的状态控件，选择“停用”并确认保存。
+    expected: 显示保存成功提示，列表状态变为“停用”。
+  - action: 查询该分类的既有关联产品。
+    expected: 已有关联产品仍保留该分类关系。
+  - action: 打开产品新增表单的分类选择器。
+    expected: 停用分类不可被新产品选择或回填。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: AUTO测试_勿用_
+- id: TC-REQ-002-050
+  coverage_ids:
+  - COV-050-L3
+  plan_item_ids:
+  - PLAN-050
+  scenario_branch: 停用转启用
+  atomic_purpose_ids:
+  - AP-050
+  title: 启用产品分类，检查状态和新产品选择
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 启用状态流转
+  trace:
+    operation_capability: status_transition
+    success_evidence: 启用成功反馈、状态回读及可选分类校验
+  common_preconditions_ref: CP-REQ-002-001
+  preconditions:
+  - 已准备停用分类及产品关联数据并确认可恢复原状态。
+  steps:
+  - action: 打开停用分类的状态控件，选择“启用”并确认保存。
+    expected: 显示保存成功提示，列表状态变为“启用”。
+  - action: 打开产品新增表单并刷新分类选择器。
+    expected: 目标分类出现在可选列表且不是禁用状态。
+  - action: 选择目标分类后取消表单。
+    expected: 分类可以回填到选择控件，取消后不新增产品或关联关系。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: AUTO测试_勿用_
+- id: TC-REQ-002-052
+  common_preconditions_ref: CP-REQ-002-001
+  coverage_ids:
+  - COV-002-DELETE-RECREATE-L3
+  plan_item_ids:
+  - PLAN-002-DELETE-RECREATE
+  atomic_purpose_ids:
+  - AP-002-DELETE-RECREATE
+  scenario_branch: 删除后同表单内容重新创建
+  title: 删除后用相同配置重建产品分类
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 删除后同表单重建
+  preconditions:
+  - 已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。
+  - 已记录删除前表单字段：分类名称、描述、排序值；删除后使用相同值，不使用原系统生成的唯一标识。
+  steps:
+  - action: 使用隔离数据新增分类，填写并记录名称、描述、排序值和状态。
+    expected: 新增成功，列表或详情回读值与输入一致。
+  - action: 删除目标分类并在确认层点击“确定”。
+    expected: 显示删除成功提示，刷新后目标分类不再显示。
+  - action: 使用相同名称、描述、排序值和状态重新填写表单并点击“保存”。
+    expected: 重建成功并显示新增成功提示。
+  - action: 刷新列表并打开重建分类详情。
+    expected: 业务字段与首次创建记录一致；编号、创建时间等系统生成字段按系统规则重新生成。
+  - action: 按清理方案删除重建分类。
+    expected: 测试分类清理完成，列表不再显示测试记录。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product-category
+    data_prefix: REQ-002-DELETE-RECREATE-
+

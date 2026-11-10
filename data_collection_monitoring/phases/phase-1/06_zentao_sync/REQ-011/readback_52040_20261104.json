@@ -1,0 +1,117 @@
+﻿{
+    "id": 52040,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 749,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "提交处理信息，检查处理状态",
+    "precondition": "前置准备：\n1、前置准备：\n1、具备经批准的告警记录页面脱敏观察证据和对应授权测试上下文；具体页面契约、数据或反馈待确认。\n\n\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警记录”菜单。；告警记录页面成功加载，确认已进入告警记录页面。",
+    "keywords": "",
+    "pri": 1,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-23 14:04:59",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-11-04 17:30:40",
+    "version": 9,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 9,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176665,
+            "step": "在告警记录列表定位未处理目标记录，点击该行“处理”按钮打开处理弹窗，输入批准的脱敏处理结果并点击确定",
+            "desc": "在告警记录列表定位未处理目标记录，点击该行“处理”按钮打开处理弹窗，输入批准的脱敏处理结果并点击确定",
+            "expect": "打开处理弹窗并显示处理结果输入框；提交后显示处理成功或页面定义的处理中提示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176666,
+            "step": "刷新或重新查询并定位目标记录",
+            "desc": "刷新或重新查询并定位目标记录",
+            "expect": "“是否处理”显示“是”；处理人、处理时间和处理结果显示本次提交结果，其中处理结果显示处理弹窗填写的内容。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 52040,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_52040",
+        "text": "提交处理信息，检查处理状态",
+        "type": "root",
+        "children": [
+            {
+                "id": 176665,
+                "text": "在告警记录列表定位未处理目标记录，点击该行“处理”按钮打开处理弹窗，输入批准的脱敏处理结果并点击确定",
+                "type": "sub",
+                "parent": "case_52040",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176665",
+                        "text": "打开处理弹窗并显示处理结果输入框；提交后显示处理成功或页面定义的处理中提示。",
+                        "type": "node",
+                        "parent": 176665,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176666,
+                "text": "刷新或重新查询并定位目标记录",
+                "type": "sub",
+                "parent": "case_52040",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176666",
+                        "text": "“是否处理”显示“是”；处理人、处理时间和处理结果显示本次提交结果，其中处理结果显示处理弹窗填写的内容。",
+                        "type": "node",
+                        "parent": 176666,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "target": {"project": 46, "product": 8, "module": 744, "module_name": "插件管理"},
+  "record": {
+    "source_case_id": "TC-REQ-006-016",
+    "remote_case_id": 51778,
+    "title": "运行中的插件只显示停用按钮",
+    "version": 6,
+    "steps_count": 3,
+    "steps": [
+      {"action": "打开插件管理列表。", "expected": "插件管理列表正常显示。"},
+      {"action": "定位一条状态为运行中的插件记录。", "expected": "该插件记录的状态显示为运行中。"},
+      {"action": "查看该运行中插件记录的操作按钮。", "expected": "该插件记录只显示停用按钮，不显示启动和删除按钮。"}
+    ],
+    "status": "validated"
+  },
+  "readback": {
+    "status": "validated",
+    "scope": "项目46、产品8、模块744",
+    "message": "51778已按稳定禅道ID原位更新并立即回读，标题、前置条件、3个步骤及运行中插件仅显示停用按钮的预期均校验通过。"
+  },
+  "source_hashes": {
+    "REV_CASE_REQ-006.yaml": "99ebd04bb21cbade4c1a8270ec9ba62f1b79e7456d4ab911bdd05ecac65b7c22",
+    "TC_REQ-006.yaml": "4e005055560422dcdb6b9ed373b20f52fba25d8b2d77586fb65a0c2d6ccfae77"
+  }
+}

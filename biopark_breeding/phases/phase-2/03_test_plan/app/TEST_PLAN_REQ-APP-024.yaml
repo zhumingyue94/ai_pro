@@ -1,0 +1,87 @@
+plan_id: TEST_PLAN-REQ-APP-024
+title: APP测试计划 - 上孵计划发货记录
+status: draft
+source_inputs:
+- 01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx
+- 01_requirements/需求变动.md
+- 02_analysis/app/REQ-APP-024.yaml
+- 02_analysis/app/page_inventory/page.json
+- 02_analysis/app/page_inventory/lanhu_page_mapping/REQ-APP-024_lanhu_page_mapping.json
+- .env
+- ../../../../.agents/references/test-plan.schema.json
+- http://43.143.148.114:18885/biopark-breeding/m/
+trace:
+  story: REQ-008 上孵计划发货记录
+  req: REQ-APP-024
+  project: 种禽孵化管理系统
+  version: 2
+  status: draft
+objective: 规划上孵计划发货记录的状态、数量、历史记录、多位置、未找到、签收和折叠边界，并限定页面证据、自动化及执行证据范围。
+scope:
+  in_scope:
+  - /m/orders/{发货单号}/plan-shipments/{上孵计划内部ID} 的已采集待发货、发货中、已发货、已签收、空态和未找到状态。
+  - 实际可发、累计发货、待分配、进度、提交时间倒序、多列层位置及完成/未完成记录。
+  - 服务端状态为准、外部签收未确认不得显示已签收、返回执行页和折叠3条/展开全部需求规划。
+  out_scope:
+  - 发货确认提交、发货单列表筛选、存发苗间出入库和库存查询。
+  - page.json 未出现的接口字段、错误码、菜单、按钮或定位器。
+strategy:
+- 使用等价类/边界值覆盖未找到、空记录、1-3条、超过3条、多位置和完成/未完成混合记录。
+- 使用状态转换覆盖待发货、发货中、已发货、外部确认后的已签收、未找到和返回执行页。
+- 使用判定表评估实际可发、累计发货、待分配、进度、外部签收和记录存在性。
+- 使用 Pairwise/2-way 评估计划状态、记录集、位置数量、签收结果、来源路由和浏览器组合。
+- Playwright Python 仅规划 page.json 已存在 page_id/state_id/element_id；页面结构与 APP-023 交叉，必须先确认上下文，禁止猜测稳定定位器。
+- Web 证据规划为脱敏截图、DOM、状态标识、服务端回读/日志按需和 trace；未确认签收不采集或展示敏感业务结果。
+environment:
+  client: APP移动端Web/移动端模拟
+  os: win32；正式执行记录实际客户端版本
+  browser: Chromium headed；自动化规划使用 Playwright Python，禁止固定等待
+  base_url: ${UI_TEST_URL}
+  page_path: /m/orders/{发货单号}/plan-shipments/{上孵计划内部ID}
+  portal_entry: 种禽孵化管理系统 / APP / 上孵计划发货记录
+  login: 原型无需登录；正式环境凭据仅从 .env 或运行时环境读取，不写入计划、日志或证据
+data:
+  required:
+  - 待发货 HP-021、发货中 HP-022、已发货 HP-071/HP-072、未找到 HP-011 对应的脱敏状态样本。
+  - 空记录、1-3条、超过3条、多列层、已完成/未完成和外部签收未确认/已确认样本。
+  - 计划与发货单有效关联、提交时间排序和返回执行页上下文。
+  preparation: 业务和测试负责人准备脱敏只读数据及签收确认责任边界；页面查询不变更数据，若联调产生数据须登记清理责任和清理状态。
+roles:
+- 测试：执行查询、状态和证据规划。
+- 业务负责人：确认状态、数量口径、签收和折叠规则。
+- 研发：确认服务端查询、排序、记录展开和定位器。
+- 外部系统负责人：提供可核对签收结果。
+dependencies:
+- 上孵计划服务
+- 发货记录服务
+- 发货单服务
+- 外部签收系统
+- 园区列层基础数据
+priority: P1：状态、数量、记录和未找到；P2：折叠、返回、签收延迟、性能与兼容性
+risks:
+- page.json schema_validation 为 input_missing，采集状态 partial_corrected。
+- 原型默认全部展开且无折叠/展开按钮，与需求变动冲突。
+- 页面与 APP-023 共享结构，计划 ID/发货单上下文可能误判。
+- 原型 mock 状态不能证明服务端状态、签收和数量口径。
+open_questions:
+- 正式路由、上孵计划内部 ID、状态接口和排序契约。
+- 折叠3条/展开全部的正式控件及全部记录加载策略。
+- 外部签收确认来源、延迟和未确认时的展示协议。
+entry_criteria:
+- 需求、变动、REQ-APP-024.yaml、page.json、映射文件、.env 和 Schema 可读取。
+- input_missing/partial_corrected、折叠缺失和页面交叉风险已保留。
+- 各状态脱敏数据、授权查询角色、签收责任和证据位置已准备或转阻塞。
+exit_criteria:
+- 状态/数量/记录/签收/返回/折叠范围完整，三类套件为计划级内容。
+- YAML 通过 Schema，Markdown 与 YAML 一致，未生成测试点、测试用例或脚本。
+- 原型偏差、页面归属和签收待确认项已交接。
+evidence:
+- page.json：app-plan-shipment-records、app024-empty-notfound、app024-pending-hp021、app024-shipping-hp022、app024-shipped-hp071、app024-shipped-hp072、app024-shipping-record-expanded、app024-hp011-not-found。
+- element_id：notfound-page、notfound-text、pending-page、pending-back、pending-plan-no、pending-status、pending-progress、pending-empty、shipping-page、shipping-status、shipping-progress、shipping-records、record1-status、record1-pos1、shipped-page、shipped-status、shipped-progress、shipped-record、record-complete、position-detail、hp072-records、hp072-position-accum、shipping-record-no-collapse-btn、hp011-notfound-page。
+- 映射：02_analysis/app/page_inventory/lanhu_page_mapping/REQ-APP-024_lanhu_page_mapping.json。
+- 既有截图：req-app-024-empty-state.png、req-app-024-pending-hp021.png、req-app-024-shipping-hp022.png、req-app-024-populated-hp071.png、req-app-024-hp072.png、req-app-024-shipping-collapse.png、req-app-024-shipping-expand.png、req-app-024-hp011.png。
+suites:
+  Smoke: 规划有效计划进入、待发货/发货中/已发货状态可见、数量进度可见、未找到空态可达和返回执行页可达。
+  Targeted: 规划签收判定、状态数量口径、多位置、记录数量边界、排序、折叠冲突、HP-011 未找到和服务端刷新/错误边界。
+  Full: 规划全部已采集状态、判定表、状态转换、Pairwise、跨服务签收/数量一致性、性能、兼容性及与发货执行/发货单记录回归。
+next_stage: testcase-generation-agent

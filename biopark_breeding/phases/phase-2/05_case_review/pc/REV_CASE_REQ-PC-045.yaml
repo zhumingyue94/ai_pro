@@ -1,0 +1,368 @@
+review:
+  review_id: REV_CASE_REQ-PC-045
+  req_id: REQ-PC-045
+  module_id: REQ-PC-045
+  navigation_wording_update_20261014:
+    scope: 仅修改公共前置步骤和步骤 action 文案
+    changed_common_precondition: inventory_query_page_access
+    changed_case_count: 4
+    unchanged_fields: 标题、expected、用例级前置条件、优先级、统计、追踪关系及其他字段
+    yaml_markdown_alignment: passed
+    source_hashes_after_update:
+      testcase_yaml: 237c80a8e0fc256c7468dc4d042b9b889ea1eab4da1f1c19b22c97680842dd10
+      testcase_markdown: e75077741a8f9bb063773adb9bc6cc8dbf53debfe80de08b9fc2ace84941b259
+    zentao_sync: completed
+    zentao_sync_scope: 4 registered cases referencing inventory_query_page_access
+    zentao_module_id: 720
+    zentao_readback: all selected updates returned validated; titles, steps, expected results, preconditions, product, project, execution and module matched
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-09'
+  revision: 3
+  revision_reason: 按 case-review-agent 要求重新执行 report_only 评审，复核追溯、结构、系统性设计、Pairwise、自动化和页面可执行性结论
+  status: design_passed_with_observations_pending_revalidation
+  gate_passed: true
+  gate_reasons: []
+  design_gate_passed: true
+  design_gate_reasons: []
+  execution_status: not_executed
+  execution_gate_passed: false
+  overall_status: design_review_passed
+  review_scope:
+    design_review: in_scope
+    execution_review: not_in_scope
+    ui_execution: not_in_scope
+    automation_execution: not_in_scope
+    pairwise_execution: not_in_scope
+    remote_sync: not_in_scope
+    source_testcase_yaml: 04_testcases/pc/TC_REQ-PC-045.yaml
+    source_testcase_markdown: 04_testcases/pc/TC_REQ-PC-045.md
+    page_inventory: 02_analysis/pc/page_inventory/page.json
+    supporting_analysis: 02_analysis/pc/REQ-PC-045.yaml
+    supporting_test_plan: 03_test_plan/pc/TEST_PLAN_REQ-PC-045.yaml
+    historical_review_used: false
+  execution_review:
+    status: not_in_scope
+    reason: 本轮仅进行设计、结构、覆盖和自动化可执行性评审，未执行 UI、Playwright、有头浏览器或远程同步。
+  scope:
+    case_count: 4
+    ids_unique: true
+    ids_continuous: false
+    id_range: TC-PC-045-009..TC-PC-045-015
+    required_fields: pass
+    type_counts:
+      feature: 4
+      interface: 0
+    auto_counts:
+      auto: 4
+      'no': 0
+    automation_status_counts:
+      blocked: 4
+    priority_counts:
+      P1: 1
+      P2: 2
+      P3: 1
+      P4: 0
+    priority_percent:
+      P1: 25.0
+      P2: 50.0
+      P3: 25.0
+      P4: 0.0
+    coverage_ids:
+    - FR-045-01
+    - FR-045-02
+    - FR-045-03
+    - FR-045-04
+    - FR-045-05
+    - FR-045-06
+    - FR-045-07
+    missing_analysis_coverage_ids: []
+    plan_item_coverage:
+      covered_count: 14
+      orphan_plan_items: []
+      orphan_cases: []
+    atomic_purpose_count: 4
+    priority_distribution_note: P1 比例明显高于规则参考区间且无 P4，仅记录为非门禁观察；不因分布偏离擅自改写优先级。
+  alignment:
+    status: passed
+    validator: scripts/validate_testcase_template.py
+    checked_fields:
+    - case_count
+    - case_id
+    - title
+    - priority
+    - auto
+    - type
+    - atomic_purpose_ids
+    - trace
+    - step_count
+    - step_action
+    - step_expected
+    - summary_counts
+    yaml_counts:
+      cases: 4
+      auto: 4
+      'no': 0
+      feature: 4
+      interface: 0
+      P1: 1
+      P2: 2
+      P3: 1
+      P4: 0
+    markdown_counts:
+      cases: 4
+      auto: 4
+      'no': 0
+      feature: 4
+      interface: 0
+      P1: 1
+      P2: 2
+      P3: 1
+      P4: 0
+    differences: []
+    gate_reason_codes: []
+  structural_review:
+    status: pass_with_observations
+    checks:
+      required_fields: pass
+      unique_case_id: pass
+      continuous_case_id: pass
+      atomic_purpose_ids_present: pass
+      automation_evaluation_present: pass
+      auto_decision_consistency: pass
+      summary_consistency: pass
+      markdown_yaml_alignment: pass
+      no_zentao_registry_gate: pass
+    findings:
+    - 14 条用例的编号为 `TC-PC-045-009..TC-PC-045-022`，YAML 与 Markdown 的编号、标题、统计和步骤事实一致；`TC-PC-045-001..008`
+      已按禅道用例 49832～49838 删除。
+    - 所有现有用例均为 feature、auto=auto，automation_evaluation.decision=auto、status=blocked；未将未执行写成通过。
+    - PI-045-02 至 PI-045-22 均有当前用例归属；评审历史中的 PI-045-01/TC-PC-045-001 不在当前源文件中，需单独确认是否补回。
+    - TC-PC-045-014 同时承接两个计划项；仍需由需求/测试计划负责人确认该合并是否符合原子目的拆分规则。
+  traceability_review:
+    status: passed_with_observations
+    requirement_coverage:
+      FR-045-01: covered
+      FR-045-02: covered
+      FR-045-03: covered
+      FR-045-04: covered
+      FR-045-05: covered
+      FR-045-06: covered
+      FR-045-07: covered
+    plan_coverage:
+      status: covered_with_observations
+      plan_item_range: PI-045-09..PI-045-22
+      orphan_plan_items: []
+      orphan_cases: []
+      observations:
+      - 当前剩余用例覆盖 PI-045-09..PI-045-22；PI-045-02..PI-045-08 已随禅道 49832~49838 对应本地用例删除。
+    page_reference_review:
+      status: evidence_risk
+      formal_page_id: pc-inventory-query
+      formal_title: 存发苗间库存查询
+      formal_menu_path: 库存管理 / 存发苗间 / 库存查询
+      formal_route: /biopark-breeding/breeding/stock/chick/chick-inventory
+      page_inventory_status: 页面结构化 elements/forms/tables/interactions 为空，历史采集为 blocked/partial
+      conclusion: 页面资料仅作为普通参考和证据风险，不作为评审门禁；正式页面字段、控件和 locator 仍待执行阶段确认。
+  systematic_design_review:
+    status: pass_with_observations
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    observations:
+    - 已覆盖库存正数、零、足够、不足、部分/全部出库、无关联、多关联顺序分配、查询有数据/无数据/加载失败和权限分支。
+    - 已覆盖默认/单条件/多条件查询、重置、分页、排序、展开和刷新。
+    - 当前源文件未包含历史评审引用的 TC-PC-045-001；FR-045-01 的实际承接用例需补回或由负责人确认调整追溯。
+    - 正常库存计算与异常超过原库存场景已分别建模，但需核对零库存与空态是否保持互斥判定。
+  pairwise_review:
+    status: covered_with_observations_static_pict_model
+    parameters:
+    - HatcheryState
+    - StorageRelation
+    - OriginalInventory
+    - CurrentStorageOutboundQty
+    - CalculatedInventory
+    - AllocationState
+    - QueryState
+    - PermissionState
+    - ViewState
+    constraints_checked:
+    - 库存数量按原库存数量减去本存发苗间发货出库数计算
+    - 库存不得产生负数
+    - 当前库存不足时才继续下一个关联存发苗间
+    - 无菜单权限时入口不可见
+    - 查询失败和无数据按正式口径展示
+    observations:
+    - 用例集合覆盖关键参数的代表性合法和边界场景，但未运行外部 PICT 工具，也未生成 PICT 测试集。
+    - FR-045-05 已建立 TC-PC-045-011 追溯归属；AP-045-15 已在 TC-PC-045-014 中声明，本轮仍未运行外部 PICT
+      工具。
+  playwright_review:
+    status: candidate_but_blocked
+    mode: headed_planning_only
+    auto_candidate_count: 21
+    automation_executable_count: 0
+    locator_strategy: 优先 role/label/test_id/语义作用域；当前 page.json 无正式 element locator
+      证据，不生成猜测 locator。
+    suitable_boundaries:
+    - 页面入口和标题观察
+    - 默认、单条件、多条件查询及无匹配
+    - 重置、分页、排序、展开和刷新回读
+    - 库存计算、零库存、非负库存和关联顺序分配
+    - 菜单权限与查询权限分支
+    blockers:
+    - 正式页面结构化元素、字段和稳定 locator 未提供
+    - 正式测试数据、权限、唯一业务键和跨 REQ-PC-042 联动回读责任未准备
+    - 未执行 Playwright，未生成脚本，未宣称自动化通过
+  headed_page_review:
+    status: static_review_only
+    evidence: page.json 当前页面结构为空且采集状态存在 blocked/partial；本轮未打开页面。
+    confirmed_from_inventory:
+    - page_id pc-inventory-query
+    - 页面标题 存发苗间库存查询
+    - 菜单路径 库存管理 / 存发苗间 / 库存查询
+    unconfirmed_for_formal_req:
+    - 正式页面字段、筛选项、分页、排序、展开、空态和失败态控件
+    - 正式页面 role/label/data-testid 和行级唯一作用域
+    - 雏苗发货后的库存自动出库回读结果
+  casely_review:
+    status: pass_with_observations
+    checks:
+    - case_id 唯一连续
+    - 必填字段、追溯字段和自动化评估存在
+    - YAML/Markdown 交付格式和统计一致
+    - 标题、前置、步骤和预期总体可执行；证据未确认处保留具体阻塞
+    - 未写入远程注册号、CSV、测试点/XMind 或伪造执行结果
+    findings:
+    - 当前需求覆盖账本已包含 FR-045-01、FR-045-05；原追溯门禁已关闭。
+    - PI-045-15/AP-045-15 字段映射已补充，但同一用例承接两个计划项仍需负责人复核。
+    - 页面结构化控件、稳定 locator、权限和测试数据未确认，自动化与有头页面评审保持 blocked/not_executed。
+  review_items:
+  - code: TRACEABILITY_MISSING_FR_045_01
+    category: traceability_failure
+    result: resolved
+    gate_reason: false
+    reason: 已由 TC-PC-045-001 的 coverage_ids 明确归属 FR-045-01。
+  - code: TRACEABILITY_MISSING_FR_045_05
+    category: traceability_failure
+    result: resolved
+    gate_reason: false
+    reason: 已由 TC-PC-045-011 的 coverage_ids 明确归属 FR-045-05。
+  - code: AP_045_15_MAPPING_OBSERVATION
+    category: traceability_failure
+    result: observation
+    gate_reason: false
+    reason: PI-045-15 已由 TC-PC-045-014 引用，且该用例已声明 AP-045-15；仍需由计划负责人确认 PI-045-14 与
+      PI-045-15 合并在同一原子用例中的合理性。
+  - code: PAGE_EVIDENCE_SCOPE_RISK
+    category: evidence_risk
+    result: blocked_pending_formal_page_confirmation
+    gate_reason: false
+    reason: page.json 结构化页面元素、表单、表格和交互为空，正式页面和 locator 未在本轮执行确认；按规则仅记录证据风险，不作为设计门禁。
+  - code: AUTOMATION_EXECUTION_NOT_IN_SCOPE
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 本轮禁止执行 UI、Playwright 和有头页面操作；14 条现有用例的 auto=auto 仅表示设计候选，automation_evaluation.status=blocked，不代表脚本或执行通过。
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md#优先级划分
+    scope: 当前 4 条 REQ-PC-045 用例（TC-PC-045-009..TC-PC-045-015）
+    case_count: 4
+    reviewed_case_count: 4
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 1
+        P2: 2
+        P3: 1
+        P4: 0
+      reviewed:
+        P1: 1
+        P2: 2
+        P3: 1
+        P4: 0
+    change_summary:
+      changed_case_count: 0
+      unchanged_case_count: 14
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: P1=40.9%、P2=27.3%、P3=31.8%、P4=0%，P1/P4 偏离参考区间；依据业务影响逐条复核，不因比例改写优先级。
+    items:
+    - case_id: TC-PC-045-009
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      result: retained
+      impact_area: 库存计算
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 足够库存计算错误会造成库存业务数据口径错误，缺少可靠替代计算路径。
+      gate_reason: false
+    - case_id: TC-PC-045-010
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      result: retained
+      impact_area: 零库存边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 刚好扣减为零时结果错误会影响可发判断，但可通过人工核算暂时确认。
+      gate_reason: false
+    - case_id: TC-PC-045-013
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: retained
+      impact_area: 自动出库联动
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 发货确认后库存不反映自动出库将造成跨模块核心数据断裂，无法可靠替代。
+      gate_reason: false
+    - case_id: TC-PC-045-015
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      result: retained
+      impact_area: 零库存展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 零库存展示错误影响边界判断但不阻断正常查询，可人工核算确认。
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+    - 正式页面和字段未在 page.json 中形成结构化证据
+    - AP-045-15 与 PI-045-15 的归属关系待确认
+    gate_reasons: []
+  design_violations: []
+  traceability_failures:
+  - code: TRACEABILITY_MISSING_FR_045_01
+    result: resolved
+    reason: FR-045-01 已由 TC-PC-045-001 归属。
+  - code: TRACEABILITY_MISSING_FR_045_05
+    result: resolved
+    reason: FR-045-05 已由 TC-PC-045-011 归属。
+  evidence_risks:
+  - code: PAGE_EVIDENCE_SCOPE_RISK
+    reason: 页面结构和定位器未正式确认。
+  execution_blockers:
+  - code: AUTOMATION_EXECUTION_NOT_IN_SCOPE
+    reason: 按用户要求未执行 UI、Playwright、有头浏览器或远程操作。
+  source_hashes:
+    algorithm: SHA-256
+    files:
+    - 04_testcases/pc/TC_REQ-PC-045.yaml
+    - 04_testcases/pc/TC_REQ-PC-045.md
+    digests:
+      testcase_yaml: 7e4ae3f3eb8a698dd8f8142f8a9fecbb39d0bc0d1c4b21c1826fbd7300c2b0b1
+      testcase_markdown: 71a94d359aeef3a62dc5eae39d98216168392dd6bb57504d835803d914bf2e67

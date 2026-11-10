@@ -1,0 +1,252 @@
+﻿{
+  "status": "validated",
+  "product_id": 8,
+  "project_id": 46,
+  "project_context_id": 46,
+  "module": {
+    "name": "���ݼ���",
+    "id": 745,
+    "path": "iotƽ̨/��������/���ݼ���"
+  },
+  "source_hashes_before": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-007.yaml": "77b03d4e63046ce984fcdcc5390986587e3393ccc63398851d5dfb5c19b9e383",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-007.yaml": "1b21377e5980006bb211cf7bd7d4b96858f3d1314da55c04711d15d4afa5d8d5",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\ģ�����嵥.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\����ģ��id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  },
+  "records": [
+    {
+      "operation": "delete",
+      "remote_case_id": 51749,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51749"
+      ],
+      "readback_before": {
+        "id": 51749,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "�м䶯��ʧ��ʱȷ�ϼ�¼ʧ�ܲ�����ִ�к�������",
+        "precondition": "ǰ��׼����\n1���ѻ���м䶯��ʧ�ܼ�����������׼�������֤�ݡ�\n\nǰ�ò��裺\n1��ʹ����׼�˺ŵ�¼Ӧ���Ż�����Ӧ���Ż���¼�ɹ���\n2����Ӧ���Ż�ѡ�����ݲɼ����ƽ̨�������������ݲɼ����ƽ̨������ʾƽ̨�˵���\n3��չ�����������ġ��˵����������ݼ������˵���ɼ���\n4����������ݼ������˵��������ݼ���ҳ��ɹ����أ���ʽҳ��·����ҳ����Լһ�¡�",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:24:09",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:32:27",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174306,
+            "step": "�򿪰���ʧ�ܶ����Ĺ����¼��",
+            "desc": "�򿪰���ʧ�ܶ����Ĺ����¼��",
+            "expect": "ʧ�ܶ�����¼�ɹ��򿪡�",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174307,
+            "step": "�鿴ʧ�ܶ��������",
+            "desc": "�鿴ʧ�ܶ��������",
+            "expect": "ҳ����ȷ��Ǹö���ִ��ʧ�ܡ�",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174308,
+            "step": "�鿴ʧ�ܶ�����ĺ���������¼��",
+            "desc": "�鿴ʧ�ܶ�����ĺ���������¼��",
+            "expect": "����ȷ�Ϻ��������Ƿ����ִ�С�",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174309,
+            "step": "�˶�����ִ�н����",
+            "desc": "�˶�����ִ�н����",
+            "expect": "������������ʧ�ܶ�������ʱ������Ϊȫ���ɹ���",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174310,
+            "step": "��������ʵ���ͻ�澯��",
+            "desc": "��������ʵ���ͻ�澯��",
+            "expect": "���μ��δ������ʵ���ͻ�澯��",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51749,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51749",
+          "text": "�м䶯��ʧ��ʱȷ�ϼ�¼ʧ�ܲ�����ִ�к�������",
+          "type": "root",
+          "children": [
+            {
+              "id": 174306,
+              "text": "�򿪰���ʧ�ܶ����Ĺ����¼��",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174306",
+                  "text": "ʧ�ܶ�����¼�ɹ��򿪡�",
+                  "type": "node",
+                  "parent": 174306,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174307,
+              "text": "�鿴ʧ�ܶ��������",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174307",
+                  "text": "ҳ����ȷ��Ǹö���ִ��ʧ�ܡ�",
+                  "type": "node",
+                  "parent": 174307,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174308,
+              "text": "�鿴ʧ�ܶ�����ĺ���������¼��",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174308",
+                  "text": "����ȷ�Ϻ��������Ƿ����ִ�С�",
+                  "type": "node",
+                  "parent": 174308,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174309,
+              "text": "�˶�����ִ�н����",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174309",
+                  "text": "������������ʧ�ܶ�������ʱ������Ϊȫ���ɹ���",
+                  "type": "node",
+                  "parent": 174309,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174310,
+              "text": "��������ʵ���ͻ�澯��",
+              "type": "sub",
+              "parent": "case_51749",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174310",
+                  "text": "���μ��δ������ʵ���ͻ�澯��",
+                  "type": "node",
+                  "parent": 174310,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"��������˷��ش���Url����Status��������鿴��ϸ������Ϣ��Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    }
+  ],
+  "source_hashes_after": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-007.yaml": "77b03d4e63046ce984fcdcc5390986587e3393ccc63398851d5dfb5c19b9e383",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-007.yaml": "1b21377e5980006bb211cf7bd7d4b96858f3d1314da55c04711d15d4afa5d8d5",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\ģ�����嵥.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\����ģ��id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  }
+}

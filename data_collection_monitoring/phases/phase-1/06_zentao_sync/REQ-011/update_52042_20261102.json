@@ -1,0 +1,14 @@
+{
+  "req_id": "REQ-011",
+  "operation": "update",
+  "remote_case_id": 52042,
+  "local_case_id": "TC-REQ-011-050",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "status": "exception",
+  "failure": {
+    "stage": "readback_validation",
+    "reason": "禅道更新接口返回success，但回读仍为旧的3步内容；新增列表点击处理按钮打开处理告警弹窗、填写原因并再次提交的步骤未写入。"
+  },
+  "policy": "未删除重建、未创建替代用例；因回读未通过，不更新注册表标题或其他未验证映射。",
+  "local_change": "已更新YAML、Markdown、评审记录和交接清单；远程同步标记异常，需后续按稳定ID重试并立即回读。"
+}

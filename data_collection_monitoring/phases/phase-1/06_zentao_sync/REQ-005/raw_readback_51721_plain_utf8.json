@@ -1,0 +1,91 @@
+{
+    "id": 51721,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 734,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "不同租户只能看到自己的设备",
+    "precondition": "前置准备：\n1、已获得设备查看人员、设备管理员、分组管理员和产品管理员账号及正式租户/业务范围矩阵。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:58:38",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-28 10:48:51",
+    "version": 3,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "zhumingyue",
+    "lastRunDate": "2026-10-27 10:24:28",
+    "lastRunResult": "pass",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 3,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174405,
+            "step": "查看不同租户上下文下设备列表的可见范围。",
+            "desc": "查看不同租户上下文下设备列表的可见范围。",
+            "expect": "切换不同租户后，每个租户只能看到自己有权限查看的设备，不显示其他租户的设备。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51721,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51721",
+        "text": "不同租户只能看到自己的设备",
+        "type": "root",
+        "children": [
+            {
+                "id": 174405,
+                "text": "查看不同租户上下文下设备列表的可见范围。",
+                "type": "sub",
+                "parent": "case_51721",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174405",
+                        "text": "切换不同租户后，每个租户只能看到自己有权限查看的设备，不显示其他租户的设备。",
+                        "type": "node",
+                        "parent": 174405,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

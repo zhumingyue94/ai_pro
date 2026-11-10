@@ -1,0 +1,1396 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-APP-017
+title: 存发苗间 / 盘点记录
+module: 盘点记录
+zentao_module_id: 579
+source:
+  csv: reference/种禽孵化管理系统测试用例_app.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: c2fd3298c420afff214d44bae32301e5af935f72c751df18c3cc258cf8252f4f
+  registry_sha256: 3cc6fe827d7ec859f6d89a47de2f07b748df60e8935d6084113b11ff625edd8b
+trace:
+  story: null
+  req: REQ-APP-017
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-36622
+  title: 存发苗间-盘点记录列表页-列表-点击某条记录进入盘点详情页
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 点击某条盘点记录
+    expected: 进入盘点详情页
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36622
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36622
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36623
+  title: 存发苗间-盘点详情页-检查操作人和盘点时间
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 在盘点详情页查看操作人和盘点时间
+    expected: 详情页中&#039;操作人&#039;字段正确显示操作人员姓名和盘点时间
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36623
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36623
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36624
+  title: 存发苗间-盘点详情页-检查数据一致性
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 在盘点详情页查看“库存”与“盘点数量”及“差异数量”的关系
+    expected: 差异数量 = 盘点数量 - 库存，数值计算准确，例如：1000 - 500 = -500
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36624
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36624
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36625
+  title: 存发苗间-盘点详情页-验证信息完整性
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 进入盘点记录列表，点击某条记录进入详情
+    expected: 页面正确展示该记录的全部信息，包括仓库信息、鸡苗信息、盘点信息等，且字段无遗漏或错误
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36625
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36625
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36702
+  title: 存发苗间-盘点记录-从首页入口正常跳转并加载列表
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间菜单权限
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 页面跳转至存发苗间盘点记录页面：从首页入口正常跳转并加载列表
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36702
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36702
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36703
+  title: 存发苗间-盘点记录列表页-下拉框筛选-选择日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 点击“筛选“按钮2. 在“盘点日期“区域选择近1周
+    expected: 返回所有符合条件的记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36703
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36703
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36704
+  title: 存发苗间-盘点记录列表页-下拉框筛选-选择是否差异为是
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 点击“是否差异“中的“是“按钮
+    expected: 系统将仅展示存在数量差异的盘点记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36704
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36704
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36705
+  title: 存发苗间-盘点记录列表页-列表-存在差异时标红提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 查看盘点记录2. 观察差异数量字段的颜色
+    expected: 当差异数量不为0时（如300或-300），该字段以红色字体显示，提示用户存在差异
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36705
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36705
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36706
+  title: 存发苗间-盘点记录列表页-搜索功能-搜索品种
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 在搜索框切换到品种，输入‘树田代孵-AA’并回车
+    expected: 页面筛选出匹配的盘点记录，仅显示‘树田代孵-AA’品种的盘点记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36706
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36706
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-36707
+  title: 存发苗间-盘点记录列表页-搜索功能-搜索框输入空字符串
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 在搜索框中清空内容2. 点击“搜索“按钮
+    expected: 系统返回所有盘点记录，相当于无条件查询
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36707
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36707
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36708
+  title: 存发苗间-盘点记录列表页-搜索功能-输入任务号搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 在搜索框输入已知任务号
+    expected: 搜索成功
+  - action: 输入任务号搜索结果正确
+    expected: 输入任务号搜索结果正确
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36708
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36708
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-36709
+  title: 存发苗间-盘点记录列表页-搜索功能-输入养殖场搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 在搜索框输入已知养殖场名称
+    expected: 搜索成功
+  - action: 输入养殖场搜索结果正确
+    expected: 输入养殖场搜索结果正确
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36709
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36709
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-36710
+  title: 存发苗间-盘点记录列表页-搜索功能-输入批次搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 在搜索框输入已知批次号
+    expected: 搜索成功
+  - action: 输入批次搜索结果正确
+    expected: 输入批次搜索结果正确
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36710
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36710
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36711
+  title: 存发苗间-盘点记录列表页-搜索功能-输入无效关键词
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 在搜索框中输入不存在的关键词&#039;XXX&#039;; 2. 点击搜索按钮
+    expected: 系统显示&#039;没有找到相关的出入库记录&#039;提示信息
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36711
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36711
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36712
+  title: 存发苗间-盘点记录列表页-搜索功能-输入计划号搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 在搜索框输入已知计划号
+    expected: 搜索成功
+  - action: 输入计划号搜索结果正确
+    expected: 输入计划号搜索结果正确
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36712
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36712
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36713
+  title: 存发苗间-盘点记录列表页-筛选-多个条件组合查询
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 打开筛选弹窗，点击“筛选“按钮2. 选择“养殖场“为“益兴二场“3. 选择“品种“为“AA“4. 设置日期范围为“2026-01-01“到“2026-01-31“5. 点击“确认“
+    expected: 系统仅显示满足所有条件的盘点记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36713
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36713
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36714
+  title: 存发苗间-盘点记录列表页-筛选-输入出苗日期范围
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 在出苗日期的开始日期输入框中输入“2025-01-01“2. 在结束日期输入框中输入“2025-01-31“3. 点击“确认“按钮
+    expected: 系统根据指定的出苗日期范围筛选出对应的盘点记录，并展示在列表中
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36714
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36714
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36715
+  title: 存发苗间-盘点记录列表页-筛选-输入平均苗重
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 输入平均蛋重；2. 点击“确认“按钮
+    expected: 系统仅显示符合平均蛋重的盘点记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36715
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36715
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36716
+  title: 存发苗间-盘点记录列表页-筛选-输入无效的日期范围，筛选不到记录
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 点击筛选按钮
+    expected: 打开筛选弹窗
+  - action: 在盘点日期区域输入无效的日期范围
+    expected: 输入无效的日期范围，筛选不到记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36716
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36716
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36717
+  title: 存发苗间-盘点记录列表页-筛选-输入盘点日期范围
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 打开筛选弹窗，在盘点时间的开始日期输入框中输入“2025-01-01“2. 在结束日期输入框中输入“2025-01-31“3. 点击“确认“按钮
+    expected: 系统根据指定的日期范围筛选出对应的盘点记录，并展示在列表中
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36717
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36717
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36718
+  title: 存发苗间-盘点记录列表页-筛选-选择养殖场地
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 打开筛选弹窗，展开“养殖场“下拉菜单2. 选择“益兴二场“3. 点击“确认“按钮
+    expected: 系统仅显示来自“益兴二场“的盘点记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36718
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36718
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36719
+  title: 存发苗间-盘点记录列表页-筛选-选择品种
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 展开“品种“下拉菜单2. 选择“AA“3. 点击“确认“按钮
+    expected: 系统仅显示品种为“AA“的盘点记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36719
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36719
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36720
+  title: 存发苗间-盘点记录列表页-筛选-选择是否差异为是
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 点击“是否差异“中的“是“按钮
+    expected: 系统将仅展示存在数量差异的盘点记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36720
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36720
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36721
+  title: 存发苗间-盘点记录列表页-筛选-选择盘点日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 点击“近1周“按钮2. 点击“确认“按钮
+    expected: 系统根据近1周的时间范围筛选出对应的盘点记录，并展示在列表中
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36721
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36721
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36722
+  title: 存发苗间-盘点记录列表页-筛选-重置筛选条件
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 点击“筛选“按钮2. 设置任意筛选条件3. 点击“重置“按钮
+    expected: 所有筛选字段恢复默认值，系统重新加载全部数据
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36722
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36722
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36723
+  title: 存发苗间-盘点记录列表页-选择不同存发苗间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 点击顶部下拉菜单选择“存发苗间二号“2. 查看列表数据是否更新为对应仓库的记录
+    expected: 列表展示“存发苗间二号“的盘点记录，且数据正确无误
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36723
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36723
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36786
+  title: 存发苗间-盘点记录-列表无数据时显示空状态提示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间菜单权限
+  - 2、当前盘点记录无历史数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入存发苗间盘点记录页面
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 列表显示“暂无数据“或类似空状态提示
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36786
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36786
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36787
+  title: 存发苗间-盘点记录列表-搜索功能-输入特殊字符搜索
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间菜单权限
+  steps:
+  - action: 登录后进入盘点记录列表页
+    expected: 进入盘点记录列表页
+  - action: 在搜索框输入特殊字符：<>&“&#039;
+    expected: 输入特殊字符搜索
+  - action: 输入特殊字符搜索
+    expected: 输入/选择操作完成，页面展示相应内容
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36787
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36787
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36788
+  title: 存发苗间-盘点记录列表-搜索功能-输入空字符串搜索
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间菜单权限
+  steps:
+  - action: 登录后进入盘点记录列表页
+    expected: 进入盘点记录列表页
+  - action: 在搜索框不输入任何内容
+    expected: 输入空字符串搜索
+  - action: 输入空字符串搜索
+    expected: 输入/选择操作完成，页面展示相应内容
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36788
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36788
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36789
+  title: 存发苗间-盘点记录列表页-切换存发苗间，选项显示全部存发苗间，包括已经停用的仓库
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 点击切换存发苗间下拉/选择框
+    expected: 选项列表仅显示启用项，停用项不可见
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36789
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36789
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36790
+  title: 存发苗间-盘点记录列表页-列表-盘点信息显示完整
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 查看盘点记录列表的信息
+    expected: '每条出入库的完整信息:
+
+      预期:每条出入库的完整信息:
+
+      养殖场、批次、品种，三段式标题
+
+      当前库存
+
+      平均苗重、出苗日期
+
+      差异数量
+
+      盘点时间'
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36790
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36790
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 1，预期块数量为 6；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: 1. 1. 查看盘点记录列表的信息
+    raw_expected: '1. 每条出入库的完整信息:
+
+      预期:每条出入库的完整信息:
+
+      1、养殖场、批次、品种，三段式标题
+
+      2、当前库存
+
+      3、平均苗重、出苗日期
+
+      4、差异数量
+
+      5、盘点时间'
+- id: TC-36791
+  title: 存发苗间-盘点记录列表页-搜索功能-使用历史搜索记录
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 点击历史搜索区域中的&#039;树田代孵&#039;；2. 等待系统响应
+    expected: 系统自动填充搜索框并执行搜索，展示匹配的记录列表
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36791
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36791
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36792
+  title: 存发苗间-盘点记录列表页-搜索功能-搜索框支持模糊匹配
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 在搜索框中输入部分计划号 “SFJH202603“2. 点击“搜索“按钮
+    expected: 系统返回所有包含“SFJH202603“的计划号相关记录
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36792
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36792
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36793
+  title: 存发苗间-盘点记录列表页-筛选-未选择任何条件直接确认
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 1. 打开筛选弹窗，点击“筛选“按钮2. 不做任何选择，直接点击“确认“
+    expected: 系统保持当前列表不变，或重新加载全部数据
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36793
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36793
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36794
+  title: 存发苗间-盘点详情页-返回按钮功能
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 点击左上角的返回箭头
+    expected: 页面跳转回盘点记录列表页，保持之前筛选条件不变
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36794
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36794
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36798
+  title: 存发苗间-盘点记录列表页-搜索功能-搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  type: feature
+  auto: 'no'
+  priority: P4
+  feature: 盘点记录
+  preconditions:
+  - 1、用户登录成功并且有存发苗间-盘点记录菜单权限
+  - 2、系统中存在可用的存发苗间及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击存发苗间板块“盘点记录“入口
+    expected: 进入存发苗间盘点记录列表页
+  - action: 执行若干次搜索产生历史
+    expected: 搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  - action: 在列表页执行与标题描述一致的操作
+    expected: 搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  test_data:
+    module: 盘点记录
+    zentao_module_id: 579
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-017
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36798
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36798
+    raw_module: /一期/app/存发苗间/盘点记录(#579)
+    raw_type: 功能测试
+    raw_priority: '4'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

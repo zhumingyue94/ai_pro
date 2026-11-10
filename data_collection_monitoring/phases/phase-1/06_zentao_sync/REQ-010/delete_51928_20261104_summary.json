@@ -1,0 +1,192 @@
+﻿{
+    "status":  "validated",
+    "operation":  "delete",
+    "remote_case_id":  51928,
+    "source_case_id":  "TC-REQ-010-001",
+    "project":  46,
+    "product":  8,
+    "module":  748,
+    "delete_recreate":  false,
+    "record":  {
+                   "status":  "validated",
+                   "product_id":  8,
+                   "project_id":  46,
+                   "project_context_id":  46,
+                   "module":  {
+                                  "name":  "�澯����",
+                                  "id":  748,
+                                  "path":  "iotƽ̨/�澯����/�澯����"
+                              },
+                   "source_hashes_before":  {
+                                                "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-010.yaml":  "085f62585244d1bd00dc3337b3a6c87d0b084a946989bf043cc7c439bfa7051f",
+                                                "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-010.yaml":  "8fa27ea8ba577df468bffa1db14e85599fdb42b1ae2e287b3b138119d0530c35",
+                                                "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml":  "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+                                                "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\ģ�����嵥.md":  "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+                                                "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\����ģ��id.md":  "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+                                            },
+                   "records":  [
+                                   {
+                                       "operation":  "delete",
+                                       "remote_case_id":  51928,
+                                       "command":  [
+                                                       "D:\\tools\\nodejs\\node.exe",
+                                                       "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+                                                       "--format=json",
+                                                       "--machine-readable",
+                                                       "testcase",
+                                                       "delete",
+                                                       "--id",
+                                                       "51928"
+                                                   ],
+                                       "readback_before":  {
+                                                               "id":  51928,
+                                                               "project":  46,
+                                                               "product":  8,
+                                                               "execution":  53,
+                                                               "branch":  0,
+                                                               "lib":  0,
+                                                               "module":  748,
+                                                               "path":  0,
+                                                               "story":  0,
+                                                               "storyVersion":  1,
+                                                               "title":  "�򿪸澯����ҳ�棬���ҳ������",
+                                                               "precondition":  "ǰ��׼����\n1�����Ի������˺š��⻧������ʱ���ö�ȡ�����߱��澯����ҳ�����Ȩ�鿴��Χ��\n\nǰ�ò��裺\n1�����Ӧ���Ż���¼���������е���Ч��¼̬������¼�ɹ������е�¼̬��Ч��������������Ӧ���Ż���\n2����Ӧ���Ż�ѡ�����ݲɼ����ƽ̨�������ɹ��������ݲɼ����ƽ̨������ʾ��Ӧ��ƽ̨�˵�����\n3��չ�����澯���ġ��˵���������澯���á��˵������澯����ҳ��ɹ����أ�ȷ���ѽ���澯����ҳ�档",
+                                                               "keywords":  "",
+                                                               "pri":  2,
+                                                               "type":  "other",
+                                                               "auto":  "no",
+                                                               "frame":  "",
+                                                               "stage":  "",
+                                                               "howRun":  "",
+                                                               "script":  "",
+                                                               "scriptedBy":  "",
+                                                               "scriptedDate":  "",
+                                                               "scriptStatus":  "",
+                                                               "scriptLocation":  "",
+                                                               "status":  "normal",
+                                                               "subStatus":  "",
+                                                               "color":  "",
+                                                               "frequency":  1,
+                                                               "order":  0,
+                                                               "openedBy":  "AI",
+                                                               "openedDate":  "2026-10-23 13:51:49",
+                                                               "reviewedBy":  "",
+                                                               "reviewedDate":  "",
+                                                               "lastEditedBy":  "AI",
+                                                               "lastEditedDate":  "2026-11-03 09:10:19",
+                                                               "version":  3,
+                                                               "linkCase":  "",
+                                                               "fromBug":  0,
+                                                               "fromCaseID":  0,
+                                                               "fromCaseVersion":  1,
+                                                               "lastRunner":  "",
+                                                               "lastRunDate":  "",
+                                                               "lastRunResult":  "",
+                                                               "scene":  0,
+                                                               "sort":  0,
+                                                               "deleted":  0,
+                                                               "toBugs":  [
+
+                                                                          ],
+                                                               "fromBugData":  [
+
+                                                                               ],
+                                                               "linkCaseTitles":  [
+
+                                                                                  ],
+                                                               "currentVersion":  3,
+                                                               "files":  [
+
+                                                                         ],
+                                                               "steps":  [
+                                                                             {
+                                                                                 "name":  "1",
+                                                                                 "id":  175375,
+                                                                                 "step":  "�ȴ��澯����ҳ��������",
+                                                                                 "desc":  "�ȴ��澯����ҳ��������",
+                                                                                 "expect":  "��ַΪ `/biopark-iot/iot/alert/config`��ҳ������˵�������ʾ���澯���á���",
+                                                                                 "type":  "step",
+                                                                                 "parent":  0,
+                                                                                 "grade":  1
+                                                                             },
+                                                                             {
+                                                                                 "name":  "2",
+                                                                                 "id":  175376,
+                                                                                 "step":  "�鿴ɸѡ���������б�ͷ�ҳ��",
+                                                                                 "desc":  "�鿴ɸѡ���������б�ͷ�ҳ��",
+                                                                                 "expect":  "�����������ʾ��������ʱ��ʾ��ͷ�������У�������ʱ��ʾ��ȷ��״̬��",
+                                                                                 "type":  "step",
+                                                                                 "parent":  0,
+                                                                                 "grade":  1
+                                                                             }
+                                                                         ],
+                                                               "caseID":  51928,
+                                                               "needconfirm":  false,
+                                                               "caseFails":  0,
+                                                               "mindMapSteps":  {
+                                                                                    "id":  "case_51928",
+                                                                                    "text":  "�򿪸澯����ҳ�棬���ҳ������",
+                                                                                    "type":  "root",
+                                                                                    "children":  [
+                                                                                                     {
+                                                                                                         "id":  175375,
+                                                                                                         "text":  "�ȴ��澯����ҳ��������",
+                                                                                                         "type":  "sub",
+                                                                                                         "parent":  "case_51928",
+                                                                                                         "subSide":  "right",
+                                                                                                         "children":  [
+                                                                                                                          {
+                                                                                                                              "id":  "desc_175375",
+                                                                                                                              "text":  "��ַΪ `/biopark-iot/iot/alert/config`��ҳ������˵�������ʾ���澯���á���",
+                                                                                                                              "type":  "node",
+                                                                                                                              "parent":  175375,
+                                                                                                                              "subSide":  "right"
+                                                                                                                          }
+                                                                                                                      ]
+                                                                                                     },
+                                                                                                     {
+                                                                                                         "id":  175376,
+                                                                                                         "text":  "�鿴ɸѡ���������б�ͷ�ҳ��",
+                                                                                                         "type":  "sub",
+                                                                                                         "parent":  "case_51928",
+                                                                                                         "subSide":  "right",
+                                                                                                         "children":  [
+                                                                                                                          {
+                                                                                                                              "id":  "desc_175376",
+                                                                                                                              "text":  "�����������ʾ��������ʱ��ʾ��ͷ�������У�������ʱ��ʾ��ȷ��״̬��",
+                                                                                                                              "type":  "node",
+                                                                                                                              "parent":  175376,
+                                                                                                                              "subSide":  "right"
+                                                                                                                          }
+                                                                                                                      ]
+                                                                                                     }
+                                                                                                 ]
+                                                                                }
+                                                           },
+                                       "delete_response":  {
+                                                               "status":  "success",
+                                                               "data":  {
+                                                                            "status":  "success"
+                                                                        }
+                                                           },
+                                       "readback_after":  {
+                                                              "status":  "confirmed_not_found",
+                                                              "error":  "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"��������˷��ش���Url����Status��������鿴��ϸ������Ϣ��Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+                                                          },
+                                       "registry":  {
+                                                        "req_id":  "",
+                                                        "case_id":  "",
+                                                        "action":  "no_registered_mapping"
+                                                    },
+                                       "status":  "validated"
+                                   }
+                               ],
+                   "source_hashes_after":  {
+                                               "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-010.yaml":  "085f62585244d1bd00dc3337b3a6c87d0b084a946989bf043cc7c439bfa7051f",
+                                               "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-010.yaml":  "8fa27ea8ba577df468bffa1db14e85599fdb42b1ae2e287b3b138119d0530c35",
+                                               "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml":  "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+                                               "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\ģ�����嵥.md":  "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+                                               "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\����ģ��id.md":  "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+                                           }
+               }
+}

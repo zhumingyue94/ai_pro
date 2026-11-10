@@ -1,0 +1,663 @@
+review:
+  review_id: REV_CASE_REQ-PC-041
+  req_id: REQ-PC-041
+  module_id: REQ-PC-041
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-09-17'
+  status: completed_with_findings
+  gate_passed: true
+  gate_reasons: []
+  rules_applied:
+  - .agents/rules/test-design-enrichment-rule.md
+  - .agents/rules/page-block-coverage-rule.md
+  - .agents/rules/ui-execution-bug-review-rule.md
+  - .agents/rules/zentao-case-type-automation-rule.md
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope:
+    source_testcase_yaml: 04_testcases/pc/TC_REQ-PC-041.yaml
+    source_testcase_markdown: 04_testcases/pc/TC_REQ-PC-041.md
+    page_inventory: 02_analysis/pc/page_inventory/page.json
+    supporting_analysis:
+    - 02_analysis/pc/REQ-PC-041.yaml
+    - 02_analysis/pc/REQ-PC-041_雏苗发货列表与筛选.md
+    supporting_test_plan: 03_test_plan/pc/TEST_PLAN_REQ-PC-041.yaml
+    historical_review_used: false
+    historical_review_deleted_before_review: false
+    historical_review_note: 未发现独立的 REQ-PC-041 历史评审文件；本轮直接校正当前模块交付物，未使用历史结论。
+  scope:
+    case_count: 72
+    ids_unique: true
+    rule_audit: 2026-09-17 13:00 删除 TC-PC-041-038：发货单创建时间与排程计划下发时间存在误差，不要求相等；保留 2026-09-17 11:20 按钮规则审计
+    ids_continuous: false
+    id_range:
+    - 1
+    - 73
+    missing_case_ids:
+    - TC-PC-041-038
+    extra_case_ids: []
+    required_fields: pass
+    type_counts:
+      feature: 72
+    auto_counts:
+      auto: 66
+      'no': 6
+    automation_status_counts:
+      blocked: 64
+      partial: 1
+      not_suitable: 6
+    priority_counts: &id001
+      P1: 9
+      P3: 35
+      P2: 28
+      P4: 0
+    reviewed_case_count: 72
+  review_items:
+  - code: ANALYSIS_MODULE_ID_CONFLICT
+    category: traceability_failure
+    result: fail
+    gate_reason: false
+    reason: REQ-PC-041 分析 YAML 记录模块 ID=736，而分析 Markdown 记录模块 ID=711；需确认唯一模块 ID。
+  - code: COMMON_PRECONDITION_REFERENCE_REVIEW
+    category: testcase_structure
+    result: pass_with_exception
+    gate_reason: false
+    reason: 正常用例引用 delivery_list_page_access_steps 并移除重复登录、门户和菜单导航；权限异常用例保留独立访问链路，不引用成功路径公共前置。
+  - code: FORMAL_DATA_AND_PERMISSION_NOT_READY
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 正式环境、测试账号权限、授权数据和清理责任尚未提供；仅阻塞执行。
+  - code: FORMAL_LOCATOR_CONFIRMATION_PENDING
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 正式页面定位器及日期分段控件、下拉控件和重复行内入口仍需执行前确认；page.json 仅为原型参考。
+  - code: PICT_NOT_EXECUTED
+    category: evidence_risk
+    result: not_executed
+    gate_reason: false
+    reason: 已完成静态参数、值域和约束设计，未生成或运行 PICT。
+  - code: UI_PLAYWRIGHT_NOT_EXECUTED
+    category: evidence_risk
+    result: not_executed
+    gate_reason: false
+    reason: 按要求未执行 UI、浏览器或 Playwright；有头页面评审仅核对已有页面采集证据。
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md; case-review-agent priority
+      review contract
+    scope: 逐条复核 04_testcases/pc/TC_REQ-PC-041.yaml 全部用例优先级
+    case_count: 72
+    reviewed_case_count: 72
+    unreviewed_case_ids: []
+    distribution:
+      source: *id001
+      P4: 0
+      note: 优先级分布仅作观察，不因比例异常单独设门禁。
+      P1: 9
+      P2: 28
+      P3: 35
+    items:
+    - case_id: TC-PC-041-001
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-002
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-003
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-004
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-005
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-006
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-007
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-008
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-009
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-010
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-011
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-012
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-013
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-014
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-015
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-016
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-017
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-018
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-019
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-020
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-021
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-022
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-023
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-024
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-025
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-026
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-027
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-028
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-029
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-030
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-031
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-032
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-033
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-034
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-035
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-036
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-037
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-039
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-040
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-041
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-042
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-043
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-044
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-045
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-046
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-047
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-048
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-049
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-050
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-051
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-052
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-053
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-054
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-055
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-056
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-057
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-058
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-059
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-060
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-061
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-062
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-063
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-064
+      current_priority: P3
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-065
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-066
+      current_priority: P2
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-067
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-068
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-069
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-070
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-071
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    - case_id: TC-PC-041-072
+      current_priority: P1
+      result: accepted
+      reason: 依据业务影响、失败后果、使用频率和可替代性复核，当前优先级保留。
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+    - P1/P2/P3 业务风险分层需结合正式用户频率和事故影响复核。
+    gate_reasons: []
+  alignment:
+    status: passed
+    style_audit: 2026-09-18：已按 Casely 公共模板重新生成 Markdown，并将模糊标题、字段和结果表述改为可直接核验的规则。
+    validator: scripts/validate_testcase_markdown.py
+    source_yaml: 04_testcases/pc/TC_REQ-PC-041.yaml
+    source_markdown: 04_testcases/pc/TC_REQ-PC-041.md
+    checked_fields:
+    - case_count
+    - case_id
+    - title
+    - priority
+    - auto
+    - type
+    - atomic_purpose_ids
+    - trace
+    - step_count
+    - step_action
+    - step_expected
+    - summary_counts
+    differences: []
+    gate_reason_codes: []
+    last_synced_change: 2026-10-14：删除禅道用例49725、49727、49734及对应来源用例TC-PC-041-057、TC-PC-041-059、TC-PC-041-066。
+  structural_review:
+    status: pass_with_findings
+    checks:
+      required_fields: pass
+      unique_case_id: pass
+      atomic_purpose_ids_present: pass
+      automation_evaluation_present: pass
+      auto_decision_consistency: pass
+      summary_consistency: pass
+    findings:
+    - 每条用例具备追溯、步骤、预期和自动化评估字段。
+    - 最终用例编号连续，YAML/Markdown 及评审统计已按 72 条用例重算。
+  traceability_review:
+    status: fail_with_findings
+    coverage_ids:
+    - CV-041-01
+    - CV-041-02
+    - CV-041-03
+    - CV-041-04
+    - CV-041-05
+    - CV-041-06
+    - CV-041-07
+    - CV-041-08
+    - CV-041-09
+    - CV-041-10
+    plan_item_ids:
+    - PI-041-01
+    - PI-041-02
+    - PI-041-03
+    - PI-041-04
+    - PI-041-05
+    - PI-041-06
+    - PI-041-07
+    - PI-041-08
+    - PI-041-09
+    - PI-041-10
+    - PI-041-11
+    atomic_purpose_ids:
+    - AP-01
+    - AP-02
+    - AP-03
+    - AP-04
+    - AP-05
+    - AP-06
+    - AP-07
+    - AP-08
+    - AP-09
+    - AP-10
+    - AP-11
+    - AP-12
+    - AP-13
+    - AP-16-01
+    - AP-16-02
+    - AP-16-03
+    - AP-16-04
+    - AP-16-05
+    missing_design:
+    - 分析 YAML 与 Markdown 模块 ID 冲突
+    conclusion: 覆盖标识集合存在；最终编号连续，分析模块标识仍需确认。
+  systematic_design_review:
+    status: pass_with_findings
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    findings:
+    - 已覆盖日期范围、筛选组合、五类状态、空结果、分页、排序、权限和入口判定。
+    - 跨系统来源、租户隔离、计算异常和视觉规范目标应保持 blocked/待确认。
+    - 部分用例公共导航步骤较多，建议后续维护时按业务断言去重。
+  pairwise_review:
+    status: static_pict_model_only
+    parameters:
+    - 计划日期
+    - 栋舍
+    - 品种
+    - 关键字类型
+    - 状态卡
+    - 结果集
+    - 权限
+    - 浏览器
+    values:
+    - 日期：当天/历史/未来/非法边界
+    - 栋舍：全部/单项/无匹配
+    - 品种：全部/单项/无匹配
+    - 关键字：空/发货单号/孵化计划号/模糊/超长
+    - 状态：全部/待发货/发货中/已发货/已签收
+    - 结果：有结果/空结果/多页
+    - 权限：有权限/无权限
+    - 浏览器：Chromium/Firefox/WebKit
+    constraints:
+    - 结束日期不得早于开始日期
+    - 实际可发数为零时进度为0%
+    - 未来日期不得展示可执行发货入口
+    - 状态统计按当前筛选条件计算且不重复叠加状态卡
+    conclusion: 完成静态 2-way 参数与约束覆盖审查，未生成或执行 PICT。
+  playwright_review:
+    status: blocked_static_review
+    auto_candidate_count: 66
+    auto_not_suitable_count: 6
+    automation_executable_count: 0
+    blockers:
+    - 正式 URL 未确认
+    - 权限和数据未准备
+    - 正式定位器未确认
+    - 关键业务状态不可控
+    conclusion: 67 条设计上适合 Playwright 自动化，6 条保留 auto=no；当前不可宣称已执行。
+  headed_page_review:
+    status: static_review_only
+    capture_id: PAGE-PC-REQ041-REQ042-20260903
+    page_id: pc-chick-shipping
+    capture_status: reference_only
+    locator_observations:
+    - 雏苗发货菜单、筛选区、状态卡、表格、分页和导出弹窗具有 page.json 引用。
+    - 日期输入为分段控件，直接键入可能破坏值；正式执行前需通过日历交互确认。
+    conclusion: 未启动有头浏览器，未执行 UI；page.json/DOM/截图不能证明正式页面功能。
+  casely_review:
+    status: pass_with_findings
+    findings:
+    - YAML 具备标题、前置条件、步骤、预期、追溯和自动化评估字段。
+    - Markdown/YAML 对齐已重新执行并通过校验器。
+    - 关联字段需按同一业务结果判断，不应机械拆分。
+    - 2026-09-18 清理 TC-PC-041-052、TC-PC-041-053 预期中的“本用例不验证”范围说明，保留状态文字和视觉样式断言。
+  design_violations:
+  - 可能存在公共导航步骤重复，但不单独作为重复用例判定。
+  traceability_failures:
+  - ANALYSIS_MODULE_ID_CONFLICT
+  input_gate_failures:
+  - 正式测试数据、权限、定位器和执行环境未准备。
+  evidence_risks:
+  - page.json、DOM 和截图为原型/采集参考，不是正式执行证据。
+  - PICT、UI、浏览器和 Playwright 均未执行。
+  execution_blockers:
+  - FORMAL_DATA_AND_PERMISSION_NOT_READY
+  - FORMAL_LOCATOR_CONFIRMATION_PENDING
+  unconfirmed_items:
+  - OI-041-01 孵化计划号格式
+  - OI-041-02 时间字段来源
+  - OI-041-03 租户隔离
+  - OI-041-04 跨系统补栏计划号
+  - OI-041-05 计算异常口径
+  - OI-041-06 状态视觉规范
+  execution_readiness:
+    formal_url_and_permission: not_ready
+    page_inventory: reference_only
+    report_only: true
+  source_inputs:
+  - 04_testcases/pc/TC_REQ-PC-041.yaml
+  - 04_testcases/pc/TC_REQ-PC-041.md
+  - 02_analysis/pc/REQ-PC-041.yaml
+  - 02_analysis/pc/page_inventory/page.json
+  - 03_test_plan/pc/TEST_PLAN_REQ-PC-041.yaml
+  source_hashes:
+    04_testcases/pc/TC_REQ-PC-041.yaml: a31a110e27ac6c1b90f4a040d1251b15e26dc023c2c1abd4878b67960ea33f92
+    04_testcases/pc/TC_REQ-PC-041.md: c8641486c707e6ba7e1f4af7e8a9867973adc1fe79f203c07490c2a9e0a7a658
+    02_analysis/pc/REQ-PC-041.yaml: 9df624bb99f41fb89625a3e491588724e61f667a60f5e5dcf161e5348d5911d1
+    02_analysis/pc/page_inventory/page.json: 2d1ee96de735f18ec1d4073f47e818179201051059da6a22ed41ccef7b830c7d
+    03_test_plan/pc/TEST_PLAN_REQ-PC-041.yaml: ba5383e875d76bd5c0c8768f7212cb378b3d51093d587faeca6aa3b13bfafaad
+  sync_candidates:
+    case_count: 72
+    status: synced
+    blocking_reasons:
+    - ANALYSIS_MODULE_ID_CONFLICT
+    note: 已按公共入口逐条回读并更新 REQ-PC-041 已登记禅道用例；本次恢复当前 68 条正常业务用例的 delivery_list_page_access_steps 公共前置引用，权限异常独立访问用例不引用成功路径公共前置。
+  execution_statement: 已完成本地 YAML/Markdown、评审记录和交接清单同步，并逐条更新及回读 REQ-PC-041 远程禅道用例；未执行 UI、浏览器、Playwright、PICT 或 CSV。
+
+  prohibited_actions_confirmed:
+    ui_execution: false
+    browser_execution: false
+    playwright_execution: false
+    pict_execution: false
+    csv_generation: false
+    remote_zentao_write: true
+    business_data_change: false
+  handoff:
+    path: 05_case_review/pc/HANDOFF/REQ-PC-041_HANDOFF.md
+    module_id: REQ-PC-041

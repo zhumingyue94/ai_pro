@@ -1,0 +1,859 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-002
+title: 生产报表
+module: 生产报表
+zentao_module_id: 522
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-002
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-37013
+  title: 导出-导出统计报表
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 下载Excel文件，文件名包含导出时间和模块名称
+  - action: 点击导出按钮
+    expected: 导出文件中包含所选年份、月份、孵化场的统计报表数据
+  - action: 在弹出的选择框中选择&#039;②导出统计报表&#039;
+    expected: 导出文件表头与表格表头一致
+  - action: 选择年份、月份、孵化场
+    expected: 导出数据准确
+  - action: 确认导出
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37013
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37013
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37014
+  title: 导出-导出明细表
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 下载Excel文件，文件名包含导出时间和模块名称
+  - action: 填写筛选条件并点击搜索
+    expected: 导出文件中包含当前筛选条件下的所有明细数据
+  - action: 点击导出按钮
+    expected: 导出文件表头与表格表头一致
+  - action: 在弹出的选择框中选择&#039;①导出明细表&#039;
+    expected: 导出数据与表格显示数据一致
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37014
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37014
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37015
+  title: 成绩计算-达成率自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 达成率根据受健率实际值与受健率标准值对比自动计算
+  - action: 查看成绩区域的达成率字段
+    expected: 达成率显示百分比格式
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37015
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37015
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37016
+  title: 成绩计算-入雏率自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 入雏率根据健雏数量与入孵数量的比例自动计算并显示
+  - action: 查看成绩区域的入雏率字段
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37016
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37016
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37018
+  title: 合计行-数值字段显示合计值
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 合计行中入孵数量、大蛋、畸形、破蛋、损失、受精蛋、无精蛋、死胚、臭蛋、健雏、弱雏、淘汰雏、毛蛋、损失等数值字段显示该列的合计值
+  - action: 查看表格最下方的合计行
+    expected: 入孵数量正确
+  - action: 查看表格最下方的合计行
+    expected: 大蛋、畸形、破蛋数量正确
+  - action: 查看表格最下方的合计行
+    expected: 损失数量正确
+  - action: 查看表格最下方的合计行
+    expected: 受精蛋数量正确
+  - action: 查看表格最下方的合计行
+    expected: 无精蛋数量正确
+  - action: 查看表格最下方的合计行
+    expected: 死胚数量正确
+  - action: 查看表格最下方的合计行
+    expected: 臭蛋数量正确
+  - action: 查看表格最下方的合计行
+    expected: 健雏数量正确
+  - action: 查看表格最下方的合计行
+    expected: 弱雏数量正确
+  - action: 查看表格最下方的合计行
+    expected: 淘汰雏数量正确
+  - action: 查看表格最下方的合计行
+    expected: 毛蛋数量正确
+  - action: 查看表格最下方的合计行
+    expected: 损失数量正确
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37018
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37018
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37019
+  title: 表格显示-数据显示正确性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中孵化场、养殖场、养殖批次、种蛋类型、品种、入孵日期、周龄、平均蛋重、蛋重类型、产蛋日期、入孵数量、大蛋、畸形、破蛋、损失、孵化器、照蛋日期、受精蛋、无精蛋、死胚、臭蛋、受精率、死胚率、臭蛋率、出雏日期、健雏、弱雏、淘汰雏、毛蛋、损失、入雏率、受健率、淘汰率、毛蛋率、受健率标准、达成率、计划单号、创建人、创建时间、修改人、修改时间等字段数据显示正确
+  - action: 查看表格中的数据
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37019
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37019
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37020
+  title: 重置-重置后表格显示全部数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中显示全部生产报表数据
+  - action: 填写筛选条件并点击搜索
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37020
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37020
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37021
+  title: 创建日期筛选-正常选择日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示创建日期为2025-12-19的生产报表数据
+  - action: 创建日期选择&#039;2025-12-19&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37021
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37021
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37022
+  title: 创建人筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示创建人为&#039;周韬睿&#039;的生产报表数据
+  - action: 创建人输入框输入&#039;周韬睿&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37022
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37022
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37023
+  title: 平均蛋重筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示平均蛋重为43的生产报表数据
+  - action: 平均蛋重输入框输入&#039;43&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37023
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37023
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37024
+  title: 周龄筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示周龄为54的生产报表数据
+  - action: 周龄输入框输入&#039;54&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37024
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37024
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37025
+  title: 养殖批次筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示养殖批次包含&#039;1p&#039;的生产报表数据
+  - action: 养殖批次输入框输入&#039;1p&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37025
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37025
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37026
+  title: 产蛋日期筛选-正常选择时间区间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示产蛋日期在所选区间内的生产报表数据
+  - action: 产蛋日期选择开始日期和结束日期
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37026
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37026
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37027
+  title: 出雏日期筛选-正常选择时间区间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示出雏日期在所选区间内的生产报表数据
+  - action: 出雏日期选择开始日期和结束日期
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37027
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37027
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37028
+  title: 照蛋日期筛选-正常选择时间区间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示照蛋日期在所选区间内的生产报表数据
+  - action: 照蛋日期选择开始日期和结束日期
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37028
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37028
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37029
+  title: 上孵日期筛选-正常选择时间区间
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示上孵日期在2025-12-01至2025-12-31期间的生产报表数据
+  - action: 上孵日期选择开始日期&#039;2025-12-01&#039;和结束日期&#039;2025-12-31&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37029
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37029
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37030
+  title: 蛋重类型筛选-正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示该蛋重类型的生产报表数据
+  - action: 蛋重类型下拉框选择一个蛋重类型
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37030
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37030
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37031
+  title: 品种筛选-正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示该品种的生产报表数据
+  - action: 品种下拉框选择一个品种
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37031
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37031
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37032
+  title: 种蛋类型筛选-正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示种蛋类型为&#039;合格蛋&#039;的生产报表数据
+  - action: 种蛋类型下拉框选择&#039;合格蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37032
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37032
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37033
+  title: 养殖场筛选-正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示该养殖场的生产报表数据
+  - action: 养殖场下拉框选择一个养殖场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37033
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37033
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37034
+  title: 孵化场筛选-正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 生产报表
+  preconditions:
+  - 1、用户登录成功并且有生产报表菜单权限
+  steps:
+  - action: 登录后进入计划管理-生产报表
+    expected: 表格中只显示该孵化场的生产报表数据
+  - action: 孵化场下拉框选择一个孵化场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 生产报表
+    zentao_module_id: 522
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-002
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37034
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37034
+    raw_module: /一期/pc/计划管理/生产报表(#522)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

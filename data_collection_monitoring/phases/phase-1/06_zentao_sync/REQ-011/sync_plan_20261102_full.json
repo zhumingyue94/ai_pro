@@ -1,0 +1,28 @@
+{
+  "status": "validated",
+  "req_id": "REQ-011",
+  "target": "project",
+  "product_id": 8,
+  "project_id": 46,
+  "module": {
+    "id": 749,
+    "name": "告警记录",
+    "path": "iot平台/告警中心/告警记录"
+  },
+  "source_case_count": 50,
+  "source_step_count": 110,
+  "operations": {
+    "create": 0,
+    "update": 50,
+    "delete": 0
+  },
+  "remote_scope": "all existing stable mapped cases",
+  "readback": "公共脚本逐条 update 后立即 readback，项目/产品/模块、标题、类型、前置条件、步骤和预期校验通过",
+  "failure_policy": "任一更新失败立即停止；本次无失败；未删除重建",
+  "source_hashes": {
+    "04_testcases/TC_REQ-011.yaml": "e987fcc0e04bec59de2ae1a91925bda9f78cdf95b7f6209652e98790dbd81db9",
+    "04_testcases/TC_REQ-011.md": "b984d1594e88f199b16c21a045dd38aac07f7e69edfdd72e6522d2613b12aeb6",
+    "module_case_map.json": "bccfadf762aa3f0974cef1e9d35a2cfa97d59d8fac8dd0b27af655f6629016fb",
+    "05_case_review/REV_CASE_REQ-011.yaml": "6783161f93934561f2486c94afa6bb7fdb05a6da3a479af7002174c6cf2cbb7c"
+  }
+}

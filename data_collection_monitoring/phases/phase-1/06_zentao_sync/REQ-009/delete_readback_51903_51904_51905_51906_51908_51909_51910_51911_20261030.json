@@ -1,0 +1,1597 @@
+{
+  "status": "validated",
+  "records": [
+    {
+      "operation": "delete",
+      "remote_case_id": 51903,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51903"
+      ],
+      "readback_before": {
+        "id": 51903,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "脚本执行错误时确认任务反馈被记录",
+        "precondition": "前置准备：\n1、具备经批准的脱敏脚本错误结果页面证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "feature",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:06",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:11",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174127,
+            "step": "使用批准的脱敏任务标识定位目标任务。",
+            "desc": "使用批准的脱敏任务标识定位目标任务。",
+            "expect": "目标任务行被正确定位。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174128,
+            "step": "进入页面实际提供的执行详情或执行记录入口。",
+            "desc": "进入页面实际提供的执行详情或执行记录入口。",
+            "expect": "执行反馈页面或区域打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174129,
+            "step": "刷新执行反馈（如果页面提供刷新按钮）。",
+            "desc": "刷新执行反馈（如果页面提供刷新按钮）。",
+            "expect": "反馈内容完成重新加载。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174130,
+            "step": "查看脚本错误状态和提示。",
+            "desc": "查看脚本错误状态和提示。",
+            "expect": "脚本错误状态及脱敏提示可以从页面回读，不制造真实异常。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51903,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51903",
+          "text": "脚本执行错误时确认任务反馈被记录",
+          "type": "root",
+          "children": [
+            {
+              "id": 174127,
+              "text": "使用批准的脱敏任务标识定位目标任务。",
+              "type": "sub",
+              "parent": "case_51903",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174127",
+                  "text": "目标任务行被正确定位。",
+                  "type": "node",
+                  "parent": 174127,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174128,
+              "text": "进入页面实际提供的执行详情或执行记录入口。",
+              "type": "sub",
+              "parent": "case_51903",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174128",
+                  "text": "执行反馈页面或区域打开。",
+                  "type": "node",
+                  "parent": 174128,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174129,
+              "text": "刷新执行反馈（如果页面提供刷新按钮）。",
+              "type": "sub",
+              "parent": "case_51903",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174129",
+                  "text": "反馈内容完成重新加载。",
+                  "type": "node",
+                  "parent": 174129,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174130,
+              "text": "查看脚本错误状态和提示。",
+              "type": "sub",
+              "parent": "case_51903",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174130",
+                  "text": "脚本错误状态及脱敏提示可以从页面回读，不制造真实异常。",
+                  "type": "node",
+                  "parent": 174130,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    },
+    {
+      "operation": "delete",
+      "remote_case_id": 51904,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51904"
+      ],
+      "readback_before": {
+        "id": 51904,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "插件执行异常时确认任务反馈被记录",
+        "precondition": "前置准备：\n1、具备经批准的脱敏插件异常结果页面证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "feature",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:07",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:13",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174131,
+            "step": "定位目标任务并进入执行反馈入口。",
+            "desc": "定位目标任务并进入执行反馈入口。",
+            "expect": "执行反馈页面或区域打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174132,
+            "step": "刷新反馈（如果页面提供刷新按钮）。",
+            "desc": "刷新反馈（如果页面提供刷新按钮）。",
+            "expect": "反馈内容完成重新加载。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174133,
+            "step": "查看插件执行状态。",
+            "desc": "查看插件执行状态。",
+            "expect": "页面显示插件执行异常状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174134,
+            "step": "查看异常提示。",
+            "desc": "查看异常提示。",
+            "expect": "页面显示异常提示，且不泄露敏感信息。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51904,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51904",
+          "text": "插件执行异常时确认任务反馈被记录",
+          "type": "root",
+          "children": [
+            {
+              "id": 174131,
+              "text": "定位目标任务并进入执行反馈入口。",
+              "type": "sub",
+              "parent": "case_51904",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174131",
+                  "text": "执行反馈页面或区域打开。",
+                  "type": "node",
+                  "parent": 174131,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174132,
+              "text": "刷新反馈（如果页面提供刷新按钮）。",
+              "type": "sub",
+              "parent": "case_51904",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174132",
+                  "text": "反馈内容完成重新加载。",
+                  "type": "node",
+                  "parent": 174132,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174133,
+              "text": "查看插件执行状态。",
+              "type": "sub",
+              "parent": "case_51904",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174133",
+                  "text": "页面显示插件执行异常状态。",
+                  "type": "node",
+                  "parent": 174133,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174134,
+              "text": "查看异常提示。",
+              "type": "sub",
+              "parent": "case_51904",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174134",
+                  "text": "页面显示异常提示，且不泄露敏感信息。",
+                  "type": "node",
+                  "parent": 174134,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    },
+    {
+      "operation": "delete",
+      "remote_case_id": 51905,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51905"
+      ],
+      "readback_before": {
+        "id": 51905,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "设备离线时确认任务反馈被记录",
+        "precondition": "前置准备：\n1、具备经批准的脱敏设备离线结果页面证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "feature",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:08",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:15",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174135,
+            "step": "定位目标任务并进入执行反馈入口。",
+            "desc": "定位目标任务并进入执行反馈入口。",
+            "expect": "执行反馈页面或区域打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174136,
+            "step": "刷新反馈（如果页面提供刷新按钮）。",
+            "desc": "刷新反馈（如果页面提供刷新按钮）。",
+            "expect": "反馈内容完成重新加载。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174137,
+            "step": "查看设备状态。",
+            "desc": "查看设备状态。",
+            "expect": "页面显示设备离线状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174138,
+            "step": "查看离线提示和敏感内容。",
+            "desc": "查看离线提示和敏感内容。",
+            "expect": "提示内容可读且已脱敏，不连接真实设备。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51905,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51905",
+          "text": "设备离线时确认任务反馈被记录",
+          "type": "root",
+          "children": [
+            {
+              "id": 174135,
+              "text": "定位目标任务并进入执行反馈入口。",
+              "type": "sub",
+              "parent": "case_51905",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174135",
+                  "text": "执行反馈页面或区域打开。",
+                  "type": "node",
+                  "parent": 174135,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174136,
+              "text": "刷新反馈（如果页面提供刷新按钮）。",
+              "type": "sub",
+              "parent": "case_51905",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174136",
+                  "text": "反馈内容完成重新加载。",
+                  "type": "node",
+                  "parent": 174136,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174137,
+              "text": "查看设备状态。",
+              "type": "sub",
+              "parent": "case_51905",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174137",
+                  "text": "页面显示设备离线状态。",
+                  "type": "node",
+                  "parent": 174137,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174138,
+              "text": "查看离线提示和敏感内容。",
+              "type": "sub",
+              "parent": "case_51905",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174138",
+                  "text": "提示内容可读且已脱敏，不连接真实设备。",
+                  "type": "node",
+                  "parent": 174138,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    },
+    {
+      "operation": "delete",
+      "remote_case_id": 51906,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51906"
+      ],
+      "readback_before": {
+        "id": 51906,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "任务引用失效时确认执行反馈被记录",
+        "precondition": "前置准备：\n1、具备经批准的脱敏引用失效结果页面证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "feature",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:10",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:17",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174139,
+            "step": "定位目标任务并进入执行反馈入口。",
+            "desc": "定位目标任务并进入执行反馈入口。",
+            "expect": "执行反馈页面或区域打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174140,
+            "step": "刷新反馈（如果页面提供刷新按钮）。",
+            "desc": "刷新反馈（如果页面提供刷新按钮）。",
+            "expect": "反馈内容完成重新加载。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174141,
+            "step": "查看任务引用状态。",
+            "desc": "查看任务引用状态。",
+            "expect": "页面显示任务引用失效状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174142,
+            "step": "查看失效提示。",
+            "desc": "查看失效提示。",
+            "expect": "提示内容可读且不包含内部响应或敏感信息。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51906,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51906",
+          "text": "任务引用失效时确认执行反馈被记录",
+          "type": "root",
+          "children": [
+            {
+              "id": 174139,
+              "text": "定位目标任务并进入执行反馈入口。",
+              "type": "sub",
+              "parent": "case_51906",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174139",
+                  "text": "执行反馈页面或区域打开。",
+                  "type": "node",
+                  "parent": 174139,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174140,
+              "text": "刷新反馈（如果页面提供刷新按钮）。",
+              "type": "sub",
+              "parent": "case_51906",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174140",
+                  "text": "反馈内容完成重新加载。",
+                  "type": "node",
+                  "parent": 174140,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174141,
+              "text": "查看任务引用状态。",
+              "type": "sub",
+              "parent": "case_51906",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174141",
+                  "text": "页面显示任务引用失效状态。",
+                  "type": "node",
+                  "parent": 174141,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174142,
+              "text": "查看失效提示。",
+              "type": "sub",
+              "parent": "case_51906",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174142",
+                  "text": "提示内容可读且不包含内部响应或敏感信息。",
+                  "type": "node",
+                  "parent": 174142,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    },
+    {
+      "operation": "delete",
+      "remote_case_id": 51908,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51908"
+      ],
+      "readback_before": {
+        "id": 51908,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看任务认证信息时确认页面不展示明文凭据",
+        "precondition": "前置准备：\n1、具备不含真实凭据的脱敏任务详情页面证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:13",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:22",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174147,
+            "step": "打开目标任务的详情或编辑入口。",
+            "desc": "打开目标任务的详情或编辑入口。",
+            "expect": "详情页或编辑表单打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174148,
+            "step": "查看认证信息区域。",
+            "desc": "查看认证信息区域。",
+            "expect": "凭据不以明文显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174149,
+            "step": "尝试查看凭据字段。",
+            "desc": "尝试查看凭据字段。",
+            "expect": "页面只显示脱敏值或占位符，不能读取真实凭据。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174150,
+            "step": "关闭页面。",
+            "desc": "关闭页面。",
+            "expect": "返回动作明确，未复制或保存真实秘密。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51908,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51908",
+          "text": "查看任务认证信息时确认页面不展示明文凭据",
+          "type": "root",
+          "children": [
+            {
+              "id": 174147,
+              "text": "打开目标任务的详情或编辑入口。",
+              "type": "sub",
+              "parent": "case_51908",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174147",
+                  "text": "详情页或编辑表单打开。",
+                  "type": "node",
+                  "parent": 174147,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174148,
+              "text": "查看认证信息区域。",
+              "type": "sub",
+              "parent": "case_51908",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174148",
+                  "text": "凭据不以明文显示。",
+                  "type": "node",
+                  "parent": 174148,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174149,
+              "text": "尝试查看凭据字段。",
+              "type": "sub",
+              "parent": "case_51908",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174149",
+                  "text": "页面只显示脱敏值或占位符，不能读取真实凭据。",
+                  "type": "node",
+                  "parent": 174149,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174150,
+              "text": "关闭页面。",
+              "type": "sub",
+              "parent": "case_51908",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174150",
+                  "text": "返回动作明确，未复制或保存真实秘密。",
+                  "type": "node",
+                  "parent": 174150,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    },
+    {
+      "operation": "delete",
+      "remote_case_id": 51909,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51909"
+      ],
+      "readback_before": {
+        "id": 51909,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看任务外部地址时确认页面不展示明文地址",
+        "precondition": "前置准备：\n1、具备不含真实地址的脱敏任务详情页面证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:14",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:24",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174151,
+            "step": "打开目标任务的详情或编辑入口。",
+            "desc": "打开目标任务的详情或编辑入口。",
+            "expect": "详情页或编辑表单打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174152,
+            "step": "查看外部地址区域。",
+            "desc": "查看外部地址区域。",
+            "expect": "外部地址按页面安全规则脱敏显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174153,
+            "step": "查看异常消息和返回内容区域。",
+            "desc": "查看异常消息和返回内容区域。",
+            "expect": "相关内容不显示真实内部地址或响应载荷。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174154,
+            "step": "返回任务列表。",
+            "desc": "返回任务列表。",
+            "expect": "页面返回任务列表。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51909,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51909",
+          "text": "查看任务外部地址时确认页面不展示明文地址",
+          "type": "root",
+          "children": [
+            {
+              "id": 174151,
+              "text": "打开目标任务的详情或编辑入口。",
+              "type": "sub",
+              "parent": "case_51909",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174151",
+                  "text": "详情页或编辑表单打开。",
+                  "type": "node",
+                  "parent": 174151,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174152,
+              "text": "查看外部地址区域。",
+              "type": "sub",
+              "parent": "case_51909",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174152",
+                  "text": "外部地址按页面安全规则脱敏显示。",
+                  "type": "node",
+                  "parent": 174152,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174153,
+              "text": "查看异常消息和返回内容区域。",
+              "type": "sub",
+              "parent": "case_51909",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174153",
+                  "text": "相关内容不显示真实内部地址或响应载荷。",
+                  "type": "node",
+                  "parent": 174153,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174154,
+              "text": "返回任务列表。",
+              "type": "sub",
+              "parent": "case_51909",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174154",
+                  "text": "页面返回任务列表。",
+                  "type": "node",
+                  "parent": 174154,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    },
+    {
+      "operation": "delete",
+      "remote_case_id": 51910,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51910"
+      ],
+      "readback_before": {
+        "id": 51910,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看任务脚本内容时确认页面不展示不应暴露的明文",
+        "precondition": "前置准备：\n1、具备不含真实脚本的脱敏任务编辑或详情页面证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:16",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:26",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174155,
+            "step": "打开目标任务的详情或编辑入口。",
+            "desc": "打开目标任务的详情或编辑入口。",
+            "expect": "详情页或编辑表单打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174156,
+            "step": "查看外部地址字段。",
+            "desc": "查看外部地址字段。",
+            "expect": "外部地址按页面规则脱敏显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174157,
+            "step": "查看脚本区域。",
+            "desc": "查看脚本区域。",
+            "expect": "脚本内容按页面规则脱敏显示，不暴露不应展示的明文。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174158,
+            "step": "关闭页面。",
+            "desc": "关闭页面。",
+            "expect": "页面关闭或返回列表，未复制真实敏感内容。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51910,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51910",
+          "text": "查看任务脚本内容时确认页面不展示不应暴露的明文",
+          "type": "root",
+          "children": [
+            {
+              "id": 174155,
+              "text": "打开目标任务的详情或编辑入口。",
+              "type": "sub",
+              "parent": "case_51910",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174155",
+                  "text": "详情页或编辑表单打开。",
+                  "type": "node",
+                  "parent": 174155,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174156,
+              "text": "查看外部地址字段。",
+              "type": "sub",
+              "parent": "case_51910",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174156",
+                  "text": "外部地址按页面规则脱敏显示。",
+                  "type": "node",
+                  "parent": 174156,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174157,
+              "text": "查看脚本区域。",
+              "type": "sub",
+              "parent": "case_51910",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174157",
+                  "text": "脚本内容按页面规则脱敏显示，不暴露不应展示的明文。",
+                  "type": "node",
+                  "parent": 174157,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174158,
+              "text": "关闭页面。",
+              "type": "sub",
+              "parent": "case_51910",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174158",
+                  "text": "页面关闭或返回列表，未复制真实敏感内容。",
+                  "type": "node",
+                  "parent": 174158,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    },
+    {
+      "operation": "delete",
+      "remote_case_id": 51911,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51911"
+      ],
+      "readback_before": {
+        "id": 51911,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看任务异常反馈时确认消息和返回内容不展示明文",
+        "precondition": "前置准备：\n1、具备不含真实敏感内容的脱敏异常反馈页面或日志证据。\n\n前置步骤：\n1、使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。；登录成功，或已有登录态可以继续访问应用门户。\n2、在应用门户点击“数据采集监控平台”。；进入数据采集监控平台，并看到平台菜单。\n3、展开“数据中心”菜单。；“数据采集”菜单项显示出来。\n4、点击“数据采集”菜单。；数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:17",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:28",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174159,
+            "step": "打开目标任务的执行详情或异常反馈入口。",
+            "desc": "打开目标任务的执行详情或异常反馈入口。",
+            "expect": "异常反馈页面或区域打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174160,
+            "step": "查看异常消息。",
+            "desc": "查看异常消息。",
+            "expect": "异常消息按安全规则脱敏显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174161,
+            "step": "查看返回内容。",
+            "desc": "查看返回内容。",
+            "expect": "返回内容不显示真实敏感信息或内部响应。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174162,
+            "step": "返回任务列表。",
+            "desc": "返回任务列表。",
+            "expect": "页面返回列表，返回动作明确。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51911,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51911",
+          "text": "查看任务异常反馈时确认消息和返回内容不展示明文",
+          "type": "root",
+          "children": [
+            {
+              "id": 174159,
+              "text": "打开目标任务的执行详情或异常反馈入口。",
+              "type": "sub",
+              "parent": "case_51911",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174159",
+                  "text": "异常反馈页面或区域打开。",
+                  "type": "node",
+                  "parent": 174159,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174160,
+              "text": "查看异常消息。",
+              "type": "sub",
+              "parent": "case_51911",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174160",
+                  "text": "异常消息按安全规则脱敏显示。",
+                  "type": "node",
+                  "parent": 174160,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174161,
+              "text": "查看返回内容。",
+              "type": "sub",
+              "parent": "case_51911",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174161",
+                  "text": "返回内容不显示真实敏感信息或内部响应。",
+                  "type": "node",
+                  "parent": 174161,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174162,
+              "text": "返回任务列表。",
+              "type": "sub",
+              "parent": "case_51911",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174162",
+                  "text": "页面返回列表，返回动作明确。",
+                  "type": "node",
+                  "parent": 174162,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"禅道服务端返回错误（Url：，Status：），请查看详细错误信息：Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    }
+  ]
+}

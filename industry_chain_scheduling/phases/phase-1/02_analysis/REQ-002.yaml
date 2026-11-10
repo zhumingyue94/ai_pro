@@ -1,0 +1,239 @@
+id: REQ-002
+title: 目标制定
+parent_req: REQ-000
+zentao_module_id: null
+page_url: /biopark-poultry/schedule/target/create
+summary: 智控中心设定年度整体宰杀目标并按月分配，提交园区总经理审核后生效；制定排程时展示当月目标宰杀量及已分配量（只读参考）。
+in_scope:
+- 按年度/状态查询与重置
+- 年度目标列表及新增/编辑/删除/提交
+- 月度宰杀量分配（1~12月）及按月度平均分配
+- 查看/审核弹窗
+- 与达成看板的数据引用（审核通过目标）
+out_scope:
+- 制定排程页面对当月目标的校验适配（PRD明确无需校验）
+business_rules:
+- 状态：暂存→待审核→审核通过/驳回
+- 暂存/驳回：可编辑、删除、提交
+- 待审核：可审核
+- 审核通过：可查看
+- 驳回需展示驳回原因
+- 审核通过后仅可查看，不可编辑、不可删除、不可再次提交
+roles:
+- 智控中心小组成员（制定）
+- 园区总经理（审核）
+interfaces:
+- 页面 /biopark-poultry/schedule/target/create
+- 达成看板（引用年度/月度目标）
+- 制定排程（展示当月目标参考）
+risks:
+- 审核通过与达成看板指标联动规则需与PRD对齐验证
+open_questions:
+- 各角色账号权限矩阵（除当前管理员账号外）
+test_scope_suggestion:
+- P1：暂存/提交审核/审核通过/驳回主流程
+- P1：按月度平均分配与占比计算
+- P2：状态与操作按钮可用性
+- P2：达成看板引用目标数据
+prototype_verification:
+  query_fields:
+  - 年度
+  - 状态
+  table_columns:
+  - 序号
+  - 年度
+  - 年度宰杀量(万)
+  - 月度分配(万只)
+  - 状态
+  - 驳回原因
+  - 审核人员
+  - 审核时间
+  - 创建人
+  - 创建时间
+  - 操作
+  buttons:
+  - 查询
+  - 重置
+  - 新增目标
+  - 查看
+  - 审核
+  - 编辑
+  - 提交
+  - 删除
+  form_fields:
+  - 目标年度
+  - 年度宰杀量(万只)
+  - 月度宰杀量分配
+  dialogs:
+    新增年度目标:
+    - 按月度平均分配
+    - 取消
+    - 暂存
+    - 保存并提交审核
+    审核年度目标:
+    - 关闭
+    - 驳回
+    - 审核通过
+requirements_delta:
+- date: '2026-07-22'
+  source: 01_requirements/需求变动.md
+  summary: 审核弹窗无原因；驳回确认框原因必填；通过无二次确认
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  note: 权限测点统一见 REQ-000（TP-000-17 起）
+audit_dialog:
+  审核年度目标:
+    initial:
+      reason_field: false
+    reject:
+      trigger: 点击驳回
+      dialog: 驳回确认框
+      reason_field: required
+    approve:
+      trigger: 点击审核通过
+      confirm_dialog: false
+ui_copy_rules:
+  dialog_title: 语义等价即可（如审核/审批/审核年度目标）
+  confirm_message: 语义等价、无歧义、无错别字即可
+  story: null
+  project: 产业链生产排程系统
+  version: 3
+  status: draft
+  req: REQ-002
+  tp: null
+design_artifacts:
+  state_transitions:
+  - name: 年度目标单据状态
+    states:
+    - 暂存
+    - 待审核
+    - 审核通过
+    - 驳回
+    legal:
+    - from: 暂存
+      to: 待审核
+      trigger: 保存并提交审核
+    - from: 待审核
+      to: 审核通过
+      trigger: 审核通过
+    - from: 待审核
+      to: 驳回
+      trigger: 驳回
+    - from: 驳回
+      to: 暂存
+      trigger: 编辑后暂存
+    - from: 驳回
+      to: 待审核
+      trigger: 再次提交
+    illegal:
+    - from: 审核通过
+      action: 编辑
+      expected: 不可编辑
+    - from: 审核通过
+      action: 删除
+      expected: 不可删除
+    - from: 审核通过
+      action: 提交
+      expected: 不可再次提交
+    - from: 待审核
+      action: 编辑
+      expected: 制定人不可编辑，仅审核
+  decision_tables:
+  - name: 列表查询
+    conditions:
+    - 年度
+    - 状态
+    rules:
+    - when: 仅年度
+      then: 按年度过滤
+    - when: 仅状态
+      then: 按状态过滤
+    - when: 年度+状态
+      then: AND 组合过滤
+  - name: 操作按钮显隐
+    conditions:
+    - 状态
+    - 角色
+    rules:
+    - when: 暂存
+      then: 查看/编辑/提交/删除
+    - when: 驳回
+      then: 查看/编辑/提交/删除
+    - when: 待审核+审核人
+      then: 查看/审核
+    - when: 审核通过
+      then: 仅查看
+  - name: 月度分配
+    conditions:
+    - 分配方式
+    rules:
+    - when: 按月度平均分配
+      then: 12月均分年度总量
+    - when: 手工录入各月
+      then: 各月之和应等于年度总量（以实现为准）
+  bva_fields:
+  - field: 年度宰杀量(万只)
+    type: decimal
+    boundaries:
+    - 0
+    - 0.01
+    - 极大值
+  - field: 月度宰杀量(万只)
+    type: decimal
+    boundaries:
+    - 0
+    - 单月极大值
+    - 12月合计
+  - field: 目标年度
+    type: year
+    boundaries:
+    - 当前年
+    - 历史年
+    - 未来年
+  combinatorial_blocks:
+  - name: 列表查询
+    pict_eligible: true
+    parameters:
+      年度:
+      - 有数据年
+      - 无匹配年
+      - 空
+      状态:
+      - 暂存
+      - 待审核
+      - 审核通过
+      - 驳回
+      - 空
+    constraints:
+    - IF 年度=无匹配年 THEN 空列表
+  - name: 新增/编辑保存
+    pict_eligible: true
+    parameters:
+      操作:
+      - 暂存
+      - 保存并提交审核
+      年度唯一性:
+      - 新年度
+      - 已存在年度
+      月度分配:
+      - 已平均分配
+      - 未分配
+      - 部分月份为空
+      年度宰杀量:
+      - 有效
+      - 0或空
+      - 无效负值
+    constraints:
+    - IF 年度已存在 THEN 保存<>成功
+    - IF 年度宰杀量无效 THEN 保存<>成功
+permission_scope:
+  owner: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-002
+  testpoints_ref: 03_testpoints/TP_REQ-000.yaml
+  actions:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+  - 提交
+  - 审核

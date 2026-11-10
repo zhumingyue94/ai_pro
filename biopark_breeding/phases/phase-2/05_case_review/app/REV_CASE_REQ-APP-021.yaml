@@ -1,0 +1,1502 @@
+review:
+  review_id: REV_CASE_REQ-APP-021
+  req_id: REQ-APP-021
+  module_id: REQ-APP-021
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-09-23'
+  status: completed_with_observations
+  gate_passed: true
+  gate_reasons: []
+  rules_applied:
+  - test-design-enrichment-rule.md
+  - page-block-coverage-rule.md
+  - automation-judgment-rule.md
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope:
+    source_testcase_yaml: 04_testcases/app/TC_REQ-APP-021.yaml
+    page_inventory: 02_analysis/app/page_inventory/page.json
+    supporting_analysis: 02_analysis/app/REQ-APP-021.yaml
+    supporting_test_plan: 03_test_plan/app/TEST_PLAN_REQ-APP-021.yaml
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+  scope:
+    case_count: 77
+    ids_unique: true
+    ids_continuous: false
+    id_range: TC-APP-021-001..TC-APP-021-105（累计删除 13 条复合职责用例并新增 31 条拆分用例）
+    required_fields: reviewed
+  priority_review:
+    rule_ref: test-design-enrichment-rule.md fixed business-impact decision chain
+    scope: all cases in 04_testcases/app/TC_REQ-APP-021.yaml
+    case_count: 77
+    reviewed_case_count: 77
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 24
+        P2: 24
+        P3: 23
+        P4: 6
+      reviewed:
+          P1: 24
+          P2: 24
+          P3: 23
+          P4: 6
+    change_summary:
+      changed_case_count: 10
+      unchanged_case_count: 76
+      deleted_case_ids:
+      - TC-APP-021-030
+      - TC-APP-021-051
+      - TC-APP-021-087
+      added_case_ids:
+      - TC-APP-021-098
+      - TC-APP-021-099
+      - TC-APP-021-100
+      - TC-APP-021-101
+      - TC-APP-021-102
+      - TC-APP-021-103
+      - TC-APP-021-104
+      - TC-APP-021-105
+      change_reason: 本轮将 TC-APP-021-061 拆分为组合筛选与关键字搜索两条原子用例，新增关键字搜索用例并同步禅道 51010；组合筛选继续使用禅道 50970。另将 TC-APP-021-105 的复合搜索动作拆分为进入搜索页面、输入关键字并提交两个独立步骤；本次更新 TC-APP-021-071 和 TC-APP-021-072，TC-APP-021-071 收窄为日期、栋舍和状态三项组合筛选，不再输入关键字；TC-APP-021-072 保留四项组合筛选统计断言。
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 源分布与复核分布均为 P1/P2/P3/P4=27/24/27/8（31.4%/27.9%/31.4%/9.3%）；P1 高于参考区间，P3/P4 低于参考区间，仅作观察，不按比例改级。
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 部分用例缺少正式业务口径或执行证据，已标记 evidence_risk；不得将未确认记录视为证据完备。
+    items:
+    - case_id: TC-APP-021-001
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-001 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-001; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-002
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-002 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-002; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-003
+      current_priority: P4
+      source_priority: P4
+      reviewed_priority: P4
+      recommended_priority: P4
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-003 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P4 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-003; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-004
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 栋舍筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-004 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=栋舍筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-004; feature=栋舍筛选; trace_status=designed
+    - case_id: TC-APP-021-005
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 栋舍筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-005 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=栋舍筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-005; feature=栋舍筛选; trace_status=designed
+    - case_id: TC-APP-021-006
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 发货单状态筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-006 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-006; feature=发货单状态筛选; trace_status=designed
+    - case_id: TC-APP-021-007
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-007 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=状态统计；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-007; feature=状态统计; trace_status=designed
+    - case_id: TC-APP-021-008
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-008 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=状态统计；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-008; feature=状态统计; trace_status=designed
+    - case_id: TC-APP-021-009
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-009 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=状态统计；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-009; feature=状态统计; trace_status=designed
+    - case_id: TC-APP-021-010
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-010 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=状态统计；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-010; feature=状态统计; trace_status=designed
+    - case_id: TC-APP-021-011
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-011 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=状态统计；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-011; feature=状态统计; trace_status=designed
+    - case_id: TC-APP-021-012
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-012 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=low；替代路径=true。失败后果为该业务区域未按要求提示“请输入搜索内容”；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-012; feature=发货单搜索; trace_status=designed
+    - case_id: TC-APP-021-013
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-013 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-013; feature=发货单搜索; trace_status=designed
+    - case_id: TC-APP-021-014
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-014 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-014; feature=发货单搜索; trace_status=designed
+    - case_id: TC-APP-021-015
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-015 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=low；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-015; feature=发货单搜索; trace_status=designed
+    - case_id: TC-APP-021-016
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-016 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=low；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-016; feature=发货单搜索; trace_status=designed
+    - case_id: TC-APP-021-017
+      current_priority: P4
+      source_priority: P4
+      reviewed_priority: P4
+      recommended_priority: P4
+      result: unchanged
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-017 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=low；替代路径=true。失败后果为该业务区域未按要求提示“请输入搜索内容”；当前源优先级
+        P4 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-017; feature=发货单搜索; trace_status=designed
+    - case_id: TC-APP-021-018
+      current_priority: P4
+      source_priority: P4
+      reviewed_priority: P4
+      recommended_priority: P4
+      result: unconfirmed_evidence_risk
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-018 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=low；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P4 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-018; feature=发货单搜索; trace_status=open_evidence
+    - case_id: TC-APP-021-019
+      current_priority: P4
+      source_priority: P4
+      reviewed_priority: P4
+      recommended_priority: P4
+      result: unchanged
+      impact_area: 发货单搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-019 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单搜索；使用频率=low；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P4 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-019; feature=发货单搜索; trace_status=designed
+    - case_id: TC-APP-021-021
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 发货单列表
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-021 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=true；关键数据影响=true；业务影响区域=发货单列表；使用频率=low；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-021; feature=发货单列表; trace_status=designed
+    - case_id: TC-APP-021-023
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-023 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-023; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-024
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unconfirmed_evidence_risk
+      impact_area: 筛选条件保持
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-024 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=筛选条件保持；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-024; feature=筛选条件保持; trace_status=open_evidence
+    - case_id: TC-APP-021-026
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单卡片入口
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-026 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片入口；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-026; feature=发货单卡片入口; trace_status=designed
+    - case_id: TC-APP-021-027
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 已发货卡片
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-027 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=已发货卡片；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-027; feature=已发货卡片; trace_status=designed
+    - case_id: TC-APP-021-028
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unconfirmed_evidence_risk
+      impact_area: 已签收状态
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-028 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=已签收状态；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-028; feature=已签收状态; trace_status=open_evidence
+    - case_id: TC-APP-021-029
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unconfirmed_evidence_risk
+      impact_area: 已签收状态
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-029 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=已签收状态；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-029; feature=已签收状态; trace_status=open_evidence
+    - case_id: TC-APP-021-033
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-033 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-033; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-034
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unconfirmed_evidence_risk
+      impact_area: 筛选条件保持
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-034 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=筛选条件保持；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-034; feature=筛选条件保持; trace_status=open_evidence
+    - case_id: TC-APP-021-035
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unconfirmed_evidence_risk
+      impact_area: 筛选条件保持
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-035 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=筛选条件保持；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-035; feature=筛选条件保持; trace_status=open_evidence
+    - case_id: TC-APP-021-036
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unconfirmed_evidence_risk
+      impact_area: 筛选条件保持
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-036 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=筛选条件保持；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-036; feature=筛选条件保持; trace_status=open_evidence
+    - case_id: TC-APP-021-037
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-037 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-037; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-039
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-039 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-039; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-040
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unconfirmed_evidence_risk
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-040 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-040; feature=任务日期筛选; trace_status=open_evidence
+    - case_id: TC-APP-021-041
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 任务日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-041 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=任务日期筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-041; feature=任务日期筛选; trace_status=designed
+    - case_id: TC-APP-021-042
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 发货单状态筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-042 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-042; feature=发货单状态筛选; trace_status=designed
+    - case_id: TC-APP-021-043
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 发货单状态筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-043 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-043; feature=发货单状态筛选; trace_status=designed
+    - case_id: TC-APP-021-044
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 发货单状态筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-044 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态筛选；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-044; feature=发货单状态筛选; trace_status=designed
+    - case_id: TC-APP-021-045
+      current_priority: P4
+      source_priority: P4
+      reviewed_priority: P4
+      recommended_priority: P4
+      result: unchanged
+      impact_area: 发货单列表
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-045 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=false；业务影响区域=发货单列表；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P4 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-045; feature=发货单列表; trace_status=designed
+    - case_id: TC-APP-021-052
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: unchanged
+      impact_area: 栋舍筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 已依据职责检查.md 第 7 节收窄为“指定栋舍无发货数据时列表显示空状态”，移除筛选条件回显断言；当前仅验证空状态，筛选条件生效由基线用例 TC-APP-021-005 承担。核心流程阻断=false；关键数据影响=true；业务影响区域=栋舍无数据空状态；使用频率=low；替代路径=true。当前源优先级 P3 暂保留。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-052; feature=栋舍无数据空状态; trace_status=designed; narrowed_from_overlap=true
+    - case_id: TC-APP-021-055
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-055 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=状态统计；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-055; feature=状态统计; trace_status=designed
+    - case_id: TC-APP-021-056
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单卡片
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-056 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-056; feature=发货单卡片; trace_status=designed
+    - case_id: TC-APP-021-058
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单卡片入口
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-058 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=true；关键数据影响=true；业务影响区域=任意合法发货单的发货导航与上下文；使用频率=high；替代路径=false。已合并原 TC-APP-021-059 的发货中入口导航场景，覆盖范围限定为存在合法“发货”入口的发货单。
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-058; feature=任意合法发货单的发货导航与上下文; trace_status=designed; merged_from=TC-APP-021-059
+    - case_id: TC-APP-021-061
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged
+      impact_area: 组合筛选与统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-061 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=组合筛选与统计；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-061; feature=组合筛选与统计; trace_status=designed
+    - case_id: TC-APP-021-064
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-064 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-064; feature=发货单状态判定; trace_status=designed
+    - case_id: TC-APP-021-065
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-065 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-065; feature=发货单状态判定; trace_status=designed
+    - case_id: TC-APP-021-066
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-066 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-066; feature=发货单状态判定; trace_status=designed
+    - case_id: TC-APP-021-067
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-067 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-067; feature=发货单状态判定; trace_status=designed
+    - case_id: TC-APP-021-068
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-068 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-068; feature=发货单状态判定; trace_status=designed
+    - case_id: TC-APP-021-071
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-071 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-071; feature=发货单状态判定; trace_status=designed
+    - case_id: TC-APP-021-072
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-072 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；当前源优先级
+        P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-072; feature=发货单状态判定; trace_status=designed
+    - case_id: TC-APP-021-074
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货单卡片入口
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-074 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片入口；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-025 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-074; feature=发货单卡片入口; trace_status=designed; split_from=TC-APP-021-025
+    - case_id: TC-APP-021-075
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 发货单卡片入口
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-075 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片入口；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-025 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-075; feature=发货单卡片入口; trace_status=designed; split_from=TC-APP-021-025
+    - case_id: TC-APP-021-076
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: split_added
+      impact_area: 发货单排序
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-076 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单排序；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-031 按单一职责拆分产生，当前源优先级 P3 暂保留。业务已确认排序规则为最后更新时间倒序，最后更新的放在最前面，原“排序方向待业务确认”的阻塞标记已解除。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-076; feature=发货单排序; trace_status=open_evidence; split_from=TC-APP-021-031
+    - case_id: TC-APP-021-077
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: split_added
+      impact_area: 发货单排序
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-077 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单排序；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-031 按单一职责拆分产生，当前源优先级 P3 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-077; feature=发货单排序; trace_status=open_evidence; split_from=TC-APP-021-031
+    - case_id: TC-APP-021-078
+      current_priority: P4
+      source_priority: P4
+      reviewed_priority: P4
+      recommended_priority: P4
+      result: split_added
+      impact_area: 发货单排序
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-078 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单排序；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-031 按单一职责拆分产生，当前源优先级 P4 暂保留。正式业务口径或执行证据不足，标记证据风险，不据比例猜测。
+      gate_reason: false
+      evidence_status: evidence_risk
+      traceability: source testcase TC-APP-021-078; feature=发货单排序; trace_status=open_evidence; split_from=TC-APP-021-031
+    - case_id: TC-APP-021-082
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: merged_from_50986_50988
+      impact_area: 日期筛选
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 合并禅道 50986、50987、50988 的指定日期无发货数据筛选结果验证，保留 50987 作为唯一用例，同时覆盖日期筛选后的列表空状态和各状态统计值为 0。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-082; feature=日期筛选; trace_status=designed; merged_from=TC-APP-021-081,TC-APP-021-083; zentao_case_id=50987
+    - case_id: TC-APP-021-084
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货单卡片
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-084 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-057 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-084; feature=发货单卡片; trace_status=designed; split_from=TC-APP-021-057
+    - case_id: TC-APP-021-085
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货单卡片
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-085 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-057 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-085; feature=发货单卡片; trace_status=designed; split_from=TC-APP-021-057
+    - case_id: TC-APP-021-086
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货单卡片
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-086 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-057 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-086; feature=发货单卡片; trace_status=designed; split_from=TC-APP-021-057
+    - case_id: TC-APP-021-088
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货记录入口
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-088 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货记录入口；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-060 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-088; feature=发货记录入口; trace_status=designed; split_from=TC-APP-021-060
+    - case_id: TC-APP-021-089
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货记录入口
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-089 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货记录入口；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-060 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-089; feature=发货记录入口; trace_status=designed; split_from=TC-APP-021-060
+    - case_id: TC-APP-021-090
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货记录入口
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-090 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货记录入口；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-060 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-090; feature=发货记录入口; trace_status=designed; split_from=TC-APP-021-060
+    - case_id: TC-APP-021-091
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-091 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-069 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-091; feature=发货单状态判定; trace_status=designed; split_from=TC-APP-021-069; update_scope=仅保留日期、栋舍、状态组合筛选，移除关键字搜索
+    - case_id: TC-APP-021-092
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-092 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-069 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-092; feature=发货单状态判定; trace_status=designed; split_from=TC-APP-021-069; update_scope=仅保留日期、栋舍、状态组合筛选，移除关键字搜索
+    - case_id: TC-APP-021-093
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: split_added
+      impact_area: 发货单状态判定
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-093 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单状态判定；使用频率=high；替代路径=false。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-069 按单一职责拆分产生，当前源优先级 P1 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-093; feature=发货单状态判定; trace_status=designed; split_from=TC-APP-021-069; update_scope=仅保留日期、栋舍、状态组合筛选，移除关键字搜索
+    - case_id: TC-APP-021-094
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 组合筛选条件回显
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-094 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=组合筛选条件回显；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-070 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-094; feature=组合筛选条件回显; trace_status=designed; split_from=TC-APP-021-070
+    - case_id: TC-APP-021-095
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 组合筛选条件回显
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-095 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=组合筛选条件回显；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-070 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-095; feature=组合筛选条件回显; trace_status=designed; split_from=TC-APP-021-070
+    - case_id: TC-APP-021-096
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 组合筛选条件回显
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-096 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=组合筛选条件回显；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-070 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-096; feature=组合筛选条件回显; trace_status=designed; split_from=TC-APP-021-070
+    - case_id: TC-APP-021-097
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 组合筛选条件回显
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-097 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=组合筛选条件回显；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-070 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-097; feature=组合筛选条件回显; trace_status=designed; split_from=TC-APP-021-070
+    - case_id: TC-APP-021-098
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: unchanged_after_narrowing
+      impact_area: 发货中卡片发货入口展示
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 已依据职责检查.md 第 7 节收窄为发货中卡片“发货”入口展示与可操作性，移除进入发货操作页面的导航和上下文断言；导航由 TC-APP-APP-021-059 承担。当前仅验证入口职责，优先级 P1 保持不变。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-098; feature=发货中卡片发货入口展示; trace_status=designed; narrowed_from_overlap=true; navigation_covered_by=TC-APP-021-058
+    - case_id: TC-APP-021-099
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: unchanged_after_narrowing
+      impact_area: 发货中卡片记录入口展示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 已依据职责检查.md 第 7 节收窄为发货中卡片“记录”入口展示与可操作性，移除进入发货记录页面的导航和来源上下文断言；导航由 TC-APP-021-090 承担。当前仅验证入口职责，优先级 P2 保持不变。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-099; feature=发货中卡片记录入口展示; trace_status=designed; narrowed_from_overlap=true; navigation_covered_by=TC-APP-021-090
+    - case_id: TC-APP-021-100
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-100 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=状态统计；使用频率=low；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-051 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-100; feature=状态统计; trace_status=designed; split_from=TC-APP-021-051
+    - case_id: TC-APP-021-101
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: split_added
+      impact_area: 状态统计
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+      reason: 依据源用例 TC-APP-021-101 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=false；业务影响区域=状态统计；使用频率=low；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-051 按单一职责拆分产生，当前源优先级 P3 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-101; feature=状态统计; trace_status=designed; split_from=TC-APP-021-051
+    - case_id: TC-APP-021-102
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 发货单卡片
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-102 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-087 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-102; feature=发货单卡片; trace_status=designed; split_from=TC-APP-021-087
+    - case_id: TC-APP-021-104
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: split_added
+      impact_area: 发货单卡片
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-104 的标题、feature、scenario_branch、steps/expected 和 trace，按 test-design-enrichment-rule.md 固定判定链复核：核心流程阻断=false；关键数据影响=true；业务影响区域=发货单卡片；使用频率=high；替代路径=true。失败后果为该业务区域的结果或可见性不符合需求；本用例由
+        TC-APP-021-087 按单一职责拆分产生，当前源优先级 P2 暂保留。当前资料支持保留该优先级，未提出变更。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-104; feature=发货单卡片; trace_status=designed; split_from=TC-APP-021-087
+    - case_id: TC-APP-021-105
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: step_split
+      impact_area: 关键字搜索
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 依据源用例 TC-APP-021-105 的标题、feature、scenario_branch、steps/expected 和 trace，按单一职责原则将复合搜索动作拆分为进入雏苗发货列表、进入搜索页面、输入关键字并提交三个独立步骤；当前优先级 P2 暂保留。
+      gate_reason: false
+      evidence_status: supported
+      traceability: source testcase TC-APP-021-105; feature=关键字搜索; trace_status=designed; split_from=TC-APP-021-061; zentao_case_id=51010
+    reviewed_case_id_range: TC-APP-021-001..TC-APP-021-105（累计删除 13 条复合职责用例并新增 31 条拆分用例）
+    mismatches: []
+    unconfirmed_items:
+    - TC-APP-021-018
+    - TC-APP-021-020
+    - TC-APP-021-022
+    - TC-APP-021-024
+    - TC-APP-021-028
+    - TC-APP-021-029
+    - TC-APP-021-034
+    - TC-APP-021-035
+    - TC-APP-021-036
+    - TC-APP-021-040
+    - TC-APP-021-076
+    - TC-APP-021-077
+    - TC-APP-021-078
+    gate_reasons: []
+  structural_review:
+    status: pass_with_observations
+    findings:
+    - 84条用例均纳入评审，ID唯一但不连续：本轮删除禅道 50964 对应的 TC-APP-021-053 和禅道 50965 对应的 TC-APP-021-054；累计删除 13 条复合职责用例并新增 31 条拆分用例。
+    - 用例具备标题、前置条件、步骤与紧随预期、页面来源、追溯和自动化评估字段。
+    - tp/tp_id存在未提供项；不阻断本轮评审，但需后续补齐测试计划追溯。
+  systematic_design_review:
+    status: pass_with_observations
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    - page_block_coverage
+    - exception_coverage
+    covered:
+    - 日期昨天/今天/明天/自定义及取消、确认、重置
+    - 栋舍全部/单栋、状态分支、空值/精确/计划号/无匹配搜索
+    - 列表字段、统计一致性、排序、入口边界、返回保持、权限和失败提示
+    observations:
+    - 正式接口口径、异常响应、权限数据和外部签收来源仍待确认。
+    - page.json存在input_missing/partial_corrected证据风险；未将其作为设计门禁。
+  pairwise_review:
+    status: static_review_only
+    method: PICT_2_way_model_review
+    parameters:
+    - DateSelection
+    - HouseScope
+    - Status
+    - SearchType
+    - ResultSet
+    - PermissionState
+    - EntryState
+    - PageState
+    constraints:
+    - 日期仅确认后生效；取消/重置不改变已生效条件。
+    - 搜索范围为发货单号或孵化计划号；无匹配进入空态。
+    - 无关联上孵计划时不显示行内发货/明细入口。
+    - 已签收必须有明确外部签收结果。
+    covered_or_unconfirmed:
+    - 源用例覆盖主要参数值与关键约束；组合覆盖仅完成静态检查。
+    - 未运行PICT，不能宣称已生成或执行2-way测试集。
+    execution: not_run
+  playwright_review:
+    status: candidate_but_blocked
+    mode: headed_planning_only
+    auto_candidate_count: 86
+    automation_executable_count: 0
+    blockers:
+    - 正式路由、账号权限、隔离数据和稳定locator未完成确认。
+    - 本轮未生成或执行Playwright脚本，未执行浏览器或业务验证。
+  headed_page_review:
+    status: static_review_only
+    evidence: page.json and existing screenshots only
+    target_page: app-chick-shipping-list
+    route: /m/orders
+    evidence_boundary: 静态页面证据仅支持规划，不替代正式有头页面执行结果。
+  casely_review:
+    status: pass_with_observations
+    checks:
+    - 字段完整性、步骤与预期配对、原子目的、追溯和report_only语义
+    - YAML、Markdown、HANDOFF由同一评审结论生成
+    - 未生成CSV，未执行远程同步
+  design_violations: []
+  traceability_failures: []
+  input_gate_failures: []
+  evidence_risks:
+  - FORMAL_ROUTE_LOCATOR_AND_PAGE_CAPTURE_PENDING
+  - STATUS_STATISTICS_AND_LIST_CONTRACT_PENDING
+  - EXTERNAL_SIGNED_RESULT_SOURCE_PENDING
+  - SEARCH_SENSITIVE_INPUT_REDACTION_CONFIRMATION_PENDING
+  - PAIRWISE_MODEL_NOT_EXECUTED
+  - TEST_PLAN_TRACE_FIELDS_UNPROVIDED
+  execution_blockers:
+  - FORMAL_ENVIRONMENT_PERMISSION_DATA_NOT_READY
+  - PLAYWRIGHT_AND_HEADED_EXECUTION_NOT_PERFORMED
+  - PICT_EXECUTION_NOT_PERFORMED
+  review_items:
+  - code: FORMAL_ROUTE_LOCATOR_AND_PAGE_CAPTURE_PENDING
+    category: evidence_risk
+    result: 静态证据待正式确认
+    gate_reason: false
+    reason: 页面清单存在partial_corrected/input_missing风险；正式路由和稳定定位器需执行前确认。
+  - code: STATUS_STATISTICS_AND_LIST_CONTRACT_PENDING
+    category: evidence_risk
+    result: 接口口径待确认
+    gate_reason: false
+    reason: 状态统计、状态卡和列表一致性需要正式接口或回读证据。
+  - code: EXTERNAL_SIGNED_RESULT_SOURCE_PENDING
+    category: evidence_risk
+    result: 外部签收来源待确认
+    gate_reason: false
+    reason: 已签收判定依赖明确外部签收结果，本轮未执行联调。
+  - code: TEST_PLAN_TRACE_FIELDS_UNPROVIDED
+    category: traceability_failure
+    result: 部分字段待补齐
+    gate_reason: false
+    reason: 源用例部分tp/tp_id为未提供，建议关联PLAN-APP021-*或明确不适用。
+  - code: EXECUTION_READINESS_PENDING
+    category: execution_blocker
+    result: 未执行
+    gate_reason: false
+    reason: 本轮为静态report_only评审，环境、权限、数据、浏览器和Playwright均未执行。
+  review_dimensions:
+    systematic_coverage: pass_with_observations
+    pairwise: static_review_only
+    automation_executability: candidate_but_blocked
+    headed_page_executability: static_review_only
+    structure_fields_style: pass_with_observations
+    delivery_format: pass
+  coverage_summary:
+    case_count: 77
+    priority_reviewed_case_count: 77
+    automation_candidate_count: 77
+    automation_executable_count: 0
+    formal_ui_execution_performed: false
+    pict_execution_performed: false
+    remote_sync_performed: true
+    remote_sync_status: validated
+    remote_updated_case_ids:
+    - 50976
+  sync_candidates:
+    case_count: 77
+    status: partial_validated
+    note: 已真实更新禅道 50976 并立即回读确认；本轮仅同步用户指定用例，未扩大同步范围。
+  execution_statement: 静态评审和契约核对；未执行UI、浏览器、Playwright、PICT、CSV或远程禅道同步。
+  prohibited_actions_confirmed:
+    ui_execution: false
+    csv_generation: false
+    remote_zentao_write: false
+    test_point_or_xmind_generation: false
+  source_hashes:
+    testcase_yaml: b36f257f19446682a18371d66c73e589c1e9c24fe3b31a8d0c01b33afca138f6
+    testcase_markdown: e4b59d39ca2de3607db6b7c35488aa53fe668bfb44fa42bf99404bac87fbce73
+  handoff:
+    path: 05_case_review/app/HANDOFF/REQ-APP-021_HANDOFF.md
+    module_id: REQ-APP-021
+  responsibility_split_review:
+    rule_ref: 职责检查.md 非单一职责用例拆分建议
+    split_case_count: 31
+    removed_case_count: 11
+    responsibility_overlap_unresolved_case_count: 0
+    responsibility_narrowed_case_ids:
+    - TC-APP-021-052
+    - TC-APP-021-098
+    - TC-APP-021-099
+    mapping:
+    - from_case_id: TC-APP-021-025
+      to_case_ids:
+      - TC-APP-021-074
+      - TC-APP-021-075
+    - from_case_id: TC-APP-021-031
+      to_case_ids:
+      - TC-APP-021-076
+      - TC-APP-021-077
+      - TC-APP-021-078
+    - from_case_id: TC-APP-021-050
+      to_case_ids:
+      - TC-APP-021-081
+      - TC-APP-021-082
+      - TC-APP-021-083
+    - from_case_id: TC-APP-021-057
+      to_case_ids:
+      - TC-APP-021-084
+      - TC-APP-021-085
+      - TC-APP-021-086
+      - TC-APP-021-087
+    - from_case_id: TC-APP-021-060
+      to_case_ids:
+      - TC-APP-021-088
+      - TC-APP-021-089
+      - TC-APP-021-090
+    - from_case_id: TC-APP-021-069
+      to_case_ids:
+      - TC-APP-021-091
+      - TC-APP-021-092
+      - TC-APP-021-093
+    - from_case_id: TC-APP-021-070
+      to_case_ids:
+      - TC-APP-021-094
+      - TC-APP-021-095
+      - TC-APP-021-096
+      - TC-APP-021-097
+    - from_case_id: TC-APP-021-030
+      to_case_ids:
+      - TC-APP-021-098
+      - TC-APP-021-099
+    - from_case_id: TC-APP-021-051
+      to_case_ids:
+      - TC-APP-021-100
+      - TC-APP-021-101
+    - from_case_id: TC-APP-021-087
+      to_case_ids:
+      - TC-APP-021-102
+      - TC-APP-021-103
+      - TC-APP-021-104
+    note: 历史拆分后每条用例仅保留一个可独立判定的业务目的；本轮进一步收窄 052 的无数据空态、098 的发货入口展示/可操作性、099 的记录入口展示/可操作性；导航分别由 059、090 承担；当前无未处理的职责重叠用例。排序方向相关用例仍为 open_evidence。

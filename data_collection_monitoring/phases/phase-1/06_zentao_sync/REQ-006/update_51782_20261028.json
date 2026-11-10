@@ -1,0 +1,27 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "target": {"project": 46, "product": 8, "module": 744, "module_name": "插件管理"},
+  "record": {
+    "source_case_id": "TC-REQ-006-020",
+    "remote_case_id": 51782,
+    "title": "插件列表显示设备数",
+    "version": 4,
+    "steps_count": 3,
+    "steps": [
+      {"action": "打开插件管理列表。", "expected": "插件管理列表正常显示。"},
+      {"action": "查看插件列表中的设备数列。", "expected": "每条插件记录显示对应的设备数。"},
+      {"action": "记录设备数结果并核对统计口径。", "expected": "设备数统计包含在线设备、离线设备，删除的设备排除。"}
+    ],
+    "status": "validated"
+  },
+  "readback": {
+    "status": "validated",
+    "scope": "项目46、产品8、模块744",
+    "message": "51782已按稳定禅道ID原位更新并立即回读，确认第3步期望已更新。"
+  },
+  "source_hashes": {
+    "REV_CASE_REQ-006.yaml": "fa783d3c9cd34b6f73f4c3b4a86f75469eab83d5065292e7dbe6682c41539d2e",
+    "TC_REQ-006.yaml": "90ea8fc66b82144fcc22836828a56d8438a000fba99600764f455701f846daa1"
+  }
+}

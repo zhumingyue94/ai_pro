@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.qa/module-case-map.schema.json",
+  "title": "REQ-scoped Module Case Map",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "project", "source", "summary", "modules_by_req_id"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "project": {"type": "object", "additionalProperties": false, "required": ["name", "product_id", "project_id"], "properties": {"name": {"type": "string", "minLength": 1}, "product_id": {"type": "integer", "minimum": 1}, "project_id": {"type": "integer", "minimum": 1}, "default_zentao_status": {"type": "string", "enum": ["normal", "investigate", "deprecated", "blocked", "wait"]}}},
+    "defaults": {"type": "object", "additionalProperties": false, "properties": {"zentao_status": {"type": "string", "enum": ["normal", "investigate", "deprecated", "blocked", "wait"]}}},
+    "source": {"type": "object", "additionalProperties": false, "required": ["testcase_files", "module_reference", "historical_evidence", "remote_readback"], "properties": {"testcase_files": {"type": "array", "items": {"type": "string"}, "minItems": 1}, "module_reference": {"type": "string", "minLength": 1}, "historical_evidence": {"type": "string", "minLength": 1}, "remote_readback": {"enum": ["historical_only", "current_verified"]}}},
+    "summary": {"$ref": "#/$defs/summary"},
+    "modules_by_req_id": {"type": "object", "propertyNames": {"pattern": "^REQ-(?:PC-|APP-)?[0-9]+$"}, "additionalProperties": {"$ref": "#/$defs/module_group"}}
+  },
+  "$defs": {
+    "summary": {"type": "object", "additionalProperties": false, "required": ["total_cases", "registered_cases", "pending_registry", "unique_zentao_case_ids", "automation_pending_implementation", "automation_implemented"], "properties": {"total_cases": {"type": "integer", "minimum": 0}, "registered_cases": {"type": "integer", "minimum": 0}, "pending_registry": {"type": "integer", "minimum": 0}, "unique_zentao_case_ids": {"type": "integer", "minimum": 0}, "automation_pending_implementation": {"type": "integer", "minimum": 0}, "automation_implemented": {"type": "integer", "minimum": 0}}},
+    "module": {"type": "object", "additionalProperties": false, "required": ["name", "id", "path"], "properties": {"name": {"type": "string", "minLength": 1}, "id": {"type": "integer", "minimum": 1}, "path": {"type": "string", "minLength": 1}}},
+    "source": {"type": "object", "additionalProperties": false, "required": ["testcase", "case_review"], "properties": {"testcase": {"type": "string", "minLength": 1}, "case_review": {"type": "string", "minLength": 1}}},
+    "module_group": {"type": "object", "additionalProperties": false, "required": ["req_id", "module", "source_yaml_module_id", "source", "cases"], "properties": {"req_id": {"type": "string", "pattern": "^REQ-(?:PC-|APP-)?[0-9]+$"}, "module": {"$ref": "#/$defs/module"}, "source_yaml_module_id": {"type": ["integer", "string", "null"]}, "source": {"$ref": "#/$defs/source"}, "cases": {"type": "object", "propertyNames": {"pattern": "^TC-[A-Za-z0-9_-]+$"}, "additionalProperties": {"$ref": "#/$defs/case"}}}},
+    "case": {"type": "object", "additionalProperties": false, "required": ["case_id", "title", "zentao_case_id", "mapping_status", "automation_status", "handler", "page_object", "data_contract", "check_id", "assertion_scope"], "properties": {"case_id": {"type": "string", "pattern": "^TC-[A-Za-z0-9_-]+$"}, "title": {"type": "string"}, "zentao_case_id": {"type": ["integer", "null"], "minimum": 1}, "zentao_status": {"type": ["string", "null"], "enum": ["normal", "investigate", "deprecated", "blocked", "wait", null]}, "mapping_status": {"enum": ["registered", "pending_registry"]}, "automation_status": {"enum": ["pending_implementation", "implemented"]}, "handler": {"type": ["string", "null"]}, "page_object": {"type": ["string", "null"]}, "data_contract": {"type": ["string", "null"]}, "check_id": {"type": ["string", "null"]}, "assertion_scope": {"type": ["string", "null"]}}}
+  }
+}

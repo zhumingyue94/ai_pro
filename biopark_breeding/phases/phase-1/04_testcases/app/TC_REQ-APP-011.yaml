@@ -1,0 +1,2513 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-APP-011
+title: 孵化器 / 库存查询
+module: 库存查询
+zentao_module_id: 573
+source:
+  csv: reference/种禽孵化管理系统测试用例_app.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: c2fd3298c420afff214d44bae32301e5af935f72c751df18c3cc258cf8252f4f
+  registry_sha256: 3cc6fe827d7ec859f6d89a47de2f07b748df60e8935d6084113b11ff625edd8b
+trace:
+  story: null
+  req: REQ-APP-011
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-36274
+  title: 孵化器-孵化器列表-蛋库信息-点击列表顶部的孵化器信息图标，显示孵化器的规格信息，包括：孵化器名称、孵化器容量、库位数、单库位托盘数、托盘容量、库位容量
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击列表顶部的孵化器信息图标
+    expected: 显示孵化器的规格信息，包括：孵化器名称、孵化器容量、库位数、单库位托盘数、托盘容量、库位容量
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36274
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36274
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36307
+  title: 孵化器-孵化器列表-下拉框选项显示启用的孵化器，停用的不显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 查看目标页面的下拉框选项字段
+    expected: 下拉框选项显示启用的孵化器，停用的不显示
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36307
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36307
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-36308
+  title: 孵化器-孵化器列表-切换不同孵化器
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 从顶部下拉菜单中选择“孵化器二号“
+    expected: 页面刷新并显示“孵化器二号“下的所有库位信息，数据准确对应
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36308
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36308
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36309
+  title: 孵化器-孵化器列表-列表-停用库位不显示任何种蛋信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位列表中的停用库位
+    expected: 列表中停用库位只显示库位号、库位状态“停用”和种蛋数量--
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36309
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36309
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36310
+  title: 孵化器-孵化器列表-列表-停用库位左滑只有记录按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在列表中找到对应类型的库位
+    expected: 停用库位左滑只有记录按钮
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 停用库位左滑只有记录按钮
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36310
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36310
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36311
+  title: 孵化器-孵化器列表-列表-库位左滑有记录按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在列表中找到对应类型的库位
+    expected: 库位左滑有记录按钮
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 库位左滑有记录按钮
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36311
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36311
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36312
+  title: 孵化器-孵化器列表-列表-有虚拟库位的主库位左滑，有记录按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在列表中找到对应类型的库位
+    expected: 有虚拟库位的主库位左滑，有记录按钮
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 有虚拟库位的主库位左滑，有记录按钮
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36312
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36312
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36313
+  title: 孵化器-孵化器列表-列表-查看孵化中的库位
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 滚动查看孵化中的库位
+    expected: 孵化器关联计划的照蛋任务还没到照蛋日期，该库位状态显示为绿色“孵化中”
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36313
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36313
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36314
+  title: 孵化器-孵化器列表-列表-查看已超期状态库位
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 滚动查看已超期的库位
+    expected: 孵化器关联计划的照蛋任务已经超过照蛋日期，该库位状态显示为红色“已超期”
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36314
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36314
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36315
+  title: 孵化器-孵化器列表-列表-查看待照蛋的库位
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 滚动查看待照蛋的库位
+    expected: 孵化器关联计划的照蛋日期是今天，并且照蛋任务还未执行，该库位状态显示为黄色“待照蛋”
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36315
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36315
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36316
+  title: 孵化器-孵化器列表-列表-点击库位的记录按钮，跳转该库位的出入库记录列表页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“出入库记录“入口
+    expected: 进入孵化器出入库记录列表页
+  - action: 点击库位的记录按钮
+    expected: 跳转该库位的出入库记录列表页
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36316
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36316
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36317
+  title: 孵化器-孵化器列表-列表-点击普通库位跳转库位详情页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 点击普通库位跳转库位详情页
+    expected: 点击普通库位跳转库位详情页
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36317
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36317
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36318
+  title: 孵化器-孵化器列表-列表-点击虚拟库位的主库位，不会跳转详情页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击虚拟库位的主库位
+    expected: 不会跳转详情页
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36318
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36318
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36319
+  title: 孵化器-孵化器列表-列表-点击虚拟库位，跳转虚拟库位的详情页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击虚拟库位
+    expected: 跳转虚拟库位的详情页
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36319
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36319
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36320
+  title: 孵化器-孵化器列表-列表-空位库位左滑只有记录按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在列表中找到对应类型的库位
+    expected: 空位库位左滑只有记录按钮
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 空位库位左滑只有记录按钮
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36320
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36320
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36321
+  title: 孵化器-孵化器列表-搜索功能-搜索品种
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 在搜索框切换到品种，输入‘树田代孵-AA’并回车
+    expected: 页面筛选出匹配的库位列表，仅显示‘树田代孵-AA’品种的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36321
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36321
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36322
+  title: 孵化器-孵化器列表-搜索功能-输入任务号搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在搜索框输入已知任务号
+    expected: 搜索成功
+  - action: 输入任务号搜索结果正确
+    expected: 输入任务号搜索结果正确
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36322
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36322
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-36323
+  title: 孵化器-孵化器列表-搜索功能-输入养殖场搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在搜索框输入已知养殖场名称
+    expected: 搜索成功
+  - action: 输入养殖场搜索结果正确
+    expected: 输入养殖场搜索结果正确
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36323
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36323
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-36324
+  title: 孵化器-孵化器列表-搜索功能-关键字输入批次搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在搜索框，切换到批次输入已知批次号
+    expected: 搜索成功
+  - action: 输入批次搜索结果正确
+    expected: 输入批次搜索结果正确
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36324
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36324
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36325
+  title: 孵化器-孵化器列表-搜索功能-输入无效关键词
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 1. 在搜索框中输入不存在的关键词&#039;XXX&#039;; 2. 点击搜索按钮
+    expected: 系统显示&#039;没有找到相关的库位&#039;提示信息
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36325
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36325
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36326
+  title: 孵化器-孵化器列表-搜索功能-输入计划号搜索结果正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在搜索框输入已知计划号
+    expected: 搜索成功
+  - action: 输入计划号搜索结果正确
+    expected: 输入计划号搜索结果正确
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36326
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36326
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36327
+  title: 孵化器-孵化器列表-状态切换-停用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 点击‘停用’标签
+    expected: 页面仅显示状态为‘停用’的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36327
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36327
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36328
+  title: 孵化器-孵化器列表-状态切换-全部
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 点击‘全部’标签
+    expected: 页面显示所有的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36328
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36328
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36329
+  title: 孵化器-孵化器列表-状态切换-切换到全部
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 切换到全部
+    expected: 切换到全部
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36329
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36329
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36330
+  title: 孵化器-孵化器列表-状态切换-未满
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 点击‘未满’标签
+    expected: 页面仅显示状态为‘未满’的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36330
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36330
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36331
+  title: 孵化器-孵化器列表-状态切换-满容
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 点击‘满容’标签
+    expected: 页面仅显示状态为‘满容’的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36331
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36331
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36332
+  title: 孵化器-孵化器列表-状态切换-空位
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 点击‘空位’标签
+    expected: 页面仅显示状态为‘空位’的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36332
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36332
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36333
+  title: 孵化器-孵化器列表-状态切换-超容
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 点击‘超容’标签
+    expected: 页面仅显示状态为‘超容’的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36333
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36333
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36334
+  title: 孵化器-孵化器列表-种蛋合计-筛选库位后各个库位种蛋数量的合计值显示在列表顶部
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 查看目标页面的筛选库位后各个库位种蛋数量的合计值字段
+    expected: 筛选库位后各个库位种蛋数量的合计值显示在列表顶部
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36334
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36334
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36335
+  title: 孵化器-孵化器列表-筛选-点击重置按钮，筛选条件清空
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 设置若干筛选条件
+    expected: 筛选条件恢复默认
+  - action: 点击重置按钮
+    expected: 列表恢复显示全部数据
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36335
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36335
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36336
+  title: 孵化器-孵化器列表-筛选-选择种蛋信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 1. 在&#039;养殖场&#039;下拉框中选择&#039;益兴二场&#039;; 2. 在&#039;种蛋类型&#039;下拉框中选择&#039;合格蛋&#039; 3. 点击确认按钮
+    expected: 系统根据筛选条件展示符合条件的库位列表
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36336
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36336
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36337
+  title: 孵化器-孵化器列表-筛选-选择种蛋状态
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 1. 选择一个种蛋状态，查看库位列表中的状态标签
+    expected: 每个任务的状态正确显示为&#039;孵化中&#039;、&#039;待照蛋&#039;&#039;已超期&#039;，且颜色与状态一致
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36337
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36337
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36338
+  title: 孵化器-孵化器列表-筛选-选择近1周上孵日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 点击“近1周“按钮
+    expected: 系统自动填充上孵日期为最近一周的范围，且日期框显示对应值
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36338
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36338
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36339
+  title: 孵化器-孵化器列表-选择自定义上孵日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 在上孵日期输入框中选择起始日期和结束日期
+    expected: 系统正确显示所选日期范围内的孵化器数据
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36339
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36339
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36340
+  title: 孵化器-孵化器列表-选择自定义照蛋日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 在照蛋日期输入框中选择起始日期和结束日期
+    expected: 系统正确显示所选日期范围内的孵化器数据
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36340
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36340
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36341
+  title: 孵化器-库位详情页-关联计划信息显示正确：计划号、任务号、组织、孵化场、计划上孵数量、计划上孵日期、照蛋日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 查看详情页各字段信息
+    expected: 详情页各字段信息完整准确：关联计划信息显示正确：计划号、任务号、组织、孵化场、计划上孵数量、计划上孵日期、照蛋日期
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36341
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36341
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36342
+  title: 孵化器-库位详情页-如果库位中是同一种蛋，但是属于不同计划，则显示多条关联计划信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 查看详情页各字段信息
+    expected: 详情页各字段信息完整准确：如果库位中是同一种蛋，但是属于不同计划，则显示多条关联计划信息
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36342
+  zentao_status: 研究中
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36342
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 研究中
+    applicable_stage: 功能测试环节
+- id: TC-36343
+  title: 孵化器-库位详情页-库位信息显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位详情页面的内容
+    expected: '库位信息显示完整
+
+      标题:孵化场-孵化器名称
+
+      库位号
+
+      当前库存
+
+      托盘数
+
+      散装数
+
+      点击库位信息图标打开弹窗，显示库位容量、库位托盘数、托盘容量'
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36343
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36343
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 1，预期块数量为 7；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: 1. 查看库位详情页面的内容
+    raw_expected: '1. 库位信息显示完整
+
+      1、标题:孵化场-孵化器名称
+
+      2、库位号
+
+      3、当前库存
+
+      4、托盘数
+
+      5、散装数
+
+      6、点击库位信息图标打开弹窗，显示库位容量、库位托盘数、托盘容量'
+- id: TC-36344
+  title: 孵化器-库位详情页-库位详情页底部没有按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 在库位详情页执行：库位详情页底部没有按钮
+    expected: 库位详情页底部没有按钮
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36344
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36344
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36345
+  title: 孵化器-库位详情页-查看未满状态信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位详情中的“库位状态“字段
+    expected: 显示为“未满“，当前库存小于库位最大容量，托盘数、散装数显示正确
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36345
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36345
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36346
+  title: 孵化器-库位详情页-查看满容状态信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位详情中的“库位状态“字段
+    expected: 显示为“满容“，且当前库存数值等于库位最大容量，托盘数和散装数匹配
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36346
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36346
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36347
+  title: 孵化器-库位详情页-查看空位状态信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位详情中的“库位状态“字段
+    expected: 显示为“空位“，当前库存、托盘数、散装数均为0，且无种蛋信息和关联计划
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36347
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36347
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36348
+  title: 孵化器-库位详情页-查看超容状态信息
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位详情中的“库位状态“字段
+    expected: 显示为“超容“，且当前库存数值超过最大容量，托盘数、散装数匹配
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36348
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36348
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36349
+  title: 孵化器-库位详情页-种蛋信息显示正确：种蛋状态、养殖场、养殖批次、品种、种蛋类型、周龄、蛋重类型、平均蛋重、产蛋日期
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 查看详情页各字段信息
+    expected: 详情页各字段信息完整准确：种蛋信息显示正确：种蛋状态、养殖场、养殖批次、品种、种蛋类型、周龄、蛋重类型、平均蛋重、产蛋日期
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36349
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36349
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36350
+  title: 孵化器-库位详情页-种蛋状态和孵化器列表页显示的一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 查看详情页各字段信息
+    expected: 详情页各字段信息完整准确：种蛋状态和孵化器列表页显示的一致
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36350
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36350
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36351
+  title: 孵化器-库位详情页-虚拟库位的库位号显示2.x格式
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 查看详情页各字段信息
+    expected: 详情页各字段信息完整准确：虚拟库位的库位号显示2.x。例如2.1、2.2
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36351
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36351
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36352
+  title: 孵化器-库存查询-从首页入口正常跳转并加载列表
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器菜单权限
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 页面跳转至孵化器库存查询页面：从首页入口正常跳转并加载列表
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36352
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36352
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36360
+  title: 孵化器-孵化器列表-列表-普通库位显示完整信息
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位列表
+    expected: '列表中库位的信息展示正确:
+
+      标题:养殖场名称-批次-品种，三字段组合；
+
+      库位号 | 库存状态 | 库存数量
+
+      周龄
+
+      蛋重 | 蛋重类型
+
+      种蛋状态
+
+      产蛋日期'
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36360
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36360
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 1，预期块数量为 7；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: 1. 查看库位列表
+    raw_expected: '1. 列表中库位的信息展示正确:
+
+      1、标题:养殖场名称-批次-品种，三字段组合；
+
+      2、库位号 | 库存状态 | 库存数量
+
+      3、周龄
+
+      4、蛋重 | 蛋重类型
+
+      5、种蛋状态
+
+      6、产蛋日期'
+- id: TC-36361
+  title: 孵化器-孵化器列表-列表-空位的库位信息显示正确
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位列表中空位的库位
+    expected: 列表中空位库位只显示库位号、库位状态“空位”和种蛋数量0
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36361
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36361
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36362
+  title: 孵化器-孵化器列表-列表-虚拟库位左滑不显示记录按钮
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 在列表中找到对应类型的库位
+    expected: 虚拟库位左滑不显示记录按钮
+  - action: 查看目标页面的虚拟库位左滑不字段
+    expected: 虚拟库位左滑不显示记录按钮
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36362
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36362
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36363
+  title: 孵化器-孵化器列表-列表-虚拟库位所属的主库位不显示种蛋信息
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位列表中的虚拟库位所属的主库位
+    expected: '列表中库位的信息展示正确:
+
+      库位号
+
+      库存状态
+
+      库存总数量
+
+      虚拟库位数量，有n个虚拟库位就显示“n拼”'
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36363
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36363
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 1，预期块数量为 5；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: 1. 查看库位列表中的虚拟库位所属的主库位
+    raw_expected: '1. 列表中库位的信息展示正确:
+
+      1、库位号
+
+      2、库存状态
+
+      3、库存总数量
+
+      4、虚拟库位数量，有n个虚拟库位就显示“n拼”'
+- id: TC-36364
+  title: 孵化器-孵化器列表-列表-虚拟库位显示完整信息
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 查看库位列表中的虚拟库位
+    expected: '列表中库位的信息展示正确:
+
+      标题:养殖场名称-批次-品种，三字段组合；
+
+      虚拟库位号 | 库存状态 | 库存数量
+
+      周龄
+
+      蛋重 | 蛋重类型
+
+      种蛋状态
+
+      产蛋日期'
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36364
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36364
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+    conversion_warning: 源 CSV 步骤块数量为 1，预期块数量为 7；按步骤顺序保留全部预期文本，无法一一对应的内容归入最后一个步骤。
+    raw_steps: 1. 查看库位列表中的虚拟库位
+    raw_expected: '1. 列表中库位的信息展示正确:
+
+      1、标题:养殖场名称-批次-品种，三字段组合；
+
+      2、虚拟库位号 | 库存状态 | 库存数量
+
+      3、周龄
+
+      4、蛋重 | 蛋重类型
+
+      5、种蛋状态
+
+      6、产蛋日期'
+- id: TC-36365
+  title: 孵化器-孵化器列表-搜索功能-使用历史搜索记录
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 1. 点击历史搜索区域中的&#039;树田代孵&#039;；2. 等待系统响应
+    expected: 系统自动填充搜索框并执行搜索，展示匹配的库位列表
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36365
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36365
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36366
+  title: 孵化器-孵化器列表-搜索功能-输入特殊字符搜索
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器菜单权限
+  steps:
+  - action: 登录后进入孵化器列表页
+    expected: 进入孵化器列表页
+  - action: 在搜索框输入特殊字符：<>&“&#039;
+    expected: 输入特殊字符搜索
+  - action: 输入特殊字符搜索
+    expected: 输入/选择操作完成，页面展示相应内容
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36366
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36366
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36367
+  title: 孵化器-孵化器列表-搜索功能-输入空字符串搜索
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器菜单权限
+  steps:
+  - action: 登录后进入孵化器列表页
+    expected: 进入孵化器列表页
+  - action: 在搜索框不输入任何内容
+    expected: 输入空字符串搜索
+  - action: 输入空字符串搜索
+    expected: 输入/选择操作完成，页面展示相应内容
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36367
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36367
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36368
+  title: 孵化器-孵化器列表-状态切换-tab标题处显示每个tab的库位数量
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击“tab标题处显示每个tab的库位数量“状态标签
+    expected: 列表仅显示tab标题处显示每个tab的库位数量相关的库位
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36368
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36368
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36369
+  title: 孵化器-孵化器列表-筛选-未选择任何条件直接确认
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 1. 不做任何筛选操作；2. 点击确认按钮
+    expected: 系统返回所有库位的完整列表，无过滤效果
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36369
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36369
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36370
+  title: 孵化器-孵化器列表-筛选-查看筛选结果，无数据时显示提示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 1. 设置一个不可能存在的筛选条件（如未来日期）；2. 点击确认按钮
+    expected: 系统显示&#039;暂无相关任务&#039;或类似提示，不出现空白列表
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36370
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36370
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36371
+  title: 孵化器-库位详情页-关联计划可以展开和收起
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 在库位详情页执行：关联计划可以展开和收起
+    expected: 关联计划可以展开和收起
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36371
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36371
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36372
+  title: 孵化器-库存查询-列表无数据时显示空状态提示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器菜单权限
+  - 2、当前库存查询无历史数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入孵化器库存查询页面
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 列表显示“暂无数据“或类似空状态提示
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36372
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36372
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '3'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36374
+  title: 孵化器-孵化器列表-搜索功能-搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  type: feature
+  auto: 'no'
+  priority: P4
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 执行若干次搜索产生历史
+    expected: 搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  - action: 在目标页面执行与标题描述一致的操作
+    expected: 搜索历史的垃圾筐标识为删除操作按钮，点击清空搜索历史
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36374
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36374
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '4'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-36375
+  title: 孵化器-库位详情页-计划号和任务号可复制
+  type: feature
+  auto: 'no'
+  priority: P4
+  feature: 库存查询
+  preconditions:
+  - 1、用户登录成功并且有孵化器-库存查询菜单权限
+  - 2、系统中存在可用的孵化器及库位数据
+  steps:
+  - action: 登录后进入首页
+    expected: 进入首页
+  - action: 点击孵化器板块“库存查询“入口
+    expected: 进入孵化器库存查询（孵化器列表）页
+  - action: 点击某库位进入库位详情页
+    expected: 进入库位详情页
+  - action: 在库位详情页执行：计划号和任务号可复制
+    expected: 计划号和任务号可复制
+  test_data:
+    module: 库存查询
+    zentao_module_id: 573
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-APP-011
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_app.csv
+      registry: module_case_map.json
+  zentao_case_id: 36375
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_app.csv
+    case_number: 36375
+    raw_module: /一期/app/孵化器/库存查询(#573)
+    raw_type: 功能测试
+    raw_priority: '4'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

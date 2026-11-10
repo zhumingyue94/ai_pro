@@ -1,0 +1,95 @@
+{
+  "run_id": "RUN_目标制定_20260820_160439",
+  "module": "目标制定",
+  "req_id": "REQ-002",
+  "zentao_module_id": 669,
+  "environment": {
+    "base_host": "192.168.6.163:66",
+    "headless": "false"
+  },
+  "generated_at": "2026-08-20T16:04:52",
+  "source": "04_testcases/TC_REQ-002.yaml",
+  "cases": [
+    {
+      "case_id": "TC-002-27",
+      "zentao_case_id": 47508,
+      "title": "点击「暂存」保存目标，状态=暂存且不提交审核",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-27",
+      "assertion_scope": "target_goal.goal_table.draft_status",
+      "expected": "必填项齐全且合计相等\n点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」",
+      "actual": {
+        "existing_years": [
+          2025,
+          2026,
+          2027,
+          2028,
+          2029,
+          2035,
+          2036
+        ],
+        "selected_year": 2037,
+        "status": "暂存"
+      },
+      "detail": "动态选择未占用年度 2037，保存后仍为暂存",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）",
+        "列表中已存在状态为「暂存」的记录"
+      ],
+      "steps": [
+        {
+          "action": "打开新增弹窗，选择未占用年度，填写年度宰杀量并均分",
+          "expected": "必填项齐全且合计相等"
+        },
+        {
+          "action": "点击「暂存」",
+          "expected": "点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-27_TP-002-27_prepare_2037_scope.png",
+          "sha256": "960a5124952af438e3f3f1adf7a2912a51ee0039002488b23a09d8cc8e434b4f"
+        },
+        {
+          "path": "screenshots/TC-002-27_TP-002-27_prepare_2037_full.png",
+          "sha256": "0c4e689f7157f35d0e74f2874fe708cdc2228762e2b3d8acd8a24a90e16cd027"
+        },
+        {
+          "path": "screenshots/TC-002-27_TP-002-27_assertion_scope.png",
+          "sha256": "07ed529d8112b589ef530aa87ffddf135785813cfa311afc6a79b44e8c67f90a"
+        },
+        {
+          "path": "screenshots/TC-002-27_TP-002-27_assertion_full.png",
+          "sha256": "22df3eca7caa1e641f7d5710e1aa0d43622f8c75efe21dc90b79abe0922ad23d"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-27_TP-002-27_prepare_2037_scope.png",
+      "started_at": "2026-08-20T16:04:40",
+      "finished_at": "2026-08-20T16:04:51",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "target_goal_unused_year_draft",
+        "data_key_template": "AUTO测试_勿用_{run_id}_year_{selected_year}",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_run_owned_target_draft",
+        "execute": "save_target_as_draft",
+        "assertions": [
+          "target_status_is_draft",
+          "target_is_not_submitted"
+        ],
+        "contract": "08_ui_automation/data/REQ-002.yaml"
+      },
+      "excluded": false
+    }
+  ]
+}

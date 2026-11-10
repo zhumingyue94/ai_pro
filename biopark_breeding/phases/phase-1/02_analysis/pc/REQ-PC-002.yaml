@@ -1,0 +1,694 @@
+id: REQ-PC-002
+title: 生产报表
+module_path: 计划管理 / 生产报表
+trace:
+  story: null
+  req: REQ-PC-002
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: query_report
+testpoint_template: 查询报表
+summary: 计划管理 / 生产报表基于当前 PC 5500 原型与需求章节重新分析。
+in_scope:
+- 当前模块实际页面的查询区、列表、表单、弹窗、按钮、状态和页面板块
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 测试点、测试用例、CSV、UI 脚本
+- 真实接口/数据库/权限实现
+- 原型未确认的业务事实
+business_rules:
+- id: BR-001
+  rule: 生产报表，回填计划完成的数据，并且支持批量导出。 产蛋日期： ~ 养殖批次： 孵化场： 全部孵化场 孵化一场 孵化二场 养殖场： 全部养殖场 益兴一场 益兴二场 品种： 全部品种 AA 利丰 创建人： 上孵日期： ~ 照蛋日期：
+    ~ 出雏日期： ~ 蛋重类型： 请选择蛋重类型 大 中 小 特小 平均蛋重： 周龄：
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 生产报表
+- id: BR-002
+  rule: 导出，点击弹框选择，①导出明细表②导出统计报表；统计报表导出需要选择到年份、月份、孵化场
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 生产报表
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces:
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-001
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 页面内导航
+  type: prototype_navigation
+  source_module: live prototype
+  targets:
+  - 上孵计划列表
+  - 仓库全景图（待定）
+  - 仓库管理
+  - 出入库记录
+  - 出雏器全景图（待定）
+  - 出雏器管理
+  - 受健率标准管理
+  - 品种管理
+  - 存发苗间管理
+  - 孵化周期管理
+  - 孵化器全景图（待定）
+  - 孵化器管理
+  - 库存查询
+  - 生产报表
+  - 盘点记录
+  - 种蛋上孵任务
+  - 种蛋出雏任务
+  - 种蛋照蛋任务
+  - 蛋重类型管理
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 真实接口、权限、异常提示和字段校验规则是什么？
+  impact: 影响正式契约与下游测试点
+  owner: 产品/研发
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: observed
+    observed_page_count: 1
+    unmapped_pages: []
+    interaction_boundary: 页面树导航和 DOM 观察，未执行写操作
+  page_chrome:
+  - page: 生产报表
+    title: 生产报表
+    url: http://127.0.0.1:5500/%E7%94%9F%E4%BA%A7%E6%8A%A5%E8%A1%A8.html
+    notes: live DOM
+  page_block_specs:
+  - id: CHROME
+    name: 页面壳层
+    fields:
+    - 生产报表
+    data_source: live DOM
+    coverage:
+    - l1
+    - l2
+  - id: CONTROLS
+    name: 当前页面控件
+    fields:
+    - checkbox
+    - u1940_input
+    - 请选择种蛋类型 合格蛋 二级蛋
+    - u1947_input
+    - u1948_input
+    - 请输入养殖批次
+    - 全部孵化场 孵化一场 孵化二场
+    - 全部养殖场 益兴一场 益兴二场
+    - 全部品种 AA 利丰
+    - 请输入创建人
+    - u1961_input
+    - u1962_input
+    - u1965_input
+    - u1966_input
+    - u1969_input
+    - u1970_input
+    - 请选择蛋重类型 大 中 小 特小
+    - 请输入平均蛋重
+    - 请输入周龄
+    data_source: live DOM visible controls
+    coverage:
+    - l1
+    - l2
+    - l3
+  - id: NOTES
+    name: 原型注释
+    fields:
+    - 生产报表，回填计划完成的数据，并且支持批量导出。 产蛋日期： ~ 养殖批次： 孵化场： 全部孵化场 孵化一场 孵化二场 养殖场： 全部养殖场 益兴一场 益兴二场 品种： 全部品种 AA 利丰 创建人： 上孵日期： ~ 照蛋日期： ~
+      出雏日期： ~ 蛋重类型： 请选择蛋重类型 大 中 小 特小 平均蛋重： 周龄：
+    - 导出，点击弹框选择，①导出明细表②导出统计报表；统计报表导出需要选择到年份、月份、孵化场
+    data_source: requirement/prototype annotations
+    coverage:
+    - l1
+    - l2
+  query_field_specs:
+  - name: u1940_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1940_input
+  - name: 请选择种蛋类型 合格蛋 二级蛋
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u1944_input
+  - name: u1947_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1947_input
+  - name: u1948_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1948_input
+  - name: 请输入养殖批次
+    control: text
+    options_source: live DOM option/value
+    notes: live control u1951_input
+  - name: 全部孵化场 孵化一场 孵化二场
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u1953_input
+  - name: 全部养殖场 益兴一场 益兴二场
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u1955_input
+  - name: 全部品种 AA 利丰
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u1957_input
+  - name: 请输入创建人
+    control: text
+    options_source: live DOM option/value
+    notes: live control u1959_input
+  - name: u1961_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1961_input
+  - name: u1962_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1962_input
+  - name: u1965_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1965_input
+  - name: u1966_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1966_input
+  - name: u1969_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1969_input
+  - name: u1970_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u1970_input
+  - name: 请选择蛋重类型 大 中 小 特小
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u1973_input
+  - name: 请输入平均蛋重
+    control: text
+    options_source: live DOM option/value
+    notes: live control u1975_input
+  - name: 请输入周龄
+    control: text
+    options_source: live DOM option/value
+    notes: live control u1977_input
+  form_field_specs: []
+  button_semantics:
+    上孵计划:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋上孵:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋照蛋:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋出雏:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    品种管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    蛋重类型管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    库存查询:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出入库记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    盘点记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库全景图:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    生产报表:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    存发苗间管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化周期管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    受健率标准管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+  nested_dialogs: []
+  sub_tables: []
+  table_column_specs:
+  - name: 孵化场
+    order: 1
+  - name: 养殖场
+    order: 2
+  - name: 养殖批次
+    order: 3
+  - name: 种蛋类型
+    order: 4
+  - name: 品种
+    order: 5
+  - name: 入孵日期
+    order: 6
+  - name: 周龄
+    order: 7
+  - name: 平均蛋重
+    order: 8
+  - name: 蛋重类型
+    order: 9
+  - name: 产蛋日期
+    order: 10
+  - name: 入孵数量
+    order: 11
+  - name: 大蛋
+    order: 12
+  - name: 畸形
+    order: 13
+  - name: 破蛋
+    order: 14
+  - name: 损失
+    order: 15
+  - name: 孵化器
+    order: 16
+  - name: 照蛋日期
+    order: 17
+  - name: 受精蛋
+    order: 18
+  - name: 无精蛋
+    order: 19
+  - name: 死胚
+    order: 20
+  - name: 臭蛋
+    order: 21
+  - name: 受精率
+    order: 22
+  - name: 死胚率
+    order: 23
+  - name: 臭蛋率
+    order: 24
+  - name: 出雏日期
+    order: 25
+  - name: 健雏
+    order: 26
+  - name: 弱雏
+    order: 27
+  - name: 淘汰雏
+    order: 28
+  - name: 毛蛋
+    order: 29
+  - name: 入键率
+    order: 30
+  computed_fields:
+  - name: 原型派生/回填字段
+    formula: 生产报表，回填计划完成的数据，并且支持批量导出。 产蛋日期： ~ 养殖批次： 孵化场： 全部孵化场 孵化一场 孵化二场 养殖场： 全部养殖场 益兴一场 益兴二场 品种： 全部品种 AA 利丰 创建人： 上孵日期： ~
+      照蛋日期： ~ 出雏日期： ~ 蛋重类型： 请选择蛋重类型 大 中 小 特小 平均蛋重： 周龄：
+    editable: false
+  save_validations: []
+  ui_components:
+  - input/select/button
+  - table
+  cross_module_refs:
+  - field: 生产报表
+    source_module: REQ-PC-001
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 页面内导航
+    source_module: live prototype
+    dialog: 页面打开链接
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 上孵计划列表
+    - 仓库全景图（待定）
+    - 仓库管理
+    - 出入库记录
+    - 出雏器全景图（待定）
+    - 出雏器管理
+    - 受健率标准管理
+    - 品种管理
+    - 存发苗间管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 孵化器管理
+    - 库存查询
+    - 生产报表
+    - 盘点记录
+    - 种蛋上孵任务
+    - 种蛋出雏任务
+    - 种蛋照蛋任务
+    - 蛋重类型管理
+  detail_table_specs: []
+  concurrency_checks: []
+  role_coverage: skip
+  observed_pages:
+  - page: 生产报表
+    nodeurl: 生产报表.html
+    title: 生产报表
+    frame_url: http://127.0.0.1:5500/%E7%94%9F%E4%BA%A7%E6%8A%A5%E8%A1%A8.html
+    body_line_count: 429
+    body_lines:
+    - 孵化场
+    - 养殖场
+    - 养殖批次
+    - 种蛋类型
+    - 品种
+    - 入孵日期
+    - 周龄
+    - 平均蛋重
+    - 蛋重类型
+    - 产蛋日期
+    - 入孵数量
+    - 大蛋
+    - 畸形
+    - 破蛋
+    - 损失
+    - 孵化器
+    - 照蛋日期
+    - 受精蛋
+    - 无精蛋
+    - 死胚
+    - 臭蛋
+    - 受精率
+    - 死胚率
+    - 臭蛋率
+    - 出雏日期
+    - 健雏
+    - 弱雏
+    - 淘汰雏
+    - 毛蛋
+    - 入键率
+    - 受健率
+    - 淘汰率
+    - 毛蛋率
+    - 受健率标准
+    - 达成率
+    - 计划单号
+    - 创建人
+    - 创建时间
+    - 修改人
+    - 修改时间
+    - 孵化二场
+    - 益兴二场
+    - 1p
+    - 合格蛋
+    - 利丰
+    - '2025-12-10'
+    - '54'
+    - '43'
+    - 大
+    - 2025-12-7~2025-12-8
+    - '120960'
+    - 南33
+    - '2025-12-29'
+    - '61662'
+    - '22230'
+    - '809'
+    - '404'
+    - '74.35'
+    - '0.89'
+    - '0.49'
+    - 2026-1-1
+    - '58956'
+    - '2342'
+    - '241'
+    - '2389'
+    - '76'
+    - '71.15'
+    - '95.61'
+    - '0.29'
+    - '2.88'
+    - '93.5'
+    - 102.26%
+    - yyydiengme234566
+    - 周韬睿
+    - 2025.12.19 15:02:00
+    - 赵猛
+    - 2025.12.20 17:22:00
+    - 4p
+    - 二级蛋
+    - AA
+    - '29'
+    - '55.5'
+    - 北22
+    - '123'
+    - 入 孵
+    - 照 蛋
+    - 出 雏
+    - 成 绩
+    - 场 别
+    - 计划信息
+    - 合计
+    - '675548'
+    - '23'
+    - '3421'
+    - '74.34'
+    - 智孵管家管理平台
+    - 计划管理
+    - 上孵计划
+    - 孵化管理
+    - 种蛋上孵
+    annotations:
+    - 生产报表，回填计划完成的数据，并且支持批量导出。 产蛋日期： ~ 养殖批次： 孵化场： 全部孵化场 孵化一场 孵化二场 养殖场： 全部养殖场 益兴一场 益兴二场 品种： 全部品种 AA 利丰 创建人： 上孵日期： ~ 照蛋日期： ~
+      出雏日期： ~ 蛋重类型： 请选择蛋重类型 大 中 小 特小 平均蛋重： 周龄：
+    - 导出，点击弹框选择，①导出明细表②导出统计报表；统计报表导出需要选择到年份、月份、孵化场
+    controls:
+    - tag: INPUT
+      id: u1809_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1810_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1811_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1940_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u1944_input
+      type: select-one
+      value: 请选择种蛋类型
+      text: 请选择种蛋类型 合格蛋 二级蛋
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1947_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1948_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1951_input
+      type: text
+      value: 请输入养殖批次
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u1953_input
+      type: select-one
+      value: 全部孵化场
+      text: 全部孵化场 孵化一场 孵化二场
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u1955_input
+      type: select-one
+      value: 全部养殖场
+      text: 全部养殖场 益兴一场 益兴二场
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u1957_input
+      type: select-one
+      value: 全部品种
+      text: 全部品种 AA 利丰
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1959_input
+      type: text
+      value: 请输入创建人
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1961_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1962_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1965_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1966_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1969_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1970_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u1973_input
+      type: select-one
+      value: 请选择蛋重类型
+      text: 请选择蛋重类型 大 中 小 特小
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1975_input
+      type: text
+      value: 请输入平均蛋重
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u1977_input
+      type: text
+      value: 请输入周龄
+      text: ''
+      disabled: false
+      visible: true
+    dialogs: []
+    buttons:
+    - 上孵计划
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 出入库记录
+    - 盘点记录
+    - 仓库全景图
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景
+    - 出雏器全景
+    - 受健率标准管理
+    static_actions:
+    - 上孵计划列表
+    - 种蛋上孵任务
+    - 种蛋照蛋任务
+    - 种蛋出雏任务
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 盘点记录
+    - 仓库全景图（待定）
+    - 出入库记录
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 出雏器全景图（待定）
+    - 受健率标准管理
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-002
+  outputs:
+  - 02_analysis/pc/REQ-PC-002.yaml
+  - 02_analysis/pc/REQ-PC-002_生产报表.md
+  gate: passed
+  next_agent: testpoint-agent
+  blockers: []

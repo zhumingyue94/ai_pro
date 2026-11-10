@@ -1,0 +1,686 @@
+id: AUTO_CASE_REQ-005
+req_id: REQ-005
+module: 饲养日志
+upstream_gate_passed: true
+trace:
+  req: REQ-005
+  source_tc: 04_testcases/TC_REQ-005.yaml
+  source_case_review: 05_case_review/REV_CASE_REQ-005.yaml
+  project: 商品禽养殖
+summary:
+  total: 93
+  auto: 73
+  manual: 20
+items:
+- case_id: TC-005-01
+  tp_id: TP-005-01
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件/文案存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-005-02
+  tp_id: TP-005-02
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件/文案存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-005-03
+  tp_id: TP-005-03
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 默认值/下拉选项可脚本断言
+- case_id: TC-005-04
+  tp_id: TP-005-04
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件/文案存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-005-05
+  tp_id: TP-005-05
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 默认值/下拉选项可脚本断言
+- case_id: TC-005-06
+  tp_id: TP-005-06
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-07
+  tp_id: TP-005-07
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-08
+  tp_id: TP-005-08
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-09
+  tp_id: TP-005-09
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-10
+  tp_id: TP-005-10
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-11
+  tp_id: TP-005-11
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-12
+  tp_id: TP-005-12
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-13
+  tp_id: TP-005-13
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-14
+  tp_id: TP-005-14
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-15
+  tp_id: TP-005-15
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-16
+  tp_id: TP-005-16
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询过滤/重置/空态主路径，PC可脚本断言
+- case_id: TC-005-17
+  tp_id: TP-005-17
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 编辑打开/保存主路径
+- case_id: TC-005-18
+  tp_id: TP-005-18
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 只读/无Tab/不可增删行可脚本断言
+- case_id: TC-005-19
+  tp_id: TP-005-19
+  automation: manual
+  matched: []
+  reason: 分区可辨认依赖人工目视，不可闭环
+- case_id: TC-005-20
+  tp_id: TP-005-20
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 只读/无Tab/不可增删行可脚本断言
+- case_id: TC-005-21
+  tp_id: TP-005-21
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 只读/无Tab/不可增删行可脚本断言
+- case_id: TC-005-22
+  tp_id: TP-005-22
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 合法边界值提交可脚本断言
+- case_id: TC-005-23
+  tp_id: TP-005-23
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空值展示口径可脚本断言
+- case_id: TC-005-24
+  tp_id: TP-005-24
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 机读预填+可改保存，接口造数可闭环
+- case_id: TC-005-25
+  tp_id: TP-005-25
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 合法边界值提交可脚本断言
+- case_id: TC-005-26
+  tp_id: TP-005-26
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空值展示口径可脚本断言
+- case_id: TC-005-27
+  tp_id: TP-005-27
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  - 核心
+  reason: 负数拦截校验主路径
+- case_id: TC-005-28
+  tp_id: TP-005-28
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 小数位精度一致可脚本断言
+- case_id: TC-005-29
+  tp_id: TP-005-29
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空值展示口径可脚本断言
+- case_id: TC-005-30
+  tp_id: TP-005-30
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 机读预填+可改保存，接口造数可闭环
+- case_id: TC-005-31
+  tp_id: TP-005-31
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  - 核心
+  reason: 负数拦截校验主路径
+- case_id: TC-005-32
+  tp_id: TP-005-32
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空值展示口径可脚本断言
+- case_id: TC-005-33
+  tp_id: TP-005-33
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 饲料表列/汇总文案可脚本断言
+- case_id: TC-005-34
+  tp_id: TP-005-34
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 只读/无Tab/不可增删行可脚本断言
+- case_id: TC-005-35
+  tp_id: TP-005-35
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 排程带出/总吃料量求和可脚本断言
+- case_id: TC-005-36
+  tp_id: TP-005-36
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 饲料表列/汇总文案可脚本断言
+- case_id: TC-005-37
+  tp_id: TP-005-37
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 机读预填+可改保存，接口造数可闭环
+- case_id: TC-005-38
+  tp_id: TP-005-38
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 排程带出/总吃料量求和可脚本断言
+- case_id: TC-005-39
+  tp_id: TP-005-39
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 只读/无Tab/不可增删行可脚本断言
+- case_id: TC-005-40
+  tp_id: TP-005-40
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 合法边界值提交可脚本断言
+- case_id: TC-005-41
+  tp_id: TP-005-41
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  - 核心
+  reason: 负数拦截校验主路径
+- case_id: TC-005-42
+  tp_id: TP-005-42
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空值展示口径可脚本断言
+- case_id: TC-005-43
+  tp_id: TP-005-43
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 情况说明保存可脚本断言
+- case_id: TC-005-44
+  tp_id: TP-005-44
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件/文案存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-005-45
+  tp_id: TP-005-45
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 编辑打开/保存主路径
+- case_id: TC-005-46
+  tp_id: TP-005-46
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 已完成补栏计划锁定编辑主规则，入口不可用可脚本断言
+- case_id: TC-005-47
+  tp_id: TP-005-47
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 保存后父行汇总同步可断言
+- case_id: TC-005-48
+  tp_id: TP-005-48
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 取消不保存可脚本断言
+- case_id: TC-005-49
+  tp_id: TP-005-49
+  automation: manual
+  matched: []
+  reason: 依赖双会话并发冲突，不可稳定闭环
+- case_id: TC-005-50
+  tp_id: TP-005-50
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件/文案存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-005-51
+  tp_id: TP-005-51
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-52
+  tp_id: TP-005-52
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-53
+  tp_id: TP-005-53
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发时刻或生成时间窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-54
+  tp_id: TP-005-54
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发时刻或生成时间窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-84
+  tp_id: TP-005-84
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发时刻或生成时间窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-85
+  tp_id: TP-005-85
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 存栏/递推/改吃料影响料肉比可脚本断言
+- case_id: TC-005-86
+  tp_id: TP-005-86
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发时刻或生成时间窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-87
+  tp_id: TP-005-87
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发时刻或生成时间窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-88
+  tp_id: TP-005-88
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 存栏/递推/改吃料影响料肉比可脚本断言
+- case_id: TC-005-89
+  tp_id: TP-005-89
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 存栏/递推/改吃料影响料肉比可脚本断言
+- case_id: TC-005-90
+  tp_id: TP-005-90
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发时刻或生成时间窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-91
+  tp_id: TP-005-91
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发时刻或生成时间窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-92
+  tp_id: TP-005-92
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 执行中计划仍可编辑保存对照路径，可脚本断言
+- case_id: TC-005-93
+  tp_id: TP-005-93
+  automation: manual
+  matched: []
+  reason: 依赖定时任务触发与结算单状态窗口造数，外系统时延不可控，暂不入选
+- case_id: TC-005-55
+  tp_id: TP-005-55
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-56
+  tp_id: TP-005-56
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 汇总/公式/巡检一致主断言
+- case_id: TC-005-57
+  tp_id: TP-005-57
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空值子行汇总口径可脚本断言
+- case_id: TC-005-58
+  tp_id: TP-005-58
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-59
+  tp_id: TP-005-59
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-60
+  tp_id: TP-005-60
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-61
+  tp_id: TP-005-61
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 汇总/公式/巡检一致主断言
+- case_id: TC-005-62
+  tp_id: TP-005-62
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 汇总/公式/巡检一致主断言
+- case_id: TC-005-63
+  tp_id: TP-005-63
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-64
+  tp_id: TP-005-64
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-65
+  tp_id: TP-005-65
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-66
+  tp_id: TP-005-66
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-67
+  tp_id: TP-005-67
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-68
+  tp_id: TP-005-68
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 汇总/公式/巡检一致主断言
+- case_id: TC-005-69
+  tp_id: TP-005-69
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-70
+  tp_id: TP-005-70
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表结构/公式/空体重料肉比可脚本断言
+- case_id: TC-005-71
+  tp_id: TP-005-71
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件/文案存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-005-72
+  tp_id: TP-005-72
+  automation: manual
+  matched:
+  - 闭环
+  reason: 分页切换可闭环但非主路径核心
+- case_id: TC-005-73
+  tp_id: TP-005-73
+  automation: manual
+  matched: []
+  reason: 依赖人工目视悬浮/省略展示，不可闭环
+- case_id: TC-005-74
+  tp_id: TP-005-74
+  automation: manual
+  matched:
+  - 闭环
+  reason: 打开注释说明壳层
+- case_id: TC-005-75
+  tp_id: TP-005-75
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 注释公式原文可脚本断言
+- case_id: TC-005-76
+  tp_id: TP-005-76
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 注释公式原文可脚本断言
+- case_id: TC-005-77
+  tp_id: TP-005-77
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 注释公式原文可脚本断言
+- case_id: TC-005-78
+  tp_id: TP-005-78
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件/文案存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-005-79
+  tp_id: TP-005-79
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日报表导出主路径/列一致/条件联动可脚本断言
+- case_id: TC-005-80
+  tp_id: TP-005-80
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日报表导出主路径/列一致/条件联动可脚本断言
+- case_id: TC-005-81
+  tp_id: TP-005-81
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 无数据导出提示可脚本断言
+- case_id: TC-005-82
+  tp_id: TP-005-82
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日报表导出主路径/列一致/条件联动可脚本断言
+- case_id: TC-005-83
+  tp_id: TP-005-83
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日报表导出主路径/列一致/条件联动可脚本断言
+actions:
+  yaml_updated: true
+  csv_path: 05_case_review/005_饲养日志_测试用例.csv

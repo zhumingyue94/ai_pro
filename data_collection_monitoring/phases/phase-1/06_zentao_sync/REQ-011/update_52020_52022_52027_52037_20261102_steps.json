@@ -1,0 +1,14 @@
+{
+  "req_id": "REQ-011",
+  "operation": "update",
+  "execution_mode": "real_update",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "cases": [
+    {"case_id": "TC-REQ-011-028", "remote_case_id": 52020, "status": "validated", "readback": "validated", "steps": 4},
+    {"case_id": "TC-REQ-011-029", "remote_case_id": 52021, "status": "validated", "readback": "validated", "steps": 4},
+    {"case_id": "TC-REQ-011-030", "remote_case_id": 52022, "status": "validated", "readback": "validated", "steps": 4},
+    {"case_id": "TC-REQ-011-035", "remote_case_id": 52027, "status": "validated", "readback": "validated", "steps": 4},
+    {"case_id": "TC-REQ-011-045", "remote_case_id": 52037, "status": "validated", "readback": "validated", "steps": 4}
+  ],
+  "failure_policy": "任一更新失败立即停止；本次五条均通过，不删除、不重建、不创建替代用例。"
+}

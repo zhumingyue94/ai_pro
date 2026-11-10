@@ -1,0 +1,33 @@
+{
+    "status":  "validated",
+    "operation":  "delete",
+    "remote_case_id":  51872,
+    "source_case_id":  "TC-REQ-008-050",
+    "target":  {
+                   "project_id":  46,
+                   "product_id":  8,
+                   "module_id":  746
+               },
+    "readback_before":  {
+                            "project":  46,
+                            "product":  8,
+                            "module":  746,
+                            "title":  "查看 内置队列 页面，记录字段和定位器",
+                            "version":  5
+                        },
+    "delete_response":  {
+                            "status":  "success"
+                        },
+    "readback_after":  {
+                           "status":  "confirmed_not_found",
+                           "message":  "Case does not exist."
+                       },
+    "registry":  {
+                     "action":  "removed",
+                     "case_id":  "TC-REQ-008-050",
+                     "zentao_case_id":  51872,
+                     "confirmed_after_remote_delete":  true
+                 },
+    "delete_recreate":  false,
+    "entrypoint":  "../../../../scripts/zentao_create_testcase.py"
+}

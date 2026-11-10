@@ -1,0 +1,91 @@
+{
+    "id": 51715,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 734,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "解除业务引用后可以删除设备",
+    "precondition": "前置准备：\n1、已获得设备全部业务引用解除后的批准脱敏回读证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:58:29",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-28 10:52:05",
+    "version": 3,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 3,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174406,
+            "step": "在全部业务引用解除后查看设备操作列“删除”按钮状态；若已获执行授权，点击“删除”并在确认弹窗点击“确认删除/确定”按钮，否则不点击确认按钮。",
+            "desc": "在全部业务引用解除后查看设备操作列“删除”按钮状态；若已获执行授权，点击“删除”并在确认弹窗点击“确认删除/确定”按钮，否则不点击确认按钮。",
+            "expect": "解除所有业务引用后，页面允许删除设备，并显示删除确认提示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51715,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51715",
+        "text": "解除业务引用后可以删除设备",
+        "type": "root",
+        "children": [
+            {
+                "id": 174406,
+                "text": "在全部业务引用解除后查看设备操作列“删除”按钮状态；若已获执行授权，点击“删除”并在确认弹窗点击“确认删除/确定”按钮，否则不点击确认按钮。",
+                "type": "sub",
+                "parent": "case_51715",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174406",
+                        "text": "解除所有业务引用后，页面允许删除设备，并显示删除确认提示。",
+                        "type": "node",
+                        "parent": 174406,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

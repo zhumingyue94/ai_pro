@@ -1,0 +1,319 @@
+review:
+  review_id: REV_CASE_REQ-APP-026
+  req_id: REQ-APP-026
+  module_id: REQ-APP-026
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-09'
+  revision: 1
+  revision_reason: 首次按五项评审维度完成静态评审；未使用旧评审历史
+  status: completed_with_observations
+  gate_passed: true
+  gate_reasons: []
+  historical_review_used: false
+  historical_review_deleted_before_review: true
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope:
+    source_testcase_yaml: 04_testcases/app/TC_REQ-APP-026.yaml
+    source_testcase_markdown: 04_testcases/app/TC_REQ-APP-026.md
+    page_inventory: 02_analysis/app/page_inventory/page.json
+    supporting_analysis: 02_analysis/app/REQ-APP-026.yaml
+    supporting_test_plan: 03_test_plan/app/TEST_PLAN_REQ-APP-026.yaml
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+    execution_review: out_of_scope
+    ui_execution: out_of_scope
+    automation_execution: out_of_scope
+    pairwise_execution: out_of_scope
+    remote_sync: out_of_scope
+  scope:
+    case_count: 3
+    ids_unique: true
+    ids_continuous: false
+    id_range: TC-APP-026-001..TC-APP-026-007 (002..005 and 009..015 removed; 006 missing
+      from current source)
+    required_fields: pass
+    type_counts:
+      feature: 1
+      interface: 2
+    auto_counts:
+      auto: 3
+      'no': 0
+    automation_status_counts:
+      blocked: 3
+    priority_counts:
+      P1: 1
+      P2: 0
+      P3: 1
+      P4: 1
+    trace_status_counts:
+      blocked_contract: 3
+  review_dimensions:
+    systematic_coverage:
+      status: pass_with_observations
+      techniques:
+      - equivalence_partitioning
+      - boundary_value_analysis
+      - decision_table
+      - state_transition
+      - exception_coverage
+      covered:
+      - inventory_decrement
+      - zero_inventory
+      - positive_inventory
+      - insufficient_inventory
+      - nonnegative_inventory
+      - traceability
+      - concurrent_read
+      - permission
+      - query_entry
+      - query_failure
+      - missing_batch
+      - missing_room_relation
+      - writeback_failure
+      - retry_recovery
+      observations:
+      - 数量边界仅覆盖零值和大于零/不足分区，缺少最小正数、恰好扣减为零、极大值的显式契约。
+      - 并发读取时点、允许旧值窗口、回写失败语义和重试幂等规则待确认。
+      - 查询字段、分页、排序、空态和错误展示仍是未发布契约。
+    pairwise:
+      status: covered_with_observations_static_pict_model
+      method: PICT_2_way
+      execution: not_run
+      parameters:
+      - InventoryPartition
+      - ShipmentState
+      - BatchRelation
+      - RoomRelation
+      - QueryTiming
+      - PermissionState
+      - ServiceResponse
+      - RetryState
+      constraints:
+      - 库存不足不得产生负库存
+      - 缺失批次或存发苗间关联不得返回归属库存数量，具体提示待契约确认
+      - 无查询权限不得展示库存数量
+      - 服务失败不得伪装为空结果
+      - 回写失败与重试结果必须按已发布一致性规则裁决
+      conclusion: 已完成静态参数、分区和约束审查；未执行外部 PICT，未生成 PICT 测试集。
+    automation_executability:
+      status: candidate_but_blocked
+      auto_candidate_count: 3
+      automation_executable_count: 0
+      execution_performed: false
+      blockers:
+      - 正式页面路由和稳定 locator 未确认
+      - 测试数据和隔离清理责任未准备
+      - 权限角色未准备
+      - 跨服务失败注入和回读契约未准备
+    headed_page_executability:
+      status: static_review_only
+      browser_started: false
+      target_page: app-026-inventory-query
+      route: not_available
+      mapping_summary:
+        app_026_specific_page_count: 0
+        dependency_page_count: 3
+        matched_case_count: 0
+        execution_rate: 0%
+      dependency_evidence:
+      - app-chick-shipping-list
+      - app-chick-shipment-execute
+      - app-plan-shipment-records
+      observations:
+      - page.json 未提供 APP-026 专属页面、路由、状态或 locator；APP-021/022/024 只能作为跨模块依赖证据
+    casely:
+      status: pass_with_observations
+      checks:
+      - yaml_parseability
+      - required_fields
+      - unique_continuous_ids
+      - step_expected_pairing
+      - style_consistency
+      - delivery_format
+      findings:
+      - YAML/Markdown 当前保留3条用例，删除目标已从本地明细和注册表移除
+    delivery_format:
+      status: pass
+      checks:
+      - req_id_specific_yaml
+      - req_id_specific_markdown
+      - req_id_specific_handoff
+      - source_hashes_present
+      - report_only_semantics
+  findings:
+  - code: PAGE_EVIDENCE_NOT_DEDICATED_TO_REQ_APP_026
+    category: evidence_risk
+    severity: high
+    action: 补采 APP-026 专属页面、路由、状态、字段和稳定 locator；不得用 APP-021/022/024 依赖页面替代
+  - code: QUERY_CONTRACT_PENDING
+    category: evidence_risk
+    severity: high
+    action: 明确查询条件、字段、分页、排序、空态、错误展示和权限码
+  - code: INVENTORY_BOUNDARY_CONTRACT_PENDING
+    category: evidence_risk
+    severity: medium
+    action: 明确最小正数、恰好库存、超库存、极大值和库存不足分配的可裁决结果
+  - code: CONCURRENT_READ_CONTRACT_NOT_READY
+    category: execution_blocker
+    severity: high
+    action: 固化发货确认后查询时点、一致性级别、允许旧值窗口和最终一致性判断
+  - code: WRITEBACK_FAILURE_AND_RETRY_CONTRACT_NOT_READY
+    category: execution_blocker
+    severity: high
+    action: 提供回写失败注入、事务边界、重试幂等和恢复规则
+  - code: CROSS_SERVICE_DATA_AND_CLEANUP_NOT_READY
+    category: execution_blocker
+    severity: high
+    action: 准备脱敏库存/发货/出库关联数据、权限、隔离环境和清理责任
+  review_items:
+  - code: PAGE_EVIDENCE_NOT_DEDICATED_TO_REQ_APP_026
+    category: evidence_risk
+    result: blocked
+    gate_reason: false
+    reason: page.json 未提供 APP-026 专属页面、路由或 locator；关联页面不能证明库存查询行为。
+    case_ids:
+    - TC-APP-026-005
+    - TC-APP-026-007
+    - TC-APP-026-008
+    - TC-APP-026-009
+  - code: QUERY_CONTRACT_PENDING
+    category: evidence_risk
+    result: blocked
+    gate_reason: false
+    reason: 查询条件、字段、分页、排序、空态、错误展示和权限码未发布。
+    case_ids:
+    - TC-APP-026-005
+    - TC-APP-026-007
+    - TC-APP-026-008
+    - TC-APP-026-009
+  - code: CONCURRENT_READ_CONTRACT_NOT_READY
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 并发读时点、一致性级别和允许旧值窗口未确认；本轮未执行。
+    case_ids:
+    - TC-APP-026-004
+  - code: WRITEBACK_FAILURE_AND_RETRY_CONTRACT_NOT_READY
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 回写失败、事务边界、重试幂等和恢复规则未确认；本轮未执行失败注入。
+    case_ids:
+    - TC-APP-026-010
+    - TC-APP-026-015
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md#优先级划分
+    scope: 当前3条REQ-APP-026用例明细
+    case_count: 3
+    reviewed_case_count: 3
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 1
+        P2: 0
+        P3: 1
+        P4: 1
+      source_summary:
+        P1: 1
+        P2: 0
+        P3: 1
+        P4: 1
+      case_detail:
+        P1: 1
+        P2: 0
+        P3: 1
+        P4: 1
+    change_summary:
+      changed_case_count: 0
+      unchanged_case_count: 3
+    distribution_observations: []
+    mismatches: []
+    unconfirmed_items:
+    - 查询条件
+    - 查询字段
+    - 分页
+    - 排序
+    - 空态
+    - 错误展示
+    - 权限码
+    gate_reasons: []
+    items:
+    - case_id: TC-APP-026-001
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: retained
+      impact_area: 库存扣减
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 自动出库后库存扣减错误会直接造成核心库存数据错误。
+      gate_reason: false
+    - case_id: TC-APP-026-007
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      result: retained
+      impact_area: 正库存查询
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 正常库存不可见会影响日常库存核对。
+      gate_reason: false
+    - case_id: TC-APP-026-008
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      result: retained
+      impact_area: 零库存边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 零库存显示错误会影响库存状态判断。
+      gate_reason: false
+  coverage_summary:
+    case_count: 3
+    automation_candidate_count: 3
+    automation_executable_count: 0
+    case_level_blocked_count: 3
+    yaml_markdown_aligned: true
+    requirement_traceability_present: true
+    formal_ui_execution_performed: false
+    formal_business_data_changed: false
+    page_inventory_capture_status: partial
+    page_inventory_evidence_status: dependency_only
+    source_summary_matches_case_detail: true
+  sync_candidates:
+    case_count: 3
+    status: blocked_pending_authorized_sync_and_execution_readiness
+    note: 本地report_only评审已完成；11条指定远程用例已逐条删除并回读确认，剩余3条待后续同步
+  execution_statement: 仅完成静态结构、系统性覆盖、Pairwise 模型、Playwright 可执行性、页面证据边界和 Casely 评审；未执行
+    UI、浏览器、Playwright、PICT、CSV、远程禅道或测试点/XMind。
+  prohibited_actions_confirmed:
+    ui_execution: false
+    csv_generation: false
+    remote_zentao_write: false
+    test_point_or_xmind_generation: false
+  source_hashes:
+  - path: 04_testcases/app/TC_REQ-APP-026.yaml
+    sha256: 6c3e8fa64006c9e171fe893cf39aa716195c8e79c4b4b0bec048d3982c809661
+  - path: 04_testcases/app/TC_REQ-APP-026.md
+    sha256: 457ee07e11f823ec9867ff9c0049291e5a915bf9fc449876b730c949fcf15f9a
+  - path: 02_analysis/app/REQ-APP-026.yaml
+    sha256: cfe3daee130580ccd31f8e0634ca952ac2652e61da154faa57b4cb99afa93857
+  - path: 03_test_plan/app/TEST_PLAN_REQ-APP-026.yaml
+    sha256: 3f4b914267ad0a0599dfba10121bbacd16cf2212948e583f67754fbc33938604
+  - path: 02_analysis/app/page_inventory/page.json
+    sha256: b71e83ad448235d533d2e564fc1ba96a0e7725573e4405f12dcf5d5b1a43893d
+  handoff:
+    path: 05_case_review/app/HANDOFF/REQ-APP-026_HANDOFF.md
+    module_id: REQ-APP-026

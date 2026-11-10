@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.qa/design.schema.json",
+  "title": "Lanhu Design Inventory",
+  "description": "蓝湖/Figma 设计节点树解析结果的公共结构约束；不包含具体项目、设计稿或原始业务实例值。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "design_id", "design_name", "source", "capture", "pages"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "design_id": {"$ref": "#/$defs/identifier"},
+    "design_name": {"type": "string", "minLength": 1},
+    "source": {"$ref": "#/$defs/source"},
+    "capture": {"$ref": "#/$defs/capture"},
+    "pages": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/page"}}
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+    },
+    "nullable_number": {"type": ["number", "null"]},
+    "nullable_string": {"type": ["string", "null"]},
+    "generic_value": {
+      "type": ["string", "number", "boolean", "null", "object", "array"]
+    },
+    "generic_object": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/generic_value"}
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_file", "source_format", "slice_scale", "is_figma", "coordinate_policy"],
+      "properties": {
+        "source_file": {"type": "string", "minLength": 1},
+        "source_format": {"type": "string", "minLength": 1},
+        "slice_scale": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "is_figma": {"type": ["boolean", "null"]},
+        "coordinate_policy": {"type": "string", "minLength": 1}
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collector", "captured_at", "source_node_count"],
+      "properties": {
+        "collector": {"type": "string", "minLength": 1},
+        "captured_at": {"type": "string", "format": "date-time"},
+        "source_node_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["page_id", "title", "roots", "node_count", "max_depth", "nodes"],
+      "properties": {
+        "page_id": {"$ref": "#/$defs/identifier"},
+        "title": {"type": "string", "minLength": 1},
+        "roots": {"type": "array", "items": {"$ref": "#/$defs/identifier"}},
+        "node_count": {"type": "integer", "minimum": 0},
+        "max_depth": {"type": "integer", "minimum": 0},
+        "nodes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/node"}}
+      }
+    },
+    "rect": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "x": {"$ref": "#/$defs/nullable_number"},
+        "y": {"$ref": "#/$defs/nullable_number"},
+        "width": {"$ref": "#/$defs/nullable_number"},
+        "height": {"$ref": "#/$defs/nullable_number"}
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["element_id", "kind", "name", "original_type", "classification", "tag", "role", "text", "rect", "rect_source", "style", "class", "image_ref", "parent_element_id", "child_element_ids", "depth", "path", "raw_node"],
+      "properties": {
+        "element_id": {"$ref": "#/$defs/identifier"},
+        "kind": {"type": "string", "enum": ["text", "image", "icon", "shape", "container", "unknown"]},
+        "name": {"type": "string", "minLength": 1},
+        "original_type": {"type": "string", "minLength": 1},
+        "classification": {"type": "string", "enum": ["text", "image", "icon", "shape", "container", "unknown"]},
+        "tag": {"$ref": "#/$defs/nullable_string"},
+        "role": {"$ref": "#/$defs/nullable_string"},
+        "text": {"$ref": "#/$defs/nullable_string"},
+        "rect": {"$ref": "#/$defs/rect"},
+        "rect_source": {"type": "string", "enum": ["node.rect", "node.frame", "node.text.frame", "node.class", "annotation.css", "missing_in_source"]},
+        "style": {"type": ["object", "null"]},
+        "class": {"$ref": "#/$defs/nullable_string"},
+        "image_ref": {"$ref": "#/$defs/nullable_string"},
+        "parent_element_id": {"$ref": "#/$defs/nullable_string"},
+        "child_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}},
+        "depth": {"type": "integer", "minimum": 1},
+        "path": {"type": "string", "pattern": "^[0-9]+(?:\\.[0-9]+)*$"},
+        "raw_node": {"$ref": "#/$defs/generic_object"}
+      }
+    }
+  }
+}

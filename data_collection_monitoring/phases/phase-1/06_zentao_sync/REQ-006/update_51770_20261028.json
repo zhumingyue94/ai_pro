@@ -1,0 +1,23 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "remote_case_id": 51770,
+  "source_case_id": "TC-REQ-006-008",
+  "project_id": 46,
+  "product_id": 8,
+  "module_id": 744,
+  "title": "打开新建插件时名称字段呈现页面实际可编辑状态",
+  "version": 4,
+  "changes": {
+    "steps_count": 4,
+    "steps": [
+      {"step": "点击新建插件。", "expect": "页面打开新建插件表单。"},
+      {"step": "查看新建插件表单字段。", "expect": "表单显示插件名称、插件类型、插件端口、内存限制和重启策略字段。"},
+      {"step": "填写插件名称前缀和插件端口，完成必填配置并点击保存。", "expect": "新增插件保存成功，并关闭新建插件弹窗或返回插件列表。"},
+      {"step": "在插件列表中查看刚保存的插件名称。", "expect": "列表中的插件名称由新建弹窗填写的插件名称前缀与插件端口号拼接而成。"}
+    ]
+  },
+  "readback": {"project": 46, "product": 8, "module": 744, "type": "feature", "auto": "no", "steps_count": 4, "version": 4, "defects": []},
+  "source_hashes_before": {"REV_CASE_REQ-006.yaml": "ca5fd402d852b079160e24388414cd81d30a0aa0dbc69d7271937208e47d6e11", "TC_REQ-006.yaml": "85d09279b38244a1290e186686f046dfbbb8772def8e4bb8569377bdf1320de0"},
+  "source_hashes_after": {"REV_CASE_REQ-006.yaml": "ca5fd402d852b079160e24388414cd81d30a0aa0dbc69d7271937208e47d6e11", "TC_REQ-006.yaml": "85d09279b38244a1290e186686f046dfbbb8772def8e4bb8569377bdf1320de0"}
+}

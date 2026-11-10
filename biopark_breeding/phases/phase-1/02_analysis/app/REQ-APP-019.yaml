@@ -1,0 +1,151 @@
+schema_version: "1.0"
+req_id: "REQ-APP-019"
+module_name: "次品库 / 出入库记录"
+zentao_module_id: 581
+platform: "app"
+analysis_status: "analyzed_from_docx_baseline_and_readonly_local_evidence"
+scope:
+  object_scope: "次品库"
+  object_scope_evidence: "static"
+  object_scope_basis: "基线明确 REQ-APP-019 为次品库/出入库记录；P073/P075 为次品入库/出库入口，P076-P080 为次品出入库记录链路。"
+  included: "P073、P075-P080 的只读页面契约；入库/出库表单只记录字段，不执行确认写入。"
+  excluded: "确认入库、确认出库、库存变更、任务执行、远程写入、接口实现、权限实现和持久化实现。"
+evidence_legend:
+  observed: "实时原型在 networkidle 后的渲染 DOM、页面文本和控件；本轮实时会话因浏览器占用/定位超时未补充。"
+  static: "DOCX 页面表、模块拆分清单、axure_map.md、既有 RUN 的 DOM/page_text/截图路径。"
+  inferred: "由模块基线、页面链路或通用页面命名归纳。"
+  open_question: "材料未明确，需确认。"
+inputs:
+  - path: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+    type: "docx"
+    sections: ["5.73 次品入库", "5.75 次品出库", "5.76 出入库记录列表", "5.77 出入库记录搜索", "5.78 出入库记录筛选", "5.79 筛选结果", "5.80 出入库详情"]
+    pages: ["P073", "P075", "P076", "P077", "P078", "P079", "P080"]
+    evidence_level: "static"
+  - path: "01_requirements/app/模块拆分清单.md"
+    type: "baseline"
+    sections: ["REQ-APP-019", "D-04", "实施边界"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_map.md"
+    type: "axure_map"
+    sections: ["P073", "P075", "P076", "P077", "P078", "P079", "P080"]
+    evidence_level: "static"
+  - path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/"
+    type: "readonly_evidence_run"
+    evidence_level: "static"
+  - path: "http://127.0.0.1:5500/"
+    type: "live_prototype"
+    viewport: "430x932"
+    wait: "networkidle"
+    browser_mode: "headless=False"
+    evidence_level: "open_question"
+    note: "本轮未完成实时页面补充核对；不把实时会话当作已观察证据。"
+source_pages:
+  - {page_id: "P073", name: "次品入库", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-073.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-073.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P073"}]}
+  - {page_id: "P075", name: "次品出库", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-075.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-075.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P075"}]}
+  - {page_id: "P076", name: "出入库记录列表", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-076.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-076.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P076"}]}
+  - {page_id: "P077", name: "出入库记录搜索", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-077.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-077.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P077"}]}
+  - {page_id: "P078", name: "出入库记录筛选", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-078.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-078.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P078"}]}
+  - {page_id: "P079", name: "筛选结果", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-079.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-079.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P079"}]}
+  - {page_id: "P080", name: "出入库详情", status: "正常", evidence: [{level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-080.txt"}, {level: "static", path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-080.html"}, {level: "static", path: "01_requirements/app/axure_map.md#P080"}]}
+page_contracts:
+  - page_id: "P073"
+    name: "次品入库"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P072 次品库列表进入；页面表静态链接返回 P072。"}, return: {level: "static", detail: "返回次品库列表；确认后续页面/写入结果未验证。"}}
+    query_area: {level: "static", detail: "未观察到查询区。"}
+    list_or_cards: {level: "static", items: ["入库时间", "操作人", "孵化场/次品库", "次品类型", "数量", "入库方式：手动", "种蛋信息：养殖场/批次/品种/周龄/平均蛋重/蛋重类型/产蛋日期"]}
+    form: {level: "static", items: ["入库数量（必填）", "入库原因（种蛋挑选/其他，必填）", "入库备注", "养殖场（自动匹配/手动）", "养殖批次", "品种", "周龄", "平均蛋重", "蛋重类型", "产蛋日期", "次品类型"]}
+    dialogs: {level: "static", detail: "未观察到独立弹窗；页面有确认入库按钮。"}
+    actions: {observed: [], static: ["确认入库", "选择入库原因", "返回次品库列表"]}
+    status_and_transitions: {level: "static", values: ["次品入库表单", "确认入库"], transition: "确认后的库存和记录状态未验证。"}
+  - page_id: "P075"
+    name: "次品出库"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P072 次品库列表进入；静态链接返回 P072。"}, return: {level: "static", detail: "返回次品库列表；确认结果未验证。"}}
+    query_area: {level: "static", detail: "未观察到查询区。"}
+    list_or_cards: {level: "static", items: ["出库时间", "操作人", "孵化场/次品库", "次品类型", "当前库存", "出库方式：手动", "出库原因", "出库备注"]}
+    form: {level: "static", items: ["出库数量（必填）", "出库原因：销售/销毁/更换仓库/其他", "出库备注", "次品类型"]}
+    dialogs: {level: "static", detail: "未观察到独立弹窗；页面有确认出库按钮。"}
+    actions: {observed: [], static: ["确认出库", "选择出库原因", "返回次品库列表"]}
+    status_and_transitions: {level: "static", values: ["当前库存", "次品出库表单", "确认出库"], transition: "零库存禁用规则来自 P072；数量校验和确认后状态未定义。"}
+  - page_id: "P076"
+    name: "出入库记录列表"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由首页或 P072 进入；可进入搜索、筛选、详情。"}, return: {level: "static", detail: "静态链接可回首页；返回栈未确认。"}}
+    query_area: {level: "static", items: ["次品库一号/二号/三号", "今日/昨日/近一周/近一个月/近3个月/近1年", "次品类型", "出入库方式：自动/手动", "出入库原因：种蛋上孵/销售", "出/入库：入库/出库", "搜索", "筛选"], open_question: "默认值、组合逻辑、分页排序未明确。"}
+    list_or_cards: {level: "static", items: ["数量", "入库/出库", "时间", "原因", "次品类型", "手动/自动"]}
+    form: {level: "static", detail: "未观察到列表内联编辑表单；搜索和筛选在 P077/P078。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入详情", "返回首页"]}
+    status_and_transitions: {level: "static", values: ["入库", "出库", "自动", "手动"], open_question: "记录生成、冲正和删除未定义。"}
+  - page_id: "P077"
+    name: "出入库记录搜索"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P076 搜索进入。"}, return: {level: "static", detail: "可回列表或详情；实际跳转未验证。"}}
+    query_area: {level: "static", items: ["关键词", "计划号", "次品类型", "养殖场", "批次", "品种", "代孵/树田代孵历史词", "搜索"], open_question: "匹配范围、历史搜索、输入即查和空结果未明确；原型注释建议本期可只按输入关键词查询。"}
+    list_or_cards: {level: "static", detail: "有结果显示次品入库/出库记录；无结果文案存在于页面注释证据。"}
+    form: {level: "static", items: ["关键词输入框"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "选择历史词", "进入详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["搜索有结果", "搜索无结果"], open_question: "网络和权限异常未定义。"}
+  - page_id: "P078"
+    name: "出入库记录筛选"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P076/P077 筛选进入。"}, return: {level: "static", detail: "确认进入 P079；重置行为未确认。"}}
+    query_area: {level: "static", items: ["次品库", "出入库方式：自动/手动", "出入库原因：种蛋上孵/销售", "时间范围：今日/昨日/近一周/近一个月/近3个月/近1年", "操作类型：入库/出库", "次品类型", "养殖场", "品种", "确认", "重置"], open_question: "DOCX 样例混用种蛋字段，次品库实际筛选字段、必填和组合逻辑需确认。"}
+    list_or_cards: {level: "static", detail: "展示筛选前入库/出库卡片预览。"}
+    form: {level: "static", items: ["库选择", "日期", "次品类型", "养殖场", "批次", "品种", "操作类型", "方式", "原因"]}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["确认", "重置", "进入筛选结果", "返回列表/搜索"]}
+    status_and_transitions: {level: "static", values: ["全部", "入库", "出库", "自动", "手动"], open_question: "空筛选、无结果、失败提示未定义。"}
+  - page_id: "P079"
+    name: "筛选结果"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P078 确认进入。"}, return: {level: "static", detail: "可回列表、搜索、筛选或详情；条件回显未确认。"}}
+    query_area: {level: "static", items: ["搜索", "筛选"], open_question: "分页排序和条件回显未明确。"}
+    list_or_cards: {level: "static", items: ["数量", "入库/出库", "时间", "原因", "次品类型", "自动/手动"]}
+    form: {level: "static", detail: "未观察到内联编辑表单。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: ["搜索", "筛选", "进入详情", "返回列表"]}
+    status_and_transitions: {level: "static", values: ["入库", "出库", "自动", "手动"], open_question: "结果快照一致性未定义。"}
+  - page_id: "P080"
+    name: "出入库详情"
+    evidence_levels: ["static", "inferred", "open_question"]
+    entry_and_return: {entry: {level: "static", detail: "由 P076/P077/P078/P079 的记录卡片进入。"}, return: {level: "static", detail: "返回出入库记录列表。"}}
+    query_area: {level: "static", detail: "未观察到查询区。"}
+    list_or_cards: {level: "static", items: ["种蛋/次品信息：养殖场/批次/品种/种蛋类型/周龄/蛋重/产蛋日期（有则显示）", "仓库信息：孵化场/次品库", "出入库信息：类型/数量/方式/原因/时间/计划号/备注/操作人", "次品类型"]}
+    form: {level: "static", detail: "未观察到可编辑字段。"}
+    dialogs: {level: "static", detail: "未观察到业务弹窗；计划号复制规则为有则显示，未验证。"}
+    actions: {observed: [], static: ["复制计划号（有计划号时）", "返回出入库记录列表"]}
+    status_and_transitions: {level: "static", values: ["入库", "出库", "自动", "手动"], open_question: "详情只读、关联键、不可篡改和计划号可空规则未明确。"}
+interfaces:
+  - {name: "次品出入库记录查询", direction: "read", evidence_level: "open_question", observed_contract: "读取次品库记录列表、关键词结果、筛选结果和详情。", endpoint_or_protocol: "未观察到接口地址、鉴权、分页、排序或错误码。", candidate_inputs: ["次品库标识", "关键词", "计划号", "次品类型", "养殖场", "批次", "品种", "日期", "出入库类型", "方式", "原因"], candidate_outputs: ["记录卡片列表", "空结果状态", "记录详情"]}
+  - {name: "次品入库/出库写入", direction: "write", evidence_level: "open_question", observed_contract: "P073/P075 有确认按钮，但本分析禁止执行确认写入。", endpoint_or_protocol: "未观察到接口；不可据此调用或实现。"}
+cross_module_refs:
+  - {ref: "REQ-APP-001", module: "首页", zentao_module_id: 556, relation: "entry", evidence_level: "static"}
+  - {ref: "REQ-APP-018", module: "次品库 / 库存查询", zentao_module_id: 580, relation: "inventory_source", evidence_level: "static"}
+  - {ref: "REQ-APP-020", module: "次品库 / 盘点记录", zentao_module_id: 582, relation: "sibling_record", evidence_level: "static"}
+  - {ref: "REQ-APP-003", module: "孵化任务 / 种蛋照蛋", zentao_module_id: 565, relation: "possible_source", evidence_level: "inferred", detail: "页面出现种蛋相关原因，真实来源待确认。"}
+business_rules:
+  - {id: "BR-019-01", rule: "次品入库表单包含数量、原因、备注、仓库和次品/种蛋信息，并有确认入库动作。", evidence_level: "static"}
+  - {id: "BR-019-02", rule: "次品出库表单包含数量、当前库存、出库原因、备注、仓库和次品类型，并有确认出库动作。", evidence_level: "static"}
+  - {id: "BR-019-03", rule: "记录列表区分入库/出库、自动/手动、次品类型、数量、时间和原因，并支持搜索/筛选/详情。", evidence_level: "static"}
+  - {id: "BR-019-04", rule: "原型注释建议搜索本期可简化为按已输入关键词查询；完整匹配算法未确认。", evidence_level: "static"}
+  - {id: "BR-019-05", rule: "次品库对象边界来自基线，通用记录页面字段未单独证明库隔离规则。", evidence_level: "inferred"}
+  - {id: "BR-019-06", rule: "本分析不点击确认入库/出库，不执行任何远程写操作。", evidence_level: "observed"}
+  - {id: "BR-019-07", rule: "数量校验、库存扣减、记录生成、冲正、权限、接口、异常和持久化未确认。", evidence_level: "open_question"}
+open_questions:
+  - {id: "OQ-019-01", question: "入库/出库数量单位、正数范围、零库存和超库存校验是什么？", impact: "high"}
+  - {id: "OQ-019-02", question: "次品库、次品类型、记录和库存的隔离键及并发扣减规则是什么？", impact: "high"}
+  - {id: "OQ-019-03", question: "入库/出库原因完整枚举、自动/手动来源、计划号/养殖客户必填条件是什么？", impact: "high"}
+  - {id: "OQ-019-04", question: "P078 的筛选字段应使用次品类型还是混用种蛋字段，条件组合和日期边界如何定义？", impact: "high"}
+  - {id: "OQ-019-05", question: "确认成功、失败、权限不足、网络异常、重复提交和库存不足如何提示？", impact: "medium"}
+  - {id: "OQ-019-06", question: "是否允许撤销/冲正、详情编辑或导出，计划号复制是否受权限控制？", impact: "medium"}
+analysis_boundary:
+  read_only: true
+  prohibited_actions: ["新增", "编辑", "删除", "确认入库", "确认出库", "盘点确认", "任务执行", "远程数据写入"]
+  not_claimed: ["实时页面本轮已成功逐页点击", "确认按钮已执行", "接口已实现", "权限已实现", "库存变更已验证", "异常规则已确认"]
+handoff:
+  next_owner: "产品/研发/测试设计"
+  deliverable_use: "先确认写入校验、原因枚举、库存扣减、筛选字段和异常/权限契约；本 REQ 后续测试需单独授权写操作。"
+  generated_files: ["02_analysis/app/REQ-APP-019.yaml", "02_analysis/app/REQ-APP-019_次品库-出入库记录.md"]

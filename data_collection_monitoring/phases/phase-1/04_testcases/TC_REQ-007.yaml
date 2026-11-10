@@ -1,0 +1,946 @@
+schema_version: '1.0'
+req_id: REQ-007
+module: 数据监听
+trace:
+  req: REQ-007
+  version: '1'
+  status: blocked_pending_page_inventory_and_permission_verification
+  source_review: REQ-007 atomicity and wording review applied; TC-REQ-007-011 retained
+    as three atomic steps; TC-REQ-007-030 unchanged
+common_preconditions:
+- id: CP-REQ-007-001
+  name: 登录并进入数据监听页面
+  steps:
+  - action: 使用批准账号登录应用门户。
+    expected: 应用门户登录成功。
+  - action: 在应用门户选择“数据采集监控平台”。
+    expected: 进入数据采集监控平台，并显示平台菜单。
+  - action: 展开“数据中心”菜单。
+    expected: “数据监听”菜单项可见。
+  - action: 点击“数据监听”菜单。
+    expected: 数据监听页面成功加载，正式页面路径与页面契约一致。
+cases:
+- id: TC-REQ-007-005
+  coverage_ids:
+  - COV-007-005-L3
+  plan_item_ids:
+  - PLAN-007-005
+  atomic_purpose_ids:
+  - AP-007-005
+  title: 重复提交新建请求，检查重复规则
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 重复创建请求
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得隔离测试数据、重复请求结果和写入授权。
+  steps:
+  - action: 点击“新增监听规则”。
+    expected: 新建监听规则弹窗打开，并显示规则配置字段及“确定”按钮。
+  - action: 在新建监听规则弹窗中填写隔离测试数据。
+    expected: 各字段显示对应输入值。
+  - action: 点击“确定”，并在保存处理期间再次查看“确定”按钮。
+    expected: 保存处理期间“确定”按钮不可点击或处于禁用状态，不能发起第二次有效创建。
+  - action: 刷新规则列表并按测试名称查询。
+    expected: 目标规则最多存在一条，且其编号唯一。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-006
+  coverage_ids:
+  - COV-007-006-L3
+  plan_item_ids:
+  - PLAN-007-006
+  atomic_purpose_ids:
+  - AP-007-006
+  title: 规则名称为空，检查必填提示
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 名称校验
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得仅用于校验观察且不会产生业务写入的批准。
+  steps:
+  - action: 点击“新增监听规则”，保持规则名称为空并填写其他必要字段。
+    expected: 规则名称控件为空，其他字段按输入值显示。
+  - action: 点击“保存”。
+    expected: 规则名称字段显示明确必填提示，表单保持打开且未创建规则。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-007
+  coverage_ids:
+  - COV-007-007-L3
+  plan_item_ids:
+  - PLAN-007-007
+  atomic_purpose_ids:
+  - AP-007-007
+  title: 输入非法规则名称，检查校验提示
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 非法字符校验
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得正式确认的非法字符样本和校验观察授权。
+  steps:
+  - action: 点击“新增监听规则”，在规则名称输入框输入已确认的非法字符样本。
+    expected: 输入值按页面输入规则显示或被页面明确拒绝。
+  - action: 点击“保存”。
+    expected: 规则名称字段显示非法字符提示，表单不进入保存成功状态。
+  - action: 关闭表单。
+    expected: 列表不出现包含非法名称的新规则。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-010
+  coverage_ids:
+  - COV-007-010-L2
+  plan_item_ids:
+  - PLAN-007-010
+  atomic_purpose_ids:
+  - AP-007-010
+  title: 查看规则列表，检查启用和停用状态
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 规则状态
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得同时包含启用和停用规则的批准脱敏只读数据。
+  steps:
+  - action: 在规则列表表格中查看“状态”列。
+    expected: 启用规则显示“启用”，停用规则显示“停用”，两种状态文本或标签可区分。
+  - action: 在状态筛选框选择“启用”并点击“查询”。
+    expected: 结果中的每条规则状态均为“启用”。
+
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-011
+  coverage_ids:
+  - COV-007-011-L3
+  plan_item_ids:
+  - PLAN-007-011
+  atomic_purpose_ids:
+  - AP-007-011
+  title: 停用规则后，检查新事件处理结果
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 状态切换
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得隔离规则、事件回读和状态切换批准证据。
+  steps:
+  - action: 定位状态为“启用”的目标规则，点击“停用”。
+    expected: 页面显示停用确认层；确认层包含目标规则标识和“确定”“取消”按钮。
+  - action: 点击确认层“确定”。
+    expected: 显示停用成功提示，目标规则状态更新为“停用”。
+  - action: 提交一条满足原规则条件的新设备事件，并按事件标识查询事件记录。
+    expected: 本次新事件不产生目标规则的新告警或动作记录。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-012
+  coverage_ids:
+  - COV-007-012-L3
+  plan_item_ids:
+  - PLAN-007-012
+  atomic_purpose_ids:
+  - AP-007-012
+  title: 停用规则后，检查已有告警处理状态
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 状态快照
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的处理中事件、状态切换时序和脱敏回读证据。
+  steps:
+  - action: 在告警记录中按目标规则和测试时间查询已产生的告警。
+    expected: 列表显示目标告警，且告警当前处理状态可读取。
+  - action: 返回规则列表，点击目标规则“停用”并在确认层点击“确定”。
+    expected: 目标规则状态更新为“停用”，显示停用成功提示。
+  - action: 重新打开同一告警详情并完成批准的处理操作。
+    expected: 告警详情和处理入口可用，处理结果按照告警产生时的规则状态完成，不因后续停用而改变历史触发状态。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-013
+  coverage_ids:
+  - COV-007-013-L3
+  plan_item_ids:
+  - PLAN-007-013
+  atomic_purpose_ids:
+  - AP-007-013
+  title: 满足设备属性条件，检查规则触发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 属性触发
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的设备属性条件、规则和只读触发结果证据。
+  steps:
+  - action: 按目标规则配置提交满足属性条件的设备数据。
+    expected: 数据提交成功，提交值与规则属性条件一致。
+  - action: 在告警记录中按设备标识和提交时间查询。
+    expected: 查询结果包含本次数据对应的新告警记录。
+  - action: 对比告警名称和属性触发器名称。
+    expected: 两者名称一致，告警记录关联目标规则。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-014
+  coverage_ids:
+  - COV-007-014-L3
+  plan_item_ids:
+  - PLAN-007-014
+  atomic_purpose_ids:
+  - AP-007-014
+  title: 满足设备事件条件，检查规则触发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 事件触发
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的设备事件、规则和脱敏触发结果证据。
+  steps:
+  - action: 提交满足事件监听条件的设备事件数据。
+    expected: 事件提交成功，事件字段值满足目标触发器条件。
+  - action: 按设备标识和提交时间查询告警记录。
+    expected: 查询结果包含本次事件对应的新告警记录。
+  - action: 对比告警名称和事件触发器名称。
+    expected: 两者名称一致。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-015
+  coverage_ids:
+  - COV-007-015-L3
+  plan_item_ids:
+  - PLAN-007-015
+  atomic_purpose_ids:
+  - AP-007-015
+  title: 满足设备状态条件，检查规则触发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 状态触发
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的设备状态、规则和脱敏触发结果证据。
+  steps:
+  - action: 提交满足状态监听条件的设备状态数据。
+    expected: 状态数据提交成功，状态值满足目标触发器条件。
+  - action: 按设备标识和提交时间查询告警记录。
+    expected: 查询结果包含本次状态数据对应的新告警记录。
+  - action: 对比告警名称和状态触发器名称。
+    expected: 两者名称一致。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-016
+  coverage_ids:
+  - COV-007-016-L3
+  plan_item_ids:
+  - PLAN-007-016
+  atomic_purpose_ids:
+  - AP-007-016
+  title: 满足单个监听器全部条件，检查规则触发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 条件 AND
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得单监听器多条件全部满足的批准脱敏证据。
+  steps:
+  - action: 提交同时满足单个监听器全部条件的设备数据。
+    expected: 数据提交成功，每个条件的实际值均满足配置值。
+  - action: 按设备标识和提交时间查询告警记录。
+    expected: 查询结果包含目标监听器对应的新告警。
+  - action: 对比告警与触发器配置。
+    expected: 告警名称和触发器名称一致。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-017
+  coverage_ids:
+  - COV-007-017-L3
+  plan_item_ids:
+  - PLAN-007-017
+  atomic_purpose_ids:
+  - AP-007-017
+  title: 单个监听器有条件不满足，检查规则不触发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 条件不满足
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得单监听器至少一个条件不满足的批准脱敏证据。
+  steps:
+  - action: 提交至少一个条件不满足的设备数据。
+    expected: 数据提交成功，指定不满足条件的实际值与配置值不一致。
+  - action: 按设备标识和提交时间查询告警记录。
+    expected: 查询结果不包含本次数据对应的目标触发告警。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-018
+  coverage_ids:
+  - COV-007-018-L3
+  plan_item_ids:
+  - PLAN-007-018
+  atomic_purpose_ids:
+  - AP-007-018
+  title: 任一监听器满足条件，检查规则触发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 条件 OR
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得多监听器中仅一个监听器满足的批准脱敏证据。
+  steps:
+  - action: 提交仅满足多个监听器中一个监听器条件的设备数据。
+    expected: 数据提交成功，至少一个监听器条件满足，其他监听器条件不满足。
+  - action: 查询本次设备数据对应的告警记录。
+    expected: 结果包含满足条件的监听器对应告警。
+  - action: 核对告警触发器名称。
+    expected: 告警名称与满足条件的监听器触发器名称一致。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-019
+  coverage_ids:
+  - COV-007-019-L3
+  plan_item_ids:
+  - PLAN-007-019
+  atomic_purpose_ids:
+  - AP-007-019
+  title: 所有监听器均不满足，检查规则不触发
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 监听器未满足
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得多监听器全部不满足的批准脱敏证据。
+  steps:
+  - action: 提交不满足全部监听器条件的设备数据。
+    expected: 数据提交成功，全部监听器条件均不满足。
+  - action: 查询本次设备数据对应的告警记录。
+    expected: 结果不包含目标规则产生的新触发告警。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-020
+  coverage_ids:
+  - COV-007-020-L3
+  plan_item_ids:
+  - PLAN-007-020
+  atomic_purpose_ids:
+  - AP-007-020
+  title: 查看动作配置，检查告警动作类型
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 执行动作
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得经批准的动作配置只读观察和脱敏规则数据。
+  steps:
+  - action: 打开目标监听规则的执行动作区域。
+    expected: 执行动作区域展开，并显示已配置动作。
+  - action: 查看推送、触发告警和取消告警选项。
+    expected: 每个实际存在的动作选项均显示明确名称，已配置动作的选中状态与规则数据一致。
+  - action: 关闭详情或取消编辑。
+    expected: 未产生新的推送或告警动作。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-021
+  coverage_ids:
+  - COV-007-021-L3
+  plan_item_ids:
+  - PLAN-007-021
+  atomic_purpose_ids:
+  - AP-007-021
+  title: 配置多个触发器，检查告警记录完整性
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 动作顺序
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的设备属性条件、监听规则和多触发器验证数据。
+  steps:
+  - action: 打开目标规则编辑表单并进入“触发器”页签，记录已有触发器名称和条件。
+    expected: 每个触发器的名称和条件均可读取。
+  - action: 提交一条同时满足多个触发器条件的设备消息。
+    expected: 消息提交成功，并记录设备标识和提交时间。
+  - action: 按设备标识、规则标识和提交时间查询告警记录。
+    expected: 查询结果包含每个触发器对应的一条新告警；不计入历史记录或其他设备记录。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-024
+  coverage_ids:
+  - COV-007-024-L3
+  plan_item_ids:
+  - PLAN-007-024
+  atomic_purpose_ids:
+  - AP-007-024
+  title: 新建规则时，检查停用依赖不可选
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 依赖状态
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得未发布产品、停用数据推送、停用告警配置及新建规则选择结果的批准证据。
+
+  steps:
+  - action: 在数据监听页面点击“新增监听规则”按钮。
+    expected: 新建监听规则表单成功打开，并显示产品、触发器和执行动作等配置区域。
+  - action: 在新建监听规则表单中展开产品选择框并查看未发布的产品。
+    expected: 未发布的产品不出现在产品选择框的可选项中，或显示为不可选择。
+  - action: 在配置监听器规则表单中展开产品选择框，查看已发布产品与未发布产品的选项状态。
+    expected: 已发布产品可按权限正常选择；未发布产品保持不可选，不能被回填到规则表单。
+  - action: 在配置触发器表单中选择执行类型“消息推送”，展开推送目标选择框并查看停用的数据推送。
+    expected: 停用的数据推送不出现在推送目标选择框的可选项中，或显示为不可选择，不能被回填。
+  - action: 在配置触发器表单中选择执行类型“触发告警”，展开告警配置选择框并查看停用的告警配置。
+    expected: 停用的告警配置不出现在告警配置选择框的可选项中，或显示为不可选择，不能被回填。
+  - action: 在配置触发器表单中选择执行类型“取消告警”，展开告警配置选择框并查看停用的告警配置。
+    expected: 停用的告警配置不出现在告警配置选择框的可选项中，或显示为不可选择，不能被回填。
+  - action: 点击“取消”。
+    expected: 表单关闭，未保存配置。
+
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-025
+  coverage_ids:
+  - COV-007-025-L3
+  plan_item_ids:
+  - PLAN-007-025
+  atomic_purpose_ids:
+  - AP-007-025
+  title: 停用依赖后，检查已有规则引用
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 已有引用
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已准备由该监听规则引用的、当前状态为“开启”的告警配置，并获得告警配置编辑和状态切换权限。
+  - 已获得告警配置停用后的已有监听规则配置回读证据；测试使用隔离的脱敏配置和测试数据。
+  steps:
+  - action: 在告警配置中定位被目标监听规则引用的配置，点击“编辑”，将状态改为“停用”并保存。
+    expected: 显示保存成功提示，配置状态回读为“停用”。
+  - action: 返回目标监听规则详情并查看动作配置。
+    expected: 原告警配置引用仍保留，未被自动替换或清空。
+  - action: 提交满足监听条件的设备消息并查询告警记录。
+    expected: 本次消息不产生停用告警配置对应的新告警，历史记录不计入本次结果。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-026
+  coverage_ids:
+  - COV-007-026-L3
+  plan_item_ids:
+  - PLAN-007-026
+  atomic_purpose_ids:
+  - AP-007-026
+  title: 删除已引用依赖，检查删除保护
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 依赖删除保护
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得被监听规则引用的推送目标或告警配置及批准只读删除反馈。
+  steps:
+  - action: 定位正在被监听规则引用的推送目标或告警配置，点击“删除”。
+    expected: 删除确认层显示目标标识及引用限制提示，并提供“确定”“取消”按钮。
+  - action: 点击“确定”。
+    expected: 页面显示引用保护提示，目标不从列表中删除。
+  - action: 刷新列表并按目标标识查询。
+    expected: 被引用目标仍存在，配置字段未改变。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-027
+  coverage_ids:
+  - COV-007-027-L3
+  plan_item_ids:
+  - PLAN-007-027
+  atomic_purpose_ids:
+  - AP-007-027
+  title: 重复上报设备事件，检查每次处理结果
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 重复事件
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已准备一条可用的监听规则及其监听器、触发器和执行动作配置，并获得批准的脱敏动作记录。
+  - 两次上报使用同一监听规则（规则ID相同），监听器、触发器和执行动作配置完全不变；仅两条事件记录的事件标识不同。
+  steps:
+  - action: 记录测试设备标识和待验证的监听规则ID。
+    expected: 已确认一条可用的监听规则；后续两条消息均发送给该规则，不创建或切换到另一条监听规则。
+  - action: 向同一监听规则先后发送两条消息，两条消息使用相同设备标识、事件类型和业务载荷，仅设置不同且唯一的事件标识“EVT-A-唯一值”和“EVT-B-唯一值”。
+    expected: 两条消息均成功触发同一个监听规则；监听器、触发器和执行动作配置完全相同，仅两条事件记录的唯一事件ID不同。
+  - action: 按设备标识查询处理记录，再分别使用“EVT-A-唯一值”和“EVT-B-唯一值”查询两条事件。
+    expected: 查询结果包含两条独立处理记录；每条记录保留对应事件标识，记录数量与提交事件数量一致。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-029
+  coverage_ids:
+  - COV-007-029-L2
+  plan_item_ids:
+  - PLAN-007-029
+  atomic_purpose_ids:
+  - AP-007-029
+  title: 查看创建时间，检查时区和时间格式
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 创建时间
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得用户时区、经授权规则和时间回读基线。
+  steps:
+  - action: 查看规则列表的创建时间列。
+    expected: 每个创建时间值包含页面定义的日期、时分和秒字段，格式一致。
+  - action: 记录当前账号或页面的时区设置。
+    expected: 时区设置显示明确值；未提供时区控件时记录页面未提供该控件。
+  - action: 刷新列表并重新查看同一规则创建时间。
+    expected: 创建时间数值和格式保持一致，不因刷新发生无依据变化。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-030
+  coverage_ids:
+  - COV-007-030-L3
+  plan_item_ids:
+  - PLAN-007-030
+  atomic_purpose_ids:
+  - AP-007-030
+  title: 查看规则列表，检查创建时间倒序
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 默认排序
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得至少两条创建时间不同的批准脱敏规则数据。
+  steps:
+  - action: 点击“刷新”并等待列表加载完成。
+    expected: 列表加载完成，显示规则记录或明确空状态。
+  - action: 查看创建时间列，记录至少两条规则的创建时间及行号。
+    expected: 每条记录的创建时间可读取。
+  - action: 比较相邻记录的创建时间。
+    expected: 规则按创建时间从新到旧排列，较新的记录位于较前行。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-033
+  coverage_ids:
+  - COV-007-033-L3
+  plan_item_ids:
+  - PLAN-007-033
+  atomic_purpose_ids:
+  - AP-007-033
+  title: 查看租户 A 规则，检查租户数据隔离
+  type: interface
+  auto: 'no'
+  priority: P3
+  feature: 租户内数据隔离
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得同租户脱敏规则数据和租户上下文。
+  - 租户隔离证据和稳定定位器待确认。
+  steps:
+  - action: 在租户 A 上下文查询规则列表。
+    expected: 页面显示当前租户标识，列表仅包含租户 A 授权规则。
+  - action: 记录租户 A 规则标识，并切换到租户 B 查询。
+    expected: 租户 B 列表仅显示租户 B 授权规则，不显示租户 A 专属规则。
+  - action: 返回租户 A 查询。
+    expected: 租户 A 数据恢复显示，租户 B 专属规则不出现在列表中。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-034
+  coverage_ids:
+  - COV-007-034-L3
+  plan_item_ids:
+  - PLAN-007-034
+  atomic_purpose_ids:
+  - AP-007-034
+  title: 跨租户访问，检查权限和数据隔离
+  type: interface
+  auto: 'no'
+  priority: P3
+  feature: 跨租户访问
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的跨租户隔离场景和权限矩阵。
+  - 禁止产生真实写入，跨租户反馈定位器待确认。
+  steps:
+  - action: 使用无权访问租户 B 的账号或上下文打开数据监听页面。
+    expected: 页面显示明确无权限提示，或页面可打开但不返回租户 B 业务数据。
+  - action: 查询租户 B 规则列表。
+    expected: 不显示租户 B 的规则名称、编号、状态或配置字段。
+  - action: 点击一个受保护操作入口。
+    expected: 操作被拒绝并显示权限提示，未产生数据变化。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-035
+  coverage_ids:
+  - COV-007-035-L3
+  plan_item_ids:
+  - PLAN-007-035
+  atomic_purpose_ids:
+  - AP-007-035
+  title: 查看无权操作入口，检查权限反馈
+  type: interface
+  auto: 'no'
+  priority: P3
+  feature: 操作授权
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得覆盖创建、编辑、启用/停用、删除的权限矩阵。
+  - 仅使用批准的静态或脱敏反馈证据。
+  steps:
+  - action: 使用已配置权限角色查看新增入口。
+    expected: 新增入口的显示、禁用或可操作状态与权限矩阵一致。
+  - action: 查看目标规则行的删除入口。
+    expected: 删除入口的显示、禁用或可操作状态与权限矩阵一致。
+  - action: 对无权删除操作执行点击。
+    expected: 页面显示权限提示或入口不可操作，规则数据不发生变化。
+  trace:
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 atomicity review applied
+- id: TC-REQ-007-036
+  coverage_ids:
+  - COV-007-036-L3
+  plan_item_ids:
+  - PLAN-007-036
+  atomic_purpose_ids:
+  - AP-007-036
+  title: 创建监听规则，检查保存结果和列表回显
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 创建成功闭环
+  steps:
+  - action: 点击“新增监听规则”，填写批准的名称、监听条件、动作和触发器。
+    expected: 各字段回显输入值，触发器和监听器配置数量正确。
+  - action: 点击“保存”。
+    expected: 显示保存成功提示，表单关闭或进入页面定义的提交完成状态。
+  - action: 刷新列表并定位新规则。
+    expected: 列表显示新规则，名称、编号、状态和创建时间均有值。
+  - action: 逐项核对新规则字段。
+    expected: 名称、编号、状态和创建时间与本次创建结果一致；按清理方案删除测试数据。
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions: &id001
+  - 具备数据监听页面访问权限，使用经批准的脱敏数据和权限矩阵；页面反馈与稳定定位器待确认。
+  - 不执行真实保存、编辑、启停、删除或监听动作，缺少运行证据时保持 blocked。
+  trace: &id002
+    req: REQ-007
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_page_inventory_and_permission_verification
+    source_review: REQ-007 core-flow-gap review applied
+- id: TC-REQ-007-037
+  coverage_ids:
+  - COV-007-037-L3
+  plan_item_ids:
+  - PLAN-007-037
+  atomic_purpose_ids:
+  - AP-007-037
+  title: 编辑监听规则，检查内容回显和编号
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 编辑成功闭环
+  steps:
+  - action: 定位隔离测试规则并点击“编辑”。
+    expected: 编辑表单打开，当前名称、条件和动作配置正确回填。
+  - action: 修改名称、触发条件和动作配置并点击“保存”。
+    expected: 显示保存成功提示，修改值提交完成。
+  - action: 重新打开规则详情。
+    expected: 名称、触发条件和动作配置显示修改后的值。
+  - action: 查看规则编号。
+    expected: 规则编号与修改前完全一致。
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions: *id001
+  trace: *id002
+- id: TC-REQ-007-038
+  coverage_ids:
+  - COV-007-038-L3
+  plan_item_ids:
+  - PLAN-007-038
+  atomic_purpose_ids:
+  - AP-007-038
+  title: 删除未引用规则，检查列表结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 删除或归档成功闭环
+  steps:
+  - action: 定位未被引用的隔离测试规则并点击“删除”。
+    expected: 删除确认层显示目标规则标识及“确定”“取消”按钮。
+  - action: 点击“取消”。
+    expected: 确认层关闭，目标规则仍在列表中。
+  - action: 再次点击“删除”并点击“确定”。
+    expected: 显示删除成功提示，确认层关闭。
+  - action: 刷新列表并按规则标识查询。
+    expected: 目标规则不再显示；若产品正式支持归档，归档场景另按批准规则验证。
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions: *id001
+  trace: *id002
+- id: TC-REQ-007-039
+  coverage_ids:
+  - COV-007-039-L3
+  plan_item_ids:
+  - PLAN-007-039
+  atomic_purpose_ids:
+  - AP-007-039
+  title: 停用规则后，检查新事件处理
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态切换成功闭环
+  steps:
+  - action: 定位一条启用规则，点击“停用”并在确认层点击“确定”。
+    expected: 显示停用成功提示，刷新后状态为“停用”。
+  - action: 提交停用后的新事件并查询记录。
+    expected: 新事件不产生目标触发结果。
+  - action: 查询停用前已进入处理流程的事件。
+    expected: 已进入处理流程的事件按触发时规则状态处理。
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions: *id001
+  trace: *id002
+- id: TC-REQ-007-040
+  common_preconditions_ref: CP-REQ-007-001
+  coverage_ids:
+  - COV-007-DELETE-RECREATE-L3
+  plan_item_ids:
+  - PLAN-007-DELETE-RECREATE
+  atomic_purpose_ids:
+  - AP-007-DELETE-RECREATE
+  scenario_branch: 删除后同表单内容重新创建
+  title: 删除规则后，用相同配置重新创建
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 删除后同表单重建
+  preconditions:
+  - 已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。
+  - 已记录删除前表单字段：规则名称、触发条件、设备范围及动作配置；删除后使用相同值，不使用原系统生成的唯一标识。
+  steps:
+  - action: 使用隔离数据创建一条监听规则并记录名称、条件、设备范围和动作配置。
+    expected: 创建成功，记录字段值完整。
+  - action: 删除该规则并刷新列表。
+    expected: 显示删除成功提示，目标规则不再出现在列表中。
+  - action: 使用完全相同的业务字段重新创建规则。
+    expected: 创建成功，未出现不应有的业务字段冲突。
+  - action: 刷新列表并打开新规则详情。
+    expected: 新规则可查询，业务字段与首次创建记录一致，系统生成新的规则编号。
+  - action: 清理测试数据。
+    expected: 本用例创建的数据全部删除或恢复到执行前状态。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/data/listener
+    data_prefix: REQ-007-DELETE-RECREATE-
+- id: TC-REQ-007-041
+  coverage_ids:
+  - COV-007-041-L3
+  plan_item_ids:
+  - PLAN-007-041
+  atomic_purpose_ids:
+  - AP-007-041
+  title: 新建规则，检查至少保留一个监听器
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 监听器数量校验
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的新增监听规则校验数据和只读验证授权。
+  steps:
+  - action: 点击“新增监听规则”，查看监听器配置区域。
+    expected: 默认显示至少一条监听器配置。
+  - action: 删除当前唯一的监听器。
+    expected: 删除操作不使监听器数量变为零；页面显示至少保留一条监听器的提示，或删除按钮处于禁用状态。
+  - action: 点击“取消”。
+    expected: 表单关闭，未保存配置。
+- id: TC-REQ-007-042
+  coverage_ids:
+  - COV-007-042-L3
+  plan_item_ids:
+  - PLAN-007-042
+  atomic_purpose_ids:
+  - AP-007-042
+  title: 新建规则，检查至少保留一个触发器
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 触发器数量校验
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得批准的新增监听规则校验数据和只读验证授权。
+  steps:
+  - action: 点击“新增监听规则”，查看触发器配置区域。
+    expected: 默认显示至少一条触发器配置。
+  - action: 删除触发器直到剩余一条，再次点击该条删除按钮。
+    expected: 触发器数量保持为一条，页面显示保留限制提示，或删除按钮处于禁用状态。
+  - action: 点击“取消”。
+    expected: 表单关闭，未保存配置。
+- id: TC-REQ-007-043
+  coverage_ids:
+  - COV-007-043-L3
+  plan_item_ids:
+  - PLAN-007-043
+  atomic_purpose_ids:
+  - AP-007-043
+  title: 新建规则，检查基础信息必填校验
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 基础信息必填校验
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得除目标字段外均有效的新增规则测试数据和只读验证授权。
+  steps:
+  - action: 点击“新增监听规则”，填写有效规则名称并保持规则状态为空。
+    expected: 名称字段有值，状态字段为空。
+  - action: 点击“保存”。
+    expected: 规则状态字段显示明确必填提示，表单保持打开且未创建规则。
+  - action: 填写规则状态并清空规则名称，再次点击“保存”。
+    expected: 规则名称字段显示明确必填提示，表单保持打开且未创建规则。
+- id: TC-REQ-007-044
+  coverage_ids:
+  - COV-007-044-L3
+  plan_item_ids:
+  - PLAN-007-044
+  atomic_purpose_ids:
+  - AP-007-044
+  title: 新建规则，检查监听器字段必填校验
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 监听器字段必填校验
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得除目标字段外均有效的监听器和新增规则测试数据，并获得只读验证授权。
+  steps:
+  - action: 点击“新增监听规则”，保留基础信息和触发器有效，清空监听器的触发事件类型。
+    expected: 触发事件类型字段为空，其余有效字段保持原值。
+  - action: 点击“保存”。
+    expected: 触发事件类型字段显示必填提示，表单保持打开。
+  - action: 保持其他监听器字段有效，清空产品字段并点击“保存”。
+    expected: 产品字段显示必填提示，表单保持打开且未创建规则。
+- id: TC-REQ-007-045
+  coverage_ids:
+  - COV-007-045-L3
+  plan_item_ids:
+  - PLAN-007-045
+  atomic_purpose_ids:
+  - AP-007-045
+  title: 新建规则，检查触发器字段必填校验
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 触发器字段必填校验
+  common_preconditions_ref: CP-REQ-007-001
+  preconditions:
+  - 已获得除目标字段外均有效的触发器和新增规则测试数据，并获得只读验证授权。
+  steps:
+  - action: 点击“新增监听规则”，保留基础信息和监听器有效，清空触发器执行类型。
+    expected: 执行类型字段为空，其他有效字段保持原值。
+  - action: 点击“保存”。
+    expected: 执行类型字段显示必填提示，表单保持打开。
+  - action: 恢复执行类型并清空告警配置，再次点击“保存”。
+    expected: 告警配置字段显示必填提示，未创建规则。

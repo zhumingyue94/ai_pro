@@ -1,0 +1,169 @@
+﻿{
+    "id": 52133,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 750,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "日期筛选后消息方向统计更新",
+    "precondition": "前置准备：\n1、已准备一个与默认日期范围不同的日期范围；默认日期范围为包含今天在内往前7天\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-29 10:08:33",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-11-04 17:20:17",
+    "version": 2,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 2,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176657,
+            "step": "查看首页日期范围控件的默认值",
+            "desc": "查看首页日期范围控件的默认值",
+            "expect": "默认日期范围为包含今天在内往前7天",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176658,
+            "step": "点击首页日期范围选择控件，打开日期范围面板",
+            "desc": "点击首页日期范围选择控件，打开日期范围面板",
+            "expect": "日期范围面板展开，并显示当前默认范围及可编辑的开始日期、结束日期",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 176659,
+            "step": "选择一个与默认日期范围不同的已准备日期范围并确认日期选择",
+            "desc": "选择一个与默认日期范围不同的已准备日期范围并确认日期选择",
+            "expect": "日期控件显示新选择的日期范围，页面按该范围重新查询并刷新消息统计区域",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "4",
+            "id": 176660,
+            "step": "在消息统计区域分别读取上行消息数量和下行消息数量",
+            "desc": "在消息统计区域分别读取上行消息数量和下行消息数量",
+            "expect": "上行消息数量和下行消息数量均按新选择的日期范围刷新展示，不应继续使用默认的包含今天往前7天范围",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 52133,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_52133",
+        "text": "日期筛选后消息方向统计更新",
+        "type": "root",
+        "children": [
+            {
+                "id": 176657,
+                "text": "查看首页日期范围控件的默认值",
+                "type": "sub",
+                "parent": "case_52133",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176657",
+                        "text": "默认日期范围为包含今天在内往前7天",
+                        "type": "node",
+                        "parent": 176657,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176658,
+                "text": "点击首页日期范围选择控件，打开日期范围面板",
+                "type": "sub",
+                "parent": "case_52133",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176658",
+                        "text": "日期范围面板展开，并显示当前默认范围及可编辑的开始日期、结束日期",
+                        "type": "node",
+                        "parent": 176658,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176659,
+                "text": "选择一个与默认日期范围不同的已准备日期范围并确认日期选择",
+                "type": "sub",
+                "parent": "case_52133",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176659",
+                        "text": "日期控件显示新选择的日期范围，页面按该范围重新查询并刷新消息统计区域",
+                        "type": "node",
+                        "parent": 176659,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176660,
+                "text": "在消息统计区域分别读取上行消息数量和下行消息数量",
+                "type": "sub",
+                "parent": "case_52133",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176660",
+                        "text": "上行消息数量和下行消息数量均按新选择的日期范围刷新展示，不应继续使用默认的包含今天往前7天范围",
+                        "type": "node",
+                        "parent": 176660,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

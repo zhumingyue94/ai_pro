@@ -1,0 +1,1272 @@
+req_id: REQ-APP-024
+module: APP上孵计划发货记录
+trace:
+  req: REQ-APP-024
+  project: 种禽孵化管理系统
+  version: 3
+  status: redesigned_after_rev_case
+  tp: TEST_PLAN-REQ-APP-024
+  source_review: REV_CASE_REQ-APP-024
+common_preconditions:
+- id: app_shipment_plan_records_access
+  name: APP上孵计划发货记录页面访问前置
+  steps:
+  - action: 打开小程序首页，切换到正确的孵化场，点击雏苗发货板块下的“雏苗发货”
+    expected: 进入雏苗发货首页（雏苗发货列表页），页面标题为“雏苗发货”
+  - action: 在发货单列表，点击目标发货单
+    expected: 到达发货执行页，页面显示发货单汇总区域和上孵计划列表
+  - action: 在发货执行页的目标上孵计划上点击“记录”入口
+    expected: 进入上孵计划发货记录页面，页面显示计划详情区域和历史发货记录区域
+cases:
+- id: TC-APP-024-003
+  title: 待发货计划展示计划号和待发货状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 上孵计划详情
+  coverage_ids:
+  - COV-APP024-PENDING-FIELDS
+  - COV-APP024-STATUS-PENDING
+  plan_item_ids:
+  - PLAN-APP024-PENDING-FIELDS
+  - PLAN-APP024-STATUS-PENDING
+  atomic_purpose_ids:
+  - AP-APP024-PENDING-IDENTITY
+  preconditions:
+  - 授权查询角色可用
+  - 已准备待发货计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看待发货计划的发货记录页面并查看计划详情区域
+    expected: 计划详情区域展示当前上孵计划号，计划状态显示为待发货
+    state_id: app024-pending-hp021
+    target_element_id: pending-plan-no
+    locator_ref:
+      element_id: pending-plan-no
+      strategy: text
+      value: 计划号
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-004
+  title: 待发货计划展示实际可发、累计、待分配和进度
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 数量指标
+  coverage_ids:
+  - COV-APP024-ACTUAL-AVAILABLE
+  - COV-APP024-CUMULATIVE-SHIPPED
+  - COV-APP024-PENDING-ASSIGN
+  - COV-APP024-PROGRESS
+  plan_item_ids:
+  - PLAN-APP024-METRICS
+  atomic_purpose_ids:
+  - AP-APP024-PENDING-METRICS
+  preconditions:
+  - 授权查询角色可用
+  - 已准备实际可发数可核对的待发货计划
+  - 已准备可切换的目标孵化场
+  - 已准备累计发货数可核对的计划
+  - 已准备待分配数可核对的计划
+  - 已准备进度值可核对的计划
+  steps:
+  - action: 在计划详情区域查看实际可发、累计发货、待分配和发货进度
+    expected: 实际可发数、累计发货数、待分配数和发货进度均与准备的可核对数据一致
+    state_id: app024-pending-hp021
+    target_element_id: pending-progress
+    locator_ref:
+      element_id: pending-progress
+      strategy: text
+      value: 实际可发
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-005
+  title: 无历史记录时展示空状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 历史发货记录
+  coverage_ids:
+  - COV-APP024-RECORDS-EMPTY
+  plan_item_ids:
+  - PLAN-APP024-RECORDS-EMPTY
+  atomic_purpose_ids:
+  - AP-APP024-RECORDS-EMPTY
+  preconditions:
+  - 授权查询角色可用
+  - 已准备无历史发货记录的有效计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在计划发货记录页面查看历史记录区域
+    expected: 历史记录区域显示暂无发货记录
+    state_id: app024-pending-hp021
+    target_element_id: pending-empty
+    locator_ref:
+      element_id: pending-empty
+      strategy: text
+      value: 暂无发货记录
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-006
+  title: 发货中计划展示发货中状态和历史记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 计划状态
+  coverage_ids:
+  - COV-APP024-STATUS-SHIPPING
+  - COV-APP024-SHIPPING-RECORDS
+  plan_item_ids:
+  - PLAN-APP024-STATUS-SHIPPING
+  - PLAN-APP024-SHIPPING-RECORDS
+  atomic_purpose_ids:
+  - AP-APP024-SHIPPING-STATUS-RECORDS
+  preconditions:
+  - 授权查询角色可用
+  - 已准备发货中的计划
+  - 已准备可切换的目标孵化场
+  - 已准备发货中计划和历史发货记录
+  steps:
+  - action: 查看发货中计划的状态和历史记录区域
+    expected: 计划状态显示为发货中，历史记录区域展示该计划的发货记录列表
+    state_id: app024-shipping-hp022
+    target_element_id: shipping-status
+    locator_ref:
+      element_id: shipping-status
+      strategy: text
+      value: 发货中
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-007
+  title: 已发货计划展示已发货状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 计划状态
+  coverage_ids:
+  - COV-APP024-STATUS-SHIPPED
+  plan_item_ids:
+  - PLAN-APP024-STATUS-SHIPPED
+  atomic_purpose_ids:
+  - AP-APP024-STATUS-SHIPPED
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货的计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看已发货计划的发货记录页面并查看计划状态
+    expected: 计划状态显示为已发货
+    state_id: app024-shipped-hp071
+    target_element_id: shipped-status
+    locator_ref:
+      element_id: shipped-status
+      strategy: text
+      value: 已发货
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: blocked_contract
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-008
+  title: 已签收计划仅在外部明确确认后显示已签收
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 签收状态
+  coverage_ids:
+  - COV-APP024-STATUS-SIGNED
+  plan_item_ids:
+  - PLAN-APP024-STATUS-SIGNED
+  atomic_purpose_ids:
+  - AP-APP024-STATUS-SIGNED
+  preconditions:
+  - 授权查询角色可用
+  - 已准备外部系统明确确认签收的计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看外部系统已明确确认签收的计划发货记录页面并查看计划状态
+    expected: 计划状态显示为已签收
+    state_id: app024-shipped-hp072
+    target_element_id: hp072-status
+    locator_ref:
+      element_id: hp072-status
+      strategy: text
+      value: 已签收
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: blocked_contract
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-009
+  title: 外部未确认签收时不显示已签收
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 签收状态
+  coverage_ids:
+  - COV-APP024-SIGN-UNCONFIRMED
+  plan_item_ids:
+  - PLAN-APP024-SIGN-UNCONFIRMED
+  atomic_purpose_ids:
+  - AP-APP024-SIGN-UNCONFIRMED
+  preconditions:
+  - 授权查询角色可用
+  - 已准备外部系统未明确确认签收的计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看外部系统未明确确认签收的计划发货记录页面并查看计划状态
+    expected: 计划状态不显示为已签收
+    state_id: app024-shipped-hp071
+    target_element_id: shipped-status
+    locator_ref:
+      element_id: shipped-status
+      strategy: text
+      value: 已发货
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: blocked_contract
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-010
+  title: 单条记录展示提交时间倒序中的首条记录
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 历史发货记录
+  coverage_ids:
+  - COV-APP024-RECORD-SORT
+  plan_item_ids:
+  - PLAN-APP024-RECORD-SORT
+  atomic_purpose_ids:
+  - AP-APP024-RECORD-SORT
+  preconditions:
+  - 授权查询角色可用
+  - 已准备至少两条提交时间不同的历史发货记录
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在历史发货记录区域查看记录列表的首条记录
+    expected: 首条记录的提交时间晚于其后记录的提交时间
+    state_id: app024-shipping-hp022
+    target_element_id: shipping-records
+    locator_ref:
+      element_id: shipping-records
+      strategy: css
+      value: .mobile-shipment-record-list
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-011
+  title: 记录展示列层位置明细（含多位置）
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 位置明细
+  coverage_ids:
+  - COV-APP024-POSITION-DETAIL
+  - COV-APP024-MULTI-POSITION
+  plan_item_ids:
+  - PLAN-APP024-POSITION-DETAIL
+  - PLAN-APP024-MULTI-POSITION
+  atomic_purpose_ids:
+  - AP-APP024-POSITION-DETAIL
+  preconditions:
+  - 授权查询角色可用
+  - 已准备包含列层位置的历史发货记录
+  - 已准备可切换的目标孵化场
+  - 已准备包含多个列层位置的单条发货记录
+  steps:
+  - action: 在历史发货记录中查看目标记录的列层位置明细
+    expected: 目标记录展示对应的列层位置，多位置记录展示每个列层位置及其对应数量
+    state_id: app024-shipping-record-expanded
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: text
+      value: 列层位置
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-012
+  title: 多位置记录数量合计与记录数量一致
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 位置明细
+  coverage_ids:
+  - COV-APP024-MULTI-POSITION-QTY
+  plan_item_ids:
+  - PLAN-APP024-MULTI-POSITION-QTY
+  atomic_purpose_ids:
+  - AP-APP024-MULTI-POSITION-QTY
+  preconditions:
+  - 授权查询角色可用
+  - 已准备位置数量可计算的发货记录
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 对照目标记录的各列层数量与记录数量
+    expected: 各列层数量合计等于该条发货记录数量
+    state_id: app024-shipping-record-expanded
+    target_element_id: hp072-position-accum
+    locator_ref:
+      element_id: hp072-position-accum
+      strategy: text
+      value: 位置累计
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+
+- id: TC-APP-024-016
+  title: 大数据量历史记录在两秒内完成加载
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 历史发货记录
+  coverage_ids:
+  - COV-APP024-RECORDS-PERFORMANCE
+  plan_item_ids:
+  - PLAN-APP024-RECORDS-PERFORMANCE
+  atomic_purpose_ids:
+  - AP-APP024-RECORDS-PERFORMANCE
+  preconditions:
+  - 授权查询角色可用
+  - 已准备大数据量历史发货记录和约定的计时环境
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开包含大数据量历史记录的计划发货记录页面并观察记录区域加载
+    expected: 历史记录区域在两秒内完成加载并可查看记录
+    state_id: app024-shipping-hp022
+    target_element_id: shipping-records
+    locator_ref:
+      element_id: shipping-records
+      strategy: css
+      value: .mobile-shipment-record-list
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-019
+  title: 返回按钮回到发货执行页
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 返回执行页
+  coverage_ids:
+  - COV-APP024-BACK-PAGE
+  plan_item_ids:
+  - PLAN-APP024-BACK-PAGE
+  atomic_purpose_ids:
+  - AP-APP024-BACK-PAGE
+  preconditions:
+  - 授权查询角色可用
+  - 已准备有效发货单和有效上孵计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 点击页面上的"返回"
+    expected: 返回发货执行页
+    state_id: app024-pending-hp021
+    target_element_id: pending-back
+    locator_ref:
+      element_id: pending-back
+      strategy: label
+      value: 返回
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-020
+  title: 返回后保留发货单上下文
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 返回执行页
+  coverage_ids:
+  - COV-APP024-BACK-SHIPMENT-CONTEXT
+  plan_item_ids:
+  - PLAN-APP024-BACK-CONTEXT
+  atomic_purpose_ids:
+  - AP-APP024-BACK-SHIPMENT-CONTEXT
+  preconditions:
+  - 授权查询角色可用
+  - 已准备有效发货单和有效上孵计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 点击页面上的"返回"
+    expected: 返回页面显示原发货单信息
+    state_id: app024-pending-hp021
+    target_element_id: pending-back
+    locator_ref:
+      element_id: pending-back
+      strategy: label
+      value: 返回
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-021
+  title: 返回后保留上孵计划上下文
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 返回执行页
+  coverage_ids:
+  - COV-APP024-BACK-PLAN-CONTEXT
+  plan_item_ids:
+  - PLAN-APP024-BACK-CONTEXT
+  atomic_purpose_ids:
+  - AP-APP024-BACK-PLAN-CONTEXT
+  preconditions:
+  - 授权查询角色可用
+  - 已准备有效发货单和有效上孵计划
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 点击页面上的"返回"
+    expected: 返回后仍显示原上孵计划
+    state_id: app024-pending-hp021
+    target_element_id: pending-back
+    locator_ref:
+      element_id: pending-back
+      strategy: label
+      value: 返回
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: open_evidence
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-025
+  title: 发货单号与进入路径一致
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单号
+  coverage_ids:
+  - COV-APP024-SHIPMENT-NO
+  plan_item_ids:
+  - PLAN-APP024-SHIPMENT-NO
+  atomic_purpose_ids:
+  - AP-APP024-SHIPMENT-NO
+  preconditions:
+  - 已准备可核对发货单号的有效发货单
+  steps:
+  - action: 记录发货执行页目标发货单号并点击目标上孵计划的记录入口
+    expected: 进入对应上孵计划发货记录页面
+  - action: 查看页面顶部发货单号
+    expected: 页面发货单号与进入路径记录的发货单号完全一致
+    state_id: app024-shipping-hp022
+    target_element_id: shipment-no
+    locator_ref:
+      element_id: shipment-no
+      strategy: text
+      value: 发货单号
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-027
+  title: 平均苗重取出雏任务
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-AVERAGE-CHICK-WEIGHT
+  preconditions:
+  - 已准备出雏任务平均苗重基准
+  steps:
+  - action: 查看目标上孵计划发货记录页面并查看平均苗重
+    expected: 平均苗重等于对应上孵计划出雏任务的平均苗重
+    state_id: app024-shipping-hp022
+    target_element_id: average-chick-weight
+    locator_ref:
+      element_id: average-chick-weight
+      strategy: text
+      value: 平均苗重
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-028
+  title: 养殖场取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-FARM
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划养殖场基准
+  steps:
+  - action: 查看页面养殖场字段
+    expected: 养殖场等于 PC 端计划管理对应上孵计划的养殖场
+    state_id: app024-shipping-hp022
+    target_element_id: farm
+    locator_ref:
+      element_id: farm
+      strategy: text
+      value: 养殖场
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-029
+  title: 养殖批次取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-BATCH
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划养殖批次基准
+  steps:
+  - action: 查看页面养殖批次字段
+    expected: 养殖批次等于 PC 端计划管理对应上孵计划的养殖批次
+    state_id: app024-shipping-hp022
+    target_element_id: batch
+    locator_ref:
+      element_id: batch
+      strategy: text
+      value: 养殖批次
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-030
+  title: 周龄取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-AGE
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划周龄基准
+  steps:
+  - action: 查看页面周龄字段
+    expected: 周龄等于 PC 端计划管理对应上孵计划的周龄
+    state_id: app024-shipping-hp022
+    target_element_id: age
+    locator_ref:
+      element_id: age
+      strategy: text
+      value: 周龄
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-031
+  title: 平均蛋重取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-AVERAGE-EGG-WEIGHT
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划平均蛋重基准
+  steps:
+  - action: 查看页面平均蛋重字段
+    expected: 平均蛋重等于 PC 端计划管理对应上孵计划的平均蛋重
+    state_id: app024-shipping-hp022
+    target_element_id: average-egg-weight
+    locator_ref:
+      element_id: average-egg-weight
+      strategy: text
+      value: 平均蛋重
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-032
+  title: 蛋重类型取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-EGG-WEIGHT-TYPE
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划蛋重类型基准
+  steps:
+  - action: 查看页面蛋重类型字段
+    expected: 蛋重类型等于 PC 端计划管理对应上孵计划的蛋重类型
+    state_id: app024-shipping-hp022
+    target_element_id: egg-weight-type
+    locator_ref:
+      element_id: egg-weight-type
+      strategy: text
+      value: 蛋重类型
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-033
+  title: 产蛋日期取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-EGG-DATE
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划产蛋日期基准
+  steps:
+  - action: 查看页面产蛋日期字段
+    expected: 产蛋日期等于 PC 端计划管理对应上孵计划的产蛋日期
+    state_id: app024-shipping-hp022
+    target_element_id: egg-date
+    locator_ref:
+      element_id: egg-date
+      strategy: text
+      value: 产蛋日期
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-034
+  title: 出雏日期取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-HATCH-DATE
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划出雏日期基准
+  steps:
+  - action: 查看页面出雏日期字段
+    expected: 出雏日期等于 PC 端计划管理对应上孵计划的出雏日期
+    state_id: app024-shipping-hp022
+    target_element_id: hatch-date
+    locator_ref:
+      element_id: hatch-date
+      strategy: text
+      value: 出雏日期
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-035
+  title: 计划备注取计划管理数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 雏苗信息
+  coverage_ids:
+  - COV-APP024-CHICK-INFO
+  plan_item_ids:
+  - PLAN-APP024-CHICK-INFO
+  atomic_purpose_ids:
+  - AP-APP024-PLAN-REMARK
+  preconditions:
+  - 已准备 PC 端计划管理上孵计划备注基准
+  steps:
+  - action: 查看页面计划备注字段
+    expected: 备注等于 PC 端计划管理对应上孵计划的备注
+    state_id: app024-shipping-hp022
+    target_element_id: plan-remark
+    locator_ref:
+      element_id: plan-remark
+      strategy: text
+      value: 备注
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-036
+  title: 记录显示本次发货数量
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录字段
+  coverage_ids:
+  - COV-APP024-RECORD-FIELDS
+  plan_item_ids:
+  - PLAN-APP024-RECORD-FIELDS
+  atomic_purpose_ids:
+  - AP-APP024-THIS-SHIPMENT
+  preconditions:
+  - 已准备可核对本次发货数量的历史记录
+  steps:
+  - action: 查看目标发货记录的本次发货字段
+    expected: 本次发货字段显示该记录提交的本次发货数量
+    state_id: app024-shipping-hp022
+    target_element_id: this-shipment
+    locator_ref:
+      element_id: this-shipment
+      strategy: text
+      value: 本次发货
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-037
+  title: 记录剩余发货按提交时待发货计算
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录字段
+  coverage_ids:
+  - COV-APP024-REMAINING-SHIPMENT
+  plan_item_ids:
+  - PLAN-APP024-REMAINING-SHIPMENT
+  atomic_purpose_ids:
+  - AP-APP024-REMAINING-SHIPMENT
+  preconditions:
+  - 已准备提交时待发货数和本次发货数量均可核对的历史记录
+  steps:
+  - action: 查看目标记录的剩余发货字段并按提交时待发货数减本次发货数复核
+    expected: 剩余发货等于提交当时待发货数减去本次发货数量
+    state_id: app024-shipping-hp022
+    target_element_id: remaining-shipment
+    locator_ref:
+      element_id: remaining-shipment
+      strategy: text
+      value: 剩余发货
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-038
+  title: 发货位置显示位置数量
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录字段
+  coverage_ids:
+  - COV-APP024-SHIPMENT-POSITION-COUNT
+  plan_item_ids:
+  - PLAN-APP024-SHIPMENT-POSITION-COUNT
+  atomic_purpose_ids:
+  - AP-APP024-POSITION-COUNT
+  preconditions:
+  - 已准备本次发货涉及位置数量可核对的记录
+  steps:
+  - action: 查看目标记录的发货位置字段
+    expected: 发货位置显示为“n处”，n等于本次发货数量大于零的位置数
+    state_id: app024-shipping-record-expanded
+    target_element_id: shipment-position-count
+    locator_ref:
+      element_id: shipment-position-count
+      strategy: text
+      value: 发货位置
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-039
+  title: 操作人显示发货提交用户
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录字段
+  coverage_ids:
+  - COV-APP024-OPERATOR
+  plan_item_ids:
+  - PLAN-APP024-OPERATOR
+  atomic_purpose_ids:
+  - AP-APP024-OPERATOR
+  preconditions:
+  - 已准备可核对完成本次发货用户的记录
+  steps:
+  - action: 查看目标发货记录的操作人字段
+    expected: 操作人等于完成该次发货提交的用户
+    state_id: app024-shipping-record-expanded
+    target_element_id: operator
+    locator_ref:
+      element_id: operator
+      strategy: text
+      value: 操作人
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-040
+  title: 有备注位置显示备注行
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置备注
+  coverage_ids:
+  - COV-APP024-POSITION-REMARK
+  plan_item_ids:
+  - PLAN-APP024-POSITION-REMARK
+  atomic_purpose_ids:
+  - AP-APP024-POSITION-REMARK-YES
+  preconditions:
+  - 已准备带备注的位置发货记录
+  steps:
+  - action: 查看带备注位置的明细
+    expected: 对应位置行下方插入备注行，备注内容与该位置提交备注一致
+    state_id: app024-shipping-record-expanded
+    target_element_id: position-remark-row
+    locator_ref:
+      element_id: position-remark-row
+      strategy: text
+      value: 备注
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-041
+  title: 无备注位置隐藏备注行
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置备注
+  coverage_ids:
+  - COV-APP024-POSITION-REMARK
+  plan_item_ids:
+  - PLAN-APP024-POSITION-REMARK
+  atomic_purpose_ids:
+  - AP-APP024-POSITION-REMARK-NO
+  preconditions:
+  - 已准备无备注的位置发货记录
+  steps:
+  - action: 查看无备注位置的明细区域
+    expected: 不显示备注行和空备注占位内容
+    state_id: app024-shipping-record-expanded
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: css
+      value: .mobile-shipment-record-list
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-042
+  title: 历史记录保留提交时剩余发货快照
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录字段
+  coverage_ids:
+  - COV-APP024-REMAINING-SHIPMENT
+  plan_item_ids:
+  - PLAN-APP024-REMAINING-SHIPMENT
+  atomic_purpose_ids:
+  - AP-APP024-REMAINING-SNAPSHOT
+  preconditions:
+  - 已准备同一计划先后提交的两条发货记录
+  steps:
+  - action: 对照第一次记录提交时的剩余发货基准查看第一次记录
+    expected: 第一次记录的剩余发货保持其提交时计算结果，不被后续记录改写
+    state_id: app024-shipping-hp022
+    target_element_id: remaining-shipment
+    locator_ref:
+      element_id: remaining-shipment
+      strategy: text
+      value: 剩余发货
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-043
+  title: 上孵计划号与入口计划一致
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 上孵计划号
+  coverage_ids:
+  - COV-APP024-PLAN-NO
+  plan_item_ids:
+  - PLAN-APP024-PLAN-NO
+  atomic_purpose_ids:
+  - AP-APP024-PLAN-NO
+  preconditions:
+  - 已准备可核对上孵计划号的有效计划
+  steps:
+  - action: 查看目标计划发货记录页面顶部计划号
+    expected: 目标计划号与入口点击的目标计划号一致
+  - action: 查看页面顶部上孵计划号
+    expected: 页面计划号与入口点击的目标计划号一致
+    state_id: app024-shipping-hp022
+    target_element_id: plan-no
+    locator_ref:
+      element_id: plan-no
+      strategy: text
+      value: 计划号
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-044
+  title: 未发完计划状态显示发货中
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划状态
+  coverage_ids:
+  - COV-APP024-STATUS-SHIPPING
+  plan_item_ids:
+  - PLAN-APP024-STATUS-SHIPPING
+  atomic_purpose_ids:
+  - AP-APP024-STATUS-UNFINISHED-MAPPING
+  preconditions:
+  - 已准备发货执行页状态为未发完的计划
+  steps:
+  - action: 查看计划状态
+    expected: 记录页严格显示发货中，不显示已发完
+    state_id: app024-shipping-hp022
+    target_element_id: shipping-status
+    locator_ref:
+      element_id: shipping-status
+      strategy: text
+      value: 发货中
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-045
+  title: 实际可发等于健雏数
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量指标
+  coverage_ids:
+  - COV-APP024-ACTUAL-AVAILABLE
+  plan_item_ids:
+  - PLAN-APP024-METRICS
+  atomic_purpose_ids:
+  - AP-APP024-ACTUAL-AVAILABLE-SOURCE
+  preconditions:
+  - 已准备出雏任务健雏数基准
+  steps:
+  - action: 查看计划详情实际可发
+    expected: 实际可发等于对应出雏任务的健雏数
+    state_id: app024-pending-hp021
+    target_element_id: actual-available
+    locator_ref:
+      element_id: actual-available
+      strategy: text
+      value: 实际可发
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-046
+  title: 已发货等于本次发货合计
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量指标
+  coverage_ids:
+  - COV-APP024-CUMULATIVE-SHIPPED
+  plan_item_ids:
+  - PLAN-APP024-METRICS
+  atomic_purpose_ids:
+  - AP-APP024-SHIPPED-SUM
+  preconditions:
+  - 已准备至少两条本次发货数量可核对的历史记录
+  steps:
+  - action: 逐条读取历史记录本次发货并求和后查看已发货
+    expected: 已发货等于全部历史记录本次发货数量之和
+    state_id: app024-shipping-hp022
+    target_element_id: shipped-total
+    locator_ref:
+      element_id: shipped-total
+      strategy: text
+      value: 已发货
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-047
+  title: 待发货数按实际可发数减已发货数计算
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量指标
+  coverage_ids:
+  - COV-APP024-PENDING-ASSIGN
+  plan_item_ids:
+  - PLAN-APP024-METRICS
+  atomic_purpose_ids:
+  - AP-APP024-PENDING-DIFF
+  preconditions:
+  - 已准备实际可发和已发货基准
+  steps:
+  - action: 用实际可发减已发货后核对待发货
+    expected: 待发货等于实际可发减已发货
+    state_id: app024-pending-hp021
+    target_element_id: pending-shipped
+    locator_ref:
+      element_id: pending-shipped
+      strategy: text
+      value: 待发货
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-048
+  title: 发货进度按已发货数除以实际可发数计算
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量指标
+  coverage_ids:
+  - COV-APP024-PROGRESS
+  plan_item_ids:
+  - PLAN-APP024-METRICS
+  atomic_purpose_ids:
+  - AP-APP024-PROGRESS-RATIO
+  preconditions:
+  - 已准备实际可发大于0且已发货小于等于实际可发的基准数据
+  steps:
+  - action: 回读页面显示的已发货和实际可发，按已发货除以实际可发乘以100%核对进度
+    expected: 进度等于已发货/实际可发×100%，按整数四舍五入并显示百分号
+    state_id: app024-shipping-hp022
+    target_element_id: progress
+    locator_ref:
+      element_id: progress
+      strategy: text
+      value: 进度
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-049
+  title: 记录标题数量与列表一致
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 记录列表标题
+  coverage_ids:
+  - COV-APP024-RECORD-COUNT
+  plan_item_ids:
+  - PLAN-APP024-RECORD-COUNT
+  atomic_purpose_ids:
+  - AP-APP024-RECORD-COUNT
+  preconditions:
+  - 已准备记录数量可核对的有效计划
+  steps:
+  - action: 查看历史记录区域标题并统计完整记录列表数量
+    expected: 标题右侧显示“共 n 条”，n等于完整历史记录数量
+    state_id: app024-shipping-hp022
+    target_element_id: record-count
+    locator_ref:
+      element_id: record-count
+      strategy: text
+      value: 共
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-050
+  title: 发货时间取提交时间并按年月日时分秒格式显示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录字段
+  coverage_ids:
+  - COV-APP024-RECORD-TIME
+  plan_item_ids:
+  - PLAN-APP024-RECORD-TIME
+  atomic_purpose_ids:
+  - AP-APP024-TIME-FORMAT
+  preconditions:
+  - 已准备可核对提交时间的历史记录
+  steps:
+  - action: 查看每条历史记录的发货时间并对照提交时间
+    expected: 发货时间等于提交时间，且格式严格为YYYY-MM-DD HH:SS
+    state_id: app024-shipping-hp022
+    target_element_id: shipping-time
+    locator_ref:
+      element_id: shipping-time
+      strategy: css
+      value: .mobile-shipment-record-list
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-051
+  title: 记录状态按剩余发货判断
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录状态
+  coverage_ids:
+  - COV-APP024-RECORD-STATUS
+  plan_item_ids:
+  - PLAN-APP024-RECORD-STATUS
+  atomic_purpose_ids:
+  - AP-APP024-RECORD-STATUS-RULE
+  preconditions:
+  - 已准备剩余发货大于零和等于零的记录
+  steps:
+  - action: 查看一条剩余发货大于零的记录和一条剩余发货等于零的记录
+    expected: 剩余发货大于零显示未发完，等于零显示已发完
+    state_id: app024-shipped-hp072
+    target_element_id: record-status
+    locator_ref:
+      element_id: record-status
+      strategy: text
+      value: 未发完
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+- id: TC-APP-024-052
+  title: 位置明细展示字段并按位置数量公式计算
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 位置明细
+  coverage_ids:
+  - COV-APP024-POSITION-DETAIL
+  plan_item_ids:
+  - PLAN-APP024-POSITION-DETAIL
+  atomic_purpose_ids:
+  - AP-APP024-POSITION-FIELDS
+  preconditions:
+  - 已准备含历史累计和本次新增的多位置记录
+  steps:
+  - action: 查看每个位置的层列、位置累计和新增
+    expected: 层列严格为m列n层；位置累计等于历史累计加本次发货；新增等于当前位置本次发货数量
+    state_id: app024-shipping-record-expanded
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: css
+      value: .mobile-shipment-record-list
+  trace:
+    req: REQ-APP-024
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_plan_records_access
+summary:
+  case_count: 52
+  blocked: 52
+  coverage_complete: true
+  type_counts:
+    feature: 52
+    interface: 0
+    auto: 0
+  auto_counts:
+    auto: 52
+    'no': 0
+  priority_counts:
+    P1: 13
+    P2: 26
+    P3: 10
+    P4: 3

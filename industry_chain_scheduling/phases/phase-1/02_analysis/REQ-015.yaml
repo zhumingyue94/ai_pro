@@ -1,0 +1,477 @@
+id: REQ-015
+title: 栋舍管理
+parent_req: REQ-000
+zentao_module_id: null
+page_url: /apm/bases/house
+module_complexity: standard_crud
+testpoint_template: 标准CRUD审核
+summary: '基础数据-栋舍管理：维护栋舍主数据。支持按编码/名称/状态查询；手工新增与编辑（类型、关联线体、面积、设计容量等）； 行级停用与批量启停删；以及从数据中台「同步数据」引入源栋舍。无审核流、无独立查看。
+  关联线体当前为手输，未开引用弹窗。中台同步接口异常致弹窗无有效数据；同步表头实察含「品种名称」，接口恢复后需复核是否缺陷。
+
+  '
+in_scope:
+- 栋舍列表查询与重置
+- 新增/编辑栋舍（弹窗确定/取消）
+- 行级停用确认；批量启用/停用/删除（启用态拦截按同类推断，待复核）
+- 同步数据弹窗壳层；中台→本系统同步（依赖接口可用）
+- 列表列展示、分页、刷新、表头设置
+out_scope:
+- 宰杀线主数据维护本身（REQ-014）
+- 品种/饲料其它基础数据（REQ-012/013）
+- 数据中台侧源数据维护
+- 补栏看板对栋舍容量的消费细则（下游）
+business_rules:
+- 状态枚举：启用 / 停用
+- 新增时栋舍编码系统预填（可改，前缀 DS…），栋舍名称必填；空提交提示「栋舍名称不能为空」
+- 栋舍编码本表唯一：改为库中已存在编码须唯一性拦截（文案待确认）
+- 栋舍名称本表唯一：填已存在名称须唯一性拦截（是否强制及文案待确认）
+- 栋舍类型、关联线体编码/名称、面积(㎡)、设计容量(万只)：可编辑、非必填（观察）；类型为普通 input 非下拉
+- 关联线体：手工输入，未观察到选择弹窗
+- 编辑时栋舍编码只读；其余业务字段可改
+- 行状态=启用时操作：编辑、停用；停用确认「确定要停用该栋舍吗？」
+- 未勾选行时批量删除/启用/停用 disabled
+- 批量删除启用态拦截：同类 toast 预期（本页未重复点删，待复核）
+- 「同步数据」：从数据中台选源同步到本系统栋舍；未勾选提交 disabled；当前接口异常无有效行数据
+- 中台「源数据编码」在本系统唯一：已同步源再提交须冲突/跳过，不重复写入
+- 同步批量勾选含新源与已存在源时：新源可写入、已存在源不重复（细则待确认）
+- 同步结果与手工已存在栋舍编码冲突时按产品规则拦截或映射（待确认）
+roles:
+- 管理员账户（本次侦察唯一角色；其它角色矩阵未测）
+interfaces:
+- 页面 /apm/bases/house
+- 数据中台（同步数据弹窗）
+- 宰杀线管理（关联线体手输对齐，待确认）
+risks:
+- 中台接口异常 → 同步有数路径无法验证；表头「品种名称」可能掩盖真实列结构
+- 关联线体手输无校验 → 与宰杀线主数据不一致
+- 停用栋舍对补栏/排程影响未提示
+open_questions:
+- 中台接口修复后：栋舍同步列是否应为栋舍字段？当前「品种名称」是否缺陷？
+- 同步混合勾选、与手工栋舍编码冲突时的精确产品规则？
+- 关联线体是否应改为引用宰杀线选择器？
+- 栋舍类型取值规范（自由文本 vs 字典）？
+- 同步成功后源字段落在哪一列、备注是否自动写「数据同步」？
+- 停用后删除确认文案与是否物理删除？
+- 面积/设计容量精度、上下限？
+- 栋舍名称唯一性是否强制及前后端文案？
+- 多角色权限差异？
+test_scope_suggestion:
+- P1：新增保存成功；编辑编码只读；停用确认；启用态删除拦截（复核）
+- P1：同步弹窗打开/关键字/未选提交 disabled；接口恢复后补勾选提交与列名/回填（depends_on_data_hub）
+- P2：查询/重置；关联线体手输展示；面积/容量录入；批量启停
+- P3：分页、刷新、表头、备注「数据同步」历史痕迹观察
+- 禁止：虚构审核/查看；勿因接口异常删除同步测点；勿把关联线体写成已有引用弹窗列集
+prototype_verification:
+  page_chrome:
+    menu_path: 基础数据 / 栋舍管理
+    doc_title: 产业链生产排程系统 - 栋舍管理
+    tags:
+    - 首页
+    - 栋舍管理
+    toolbar_buttons:
+    - 查询
+    - 重置
+    - 删除
+    - 启用
+    - 停用
+    - 刷新
+    - 表头设置
+    - 新增
+    - 同步数据
+    view_tabs: N/A
+    calendar: N/A
+  query_fields:
+  - 栋舍编码
+  - 栋舍名称
+  - 状态
+  query_field_specs:
+  - name: 栋舍编码
+    control: input
+    editable: true
+    placeholder: 请输入栋舍编码
+  - name: 栋舍名称
+    control: input
+    editable: true
+    placeholder: 请输入栋舍名称
+  - name: 状态
+    control: select
+    editable: true
+    options_source: 枚举启用/停用
+    placeholder: 请选择状态
+  table_columns:
+  - 勾选
+  - 栋舍编码
+  - 栋舍名称
+  - 栋舍类型
+  - 关联线体编码
+  - 关联线体名称
+  - 面积(㎡)
+  - 设计容量(万只)
+  - 状态
+  - 备注
+  - 创建时间
+  - 更新时间
+  - 创建人
+  - 更新人
+  - 操作
+  table_column_specs:
+  - name: 栋舍编码
+    notes: 文本；前缀 DS…
+  - name: 关联线体编码/名称
+    notes: 列表可空「-」；与宰杀线关联线索
+  - name: 面积(㎡)
+    notes: 数值
+  - name: 设计容量(万只)
+    notes: 数值；样例含小数
+  - name: 备注
+    notes: 部分行含「数据同步」（历史同步痕迹）
+  - name: 操作
+    notes: 启用行见编辑、停用
+  form_fields:
+  - 栋舍编码
+  - 栋舍名称
+  - 栋舍类型
+  - 关联线体编码
+  - 关联线体名称
+  - 面积(㎡)
+  - 设计容量(万只)
+  - 状态
+  - 备注
+  form_field_specs:
+  - name: 栋舍编码
+    control: input
+    editable: true
+    required: true
+    scope: 新增弹窗
+    source: 系统自动生成（可改）
+    notes: 前缀 DS…
+  - name: 栋舍编码
+    control: input
+    editable: false
+    required: true
+    scope: 编辑弹窗
+    source: 已有档案
+    notes: 编辑只读
+  - name: 栋舍名称
+    control: input
+    editable: true
+    required: true
+    scope: 新增/编辑弹窗
+    validation: 不能为空（空提交提示「栋舍名称不能为空」）
+  - name: 栋舍类型
+    control: input
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+    notes: 观察为普通 input，非下拉
+  - name: 关联线体编码
+    control: input
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+    source: 手工输入
+    notes: 未开引用弹窗
+  - name: 关联线体名称
+    control: input
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+    source: 手工输入
+  - name: 面积(㎡)
+    control: number
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+  - name: 设计容量(万只)
+    control: number
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+  - name: 状态
+    control: select
+    editable: true
+    required: true
+    scope: 新增/编辑弹窗
+    options_source: 启用/停用
+  - name: 备注
+    control: textarea
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+    placeholder: 请输入备注
+  buttons:
+  - 查询
+  - 重置
+  - 新增
+  - 编辑
+  - 停用
+  - 启用
+  - 删除
+  - 同步数据
+  - 刷新
+  - 表头设置
+  button_semantics:
+    新增:
+      action: open_dialog
+      summary: 打开新增表单；编码预填；确定/取消
+    编辑:
+      action: open_dialog
+      summary: 打开编辑表单；栋舍编码只读
+    停用:
+      action: confirm
+      scope: 行操作（启用态）
+      summary: 「确定要停用该栋舍吗？」
+    启用:
+      action: batch_or_row_status
+      summary: 批量有勾选可点；行启用待实察停用态
+    删除:
+      action: batch_delete
+      summary: 启用态拦截 toast 按同类推断，待执行复核
+    同步数据:
+      action: open_nested_dialog
+      dialog: 同步数据
+      summary: 从数据中台选源同步到本系统栋舍；当前接口异常致弹窗无有效数据
+    查询:
+      action: filter_list
+      summary: 按编码/名称/状态过滤
+    重置:
+      action: clear_query
+      summary: 清空查询条件
+  dialogs:
+    新增/编辑:
+    - 取消
+    - 确定
+    同步数据:
+    - 搜索
+    - 重置
+    - 取消
+    - 提交
+  nested_dialogs:
+  - name: 同步数据
+    type: reference_multi_select
+    source: 数据中台
+    target: 本系统栋舍档案
+    query_fields:
+    - name: 关键字
+      control: input
+      placeholder: 请输入编码或名称
+    table_columns:
+    - 源数据编码
+    - 品种名称
+    - 来源系统
+    buttons:
+    - 搜索
+    - 重置
+    - 取消
+    - 提交
+    notes: '提交未勾选时 disabled。空表因中台接口异常，非「中台无栋舍」。 表头「品种名称」与品种同步一致，接口恢复后复核是否应为栋舍名称等。
+      中台源数据编码须本系统唯一：重复同步冲突/跳过；混合勾选时新源写入、已存在源不重复； 与手工栋舍编码冲突规则待确认。tags 建议 depends_on_data_hub。
+
+      '
+  save_validations:
+  - trigger: 新增空表点确定
+    message: 栋舍名称不能为空
+  - trigger: 新增栋舍编码与库中已有重复
+    message: 唯一性拦截（具体文案待确认）
+  - trigger: 新增栋舍名称与库中已有重复
+    message: 唯一性拦截（是否强制、文案待确认）
+  - trigger: 同步提交源数据编码已存在于本系统
+    message: 冲突/跳过（文案待中台接口恢复确认）
+  - trigger: 同步批量含已存在源与新源
+    message: 新源写入、已存在源不重复（细则待确认）
+  - trigger: 同步结果与手工已存在栋舍编码冲突
+    message: 拦截或映射（待确认）
+  - trigger: 行停用
+    message: 确定要停用该栋舍吗？
+  - trigger: 批量删除启用数据
+    message: 选择的数据均为启用状态，无法删除（同类推断，待复核）
+  ui_components:
+  - 查询表单
+  - 数据表格（多选）
+  - 分页
+  - 新增/编辑弹窗
+  - 同步数据弹窗
+  - MessageBox 确认
+  - Message toast
+  cross_module_refs:
+  - from: 数据中台
+    to: 栋舍管理
+    via: 同步数据弹窗
+    fields:
+    - 源数据编码
+    - 品种名称（实察列名，待复核）
+    - 来源系统
+  - from: 栋舍管理
+    to: 宰杀线管理
+    via: 关联线体编码/名称手输
+    notes: 非引用弹窗；完整性风险
+  concurrency_checks: skip
+  concurrency_checks_reason: 未观察多人协作
+  role_coverage: skip
+  role_coverage_reason: 仅管理员账户；禁止角色灌水测点
+  calendar_actions: N/A
+  calendar_ui_specs: N/A
+  detail_table_specs: N/A
+trace:
+  story: null
+  project: 产业链生产排程系统
+  version: 1
+  status: draft
+  req: REQ-015
+  tp: null
+  source: 01_requirements/REQ-基础数据_page_recon.md
+design_artifacts:
+  state_transitions:
+  - name: 栋舍启用状态
+    states:
+    - 启用
+    - 停用
+    legal:
+    - from: 启用
+      to: 停用
+      trigger: 行停用确认确定 / 批量停用
+    - from: 停用
+      to: 启用
+      trigger: 批量启用（及预期行启用，待实察）
+    illegal:
+    - from: 启用
+      action: 批量删除
+      expected: toast 拦截（待复核）
+  decision_tables:
+  - name: 列表查询
+    conditions:
+    - 栋舍编码
+    - 栋舍名称
+    - 状态
+    rules:
+    - when: 单条件或组合
+      then: AND 过滤
+    - when: 重置
+      then: 清空恢复
+  - name: 删除可否
+    conditions:
+    - 所选行状态集合
+    rules:
+    - when: 全为启用
+      then: toast 拦截（待复核）
+    - when: 含停用
+      then: 删除确认或成功（未观察）
+  - name: 工具栏批量按钮
+    conditions:
+    - 勾选条数
+    rules:
+    - when: 已选 0 条
+      then: 删除/启用/停用 disabled
+    - when: 已选 ≥1 条
+      then: 可点
+  - name: 同步提交
+    conditions:
+    - 是否勾选中台行
+    - 中台接口状态
+    rules:
+    - when: 未勾选
+      then: 提交 disabled
+    - when: 已勾选且接口正常
+      then: 提交写入本系统（待验证）
+    - when: 接口异常
+      then: 无有效数据，无法完成有数同步
+  bva_fields:
+  - field: 栋舍名称
+    type: string
+    boundaries:
+    - 空
+    - 1字符
+    - 常规
+    - 超长
+  - field: 面积(㎡)
+    type: decimal
+    notes: 非必填
+    boundaries:
+    - 空
+    - 0
+    - 正数
+    - 极大值
+    - 负数
+  - field: 设计容量(万只)
+    type: decimal
+    notes: 非必填；样例 10.0000 / 100.0000
+    boundaries:
+    - 空
+    - 0
+    - 正数
+    - 极大值
+    - 负数
+  - field: 栋舍编码
+    type: string
+    notes: 新增预填可改；编辑只读
+    boundaries:
+    - 系统预填
+    - 手工修改
+    - 空
+  combinatorial_blocks:
+  - name: 列表查询三条件
+    pict_eligible: false
+    notes: 仅 3 查询参数
+    parameters:
+      栋舍编码:
+      - 有匹配
+      - 无匹配
+      - 空
+      栋舍名称:
+      - 有匹配
+      - 无匹配
+      - 空
+      状态:
+      - 启用
+      - 停用
+      - 空
+  - name: 同步数据弹窗（接口可用时）
+    pict_eligible: true
+    notes: 依赖中台接口；≥4 参数交互建议 PICT
+    parameters:
+      关键字:
+      - 空
+      - 有匹配
+      - 无匹配
+      勾选行数:
+      - 0
+      - 1
+      - 多行
+      源是否已在本系统:
+      - 新源
+      - 已同步过
+      操作:
+      - 搜索
+      - 重置
+      - 取消
+      - 提交
+    constraints:
+    - IF 勾选行数=0 THEN 提交不可用
+  - name: 新增扩展字段
+    pict_eligible: false
+    notes: 类型/线体/面积/容量组合用等价类即可
+    parameters:
+      栋舍类型:
+      - 空
+      - 有值
+      关联线体:
+      - 空
+      - 有编码名称
+      面积与容量:
+      - 皆空
+      - 仅面积
+      - 仅容量
+      - 皆有
+permission_scope:
+  owner: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-015
+  testpoints_ref: 03_testpoints/TP_REQ-000.yaml
+  actions:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  note: 权限测点统一见 REQ-000（TP-000-17 起）

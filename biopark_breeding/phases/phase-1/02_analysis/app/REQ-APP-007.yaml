@@ -1,0 +1,152 @@
+schema_version: "1.0"
+req_id: REQ-APP-007
+module_name: "合格蛋库 / 盘点记录"
+zentao_module_id: 569
+platform: app
+analysis_status: analyzed_from_docx_baseline_and_readonly_prototype
+scope:
+  object_scope: 合格蛋库
+  object_scope_evidence: inferred
+  object_scope_basis: "基线将通用盘点记录页面分配到合格蛋库；原型文本同时含合格蛋库示例，实际对象隔离需确认。"
+  included: "盘点记录列表、搜索、筛选、筛选结果、详情的只读查询契约。"
+  excluded: "盘点执行/确认、库存数量修改、P041 作废页面、接口实现、权限实现和持久化实现。"
+evidence_legend:
+  observed: "实时原型在 networkidle 后的渲染 DOM、页面文本和控件。"
+  static: "DOCX 页面表、Axure 页面树、静态页面链接或保存的 DOM/page_text。"
+  inferred: "按基线和页面语义归纳，需确认。"
+  open_question: "输入材料未明确，不能当作事实。"
+inputs:
+  - path: 01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx
+    type: docx
+    sections: ["5.47 盘点记录列表", "5.48 盘点记录搜索", "5.49 盘点记录筛选", "5.50 筛选结果", "5.51 盘点详情"]
+    evidence_level: static
+  - path: 01_requirements/app/模块拆分清单.md
+    type: baseline
+    sections: ["REQ-APP-007", "D-04", "实施边界"]
+    evidence_level: static
+  - path: 01_requirements/app/axure_map.md
+    type: axure_map
+    sections: ["P047", "P048", "P049", "P050", "P051", "P041 作废边界"]
+    evidence_level: static
+  - path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/
+    type: readonly_evidence_run
+    evidence_level: static
+  - path: http://127.0.0.1:5500/
+    type: live_prototype
+    viewport: "430x932"
+    wait: networkidle
+    browser_mode: "headless=False"
+    evidence_level: observed
+source_pages:
+  - {page_id: P047, name: 盘点记录列表, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/盘点记录列表.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-047.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-047.html}]}
+  - {page_id: P048, name: 盘点记录搜索, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/盘点记录搜索.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-048.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-048.html}]}
+  - {page_id: P049, name: 盘点记录筛选, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/盘点记录筛选.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-049.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-049.html}]}
+  - {page_id: P050, name: 筛选结果, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/筛选结果_2.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-050.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-050.html}]}
+  - {page_id: P051, name: 盘点详情, status: 正常, evidence: [{level: observed, path: "http://127.0.0.1:5500/盘点详情.html"}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-051.txt}, {level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-051.html}]}
+  - {page_id: P041, name: 确认盘点-批量（作废）, status: 作废, included: false, evidence: [{level: static, path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-041.txt, detail: "仅作作废边界证据。"}]}
+page_contracts:
+  - page_id: P047
+    name: 盘点记录列表
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "首页合格蛋蛋库-盘点记录入口及库存页面盘点动作进入记录流程。"}, return: {level: static, detail: "静态链接可返回首页/搜索/筛选/详情，实时未复现。"}}
+    query_area:
+      level: observed
+      items: [搜索, 筛选, "合格蛋库一号/二号/三号", "日期：今日/昨日/近一周/近一个月/近3个月/近1年", "是否差异：是/否"]
+      open_question: "默认日期、差异筛选的空值语义、分页排序和库对象隔离未明确。"
+    list_or_cards:
+      level: observed
+      items: [盘点数量, 养殖场-批次-品种, 库位号, 周龄, 平均蛋重/类型, 产蛋日期, 盘点时间, 差异数量]
+      detail: "实时示例展示差异为 0、正数和负数；静态注释说明有差异标红。"
+    form: {level: observed, detail: "未观察到列表内联编辑表单；筛选在 P049。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [搜索, 筛选], static: [点击记录进入盘点详情, 返回首页]}
+    status_and_transitions:
+      observed: [无差异, 有差异, "差异数量 0", "差异数量正数", "差异数量负数"]
+      inferred: "是否差异是查询分类；原型未说明盘点记录状态机。"
+      open_question: "差异数量计算、四舍五入/负数展示、确认后库存更新规则未明确。"
+  - page_id: P048
+    name: 盘点记录搜索
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由 P047 搜索入口进入。"}, return: {level: static, detail: "有结果复用盘点卡片，无结果有提示；实际点击未验证。"}}
+    query_area:
+      level: observed
+      items: [搜索输入框, 搜索, 历史搜索, 库位号, 养殖场, 批次, 品种]
+      open_question: "搜索是否包含计划号、任务号、差异状态未明确。"
+    list_or_cards: {level: observed, detail: "实时 DOM 存在 search input；结果卡片带差异标识和差异数量。"}
+    form: {level: observed, detail: "仅搜索输入。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [搜索, "选择历史搜索词"], static: [进入盘点详情, 返回记录列表]}
+    status_and_transitions: {observed: [搜索有结果, 搜索无结果, 差异], open_question: "异常提示和历史搜索持久化未明确。"}
+  - page_id: P049
+    name: 盘点记录筛选
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由 P047 筛选入口进入。"}, return: {level: static, detail: "确认进入 P050，重置恢复默认；实际点击未执行。"}}
+    query_area:
+      level: observed
+      items: [库, 盘点日期, 养殖场, 品种, 蛋重类型, 是否差异, 确认, 重置]
+      detail: "实时 DOM 存在日期、文本和选择控件；页面显示近1周、近1个月、近3个月、近1年快捷项。"
+      open_question: "差异筛选的默认值、日期闭区间、多条件组合未明确。"
+    list_or_cards: {level: observed, detail: "筛选页面展示记录卡片预览；结果页为 P050。"}
+    form: {level: observed, items: [库选择, 日期范围, 养殖场, 品种, 蛋重类型, 是否差异]}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [确认, 重置], static: [进入筛选结果, 返回列表/搜索]}
+    status_and_transitions: {observed: [全部, 是, 否], open_question: "筛选分类与业务盘点状态的关系未明确。"}
+  - page_id: P050
+    name: 筛选结果
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由 P049 确认进入。"}, return: {level: static, detail: "静态链接可返回列表/搜索/筛选或进入详情；实时未验证。"}}
+    query_area: {level: observed, items: [搜索, 筛选, "合格蛋库一号"], detail: "未观察到可编辑筛选表单。"}
+    list_or_cards: {level: observed, detail: "复用 P047 盘点记录卡片并展示无结果文本。"}
+    form: {level: observed, detail: "未观察到内联编辑表单。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [搜索, 筛选], static: [进入盘点详情, 返回记录列表]}
+    status_and_transitions: {observed: [差异, 无差异], open_question: "筛选条件回退、分页和红色提示规则未明确。"}
+  - page_id: P051
+    name: 盘点详情
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return: {entry: {level: static, detail: "由盘点记录列表、搜索或筛选结果进入。"}, return: {level: static, detail: "返回盘点记录列表；实时未复现。"}}
+    query_area: {level: observed, detail: "未观察到查询区。"}
+    list_or_cards: {level: observed, items: [盘点信息, 种蛋信息, 养殖场, 养殖批次, 品种, 种蛋类型, 周龄, 蛋重类型, 平均蛋重, 产蛋日期, 仓库, 库位, 库存, 盘点数量, 差异数量, 盘点时间, 备注, 操作人, 孵化场, 是否差异]}
+    form: {level: observed, detail: "未观察到可编辑字段；盘点确认不在本 REQ 执行。"}
+    dialogs: {level: observed, detail: "未观察到业务弹窗。"}
+    actions: {observed: [], static: [返回盘点记录列表]}
+    status_and_transitions:
+      observed: [是, 否, "差异数量可为正/负/0"]
+      open_question: "详情是否允许再次盘点、确认后库存如何更新、记录是否只读未明确。"
+interfaces:
+  - name: stocktake_record_query
+    direction: read
+    evidence_level: open_question
+    observed_contract: "列表/详情需要库位、库存、盘点数量、差异数量、盘点时间、种蛋和操作人等。"
+    endpoint_or_protocol: "未观察到接口地址、鉴权、分页或排序定义。"
+    candidate_inputs: [合格蛋库标识, 关键词, 库位号, 养殖场, 批次, 品种, 日期范围, 是否差异, 蛋重类型]
+    candidate_outputs: [盘点记录列表, 盘点详情, 差异标识, 空结果状态]
+  - name: stocktake_record_detail
+    direction: read
+    evidence_level: open_question
+    observed_contract: "P051 读取单条盘点记录的库存、盘点数和差异。"
+    endpoint_or_protocol: "未观察到接口定义。"
+cross_module_refs:
+  - {ref: REQ-APP-001, module: 首页, zentao_module_id: 556, relation: entry, evidence_level: observed, detail: "首页实时文本显示合格蛋蛋库-盘点记录。"}
+  - {ref: REQ-APP-005, module: 合格蛋库 / 库存查询, zentao_module_id: 567, relation: source_navigation, evidence_level: static}
+  - {ref: REQ-APP-006, module: 合格蛋库 / 出入库记录, zentao_module_id: 568, relation: sibling_record, evidence_level: static}
+business_rules:
+  - {id: BR-007-01, rule: "盘点记录卡片展示盘点数量、库位、种蛋信息、盘点时间和差异数量。", evidence_level: observed}
+  - {id: BR-007-02, rule: "差异数量为 0、正数或负数示例；有差异的记录在原型注释中标红。", evidence_level: observed}
+  - {id: BR-007-03, rule: "是否差异是筛选分类，不足以定义盘点状态机。", evidence_level: inferred}
+  - {id: BR-007-04, rule: "盘点执行/确认页面不属于本只读记录分析，本次未修改任何库存或盘点数据。", evidence_level: observed}
+  - {id: BR-007-05, rule: "差异计算、确认后的库存更新、权限、异常和持久化未定义。", evidence_level: open_question}
+open_questions:
+  - {id: OQ-007-01, question: "盘点记录与合格蛋库库存的对象键、快照时点及一致性规则是什么？", impact: high}
+  - {id: OQ-007-02, question: "差异数量公式、正负号、托盘/散装换算和标红规则是什么？", impact: high}
+  - {id: OQ-007-03, question: "盘点确认后是否更新库存、是否允许复盘/冲正、记录是否只读？", impact: high}
+  - {id: OQ-007-04, question: "库、日期、养殖场、品种、蛋重类型和是否差异的接口参数及组合逻辑是什么？", impact: medium}
+  - {id: OQ-007-05, question: "分页、排序、空结果、权限不足和网络异常如何处理？", impact: medium}
+analysis_boundary:
+  read_only: true
+  prohibited_actions: [新增, 编辑, 删除, 入库, 出库, 盘点确认, 任务执行, 远程数据写入]
+  not_claimed: [接口已实现, 权限已实现, 差异规则已确认, 库存已被修改, 页面内导航已真实点击验证]
+handoff:
+  next_owner: 产品/研发/测试设计
+  deliverable_use: "确认差异计算与确认后库存规则，再补充接口/权限/异常契约后进入测试点设计。"
+  generated_files: [02_analysis/app/REQ-APP-007.yaml, 02_analysis/app/REQ-APP-007_合格蛋库-盘点记录.md]

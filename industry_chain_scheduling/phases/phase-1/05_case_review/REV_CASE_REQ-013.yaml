@@ -1,0 +1,95 @@
+req_id: REQ-013
+gate_passed: true
+exec_check:
+  command: python scripts/check_testcase_executability.py --project D:\01workspace\AItestcase\mycursorpro\本仓库\projects\产业链生产排程系统
+    --req REQ-013
+  errors: 0
+  warnings: 1
+  exit_code: 0
+checks:
+- id: CG1
+  name: exec_check_errors
+  passed: true
+- id: CG5
+  name: tp_coverage
+  passed: true
+issues: []
+csv_path: null
+human:
+  rewrite_approved: false
+  approved_at: '2026-07-14T09:35:23.793021+00:00'
+  approved_by: user
+rewrite:
+  round: 2
+  max_rounds: 3
+  status: done
+  history:
+  - round: 1
+    fixed_case_ids:
+    - TC-013-01
+    - TC-013-02
+    - TC-013-03
+    - TC-013-04
+    - TC-013-05
+    - TC-013-06
+    - TC-013-07
+    - TC-013-08
+    - TC-013-09
+    - TC-013-10
+    - TC-013-11
+    - TC-013-12
+    - TC-013-13
+    - TC-013-14
+    - TC-013-15
+    - TC-013-16
+    - TC-013-17
+    - TC-013-18
+    - TC-013-19
+    - TC-013-20
+    - TC-013-21
+    - TC-013-22
+    - TC-013-23
+    - TC-013-24
+    - TC-013-25
+    - TC-013-26
+    - TC-013-27
+    - TC-013-28
+    - TC-013-29
+    - TC-013-30
+    - TC-013-31
+    - TC-013-32
+    - TC-013-33
+    - TC-013-34
+    at: '2026-07-14T09:33:51.296220+00:00'
+  - round: 2
+    fixed_case_ids:
+    - TC-013-11
+    - TC-013-12
+    - TC-013-25
+    - TC-013-26
+    - TC-013-27
+    - TC-013-28
+    - TC-013-29
+    - TC-013-30
+    at: '2026-07-14T09:35:23.942494+00:00'
+trace:
+  source_tc: 04_testcases/TC_REQ-013.yaml
+  project: 产业链生产排程系统
+  status: approved
+  source_sha256:
+    tc: af416c462ad5e0e1b65d58b0b67f325094a2c46e24fefae9a3c282b7bdbfab6c
+field_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  registered_cases: 847
+  mapping: local.type=zentao.type; local.auto=zentao.auto
+  local_suitability_assessment: not_performed_for_registered_cases
+  pending_registry_cases: 5
+  remote_write: false
+  verdict: pass
+csv_source:
+  status: deleted
+  tc_sha256: 4ba65a8f1b152148e14c9f2176085d948135988915e3d315b5704f60205bb0d3
+  review_sha256: bfe45a83766a9892702eda6759d8b7b7f23b98191755377f8c1e7644525e7eff
+  generated_at: '2026-08-20T02:35:11.622200+00:00'

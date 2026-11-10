@@ -1,0 +1,15 @@
+{
+  "status": "validated",
+  "req_id": "REQ-007",
+  "target": "project",
+  "product_id": 8,
+  "project_id": 46,
+  "module": {"id": 745, "name": "数据监听", "path": "iot平台/数据中心/数据监听"},
+  "source_case_count": 39,
+  "changed_case_count": 38,
+  "unchanged_case_ids": ["TC-REQ-007-030"],
+  "operations": {"create": [], "update": "38 sequential updates", "delete": []},
+  "entrypoint": "../../../../scripts/zentao_create_testcase.py",
+  "readback": "每条更新后立即回读并校验目标范围、产品、模块、标题、类型、前置条件、步骤和预期结果",
+  "failure_policy": "任一更新失败立即停止，不删除重建，不创建替代用例；仅回读通过后更新注册表。"
+}

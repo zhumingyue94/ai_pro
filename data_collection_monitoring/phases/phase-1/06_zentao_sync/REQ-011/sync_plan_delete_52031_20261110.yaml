@@ -1,0 +1,20 @@
+req_id: REQ-011
+project_id: 46
+product_id: 8
+module_id: 749
+operation: delete
+target: project
+policy: ../../../../.agents/rules/zentao-sync-default-rule.md
+cases:
+- local_case_id: TC-REQ-011-039
+  remote_case_id: 52031
+execution:
+  status: pending
+  stop_on_failure: true
+registry:
+  mapping_removed_locally: true
+  remote_removal_confirmed: false
+source_hashes_after:
+  yaml: bbb6eafc9c6d2acb6c1e29d95e26122c98163e6a4ad6051a910886488a27a83c
+  markdown: 7bb81af9589451d035b7251e24263361590a5433930695ed9e6a8f11fcec4bbd
+  review_yaml: 6f3d076d63c197d9f60eab069864acb67d31a100b7a52021b20086b207c71fa1

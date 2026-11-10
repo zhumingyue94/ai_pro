@@ -1,0 +1,22 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "case_id": "TC-REQ-004-012",
+  "zentao_case_id": 51662,
+  "project_id": 46,
+  "product_id": 8,
+  "module_id": 733,
+  "source_case_count": 42,
+  "expected": "统计全部未删除设备，包含在线、离线、未激活设备，并按设备唯一编号去重。",
+  "readback": {
+    "remote_version": 3,
+    "title": "核对设备数量时确认未删除设备去重且包含停用设备",
+    "step_expected": "统计全部未删除设备，包含在线、离线、未激活设备，并按设备唯一编号去重。",
+    "product": 8,
+    "project": 46,
+    "module": 733,
+    "type": "other",
+    "priority": 2
+  },
+  "failure_policy": "更新失败即停止，不删除重建，不创建替代用例。"
+}

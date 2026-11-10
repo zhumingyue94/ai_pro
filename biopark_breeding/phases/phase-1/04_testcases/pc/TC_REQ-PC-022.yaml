@@ -1,0 +1,60 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-022
+title: 库位出入库记录
+module: 出入库记录
+zentao_module_id: 543
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-022
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-38048
+  title: 记录按钮-跳转到出入库记录页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有孵化器管理库存查询菜单权限
+  - 2、系统中存在主库位数据
+  steps:
+  - action: 登录后进入孵化器管理-库存查询
+    expected: 跳转到该库位的历史出入库记录页
+  - action: 找到主库位行
+    expected: 页面显示该库位的出入库记录
+  - action: 点击&#039;记录&#039;按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 543
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-022
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38048
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38048
+    raw_module: /一期/pc/孵化器管理(#518)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

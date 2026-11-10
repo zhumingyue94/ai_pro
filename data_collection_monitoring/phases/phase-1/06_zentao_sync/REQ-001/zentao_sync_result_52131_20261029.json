@@ -1,0 +1,256 @@
+{
+  "status": "validated",
+  "product_id": 8,
+  "project_id": 46,
+  "project_context_id": 46,
+  "module": {
+    "name": "首页",
+    "id": 750,
+    "path": "iot平台/首页"
+  },
+  "source_hashes_before": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-001.yaml": "800983964b30ca8d01f6d952dce30a7cf4da9952c7086dd63fe4a02feea01674",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-001.yaml": "dd0033f577f9cf1fbf02d8722225071b09edc1d603f043b7ba906bd8c5ed598b",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  },
+  "records": [
+    {
+      "case_id": "TC-REQ-001-024",
+      "operation": "update",
+      "remote_case_id": 52131,
+      "readback": {
+        "id": 52131,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 750,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "上行和下行消息量统计",
+        "precondition": "前置准备：\n1、已准备包含上行、下行标签和可区分时间范围的消息基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+        "keywords": "",
+        "pri": 1,
+        "type": "feature",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-28 16:06:53",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-29 11:01:32",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174621,
+            "step": "打开首页的消息量统计区域",
+            "desc": "打开首页的消息量统计区域",
+            "expect": "成功进入首页并看到上行消息量、下行消息量统计指标",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174622,
+            "step": "在时间范围筛选器中设置开始时间和结束时间，点击确定并等待统计结果刷新",
+            "desc": "在时间范围筛选器中设置开始时间和结束时间，点击确定并等待统计结果刷新",
+            "expect": "筛选器显示所选开始时间和结束时间，页面完成刷新且统计结果对应所选时间范围",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174623,
+            "step": "记录页面显示的上行消息量和下行消息量",
+            "desc": "记录页面显示的上行消息量和下行消息量",
+            "expect": "上行消息量和下行消息量均可读取并分别记录，不将两个指标合并为单一结果",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174624,
+            "step": "按消息唯一编号整理所选时间范围内的基线消息，并分别统计上行和下行标签数量",
+            "desc": "按消息唯一编号整理所选时间范围内的基线消息，并分别统计上行和下行标签数量",
+            "expect": "基线统计仅纳入所选时间范围内的消息，每个消息唯一编号只计数一次，并分别得到上行基线数量和下行基线数量",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "5",
+            "id": 174625,
+            "step": "将页面上行消息量与上行基线数量进行核对",
+            "desc": "将页面上行消息量与上行基线数量进行核对",
+            "expect": "页面上行消息量等于上行基线数量，范围外消息和重复唯一编号不计入",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "6",
+            "id": 174626,
+            "step": "将页面下行消息量与下行基线数量进行核对",
+            "desc": "将页面下行消息量与下行基线数量进行核对",
+            "expect": "页面下行消息量等于下行基线数量，范围外消息和重复唯一编号不计入",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 52131,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_52131",
+          "text": "上行和下行消息量统计",
+          "type": "root",
+          "children": [
+            {
+              "id": 174621,
+              "text": "打开首页的消息量统计区域",
+              "type": "sub",
+              "parent": "case_52131",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174621",
+                  "text": "成功进入首页并看到上行消息量、下行消息量统计指标",
+                  "type": "node",
+                  "parent": 174621,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174622,
+              "text": "在时间范围筛选器中设置开始时间和结束时间，点击确定并等待统计结果刷新",
+              "type": "sub",
+              "parent": "case_52131",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174622",
+                  "text": "筛选器显示所选开始时间和结束时间，页面完成刷新且统计结果对应所选时间范围",
+                  "type": "node",
+                  "parent": 174622,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174623,
+              "text": "记录页面显示的上行消息量和下行消息量",
+              "type": "sub",
+              "parent": "case_52131",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174623",
+                  "text": "上行消息量和下行消息量均可读取并分别记录，不将两个指标合并为单一结果",
+                  "type": "node",
+                  "parent": 174623,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174624,
+              "text": "按消息唯一编号整理所选时间范围内的基线消息，并分别统计上行和下行标签数量",
+              "type": "sub",
+              "parent": "case_52131",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174624",
+                  "text": "基线统计仅纳入所选时间范围内的消息，每个消息唯一编号只计数一次，并分别得到上行基线数量和下行基线数量",
+                  "type": "node",
+                  "parent": 174624,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174625,
+              "text": "将页面上行消息量与上行基线数量进行核对",
+              "type": "sub",
+              "parent": "case_52131",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174625",
+                  "text": "页面上行消息量等于上行基线数量，范围外消息和重复唯一编号不计入",
+                  "type": "node",
+                  "parent": 174625,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174626,
+              "text": "将页面下行消息量与下行基线数量进行核对",
+              "type": "sub",
+              "parent": "case_52131",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174626",
+                  "text": "页面下行消息量等于下行基线数量，范围外消息和重复唯一编号不计入",
+                  "type": "node",
+                  "parent": 174626,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    }
+  ],
+  "source_hashes_after": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-001.yaml": "800983964b30ca8d01f6d952dce30a7cf4da9952c7086dd63fe4a02feea01674",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-001.yaml": "dd0033f577f9cf1fbf02d8722225071b09edc1d603f043b7ba906bd8c5ed598b",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  }
+}

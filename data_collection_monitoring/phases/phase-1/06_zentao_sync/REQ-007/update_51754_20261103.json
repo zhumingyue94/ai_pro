@@ -1,0 +1,20 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "case_id": "TC-REQ-007-027",
+  "zentao_case_id": 51754,
+  "target": {"import_target": "project", "project_id": 46, "product_id": 8, "module_id": 745},
+  "remote_version": 7,
+  "remote_step_count": 3,
+  "validation": {
+    "readback": "validated",
+    "stable_id_update": true,
+    "delete_recreate": false,
+    "same_listener_rule_id": true,
+    "same_listener_trigger_action_configuration": true,
+    "two_messages_trigger_same_rule": true,
+    "event_identity_only_differs": true,
+    "different_rule_id": false
+  },
+  "definition": "用通俗语言表述为：向同一监听规则先后发送两条消息。两条消息使用相同设备标识、事件类型和业务载荷，仅事件标识不同；两条消息均触发同一个监听规则，监听器、触发器和执行动作配置不变。"
+}

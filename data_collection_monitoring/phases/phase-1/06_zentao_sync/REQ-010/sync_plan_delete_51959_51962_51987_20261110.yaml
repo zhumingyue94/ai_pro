@@ -1,0 +1,32 @@
+req_id: REQ-010
+project_id: 46
+product_id: 8
+module_id: 748
+operation: delete
+target: project
+policy: ../../../../.agents/rules/zentao-sync-default-rule.md
+cases:
+- local_case_id: TC-REQ-010-032
+  remote_case_id: 51959
+- local_case_id: TC-REQ-010-035
+  remote_case_id: 51962
+- local_case_id: TC-REQ-010-060
+  remote_case_id: 51987
+execution:
+  status: blocked
+  stop_on_failure: true
+  records:
+  - remote_case_id: 51959
+    local_case_id: TC-REQ-010-032
+    status: validated
+    readback_status: confirmed_not_found
+    evidence: delete_51959_20261110.json
+  - remote_case_id: 51962
+    local_case_id: TC-REQ-010-035
+    status: not_executed
+  - remote_case_id: 51987
+    local_case_id: TC-REQ-010-060
+    status: not_executed
+registry:
+  mapping_removed_locally: true
+  remote_removal_confirmed: false

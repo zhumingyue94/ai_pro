@@ -1,0 +1,19 @@
+{
+  "status": "validated",
+  "req_id": "REQ-009",
+  "local_case_id": "TC-REQ-009-037",
+  "zentao_case_id": 51915,
+  "product_id": 8,
+  "project_id": 46,
+  "module_id": 747,
+  "operation": "update",
+  "change": {
+    "step_1": "明确点击“新建任务”按钮打开新建表单",
+    "step_3_4": "合并为点击“确定”并查看保存结果",
+    "step_5_6": "合并为刷新或查询任务列表并查看新任务的初始状态",
+    "removed": ["隔离相关描述", "未授权时不执行写入"],
+    "initial_status": "已创建"
+  },
+  "execution_mode": "real",
+  "failure_policy": "更新或回读失败立即停止，不删除重建，不创建替代用例。"
+}

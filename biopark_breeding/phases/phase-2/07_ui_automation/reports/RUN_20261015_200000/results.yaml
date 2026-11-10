@@ -1,0 +1,21 @@
+run_id: RUN_20261015_200000
+summary:
+  total: 1
+  passed: 0
+  blocked: 1
+  product_defect: 0
+  test_script_error: 0
+  test_case_error: 1
+  excluded: 0
+cases:
+  - case_id: TC-PC-043-002
+    status: blocked
+    classification: test_case_error
+    failure_stage: delivery_detail_assertion
+    recording_requested: true
+    date_range_verified: true
+    product_defect: false
+    remote_bug_created: false
+    reason: 日期范围步骤已执行并进入发货明细；最终明细页未出现 main 元素，等待超时，无法完成业务断言
+    evidence:
+      - logs/pytest_execution.log

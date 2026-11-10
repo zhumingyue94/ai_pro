@@ -1,0 +1,24 @@
+# PC 测试计划阶段 Handoff
+
+- **Agent**：stage-test-plan-agent
+- **Project**：种禽孵化管理系统
+- **Partition**：pc
+- **Requirement**：REQ-PC-048 上孵计划需求号关联与筛选
+- **Inputs**：`01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx`；`02_analysis/pc/REQ-PC-048.yaml`；`02_analysis/pc/page_inventory/page.json`；`.env`
+- **Outputs**：`03_test_plan/pc/TEST_PLAN_REQ-PC-048.yaml`；`03_test_plan/pc/TEST_PLAN_REQ-PC-048.md`
+- **ProcessedAt**：2026-09-08
+- **Gate**：report_only（YAML 已通过 Schema；目标页和正式执行前置条件仍有风险）
+- **GatePolicy**：report_only
+- **Schema**：YAML 已通过 `test-plan.schema.json` 校验；未新增字段且不含 `tp`/`tp_id`。
+- **范围**：上孵计划孵化需求号列展示、列位置与空值“-”、需求号模糊筛选、查询/重置、无匹配、重复/来源异常、多计划承接、需求号与计划状态过滤、REQ-PC-047 创建结果关联承接、从孵化需求行跳转后的当前需求号自动查询且不保留其他筛选条件、新增/导入暂时保留、菜单/查询/查看权限边界。
+- **范围外**：产业链推送接口协议/幂等/重试、上孵计划完整 CRUD、REQ-PC-047 创建计划内部字段规则和创建动作、分页/排序、接口契约、发货/库存/出入库、APP、未经授权数据变更及未采集 UI 细节。
+- **页面证据**：已检查 `page.json`；capture_id 为 `PAGE-PC-REQ047-20260904-HEADED-CAPTURED`，全局 `capture.status=partial`。REQ-PC-048 已登记 page_id `pc-req-048-hatching-plan` 与 state `st-req-048-reference-initial`（元素 `el-page-req-048`/`el-filter-demand-no-048`/`el-table-req-048`/`el-column-demand-no-048`/`el-btn-query-048` 全部 `capture_status=not_executed`、证据 partial，仅为一期 `reference/上孵计划_page.json` 结构参考，不作二期已采集事实）及 state `st-req-048-demand-jump-evidence`（证据 available，`capture_status=captured_via_req_pc_047`）。仅引用来源页 `pc-req-047-hatching-demand` 的 `st-req-047-list-default`、`st-req-047-view-plan-jump` 与 REQ-PC-047 实测跳转证据；不把 REQ-PC-047 跳转后的 0 条结果或参考登记扩展为目标页完整事实。
+- **页面缺口**：二期无独立上孵计划原型；目标页需求号筛选控件、孵化需求号列、状态、按钮仅有 reference-only element_id（not_executed，定位候选源自一期参考而非二期采集）。正式执行前必须补采目标页状态、DOM、截图和稳定定位器，不得把一期参考定位候选当作二期已采集事实或编造按钮、字段、菜单或定位器。
+- **自动化边界**：仅规划 Playwright Python 可视 Chromium；来源页查看计划按钮必须按需求号或行级唯一键作用域定位，目标页筛选控件必须按页面/表单作用域定位；`st-req-048-reference-initial` 的 reference-only 定位候选仅为一期参考，须以正式补采结果为准；不使用全局首个重复按钮或输入框，不生成 UI 脚本。目标页未补采时自动化标记阻塞。
+- **风险/阻塞**：目标页无二期独立原型、无已采集定位器（仅一期参考定位候选）；一期字段、状态枚举、权限继承、默认行为未完全提供；正式权限、关联测试数据、唯一业务键、数据清理责任未确认；跳转回填存在错误行/历史条件污染风险；需求号显示/筛选/创建承接接口契约未定义。未经授权不执行创建或修改。
+- **开放问题**：确认目标页正式字段和筛选定位器、一期状态与权限规则、自动查询触发时机及其他条件清除、空值/异常来源数据和显示范围、多计划关联口径、新增/导入暂时保留版本、角色矩阵与权限提示、数据回读和清理责任。
+- **证据要求**：正式执行按 REQ、路由、page_id/state_id/element_id 和运行标识保存脱敏截图、DOM、必要控制台/网络日志、Playwright trace；覆盖列可见性、筛选值、结果条数、无数据/权限提示、重置、跳转前后回填和其他条件清除。来源依赖证据与正式目标页证据分开存放，不保存凭据、Cookie、Token 或真实敏感值。
+- **套件**：冒烟覆盖目标路由/菜单、列可见、模糊查询、无匹配、行级跳转和当前需求号回填；定向覆盖空值/任意格式与长度、异常、多计划、状态组合、重置、权限、暂时保留按钮和历史值污染；全量覆盖等价类、边界值、判定表、状态转换、Pairwise/2-way、跨 REQ-PC-047 回归和证据审计，不覆盖分页/排序、接口和完整 CRUD。
+- **Next Agent**：stage-testcase-generation-agent
+- **Next Stage**：`testcase-generation-agent`
+- **Handoff Notes**：下游必须保留 `capture.status=partial`、`pc-req-048-hatching-plan` 为参考登记（`st-req-048-reference-initial` 全部元素 `not_executed`、reference-only、一期 `reference/上孵计划_page.json` 参考）、`st-req-048-demand-jump-evidence` 为 REQ-PC-047 实测证据、二期无独立目标页、一期继承规则、正式权限/数据/清理责任风险，以及只读依赖证据边界；不得把参考登记、page.json 依赖证据、一期参考定位候选、原型 mock 值或未执行创建承接写成正式通过事实。

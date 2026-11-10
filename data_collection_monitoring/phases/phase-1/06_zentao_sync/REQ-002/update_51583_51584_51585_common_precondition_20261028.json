@@ -1,0 +1,18 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "target": {"product_id": 8, "project_id": 46, "module_id": 731, "module_name": "产品分类"},
+  "source_case_ids": ["TC-REQ-002-023", "TC-REQ-002-024", "TC-REQ-002-039"],
+  "remote_case_ids": [51583, 51584, 51585],
+  "change": "写入公共前置CP-REQ-002-001：登录、进入数据采集监控平台、进入产品分类页面",
+  "readback": {
+    "51583": {"remote_id": 51583, "module": 731, "precondition_contains": ["完成应用门户登录", "数据采集监控平台", "产品分类页面"]},
+    "51584": {"remote_id": 51584, "module": 731, "precondition_contains": ["完成应用门户登录", "数据采集监控平台", "产品分类页面"]},
+    "51585": {"remote_id": 51585, "module": 731, "precondition_contains": ["完成应用门户登录", "数据采集监控平台", "产品分类页面"]}
+  },
+  "result": "updated_in_place_and_readback_validated",
+  "source_hashes": {
+    "testcases_yaml": "acb7f6d08d683e3c2164181ffa3e09bb84043bf02579a9a9a1ccf5a93a33268a",
+    "review_yaml_before_sync": "5d7e36521e28f936f7dc97b6b72e5740eae3859f048af468ceb324966f5fa8f9"
+  }
+}

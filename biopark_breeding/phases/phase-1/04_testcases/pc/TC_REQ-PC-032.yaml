@@ -1,0 +1,2311 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-032
+title: 存发苗间管理
+module: 存发苗间管理
+zentao_module_id: 549
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-032
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-38868
+  title: 存发苗间管理_表格_修改不影响已使用数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在已被使用过的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 修改成功，之前已使用该存发苗间的数据不受影响
+  - action: 修改该存发苗间的名称
+    expected: ''
+  - action: 点击确认保存
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38868
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38868
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38869
+  title: 存发苗间管理_表格_修改弹窗数据回显正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在存发苗间数据
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表单数据正确回显该存发苗间的原有数据
+  - action: 点击某条数据的修改按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38869
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38869
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38870
+  title: 存发苗间管理_表格_修改弹窗表单字段与新建一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在存发苗间数据
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 修改弹窗中表单字段与新建存发苗间弹窗一致
+  - action: 点击某条数据的修改按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38870
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38870
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38871
+  title: 存发苗间管理_表格_点击修改打开弹窗标题合适
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在存发苗间数据
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 修改弹窗正确打开，弹窗标题合适
+  - action: 点击某条数据的修改按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38871
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38871
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38872
+  title: 存发苗间管理_表格_修改按钮所有状态可见
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在不同状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 全部状态下都显示修改按钮
+  - action: 查看各状态存发苗间的操作列
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38872
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38872
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38873
+  title: 存发苗间管理_表格_各列字段数据正确显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表格中所有字段的数据全部正确显示无遗漏
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38873
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38873
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38874
+  title: 存发苗间管理_删除_被使用过的存发苗间可删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在已被使用过的停用状态存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 删除成功，不影响之前已使用的数据
+  - action: 勾选该存发苗间
+    expected: ''
+  - action: 点击删除按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38874
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38874
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38875
+  title: 存发苗间管理_删除_批量删除包含启用自动过滤
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用和停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统自动过滤掉启用状态的存发苗间，只删除停用状态的
+  - action: 同时勾选启用和停用状态的存发苗间
+    expected: ''
+  - action: 点击删除按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38875
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38875
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38876
+  title: 存发苗间管理_删除_仅停用状态显示删除按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用和停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 只有停用状态的存发苗间显示删除按钮，启用状态的不显示
+  - action: 查看启用和停用状态存发苗间的操作列
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38876
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38876
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38877
+  title: 存发苗间管理_删除_确认后删除成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 删除成功，数据从表格中消失
+  - action: 勾选停用状态的存发苗间
+    expected: ''
+  - action: 点击删除按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38877
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38877
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38878
+  title: 存发苗间管理_删除_点击删除二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹出二次确认弹窗
+  - action: 勾选停用状态的存发苗间
+    expected: ''
+  - action: 点击删除按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38878
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38878
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38879
+  title: 存发苗间管理_删除_未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹窗提示未勾选内容
+  - action: 不勾选任何数据
+    expected: ''
+  - action: 点击删除按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38879
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38879
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38880
+  title: 存发苗间管理_停用_停用后下游不再显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 下游流程中选择存发苗间时，该停用的存发苗间不在选项中显示
+  - action: 停用该存发苗间
+    expected: ''
+  - action: 进入下游流程选择存发苗间的页面
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38880
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38880
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38881
+  title: 存发苗间管理_停用_单行停用操作二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹出确认是否停用的弹窗
+  - action: 点击启用状态存发苗间的停用按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38881
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38881
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38882
+  title: 存发苗间管理_停用_单行启用状态显示停用按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 操作列显示停用按钮
+  - action: 查看启用状态存发苗间的操作列
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38882
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38882
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38883
+  title: 存发苗间管理_停用_确认后停用成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 勾选的存发苗间停用成功，状态变为停用
+  - action: 勾选启用状态的存发苗间
+    expected: ''
+  - action: 点击停用按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38883
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38883
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38884
+  title: 存发苗间管理_停用_点击停用二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹出二次确认弹窗
+  - action: 勾选启用状态的存发苗间
+    expected: ''
+  - action: 点击停用按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38884
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38884
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38885
+  title: 存发苗间管理_停用_未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹窗提示未勾选内容
+  - action: 不勾选任何数据
+    expected: ''
+  - action: 点击停用按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38885
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38885
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38886
+  title: 存发苗间管理_启用_被使用过的存发苗间可启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在已被使用过的停用状态存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 启用成功，不影响之前已使用的数据
+  - action: 勾选该存发苗间
+    expected: ''
+  - action: 点击启用按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38886
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38886
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38887
+  title: 存发苗间管理_启用_单行启用操作二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹出确认是否启用的弹窗
+  - action: 点击停用状态存发苗间的启用按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38887
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38887
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38888
+  title: 存发苗间管理_启用_单行停用状态显示启用按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 操作列显示启用按钮
+  - action: 查看停用状态存发苗间的操作列
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38888
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38888
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38889
+  title: 存发苗间管理_启用_确认后启用成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 勾选的存发苗间启用成功，状态变为启用
+  - action: 勾选停用状态的存发苗间
+    expected: ''
+  - action: 点击启用按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38889
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38889
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38890
+  title: 存发苗间管理_启用_点击启用二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹出二次确认弹窗
+  - action: 勾选停用状态的存发苗间
+    expected: ''
+  - action: 点击启用按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38890
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38890
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38891
+  title: 存发苗间管理_启用_未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹窗提示未勾选内容
+  - action: 不勾选任何数据
+    expected: ''
+  - action: 点击启用按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38891
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38891
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38892
+  title: 存发苗间管理_导出_导出筛选后的数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 导出的是筛选后的数据，而非全部数据
+  - action: 设置筛选条件
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38892
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38892
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38893
+  title: 存发苗间管理_导出_字段数据正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 导出文件中的各个字段数据正确无误
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38893
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38893
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38894
+  title: 存发苗间管理_导出_表头字段与页面一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 导出文件的表头字段和页面表格一致
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38894
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38894
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38895
+  title: 存发苗间管理_导出_导出格式为Excel
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 导出的文件为Excel格式，后缀为xls或xlsx
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38895
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38895
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38896
+  title: 存发苗间管理_新建_关闭按钮数据不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 数据不保存，弹窗关闭
+  - action: 点击新建按钮
+    expected: ''
+  - action: 填写部分字段
+    expected: ''
+  - action: 点击弹窗右上角的关闭按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38896
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38896
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38897
+  title: 存发苗间管理_新建_取消按钮数据不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 数据不保存，弹窗关闭
+  - action: 点击新建按钮
+    expected: ''
+  - action: 填写部分字段
+    expected: ''
+  - action: 点击取消按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38897
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38897
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38898
+  title: 存发苗间管理_新建_状态默认选中启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 状态单选框默认选中“启用“选项
+  - action: 点击新建按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38898
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38898
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38899
+  title: 存发苗间管理_新建_箱容量输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，箱容量必须为正整数
+  - action: 点击新建按钮
+    expected: ''
+  - action: 箱容量输入“abc“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38899
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38899
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38900
+  title: 存发苗间管理_新建_箱容量输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，箱容量必须大于0
+  - action: 点击新建按钮
+    expected: ''
+  - action: 箱容量输入“0“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38900
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38900
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38901
+  title: 存发苗间管理_新建_箱容量输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，箱容量必须为正整数
+  - action: 点击新建按钮
+    expected: ''
+  - action: 箱容量输入“-10“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38901
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38901
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38902
+  title: 存发苗间管理_新建_箱容量输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，箱容量必须为正整数
+  - action: 点击新建按钮
+    expected: ''
+  - action: 箱容量输入“100.5“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38902
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38902
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38903
+  title: 存发苗间管理_新建_箱容量必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，箱容量不能为空，校验不通过无法保存
+  - action: 点击新建按钮
+    expected: ''
+  - action: 不填写箱容量，填写其他字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38903
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38903
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38904
+  title: 存发苗间管理_新建_存发苗间名称仅输入空格校验不通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，存发苗间名称不能为空，校验不通过无法保存
+  - action: 点击新建按钮
+    expected: ''
+  - action: 存发苗间名称只输入空格
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38904
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38904
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38905
+  title: 存发苗间管理_新建_存发苗间名称不允许重复
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中已存在名称为“一号存发苗间“的数据
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，存发苗间名称不允许重复，校验不通过无法保存
+  - action: 点击新建按钮
+    expected: ''
+  - action: 填写存发苗间名称为“一号存发苗间“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38905
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38905
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38906
+  title: 存发苗间管理_新建_存发苗间名称必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，存发苗间名称不能为空，校验不通过无法保存
+  - action: 点击新建按钮
+    expected: ''
+  - action: 不填写存发苗间名称，填写其他字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38906
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38906
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38907
+  title: 存发苗间管理_新建_编号位数达到限制后新建提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中编号已达到位数限制
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示编号位数已达到限制，无法继续新建
+  - action: 点击新建按钮
+    expected: ''
+  - action: 填写所有字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38907
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38907
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38908
+  title: 存发苗间管理_新建_孵化场必填校验未填无法保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 系统提示错误，孵化场不能为空，校验不通过无法保存
+  - action: 点击新建按钮
+    expected: ''
+  - action: 不选择孵化场，填写其他字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38908
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38908
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38909
+  title: 存发苗间管理_新建_账号多个孵化场不默认选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、当前账号有多个孵化场权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 孵化场下拉选择框为空，没有默认选中任何孵化场
+  - action: 点击新建按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38909
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38909
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38910
+  title: 存发苗间管理_新建_账号权限仅一个孵化场默认选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、当前账号只有一个孵化场权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 孵化场下拉选择框自动默认选中该账号权限下唯一的孵化场
+  - action: 点击新建按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38910
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38910
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38911
+  title: 存发苗间管理_新建_孵化场下拉选项仅显示启用数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、孵化场管理中存在启用和停用的孵化场
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 下拉选项中只显示启用中的孵化场，停用的孵化场不展示
+  - action: 点击新建按钮
+    expected: ''
+  - action: 点击孵化场下拉选择框
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38911
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38911
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38912
+  title: 存发苗间管理_新建_关闭弹窗后清空表单数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 再次打开的新建弹窗是完全空白的初始状态
+  - action: 点击新建按钮，部分填写表单数据后关闭弹窗
+    expected: ''
+  - action: 再次点击新建按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38912
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38912
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38913
+  title: 存发苗间管理_筛选_重置按钮自动清空并搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、已设置多项筛选条件
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 所有筛选框自动清空，并且自动执行搜索，表格显示全部数据
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38913
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38913
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38914
+  title: 存发苗间管理_筛选_搜索按钮点击后执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表格不自动执行搜索操作，数据保持原有状态不变
+  - action: 在筛选框中修改条件但不点击搜索按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38914
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38914
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38915
+  title: 存发苗间管理_筛选_创建时间区间选择执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表格中只显示创建时间在所选区间内的所有数据
+  - action: 在创建时间区间选择器中选择开始时间和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38915
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38915
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38916
+  title: 存发苗间管理_筛选_状态选择执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中存在启用和停用状态的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表格中只显示状态为“启用“的所有数据
+  - action: 在状态下拉框中选择“启用“
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38916
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38916
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38917
+  title: 存发苗间管理_筛选_状态选项内容验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 下拉选项正确显示：启用、停用
+  - action: 点击状态下拉单选框查看所有选项
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38917
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38917
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38918
+  title: 存发苗间管理_筛选_存发苗间名称正常输入搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中已存在名称包含“一号“的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表格中只显示名称包含“一号“的所有数据
+  - action: 在存发苗间名称输入框输入“一号“
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38918
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38918
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38919
+  title: 存发苗间管理_筛选_存发苗间编号正常输入搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中已存在编号为“CFMJ001“的存发苗间
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表格中只显示编号包含“CFMJ001“的数据
+  - action: 在存发苗间编号输入框输入“CFMJ001“
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38919
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38919
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38920
+  title: 存发苗间管理_筛选_孵化场选择后执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、系统中已存在归属不同孵化场的存发苗间数据
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 表格中只显示归属该孵化场的所有存发苗间数据
+  - action: 在孵化场下拉框中选择一个孵化场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38920
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38920
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38921
+  title: 存发苗间管理_筛选_孵化场选项仅显示启用数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  - 2、孵化场管理中存在启用和停用的孵化场
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 下拉选项中只显示启用中的孵化场，停用的孵化场不展示
+  - action: 点击孵化场下拉选择框
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38921
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38921
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38922
+  title: 存发苗间管理_新建_确认保存成功数据正确
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 保存成功，表格中显示的存发苗间信息与填入的一致
+  - action: 点击新建按钮
+    expected: ''
+  - action: 填写所有必填字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38922
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38922
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38923
+  title: 存发苗间管理_新建_确认按钮二次确认
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹出二次确认弹窗，确认后保存成功
+  - action: 点击新建按钮
+    expected: ''
+  - action: 填写所有必填字段
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38923
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38923
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38924
+  title: 存发苗间管理_新建_存发苗间编号系统自动生成
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 存发苗间编号由系统自动生成，不可修改
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择孵化场
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38924
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38924
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38925
+  title: 存发苗间管理_新建_点击新建按钮打开弹窗标题正确
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 存发苗间管理
+  preconditions:
+  - 1、用户登录成功并且有存发苗间管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-存发苗间管理
+    expected: 弹窗正确打开，弹窗标题显示“新建存发苗间“
+  - action: 点击新建按钮
+    expected: ''
+  test_data:
+    module: 存发苗间管理
+    zentao_module_id: 549
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-032
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38925
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38925
+    raw_module: /一期/pc/基础数据/存发苗间管理(#549)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

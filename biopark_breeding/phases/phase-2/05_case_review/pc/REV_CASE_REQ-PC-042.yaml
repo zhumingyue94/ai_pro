@@ -1,0 +1,2770 @@
+review:
+  review_id: REV_CASE_REQ-PC-042_20260918_R1
+  current_split_20261010:
+    status: local_assets_updated
+    source_case_count: 119
+    priority_counts:
+      P1: 47
+      P2: 40
+      P3: 8
+      P4: 24
+    changed_case_ids:
+    - TC-PC-042-144
+    - TC-PC-042-202
+    split_scope:
+    - TC-PC-042-144: 发货记录剩余未发数等于对应上孵计划剩余未发数量
+    - TC-PC-042-202: 剩余数大于零显示未发完，等于零显示已完成，并保留历史快照
+    atomicity_check: passed
+    test_design_basis:
+    - numeric_equivalence: remaining_gt_zero
+    - boundary_value: remaining_eq_zero
+    - state_transition: historical_remaining_to_record_state
+    zentao_sync: blocked
+    sync_block_reason: 50134 更新命令返回 success，但立即回读仍为旧标题、步骤及预期；新增用例未创建。
+  req_id: REQ-PC-042
+  module_id: REQ-PC-042
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-09-18'
+  status: completed_with_findings
+  gate_passed: true
+  gate_reasons: []
+  rules_applied:
+  - .agents/rules/test-design-enrichment-rule.md
+  - .agents/rules/automation-judgment-rule.md
+  - .agents/rules/page-block-coverage-rule.md
+  - .agents/rules/ui-execution-bug-review-rule.md
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope:
+    source_testcase_yaml: 04_testcases/pc/TC_REQ-PC-042.yaml
+    source_testcase_markdown: 04_testcases/pc/TC_REQ-PC-042.md
+    page_inventory: 02_analysis/pc/page_inventory/page.json
+    supporting_analysis:
+    - 02_analysis/pc/REQ-PC-042.yaml
+    supporting_test_plan: 03_test_plan/pc/TEST_PLAN_REQ-PC-042.yaml
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+    historical_review_note: 2026-09-18 先删除旧评审 REV_CASE_REQ-PC-042.yaml、REV_CASE_REQ-PC-042.md
+      与 05_case_review/pc/HANDOFF/REQ-PC-042_HANDOFF.md，再基于当前源用例重新评审，未继承旧结论。
+  scope: REQ-PC-042 变更影响用例及其配套 Markdown、需求分析、测试计划、page.json 和 reference/casely；禁止执行
+    UI、PICT、CSV、远程禅道。
+  review_items:
+  - code: PRECONDITION_NAVIGATION_ACTION
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 已按评审意见修订源用例并完成静态复核；待校验器确认。
+  - code: STEP_MISSING_PAGE_ENTRY_ACTION
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 已按评审意见修订源用例并完成静态复核；待校验器确认。
+  - code: NON_CONTRIBUTING_PRECONDITION
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 已按评审意见修订源用例并完成静态复核；待校验器确认。
+  - code: NON_CONTRIBUTING_STEP_ACTION
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 已按评审意见修订源用例并完成静态复核；待校验器确认。
+  - code: UNVERIFIABLE_EXPECTED_RESULT
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 已按评审意见修订源用例并完成静态复核；待校验器确认。
+  - code: REQUIREMENT_CHANGE_20260920_1330
+    category: traceability_failure
+    result: updated
+    gate_reason: false
+    reason: 已同步终止计划列表过滤、位置弹窗完成保存、数量失焦校正、非数字不可输入及同位置回显修改规则。
+  - code: ATOMICITY_MULTIPLE_DATA_BASELINES
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 已按评审意见修订源用例并完成静态复核；待校验器确认。
+  - code: FORMAL_ENVIRONMENT_AND_DATA_NOT_READY
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 正式 URL、账号权限、授权脱敏数据与清理责任未准备，无法在正式环境执行。
+  - code: FORMAL_LOCATOR_CONFIRMATION_PENDING
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: page.json 定位器来自原型环境，行级「发货」入口与栋舍单元格存在重复与歧义，正式定位器未确认。
+  - code: PAGE_EVIDENCE_CAPTURE_ID_ABSENT
+    category: evidence_risk
+    result: not_executed
+    gate_reason: false
+    reason: page.json 的 capture.capture_id 为空、capture.status 为 partial，而分析与计划声明为 PAGE-PC-REQ041-REQ042-20260903，页面证据身份无法核对（capture_id/page_id
+      不属于评审门禁）。
+  - code: UI_AND_PLAYWRIGHT_NOT_EXECUTED
+    category: evidence_risk
+    result: not_executed
+    gate_reason: false
+    reason: 本轮为 report_only 静态评审，未执行 UI、浏览器、Playwright 或 PICT，也未生成 CSV。
+  - code: PLAN_ITEM_AND_PURPOSE_IDS_NOT_DEFINED_IN_PLAN
+    category: traceability_failure
+    result: fail_with_findings
+    gate_reason: false
+    reason: TEST_PLAN_REQ-PC-042.yaml 未定义 PI-042-* 与 AP-042-* 条目，用例的 plan_item_ids
+      与 atomic_purpose_ids 无法回链计划；AP-042-19、AP-042-38、AP-042-44 缺号，标识风格混用，trace.story
+      全为空（记录为发现项）。
+  change_20260922_1400:
+    status: local_assets_updated
+    source_requirement: 01_requirements/需求变动.md §2026.09.22 14:00
+    deleted_case_ids:
+    - TC-PC-042-118
+    - TC-PC-042-119
+    - TC-PC-042-120
+    - TC-PC-042-121
+    - TC-PC-042-134
+    - TC-PC-042-135
+    - TC-PC-042-136
+    - TC-PC-042-137
+    - TC-PC-042-147
+    rewritten_case_ids:
+    - TC-PC-042-023
+    - TC-PC-042-024
+    - TC-PC-042-025
+    - TC-PC-042-026
+    - TC-PC-042-027
+    - TC-PC-042-028
+    - TC-PC-042-029
+    - TC-PC-042-061
+    - TC-PC-042-086
+    adjusted_case_ids:
+    - TC-PC-042-138
+    current_case_count: 121
+    current_priority_counts:
+      P1: 46
+      P2: 43
+      P3: 8
+      P4: 24
+    zentao_sync: completed_deletion_sync
+  responsibility_uniqueness_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md §跨用例职责唯一性
+    scope: REQ-PC-042 全部本地用例，不限重点场景
+    case_count: 122
+    reviewed_case_count: 122
+    focus_areas:
+    - 退出草稿
+    - 重复提交
+    - 提交状态
+    - 权限
+    - 页面状态
+    - 数据一致性
+    additional_areas:
+    - 页面展示
+    - 输入校验
+    - 筛选查询
+    - 空态
+    - 公式与统计
+    - 位置录入
+    - 异常处理
+    - 状态流转
+    - 跨页面联动
+    method: 行为指纹比较业务对象、初始状态、触发动作、分支条件、核心结果、数据影响和验证层级；先拆分复合职责，再判断跨用例重叠，忽略公共导航和页面到达步骤
+    decisions:
+    - case_ids:
+      - TC-PC-042-022
+      - TC-PC-042-085
+      fingerprints:
+      - TC-PC-042-022: 发货草稿|有未提交位置暂存|退出发货并确认退出|确认退出|返回查看并重新进入后草稿不保留|草稿清理|页面状态与业务状态
+      - TC-PC-042-085: 发货草稿|有未提交页面草稿|退出发货并取消确认|取消退出|仍停留发货模式且草稿保留|无业务数据变更|页面交互
+      overlap_points: 有草稿退出确认
+      unique_responsibilities:
+      - TC-PC-042-022: 确认退出后重新进入不保留草稿
+      - TC-PC-042-085: 取消退出后保留草稿并返回发货模式
+      action: retain_and_narrow
+      rationale: 已删除 TC-PC-042-085 的确认退出清理和不新增记录断言，保留两个互斥分支
+    - case_ids:
+      - TC-PC-042-076
+      - TC-PC-042-108
+      overlap_points: 提交期间重复操作可能导致重复业务结果
+      unique_responsibilities:
+      - TC-PC-042-076: 同一业务键的服务端业务幂等
+      - TC-PC-042-108: 提交处理中页面交互锁定和导航保护
+      action: retain_and_narrow
+      rationale: TC-PC-042-108 聚焦提交处理中页面交互锁定和导航保护；业务记录幂等与数量扣减结果由独立职责用例覆盖
+    - case_ids:
+      - TC-PC-042-127
+      - TC-PC-042-128
+      - TC-PC-042-129
+      - TC-PC-042-130
+      - TC-PC-042-131
+      - TC-PC-042-132
+      - TC-PC-042-133
+      overlap_points: 计划进度筛选的同一查询行为
+      unique_responsibilities: 每个状态值的独立筛选分支
+      action: retain
+      rationale: 这些是互斥状态分支，按状态分支规则分别保留，不因共享查询动作合并
+    - case_ids:
+      - TC-PC-042-135
+      - TC-PC-042-136
+      - TC-PC-042-137
+      overlap_points: 发货重量非法输入拒绝
+      unique_responsibilities: 各非法输入等价类
+      action: retain
+      rationale: 当前用例分别绑定不同输入等价类；后续生成阶段应优先用参数矩阵表达，但本轮不擅自删除追溯分支
+    unresolved_candidates:
+    - 计划号无结果查询、提交失败回滚、空态、数量公式、位置录入与统计、状态入口矩阵等相似组需要基于需求/计划逐条确认后再合并，不能仅凭标题相似自动删除
+    gate_reasons: []
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md §优先级划分
+    scope: 本轮变更用例；依据业务影响、失败后果、使用频率和可替代性逐条复核
+    case_count: 126
+    reviewed_case_count: 126
+    deduplication_check:
+      scope: TC-PC-042-003, TC-PC-042-004, TC-PC-042-006, TC-PC-042-117, TC-PC-042-123,
+        TC-PC-042-127 to TC-PC-042-133 and related REQ-PC-042 cases
+      criteria: 测试目的、页面范围、筛选条件、操作路径、数据基线和预期结果
+      result: no_redundant_case_found
+      deleted_case_ids:
+      - TC-PC-042-033
+      - TC-PC-042-037
+      - TC-PC-042-042
+      - TC-PC-042-068
+      - TC-PC-042-072
+      - TC-PC-042-074
+      - TC-PC-042-096
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 44
+        P2: 48
+        P3: 9
+        P4: 25
+      percent:
+        P1: 34.92
+        P2: 38.1
+        P3: 7.14
+        P4: 19.84
+      observation: 本次按发货阻断、数量/状态/数据损失风险、替代路径、场景频率及展示体验逐条重分级；P1仅保留提交与关键数据一致性风险，P3/P4分别覆盖边界替代场景与纯展示交互影响。
+    items:
+    - case_id: TC-PC-042-001
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成进入发货执行页展示主要页面板块对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-002
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货单主信息字段可见并可回读对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-003
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证按计划进度筛选上孵计划的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-004
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证按发货状态筛选上孵计划的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-005
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证按计划号关键字查询的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-006
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证重置上孵计划筛选条件的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-007
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成待发货且已出雏时显示发货入口对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-008
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成待发货数为零时不可进入发货模式对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-009
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成终止计划不提供发货入口对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-010
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成进入发货模式后其他计划入口不可用对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-011
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成有效正整数数量形成位置暂存对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-012
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于数量为空时不能暂存的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-013
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于数量为零时不能暂存的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-014
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于负数数量不能暂存的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-015
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于小数数量不形成暂存的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-016
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成数量为一时形成最小有效暂存对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-017
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成数量等于剩余数时允许暂存对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-018
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成超过剩余数时拒绝暂存对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-019
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成有效数量暂存后位置数量可回读对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-020
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成同一位置重复录入只累加新增数量对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-021
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于无草稿退出发货模式的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-022
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成有草稿退出并确认放弃对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-023
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成剩余数为零时展示完成发货弹窗对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-024
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成剩余数大于零时展示完成发货弹窗对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-025
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成取消完成发货不提交暂存结果对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-026
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：确定完成发货成功后退出发货模式；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-027
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成两秒内重复点击确定时后一次失败对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-028
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成并发提交合计不超最新剩余数成功处理对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-029
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成完成发货服务端错误时不显示成功对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-030
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成已发货计划不开放编辑入口对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-031
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成已签收计划不开放编辑入口对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-032
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证实际可发数为零时进度显示零的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-034
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证查询无匹配结果时显示暂无数据的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-036
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成无接口操作权限时拒绝发货操作对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-038
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成并发提交超最新剩余数被拒绝对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-039
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于超量输入显示数量校验状态的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-040
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：按累计数量计算剩余待发货数；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-041
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于计划列表加载失败时不显示残留业务数据的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-043
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成通过页面入口进入发货执行页对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-044
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成服务端失败时回滚页面暂存对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-045
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证上孵计划表格字段顺序、来源和显示值一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-046
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证计划进度与发货状态卡展示可回读的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-047
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货数量公式按授权数据计算待发货数；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-048
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成已出雏且有待发货数计划展示可用发货入口对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-049
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货单主信息、数量公式和零值进度；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-050
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：栋舍总览按全部计划汇总位置数量；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-051
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：计划分布按当前计划展示位置数量；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-052
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：栋舍总览与计划分布切换保持各自统计口径；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-053
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成有记录栋舍位置悬浮显示计划明细对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-054
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成点击有记录栋舍位置筛选记录对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-055
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成清空位置筛选恢复当前视图记录对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-056
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证栋舍分布全景视图与列表视图切换、列表字段顺序、每行明细入口及坐标轴含义；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-057
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货模式锁定当前计划和操作入口；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-058
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货模式展示单个位置本次数量；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-059
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：查看计划联动计划分布和发货记录筛选；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-060
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货记录卡片字段、状态和位置明细；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-061
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：确定完成发货后退出发货模式并刷新记录；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-063
+      current_priority: P4
+      result: revised
+      reason: 校验上孵计划菜单中实际出雏时间来源与发货执行页目标计划行字段一致性、格式及空值显示；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-065
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：外部成功确认回传更新发货记录；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-066
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货列表、上孵计划和执行页三方一致；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-067
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：已提交数量和页面暂存数量统计时点；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-069
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证查询无结果时显示暂无数据的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-070
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证无已发货数据时显示暂无数据的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-071
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证未提交发货时记录区域保持空态的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-073
+      current_priority: P2
+      result: unchanged
+      reason: 已拆分为“位置筛选与视图切换”，仅验证位置筛选、计划分布/栋舍总览及网格/列表模式切换，不再包含清空筛选恢复结果。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-075
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货备注条件和位置明细展示对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-076
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：重复提交只生成一次发货结果；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-077
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：并发提交按最新待发货数拒绝超量；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-078
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：网络失败时提交不产生半条记录；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-079
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：请求超时时提交保持可回读失败结果；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-080
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：业务失败时回滚提交数据；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-081
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：服务端失败时页面显示错误且不重复扣减；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-082
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成无菜单权限时隐藏入口并拒绝直达访问对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-083
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成仅查看权限允许读取但禁止编辑提交对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-084
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：可发货权限允许执行入口并提交；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-085
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成有草稿退出时显示放弃确认对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-086
+      current_priority: P1
+      result: revised
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：确认提交后剩余量为零的计划不显示发货按钮；错误可能造成已完成计划仍可重复发货或入口状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-087
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成刷新恢复初始态且不残留未提交结果对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-088
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：四种发货状态展示对应操作入口；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-089
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：重复外部确认回传保持幂等；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-090
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：不同页面待发货数公式及统计时点；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-091
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成剩余为零时完成发货仍显示确认框对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-092
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证发货记录时间格式和历史剩余值快照的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-093
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证页面节点和主流程元素对齐的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-094
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成计划列表展示待出雏状态对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-095
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：计划与执行页回读相同发货状态；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-139
+      current_priority: P2
+      result: revised
+      reason: 修订为操作位置筛选标签上的“×”清空控件，拆分清空后的标签状态和上孵计划列表刷新结果；确认计划筛选保留且位置条件不再生效。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN-REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-098
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：提交失败时回滚发货结果；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-099
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：允许的发货提交更新计划列表状态；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-100
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响非法状态跳转、已签收计划保护或状态回退控制；若错误放行会造成发货流程状态错乱和不可逆业务操作，属于关键状态风险，故定为P1。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-101
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：零值数量公式不出现负数或除零错误；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-102
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：数量等于剩余值时允许进入完成确认；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-103
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：单位置录入保持数量守恒；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-104
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：多位置修改后保持累计和记录守恒；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-105
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证业务无数据时显示暂无数据的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-106
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于加载失败时显示错误态而非空态的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-107
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：筛选查询竞态不覆盖最新结果；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-108
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：提交中重复点击和返回操作锁定；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-109
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：未完成计划进度（待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏）错误展示查看/发货入口，或已完成计划未按待发货、发货中、已发货、已签收控制入口，可能造成实际发货结果错误、重复扣减或状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-112
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成历史记录与当前统计刷新一致性对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-113
+      current_priority: P3
+      result: unchanged
+      reason: 该场景属于点击无记录栋舍位置显示暂无数据的低频边界、异常兜底或可替代操作；失败主要增加人工核对或绕行成本，不直接造成发货结果或关键数据损失，故定为P3。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P3
+      reviewed_priority: P3
+      impact_area: 边界异常与替代操作
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: low
+    - case_id: TC-PC-042-114
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货模式展示累计数量公式；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-115
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：外部失败确认不更新完成结果；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-117
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成全部计划进度筛选结果与上孵计划状态一致对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-118
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货重量为空时不能完成发货对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-119
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货重量为零时被拒绝对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-120
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：发货重量默认值正确且允许修改；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-121
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证完成发货弹窗展示字段和操作按钮的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-122
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：平均苗重按来源和精度展示；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-123
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成选择单一计划进度查询上孵计划对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-124
+      current_priority: P1
+      result: unchanged
+      reason: 失败会影响发货提交、数量守恒、计划状态或已生成记录：提交失败后保留发货模式状态；错误可能造成实际发货结果错误、重复扣减或提交后状态不一致，需优先阻断发布。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P1
+      reviewed_priority: P1
+      impact_area: 发货提交与关键数量/状态一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+    - case_id: TC-PC-042-127
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证待孵期计划进度筛选结果与上孵计划状态一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-128
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证待上孵计划进度筛选结果与上孵计划状态一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-129
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证孵化器中计划进度筛选结果与上孵计划状态一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-130
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证待照蛋计划进度筛选结果与上孵计划状态一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-131
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证出雏器中计划进度筛选结果与上孵计划状态一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-132
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证待出雏计划进度筛选结果与上孵计划状态一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-133
+      current_priority: P4
+      result: unchanged
+      reason: 该场景主要验证已出雏计划进度筛选结果与上孵计划状态一致的页面展示、文案、空态、字段呈现或交互反馈；失败不改变发货数量、状态和提交结果，故定为P4。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P4
+      reviewed_priority: P4
+      impact_area: 页面展示与交互体验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+    - case_id: TC-PC-042-134
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货重量允许正数小数对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-135
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货重量为负数时被拒绝对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-136
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货重量为字母时被拒绝对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-137
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成发货重量为特殊字符时被拒绝对应的主要业务结果不可用或判断错误，但可通过重新查询、重新录入、权限配置或其他入口继续完成流程，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: high
+    - case_id: TC-PC-042-138
+      current_priority: P2
+      result: unchanged
+      reason: 失败会造成无提交发货接口权限时无法阻止发货提交并产生错误业务结果，但可通过权限配置、重新查询或其他入口继续处理，故定为P2。
+      gate_reason: false
+      source: TC_REQ-PC-042.yaml / REQ-PC-042 analysis / TEST_PLAN_REQ-PC-042
+      source_priority: P2
+      reviewed_priority: P2
+      impact_area: 主要发货业务结果
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+    mismatches: []
+    unconfirmed_items: []
+    gate_reasons: []
+    change_summary:
+      changed_case_count: 10
+      unchanged_case_count: 122
+      deleted_case_count: 4
+      deleted_case_ids:
+      - TC-PC-042-037
+      - TC-PC-042-072
+      - TC-PC-042-097
+      - TC-PC-042-074
+    deletion_reason: TC-PC-042-072 与 TC-PC-042-053 测试目的类似，保留 053；TC-PC-042-037 与 TC-PC-042-097
+      为不存在或重复场景；TC-PC-042-074 因不符合当前需求已删除。
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 参考分布仅作观察：当前分布由发货提交、数量/状态一致性、主要业务结果、边界替代操作和展示体验的逐条业务影响决定；不得为满足比例擅自改写。P1/P2占比较高时，必须以关键数据或核心业务结果的具体失败后果作为特殊情况依据。
+  alignment:
+    yaml_path: 04_testcases/pc/TC_REQ-PC-042.yaml
+    markdown_path: 04_testcases/pc/TC_REQ-PC-042.md
+    status: passed_pending_validation
+    checks:
+    - count
+    - unique_ids
+    - id_set
+    - title
+    - priority
+    - auto
+    - type
+    - atomic_purpose_ids
+    - trace
+    - step_count
+    - step_action_expected
+    - summary_statistics
+    yaml_count: 131
+    markdown_count: 131
+    differences: []
+    gate_reasons: []
+  structural_review:
+    status: pass_with_findings
+    checks:
+      required_fields: pass
+      unique_case_id: pass
+      atomic_purpose_ids_present: pass
+      automation_evaluation_present: pass
+      auto_decision_consistency: pass_with_findings
+      summary_consistency: pass
+    findings:
+    - 用例编号连续 TC-PC-042-001 至 TC-PC-042-138，无重复、无缺号；每条用例仅引用一个原子目的。
+    - YAML 与 Markdown 已通过对齐校验器 validate_testcase_markdown.py。
+    - TC-PC-042-064 的 auto=auto 与其不可判定的预期冲突，按自动化判定应为 no。
+    - 5 条用例的 automation_evaluation.matched 含 read_only_stable_data：TC-PC-042-001、TC-PC-042-002、TC-PC-042-032、TC-PC-042-034、TC-PC-042-040；该值不是六项自动化设计维度，属字段取值不规范（不改变
+      auto 结论，记录为发现项）。
+  traceability_review:
+    status: fail_with_findings
+    coverage_ids:
+    - FR-042-01
+    - FR-042-02
+    - FR-042-03
+    - FR-042-04
+    - FR-042-05
+    - FR-042-06
+    - FR-042-07
+    - FR-042-08
+    - FR-042-09
+    - FR-042-10
+    - FR-042-11
+    - FR-042-12
+    - FR-042-13
+    - FR-042-14
+    - FR-042-15
+    - FR-042-16
+    - FR-042-17
+    plan_item_ids:
+    - PI-042-01
+    - PI-042-02
+    - PI-042-02-1
+    - PI-042-02-2
+    - PI-042-03
+    - PI-042-04
+    - PI-042-05
+    - PI-042-06
+    - PI-042-07
+    - PI-042-08
+    - PI-042-09
+    - PI-042-10
+    - PI-042-11
+    - PI-042-117-11
+    - PI-042-117-12
+    - PI-042-117-13
+    - PI-042-117-14
+    - PI-042-117-15
+    - PI-042-117-16
+    - PI-042-117-17
+    - PI-042-12
+    - PI-042-13
+    - PI-042-14
+    - PI-042-15
+    - PI-042-16
+    - PI-042-17
+    - PI-042-18
+    - PI-042-19
+    - PI-042-20
+    - PI-042-21
+    - PI-042-22
+    - PI-042-23
+    - PI-042-24
+    - PI-042-25
+    - PI-042-26
+    - PI-042-26-2
+    - PI-042-27
+    - PI-042-28
+    - PI-042-29
+    - PI-042-30
+    - PI-042-31
+    - PI-042-32
+    - PI-042-33
+    - PI-042-48
+    - PI-042-49
+    - PI-042-49-1
+    - PI-042-49-2
+    - PI-042-50
+    - PI-042-51
+    - PI-042-51-1
+    - PI-042-51-2
+    - PI-042-52
+    - PI-042-52-1
+    - PI-042-52-2
+    - PI-042-53
+    - PI-042-54
+    - PI-042-54-1
+    - PI-042-55
+    - PI-042-56
+    - PI-042-57
+    - PI-042-58
+    - PI-042-59
+    - PI-042-60
+    - PI-042-60-1
+    - PI-042-61
+    - PI-042-62
+    - PI-042-63
+    - PI-042-63-1
+    - PI-042-63-2
+    - PI-042-63-3
+    - PI-042-64
+    - PI-042-65
+    - PI-042-67
+    - PI-042-68
+    - PI-042-68-1
+    - PI-042-69
+    - PI-042-69-1
+    - PI-042-69-2
+    - PI-042-69-3
+    - PI-042-70
+    - PI-042-70-1
+    - PI-042-70-2
+    - PI-042-71
+    - PI-042-71-1
+    - PI-042-72
+    - PI-042-73
+    - PI-042-73-1
+    - PI-042-74
+    - PI-042-75
+    - PI-042-76
+    - PI-042-77
+    - PI-042-78
+    - PI-042-78-1
+    - PI-042-79
+    - PI-042-80
+    - PI-042-80-1
+    - PI-042-80-2
+    - PI-042-81
+    - PI-042-81-1
+    - PI-042-81-2
+    - PI-042-81-3
+    - PI-042-82
+    - PI-042-82-1
+    - PI-042-83
+    - PI-042-83-1
+    - PI-042-84
+    - PI-042-84-1
+    - PI-042-85
+    - PI-042-86
+    - PI-042-87
+    - PI-042-87-1
+    - PI-042-87-2
+    - PI-042-88
+    atomic_purpose_ids:
+    - AP-042-01
+    - AP-042-02
+    - AP-042-03
+    - AP-042-03-2
+    - AP-042-04
+    - AP-042-05
+    - AP-042-06
+    - AP-042-07
+    - AP-042-08
+    - AP-042-09
+    - AP-042-10
+    - AP-042-11
+    - AP-042-113
+    - AP-042-114
+    - AP-042-115
+    - AP-042-116
+    - AP-042-117-1
+    - AP-042-117-11
+    - AP-042-117-12
+    - AP-042-117-13
+    - AP-042-117-14
+    - AP-042-117-15
+    - AP-042-117-16
+    - AP-042-117-17
+    - AP-042-118
+    - AP-042-119-1
+    - AP-042-119-2
+    - AP-042-12
+    - AP-042-120
+    - AP-042-121
+    - AP-042-122
+    - AP-042-13
+    - AP-042-14
+    - AP-042-15
+    - AP-042-16
+    - AP-042-17
+    - AP-042-18
+    - AP-042-20
+    - AP-042-21
+    - AP-042-22
+    - AP-042-23
+    - AP-042-24
+    - AP-042-25
+    - AP-042-26
+    - AP-042-27
+    - AP-042-28
+    - AP-042-29
+    - AP-042-30
+    - AP-042-31
+    - AP-042-32
+    - AP-042-33
+    - AP-042-34
+    - AP-042-35
+    - AP-042-36
+    - AP-042-37
+    - AP-042-39
+    - AP-042-40
+    - AP-042-41
+    - AP-042-42
+    - AP-042-43
+    - AP-042-45
+    - AP-042-46
+    - AP-042-47
+    - AP-042-48
+    - AP-042-49
+    - AP-042-49-1
+    - AP-042-49-2
+    - AP-042-50
+    - AP-042-51
+    - AP-042-51-1
+    - AP-042-51-2
+    - AP-042-52
+    - AP-042-52-1
+    - AP-042-52-2
+    - AP-042-53
+    - AP-042-54
+    - AP-042-54-1
+    - AP-042-55
+    - AP-042-56
+    - AP-042-57
+    - AP-042-58
+    - AP-042-59
+    - AP-042-60
+    - AP-042-60-1
+    - AP-042-61
+    - AP-042-62
+    - AP-042-63
+    - AP-042-63-1
+    - AP-042-63-2
+    - AP-042-63-3
+    - AP-042-64
+    - AP-042-65
+    - AP-042-67
+    - AP-042-68
+    - AP-042-68-1
+    - AP-042-69
+    - AP-042-69-1
+    - AP-042-69-2
+    - AP-042-69-3
+    - AP-042-70
+    - AP-042-70-1
+    - AP-042-70-2
+    - AP-042-71
+    - AP-042-71-1
+    - AP-042-72
+    - AP-042-73
+    - AP-042-73-1
+    - AP-042-74
+    - AP-042-75
+    - AP-042-76
+    - AP-042-77
+    - AP-042-78
+    - AP-042-78-1
+    - AP-042-79
+    - AP-042-80
+    - AP-042-80-1
+    - AP-042-80-2
+    - AP-042-81
+    - AP-042-81-1
+    - AP-042-81-2
+    - AP-042-81-3
+    - AP-042-82
+    - AP-042-82-1
+    - AP-042-83
+    - AP-042-83-1
+    - AP-042-84
+    - AP-042-84-1
+    - AP-042-85
+    - AP-042-86
+    - AP-042-87
+    - AP-042-87-1
+    - AP-042-87-2
+    - AP-042-88
+    missing_design:
+    - 测试计划未定义 PI-042-* 与 AP-042-* 条目，用例标识无法回链计划范围项
+    - AP-042-19、AP-042-38、AP-042-44 在用例集合中缺号
+    - trace.story 在全部用例中为空
+    conclusion: FR-042-01 至 FR-042-17 全部有覆盖；PI/AP 标识由用例阶段自行命名，计划内无对应条目，编号缺号与命名风格需统一后方可回链校验。
+  systematic_design_review:
+    status: pass_with_findings
+    techniques:
+    - 等价类划分
+    - 边界值分析
+    - 判定表
+    - 状态转换
+    - Pairwise 组合
+    - 错误推测
+    findings:
+    - FR-042-01 至 FR-042-17 全部有用例覆盖；发货重量覆盖空、零、负数、字母、特殊字符、正整数、小数、等于可发数、大于可发数等等价类与边界。
+    - 判定表维度覆盖计划进度、发货状态、计划日期、实际可发数、待发货数与草稿状态；状态转换覆盖发货模式、完成发货弹层、位置暂存、提交、重置与已提交保护。
+    - TC-PC-042-119 将 0、负数、字母、特殊字符四类互斥非法输入合并在同一操作与同一预期，缺少逐类独立判定；TC-PC-042-134 同时使用整数
+      1 与小数 1.5 两套数据基线。
+    - TC-PC-042-064 预期为“页面显示目标业务状态”，无法形成唯一判定。
+    - 并发与重复提交（TC-PC-042-027、028）仅以页面可见结果表述，缺少可控夹具，保留为执行阻塞。
+    - FR-042-16 的正式路由仅在 TC-PC-042-043 的步骤动作中出现，未形成独立可判定用例。
+    - 134 条用例重复出现公共登录与列表到达步骤，属可维护性问题，不单独判定为重复用例。
+  pairwise_review:
+    status: static_pict_model_only
+    parameters:
+    - 计划进度
+    - 发货状态
+    - 计划日期资格
+    - 实际可发数
+    - 待发货数
+    - 草稿状态
+    - 位置暂存状态
+    - 发货重量输入
+    - 提交结果
+    - 当前上孵计划
+    - 操作权限
+    values:
+    - 计划进度：待孵期/孵化中/已完成
+    - 发货状态：待发货/发货中/已发货/已签收
+    - 计划日期：当天/未来日期
+    - 实际可发数：大于零/等于零
+    - 待发货数：大于零/等于零
+    - 草稿：无草稿/本地草稿/回读草稿
+    - 位置暂存：无暂存/单位置暂存/多位置暂存
+    - 发货重量：空/零/负数/字母/特殊字符/正整数/小数
+    - 提交结果：成功/失败/重复提交
+    - 当前计划：当前计划/其他计划
+    - 权限：有发货权限/无发货权限
+    constraints:
+    - 实际可发数为零时不允许进入发货执行并形成有效暂存
+    - 发货重量小于等于零或非数字不得进入完成发货弹窗
+    - 多计划时不得跨计划合并位置暂存
+    - 本次发货总数不得超过当前计划实际可发数
+    - 订单已发货后草稿失效并禁止再次提交
+    - 无编辑入口的发货状态（已发货、已签收）不得开放编辑
+    conclusion: 完成静态 2-way 参数与约束审查：11 个参数的穷举组合为 290304，134 条用例覆盖了部分高阶组合，但未提供 2-way
+      覆盖矩阵以证明所有参数对均被覆盖；本轮未生成或执行 PICT，未生成 CSV。
+  playwright_review:
+    status: blocked_static_review
+    auto_candidate_count: 134
+    auto_not_suitable_count: 0
+    automation_executable_count: 0
+    blockers:
+    - 正式 URL 与页面入口未确认
+    - 账号权限与授权脱敏数据未准备
+    - 正式定位器未确认（原型定位器不可直接复用）
+    - 行级重复「发货」入口需按行作用域定位
+    - 并发与重复提交缺少可控夹具
+    - 关键业务状态与数据清理责任不可控
+    conclusion: 134 条用例设计上均标记 auto=auto，其中 16 条同时声明 read_only_stable_data 只读稳定数据；正式环境、权限、数据与定位器未就绪，未执行任何脚本，不可宣称已执行。
+  headed_page_review:
+    status: static_review_only
+    capture_id: page.json 未声明（capture.capture_id 为空）
+    page_id: pc-chick-shipping-ship / pc-chick-shipping-ship-bl02
+    capture_status: reference_only（page.json capture.status=partial）
+    locator_observations:
+    - page.json 中发货执行页相关元素的 locator_status 均为 available，但来源为原型环境 43.143.148.114:18885，不能替代正式环境
+      192.168.6.163:66 的定位器。
+    - 行级「发货」入口与栋舍单元格在分析中标记为不稳定或歧义，正式自动化必须按行作用域加稳定属性定位。
+    - 用例中出现的正式路由 /biopark-breeding/breeding/delivery/execute/{id} 需在正式环境复核承接。
+    conclusion: 未启动有头浏览器，未执行 UI；page.json、DOM 与截图仅为静态参考，不构成正式执行证据。
+  common_precondition_standardization:
+    status: completed_pending_remote_sync
+    template_id: delivery_execution_page
+    source_definition: 04_testcases/pc/TC_REQ-PC-042.yaml:10-36
+    definition_status: embedded_and_validated
+    current_case_count: 122
+    reference_counts:
+      delivery_execution_page: 121
+      delivery_execution_base: 1
+    steps: 登录并进入系统、进入雏苗发货列表、定位目标发货单并进入发货执行页
+    conditions_scope: 权限与业务数据条件保留在各用例自身，不由公共前置承载
+    case_count: 139
+    modified_case_count: 139
+    previous_case_count: 130
+    scope:
+      includes:
+      - 登录与访问权限
+      - 系统门户与计划管理导航
+      - 雏苗发货列表与目标发货单定位
+      - 点击发货并进入发货执行页
+      excludes:
+      - 计划进度、发货状态筛选断言
+      - 分页、排序和查询业务断言
+      - 位置录入、暂存、提交和状态变更
+    special_cases:
+    - case_id: TC-PC-042-001
+      change: 删除重复导航，保留执行页板块校验
+    - case_id: TC-PC-042-002
+      change: 删除重复导航，保留主信息回读
+    - case_id: TC-PC-042-040
+      change: 删除重复导航，保留累计数量计算验证
+    - case_id: TC-PC-042-043
+      change: 删除重复导航，保留页面入口验证
+    yaml_markdown_alignment: passed
+    remote_zentao_sync: validated_case_49949
+  casely_review:
+    status: pass_with_findings
+    findings:
+    - 结构字段完整：标题、前置条件、步骤、预期、追溯与自动化评估字段齐备，YAML/Markdown 通过对齐校验。
+    - TC-PC-042-002 前置条件分隔符混用「；」与「 ; 」，与公共模板不统一。
+    - TC-PC-042-008 前置条件存在被包含项“待发货数为零”与“计划已出雏且待发货数为零”并列。
+    - TC-PC-042-035、036、138 的正式账号、权限配置、接口返回和授权脱敏数据仍待确认；本轮已按 2026.09.20 15:00 要求区分菜单权限、列表查询接口权限和提交发货接口权限。
+    - TC-PC-042-030、031 预期“发货编辑入口 不可用”含多余空格，语句不通顺。
+    - TC-PC-042-043 步骤动作写入内部路由与占位符 /biopark-breeding/breeding/delivery/execute/{id}，未指向可点击的页面入口对象。
+    - 追溯标识风格不统一：AP 同时存在 AP-042-03-2、AP-042-113、AP-042-117-14 三种写法且 19/38/44 缺号；PI
+      同样混用 PI-042-02-1 与 PI-042-117-11。
+    - coverage_ids 使用 FR-042-xx，与同项目 REQ-PC-041 的 CV-041-xx 风格不一致。
+    - trace.story 在全部用例中为空，仅保留 req 与 tp 追溯。
+    - 16 条用例的 automation_evaluation.matched 含非法维度 read_only_stable_data。
+    result_detail: 更新后用例按单一判定结果拆分，字段、前置、步骤、预期和交付结构保持 Casely 风格；TC-PC-042-034 已将空态、排除记录范围和保留基础信息分别写成可观察结果；TC-PC-042-035、036、138
+      已按菜单权限、查询接口权限和提交发货接口权限拆分验证；正式定位器、数据和权限仍待确认。
+  design_violations:
+  - PRECONDITION_NAVIGATION_ACTION
+  - STEP_MISSING_PAGE_ENTRY_ACTION
+  - NON_CONTRIBUTING_PRECONDITION
+  - NON_CONTRIBUTING_STEP_ACTION
+  - UNVERIFIABLE_EXPECTED_RESULT
+  - ATOMICITY_MULTIPLE_DATA_BASELINES
+  traceability_failures:
+  - PLAN_ITEM_AND_PURPOSE_IDS_NOT_DEFINED_IN_PLAN
+  input_gate_failures:
+  - 正式测试环境、账号权限、授权脱敏数据、稳定定位器与清理责任未准备。
+  evidence_risks:
+  - page.json、DOM 与截图为原型采集参考，不是正式执行证据。
+  - page.json 未声明 capture_id，页面证据身份无法核对。
+  - PICT、UI、浏览器与 Playwright 均未执行。
+  execution_blockers:
+  - FORMAL_ENVIRONMENT_AND_DATA_NOT_READY
+  - FORMAL_LOCATOR_CONFIRMATION_PENDING
+  unconfirmed_items:
+  - FR-042-12 加载失败态的具体文案未确认（TC-PC-042-036）。
+  - 发货状态迁移允许的目标状态未确认（TC-PC-042-102、125、126）。
+  - 发货重量是否允许提交的最终口径未确认（TC-PC-042-134）。
+  - FR-042-16 正式路由在正式环境的承接方式未确认。
+  - P1 占比 58%、P3/P4 为 0，分层依据需结合正式用户频率与事故影响复核。
+  execution_readiness:
+    formal_url_and_permission: not_ready
+    page_inventory: reference_only
+    report_only: true
+  source_inputs:
+  - 04_testcases/pc/TC_REQ-PC-042.yaml
+  - 04_testcases/pc/TC_REQ-PC-042.md
+  - 02_analysis/pc/REQ-PC-042.yaml
+  - 02_analysis/pc/page_inventory/page.json
+  - 03_test_plan/pc/TEST_PLAN_REQ-PC-042.yaml
+  navigation_wording_update_20261014:
+    scope: 仅修改 REQ-PC-042 前置步骤和步骤 action 文案，不修改其他字段
+    changed_public_precondition: delivery_execution_page
+    changed_case_ids:
+    - TC-PC-042-063
+    unchanged_requested_phrases:
+    - 库存管理 > 存发苗间
+    - 库存查询
+    - 出入库记录
+    - 孵化需求
+    yaml_markdown_alignment: passed
+    markdown_contract_validation: passed_with_preexisting_atomicity_findings
+    source_hashes_after_update:
+      testcase_yaml: 03a1ae1ac8f6f270870b4e4dee28fcbd61aac20231ad8a2a553c68a29b78df80
+      testcase_markdown: 606161f6a078c83ab9226fb2e4d65248939e396e8ac1ab0f650316a8e4d5fc32
+    zentao_sync: completed
+    zentao_sync_scope: 118 registered cases affected by delivery_execution_page plus TC-PC-042-063
+    zentao_module_id: 737
+    zentao_readback: all selected updates returned validated; titles, steps, expected results, preconditions, product, project, execution and module matched
+  source_hashes:
+    testcase_yaml: 03a1ae1ac8f6f270870b4e4dee28fcbd61aac20231ad8a2a553c68a29b78df80
+    testcase_markdown: 606161f6a078c83ab9226fb2e4d65248939e396e8ac1ab0f650316a8e4d5fc32
+    page_json: 2d1ee96de735f18ec1d4073f47e818179201051059da6a22ed41ccef7b830c7d
+    analysis_yaml: 7475efbf2979673ec004d6b298e8ec9b61b78a5972582175dcdd521928d5d04d
+    test_plan_yaml: 1d9e9b059e475e98a228814fc73255f795be59e72d50578355c604a0fba97ec5
+  sync_candidates:
+    case_count: 122
+    status: pending_local_asset_sync
+    previous_case_count: 130
+    status_note: 本轮仅更新本地职责边界与评审资料，未执行远程禅道写操作
+    deleted_case_ids:
+    - TC-PC-042-037
+    - TC-PC-042-072
+    - TC-PC-042-074
+    deletion_reason: 已完成的上孵计划没有发货按钮的场景及与 TC-PC-042-053 测试目的类似的用例已删除；TC-PC-042-074
+      不符合当前需求，本轮删除并同步删除禅道 49968。
+    blocking_reasons:
+    - PRECONDITION_NAVIGATION_ACTION
+    - STEP_MISSING_PAGE_ENTRY_ACTION
+    - NON_CONTRIBUTING_PRECONDITION
+    - NON_CONTRIBUTING_STEP_ACTION
+    - UNVERIFIABLE_EXPECTED_RESULT
+    - ATOMICITY_MULTIPLE_DATA_BASELINES
+    - 正式测试环境与授权数据未准备
+    note: 已同步并回读校验 TC-PC-042-055 对应禅道用例 49949；其余用例沿用既有同步记录。
+  execution_statement: 仅完成 report_only 静态评审；未执行 UI、浏览器、Playwright、PICT 或 CSV；TC-PC-042-055
+    已完成远程禅道同步并回读校验。
+  prohibited_actions_confirmed:
+    ui_execution: false
+    browser_execution: false
+    playwright_execution: false
+    pict_execution: false
+    csv_generation: false
+    remote_zentao_write: false
+    business_data_change: false
+  handoff:
+    path: 05_case_review/pc/HANDOFF/REQ-PC-042_HANDOFF.md
+    module_id: REQ-PC-042
+  summary:
+    case_count: 110
+    priority_distribution: &id001
+      P1: 38
+      P2: 41
+      P3: 7
+      P4: 24
+    auto_distribution:
+      auto: 126
+      'no': 0
+    type_distribution:
+      feature: 130
+  systematic_coverage:
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    result: passed_with_observations
+    observations:
+    - 已将筛选状态、提交回读、非法/合法数量输入拆分为独立场景。
+    - 正式数据口径、权限和跨模块联动仍需执行阶段确认。
+  automation_review:
+    summary: 110 条 auto=auto；自动化评估均保留 blocked，不代表脚本或执行通过。
+  next_stage: stage-zentao-sync-agent
+  current_case_count: 118
+  current_priority_distribution:
+    P1: 46
+    P2: 40
+    P3: 8
+    P4: 24
+  zentao_sync: completed_deletion_sync
+  responsibility_narrowing_20260922:
+    direct_repeat:
+    - TC-PC-042-003
+    - TC-PC-042-004
+    - TC-PC-042-005
+    - TC-PC-042-108
+    - TC-PC-042-120
+    - TC-PC-042-123
+    partial_overlap:
+    - TC-PC-042-010
+    - TC-PC-042-011
+    - TC-PC-042-012
+    - TC-PC-042-020
+    - TC-PC-042-026
+    - TC-PC-042-028
+    - TC-PC-042-049
+    - TC-PC-042-052
+    - TC-PC-042-056
+    - TC-PC-042-059
+    - TC-PC-042-063
+    - TC-PC-042-066
+    - TC-PC-042-067
+    - TC-PC-042-073
+    - TC-PC-042-075
+    - TC-PC-042-081
+    - TC-PC-042-082
+    - TC-PC-042-084
+    - TC-PC-042-088
+    - TC-PC-042-090
+    - TC-PC-042-091
+    - TC-PC-042-092
+    - TC-PC-042-103
+    - TC-PC-042-104
+    - TC-PC-042-121
+    unchanged_case_count: 126
+    result: narrowed_preserving_unique_boundaries
+    unresolved:
+    - TC-PC-042-088 remaining status-entry combinations retained because source analysis
+      lacks exact branch coverage mapping
+  deduplication_20260922:
+    removed:
+    - TC-PC-042-048
+    - TC-PC-042-069
+    - TC-PC-042-077
+    - TC-PC-042-091
+    retained:
+    - TC-PC-042-007
+    - TC-PC-042-023
+    - TC-PC-042-034
+    - TC-PC-042-038
+    result: 完全重复按较小编号保留，已同步本地产物，未执行禅道同步
+  current_case_count_20260922_responsibility_remediation: 132
+  current_priority_distribution_20260922_responsibility_remediation:
+    P1: 47
+    P2: 49
+    P3: 9
+    P4: 27
+  responsibility_remediation_20260922:
+    source: 职责检查.md 五、整改修改清单
+    original_case_ids:
+    - TC-PC-042-010
+    - TC-PC-042-034
+    - TC-PC-042-044
+    - TC-PC-042-049
+    - TC-PC-042-060
+    - TC-PC-042-080
+    - TC-PC-042-082
+    - TC-PC-042-088
+    - TC-PC-042-117
+    - TC-PC-042-121
+    - TC-PC-042-122
+    - TC-PC-042-139
+    new_case_ids:
+    - TC-PC-042-140
+    - TC-PC-042-142
+    - TC-PC-042-143
+    - TC-PC-042-144
+    - TC-PC-042-147
+    - TC-PC-042-148
+    - TC-PC-042-149
+    clarified_case_ids:
+    - TC-PC-042-139
+    - TC-PC-042-149
+    parameterized_case_ids:
+    - TC-PC-042-010
+    - TC-PC-042-088
+    - TC-PC-042-117
+    split_case_ids:
+    - TC-PC-042-142
+    - TC-PC-042-143
+    - TC-PC-042-144
+    - TC-PC-042-147
+    - TC-PC-042-148
+    - TC-PC-042-149
+    - TC-PC-042-034
+    case_count: 132
+    priority_counts:
+      P1: 47
+      P2: 49
+      P3: 9
+      P4: 27
+    result: local_assets_updated_pending_review
+  deprecation_sync_20260922:
+    removed_case_ids:
+    - TC-PC-042-029
+    - TC-PC-042-041
+    - TC-PC-042-044
+    - TC-PC-042-078
+    - TC-PC-042-079
+    - TC-PC-042-080
+    - TC-PC-042-081
+    - TC-PC-042-089
+    - TC-PC-042-093
+    - TC-PC-042-098
+    - TC-PC-042-100
+    - TC-PC-042-106
+    - TC-PC-042-107
+    removed_zentao_case_ids:
+    - 49769
+    - 49781
+    - 49784
+    - 49972
+    - 49973
+    - 49974
+    - 49975
+    - 50056
+    - 50060
+    - 50065
+    - 50067
+    - 50073
+    - 50074
+    remaining_case_count: 110
+    priority_counts: *id001
+    zentao_sync: pending
+  current_case_count_20260922_overlap_deduplication: 140
+  current_priority_distribution_20260922_overlap_deduplication:
+    P1: 60
+    P2: 47
+    P3: 8
+    P4: 25
+  case_update_20260923_50132:
+    local_case_id: TC-PC-042-142
+    zentao_case_id: 50132
+    change: 根据2026.09.23 14:00要求，明确发货模式下栋舍分布区域“已发货”“未发货”均不包括本次暂存数据；本次累计作为独立暂存数据读取，并按主信息板块公式核对待发货数。
+    formula: 待发货数=实际可发数-已发货数；栋舍分布已发货和未发货均不包括本次暂存数量
+    zentao_sync: completed
+    zentao_readback: 已回读确认标题、三条步骤及预期、前置条件、产品、项目、执行和模块与本地内容一致
+  case_update_20260923_50140:
+    local_case_id: TC-PC-042-151
+    zentao_case_id: 50140
+    change: 将禅道步骤预期更新为“计划行只显示发货入口，点击发货可进入发货操作页面”，与本地 YAML 和 Markdown 一致。
+    zentao_sync: completed
+    zentao_readback: title、步骤动作、预期、产品、项目、执行和模块已回读一致
+  deletion_sync_20260923:
+    zentao_case_ids:
+    - 50138
+    - 50155
+    - 50092
+    - 50093
+    - 50131
+    - 50135
+    - 50144
+    - 50145
+    - 50146
+    - 50147
+    - 50150
+    - 50161
+    - 50162
+    - 50163
+    - 50164
+    - 50165
+    - 50179
+    - 50183
+    local_case_ids:
+    - TC-PC-042-149
+    - TC-PC-042-170
+    - TC-PC-042-176
+    - TC-PC-042-177
+    - TC-PC-042-178
+    - TC-PC-042-179
+    - TC-PC-042-180
+    - TC-PC-042-195
+    - TC-PC-042-199
+    deleted_local_case_count: 10
+    deleted_zentao_case_count: 19
+    zentao_sync: completed
+    readback: all_requested_ids_deleted_or_confirmed_absent
+  deletion_sync_20260923_50136:
+    local_case_id: TC-PC-042-146
+    zentao_case_id: 50136
+    title: 无菜单权限直达发货执行路由被拒绝
+    change: 本地 YAML、Markdown、评审记录和 module_case_map 已移除；禅道用例按产品1、项目29、执行44、模块737删除并回读确认不存在。
+    zentao_sync: completed
+    readback: Case does not exist
+  deduplication_overlap_20260922:
+    status: local_assets_updated
+    removed_case_ids:
+    - TC-PC-042-162
+    - TC-PC-042-164
+    - TC-PC-042-165
+    - TC-PC-042-166
+    - TC-PC-042-188
+    retained_case_ids:
+    - TC-PC-042-117
+    - TC-PC-042-140
+    - TC-PC-042-050
+    - TC-PC-042-051
+    - TC-PC-042-184
+    deferred_case_pairs:
+    - - TC-PC-042-002
+      - TC-PC-042-049
+    - - TC-PC-042-007
+      - TC-PC-042-151
+    reason: 按职责检查.md 第十节处理明确重复；页面范围和正式状态枚举仍需确认的疑似重复暂不修改。
+    latest_update: TC-PC-042-151 的期望已更新为“计划行只显示发货入口，点击发货可进入发货操作页面”。
+    latest_case_update: TC-PC-042-169 已按需求变动中的计划分布列表契约拆解为模式与计划号、表头、目标行及操作、明细联动四个明确步骤；表头和行操作分别核对。
+    zentao_sync: completed
+    zentao_case_id: 50154
+    zentao_readback: 禅道已回读，但当前接口仅保留最后一条步骤；已记录本地四步契约，待禅道端支持完整数组写入后再补齐。
+  last_sync_update:
+    date: '2026-10-13'
+    case_id: TC-PC-042-202
+    zentao_case_id: 51474
+    change: 将原单步多断言预期拆分为3个独立步骤和预期
+    status: validated
+    readback_steps: 3
+  previous_sync_update:
+    date: '2026-10-13'
+    case_id: TC-PC-042-302
+    zentao_case_id: 51477
+    change: 将原单步多断言预期拆分为4个独立步骤和预期
+    status: validated
+    readback_steps: 4
+split_execution_20260922:
+  status: local_assets_updated
+  baseline_case_count: 110
+  current_case_count: 145
+  current_priority_counts:
+    P1: 63
+    P2: 47
+    P3: 8
+    P4: 27
+  removed_case_ids:
+  - TC-PC-042-006
+  - TC-PC-042-012
+  - TC-PC-042-026
+  - TC-PC-042-052
+  - TC-PC-042-056
+  - TC-PC-042-057
+  - TC-PC-042-061
+  - TC-PC-042-067
+  - TC-PC-042-073
+  - TC-PC-042-083
+  - TC-PC-042-088
+  - TC-PC-042-095
+  - TC-PC-042-101
+  - TC-PC-042-104
+  - TC-PC-042-109
+  - TC-PC-042-112
+  new_case_ids:
+  - TC-PC-042-150
+  - TC-PC-042-151
+  - TC-PC-042-152
+  - TC-PC-042-153
+  - TC-PC-042-154
+  - TC-PC-042-162
+  - TC-PC-042-163
+  - TC-PC-042-164
+  - TC-PC-042-165
+  - TC-PC-042-166
+  - TC-PC-042-167
+  - TC-PC-042-168
+  - TC-PC-042-169
+  - TC-PC-042-170
+  - TC-PC-042-171
+  - TC-PC-042-172
+  - TC-PC-042-173
+  - TC-PC-042-174
+  - TC-PC-042-175
+  - TC-PC-042-176
+  - TC-PC-042-177
+  - TC-PC-042-178
+  - TC-PC-042-179
+  - TC-PC-042-180
+  - TC-PC-042-181
+  - TC-PC-042-182
+  - TC-PC-042-183
+  - TC-PC-042-184
+  - TC-PC-042-185
+  - TC-PC-042-186
+  - TC-PC-042-187
+  - TC-PC-042-188
+  - TC-PC-042-189
+  - TC-PC-042-190
+  - TC-PC-042-191
+  - TC-PC-042-192
+  - TC-PC-042-193
+  - TC-PC-042-194
+  - TC-PC-042-195
+  - TC-PC-042-196
+  - TC-PC-042-197
+  - TC-PC-042-198
+  - TC-PC-042-199
+  - TC-PC-042-200
+  - TC-PC-042-201
+  retained_atomic_case_ids:
+  - TC-PC-042-028
+  - TC-PC-042-038
+  - TC-PC-042-065
+  - TC-PC-042-076
+  - TC-PC-042-108
+  scope: 职责检查.md 第七节第一至第三优先级；TC-PC-042-065 保留事务完整性主用例
+  zentao_sync: not_executed
+  latest_case_updates_20260923_filter_clear:
+    status: validated
+    cases:
+    - case_id: TC-PC-042-139
+      zentao_case_id: 50129
+      changes:
+      - 标题明确为点击位置筛选标签上的“×”清空控件。
+      - 拆分标签移除、计划筛选保留及上孵计划列表刷新结果。
+    - case_id: TC-PC-042-149
+      zentao_case_id: 50138
+      changes:
+      - 标题明确为点击计划筛选标签上的“×”清空控件。
+      - 拆分标签移除、位置筛选保留及上孵计划列表刷新结果。
+  case_update_20260923_50180_expected_simplify:
+    local_case_id: TC-PC-042-196
+    zentao_case_id: 50180
+    change: 第三步预期简化为“本次累计”等于各位置有效数量之和 N1+N2，移除“不把每个位置中的累计发放作为本次累计结果”的排除说明。
+    read_field: 栋舍工作区标题下的“本次累计”=各位置有效数量之和 N1+N2
+    zentao_sync: completed
+    zentao_readback: 已回读确认三条步骤及预期、前置条件和归属字段与本地内容一致
+  case_update_20260923_50178:
+    local_case_id: TC-PC-042-194
+    zentao_case_id: 50178
+    change: 将抽象预期具体化为待发货数为零、发货状态为“已发货”，只显示【查看】按钮。
+    assertion: 待发货数为零；发货状态为“已发货”；操作区域仅显示【查看】按钮
+    zentao_sync: completed
+    zentao_readback: 已回读确认文字修正为“只显示【查看】按钮”；前置条件和产品1、项目29、执行44、模块737保持不变

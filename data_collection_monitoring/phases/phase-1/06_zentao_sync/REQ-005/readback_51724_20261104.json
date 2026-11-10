@@ -1,0 +1,143 @@
+﻿{
+    "id": 51724,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 734,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "输入非法序列号，检查校验结果",
+    "precondition": "前置准备：\n1、已获得仅用于表单校验观察且不会产生业务写入的明确授权。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:58:42",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-11-04 17:17:19",
+    "version": 4,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 4,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176654,
+            "step": "打开新增或编辑设备表单，在序列号输入框输入非法字符样本“序列号@#$%”。",
+            "desc": "打开新增或编辑设备表单，在序列号输入框输入非法字符样本“序列号@#$%”。",
+            "expect": "输入值中的“@#$%”属于非法字符，页面按序列号规则拒绝这些字符或明确提示序列号只能包含字母、数字、中划线和下划线。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176655,
+            "step": "点击“保存”。",
+            "desc": "点击“保存”。",
+            "expect": "序列号字段显示具体格式错误提示，表单保持打开且未提交成功。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 176656,
+            "step": "查询设备列表。",
+            "desc": "查询设备列表。",
+            "expect": "列表不新增或修改为非法序列号的设备记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51724,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51724",
+        "text": "输入非法序列号，检查校验结果",
+        "type": "root",
+        "children": [
+            {
+                "id": 176654,
+                "text": "打开新增或编辑设备表单，在序列号输入框输入非法字符样本“序列号@#$%”。",
+                "type": "sub",
+                "parent": "case_51724",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176654",
+                        "text": "输入值中的“@#$%”属于非法字符，页面按序列号规则拒绝这些字符或明确提示序列号只能包含字母、数字、中划线和下划线。",
+                        "type": "node",
+                        "parent": 176654,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176655,
+                "text": "点击“保存”。",
+                "type": "sub",
+                "parent": "case_51724",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176655",
+                        "text": "序列号字段显示具体格式错误提示，表单保持打开且未提交成功。",
+                        "type": "node",
+                        "parent": 176655,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176656,
+                "text": "查询设备列表。",
+                "type": "sub",
+                "parent": "case_51724",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176656",
+                        "text": "列表不新增或修改为非法序列号的设备记录。",
+                        "type": "node",
+                        "parent": 176656,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

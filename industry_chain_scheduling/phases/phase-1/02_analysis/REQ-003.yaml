@@ -1,0 +1,570 @@
+id: REQ-003
+title: 分段养殖模版
+parent_req: REQ-000
+zentao_module_id: 670
+page_url: /biopark-poultry/schedule/template/feeding
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: 定义不同品种、补栏月份的三段式养殖标准模版，含各段养殖/空栏天数、体重料比成活率及日龄采食计划（多饲料混合占比），供制定排程引用。
+in_scope:
+- 模版查询（名称/品种/补栏月份/状态）
+- 新增/编辑/删除/提交/审核
+- 审核通过模版复制（生成暂存副本）
+- 快速分配（A1+B1=A2+B2=A3+B3）
+- 从商品禽养殖系统带出体重/料比/成活率参考值
+- 各段日龄采食计划（多方案、多饲料混合占比）
+out_scope:
+- 商品禽养殖系统内养殖目标数据的维护
+business_rules:
+- 状态：暂存/待审核/审核通过/驳回，操作规则同目标制定
+- 最大养殖周期空栏天数=养殖天数最长一段的空栏天数
+- 补栏当天为0日龄，满24小时计为1日龄
+- 快速分配原则：A1+B1=A2+B2=A3+B3（A=养殖天数，B=空栏天数）
+- 总养殖天数与各段养殖/空栏天数仅能通过快速分配填入，不可手工编辑
+- 品种+补栏月份组合唯一，同组合已存在模版时不允许保存/提交
+- 体重/料比/成活率带出值仅供参考，可手工调整
+- 审核通过后原记录仅可查看与复制，不可编辑、不可删除、不可再次提交；复制生成新暂存模版
+- 审核流多节点时列表展示全部审核人
+interface_failure_handling:
+- 引用/同步商品禽养殖数据失败时阻断保存或提交，提示错误
+- 不允许静默使用空值、过期缓存或默认值继续计算
+- 具体降级策略以开发为准，测试点标记「待定」
+roles:
+- 智控中心小组成员（制定）
+- 园区总经理（审核）
+interfaces:
+- 页面 /biopark-poultry/schedule/template/feeding
+- 商品禽养殖系统（品种+月份→养殖目标数据）
+- 制定排程（引用模版自动计算各段日期）
+risks:
+- 与商品禽养殖系统数据同步失败或字段不一致
+- 日龄采食计划配置复杂度高
+clarifications:
+- id: Q-006
+  question: 商品禽养殖接口异常时的降级策略？
+  conclusion: 失败时按测试建议处理，测试点中标记（待定）
+  date: '2026-07-10'
+open_questions:
+- 模版审核通过后是否允许修订及历史版本引用规则？
+test_scope_suggestion:
+- P1：快速分配弹窗确认/取消、保存/提交/审核主流程
+- P2：日龄采食计划拓扑、饲料占比、唯一性校验、转运日龄
+- P2：引用商品禽养殖带出参考数据
+- P3：分页、单元格省略悬浮、控件类型说明
+- 待定：商品禽接口异常容错
+prototype_verification:
+  query_fields:
+  - 模版名称
+  - 品种
+  - 补栏月份
+  - 状态
+  query_field_specs:
+  - name: 模版名称
+    control: input
+    editable: true
+  - name: 品种
+    control: select
+    editable: true
+    options_source: 系统品种
+    notes: 停用的品种仍显示
+  - name: 补栏月份
+    control: select
+    editable: true
+    validation: 1~12月
+  - name: 状态
+    control: select
+    editable: true
+    validation: 暂存/待审核/审核通过/驳回
+  form_fields:
+  - 模版名称
+  - 品种
+  - 补栏月份
+  - 养殖天数
+  - 空栏天数
+  - 体重(kg)
+  - 料比
+  - 成活率(%)
+  - 日龄采食计划(起/止/饲料/占比)
+  form_field_specs:
+  - name: 模版名称
+    control: input
+    editable: true
+    required: true
+    scope: 主表单顶部
+  - name: 品种
+    control: select
+    editable: true
+    required: true
+    scope: 主表单顶部
+    notes: 单选框
+  - name: 补栏月份
+    control: select
+    editable: true
+    required: true
+    scope: 主表单顶部
+    notes: 单选框
+  - name: 总养殖天数
+    control: number
+    editable: false
+    required: true
+    scope: 主表单顶部
+    source: 快速分配回填
+  - name: 状态
+    control: readonly
+    editable: false
+    scope: 主表单顶部
+    notes: 暂存或不显示
+  - name: 1段养殖天数
+    control: number
+    editable: false
+    scope: 1段标准
+    source: 快速分配回填
+  - name: 1段空栏天数
+    control: number
+    editable: false
+    scope: 1段标准
+    source: 快速分配回填
+  - name: 2段养殖天数
+    control: number
+    editable: false
+    scope: 2段标准
+    source: 快速分配回填
+  - name: 2段空栏天数
+    control: number
+    editable: false
+    scope: 2段标准
+    source: 快速分配回填
+  - name: 3段养殖天数
+    control: number
+    editable: false
+    scope: 3段标准
+    source: 快速分配回填
+    compute_rule: 整批-1段-2段（弹窗内自动计算）
+  - name: 3段空栏天数
+    control: number
+    editable: false
+    scope: 3段标准
+    source: 快速分配回填
+  - name: 体重(kg)/料比/成活率
+    control: number
+    editable: true
+    scope: 各段标准
+    source: 品种+补栏月份接口带出，可手工改
+  button_semantics:
+    快速分配:
+      action: open_nested_dialog
+      dialog: 快速分配
+      summary: 打开二级弹窗录入整批/各段养殖与空栏；确认后回填主表单及各段标准
+    补齐:
+      action: fill_ratio
+      scope: 当前日龄方案内饲料行
+      summary: 自动补全饲料占比至100%（非补日龄区间空档）
+    新增方案:
+      action: add_subtable_row
+      target: 日龄采食计划
+      summary: 增加一条日龄采食计划方案
+    保存:
+      summary: 暂存，状态=暂存
+    提交:
+      summary: 弹窗内或列表提交，状态=待审核
+  nested_dialogs:
+  - id: 快速分配
+    trigger: 新增模版/编辑模版内「快速分配」
+    title: 快速分配
+    formula_display: A1+B1=A2+B2=A3+B3（A=养殖天数，B=空栏天数）
+    buttons:
+    - 取消
+    - 确认
+    field_specs:
+    - name: 整批养殖天数
+      control: number
+      editable: true
+      validation: 正整数
+    - name: 1段养殖天数
+      control: number
+      editable: true
+      validation: 正整数
+    - name: 2段养殖天数
+      control: number
+      editable: true
+      validation: 正整数
+    - name: 3段养殖天数
+      control: number
+      editable: false
+      compute_rule: 整批-1段-2段
+    - name: 最大养殖周期空栏天数
+      control: number
+      editable: true
+      validation: 非负整数
+    on_confirm: 回填总养殖天数、各段养殖/空栏、最大空栏天数；各段日龄采食计划起止按新拓扑自动回填
+    on_cancel: 关闭弹窗，不回填
+  sub_tables:
+  - id: 日龄采食计划
+    parent: 新增模版弹窗
+    columns:
+    - 起
+    - 止
+    - 饲料
+    - 占比
+    row_ops:
+    - 新增方案
+    - 删除
+    nested_rows:
+      id: 饲料行
+      default_rows: 1
+      row_ops:
+      - +增加
+      - 删除
+      options_filter: 仅启用饲料；同方案不可重复选同一饲料
+    topology_rules:
+    - 同段方案起止不重叠
+    - 同段方案起止连续覆盖该段日龄采食周期
+    - 1段：1≤起≤止≤1段养殖天数-1
+    - 2段：1段养殖天数≤起≤止≤1段养殖天数+2段养殖天数-1
+    - 3段：1段养殖天数+2段养殖天数≤起≤止≤1段+2段+3段养殖天数-1
+  computed_fields:
+  - name: 1段转运日龄
+    formula: 1段养殖天数-1
+  - name: 2段转运日龄
+    formula: 1段养殖天数+2段养殖天数-1
+  - name: 3段转运日龄
+    formula: 1段+2段+3段养殖天数-1
+  save_validations:
+  - rule: 品种+补栏月份唯一
+    when:
+    - 保存
+    - 提交
+    message: 同品种同补栏月份已存在
+  - rule: 必填项完整
+    when:
+    - 保存
+    - 提交
+  - rule: 日龄方案起止连贯覆盖养殖周期
+    when:
+    - 保存
+    - 提交
+  - rule: 每段区至少一个方案
+    when:
+    - 保存
+    - 提交
+  - rule: 饲料占比合计100%
+    when:
+    - 保存
+    - 提交
+  - rule: 3段养殖天数之和=总养殖天数
+    when:
+    - 保存
+    - 提交
+  - rule: 各段A+B相等
+    when:
+    - 保存
+    - 提交
+  table_column_specs:
+  - name: 序号
+    order: 1
+  - name: 模版名称
+    order: 2
+  - name: 品种
+    order: 3
+  - name: 补栏月份
+    order: 4
+  - name: 养殖天数
+    order: 5
+  - name: 1段养殖
+    order: 6
+  - name: 成活率
+    order: 7
+    group: 1段
+    notes: 含空栏展示
+  - name: 2段养殖
+    order: 8
+  - name: 成活率
+    order: 9
+    group: 2段
+  - name: 3段养殖
+    order: 10
+  - name: 成活率
+    order: 11
+    group: 3段
+  - name: 状态
+    order: 12
+  - name: 驳回原因
+    order: 13
+  - name: 审核人员
+    order: 14
+    notes: 多节点展示多人
+  - name: 审核时间
+    order: 15
+  - name: 创建人员
+    order: 16
+  - name: 创建时间
+    order: 17
+  - name: 修改人员
+    order: 18
+  - name: 修改时间
+    order: 19
+  - name: 操作
+    order: 20
+  ui_components:
+  - pagination
+  - cell_ellipsis_tooltip
+  buttons:
+  - 查询
+  - 重置
+  - 新增模版
+  - 编辑
+  - 提交
+  - 删除
+  - 查看
+  - 审核
+  - 复制
+  dialogs:
+    新增模版:
+    - 快速分配
+    - 新增方案
+    - 补齐
+    - 删除
+    - 取消
+    - 保存
+    - 提交
+  button_matrix:
+  - status: 暂存
+    buttons:
+    - 编辑
+    - 提交
+    - 删除
+  - status: 待审核
+    role: 非审核人
+    buttons:
+    - 查看
+  - status: 待审核
+    role: 审核人
+    buttons:
+    - 审核
+  - status: 审核通过
+    buttons:
+    - 查看
+    - 复制
+  - status: 驳回
+    buttons:
+    - 编辑
+    - 删除
+requirements_delta:
+- date: 2026-07-22T17:20
+  source: 01_requirements/需求变动.md 17:20更新
+  summary: 审核通过模版可复制；确认后生成暂存副本，名称带随机后缀，内容一致
+- date: '2026-07-22'
+  source: 01_requirements/需求变动.md
+  summary: 日龄采食起止范围调整；审核交互同REQ-002
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  note: 权限测点统一见 REQ-000（TP-000-17 起）
+- date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  summary: 补齐禅道用例48792、49113；同步禅道 type/auto 到 automation/case_type，不做本地自动化适配性评估
+  evidence: null # original page evidence deleted by cleanup
+copy_action:
+  visible_when: 审核通过
+  hidden_when:
+  - 暂存
+  - 待审核
+  - 驳回
+  confirm_dialog: true
+  confirm_copy_weak_check: true
+  result_status: 暂存
+  name_rule: '{source_name}-随机后缀'
+  content_rule: 与源模版完全一致
+audit_dialog:
+  审核模版:
+    initial:
+      reason_field: false
+    reject:
+      trigger: 点击驳回
+      dialog: 驳回确认框
+      reason_field: required
+    approve:
+      trigger: 点击审核通过
+      confirm_dialog: false
+trace:
+  story: null
+  project: 产业链生产排程系统
+  version: 5
+  status: draft
+  req: REQ-003
+  tp: TP_REQ-003
+  note: v4 加厚 prototype_verification 契约（REQ-003 人工调整版反推）
+design_artifacts:
+  state_transitions:
+  - name: 模版单据状态
+    states:
+    - 暂存
+    - 待审核
+    - 审核通过
+    - 驳回
+    legal:
+    - from: 暂存
+      to: 待审核
+      trigger: 提交
+    - from: 待审核
+      to: 审核通过
+      trigger: 审核通过
+    - from: 待审核
+      to: 驳回
+      trigger: 驳回
+    - from: 驳回
+      to: 暂存
+      trigger: 编辑后保存
+    illegal:
+    - from: 审核通过
+      action: 编辑
+      expected: 不可编辑
+    - from: 审核通过
+      action: 删除
+      expected: 不可删除
+    - from: 待审核
+      action: 编辑
+      expected: 非审核人仅查看
+  decision_tables:
+  - name: 列表查询
+    conditions:
+    - 模版名称
+    - 品种
+    - 补栏月份
+    - 状态
+    rules:
+    - when: 单条件/多条件
+      then: AND 组合过滤列表
+  - name: 快速分配公式
+    conditions:
+    - A1
+    - B1
+    - A2
+    - B2
+    - A3
+    - B3
+    rules:
+    - when: A1+B1=A2+B2=A3+B3
+      then: 快速分配确认成功
+    - when: 不相等
+      then: 确认失败或提示调整
+  - name: 日龄采食计划拓扑
+    conditions:
+    - 段区
+    - 起
+    - 止
+    - 方案数
+    rules:
+    - when: 同段起止重叠
+      then: 保存失败
+    - when: 同段起止未连续覆盖
+      then: 保存失败
+    - when: 每段至少一方案且占比100%
+      then: 校验通过
+  - name: 品种月份唯一性
+    conditions:
+    - 品种
+    - 补栏月份
+    - 是否已存在
+    rules:
+    - when: 同品种同月已存在
+      then: 保存/提交阻断
+  bva_fields:
+  - field: 饲料占比(%)
+    type: percent
+    boundaries:
+    - 0
+    - 0.01
+    - 100
+    - 100.01
+    notes: 每方案合计100%
+  - field: 日龄起/止
+    type: integer_range
+    boundaries:
+    - 段边界
+    - 重叠
+    - 空档
+  - field: 整批/各段养殖天数
+    type: integer
+    boundaries:
+    - 0
+    - 1
+    - 整批上限
+  - field: 3段养殖天数
+    type: computed
+    formula: 整批-1段-2段
+    notes: 弹窗内自动计算只读
+  - field: 转运日龄
+    type: computed
+    formulas:
+      1段: A1-1
+      2段: A1+A2-1
+      3段: A1+A2+A3-1
+  combinatorial_blocks:
+  - name: 列表查询
+    pict_eligible: true
+    parameters:
+      模版名称:
+      - 有匹配
+      - 无匹配
+      - 空
+      品种:
+      - 品种A
+      - 空
+      补栏月份:
+      - 1月
+      - 空
+      状态:
+      - 暂存
+      - 待审核
+      - 审核通过
+      - 驳回
+      - 空
+  - name: 快速分配+保存
+    pict_eligible: true
+    parameters:
+      品种:
+      - 鸡
+      - 鸭
+      补栏月份:
+      - 有效月
+      - 与同品种冲突月
+      快速分配:
+      - 已确认A+B相等
+      - 未分配
+      - A+B不等
+      日龄方案:
+      - 完整覆盖
+      - 缺方案
+      - 占比非100%
+    constraints:
+    - IF 品种+月份冲突 THEN 保存<>成功
+    - IF 未快速分配 THEN 保存<>成功
+    - IF 占比非100% THEN 保存<>成功
+  - name: 日龄采食饲料行
+    pict_eligible: true
+    parameters:
+      段区:
+      - 1段
+      - 2段
+      - 3段
+      方案数:
+      - '1'
+      - '2'
+      饲料行数:
+      - '1'
+      - '2'
+      占比操作:
+      - 手工
+      - 点击补齐
+permission_scope:
+  owner: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-003
+  testpoints_ref: 03_testpoints/TP_REQ-000.yaml
+  actions:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+  - 提交
+  - 审核
+  - 复制

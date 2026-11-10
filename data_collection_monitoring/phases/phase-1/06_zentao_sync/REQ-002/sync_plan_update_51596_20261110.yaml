@@ -1,0 +1,28 @@
+req_id: REQ-002
+project_id: 46
+product_id: 8
+module_id: 731
+operation: update
+remote_case_id: 51596
+local_case_id: TC-REQ-002-033
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+change:
+  removed_steps:
+  - step: 2
+    expected: 2
+rebuild: forbidden_and_not_used
+source_hashes_after:
+  yaml: 29bd807500538439c57720b0d38e2f909ec43efce0d22f3546ca8e05dd34d4a4
+  markdown: a89cb2e4f60193ff1f52ee8d103dd72503c5e4ff4f4b83ff8ebbd4396ffa33ca
+  review_yaml: 82a6e4ddc5647be04ec6293df5ffd857a8fc2498367e95fd5936747e6a9be0c0
+execution:
+  status: validated
+  operation: update
+  remote_case_id: 51596
+  readback: validated
+  defects: []
+registry:
+  mapping: TC-REQ-002-033 -> 51596
+  last_step_count: 1
+  status: registered

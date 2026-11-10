@@ -1,0 +1,697 @@
+id: REQ-PC-016
+title: 盘点记录
+module_path: 库存管理 / 存发苗间 / 盘点记录
+trace:
+  story: null
+  req: REQ-PC-016
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: 库存管理 / 存发苗间 / 盘点记录基于当前 PC 5500 原型与需求章节重新分析。
+in_scope:
+- 当前模块实际页面的查询区、列表、表单、弹窗、按钮、状态和页面板块
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 测试点、测试用例、CSV、UI 脚本
+- 真实接口/数据库/权限实现
+- 原型未确认的业务事实
+business_rules:
+- id: BR-001
+  rule: 鸡苗类型：只有健雏。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 盘点记录
+- id: BR-002
+  rule: 出苗日期：种蛋出雏任务完成日期。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 盘点记录
+- id: BR-003
+  rule: 是否差异、差异数量： 1、是否差异：展示盘点数量与库存数量是否有差异； 2、差异数量：比较盘点数量与库存数量之间的差异值，盘点入库为正数，盘点出库为负数，盘点一致为0.
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 盘点记录
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces:
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-014
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-015
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 页面内导航
+  type: prototype_navigation
+  source_module: live prototype
+  targets:
+  - 上孵计划列表
+  - 仓库全景图（待定）
+  - 仓库管理
+  - 出入库记录
+  - 出雏器全景图（待定）
+  - 出雏器管理
+  - 受健率标准管理
+  - 品种管理
+  - 存发苗间管理
+  - 孵化周期管理
+  - 孵化器全景图（待定）
+  - 孵化器管理
+  - 库存查询
+  - 生产报表
+  - 盘点记录
+  - 种蛋上孵任务
+  - 种蛋出雏任务
+  - 种蛋照蛋任务
+  - 蛋重类型管理
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 真实接口、权限、异常提示和字段校验规则是什么？
+  impact: 影响正式契约与下游测试点
+  owner: 产品/研发
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: observed
+    observed_page_count: 1
+    unmapped_pages: []
+    interaction_boundary: 页面树导航和 DOM 观察，未执行写操作
+  page_chrome:
+  - page: 盘点记录
+    title: 盘点记录
+    url: http://127.0.0.1:5500/%E7%9B%98%E7%82%B9%E8%AE%B0%E5%BD%95_3.html
+    notes: live DOM
+  page_block_specs:
+  - id: CHROME
+    name: 页面壳层
+    fields:
+    - 盘点记录
+    data_source: live DOM
+    coverage:
+    - l1
+    - l2
+  - id: CONTROLS
+    name: 当前页面控件
+    fields:
+    - 全部仓库 北一号仓库 北二号仓库 南一号仓库
+    - 全部养殖场 养殖场一 养殖场二 养殖场三
+    - 全部品种 AA 利丰
+    - checkbox
+    - 全部 是 否
+    - u19664_input
+    - u19665_input
+    - 请输入操作人
+    - 全部类型 健雏
+    - 全部孵化场 孵化一场 孵化二场
+    - 请输入养殖批次
+    - u19675_input
+    - u19676_input
+    data_source: live DOM visible controls
+    coverage:
+    - l1
+    - l2
+    - l3
+  - id: NOTES
+    name: 原型注释
+    fields:
+    - 鸡苗类型：只有健雏。
+    - 出苗日期：种蛋出雏任务完成日期。
+    - 是否差异、差异数量： 1、是否差异：展示盘点数量与库存数量是否有差异； 2、差异数量：比较盘点数量与库存数量之间的差异值，盘点入库为正数，盘点出库为负数，盘点一致为0.
+    data_source: requirement/prototype annotations
+    coverage:
+    - l1
+    - l2
+  query_field_specs:
+  - name: 全部仓库 北一号仓库 北二号仓库 南一号仓库
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19466_input
+  - name: 全部养殖场 养殖场一 养殖场二 养殖场三
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19468_input
+  - name: 全部品种 AA 利丰
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19471_input
+  - name: 全部 是 否
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19662_input
+  - name: u19664_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u19664_input
+  - name: u19665_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u19665_input
+  - name: 请输入操作人
+    control: text
+    options_source: live DOM option/value
+    notes: live control u19668_input
+  - name: 全部类型 健雏
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19670_input
+  - name: 全部孵化场 孵化一场 孵化二场
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u19672_input
+  - name: 请输入养殖批次
+    control: text
+    options_source: live DOM option/value
+    notes: live control u19679_input
+  - name: u19675_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u19675_input
+  - name: u19676_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u19676_input
+  form_field_specs: []
+  button_semantics:
+    上孵计划:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋上孵:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋照蛋:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋出雏:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    品种管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    蛋重类型管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    库存查询:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出入库记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    盘点记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库全景图:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    生产报表:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    存发苗间管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化周期管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    受健率标准管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+  nested_dialogs: []
+  sub_tables: []
+  table_column_specs:
+  - name: 智孵管家管理平台
+    order: 1
+  - name: 上孵计划
+    order: 2
+  - name: 种蛋上孵
+    order: 3
+  - name: 种蛋照蛋
+    order: 4
+  - name: 种蛋出雏
+    order: 5
+  - name: 品种管理
+    order: 6
+  - name: 蛋重类型管理
+    order: 7
+  - name: 合格蛋蛋库
+    order: 8
+  - name: 次品库
+    order: 9
+  - name: 生产报表
+    order: 10
+  - name: 仓库管理
+    order: 11
+  - name: 存发苗间管理
+    order: 12
+  - name: 孵化器管理
+    order: 13
+  - name: 出雏器管理
+    order: 14
+  - name: 孵化周期管理
+    order: 15
+  - name: 养殖场管理
+    order: 16
+  - name: 孵化场管理
+    order: 17
+  - name: 组织管理
+    order: 18
+  - name: 用户管理
+    order: 19
+  - name: 存发苗间
+    order: 20
+  - name: 库存查询
+    order: 21
+  - name: 出入库记录
+    order: 22
+  - name: 孵化器全景
+    order: 23
+  - name: 出雏器全景
+    order: 24
+  - name: 受健率标准管理
+    order: 25
+  - name: 二级蛋蛋库
+    order: 26
+  - name: 首页/一级菜单/二级菜单/三级菜单…
+    order: 27
+  - name: 导出
+    order: 28
+  - name: 搜索
+    order: 29
+  - name: 仓库：
+    order: 30
+  computed_fields: []
+  save_validations: []
+  ui_components:
+  - input/select/button
+  - table
+  cross_module_refs:
+  - field: 盘点记录
+    source_module: REQ-PC-014
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 盘点记录
+    source_module: REQ-PC-015
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 页面内导航
+    source_module: live prototype
+    dialog: 页面打开链接
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 上孵计划列表
+    - 仓库全景图（待定）
+    - 仓库管理
+    - 出入库记录
+    - 出雏器全景图（待定）
+    - 出雏器管理
+    - 受健率标准管理
+    - 品种管理
+    - 存发苗间管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 孵化器管理
+    - 库存查询
+    - 生产报表
+    - 盘点记录
+    - 种蛋上孵任务
+    - 种蛋出雏任务
+    - 种蛋照蛋任务
+    - 蛋重类型管理
+  detail_table_specs: []
+  concurrency_checks: []
+  role_coverage: skip
+  observed_pages:
+  - page: 盘点记录
+    nodeurl: 盘点记录_3.html
+    title: 盘点记录
+    frame_url: http://127.0.0.1:5500/%E7%9B%98%E7%82%B9%E8%AE%B0%E5%BD%95_3.html
+    body_line_count: 482
+    body_lines:
+    - 智孵管家管理平台
+    - 计划管理
+    - 上孵计划
+    - 孵化管理
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 库存管理
+    - 品种管理
+    - 蛋重类型管理
+    - 合格蛋蛋库
+    - 次品库
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 养殖场管理
+    - 孵化场管理
+    - 组织管理
+    - 用户管理
+    - 存发苗间
+    - 库存查询
+    - 出入库记录
+    - 孵化器全景
+    - 出雏器全景
+    - 基础数据
+    - 受健率标准管理
+    - 二级蛋蛋库
+    - 首页/一级菜单/二级菜单/三级菜单…
+    - 导出
+    - 搜索
+    - 重置
+    - 仓库：
+    - 全部仓库
+    - 北一号仓库
+    - 北二号仓库
+    - 南一号仓库
+    - 养殖场：
+    - 全部养殖场
+    - 养殖场一
+    - 养殖场二
+    - 养殖场三
+    - 养殖批次：
+    - 品种：
+    - 全部品种
+    - AA
+    - 利丰
+    - 盘点时间
+    - 孵化场
+    - 鸡苗类型
+    - 养殖场
+    - 养殖批次
+    - 品种
+    - 出苗日期
+    - 平均苗重/g
+    - 库存数量
+    - 盘点数量
+    - 是否差异
+    - 差异数量
+    - 操作人
+    - 备注
+    - '2025-12-10 17:22:00'
+    - 孵化一场
+    - 健雏
+    - 1p
+    - '2025-11-25'
+    - '345'
+    - '7000'
+    - 否
+    - '0'
+    - 周韬睿
+    - 数量无误
+    - '2025-11-30'
+    - '543'
+    - '300'
+    - '600'
+    - 是
+    - 赵猛
+    - 2026-1-10
+    - '1550'
+    - '2000'
+    - '-450'
+    - 少了
+    - 南二号仓库
+    - 4p
+    - '100000'
+    - 西一号仓库
+    - '3000'
+    - 3p
+    - '6000'
+    - 库存缺少
+    - 5p
+    - 库存多了
+    - '4000'
+    - 是否差异：
+    - 全部
+    - 盘点日期：
+    - '~'
+    annotations:
+    - 鸡苗类型：只有健雏。
+    - 出苗日期：种蛋出雏任务完成日期。
+    - 是否差异、差异数量： 1、是否差异：展示盘点数量与库存数量是否有差异； 2、差异数量：比较盘点数量与库存数量之间的差异值，盘点入库为正数，盘点出库为负数，盘点一致为0.
+    controls:
+    - tag: SELECT
+      id: u19466_input
+      type: select-one
+      value: 全部仓库
+      text: 全部仓库 北一号仓库 北二号仓库 南一号仓库
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19468_input
+      type: select-one
+      value: 全部养殖场
+      text: 全部养殖场 养殖场一 养殖场二 养殖场三
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19471_input
+      type: select-one
+      value: 全部品种
+      text: 全部品种 AA 利丰
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19650_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19651_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19652_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19653_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19654_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19655_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19656_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19657_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19658_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19659_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19660_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19662_input
+      type: select-one
+      value: 全部
+      text: 全部 是 否
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19664_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19665_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19668_input
+      type: text
+      value: 请输入操作人
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19670_input
+      type: select-one
+      value: 全部类型
+      text: 全部类型 健雏
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u19672_input
+      type: select-one
+      value: 全部孵化场
+      text: 全部孵化场 孵化一场 孵化二场
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19673_input
+      type: text
+      value: 请输入养殖批次
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19675_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19676_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u19679_input
+      type: text
+      value: 请输入养殖批次
+      text: ''
+      disabled: false
+      visible: true
+    dialogs: []
+    buttons:
+    - 上孵计划
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 出入库记录
+    - 盘点记录
+    - 仓库全景图
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景
+    - 出雏器全景
+    - 受健率标准管理
+    static_actions:
+    - 上孵计划列表
+    - 种蛋上孵任务
+    - 种蛋照蛋任务
+    - 种蛋出雏任务
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 盘点记录
+    - 仓库全景图（待定）
+    - 出入库记录
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 出雏器全景图（待定）
+    - 受健率标准管理
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-016
+  outputs:
+  - 02_analysis/pc/REQ-PC-016.yaml
+  - 02_analysis/pc/REQ-PC-016_盘点记录.md
+  gate: passed
+  next_agent: testpoint-agent
+  blockers: []

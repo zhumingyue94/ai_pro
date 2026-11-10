@@ -1,0 +1,372 @@
+plan_id: TEST_PLAN-REQ-PC-043
+title: PC 测试计划 - 发货单明细与结果追溯
+status: draft
+source_inputs:
+- 01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx
+- 02_analysis/pc/REQ-PC-043.yaml
+- 02_analysis/pc/page_inventory/page.json
+- .env
+- ../../../../.agents/references/test-plan.schema.json
+- http://43.143.148.114:18885/biopark-breeding/
+trace:
+  story: REQ-003 发货单明细与结果追溯
+  req: REQ-PC-043
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+objective: 基于 REQ-PC-043 分析、需求说明书和 page.json 已采集的 pc-chick-shipping-detail 页面及状态，规划发货单明细只读展示、上孵计划筛选联动、栋舍范围/视图切换、来源明细与发货记录追溯、权限和证据验证；保留 page.json capture.status=partial、正式路由未探索、原型与需求变动差异、数据权限和定位器风险；仅输出测试计划，不生成测试点、测试用例或脚本。
+scope:
+  in_scope:
+  - 从雏苗发货列表进入发货单明细页并承接正式路由 /biopark-breeding/breeding/delivery/detail/{id}；原型入口和路由仅按 page.json/分析文件已采集事实引用。
+  - 顶部发货单基础信息、计划信息、数量、进度和状态的只读展示，以及返回列表。
+  - 上孵计划表格的计划进度、发货进度、待发货数、实际苗重、养殖场、批次、周龄、蛋重、日期、备注等已由需求定义的只读信息展示；不把 page.json 未出现的具体控件写成原型事实。
+  - 上孵计划发货状态、计划进度和计划号关键字筛选、查询和重置；筛选后默认选择第一条有效计划并同步栋舍分布和发货记录。
+  - 清空筛选后恢复全部有效上孵计划并默认选择第一条；筛选无数据时计划、栋舍分布和发货记录均显示暂无数据。
+  - 雏苗发货执行页面不显示终止的上孵计划；该规则来源于需求变动.md 2026.09.20 13:30 第1条。其余不计入总条数、不参与筛选、选择、发货和记录查看的断言属于测试分析扩展，待产品/研发确认。
+  - 栋舍总览加载当前发货单下全部有效计划记录，当前上孵计划只加载当前计划记录。
+  - 栋舍总览/当前上孵计划与网格/列表视图切换；列表中已由分析定义的栋舍、列、层、总数量、关联计划数和来源计划展示。
+  - 位置明细按钮产生位置筛选并联动发货记录；位置其他区域的来源明细弹窗作为需求行为待正式页面确认，不能使用 page.json 未出现的弹窗元素或定位器。
+  - 发货记录展示操作时间、上孵计划号、操作人、本次发货数量、位置数、剩余未发货数、位置累计数量、备注，并支持批次位置明细展开/收起。
+  - 待发货、发货中、已发货、已签收发货单状态下的只读展示和查看权限边界；明细页不提供发货、补录、修改、删除或结果提交能力。
+  - 查看、筛选、重置、范围/视图切换、位置来源联动、清空位置筛选、记录展开和返回列表均不得修改业务数据。
+  out_scope:
+  - 发货、补录、修改、删除、完成发货和结果提交；由 REQ-PC-042 承接执行流程。
+  - REQ-PC-041 雏苗发货列表查询、状态卡、分页和列表入口实现；本需求只承接从列表进入明细及返回列表的页面承接。
+  - REQ-PC-042 发货执行、位置录入、草稿和提交联动的业务实现。
+  - REQ-PC-044 导出文件生成、下载和文件内容校验。
+  - APP 发货记录和移动端专属交互。
+  - 库存、出入库及商品禽养殖端签收回写。
+  - 具体接口路径、HTTP 方法、请求/响应字段、错误码、分页和大数据量性能策略。
+  - 未由需求、REQ-PC-043 分析或 page.json 已采集状态确认的按钮、字段、菜单、弹窗细节和定位器。
+strategy:
+- 以 REQ-PC-043 分析和需求说明书为业务契约，以 page.json capture_id、page_id、已采集 route、state_id、element_id、DOM/截图路径为页面事实边界；page.json capture.status=partial，正式页面结构、接口、权限和数据不视为已完整确认。
+- 使用等价类划分覆盖发货单状态、计划进度、筛选结果、关键字匹配、权限、栋舍范围、视图模式、位置来源和记录数量；使用边界值覆盖有效计划为 0/1/多条、来源计划为 0/1/多条、记录为 0/1/多条、筛选有结果/无结果和终止计划排除。
+- 使用判定表评估查看权限、有效计划存在性、筛选结果、是否终止、栋舍范围、视图模式、位置来源、发货记录和重置/清空动作的组合，重点确认只读和空态规则。
+- 使用状态转换覆盖 page.json 已采集的 st-default、st-house-overview、st-house-current、st-house-list、st-source-detail、st-filter-dropdown、st-filter-shipped、st-filter-empty、st-filter-reset、st-doc-01/st-doc-03/st-doc-04/st-doc-05/st-doc-06/st-doc-07/st-doc-08；未采集或正式环境不一致的状态记录为待确认，不补造结构。
+- 使用 Pairwise/2-way 评估 OrderStatus、PlanProgress、FilterResult、HouseScope、ViewMode、PositionSource、RecordState、FilterAction、PermissionState 的组合；约束包括终止计划排除、无结果时三块均暂无数据、筛选/重置默认第一条、总览/当前计划范围不同和所有允许操作只读。
+- 需求变动优先于历史原型偏差：筛选无数据时发货记录也应无数据，重置后默认第一条；历史 page.json 证据中的偏差单独保留为风险，不作为当前通过结论。
+- 自动化规划采用 Playwright Python 可视 Chromium headless=False；优先使用 page.json 已记录的 role、label、placeholder 和页面区域语义定位。位置明细、记录展开和来源明细弹窗存在重复/未采集定位器风险，正式执行前必须确认行级唯一作用域或 data-testid，不得编造定位器。
+- Web 执行按导航、可观察状态等待、操作前后状态比对和证据采集执行；不使用固定 sleep，不执行任何业务写入，不保存账号、密码、Token、Cookie 或真实敏感数据。
+environment:
+  client: PC Web
+  os: win32；正式执行前记录实际客户端版本
+  browser: Chromium visible mode；Playwright Python 规划 headless=False
+  base_url: ${UI_TEST_URL}
+  page_path: /biopark-breeding/breeding/delivery/detail/{id}
+  portal_entry: 种禽孵化管理系统 / 计划管理 / 雏苗发货 / 发货单明细（page.json/分析文件已采集菜单路径）
+  login: 原型采集无需登录；正式环境凭据仅从 .env 或运行时安全配置读取，不写入计划、日志或证据；需确认正式菜单和查看接口权限
+data:
+  required:
+  - 可进入明细页的安全测试发货单，覆盖待发货、发货中、已发货和已签收状态。
+  - 有效上孵计划、终止计划、无关联计划、筛选单条/多条/无结果数据。
+  - 栋舍总览、当前计划、网格、列表、位置来源和发货记录展开数据。
+  - 有菜单和查看权限、无菜单权限、无查看接口权限/加载失败的授权测试条件。
+  - 支持只读回读的顶部信息、计划字段、栋舍字段、来源数量和发货记录字段样本。
+  preparation: 执行前由测试、业务/产品和平台权限责任人准备脱敏测试数据、角色菜单/查看接口权限、自然唯一业务键、正式路由确认和数据访问/清理责任；本需求只读操作不应修改业务数据，任何异常写入须由责任人回滚并留证；原型 mock 仅作页面状态参考，不作为正式数据或接口契约。
+roles:
+- 测试：执行只读页面、筛选、状态转换和证据采集，验证无业务数据变更。
+- 产品/业务负责人：确认只读字段口径、默认第一条规则、终止计划排除、无数据口径和来源明细行为。
+- 平台权限/实施负责人：准备菜单权限、查看接口权限、租户和数据权限样本。
+- 研发：确认正式路由、字段来源、异常表现和稳定唯一定位器。
+- 测试设计：在计划通过后消费本计划范围和策略生成下游测试设计产物。
+dependencies:
+- REQ-PC-041 雏苗发货列表与筛选：提供明细入口和返回列表承接；列表实现不属于本需求。
+- REQ-PC-042 发货单发货执行：提供发货计划、位置结果、发货记录和结果口径；执行实现不属于本需求。
+- 雏苗发货单：提供顶部基础信息、状态、数量和进度；正式测试数据未提供。
+- 上孵计划：提供计划筛选、计划状态和计划字段；正式测试数据未提供。
+- 栋舍位置结果和来源关系：提供栋舍总览、当前计划、位置列表和来源明细；正式测试数据未提供。
+- 发货记录：提供历史批次、位置明细和展开结果；正式测试数据未提供。
+- 平台角色菜单/接口权限配置：控制菜单显示和明细查看权限；具体角色与权限编码未提供。
+priority: P0：明细进入、顶部/计划只读展示、筛选联动、默认第一条、无数据三块联动、栋舍范围切换、只读边界；P1：网格/列表、位置来源、记录展开、状态矩阵、权限、终止排除和返回列表；P2：视觉一致性、兼容性和正式性能目标待确认
+risks:
+- page.json capture.status=partial，正式明细路由 confirmed_not_explored；正式入口、状态、字段和元素可能不同；影响 high；执行前重新采集正式页面并保留差异。
+- 需求变动与历史原型在筛选无数据、重置默认第一条和来源明细呈现上存在偏差；影响 high；以需求变动和 REQ-PC-043 当前契约为准，page.json 偏差作为风险证据。
+- 来源明细弹窗是业务行为但 page.json 未采集独立弹窗元素/定位器；影响 high；正式执行前确认可观察结构和稳定定位器，否则自动化阻塞并转人工。
+- 位置明细和记录展开按钮可能重复，必须按栋舍/列/层、位置或批次行作用域定位；影响 high；未确认唯一作用域或 data-testid 前不得生成脚本定位。
+- mock 数据不能证明正式数据范围、权限、字段来源和只读行为；影响 high；使用授权测试数据并在操作前后回读比对。
+- 无数据、加载失败和无权限统一暂无数据/无操作权限表现尚未在正式环境验证；影响 high；准备专用权限和空态条件并记录页面可见结果。
+- 计划和发货记录的跨模块口径可能不一致；影响 medium；由业务负责人确认字段来源和联动口径，不扩展为接口契约。
+open_questions:
+- 确认正式环境 URL、明细菜单权限、查看接口权限、租户和测试角色。
+- 确认正式发货单状态矩阵及有效/终止/无关联计划数据。
+- 确认筛选无数据时计划、栋舍和发货记录的正式空态文案与联动范围。
+- 确认清空筛选后默认第一条的正式定义，以及终止计划排除规则。
+- 确认来源明细弹窗的正式可见入口、内容、关闭方式和稳定定位器；page.json 未出现的元素不得提前写成事实。
+- 确认位置明细和记录展开的行级唯一作用域或正式 data-testid。
+- 确认顶部、计划、栋舍、来源和发货记录字段的正式来源、精度和只读权限。
+- 确认无查看权限、加载失败和无数据时页面可见提示，以及只读操作的数据不变更证据。
+entry_criteria:
+- DOCX、REQ-PC-043.yaml、page.json、.env 和 test-plan.schema.json 可读取，需求、分析、分区和模块身份一致。
+- page.json 已检查并登记 capture_id PAGE-PC-REQ041-REQ042-20260903、状态 partial、页面 pc-chick-shipping-detail 及已采集状态；未采集事实不写入计划。
+- 正式环境 URL、菜单/查看权限、脱敏只读数据、唯一业务键、正式路由和定位器确认责任已准备；未准备项转为阻塞或 report_only 风险。
+- 需求差异、范围责任、策略、数据边界、证据方案和三类套件已评审。
+exit_criteria:
+- YAML 通过 test-plan.schema.json，未新增字段且不含 tp/tp_id；Markdown 与 YAML 的范围、策略、风险、准入/准出、证据和套件一致。
+- 已定义冒烟、定向、全量三个计划层级套件，未生成测试点、测试用例、CSV、禅道数据或 UI 脚本。
+- page.json partial、正式路由未探索、原型偏差、mock 边界、弹窗/定位器风险和权限/数据前提均在计划与交接中保留。
+- 高风险开放问题已确认、转为明确阻塞，或由下阶段测试数据/权限准备承接；只读验证期间无业务数据变更或异常变更已可证明。
+- 计划范围内页面行为均有可观察结果和证据类型定义，REQ-PC-041/042/044 等范围外责任已交接。
+evidence:
+- 既有页面证据：page.json capture_id PAGE-PC-REQ041-REQ042-20260903，页面 pc-chick-shipping-detail，原型路由 http://43.143.148.114:18885/biopark-breeding/，菜单路径计划管理/雏苗发货/发货单明细；capture.status=partial。
+- 既有状态证据引用 page.json/分析文件已登记的 st-default、st-house-overview、st-house-current、st-house-list、st-source-detail、st-filter-dropdown、st-filter-shipped、st-filter-empty、st-filter-reset、st-doc-01、st-doc-03、st-doc-04、st-doc-05、st-doc-06、st-doc-07、st-doc-08 及对应 DOM/截图路径；不把 mock 值作为正式结果。
+- 正式执行阶段按 REQ、页面路由、state_id、运行标识保存脱敏截图、DOM 快照、必要的浏览器控制台/网络日志、Playwright trace、客户端/浏览器版本和时间。
+- 对明细进入、顶部只读、筛选/重置、默认选择、无数据联动、栋舍范围/视图、位置来源、记录展开和返回列表保存操作前后页面状态、可见文案、记录范围和业务数据不变证据。
+- 对权限分支保存授权数据键、菜单可见性、页面提示和回读结果；不保存凭据、Cookie、真实敏感数据或持久化登录状态。
+- 自动化执行前记录定位器确认结果；来源弹窗、位置明细和记录展开定位器未确认时保留人工/自动化阻塞证据，不以脚本通过替代确认。
+- 正式环境证据与原型证据分开存放；历史原型偏差与当前需求契约分别标注，避免将偏差误报为正式通过。
+suites:
+  Smoke: 规划可视 Chromium 进入已采集对应明细页面状态、查看顶部和计划只读信息、执行一次筛选/查询、栋舍范围切换、记录区域可见、返回列表可达，并确认不发生业务数据变更；正式路由/权限/定位器未确认时标记阻塞。
+  Targeted: 规划四种发货单状态展示、终止计划排除、计划进度/状态/关键字筛选、默认第一条与重置、无结果三块暂无数据、总览/当前计划、网格/列表、位置来源联动、记录展开、菜单/查看权限和加载失败分支；重点覆盖需求变动与历史原型差异。
+  Full: 规划本 REQ 全部只读板块、字段/列、状态转换、等价类/边界值、判定表、Pairwise/2-way 组合、范围与视图联动、来源追溯、记录展开/收起、返回承接、数据不变更、兼容性和与 REQ-PC-041/042/044 的责任边界回归；接口契约、导出和发货执行由对应需求承接。
+plan_items:
+  - id: PI-043-01
+    title: 明细入口与上孵计划表头、只读操作
+    coverage_ids: [FR-043-01, FR-043-11]
+  - id: PI-043-02
+    title: 发货状态与数量计算
+    coverage_ids: [FR-043-02, FR-043-03, FR-043-04]
+  - id: PI-043-03
+    title: 计划字段与出雏结果回读
+    coverage_ids: [FR-043-05]
+  - id: PI-043-04
+    title: 计划筛选、查询和重置
+    coverage_ids: [FR-043-06]
+  - id: PI-043-05
+    title: 计划查看与栋舍、发货记录联动
+    coverage_ids: [FR-043-07]
+  - id: PI-043-06
+    title: 发货进度与只读数据边界
+    coverage_ids: [FR-043-08]
+  - id: PI-043-07
+    title: 发货单基础信息回读
+    coverage_ids: [FR-043-10]
+  - id: PI-043-08
+    title: 计划分布位置范围
+    coverage_ids: [FR-043-13]
+  - id: PI-043-09
+    title: 位置悬浮和来源展示
+    coverage_ids: [FR-043-14]
+  - id: PI-043-10
+    title: 栋舍范围与视图
+    coverage_ids: [FR-043-04, FR-043-05]
+  - id: PI-043-11
+    title: 位置筛选及空态
+    coverage_ids: [FR-043-06]
+  - id: PI-043-12
+    title: 发货记录字段和位置明细
+    coverage_ids: [FR-043-07]
+  - id: PI-043-13
+    title: 只读查询、视图和展开收起边界
+    coverage_ids: [FR-043-08]
+  - id: PI-043-14
+    title: 菜单、接口权限和位置空态
+    coverage_ids: [FR-043-09]
+  - id: PI-043-15
+    title: 异常发货单标识和计划分布列表
+    coverage_ids: [FR-043-14]
+atomic_purposes:
+  - id: AP-043-01
+    statement: 验证有效计划表头和只读查看入口
+    plan_item_id: PI-043-01
+  - id: AP-043-03
+    statement: 验证计划字段和出雏结果可回读
+    plan_item_id: PI-043-03
+  - id: AP-043-04
+    statement: 验证计划号、养殖场和批次筛选及清空恢复
+    plan_item_id: PI-043-04
+  - id: AP-043-05
+    statement: 验证计划查看后的栋舍和记录范围
+    plan_item_id: PI-043-05
+  - id: AP-043-07
+    statement: 验证列表和明细基础信息一致
+    plan_item_id: PI-043-07
+  - id: AP-043-080
+    statement: 验证终止计划在雏苗发货执行页面不显示
+    plan_item_id: null
+  - id: AP-043-09
+    statement: 验证位置悬浮层计划发货明细
+    plan_item_id: PI-043-09
+  - id: AP-043-12
+    statement: 验证位置明细入口筛选发货记录
+    plan_item_id: PI-043-12
+  - id: AP-043-13
+    statement: 验证栋舍总览位置及计划联动
+    plan_item_id: PI-043-10
+  - id: AP-043-17
+    statement: 验证栋舍总览有效计划范围
+    plan_item_id: PI-043-10
+  - id: AP-043-18
+    statement: 验证网格和列表视图数据一致
+    plan_item_id: PI-043-10
+  - id: AP-043-19
+    statement: 验证有记录位置筛选
+    plan_item_id: PI-043-11
+  - id: AP-043-20
+    statement: 验证无记录位置空态
+    plan_item_id: PI-043-11
+  - id: AP-043-21
+    statement: 验证发货记录业务字段
+    plan_item_id: PI-043-12
+  - id: AP-043-22
+    statement: 验证位置明细展开和收起
+    plan_item_id: PI-043-12
+  - id: AP-043-23
+    statement: 验证只读查询和视图不改业务数据
+    plan_item_id: PI-043-13
+  - id: AP-043-24
+    statement: 验证无菜单权限时入口不可见
+    plan_item_id: PI-043-14
+  - id: AP-043-25
+    statement: 验证无查看权限时权限提示
+    plan_item_id: PI-043-14
+  - id: AP-043-26
+    statement: 验证有效、无效和缺失标识提示
+    plan_item_id: PI-043-15
+  - id: AP-043-ATOMIC-027
+    statement: 验证待发货状态
+    plan_item_id: PI-043-02
+  - id: AP-043-ATOMIC-028
+    statement: 验证待发货数计算
+    plan_item_id: PI-043-02
+  - id: AP-043-ATOMIC-029
+    statement: 验证当前计划位置范围
+    plan_item_id: PI-043-08
+  - id: AP-043-ATOMIC-030
+    statement: 验证栋舍总览位置范围
+    plan_item_id: PI-043-10
+  - id: AP-043-ATOMIC-031
+    statement: 验证有记录位置筛选
+    plan_item_id: PI-043-11
+  - id: AP-043-ATOMIC-032
+    statement: 验证无记录位置空态
+    plan_item_id: PI-043-11
+  - id: AP-043-ATOMIC-033
+    statement: 验证计划分布列表字段
+    plan_item_id: PI-043-15
+  - id: AP-043-ATOMIC-034
+    statement: 验证栋舍总览列表字段
+    plan_item_id: PI-043-10
+  - id: AP-043-ATOMIC-035
+    statement: 验证位置筛选清除
+    plan_item_id: PI-043-11
+  - id: AP-043-ATOMIC-036
+    statement: 验证发货记录卡片字段
+    plan_item_id: PI-043-12
+  - id: AP-043-ATOMIC-037
+    statement: 验证位置明细展开
+    plan_item_id: PI-043-12
+  - id: AP-043-ATOMIC-038
+    statement: 验证位置明细收起
+    plan_item_id: PI-043-12
+  - id: AP-043-036
+    statement: 验证发货记录卡片基础字段正确展示
+    plan_item_id: PI-043-08
+  - id: AP-043-039
+    statement: 验证有效上孵计划表格标题、表头名称及列顺序正确
+    plan_item_id: PI-043-01
+  - id: AP-043-040
+    statement: 验证上孵计划操作列仅提供查看入口
+    plan_item_id: PI-043-01
+  - id: AP-043-041
+    statement: 验证按上孵计划号筛选出匹配计划
+    plan_item_id: PI-043-02
+  - id: AP-043-042
+    statement: 验证清空上孵计划号筛选后恢复全部有效计划
+    plan_item_id: PI-043-02
+  - id: AP-043-043
+    statement: 验证清空筛选条件后栋舍分布及发货记录恢复到默认计划范围
+    plan_item_id: PI-043-02
+  - id: AP-043-044
+    statement: 验证点击计划查看后进入该计划查看模式并切换为计划分布
+    plan_item_id: PI-043-03
+  - id: AP-043-045
+    statement: 验证计划查看模式展示正确的当前上孵计划标题
+    plan_item_id: PI-043-03
+  - id: AP-043-046
+    statement: 验证计划查看模式下发货记录只属于当前上孵计划
+    plan_item_id: PI-043-04
+  - id: AP-043-047
+    statement: 验证栋舍总览位置行展开后展示关联计划及对应发货数量
+    plan_item_id: PI-043-07
+  - id: AP-043-048
+    statement: 验证位置明细入口能够展示该位置的发货记录
+    plan_item_id: PI-043-08
+  - id: AP-043-049
+    statement: 验证位置计划明细与位置发货记录的计划范围一致
+    plan_item_id: PI-043-08
+  - id: AP-043-052
+    statement: 验证有效发货单标识能够进入对应发货单明细页
+    plan_item_id: PI-043-15
+  - id: AP-043-053
+    statement: 验证无效发货单标识显示明确的无效提示
+    plan_item_id: PI-043-15
+  - id: AP-043-054
+    statement: 验证缺失发货单标识显示明确的参数缺失提示
+    plan_item_id: PI-043-15
+  - id: AP-043-055
+    statement: 验证栋舍总览仅纳入当前发货单下的有效上孵计划位置
+    plan_item_id: PI-043-06
+  - id: AP-043-056
+    statement: 验证终止计划不会出现在栋舍总览位置范围中
+    plan_item_id: PI-043-06
+  - id: AP-043-059
+    statement: 验证当前上孵计划分布列表字段和列顺序正确
+    plan_item_id: PI-043-09
+  - id: AP-043-060
+    statement: 验证计划分布列表中关联计划数正确回读
+    plan_item_id: PI-043-09
+  - id: AP-043-062
+    statement: 验证栋舍总览列表字段及列顺序正确
+    plan_item_id: PI-043-06
+  - id: AP-043-063
+    statement: 验证栋舍总览位置总数量计算正确
+    plan_item_id: PI-043-10
+  - id: AP-043-064
+    statement: 验证栋舍总览关联计划数计算正确
+    plan_item_id: PI-043-10
+  - id: AP-043-065
+    statement: 验证清空位置筛选后恢复当前栋舍范围内全部有效计划记录
+    plan_item_id: PI-043-13
+  - id: AP-043-066
+    statement: 验证出雏结果平均苗重字段可见并可回读
+    plan_item_id: PI-043-03
+  - id: AP-043-067
+    statement: 验证上孵时间字段名称和格式正确
+    plan_item_id: PI-043-07
+  - id: AP-043-068
+    statement: 验证栋舍区域标题显示当前栋舍
+    plan_item_id: PI-043-07
+  - id: AP-043-069
+    statement: 验证发货记录卡片剩余未发货数正确
+    plan_item_id: PI-043-08
+  - id: AP-043-070
+    statement: 验证发货记录卡片位置累计数量正确
+    plan_item_id: PI-043-08
+  - id: AP-043-071
+    statement: 验证按养殖场筛选出匹配计划
+    plan_item_id: PI-043-02
+  - id: AP-043-072
+    statement: 验证按养殖批次筛选出匹配计划
+    plan_item_id: PI-043-02
+  - id: AP-043-073
+    statement: 验证清空养殖场筛选后恢复全部有效计划
+    plan_item_id: PI-043-02
+  - id: AP-043-074
+    statement: 验证清空养殖批次筛选后恢复全部有效计划
+    plan_item_id: PI-043-02
+  - id: AP-043-075
+    statement: 验证当前计划位置来源字段正确
+    plan_item_id: PI-043-09
+  - id: AP-043-076
+    statement: 验证当前计划分布列表位置数量正确回读
+    plan_item_id: PI-043-09
+  - id: AP-043-077
+    statement: 验证发货中状态及部分发货数量边界
+    plan_item_id: PI-043-02
+  - id: AP-043-078
+    statement: 验证已发货状态及待发货数为零
+    plan_item_id: PI-043-02
+  - id: AP-043-079
+    statement: 验证已签收发货单只读展示边界
+    plan_item_id: PI-043-02
+next_stage: testcase-generation-agent

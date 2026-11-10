@@ -1,0 +1,26 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "target": {"project": 46, "product": 8, "module": 744, "module_name": "插件管理"},
+  "record": {
+    "source_case_id": "TC-REQ-006-015",
+    "remote_case_id": 51777,
+    "title": "插件列表显示插件 ID",
+    "version": 5,
+    "steps_count": 2,
+    "steps": [
+      {"action": "打开插件管理列表。", "expected": "插件管理列表正常显示。"},
+      {"action": "查看插件 ID 列。", "expected": "列表中显示插件 ID，每条可见插件记录都有对应 ID。"}
+    ],
+    "status": "validated"
+  },
+  "readback": {
+    "status": "validated",
+    "scope": "项目46、产品8、模块744",
+    "message": "51777已按稳定禅道ID原位更新并立即回读，确认第3步及期望3已删除。"
+  },
+  "source_hashes": {
+    "REV_CASE_REQ-006.yaml": "b8c1c204b482ce075085bf48d2cffdff1fb77af50c11e4175e9a3517b7180779",
+    "TC_REQ-006.yaml": "2fecaa6dc7551f729b03de529992196c0934e2097950260f673a5e646b192016"
+  }
+}

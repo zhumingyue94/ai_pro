@@ -1,0 +1,169 @@
+﻿{
+    "id": 51932,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 748,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "按创建日期范围查询，检查日期自动回填和筛选结果",
+    "precondition": "前置准备：\n1、已进入告警配置页面，并准备至少一条创建日期落在所选范围内的脱敏配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-23 13:51:56",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-11-04 17:09:45",
+    "version": 3,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 3,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176650,
+            "step": "点击筛选字段“创建日期”的输入框",
+            "desc": "点击筛选字段“创建日期”的输入框",
+            "expect": "打开日期范围选择器，页面显示开始日期和结束日期的选择区域。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176651,
+            "step": "在日期范围选择器中依次选择两个日期，先选择较早日期，再选择较晚日期",
+            "desc": "在日期范围选择器中依次选择两个日期，先选择较早日期，再选择较晚日期",
+            "expect": "输入框按日期先后顺序自动回填开始日期和结束日期，不受日期选择点击顺序影响。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 176652,
+            "step": "点击“查询”",
+            "desc": "点击“查询”",
+            "expect": "列表完成刷新，筛选条件保留创建日期范围。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "4",
+            "id": 176653,
+            "step": "查看列表记录的创建日期",
+            "desc": "查看列表记录的创建日期",
+            "expect": "列表记录的创建日期均处于自动回填的开始日期和结束日期范围内。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51932,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51932",
+        "text": "按创建日期范围查询，检查日期自动回填和筛选结果",
+        "type": "root",
+        "children": [
+            {
+                "id": 176650,
+                "text": "点击筛选字段“创建日期”的输入框",
+                "type": "sub",
+                "parent": "case_51932",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176650",
+                        "text": "打开日期范围选择器，页面显示开始日期和结束日期的选择区域。",
+                        "type": "node",
+                        "parent": 176650,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176651,
+                "text": "在日期范围选择器中依次选择两个日期，先选择较早日期，再选择较晚日期",
+                "type": "sub",
+                "parent": "case_51932",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176651",
+                        "text": "输入框按日期先后顺序自动回填开始日期和结束日期，不受日期选择点击顺序影响。",
+                        "type": "node",
+                        "parent": 176651,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176652,
+                "text": "点击“查询”",
+                "type": "sub",
+                "parent": "case_51932",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176652",
+                        "text": "列表完成刷新，筛选条件保留创建日期范围。",
+                        "type": "node",
+                        "parent": 176652,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176653,
+                "text": "查看列表记录的创建日期",
+                "type": "sub",
+                "parent": "case_51932",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176653",
+                        "text": "列表记录的创建日期均处于自动回填的开始日期和结束日期范围内。",
+                        "type": "node",
+                        "parent": 176653,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

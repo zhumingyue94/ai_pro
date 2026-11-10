@@ -1,0 +1,178 @@
+{
+  "status": "validated",
+  "product_id": 8,
+  "project_id": 46,
+  "project_context_id": 46,
+  "module": {
+    "name": "数据监听",
+    "id": 745,
+    "path": "iot平台/数据中心/数据监听"
+  },
+  "source_hashes_before": {
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-007.yaml": "3e8cd72c6f5f50e32be85b7a2d668a6a36f109c0ece30cc003308e7b97df9075",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-007.yaml": "32d11d402322f30d06c12c30b32898503152287ebdf57ab991096a17368d3dbd",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  },
+  "records": [
+    {
+      "case_id": "TC-REQ-007-011",
+      "operation": "update",
+      "remote_case_id": 51738,
+      "readback": {
+        "id": 51738,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 745,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看规则状态切换后事件处理时确认新状态立即生效",
+        "precondition": "前置准备：\n1、已获得隔离规则、事件回读和状态切换批准证据。\n\n前置步骤：\n1、使用批准账号登录应用门户。；应用门户登录成功。\n2、在应用门户选择“数据采集监控平台”。；进入数据采集监控平台，并显示平台菜单。\n3、展开“数据中心”菜单。；“数据监听”菜单项可见。\n4、点击“数据监听”菜单。；数据监听页面成功加载，正式页面路径与页面契约一致。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-22 17:23:53",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:25:31",
+        "version": 6,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 6,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174193,
+            "step": "在规则列表中找到目标规则。",
+            "desc": "在规则列表中找到目标规则。",
+            "expect": "页面显示目标规则及其当前状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174194,
+            "step": "点击模板规则的”禁用/停用“按钮。",
+            "desc": "点击模板规则的”禁用/停用“按钮。",
+            "expect": "页面显示规则已禁用或停用，并显示更新后的状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174195,
+            "step": "点击“刷新”或“查询”，查看新产生的事件记录。",
+            "desc": "点击“刷新”或“查询”，查看新产生的事件记录。",
+            "expect": "新事件按照更新后的规则状态处理，页面显示的处理结果与规则状态一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51738,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51738",
+          "text": "查看规则状态切换后事件处理时确认新状态立即生效",
+          "type": "root",
+          "children": [
+            {
+              "id": 174193,
+              "text": "在规则列表中找到目标规则。",
+              "type": "sub",
+              "parent": "case_51738",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174193",
+                  "text": "页面显示目标规则及其当前状态。",
+                  "type": "node",
+                  "parent": 174193,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174194,
+              "text": "点击模板规则的”禁用/停用“按钮。",
+              "type": "sub",
+              "parent": "case_51738",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174194",
+                  "text": "页面显示规则已禁用或停用，并显示更新后的状态。",
+                  "type": "node",
+                  "parent": 174194,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174195,
+              "text": "点击“刷新”或“查询”，查看新产生的事件记录。",
+              "type": "sub",
+              "parent": "case_51738",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174195",
+                  "text": "新事件按照更新后的规则状态处理，页面显示的处理结果与规则状态一致。",
+                  "type": "node",
+                  "parent": 174195,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    }
+  ],
+  "source_hashes_after": {
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-007.yaml": "3e8cd72c6f5f50e32be85b7a2d668a6a36f109c0ece30cc003308e7b97df9075",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-007.yaml": "32d11d402322f30d06c12c30b32898503152287ebdf57ab991096a17368d3dbd",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "d:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  }
+}

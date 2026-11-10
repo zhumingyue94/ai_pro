@@ -1,0 +1,431 @@
+﻿review:
+  review_id: REV-CASE-REQ-001-20261023-R4
+  req_id: REQ-001
+  module_id: REQ-001
+  agent: case-review-agent
+  mode: report_only
+  status: design_review_passed
+  overall_status: design_review_passed
+  gate_passed: true
+  design_gate_passed: true
+  execution_status: not_executed
+  execution_gate_passed: false
+  gate_reasons: []
+  design_gate_reasons: []
+  review_scope:
+    design_review: in_scope
+    execution_review: excluded
+    ui_execution: excluded
+    automation_execution: excluded
+    pairwise_execution: excluded
+    remote_sync: excluded
+  execution_review:
+    status: excluded
+    reason: 本轮仅进行静态用例设计、追溯、自动化适配性和页面证据评审；按用户要求不执行 UI、Playwright、有头页面或 PICT。
+  execution_summary:
+    playwright: not_executed
+    headed_page: not_executed
+    reason: report_only 语义；不执行 UI 测试，不伪造执行结果。
+  source_hashes:
+    04_testcases/TC_REQ-001.yaml: a19daf317f21e808527ca413fb0524b05f1cbab51d8a59e41cd07a8d11db2ab8
+    04_testcases/TC_REQ-001.md: e129ec702c37e3fbc72a2c9171be2ecc6a1a9b902642cda19b996a530578640e
+    02_analysis/REQ-001.yaml: c9e07a318a00be4371f1aa8e35cdbd2365f1ccf62bed64b3234d1db78219d040
+    02_analysis/REQ-001.md: ab59085ae2376a9215982ca3ea76514c280dece0e858299cdda3a1c4beb74d6e
+    03_test_plan/TEST_PLAN_REQ-001.yaml: e33fabc0a0ad2791797a0218d0f814222d97ed6c9c2d34b84ec78a3e99491838
+    03_test_plan/TEST_PLAN_REQ-001.md: 0736e78fe9e70d2e00327a245ed6dd2e0f239f587e0a21632aa450b4e1c364bc
+    02_analysis/page_inventory/page.json: 3cf8f3a770eea7966ccb7e7526f29a6d46096aaca04da4f2364019d805e0fbf2
+    config.yaml: runtime_only_not_read
+  review_items:
+  - code: ZENTAO_CASE_52046_DELETED
+    category: testcase_deletion
+    result: passed
+    gate_reason: false
+    reason: TC-REQ-001-001及禅道52046已通过公共入口真实删除，并立即回读确认目标不存在；本地YAML、Markdown及注册表已移除该用例。
+  - code: AUTOMATION_FIELD_INVALID
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 当前 17 条用例的 auto 字段均为规则允许的字符串 auto/no，并保留结构化 automation_evaluation。
+  - code: UI_CASE_NAVIGATION_MISSING
+    category: design_violation
+    result: passed
+    gate_reason: false
+    reason: 用例已包含授权登录、平台进入、首页导航和可观察到达步骤。
+  - code: PLAN_SCOPE_UNCOVERED
+    category: traceability_failure
+    result: passed
+    gate_reason: false
+    reason: 删除 TC-REQ-001-014..017 后，现存计划范围均有对应保留用例覆盖。
+  - code: PAGE_INVENTORY_PARTIAL
+    category: evidence_risk
+    result: warning
+    gate_reason: false
+    reason: page.json 的首页采集状态为 partial；已登记默认态、日期面板、菜单和筛选静态证据，但统计、刷新、错误和空态运行时证据仍待补采。
+  - code: RUNTIME_DATA_PERMISSION_PENDING
+    category: execution_blocker
+    result: blocked
+    gate_reason: false
+    reason: 用户时区、租户上下文、去重字段、跨时间边界数据及异常/权限状态夹具尚未形成；属于执行准入阻塞，不改写为执行通过。
+  - code: PLAYWRIGHT_NOT_EXECUTED
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 按用户要求禁止执行 UI/Playwright；自动化评审仅检查设计适配性，不代表脚本已生成或已通过。
+  - code: HEADED_PAGE_NOT_EXECUTED
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 按用户要求禁止有头页面执行；page.json 仅用于静态可执行性参考。
+  - code: PICT_NOT_EXECUTED
+    category: execution_blocker
+    result: not_executed
+    gate_reason: false
+    reason: 完成 Pairwise 参数、值域和约束的静态复核，但未执行 PICT 生成或运行时组合验证。
+  coverage_review:
+    methods:
+    - equivalence_partitioning
+    - boundary_value
+    - decision_table
+    - state_transition
+    - pairwise_static
+    conclusion: 17 条用例覆盖首页默认日期、日期边界、天/周/月/季度/年间隔、空数据、筛选联动、刷新、异常、设备和消息统计、租户上下文保护；设计结构和范围映射已通过静态评审，运行时数据与页面证据仍需补采。
+    covered_dimensions:
+    - 首页身份与默认结构
+    - 默认七个完整自然日和日期快捷项
+    - 跨月范围与起止包含意图
+    - 天、周、月、季度、年时间间隔
+    - 四类指标唯一编号去重
+    - 空数据、筛选变化和只读汇总边界
+    - 当前租户数据范围
+    gaps:
+    - 正式需求 PDF 到 REQ-001-001..017 的逐条页码追溯待确认。
+    - 用户时区、租户、去重、异常和刷新数据基线待补齐。
+    - page.json 仍为 partial，统计区域和状态反馈证据不完整。
+    atomicity_review:
+      status: passed_with_observations
+      result: 17 条用例均只有一个 atomic_purpose_id；未发现同一用例包含多套 test_data 或显式互斥分支的证据。
+    responsibility_review:
+      checked_case_count: 15
+      similar_candidate_count: 2
+      decisions:
+      - case_ids:
+        - TC-REQ-001-003
+        - TC-REQ-001-004
+        decision: retain
+        overlap: 日期范围共同使用日期控件
+        unique_responsibility: 默认值规则与快捷项行为属于不同触发动作和判定结果
+      - case_ids:
+        - TC-REQ-001-006
+        - TC-REQ-001-007
+        - TC-REQ-001-008
+        decision: retain
+        overlap: 时间间隔控件
+        unique_responsibility: 天、周、月/季度/年是不同周期分支和独立统计结果
+  pairwise_review:
+    status: static_review_only
+    model_parameters:
+    - Tenant
+    - Range
+    - Boundary
+    - Interval
+    - Data
+    - Message
+    - Action
+    - Result
+    value_partitions:
+      Tenant:
+      - current
+      - cross_tenant
+      - missing_context
+      Range:
+      - default_7_days
+      - same_day
+      - cross_day
+      - cross_month
+      - cross_year
+      - future
+      - invalid
+      Boundary:
+      - inclusive_start
+      - inclusive_end
+      - outside_range
+      Interval:
+      - day
+      - week
+      - month
+      - quarter
+      - year
+      Data:
+      - normal
+      - empty
+      - partial_missing
+      - anomalous_excluded
+      - duplicate_ids
+      Message:
+      - unique
+      - duplicate_id
+      - delayed
+      - missing
+      Action:
+      - initial
+      - filter_change
+      - manual_refresh
+      - rapid_repeat
+      - no_auto_refresh
+      Result:
+      - success
+      - failure
+      - timeout
+      - permission_denied
+    constraints:
+    - cross_tenant 或 missing_context 需产生权限拒绝或不可展示数据的可观察结果
+    - duplicate_ids 只计一次
+    - empty、partial_missing、anomalous_excluded 按已确认需求规则归零或排除
+    - no_auto_refresh 不应产生自动变化
+    - 起始和结束边界命中时均纳入
+    conclusion: 静态参数和值域适合 Pairwise 复核，但当前没有完整组合矩阵、2-way 覆盖证明和组合到用例映射；未执行 PICT，不声明 Pairwise 完整覆盖。
+    gate_reason: false
+  automation_review:
+    status: blocked
+    rule_ref: .agents/rules/automation-judgment-rule.md
+    generated_vs_reviewed: 17 条用例的 auto 字段均为字符串 auto/no；2 条候选自动化用例方向明确，其余保留人工或 blocked 评估。
+    candidate_cases:
+    - TC-REQ-001-003
+    - TC-REQ-001-004
+    locator_candidates:
+    - home_start_date
+    - home_end_date
+    - home_interval
+    - home_recent_7
+    - home_result_region
+    locator_priority:
+    - get_by_role
+    - get_by_test_id
+    - get_by_label
+    - get_by_text
+    - stable_attribute
+    - page_inventory_element_id
+    - css_last
+    blockers:
+    - test_data_not_provisioned
+    - permission_not_ready
+    - locator_evidence_pending
+    - tenant_timezone_dedup_evidence_missing
+    conclusion: 3 条候选用例可基于已登记首页定位器规划自动化，但运行时 URL、权限、数据、时区、租户和定位器证据未确认；本轮不生成或执行 Playwright。
+    gate_reason: false
+  headed_page_review:
+    status: static_evidence_only
+    evidence:
+    - home_default
+    - home_date_range
+    - home_menu_expanded
+    - home_filtered_week_recent7
+    conclusion: page.json 提供首页默认、日期面板、菜单展开和筛选后的静态证据；本轮未启动有头浏览器，不能宣称有头页面通过。
+    gate_reason: false
+  alignment:
+    yaml_path: 04_testcases/TC_REQ-001.yaml
+    markdown_path: 04_testcases/TC_REQ-001.md
+    validator: D:/02test_pro/ui_test/scripts/validate_testcase_markdown.py
+    template_validator: D:/02test_pro/ui_test/scripts/validate_testcase_template.py
+    status: passed
+    yaml_case_count: 17
+    markdown_case_count: 17
+    id_set_match: true
+    statistics_match: true
+    validator_result: PASS
+    findings:
+    - YAML/Markdown 数量、编号、统计和自动化字段已同步；TC-REQ-001-004 已补充先打开时间范围弹窗，再点击最近七天按钮的操作，并更新日期边界预期。
+    - TC-REQ-001-005 已补充先打开时间范围弹窗的操作，并移除预期中的“数据不足记录 blocked”。
+    - TC-REQ-001-018 已将分类总数和今日新增拆分为四个步骤及四个对应预期，明确先从产品分类页面取数，再返回首页逐项核对。
+    - TC-REQ-001-013 / 禅道 52058 已将标题、步骤和预期改为通俗语言，明确登录首页、查看数据和核对未授权数据不混入。
+    - TC-REQ-001-010 已将无数据场景拆分为打开日期面板、设置范围、等待刷新和核对展示状态四个明确步骤，并移除预期中的“无证据记录 blocked”。
+    - TC-REQ-001-019 / 禅道 52126 已将产品总数和今日新增拆分为四个步骤及四个对应预期，明确先从产品管理页面取数，再返回首页逐项核对。
+    - TC-REQ-001-020 / 禅道 52127 已将设备总数和今日新增拆分为四个步骤及四个对应预期，明确先从设备管理页面取数，再返回首页逐项核对。
+    - TC-REQ-001-021 / 禅道 52128 已将设备消息总数和今日新增拆分为逐设备查看、汇总去重、记录今日新增和首页逐项核对的五个步骤及对应预期。
+    - TC-REQ-001-023 / 禅道 52130 已将设备状态统计拆分为设备管理页面取数，以及首页在线、离线、未激活数量的三个逐项核对步骤及对应预期。
+    - TC-REQ-001-024 / 禅道 52131 已将消息量统计拆分为打开统计区域、设置并确认筛选时间范围、分别记录上行/下行指标、整理基线并逐项核对的六个明确步骤及对应预期。
+    - TC-REQ-001-022 / 禅道 52129 已将环状图统计拆分为观察图表、逐类悬停、记录数量和与批准基线逐项核对四个步骤及对应预期。
+    - 计划缺失范围已补充为独立原子用例。
+  casely_review:
+    status: passed_with_blockers
+    structure: passed
+    fields: passed
+    style: passed_with_observations
+    delivery_format: passed_with_blockers
+    reference: D:/02test_pro/ui_test/references/casely/
+    findings:
+    - 入口步骤、自动化字段和计划范围已按评审意见更新。
+    - 页面证据和运行时数据仍阻塞执行。
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md
+    scope: 全量 17 条用例
+    case_count: 17
+    reviewed_case_count: 17
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 7
+        P2: 10
+        P3: 0
+        P4: 0
+      reviewed:
+        P1: 7
+        P2: 10
+        P3: 0
+        P4: 0
+    change_summary:
+      changed_case_count: 10
+      unchanged_case_count: 9
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 删除 TC-REQ-001-009、TC-REQ-001-014..017 后，当前输入优先级分布仅作观察，不据比例改写优先级。
+    mismatches: []
+    unconfirmed_items:
+    - REQ-001 正式来源章节到 coverage_ids 的逐条追溯
+    - 用户时区、租户、去重、异常和刷新数据基线
+    - page.json 统计区域、错误、空态和刷新运行时证据
+    gate_reasons: []
+    items:
+    - case_id: TC-REQ-001-003
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 默认日期范围
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 默认范围错误会影响首页初始统计，但可手动调整范围复核。
+      gate_reason: false
+    - case_id: TC-REQ-001-004
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 日期快捷项
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 快捷项异常影响常用筛选，但可通过手工输入日期替代。
+      gate_reason: false
+    - case_id: TC-REQ-001-005
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 跨月日期边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 跨月纳入错误会造成统计范围错误，可通过拆分范围暂时核对。
+      gate_reason: false
+    - case_id: TC-REQ-001-006
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 天时间桶
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 天粒度错误会影响趋势判断，可与其他粒度交叉核对。
+      gate_reason: false
+    - case_id: TC-REQ-001-007
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 周时间桶
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 周边界错误会造成趋势统计偏差，可通过天粒度复核。
+      gate_reason: false
+    - case_id: TC-REQ-001-008
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 月季度年时间桶
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 自然周期汇总错误影响长期趋势，但可使用其他粒度交叉核对。
+      gate_reason: false
+    - case_id: TC-REQ-001-009
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 四类指标去重口径
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 唯一编号重复计数会直接造成核心监控数据错误，缺少可靠替代。
+      gate_reason: false
+    - case_id: TC-REQ-001-010
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 无数据状态
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 空数据展示错误会误导监控判断，但可通过批准基线回读。
+      gate_reason: false
+    - case_id: TC-REQ-001-011
+      current_priority: P2
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: priority_adjusted
+      impact_area: 日期筛选联动
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 筛选不联动会导致结果范围错误，可通过重新进入页面暂时替代。
+      gate_reason: false
+    - case_id: TC-REQ-001-013
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      impact_area: 租户权限边界
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 租户数据混入属于高风险数据安全问题，缺少业务替代方案。
+      gate_reason: false
+  traceability_review:
+    status: partial
+    gaps:
+    - REQ-001-001..017 正式 PDF 逐条页码待确认。
+    - 新增 REQ-001-010/014/015/017 已建立用例映射，但正式来源条目待确认。
+    gate_reason: false
+  prohibitions:
+    ui_executed: false
+    playwright_executed: false
+    pict_executed: false
+    remote_zentao_written: false

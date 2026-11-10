@@ -1,0 +1,23 @@
+req_id: REQ-010
+project_id: 46
+product_id: 8
+module_id: 748
+operation: update
+target: project
+source_case_id: TC-REQ-010-061
+remote_case_id: 51988
+change: 步骤2改为提交表单，验证选择多个接收用户可以保存成功，列表显示选择的用户
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+execution:
+  status: validated
+  operation: update_in_place
+  readback_status: validated
+  steps_validated: 2
+  evidence: update_51988_20261110.json
+registry:
+  mapping_status: registered
+  zentao_case_id: 51988
+source_hashes_after:
+  yaml: 66bd6ab687f73d25746b07421f4baa8e8df4df855360dfc317ae8c3a716767c5
+  markdown: e2f3940372c9ee870923f41ccc35a7a2ac4edfd4a12b408e7de69d0cd0d17483
+  review_yaml: d536fbe5ddada9115c824ed33f6e79cb5cdb538e2ab07d80c9a457a50b7c0765

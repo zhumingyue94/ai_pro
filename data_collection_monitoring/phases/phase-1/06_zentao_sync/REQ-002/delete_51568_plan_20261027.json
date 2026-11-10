@@ -1,0 +1,21 @@
+{
+  "operation": "delete",
+  "mode": "real",
+  "case_id": "TC-REQ-002-008",
+  "remote_case_id": 51568,
+  "reason": "实际分页页面不存在末页按钮",
+  "target": {
+    "import_target": "project",
+    "product_id": 8,
+    "project_id": 46,
+    "module_id": 731,
+    "module_path": "iot平台/设备接入/产品分类"
+  },
+  "constraints": [
+    "删除前回读并校验产品、项目、模块、标题",
+    "删除后立即回读确认目标不存在",
+    "回读成功后才移除唯一注册表映射",
+    "不修改其他用例或历史执行证据"
+  ],
+  "entrypoint": "../../../../scripts/zentao_create_testcase.py"
+}

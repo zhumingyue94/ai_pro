@@ -1,0 +1,745 @@
+req_id: REQ-011
+module: 告警记录
+trace:
+  req: REQ-011
+  tp: TEST_PLAN-REQ-011
+  version: '2'
+  status: blocked_scoped_readonly_ui_verification
+  source_review: REQ-011 analysis and TEST_PLAN-REQ-011; REV_CASE_REQ-011-20261023-R2
+common_preconditions:
+- id: CP-REQ-011-001
+  name: 登录并进入告警记录页面
+  conditions:
+  - 已登录应用门户，并具备告警记录页面访问权限。
+  steps:
+  - action: 完成应用门户登录，或复用已有的有效登录态。
+    expected: 登录成功或已有登录态有效，可以正常访问应用门户。
+  - action: 在应用门户选择“数据采集监控平台”。
+    expected: 成功进入数据采集监控平台，并显示对应的平台菜单区域。
+  - action: 展开“告警中心”菜单并点击“告警记录”菜单。
+    expected: 告警记录页面成功加载，确认已进入告警记录页面。
+cases:
+- id: TC-REQ-011-003
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-003
+  title: 按告警配置查询，检查匹配记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限和至少一组已授权的配置记录。
+
+
+    '
+  steps:
+  - action: 选择已批准的告警配置
+    expected: 筛选框回显所选配置名称。
+  - action: 点击“查询”并等待列表刷新
+    expected: 每条结果均属于所选配置，筛选条件仍保留。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-004
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-004
+  title: 按告警级别查询，检查匹配记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限和已授权的级别分类记录。
+
+
+    '
+  steps:
+  - action: 选择已批准的告警级别并点击“查询”
+    expected: 级别控件回显所选值，列表刷新完成。
+  - action: 查看结果列表
+    expected: 每条记录的告警级别均与所选级别一致。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-005
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-005
+  title: 按产品查询，检查匹配记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限和已授权的产品告警记录。
+
+
+    '
+  steps:
+  - action: 选择已批准的脱敏产品并点击“查询”
+    expected: 产品控件回显所选产品，列表刷新完成。
+  - action: 查看结果列表
+    expected: 每条记录的产品均为所选产品，分页总数与结果一致。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-006
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-006
+  title: 六个筛选条件任意组合查询告警记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限，并准备告警配置、告警级别、产品、设备、是否处理和创建时间六类筛选条件的有效测试数据。
+
+
+    '
+  steps:
+  - action: 在平铺显示的筛选区域从告警配置、告警级别、产品、设备、是否处理和创建时间六个筛选框中任选一个或多个条件进行组合设置
+    expected: 所选筛选框均显示对应条件，未选择的筛选框保持可用，六个筛选条件可以按任意组合配置。
+  - action: 点击“查询”并查看列表
+    expected: 列表中的每条记录均满足已选择的全部筛选条件；未选择的条件不参与过滤，任一已选条件不符合的记录不显示。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-007
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-007
+  title: 按设备查询告警记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限和至少一台已授权设备。
+
+
+    '
+  steps:
+  - action: 在平铺显示的筛选区域选择一台设备
+    expected: 设备筛选框显示所选设备，其他筛选框仍正常显示且未被折叠。
+  - action: 点击“查询”并等待列表刷新
+    expected: 列表仅显示所选设备产生的告警记录，设备筛选条件保持不变。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-008
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-008
+  title: 选择产品，检查设备联动选项
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限和已授权的产品设备级联数据。
+
+
+    '
+  steps:
+  - action: 展开高级筛选并选择已批准产品
+    expected: 产品控件回显所选产品，设备控件更新。
+  - action: 等待设备选项加载并打开设备选择框
+    expected: 只显示与所选产品关联的设备。
+  - action: 关闭设备选择框
+    expected: 未点击查询时列表内容不变。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-010
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-010
+  title: 按处理状态查询，检查状态结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备高级筛选页面查看权限和同时包含两种处理状态的脱敏记录。
+
+
+    '
+  steps:
+  - action: 展开高级筛选，选择“是否处理”的“是”或“否”
+    expected: 控件回显所选状态。
+  - action: 点击“查询”并查看列表
+    expected: 每条记录的处理状态均与所选值一致。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-012
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-012
+  title: 选择同一天查询，检查日期边界
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备高级筛选页面查看权限和包含同日边界的脱敏记录。
+
+
+    '
+  steps:
+  - action: 在开始日期和结束日期选择同一已批准日期
+    expected: 两个输入框显示同一天且格式一致。
+  - action: 点击“查询”并查看结果
+    expected: 返回记录符合该日期的页面定义范围，不提示日期无效。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-014
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-014
+  title: 按日期查询，检查时间显示
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备已确认的用户时区和跨时区边界记录。
+
+
+    '
+  steps:
+  - action: 按已确认用户时区设置开始和结束日期
+    expected: 两个日期控件回显日期，格式与用户时区配置一致。
+  - action: 点击“查询”并查看时间字段
+    expected: 时间按页面约定时区显示，边界记录归入正确日期范围。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-015
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-015
+  title: 重置筛选条件，检查条件和页码恢复
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限、至少两页脱敏记录和已设置的基础及高级筛选条件。
+
+
+    '
+  steps:
+  - action: 设置基础、高级筛选并跳转到非第一页
+    expected: 控件显示设置值，分页显示非第一页。
+  - action: 点击“重置”
+    expected: 筛选和日期恢复默认，页码回到第一页，列表按默认条件刷新。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-021
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-021
+  title: 查询无匹配条件，检查空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备告警记录页面查看权限和安全的无匹配筛选条件。
+
+
+    '
+  steps:
+  - action: 设置确认无匹配的筛选条件并点击“查询”
+    expected: 列表显示明确“暂无数据”或等价空状态，不显示无关记录。
+  - action: 点击“重置”并等待刷新
+    expected: 条件恢复默认；有数据时列表显示记录，无数据时显示空状态。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-023
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-023
+  title: 悬停查看触发消息，检查详情悬浮框
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备已授权脱敏告警记录行和查看入口观察权限。
+
+
+    '
+  steps:
+  - action: 在目标行“触发消息”列将鼠标移到“查看”
+    expected: 出现 JSON 悬浮框，并包含 `id`、`reportTime`、`deviceId`、`tenantId`、`serverId`、`reportIp`、`requestId`、`method`、`params`、`data`、`code`、`msg` 字段。
+  - action: 查看悬浮框中的参数值
+    expected: '悬浮框中的 `params` 展示产品物模型中定义的参数名称及其值，参数名称不固定且参数值与设备发送的消息一致。'
+  - action: 将鼠标移开悬浮框区域
+    expected: 悬浮框消失。
+
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-024
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-024
+  title: 打开处理表单后取消，检查记录不变
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备已授权且状态为未处理的脱敏告警记录行和处理表单观察权限。
+
+
+    '
+  steps:
+  - action: 在处理状态为“否”的目标行点击“处理”，等待表单显示
+    expected: 表单显示处理结果输入框及确定、取消或关闭控件。
+  - action: 输入批准的脱敏内容后点击“取消”
+    expected: 表单关闭且无成功提示，目标记录仍为未处理。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-025
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-025
+  title: 查看处理信息，检查状态字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备已授权的已处理和未处理脱敏记录。
+
+
+    '
+  steps:
+  - action: 在告警记录列表中定位一条已处理记录
+    expected: 目标行的“是否处理”显示“是”，并显示处理人、处理时间和处理结果字段。
+  - action: 在告警记录列表中定位一条未处理记录
+    expected: 目标行的“是否处理”显示“否”，处理人、处理时间和处理结果字段显示空值或页面规定的未处理值。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-026
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-026
+  title: 打开记录详情，检查记录编号
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备经授权的脱敏记录集合和事件关联观察证据。
+
+
+    '
+  steps:
+  - action: 定位目标记录并点击查看或详情入口
+    expected: 详情区域打开并显示记录编号或唯一标识。
+  - action: 读取编号和事件标识后关闭详情
+    expected: 记录编号和事件标识与目标行对应，页面回到告警记录列表。
+  - action: 核对详情中的 requestId 与设备发送消息的 id
+    expected: 详情中的 `requestId` 与设备发送消息中的 `id` 完全一致。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-027
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-027
+  title: 打开记录详情，检查时间字段
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备三类时间字段的脱敏记录和经确认的用户时区。
+
+
+    '
+  steps:
+  - action: 将鼠标悬浮在“查看”按钮上
+    expected: 打开记录详情，显示编号、事件标识及页面提供的时间字段。
+  - action: 查看记录详情中的时间字段
+    expected: 页面提供的时间字段含义可区分，`reportTime` 显示为时间戳。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-030
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-030
+  title: 切换租户查询，检查数据隔离
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - 前置准备：具备正式角色、租户和查看、详情、处理权限矩阵。
+  steps:
+  - action: 查询当前租户记录
+    expected: 只显示当前租户有权限查看的数据。
+  - action: 切换到已批准的另一租户并重新查询
+    expected: 租户名称切换成功，新列表不包含原租户记录。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-032
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-032
+  title: 提交空处理结果，检查非必填校验
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备获批的脱敏处理反馈页面观察证据，记录处于未保存状态。
+
+
+    '
+  steps:
+  - action: 在告警记录列表定位处理状态为“否”的目标记录，点击该行“处理”按钮打开处理表单，清空处理结果并点击确定
+    expected: 处理结果允许为空，表单可正常提交，不显示必填提示。
+  - action: 回到告警记录列表查看提交结果
+    expected: 空值处理结果已提交，表单自动返回告警记录列表，目标记录状态按页面规则更新。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-040
+  tp_id: TEST_PLAN-REQ-011
+  priority: P3
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-040
+  title: 无处理权限时，检查处理入口
+  type: security
+  auto: 'no'
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备经批准的告警记录页面脱敏观察证据和对应授权测试上下文；稳定页面契约或具体数据待确认。
+
+
+    '
+  steps:
+  - action: 使用无处理权限账号定位未处理记录
+    expected: 目标记录状态显示未处理。
+  - action: 查看或点击“处理”入口
+    expected: 入口隐藏或禁用；若可点击，显示无权限提示且不提交数据。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-043
+  tp_id: TEST_PLAN-REQ-011
+  priority: P3
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-043
+  title: 切换租户查询，检查记录隔离
+  type: security
+  auto: 'no'
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备经批准的告警记录页面脱敏观察证据和对应授权测试上下文；稳定页面契约或具体数据待确认。
+
+
+    '
+  steps:
+  - action: 在当前租户点击查询
+    expected: 列表只显示当前租户数据，顶部租户名称正确。
+  - action: 切换已批准租户并再次查询
+    expected: 列表随租户变化，新租户不显示原租户记录。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-044
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-044
+  title: 打开处理入口，检查表单状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备经批准的告警记录页面脱敏观察证据和对应授权测试上下文；稳定页面契约或具体数据待确认。
+
+
+    '
+  steps:
+  - action: 在未处理目标行点击“处理”
+    expected: 打开表单并显示处理结果输入框、确定、取消和关闭控件。
+  - action: 点击取消或关闭
+    expected: 表单关闭，无成功提示，记录仍为未处理。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-048
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-048
+  title: 提交处理信息，检查处理状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备经批准的告警记录页面脱敏观察证据和对应授权测试上下文；具体页面契约、数据或反馈待确认。
+
+
+    '
+  steps:
+  - action: 在告警记录列表定位未处理目标记录，点击该行“处理”按钮打开处理弹窗，输入批准的脱敏处理结果并点击确定
+    expected: 打开处理弹窗并显示处理结果输入框；提交后显示处理成功或页面定义的处理中提示。
+  - action: 刷新或重新查询并定位目标记录
+    expected: “是否处理”显示“是”；处理人、处理时间和处理结果显示本次提交结果，其中处理结果显示处理弹窗填写的内容。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-049
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-049
+  title: 再次处理已处理记录，检查限制
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备经批准的告警记录页面脱敏观察证据和对应授权测试上下文；具体页面契约、数据或反馈待确认。
+
+
+    '
+  steps:
+  - action: 定位处理状态为“是”的目标记录
+    expected: 该记录的“处理”按钮隐藏。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED
+- id: TC-REQ-011-050
+  tp_id: TEST_PLAN-REQ-011
+  coverage_ids:
+  - COV-011-recovered
+  plan_item_ids:
+  - PLAN-011-recovered
+  scenario_branch: 恢复自禅道逐条回读证据
+  atomic_purpose_ids:
+  - AP-011-050
+  title: 重复提交处理，检查只生效一次
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 告警记录
+  common_preconditions_ref: CP-REQ-011-001
+  preconditions:
+  - '前置准备：
+
+    1、具备经批准的告警记录页面脱敏观察证据和对应授权测试上下文；具体页面契约、数据或反馈待确认。
+
+
+    '
+  steps:
+  - action: 在告警记录列表定位目标记录，点击“处理”按钮。
+    expected: 打开“处理告警”弹窗，并显示处理结果输入框和提交控件。
+  - action: 在“处理告警”弹窗填写处理结果并点击提交一次。
+    expected: 显示一次提交反馈，记录进入处理中或已处理状态。
+  - action: 在列表的“处理”按钮仍可操作时再次点击“处理”按钮打开弹窗，填写相同或等价处理结果并再次提交。
+    expected: 第二次提交被阻止或返回幂等提示，不产生第二条处理结果。
+  - action: 刷新并读取记录。
+    expected: 只有一份处理结果，处理字段没有重复写入。
+  test_data:
+    page_url: /biopark-iot/iot/alert/record
+    data_prefix: REQ-011-RECOVERED

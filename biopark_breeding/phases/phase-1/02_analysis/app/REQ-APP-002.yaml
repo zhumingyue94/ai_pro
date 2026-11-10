@@ -1,0 +1,208 @@
+id: REQ-APP-002
+title: 种蛋上孵
+module_path: app / 孵化任务 / 种蛋上孵
+zentao_module_id: 564
+status: draft
+summary: 种蛋上孵任务列表、搜索、筛选、详情和执行流程的 APP 页面契约。
+inputs:
+  requirement_docx: 01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx
+  baseline: 01_requirements/app/模块拆分清单.md
+  prototype: http://127.0.0.1:5500/
+  static_map: 01_requirements/app/axure_map.md
+  evidence_run: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/
+scope:
+  source_pages: [P002, P003, P004, P005, P006, P007, P008, P009]
+  source_page_names: [上孵任务列表, 上孵任务搜索, 上孵任务筛选, 上孵任务筛选结果, 上孵任务详情-待执行, 执行上孵任务, 上孵任务详情-已完成, 上孵任务详情-已取消]
+  evidence_levels:
+    observed: 8 个页面均通过直接页面 URL 在 430x932 可视浏览器中完成 networkidle 后检查渲染文本和控件；未点击执行/保存/新增/删除。
+    static: DOCX P002-P009 页面表、axure_map.md 对应章节和 RUN page-002 至 page-009 证据。
+    inferred: 列表→搜索/筛选→结果→详情→执行的流程关系；状态转换仅按原型动作和状态页面描述表达。
+    open_question: 真实接口、鉴权、字段校验、库存并发、持久化和异常提示。
+  evidence_paths:
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-002.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-002.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-002.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-003.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-003.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-003.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-004.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-004.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-004.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-005.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-005.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-005.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-006.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-006.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-006.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-007.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-007.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-007.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-008.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-008.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-008.txt
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-009.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-009.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-009.txt
+pages:
+  - id: P002
+    name: 上孵任务列表
+    source: observed+static
+    entry: 首页“种蛋上孵”入口；可从搜索、筛选、详情页返回。
+    query_area: “搜索种蛋上孵任务”入口；状态切换为待执行、已完成、已取消、已超期，显示数量提示。
+    list_or_cards: 任务卡片显示养殖场名称-批次-品种、计划上孵日期、计划上孵数量、种蛋类型、周龄、平均蛋重/蛋重类型、产蛋日期、任务状态；可选显示应出库蛋库和应入库孵化器。
+    forms: 不适用；列表页未观察到编辑表单。
+    popups: 筛选入口注释为弹出筛选框，但独立 P004 筛选页可访问；实际弹窗形态未确认。
+    buttons_actions: 搜索、筛选、任务整卡查看、待执行“执行”、已完成/已取消“查看”、蛋库/孵化全景入口。
+    states_transitions: 待执行含已超期任务；已超期是待执行超时告警；已完成、已取消可保留历史超期告警。
+    return_path: 首页→列表；列表→搜索/筛选/详情/执行；详情返回列表路径存在，筛选条件保持未被当前 APP 原型明确确认。
+  - id: P003
+    name: 上孵任务搜索
+    source: observed+static
+    entry: P002 搜索入口。
+    query_area: 计划号/任务号/养殖场/批次/品种关键字输入；原型还展示“代孵”等历史搜索项和搜索按钮。
+    list_or_cards: 匹配结果卡片沿用 P002 字段；有结果/无结果状态文案可见。
+    forms: 搜索输入；历史搜索最多三行，最近在前。
+    popups: 未观察到实际弹窗。
+    buttons_actions: 搜索、历史项选择、垃圾筐删除历史记录、结果执行/查看/卡片查看。
+    states_transitions: 搜索结果排序注释为待执行、待执行已超期、已完成、已取消，最近时间优先；未验证算法实现。
+    return_path: 返回 P002 列表；结果可进入 P006/P007/P008/P009。
+  - id: P004
+    name: 上孵任务筛选
+    source: observed+static
+    entry: P002 筛选入口。
+    query_area: 计划上孵日期快捷范围/日期项、养殖场、种蛋类型、品种、蛋重类型、周龄、平均蛋重、任务状态、告警状态。
+    list_or_cards: 页面背景仍显示任务卡片；筛选结果由 P005 展示。
+    forms: 养殖场/种蛋类型/品种/蛋重类型选择；周龄和平均蛋重录入；平均蛋重输入后匹配蛋重类型的注释为 static。
+    popups: 未确认是弹层还是独立页。
+    buttons_actions: 确认提交筛选、重置清空筛选项、返回搜索/列表、筛选结果入口。
+    states_transitions: 任务状态全部/待执行/已完成/已取消；告警正常/已超期；已超期定义为待执行超过计划执行时间未执行。
+    return_path: 确认→P005；重置留在筛选页；返回路径未形成稳定 UI 控件契约。
+  - id: P005
+    name: 上孵任务筛选结果
+    source: observed+static
+    entry: P004 确认后。
+    query_area: 搜索和筛选入口；筛选条件摘要未在页面明确列全。
+    list_or_cards: 与搜索结果相同的任务卡片；结果内容依据筛选条件调整。
+    forms: 不适用。
+    popups: 未观察到。
+    buttons_actions: 搜索、筛选、执行/查看、卡片查看、蛋库和孵化全景入口。
+    states_transitions: 结果保留待执行、已超期、已完成、已取消显示规则。
+    return_path: 可返回 P002/P003/P004 或进入详情/执行。
+  - id: P006
+    name: 上孵任务详情-待执行
+    source: observed+static
+    entry: P002/P003/P005 任务卡片。
+    query_area: 未观察到查询区。
+    list_or_cards: 种蛋信息（养殖场、养殖批次、品种、种蛋类型、周龄、蛋重类型、平均蛋重、产蛋日期）；计划号/任务号复制；匹配蛋库库位库存、托盘数、散装数、种蛋数；蛋库总库存；待推入孵化器列表；预计孵化车数。
+    forms: 未观察到可编辑字段；页面仅展示待执行数据。
+    popups: 未观察到实际弹窗。
+    buttons_actions: 复制计划号/任务号、蛋库全景、孵化器全景、执行。
+    states_transitions: 当前待执行；超过计划时间显示已超期及天小时；执行进入 P007。
+    return_path: 返回 P002；P007 执行页完成后按来源页返回的原型注释为 static。
+  - id: P007
+    name: 执行上孵任务
+    source: observed+static
+    entry: P006 或列表待执行卡片“执行”。
+    query_area: 未观察到查询区。
+    list_or_cards: 种蛋信息、计划信息；蛋库库位分配行；孵化器/孵化器库位分配行；待分配/已选数量和车辆数。
+    forms: 托盘数、散装数、种蛋数联动编辑；孵化器和库位选择；新增/删除车辆行；执行人展示；备注可填。数量初始值、联动和上限以原型注释为 static，不补充未给出的精度/单位校验。
+    popups: 原型注释提到保存成功、执行成功自动消失提示和执行前二次确认；实际弹窗未执行验证。
+    buttons_actions: 重置、归零、一键分配、删除、新增、复制、保存、立即执行、蛋库/孵化入口。
+    states_transitions: 待执行→保存后仍待执行；待执行→立即执行后预期已完成；已超期作为告警可并存；未执行写操作，转换未验证。
+    return_path: 保存停留本页；执行成功按来源页返回列表/结果/详情，来源页判断规则为 static。
+  - id: P008
+    name: 上孵任务详情-已完成
+    source: observed+static
+    entry: P002/P003/P005 已完成任务查看。
+    query_area: 未观察到。
+    list_or_cards: 种蛋信息、计划/任务号；蛋库已出库实际数；孵化器孵化车数、已上孵数、名称/库位；完成时间和历史超期信息。
+    forms: 不适用；只读详情。
+    popups: 未观察到。
+    buttons_actions: 复制计划号/任务号、蛋库/孵化信息入口、返回列表；执行按钮未观察到。
+    states_transitions: 已完成；可显示完成前已超期告警；具体完成时间来源未明确。
+    return_path: 返回 P002/P003/P005 来源列表。
+  - id: P009
+    name: 上孵任务详情-已取消
+    source: observed+static
+    entry: P002/P003/P005 已取消任务查看。
+    query_area: 未观察到。
+    list_or_cards: 种蛋信息、计划/任务号；蛋库库存和库位；孵化器与预计孵化车数；取消时间/取消人文案属于原型静态说明。
+    forms: 不适用；只读详情。
+    popups: 未观察到。
+    buttons_actions: 复制计划号/任务号、蛋库/孵化入口、返回列表；执行按钮未观察到。
+    states_transitions: 已取消；可带历史已超期告警；取消动作入口不在本分片页面中观察到。
+    return_path: 返回来源列表。
+interfaces:
+  - id: APP-UPHATCH-TASK-QUERY
+    type: data_query
+    evidence: observed+static
+    target: P002-P005
+    contract: 需要返回任务卡片、状态、计划日期/数量和种蛋摘要；接口路径、分页、排序和空态协议未提供。
+  - id: APP-UPHATCH-STOCK-READ
+    type: cross_module_read
+    evidence: observed+static
+    target: 合格蛋蛋库/二级蛋蛋库库存查询、孵化器库存查询
+    contract: 详情和执行页展示库存/库位/容量相关数据；真实接口与一致性策略未确认。
+  - id: APP-UPHATCH-EXECUTE
+    type: business_write
+    evidence: static+open_question
+    target: 种蛋仓库出库、孵化器入库、任务状态
+    contract: 原型注释描述立即执行会同时影响出库/入库并刷新状态；本次未执行。
+cross_module_refs:
+  - ref: REQ-APP-001
+    relation: 首页入口与场区上下文
+    evidence: observed+static
+  - ref: app / 合格蛋库 / 库存查询；app / 二级蛋库 / 库存查询
+    relation: 待上孵种蛋来源和库存展示
+    evidence: observed+static
+  - ref: app / 孵化器 / 库存查询
+    relation: 孵化器及库位展示/入库目标
+    evidence: observed+static
+  - ref: REQ-APP-003
+    relation: 后续照蛋任务依赖实际上孵结果
+    evidence: inferred+static
+business_rules:
+  - id: BR-APP-002-01
+    evidence: static
+    rule: 列表任务标题由养殖场名称、批次、品种三字段组合；上孵日期和上孵数量在列表中按计划信息展示。
+  - id: BR-APP-002-02
+    evidence: static
+    rule: 待执行任务可执行；任务整卡进入详情；已完成/已取消页为查看态；已超期是待执行超时告警，历史状态仍可带告警。
+  - id: BR-APP-002-03
+    evidence: static
+    rule: 筛选包含养殖场、种蛋类型、品种、蛋重类型、周龄、平均蛋重、计划上孵日期、任务状态、告警状态；原型未给出未列字段的校验细节。
+  - id: BR-APP-002-04
+    evidence: static
+    rule: 执行页支持蛋库库位到孵化器库位的数量分配；托盘数、散装数、种蛋数存在联动和重置/归零/一键分配动作，具体计算参数未在 APP 原型中定义。
+  - id: BR-APP-002-05
+    evidence: static+open_question
+    rule: 原型注释描述执行时种蛋仓库出库、孵化器入库、任务完成和二次确认；因本任务禁止写操作，只记录为待实现/待验证契约。
+open_questions:
+  - id: OQ-APP-002-01
+    evidence: open_question
+    question: P004 的日期/产蛋日期控件、单选/范围选择和清空行为如何落地？
+    impact: 影响筛选接口参数和边界测试。
+  - id: OQ-APP-002-02
+    evidence: open_question
+    question: 托盘容量、散装数、总蛋数的精确计算、单位、最大值和库存并发校验由哪个服务负责？
+    impact: 影响执行表单校验与库存一致性。
+  - id: OQ-APP-002-03
+    evidence: open_question
+    question: 立即执行前二次确认、库存不足、待分配不为 0、实际数与计划数不一致时的准确提示和回读是什么？
+    impact: 影响状态转换和失败恢复。
+  - id: OQ-APP-002-04
+    evidence: open_question
+    question: 任务取消入口、取消权限、取消后库存回滚和取消时间/操作人来源未在本组页面明确，如何定义？
+    impact: 影响已取消详情与跨模块数据。
+  - id: OQ-APP-002-05
+    evidence: open_question
+    question: 搜索历史是否持久化、是否按账号隔离，垃圾筐删除的确认/撤销规则是什么？
+    impact: 影响搜索页数据生命周期。
+out_of_scope:
+  - 不实现或调用真实任务执行、出库、入库、状态变更、取消、库存写入。
+  - 不创建测试点、用例、脚本、截图、Trace 或 CSV。
+handoff:
+  agent: analyze-agent
+  outputs: [02_analysis/app/REQ-APP-002.yaml, 02_analysis/app/REQ-APP-002_种蛋上孵.md]
+  next_gate: 需求/测点评审通过后再进入下游阶段。
+  verification_status: P002-P009 原型页面存在性、渲染文本和控件已核对；真实接口、写操作和回读未验证。

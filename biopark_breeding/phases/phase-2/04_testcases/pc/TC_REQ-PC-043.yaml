@@ -1,0 +1,959 @@
+req_id: REQ-PC-043
+module: 发货单明细与结果追溯
+trace:
+  req: REQ-PC-043
+  tp: TEST_PLAN-REQ-PC-043
+  project: 种禽孵化管理系统
+  version: 4
+  status: designed_blocked_pending_confirmation
+  source_review: REV_CASE_REQ-PC-043 (回修后更新)
+common_preconditions:
+- id: delivery_detail_readonly
+  name: 发货单明细页面访问前置
+  conditions: []
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 系统登录成功并进入应用门户
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 成功进入种禽孵化管理系统主框架并显示系统标识
+  - action: 在左侧菜单中展开「计划管理」，点击「雏苗发货」菜单项进入雏苗发货列表页
+    expected: 页面显示雏苗发货列表及可定位的目标发货单
+  - action: 定位目标发货单并点击「明细」入口
+    expected: 进入目标发货单明细页，页面显示发货单基础信息、上孵计划、栋舍分布和发货记录区域
+cases:
+- id: TC-PC-043-002
+  coverage_ids:
+  - FR-043-03
+  plan_item_ids:
+  - PI-043-02
+  - PI-043-03
+  atomic_purpose_ids:
+  - AP-043-03
+  title: 查看有效上孵计划时展示计划字段和出雏结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 上孵计划字段展示
+  preconditions:
+  - 已准备一个包含字段基线完整有效上孵计划的孵化需求
+  - 该孵化需求已创建上孵计划，并已生成关联发货单
+  - 测试账号具备访问「计划管理-上孵计划」和「计划管理-雏苗发货」菜单及查看详情的权限
+  steps:
+  - action: 使用已分配所需权限的测试账号登录系统
+    expected: 登录成功，进入系统门户或应用入口页
+  - action: 打开应用门户并选择「种禽孵化管理系统」
+    expected: 进入种禽孵化管理系统主框架，页面显示系统名称或应用标识：智孵管家管理平台
+  - action: 在左侧菜单中展开「计划管理」，点击「上孵计划」菜单项
+    expected: 进入上孵计划列表页，页面显示计划号搜索框和上孵计划表格
+  - action: 在上孵计划列表中定位目标上孵计划，记录其孵化需求号、上孵计划号、计划进度、发货状态、发货进度、待发货数、实际苗重、种禽养殖场、养殖批次、周龄、平均蛋重、蛋重类型、产蛋日期、出雏时间和备注
+    expected: 成功记录目标上孵计划的孵化需求号、上孵计划号及其他计划字段值，作为后续核对的基线数据
+  - action: 在左侧菜单中展开「计划管理」，点击「雏苗发货」菜单项
+    expected: 进入雏苗发货列表页，页面显示发货日期筛选条件和单号搜索框
+  - action: 在发货日期筛选条件中选择从今天往前半年的时间范围
+    expected: 发货日期起始时间设置为今天前六个月，结束时间设置为今天，筛选条件显示的日期区间正确
+  - action: 在单号搜索框输入前面记录的孵化需求号并执行查询
+    expected: 查询结果展示与该孵化需求号关联的目标发货单
+  - action: 定位目标发货单并点击「明细」
+    expected: 进入目标发货单明细页面，页面显示发货单信息、上孵计划、栋舍分布和发货记录区域
+  - action: 查看发货记录区域的上孵计划表格
+    expected: 页面显示上孵计划搜索框及上孵计划记录列表，列表可能包含多条上孵计划记录
+  - action: 在发货记录区域的上孵计划搜索框中输入前面记录的上孵计划号并执行查询
+    expected: 发货记录列表展示或明确定位到与该上孵计划号匹配的目标上孵计划记录
+  - action: 核对查询结果中的目标上孵计划号
+    expected: 查询结果中的上孵计划号与前面在「计划管理-上孵计划」页面记录的上孵计划号一致
+  - action: 查看目标上孵计划记录中的计划字段
+    expected: 目标记录显示计划号、计划进度、发货状态、发货进度、待发货数、实际苗重、种禽养殖场、养殖批次、周龄、平均蛋重、蛋重类型、产蛋日期、出雏时间和备注
+  - action: 将目标上孵计划记录中的计划字段与前面记录的上孵计划基线逐项对照
+    expected: 各字段名称、列顺序和字段值与基线一致；实际苗重、平均蛋重、蛋重类型、产蛋日期和出雏时间按正式字段口径展示；页面没有发货操作入口
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 字段完整计划
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-003
+  coverage_ids:
+  - FR-043-03
+  plan_item_ids:
+  - PI-043-02
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-028
+  title: 上孵计划待发货数等于实际可发数减已发货数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 计划数量计算
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在实际可发数、已发货数和待发货数均非空的计划
+  steps:
+  - action: 查看上孵计划表格中的某行计划
+    expected: 页面显示该行计划的实际可发数、已发货数和待发货数
+  - action: 按实际可发数减已发货数计算并对照页面
+    expected: 待发货数等于计算结果
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 数量计算基线
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-004
+  coverage_ids:
+  - FR-043-02
+  plan_item_ids:
+  - PI-043-02
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-027
+  scenario_branch: 待发货
+  title: 发货进度为0%的发货单显示待发货状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态展示
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 目标发货单发货进度为0%
+  steps:
+  - action: 查看目标发货单顶部状态区域
+    expected: 顶部状态显示待发货
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 待发货状态
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-005
+  coverage_ids:
+  - FR-043-02
+  plan_item_ids:
+  - PI-043-02
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-027
+  scenario_branch: 发货中
+  title: 发货进度介于零和百分之百之间时显示发货中状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单状态展示
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 目标发货单发货进度大于0%且小于100%
+  steps:
+  - action: 查看目标发货单顶部状态区域
+    expected: 顶部状态显示发货中
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 发货中状态
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-006
+  coverage_ids:
+  - FR-043-02
+  plan_item_ids:
+  - PI-043-02
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-027
+  scenario_branch: 已发货
+  title: 全部发出但存在未签收计划时显示已发货状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单状态展示
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 已发货数等于实际可发数且存在未签收计划
+  steps:
+  - action: 查看目标发货单顶部状态区域
+    expected: 顶部状态显示已发货
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 已发货未签收
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-007
+  coverage_ids:
+  - FR-043-02
+  plan_item_ids:
+  - PI-043-02
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-027
+  scenario_branch: 已签收
+  title: 全部发出且全部计划签收时显示已签收状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单状态展示
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 已发货数等于实际可发数且全部关联计划已签收
+  steps:
+  - action: 查看目标发货单顶部状态区域
+    expected: 顶部状态显示已签收且发货进度为100%
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 已签收状态
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-008
+  coverage_ids:
+  - FR-043-10
+  plan_item_ids:
+  - PI-043-04
+  atomic_purpose_ids:
+  - AP-043-04
+  scenario_branch: 筛选有结果
+  title: 查询匹配计划后默认选择第一条并同步栋舍和记录
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划筛选与联动
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在可按计划号、养殖场或批次匹配的有效计划
+  steps:
+  - action: 输入匹配条件并点击查询
+    expected: 计划列表仅显示匹配的有效计划
+  - action: 查看筛选结果和联动区域
+    expected: 默认选中第一条匹配计划且栋舍分布和发货记录同步更新
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 筛选有结果
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-009
+  coverage_ids:
+  - FR-043-11
+  plan_item_ids:
+  - PI-043-04
+  atomic_purpose_ids:
+  - AP-043-04
+  scenario_branch: 筛选无结果
+  title: 查询无匹配计划时三个区域均显示暂无数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选无数据空态
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 已准备不存在匹配结果的筛选条件
+  steps:
+  - action: 输入不存在条件并点击查询
+    expected: 上孵计划、栋舍分布和发货记录区域均显示暂无数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 筛选无结果
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-010
+  coverage_ids:
+  - FR-043-10
+  plan_item_ids:
+  - PI-043-04
+  atomic_purpose_ids:
+  - AP-043-04
+  scenario_branch: 清空筛选
+  title: 清空计划筛选后恢复全部有效计划并默认第一条
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划筛选重置
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 发货单至少有两条有效计划且已形成非默认筛选结果
+  steps:
+  - action: 点击计划筛选区的重置
+    expected: 条件清空并恢复全部有效计划
+  - action: 查看选中计划和联动区域
+    expected: 默认选中第一条有效计划并恢复默认联动范围
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 重置恢复
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-011
+  coverage_ids:
+  - FR-043-12
+  atomic_purpose_ids:
+  - AP-043-080
+  title: 雏苗发货执行页面不显示终止的上孵计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 终止计划排除
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 发货单同时包含有效计划和终止计划
+  steps:
+  - action: 查看雏苗发货执行页面的上孵计划列表
+    expected: 终止的上孵计划不显示；该断言直接覆盖需求变动中的明确要求
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 终止计划
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-012
+  coverage_ids:
+  - FR-043-04
+  plan_item_ids:
+  - PI-043-10
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-030
+  title: 栋舍总览显示发货单全部有效计划位置汇总
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍总览
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 多个有效计划的位置数据不同
+  steps:
+  - action: 选择栋舍总览
+    expected: 显示全部有效计划的位置汇总
+  - action: 核对位置数量
+    expected: 各位置数量等于全部有效计划对应位置数量之和
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 栋舍总览
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-013
+  coverage_ids:
+  - FR-043-04
+  plan_item_ids:
+  - PI-043-08
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-029
+  title: 当前上孵计划范围仅显示当前计划位置数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 当前计划范围
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 至少两个有效计划的位置分布不同
+  steps:
+  - action: 选择当前上孵计划范围
+    expected: 仅显示当前计划的位置数据
+  - action: 核对位置数量
+    expected: 未混入其他计划数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 当前计划范围
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-014
+  coverage_ids:
+  - FR-043-05
+  plan_item_ids:
+  - PI-043-10
+  atomic_purpose_ids:
+  - AP-043-18
+  title: 栋舍网格和列表视图的位置数据保持一致
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 栋舍视图切换
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 栋舍区域存在位置数据
+  steps:
+  - action: 查看网格视图并记录位置和数量
+    expected: 网格显示位置分布及数量
+  - action: 切换到列表视图
+    expected: 显示栋舍、列、层、总数量、关联计划数和来源计划字段
+  - action: 将列表数据与网格数据对照
+    expected: 位置范围和数量一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 视图一致
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-015
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-09
+  atomic_purpose_ids:
+  - AP-043-09
+  title: 悬浮栋舍位置时显示来源计划及累计发货数量
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置来源明细
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在多个有效计划共同发货的位置
+  steps:
+  - action: 悬浮在有数据的栋舍位置格上
+    expected: 显示列、层、来源计划及各计划累计发货数量
+  - action: 查看多个来源计划顺序
+    expected: 来源计划按计划号升序展示且数量符合基线
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置来源
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-016
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-11
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-031
+  title: 点击有记录位置后发货记录按位置联动
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置记录联动
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在有发货记录的栋舍位置
+  steps:
+  - action: 点击有记录的位置格
+    expected: 出现位置筛选标识且发货记录区域刷新
+  - action: 查看发货记录
+    expected: 仅显示所点击位置对应记录
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置有记录
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-017
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-11
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-032
+  title: 点击无记录位置后发货记录区域显示暂无数据
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 位置空态
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在无发货记录的栋舍位置
+  steps:
+  - action: 点击无记录的位置格
+    expected: 出现位置筛选标识且发货记录区域显示暂无数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置无记录
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-018
+  coverage_ids:
+  - FR-043-07
+  plan_item_ids:
+  - PI-043-12
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-036
+  title: 发货记录区域展示批次数量位置和操作字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录字段
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 发货单存在至少一条发货记录
+  steps:
+  - action: 查看发货记录区域
+    expected: 展示操作时间、计划号、操作人、本次数量、位置数、剩余未发货数、位置累计数量和备注
+  - action: 将记录字段与基线对照
+    expected: 字段值一致且记录为只读
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 发货记录
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-019
+  coverage_ids:
+  - FR-043-07
+  plan_item_ids:
+  - PI-043-12
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-037
+  title: 展开和收起发货记录的批次位置明细
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 记录位置明细
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在包含批次位置明细的发货记录
+  steps:
+  - action: 点击目标记录的展开控件
+    expected: 仅目标记录下方展开对应位置明细
+  - action: 查看并再次点击收起控件
+    expected: 位置明细与批次基线一致并恢复收起结构
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置明细
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-020
+  coverage_ids:
+  - FR-043-08
+  plan_item_ids:
+  - PI-043-13
+  atomic_purpose_ids:
+  - AP-043-23
+  title: 查询视图切换和展开操作不会修改业务数据
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 只读数据边界
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 已保存发货单、计划、栋舍和记录的操作前数据基线
+  steps:
+  - action: 执行查询、范围切换、视图切换和记录展开操作
+    expected: 仅刷新展示范围或展开状态且没有保存、提交、编辑或删除提示
+  - action: 重新查看操作前业务数据
+    expected: 发货单、计划、栋舍和记录与操作前基线一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 只读基线
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-023
+  coverage_ids:
+  - FR-043-02
+  plan_item_ids:
+  - PI-043-02
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-027
+  scenario_branch: 100%且待出雏
+  title: 发货进度达到100%但未出雏时仍显示发货中状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态边界
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 目标发货单发货进度为100%且关联计划仍处于未出雏状态
+  steps:
+  - action: 查看目标发货单顶部状态区域
+    expected: 顶部状态显示发货中
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 100%待出雏
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-024
+  coverage_ids:
+  - FR-043-07
+  plan_item_ids:
+  - PI-043-05
+  atomic_purpose_ids:
+  - AP-043-05
+  title: 查看上孵计划后栋舍和发货记录仅承接当前计划范围
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划查看联动
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 发货单包含至少两个有效上孵计划且各计划存在可区分的栋舍和发货记录
+  steps:
+  - action: 点击目标上孵计划的查看入口
+    expected: 页面进入该计划查看模式并显示当前计划标题
+  - action: 查看栋舍分布和发货记录
+    expected: 两个区域仅显示当前上孵计划对应数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 当前计划联动
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-025
+  coverage_ids:
+  - FR-043-04
+  plan_item_ids:
+  - PI-043-06
+  atomic_purpose_ids:
+  - AP-043-055
+  title: 栋舍总览展示当前发货单有效计划位置
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 栋舍总览范围边界
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 当前发货单包含多个有效计划及可区分位置数据
+  steps:
+  - action: 选择栋舍总览并查看位置列表
+    expected: 仅展示当前发货单有效计划的位置数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 总览有效计划范围
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-026
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-11
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-035
+  title: 清空位置筛选后恢复当前栋舍范围内全部有效计划记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置筛选清除
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 已选择有记录的位置并形成位置筛选结果
+  steps:
+  - action: 点击清空位置筛选
+    expected: 位置筛选标识被清除
+  - action: 查看发货记录区域
+    expected: 恢复当前栋舍范围内全部有效计划对应记录
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 清空位置筛选
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-027
+  coverage_ids:
+  - FR-043-14
+  plan_item_ids:
+  - PI-043-15
+  atomic_purpose_ids:
+  - AP-043-052
+  scenario_branch: 有效发货单标识
+  title: 使用有效发货单标识进入对应发货单明细页
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单标识路由
+  preconditions:
+  - 已准备可解析且有查看权限的有效发货单标识
+  steps:
+  - &id001
+    action: 使用已分配所需权限的测试账号登录系统
+    expected: 登录成功，进入系统门户或应用入口页
+  - &id002
+    action: 打开应用门户并选择「种禽孵化管理系统」
+    expected: 进入种禽孵化管理系统主框架，页面显示系统名称或应用标识：智孵管家管理平台
+  - &id003
+    action: 在左侧菜单中展开「计划管理」
+    expected: 菜单展开并显示「雏苗发货」入口
+  - &id004
+    action: 点击「雏苗发货」菜单项进入发货列表，选择目标发货单并点击「明细」按钮
+    expected: 进入发货单明细页面，页面显示发货单信息、上孵计划、栋舍分布和发货记录区域
+  - action: 访问有效发货单标识对应的明细入口
+    expected: 进入对应发货单明细页并展示该单据的只读信息
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 有效发货单标识
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-028
+  coverage_ids:
+  - FR-043-14
+  plan_item_ids:
+  - PI-043-15
+  atomic_purpose_ids:
+  - AP-043-053
+  scenario_branch: 无效发货单标识
+  title: 使用无效发货单标识时显示明确无效提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单异常标识
+  preconditions:
+  - 已准备格式合法但不存在的发货单标识
+  steps:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - action: 访问无效发货单标识对应的明细入口
+    expected: 页面显示明确的无效发货单提示且不展示其他单据业务数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 无效发货单标识
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-029
+  coverage_ids:
+  - FR-043-14
+  plan_item_ids:
+  - PI-043-15
+  atomic_purpose_ids:
+  - AP-043-054
+  scenario_branch: 缺失发货单标识
+  title: 缺失发货单标识时显示参数缺失提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单参数异常
+  preconditions:
+  - 使用不包含发货单标识的明细路由
+  steps:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - action: 访问缺失发货单标识的明细入口
+    expected: 页面显示明确的参数缺失提示且不加载业务明细数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/
+    data_prefix: 缺失发货单标识
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-030
+  coverage_ids:
+  - FR-043-14
+  plan_item_ids:
+  - PI-043-15
+  atomic_purpose_ids:
+  - AP-043-ATOMIC-033
+  title: 当前计划分布列表展示位置和关联计划字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 计划分布列表
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 当前上孵计划存在多个位置及来源计划数据
+  steps:
+  - action: 切换到当前上孵计划的列表视图
+    expected: 展示栋舍、列、层、总数量、关联计划数和来源计划字段
+  - action: 将列表字段与当前计划基线对照
+    expected: 字段名称、列顺序和数据值一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 计划分布列表
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-031
+  coverage_ids:
+  - FR-043-13
+  plan_item_ids:
+  - PI-043-08
+  atomic_purpose_ids:
+  - AP-043-049
+  title: 发货记录范围承接当前发货单全部有效上孵计划
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 跨计划发货记录范围
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 当前发货单包含至少两个有效上孵计划且每个计划均有发货记录
+  steps:
+  - action: 查看发货单默认发货记录区域
+    expected: 记录范围承接当前发货单全部有效上孵计划
+  - action: 按计划号核对记录来源
+    expected: 所有有效计划记录均可被识别，其他发货单记录不被纳入
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 全部有效计划记录范围
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-032
+  coverage_ids:
+  - FR-043-01
+  plan_item_ids:
+  - PI-043-01
+  atomic_purpose_ids:
+  - AP-043-082
+  title: 返回发货列表后保持列表入口范围正确
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 返回列表
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 已从雏苗发货列表进入目标发货单明细页
+  steps:
+  - action: 点击返回列表
+    expected: 返回雏苗发货列表页面
+  - action: 核对列表范围
+    expected: 列表显示范围不混入其他发货单且未发生业务数据变更
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 返回列表
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-035
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-09
+  atomic_purpose_ids:
+  - AP-043-085
+  scenario_branch: 无来源
+  title: 无来源位置不展示来源计划明细
+  type: boundary
+  auto: auto
+  priority: P2
+  feature: 位置来源明细
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在无关联上孵计划来源的位置
+  steps:
+  - action: 查看无来源位置的来源明细入口
+    expected: 来源明细显示暂无来源或按正式空态处理，不展示虚构来源计划
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置无来源
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-036
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-09
+  atomic_purpose_ids:
+  - AP-043-086
+  scenario_branch: 单来源
+  title: 单来源位置展示唯一来源计划及数量
+  type: boundary
+  auto: auto
+  priority: P2
+  feature: 位置来源明细
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在仅关联一个有效上孵计划的位置
+  steps:
+  - action: 查看单来源位置的来源明细
+    expected: 仅展示唯一有效来源计划及对应数量，数据与基线一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置单来源
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-037
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-09
+  atomic_purpose_ids:
+  - AP-043-087
+  scenario_branch: 多来源
+  title: 多来源位置的来源计划数量与基线一致
+  type: boundary
+  auto: auto
+  priority: P2
+  feature: 位置来源明细
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在关联多个有效上孵计划的位置
+  steps:
+  - action: 查看多来源位置的来源明细
+    expected: 来源计划数量与位置基线一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置多来源
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-038
+  coverage_ids:
+  - FR-043-06
+  plan_item_ids:
+  - PI-043-09
+  atomic_purpose_ids:
+  - AP-043-088
+  scenario_branch: 多来源拆分
+  title: 指定来源位置的来源计划数量与基线一致
+  type: boundary
+  auto: auto
+  priority: P2
+  feature: 位置来源明细
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 存在至少两个有效来源计划的位置且来源数据已准备
+  steps:
+  - action: 查看指定来源位置的来源明细
+    expected: 来源计划及数量与位置基线一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 位置多来源拆分
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-039
+  coverage_ids:
+  - FR-043-14
+  plan_item_ids:
+  - PI-043-15
+  atomic_purpose_ids:
+  - AP-043-089
+  scenario_branch: 返回后重入
+  title: 返回列表后重新打开仍定位原发货单
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单路由恢复
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 有效发货单已从列表打开并返回列表
+  steps:
+  - action: 从列表重新打开原发货单明细
+    expected: 进入原发货单明细且不加载其他发货单数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 返回后重入
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-040
+  coverage_ids:
+  - FR-043-11
+  plan_item_ids:
+  - PI-043-04
+  atomic_purpose_ids:
+  - AP-043-090
+  scenario_branch: 无结果空态
+  title: 计划筛选无结果时仅展示计划区域空态
+  type: negative
+  auto: auto
+  priority: P2
+  feature: 计划筛选空态边界
+  common_preconditions_ref: delivery_detail_readonly
+  preconditions:
+  - 已准备计划筛选无匹配条件且页面可正常加载
+  steps:
+  - action: 提交无匹配计划筛选条件
+    expected: 计划列表显示暂无数据，未将其他计划混入结果
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 计划空态单区
+  tp_id: TEST_PLAN-REQ-PC-043
+- id: TC-PC-043-042
+  tp_id: TEST_PLAN-REQ-PC-043
+  coverage_ids:
+  - FR-043-09
+  plan_item_ids:
+  - PI-043-14
+  atomic_purpose_ids:
+  - AP-043-24
+  scenario_branch: 待确认异常分支
+  title: 无菜单权限时不显示雏苗发货入口
+  type: negative
+  auto: auto
+  priority: P1
+  feature: 无菜单权限时不显示雏苗发货入口
+  preconditions:
+  - 账号无雏苗发货菜单权限
+  steps:
+  - &id005
+    action: 使用已分配所需权限的测试账号登录系统
+    expected: 登录成功，进入系统门户或应用入口页
+  - &id006
+    action: 打开应用门户并选择「种禽孵化管理系统」
+    expected: 进入种禽孵化管理系统主框架，页面显示系统名称或应用标识：智孵管家管理平台
+  - &id007
+    action: 在左侧菜单中展开「计划管理」
+    expected: 菜单展开并显示「雏苗发货」入口
+  - &id008
+    action: 点击「雏苗发货」菜单项进入发货列表，选择目标发货单并点击「明细」按钮
+    expected: 进入发货单明细页面，页面显示发货单信息、上孵计划、栋舍分布和发货记录区域
+  - action: 查看计划管理菜单
+    expected: 菜单中不显示「雏苗发货」入口，且不进入发货列表
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 无菜单权限账号
+- id: TC-PC-043-044
+  tp_id: TEST_PLAN-REQ-PC-043
+  coverage_ids:
+  - FR-043-10
+  plan_item_ids:
+  - PI-043-04
+  atomic_purpose_ids:
+  - AP-043-04
+  scenario_branch: 待确认异常分支
+  title: 清除计划筛选后恢复默认计划范围
+  type: boundary
+  auto: auto
+  priority: P2
+  feature: 清除计划筛选后恢复默认计划范围
+  preconditions:
+  - 存在至少两个有效上孵计划且已应用计划筛选
+  steps:
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - action: 点击计划筛选区域的清除/重置操作
+    expected: 计划列表恢复全部有效上孵计划，并按正式规则恢复默认选择；栋舍分布和发货记录同步恢复
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/detail/{id}
+    data_prefix: 多计划清除筛选
+summary:
+  case_count: 44
+  type_counts:
+    feature: 33
+    negative: 5
+    boundary: 6
+  auto_counts:
+    auto: 44
+    'no': 0
+  priority_counts:
+    P1: 18
+    P2: 23
+    P3: 3
+    P4: 0

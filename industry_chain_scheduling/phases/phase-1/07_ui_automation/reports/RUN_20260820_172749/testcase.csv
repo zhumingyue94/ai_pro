@@ -1,0 +1,8 @@
+﻿用例编号,所属模块,用例函数名称,标题,前置条件,预期,步骤,结果,错误原因,截图路径
+TC-002-28,目标制定,test_tc_002_28,点击「保存并提交审核」，状态变为待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","1. 必填项齐全且合计相等
+2. 新增弹窗保存并提交后状态显示为「待审核」","1. 打开新增弹窗，选择未占用年度，填写并均分
+2. 点击「保存并提交审核」",blocked,"页面等待超时：Locator.wait_for: Timeout 8000ms exceeded.
+Call log:
+  - waiting for locator("".el-message-box:visible"") to be visible
+",

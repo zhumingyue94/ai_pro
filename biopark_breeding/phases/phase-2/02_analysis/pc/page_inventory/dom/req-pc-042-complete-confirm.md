@@ -1,0 +1,465 @@
+﻿- generic
+  - generic [ref=e1] clickable [onclick]
+    - banner
+      - StaticText "种禽孵化管理系统"
+      - StaticText "返回门户"
+      - image "sun"
+      - StaticText "24°C 晴朗"
+      - image "calendar"
+      - StaticText "2026年9月3日星期四"
+      - image "clock-circle"
+      - StaticText "09:58"
+      - button "bell" [ref=e2]
+        - image "bell"
+      - superscript
+        - StaticText "3"
+      - button "setting" [ref=e3]
+        - image "setting"
+      - generic [ref=e4] clickable [cursor:pointer, onclick]
+        - image "user"
+        - StaticText "管理员"
+        - StaticText "运营总监"
+        - image "right"
+    - complementary
+      - image "home"
+      - StaticText "首页"
+      - button "calendar 计划管理 down" [ref=e5]
+        - image "calendar"
+        - StaticText "计划管理"
+        - image "down"
+      - button "calendar 孵化排程计划" [disabled, ref=e6]
+        - image "calendar"
+        - StaticText "孵化排程计划"
+      - button "appstore 上孵计划" [disabled, ref=e7]
+        - image "appstore"
+        - StaticText "上孵计划"
+      - button "ordered-list 雏苗发货" [ref=e8]
+        - image "ordered-list"
+        - StaticText "雏苗发货"
+      - button "check-circle 生产报表" [disabled, ref=e9]
+        - image "check-circle"
+        - StaticText "生产报表"
+      - button "question-circle 需求说明" [ref=e11]
+        - image "question-circle"
+        - StaticText "需求说明"
+    - main
+      - navigation
+        - list
+          - listitem [level=1]
+            - StaticText "计划管理"
+          - listitem [level=1]
+            - StaticText "雏苗发货"
+          - listitem [level=1]
+            - StaticText "发货执行"
+      - button "arrow-left 返回列表" [ref=e10]
+        - image "arrow-left"
+        - StaticText "返回列表"
+      - generic
+        - heading "发货单信息" [level=4, ref=e12]
+        - StaticText "状态"
+        - StaticText "待发货"
+        - StaticText "发货单号"
+        - StaticText "BL-20260630-01"
+        - StaticText "计划发货日期"
+        - StaticText "2026-06-30"
+        - StaticText "孵化计划号"
+        - StaticText "FH-20260630-01"
+        - StaticText "孵化场"
+        - StaticText "宿迁园区孵化场"
+        - StaticText "商品禽养殖栋舍"
+        - StaticText "1栋"
+        - StaticText "计划上苗数"
+        - StaticText "16,000"
+        - StaticText "品种"
+        - StaticText "AA+"
+        - StaticText "计划苗重"
+        - StaticText "42g"
+      - StaticText "实际可发数"
+      - StaticText "8,050"
+      - StaticText "发货进度（已发货数/实际可发数）"
+      - StaticText "0%（0 / 8,050）"
+      - progressbar: 0
+      - StaticText "待发货数"
+      - StaticText "8,050"
+      - generic
+        - heading "上孵计划" [level=4, ref=e13]
+        - StaticText "（上孵日期："
+        - StaticText "2026-06-01"
+        - StaticText "）"
+        - StaticText "最后更新时间："
+        - StaticText "共 "
+        - StaticText "4"
+        - StaticText " 条"
+        - StaticText "发货状态："
+        - generic [ref=e14] clickable [cursor:pointer]
+          - generic
+            - StaticText "全部"
+            - combobox [expanded=false, ref=e103]
+          - image "down"
+        - StaticText "计划进度："
+        - generic [ref=e15] clickable [cursor:pointer]
+          - generic
+            - StaticText "全部"
+            - combobox [expanded=false, ref=e104]
+          - image "down"
+        - StaticText "上孵计划号："
+        - textbox "请输入上孵计划号" [ref=e19]
+        - button "查 询" [ref=e16]
+          - StaticText "查 询"
+        - button "重 置" [ref=e17]
+          - StaticText "重 置"
+        - table
+          - rowgroup
+            - row
+              - columnheader "上孵计划号" [ref=e171]
+              - columnheader "计划进度" [ref=e172]
+              - columnheader "发货状态" [ref=e173]
+              - columnheader "发货进度（已发货数/实际可发数）" [ref=e174]
+              - columnheader "待发货数" [ref=e175]
+              - columnheader "种禽养殖场" [ref=e176]
+              - columnheader "养殖批次" [ref=e177]
+              - columnheader "周龄" [ref=e178]
+              - columnheader "平均蛋重" [ref=e179]
+              - columnheader "蛋重类型" [ref=e180]
+              - columnheader "产蛋日期" [ref=e181]
+              - columnheader "出雏时间" [ref=e182]
+              - columnheader "备注" [ref=e183]
+              - columnheader "操作" [ref=e184]
+          - row [ref=e111] clickable [cursor:pointer, onclick]
+            - cell "SFJH-20260601-01" [ref=e115]
+            - cell "已出雏" [ref=e116]
+            - cell "待发货" [ref=e117]
+            - cell "0%（0 / 4,200） 0" [ref=e118]
+              - StaticText "0%（0 / 4,200）"
+              - progressbar: 0
+            - cell "4,200" [ref=e119]
+            - cell "平邑一场" [ref=e120]
+            - cell "1P" [ref=e121]
+            - cell "54周" [ref=e122]
+            - cell "58.2g" [ref=e123]
+            - cell "大" [ref=e124]
+            - cell "2026-06-03 ~ 2026-06-05" [ref=e125]
+            - cell "2026-06-30 06:45" [ref=e126]
+            - cell "凌晨批次" [ref=e127]
+            - cell "发货中 查 看" [ref=e128] clickable [onclick]
+              - button "发货中" [ref=e185]
+                - StaticText "发货中"
+              - button "查 看" [ref=e186]
+                - StaticText "查 看"
+          - row [ref=e112] clickable [cursor:pointer, onclick]
+            - cell "SFJH-20260601-02" [ref=e129]
+            - cell "已出雏" [ref=e130]
+            - cell "待发货" [ref=e131]
+            - cell "0%（0 / 3,850） 0" [ref=e132]
+              - StaticText "0%（0 / 3,850）"
+              - progressbar: 0
+            - cell "3,850" [ref=e133]
+            - cell "平邑二场" [ref=e134]
+            - cell "2P" [ref=e135]
+            - cell "53周" [ref=e136]
+            - cell "57.9g" [ref=e137]
+            - cell "大" [ref=e138]
+            - cell "2026-06-03 ~ 2026-06-04" [ref=e139]
+            - cell "2026-06-30 07:10" [ref=e140]
+            - cell "上午首批" [ref=e141]
+            - cell "发 货 查 看" [ref=e142] clickable [onclick]
+              - button "发 货" [disabled, ref=e187]
+                - StaticText "发 货"
+              - button "查 看" [ref=e188]
+                - StaticText "查 看"
+          - row [ref=e113] clickable [cursor:pointer, onclick]
+            - cell "SFJH-20260602-01" [ref=e143]
+            - cell "待出雏" [ref=e144]
+            - cell "待发货" [ref=e145]
+            - cell "0%（0 / 0） 0" [ref=e146]
+              - StaticText "0%（0 / 0）"
+              - progressbar: 0
+            - cell "0" [ref=e147]
+            - cell "蒙阴一场" [ref=e148]
+            - cell "3P" [ref=e149]
+            - cell "52周" [ref=e150]
+            - cell "58.5g" [ref=e151]
+            - cell "中大" [ref=e152]
+            - cell "2026-06-04 ~ 2026-06-05" [ref=e153]
+            - cell "2026-06-30 07:42" [ref=e154]
+            - cell "蛋重稳定" [ref=e155]
+            - cell "发 货 查 看" [ref=e156] clickable [onclick]
+              - button "发 货" [disabled, ref=e189]
+                - StaticText "发 货"
+              - button "查 看" [ref=e190]
+                - StaticText "查 看"
+          - row [ref=e114] clickable [cursor:pointer, onclick]
+            - cell "SFJH-20260602-02" [ref=e157]
+            - cell "待出雏" [ref=e158]
+            - cell "待发货" [ref=e159]
+            - cell "0%（0 / 0） 0" [ref=e160]
+              - StaticText "0%（0 / 0）"
+              - progressbar: 0
+            - cell "0" [ref=e161]
+            - cell "蒙阴二场" [ref=e162]
+            - cell "3P" [ref=e163]
+            - cell "52周" [ref=e164]
+            - cell "58.0g" [ref=e165]
+            - cell "中大" [ref=e166]
+            - cell "2026-06-04 ~ 2026-06-06" [ref=e167]
+            - cell "2026-06-30 08:05" [ref=e168]
+            - cell "可直接发货" [ref=e169]
+            - cell "发 货 查 看" [ref=e170] clickable [onclick]
+              - button "发 货" [disabled, ref=e191]
+                - StaticText "发 货"
+              - button "查 看" [ref=e192]
+                - StaticText "查 看"
+      - generic
+        - heading "栋舍分布" [level=4, ref=e20]
+        - StaticText "1栋"
+        - tablist "栋舍视图切换"
+          - button "栋舍总览" [ref=e105]
+          - button "当前上孵计划" [ref=e106]
+        - tablist "栋舍展示方式切换"
+          - button "视图" [ref=e107]
+          - button "列表" [ref=e108]
+        - StaticText "当前处于发货模式"
+        - button "完成发货" [ref=e21]
+          - StaticText "完成发货"
+        - button "退出发货" [ref=e22]
+          - StaticText "退出发货"
+        - StaticText "当前上孵计划：SFJH-20260601-01"
+        - StaticText "已发货 700 只 · 未发货 3,500 只"
+        - generic
+          - StaticText "本次暂存 2 个位置，共 700 只"
+        - StaticText "当前层位：第"
+        - StaticText "2"
+        - StaticText "列第"
+        - StaticText "1"
+        - StaticText "层"
+        - generic
+          - StaticText "层/列"
+          - generic
+            - StaticText "第1列"
+          - generic
+            - StaticText "第2列"
+          - generic
+            - StaticText "第3列"
+          - generic
+            - StaticText "第4列"
+          - generic
+            - StaticText "第5列"
+          - generic
+            - StaticText "第6列"
+          - generic
+            - StaticText "第7列"
+          - generic
+            - StaticText "第8列"
+          - generic
+            - StaticText "第9列"
+          - generic
+            - StaticText "第10列"
+          - generic
+            - StaticText "第11列"
+          - generic
+            - StaticText "第12列"
+          - generic
+            - StaticText "第13列"
+          - generic
+            - StaticText "第14列"
+          - generic
+            - StaticText "第15列"
+          - generic
+            - StaticText "第16列"
+          - generic
+            - StaticText "第17列"
+          - generic
+            - StaticText "第18列"
+          - generic
+            - StaticText "第19列"
+          - generic
+            - StaticText "第20列"
+        - generic
+          - StaticText "第1层"
+        - button "--" [ref=e23]
+          - StaticText "--"
+        - button "700 累计发货" [ref=e24]
+          - StaticText "700"
+          - StaticText "累计发货"
+        - button "--" [ref=e25]
+          - StaticText "--"
+        - button "--" [ref=e26]
+          - StaticText "--"
+        - button "--" [ref=e27]
+          - StaticText "--"
+        - button "--" [ref=e28]
+          - StaticText "--"
+        - button "--" [ref=e29]
+          - StaticText "--"
+        - button "--" [ref=e30]
+          - StaticText "--"
+        - button "--" [ref=e31]
+          - StaticText "--"
+        - button "--" [ref=e32]
+          - StaticText "--"
+        - button "--" [ref=e33]
+          - StaticText "--"
+        - button "--" [ref=e34]
+          - StaticText "--"
+        - button "--" [ref=e35]
+          - StaticText "--"
+        - button "--" [ref=e36]
+          - StaticText "--"
+        - button "--" [ref=e37]
+          - StaticText "--"
+        - button "--" [ref=e38]
+          - StaticText "--"
+        - button "--" [ref=e39]
+          - StaticText "--"
+        - button "--" [ref=e40]
+          - StaticText "--"
+        - button "--" [ref=e41]
+          - StaticText "--"
+        - button "--" [ref=e42]
+          - StaticText "--"
+        - generic
+          - StaticText "第2层"
+        - button "--" [ref=e43]
+          - StaticText "--"
+        - button "--" [ref=e44]
+          - StaticText "--"
+        - button "--" [ref=e45]
+          - StaticText "--"
+        - button "--" [ref=e46]
+          - StaticText "--"
+        - button "--" [ref=e47]
+          - StaticText "--"
+        - button "--" [ref=e48]
+          - StaticText "--"
+        - button "--" [ref=e49]
+          - StaticText "--"
+        - button "--" [ref=e50]
+          - StaticText "--"
+        - button "--" [ref=e51]
+          - StaticText "--"
+        - button "--" [ref=e52]
+          - StaticText "--"
+        - button "--" [ref=e53]
+          - StaticText "--"
+        - button "--" [ref=e54]
+          - StaticText "--"
+        - button "--" [ref=e55]
+          - StaticText "--"
+        - button "--" [ref=e56]
+          - StaticText "--"
+        - button "--" [ref=e57]
+          - StaticText "--"
+        - button "--" [ref=e58]
+          - StaticText "--"
+        - button "--" [ref=e59]
+          - StaticText "--"
+        - button "--" [ref=e60]
+          - StaticText "--"
+        - button "--" [ref=e61]
+          - StaticText "--"
+        - button "--" [ref=e62]
+          - StaticText "--"
+        - generic
+          - StaticText "第3层"
+        - button "--" [ref=e63]
+          - StaticText "--"
+        - button "--" [ref=e64]
+          - StaticText "--"
+        - button "--" [ref=e65]
+          - StaticText "--"
+        - button "--" [ref=e66]
+          - StaticText "--"
+        - button "--" [ref=e67]
+          - StaticText "--"
+        - button "--" [ref=e68]
+          - StaticText "--"
+        - button "--" [ref=e69]
+          - StaticText "--"
+        - button "--" [ref=e70]
+          - StaticText "--"
+        - button "--" [ref=e71]
+          - StaticText "--"
+        - button "--" [ref=e72]
+          - StaticText "--"
+        - button "--" [ref=e73]
+          - StaticText "--"
+        - button "--" [ref=e74]
+          - StaticText "--"
+        - button "--" [ref=e75]
+          - StaticText "--"
+        - button "--" [ref=e76]
+          - StaticText "--"
+        - button "--" [ref=e77]
+          - StaticText "--"
+        - button "--" [ref=e78]
+          - StaticText "--"
+        - button "--" [ref=e79]
+          - StaticText "--"
+        - button "--" [ref=e80]
+          - StaticText "--"
+        - button "--" [ref=e81]
+          - StaticText "--"
+        - button "--" [ref=e82]
+          - StaticText "--"
+        - generic
+          - StaticText "第4层"
+        - button "--" [ref=e83]
+          - StaticText "--"
+        - button "--" [ref=e84]
+          - StaticText "--"
+        - button "--" [ref=e85]
+          - StaticText "--"
+        - button "--" [ref=e86]
+          - StaticText "--"
+        - button "--" [ref=e87]
+          - StaticText "--"
+        - button "--" [ref=e88]
+          - StaticText "--"
+        - button "--" [ref=e89]
+          - StaticText "--"
+        - button "--" [ref=e90]
+          - StaticText "--"
+        - button "--" [ref=e91]
+          - StaticText "--"
+        - button "--" [ref=e92]
+          - StaticText "--"
+        - button "--" [ref=e93]
+          - StaticText "--"
+        - button "--" [ref=e94]
+          - StaticText "--"
+        - button "--" [ref=e95]
+          - StaticText "--"
+        - button "--" [ref=e96]
+          - StaticText "--"
+        - button "--" [ref=e97]
+          - StaticText "--"
+        - button "--" [ref=e98]
+          - StaticText "--"
+        - button "--" [ref=e99]
+          - StaticText "--"
+        - button "--" [ref=e100]
+          - StaticText "--"
+        - button "--" [ref=e101]
+          - StaticText "--"
+        - button "--" [ref=e102]
+          - StaticText "--"
+      - generic
+        - heading "发货记录" [level=4, ref=e18]
+        - StaticText "当前筛选：SFJH-20260601-01"
+        - StaticText "共 "
+        - StaticText "0"
+        - StaticText " 条"
+        - StaticText "当前还没有发货记录"
+        - StaticText "完成第一次发货提交后，这里会按提交批次记录本次发货结果。"
+  - generic
+    - dialog "完成发货"
+      - generic
+        - image "exclamation-circle"
+        - StaticText "完成发货"
+        - StaticText "当前仍有未发货数量 3,500 只，是否确认结束本次发货？"
+        - generic
+          - button "继续发货" [ref=e109]
+            - StaticText "继续发货"
+          - button "确认结束" [ref=e110]
+            - StaticText "确认结束"
+

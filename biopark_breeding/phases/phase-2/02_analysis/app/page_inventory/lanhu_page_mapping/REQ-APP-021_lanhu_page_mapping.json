@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "req_id": "REQ-APP-021",
+  "req_name": "APP 雏苗发货列表与筛选",
+  "description": "REQ-APP-021 原型页面状态与蓝湖设计图页面清单的映射关系。仅对用户指定的 5 张蓝湖设计图进行对齐；原型输入文件和蓝湖设计图 JSON 文件均未修改。",
+  "prototype_source": {
+    "source_file": "02_analysis/app/page_inventory/page.json",
+    "page_id": "app-chick-shipping-list",
+    "page_title": "雏苗发货单列表 - React 原型",
+    "route": "http://43.143.148.114:18885/biopark-breeding/m/orders",
+    "req_id": "REQ-APP-021",
+    "states": [
+      {"state_id": "app021-default", "state_name": "默认列表态", "description": "默认日期、全部栋舍、待发货页签，展示发货单卡片、发货记录和去发货入口"},
+      {"state_id": "app021-date-picker", "state_name": "任务日期筛选弹层", "description": "显示昨天、今天、明天、自定义日期、重置和确定"},
+      {"state_id": "app021-date-yesterday-result", "state_name": "昨天日期筛选结果", "description": "应用昨天日期后，列表显示无匹配发货单的空状态"},
+      {"state_id": "app021-house-all", "state_name": "全部栋舍筛选结果", "description": "栋舍筛选弹层中的全部栋舍已选中，恢复默认列表"},
+      {"state_id": "app021-house-filter", "state_name": "指定栋舍筛选结果", "description": "选择 3 栋后，列表切换为 3 栋数据"},
+      {"state_id": "app021-search-empty", "state_name": "搜索初始态", "description": "进入搜索页，显示搜索输入框和搜索引导"},
+      {"state_id": "app021-search-result-input", "state_name": "搜索结果态", "description": "输入发货单号或孵化计划号后显示匹配结果卡片和去发货按钮"},
+      {"state_id": "app021-progress", "state_name": "发货中页签", "description": "切换发货中页签，展示发货中卡片和继续发货入口"},
+      {"state_id": "app021-shipped", "state_name": "已发货页签", "description": "切换已发货页签，展示已发货卡片和发货记录入口"},
+      {"state_id": "app021-signed", "state_name": "已签收页签", "description": "切换已签收页签，展示已签收卡片和发货记录入口"}
+    ]
+  },
+  "lanhu_design_source": {
+    "source_dir": "02_analysis/app/page_inventory/lanhu",
+    "designs": [
+      {"design_id": "7048e4ca-9019-4c12-bdd7-46901e4390ca", "design_name": "工作台-错位排列", "source_file": "02_analysis/app/page_inventory/lanhu/工作台-错位排列_design.json", "node_count": 233, "max_depth": 7},
+      {"design_id": "1add5cd8-042a-463c-9a37-10313a79de55", "design_name": "雏苗发货", "source_file": "02_analysis/app/page_inventory/lanhu/雏苗发货_design.json", "node_count": 149, "max_depth": 5},
+      {"design_id": "bea64782-2f9c-4edd-a352-acc37653d818", "design_name": "雏苗发货-选择任务日期", "source_file": "02_analysis/app/page_inventory/lanhu/雏苗发货-选择任务日期_design.json", "node_count": 59, "max_depth": 6},
+      {"design_id": "f9bbbdb4-114d-452e-8db7-7e8c8c911cb8", "design_name": "搜索-聚焦", "source_file": "02_analysis/app/page_inventory/lanhu/搜索-聚焦_design.json", "node_count": 189, "max_depth": 6},
+      {"design_id": "612e02dc-f9da-43ad-b0ac-47f443b9f8bb", "design_name": "雏苗发货2", "source_file": "02_analysis/app/page_inventory/lanhu/雏苗发货2_design.json", "node_count": 149, "max_depth": 5}
+    ]
+  },
+  "mappings": [
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-default",
+      "prototype_state_name": "默认列表态",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "1add5cd8-042a-463c-9a37-10313a79de55",
+      "lanhu_design_name": "雏苗发货",
+      "match_status": "matched",
+      "match_confidence": "high",
+      "match_basis": "设计图包含雏苗发货页面标题、日期和栋舍筛选、状态页签及发货单卡片，覆盖原型默认列表的主要区域。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-date-picker",
+      "prototype_state_name": "任务日期筛选弹层",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "bea64782-2f9c-4edd-a352-acc37653d818",
+      "lanhu_design_name": "雏苗发货-选择任务日期",
+      "match_status": "matched",
+      "match_confidence": "high",
+      "match_basis": "设计图名称直接对应任务日期选择态，图层文本包含昨天、今天、明天、自定义日期、重置和确定。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-date-yesterday-result",
+      "prototype_state_name": "昨天日期筛选结果",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": null,
+      "lanhu_design_name": null,
+      "match_status": "unmatched",
+      "match_confidence": null,
+      "match_basis": "指定设计图中未发现明确的昨天日期应用后空结果状态；日期选择弹层本身已单独匹配。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-house-all",
+      "prototype_state_name": "全部栋舍筛选结果",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "1add5cd8-042a-463c-9a37-10313a79de55",
+      "lanhu_design_name": "雏苗发货",
+      "match_status": "partial_matched",
+      "match_confidence": "medium",
+      "match_basis": "设计图包含全部栋舍筛选控件和选中态信息，但未单独呈现点击全部栋舍后的独立页面状态。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-house-filter",
+      "prototype_state_name": "指定栋舍筛选结果",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "1add5cd8-042a-463c-9a37-10313a79de55",
+      "lanhu_design_name": "雏苗发货",
+      "match_status": "partial_matched",
+      "match_confidence": "medium",
+      "match_basis": "设计图包含栋舍筛选入口和栋舍选项结构，但未能从设计图名称或节点信息确认与原型 3 栋筛选结果完全一致。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-search-empty",
+      "prototype_state_name": "搜索初始态",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "f9bbbdb4-114d-452e-8db7-7e8c8c911cb8",
+      "lanhu_design_name": "搜索-聚焦",
+      "match_status": "partial_matched",
+      "match_confidence": "medium",
+      "match_basis": "设计图明确为搜索交互态，包含搜索框、搜索提示和搜索入口，但名称为聚焦态，未完全等同于原型搜索初始引导态。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-search-result-input",
+      "prototype_state_name": "搜索结果态",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "f9bbbdb4-114d-452e-8db7-7e8c8c911cb8",
+      "lanhu_design_name": "搜索-聚焦",
+      "match_status": "partial_matched",
+      "match_confidence": "medium",
+      "match_basis": "设计图包含搜索结果相关节点和搜索操作，但未确认已输入具体发货单号/孵化计划号后的结果卡片与原型数据完全一致。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-progress",
+      "prototype_state_name": "发货中页签",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "612e02dc-f9da-43ad-b0ac-47f443b9f8bb",
+      "lanhu_design_name": "雏苗发货2",
+      "match_status": "partial_matched",
+      "match_confidence": "medium",
+      "match_basis": "设计图为雏苗发货列表的另一状态版本，包含发货中状态和列表结构，但未在名称中直接标明原型发货中页签。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-shipped",
+      "prototype_state_name": "已发货页签",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "612e02dc-f9da-43ad-b0ac-47f443b9f8bb",
+      "lanhu_design_name": "雏苗发货2",
+      "match_status": "partial_matched",
+      "match_confidence": "medium",
+      "match_basis": "设计图包含已发货状态及发货记录入口相关内容，但无法仅依据设计图名称确认其是否专门对应已发货页签。"
+    },
+    {
+      "prototype_page_id": "app-chick-shipping-list",
+      "prototype_state_id": "app021-signed",
+      "prototype_state_name": "已签收页签",
+      "req_id": "REQ-APP-021",
+      "lanhu_design_id": "612e02dc-f9da-43ad-b0ac-47f443b9f8bb",
+      "lanhu_design_name": "雏苗发货2",
+      "match_status": "partial_matched",
+      "match_confidence": "medium",
+      "match_basis": "设计图包含已签收状态相关列表内容，但未能确认其与原型已签收页签的状态数据完全一致。"
+    }
+  ],
+  "unmatched": {
+    "prototype_states": [
+      {"state_id": "app021-date-yesterday-result", "state_name": "昨天日期筛选结果", "reason": "未找到明确的日期应用后空结果独立设计图"}
+    ],
+    "lanhu_designs": [
+      {"design_id": "7048e4ca-9019-4c12-bdd7-46901e4390ca", "design_name": "工作台-错位排列", "reason": "属于工作台布局设计，非 REQ-APP-021 雏苗发货列表页面；仅包含雏苗发货入口，不作为列表页面匹配"}
+    ]
+  },
+  "summary": {
+    "prototype_state_count": 10,
+    "lanhu_design_count": 5,
+    "mapping_count": 10,
+    "matched_count": 2,
+    "partial_matched_count": 7,
+    "unmatched_prototype_state_count": 1,
+    "unmatched_lanhu_design_count": 1,
+    "coverage_rate": "90%",
+    "notes": [
+      "一个蓝湖设计图可对应多个原型状态，表示同一页面中包含多个状态或交互区域。",
+      "对无法从设计图名称、节点文本和功能描述中确认的关系标记为 partial_matched 或 unmatched，未编造映射。",
+      "REQ-APP-021 原型中部分状态通过交互进入，设计稿未必单独输出独立画板。"
+    ]
+  },
+  "self_check": {
+    "prototype_input_modified": false,
+    "design_inputs_modified": false,
+    "all_prototype_states_recorded": true,
+    "all_designs_recorded": true,
+    "matched_and_unmatched_recorded": true,
+    "output_directory": "02_analysis/app/page_inventory/lanhu_page_mapping",
+    "output_file": "REQ-APP-021_lanhu_page_mapping.json"
+  }
+}

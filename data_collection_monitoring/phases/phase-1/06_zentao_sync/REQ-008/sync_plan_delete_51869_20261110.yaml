@@ -1,0 +1,18 @@
+req_id: REQ-008
+project_id: 46
+product_id: 8
+module_id: 746
+operation: delete
+target: project
+policy: ../../../../.agents/rules/zentao-sync-default-rule.md
+cases:
+- local_case_id: TC-REQ-008-047
+  remote_case_id: 51869
+execution:
+  status: validated
+  stop_on_failure: true
+  readback_status: confirmed_not_found
+  evidence: delete_51869_20261110.json
+registry:
+  mapping_removed_locally: true
+  remote_removal_confirmed: true

@@ -1,0 +1,21 @@
+{
+  "status": "validated",
+  "remote_case_id": 52089,
+  "local_case_id": "TC-REQ-006-063",
+  "operation": "update",
+  "scope": {"product_id": 8, "project_id": 46, "module_id": 744},
+  "readback": {
+    "status": "validated",
+    "title": "运行中插件停止成功后回读已停止状态",
+    "remote_type": "feature",
+    "step_count": 4,
+    "steps": [
+      {"step": "获得写入授权后，定位状态为“运行中”的目标插件。", "expected": "找到目标插件，并确认当前状态为“运行中”。"},
+      {"step": "点击“停止”按钮。", "expected": "页面出现停止确认或处理提示。"},
+      {"step": "在确认弹窗点击“确定”按钮并等待处理完成。", "expected": "页面提示停止成功。"},
+      {"step": "点击“刷新”或“查询”按钮回读状态。", "expected": "插件状态变为“已停止”，列表显示与实际结果一致。"}
+    ]
+  },
+  "registry_update": "validated",
+  "failure_policy": "更新或回读失败立即停止，不删除重建、不创建替代用例。"
+}

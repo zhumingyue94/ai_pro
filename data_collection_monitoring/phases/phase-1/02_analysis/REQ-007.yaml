@@ -1,0 +1,322 @@
+schema_version: "1.1"
+
+analysis_id: "REQ-007"
+
+module_id: "REQ-007"
+
+module_name: "数据监听"
+
+project: "数据采集监控平台"
+
+status: "blocked_pending_page_inventory_and_permission_verification"
+
+source:
+
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+
+  latest_changes: "01_requirements/需求变动.md"
+
+  latest_change_range: "REQ-007: 157-169"
+
+  latest_change_items: ["REQ-007-001", "REQ-007-002", "REQ-007-003", "REQ-007-004", "REQ-007-005", "REQ-007-006", "REQ-007-007", "REQ-007-008", "REQ-007-009", "REQ-007-010", "REQ-007-011", "REQ-007-012", "REQ-007-013"]
+
+  scope_baseline: "01_requirements/模块拆分清单.md"
+
+  page_inventory: "02_analysis/page_inventory/page.json"
+
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录具体值"
+
+identity:
+
+  zentao_module_path: "iot平台/数据中心/数据监听"
+
+  zentao_module_id: 745
+
+  parent_module_id: 728
+
+  priority: 7
+
+  priority_band: "P1"
+
+  route: "/iot/data/monitor"
+
+  candidate_runtime_route: "/biopark-iot/iot/data/monitor"
+
+  title: "数据采集 - 数据监听"
+
+  menu_path: ["数据中心", "数据监听"]
+
+  dependency_modules: ["设备管理", "产品管理"]
+
+  discrepancy: "模块清单仅证明页面存在和可导航；page.json 当前未登记 REQ-007 页面实体，不能据此确认字段、权限、接口或数据正确。"
+
+scope:
+
+  confirmed:
+
+    - "规则编号由系统自动生成，创建后不可修改且必须唯一；重复或生成异常时提示并阻止保存；重复请求不重复生成编号。"
+
+    - "规则名称必填，同一租户内允许重复；限制非法字符，不限制字段长度；其他空白和修改规则按系统默认。"
+
+    - "状态包括启用和停用；切换后立即生效；处理中事件按触发时确定的规则状态执行。"
+
+    - "触发条件支持设备属性、设备事件和设备状态；多监听器为 OR，单监听器多条件为 AND。"
+
+    - "动作支持推送、触发告警和取消告警；按配置顺序执行；某动作失败时记录失败并继续后续动作。"
+
+    - "创建时间按当前用户时区显示，格式为 YYYY-MM-DD HH:mm:ss；默认、筛选、分页、刷新后均按创建时间倒序。"
+
+    - "停用的推送目标或告警配置不可被新规则选择；已有引用继续使用原配置；被引用依赖不可删除。"
+
+    - "每次设备事件上报都执行一次动作；重复事件不去重、不节流、不设置时间窗口；失败不自动重试。"
+
+  in_scope: ["规则列表、筛选、排序、分页、刷新和状态展示", "规则编号、名称、状态、触发条件、执行动作和创建时间", "监听器 OR/AND、多动作顺序、失败继续和不重试语义", "依赖停用/引用/删除边界", "租户隔离和角色权限风险"]
+
+  out_of_scope: ["具体表达式语法、数据类型转换、阈值和动作参数格式的未确认细节", "未补齐页面契约前的新增、编辑、启停、删除和真实动作", "真实推送、触发告警、取消告警和接口写入", "其他模块页面 ID、状态、元素、表单、表格、交互或证据的复用", "接口、错误码、审计、幂等、异步和性能测试"]
+
+  acceptance_boundary:
+
+    - "以需求变动.md:157-169 最新确认回答为业务基准。"
+
+    - "以 page.json 当前实际登记内容为页面事实；当前不存在 REQ-007 页面实体。"
+
+    - "本阶段只允许页面级 UI/行为验证规划，不执行真实业务写操作。"
+
+page_contract:
+
+  page_inventory_status: "missing"
+
+  page_id: "data_monitor"
+
+  page_id_status: "missing_in_page_inventory"
+
+  route: "/iot/data/monitor"
+
+  candidate_runtime_route: "/biopark-iot/iot/data/monitor"
+
+  title: "数据采集 - 数据监听"
+
+  menu_path: ["数据中心", "数据监听"]
+
+  default_state: "data_monitor_default"
+
+  default_state_status: "missing_in_page_inventory"
+
+  check_target: "data_monitor_state"
+
+  check_target_status: "candidate_only_not_stable_contract"
+
+  elements: []
+
+  forms: []
+
+  tables: []
+
+  interactions: []
+
+  evidence: []
+
+  missing_contract: ["page entity", "state entity", "element IDs", "forms", "tables", "stable pagination IDs", "interactions", "screenshots", "logs", "DOM snapshots"]
+
+  observed_unverified_clues:
+
+    controls: ["规则名称", "规则状态", "查询", "重置", "刷新", "表头设置", "新增监听规则", "编辑", "启用", "禁用", "删除"]
+
+    columns: ["规则编号", "规则名称", "规则状态", "触发条件", "执行动作", "创建时间", "操作"]
+
+    values:
+
+      status: ["开启", "关闭"]
+
+      trigger_type: ["设备属性上报", "设备事件上报", "设备状态变更"]
+
+      action: ["消息推送", "触发告警", "取消告警"]
+
+      pagination: ["10 条/页"]
+
+    status: "unverified_clues_only"
+
+    rule: "不得把未写入 page.json 的线索作为稳定 locator、element_id 或自动化契约。"
+
+  forbidden_reuse: ["alert_record", "data_push", "plugin_management", "device_group", "任何其他模块的 element/table/form ID"]
+
+  page_json_global_evidence:
+
+    status: "partial"
+
+    evidence_status: "available_for_other_modules_only"
+
+    note: "全局 evidence 可用不能推断 REQ-007 页面或证据存在。"
+
+requirements:
+
+  confirmed:
+
+    REQ-007-001: "系统生成规则编号，创建后不可修改且必须唯一；重复或生成异常提示并阻止保存。"
+
+    REQ-007-002: "规则名称必填，同租户允许重复；限制非法字符，不限制长度；其他默认校验待页面确认。"
+
+    REQ-007-003: "状态为启用/停用，切换立即生效；处理中事件使用触发时确定的状态。"
+
+    REQ-007-004: "支持属性、事件、状态触发；多监听器 OR，单监听器多条件 AND；转换、表达式、阈值按系统默认。"
+
+    REQ-007-005: "支持推送、触发告警、取消告警；按顺序执行；单动作失败记录并继续。"
+
+    REQ-007-006: "创建时间按用户时区显示，格式 YYYY-MM-DD HH:mm:ss；默认创建时间倒序。"
+
+    REQ-007-007: "停用依赖不可被新规则选择；已有规则继续使用原配置；被引用依赖不可删除。"
+
+    REQ-007-008: "每次事件上报执行动作；重复不去重、不节流、无时间窗口；失败不自动重试。"
+
+    REQ-007-009: "确认表补充 PDF 和页面探索内容，不与正式 PDF 逐条直接对应。"
+
+    REQ-007-010: "名称限制非法字符且不限制长度；编号系统生成且唯一；冲突提示；重复请求不重复生成编号。"
+
+    REQ-007-011: "启停、编辑、删除按角色权限和租户范围控制；状态立即生效；处理中事件使用触发时状态快照。"
+
+    REQ-007-012: "补采数据监听专属页面、状态、元素、表单、表格、交互和证据；不得复用其他模块定位器；分页排序按实际页面记录。"
+
+    REQ-007-013: "本阶段只做页面级 UI/行为验证，不纳入接口、错误码、审计、幂等、异步和性能测试。"
+
+  pending: ["正式 PDF REQ-007 章节逐条追溯", "页面 data_monitor 的 page/state/element/form/table/interaction/evidence", "规则名称空白和默认校验", "规则编号生成异常提示和页面反馈", "启停/编辑/删除角色租户矩阵", "处理中事件状态快照的页面可观察证据", "表达式、类型转换、阈值规则", "动作参数、部分成功和失败记录位置", "依赖停用/已有引用/删除阻止页面证据", "重复事件和不重试运行证据", "稳定分页、排序字段和并列值处理", "筛选/分页/刷新后的创建时间倒序页面证据"]
+
+roles:
+
+  items:
+
+    - {role: "数据监听查看人员", responsibility: "在授权租户和业务范围内查看监听规则及运行结果"}
+
+    - {role: "数据监听管理员", responsibility: "按权限创建、编辑、启用、停用和删除监听规则"}
+
+    - {role: "设备/产品管理员", responsibility: "维护监听条件所引用的设备、产品和状态数据"}
+
+    - {role: "推送/告警管理员", responsibility: "维护可被监听规则引用的推送目标和告警配置"}
+
+    - {role: "平台运维/审计人员", responsibility: "维护运行异常、依赖保护、租户边界和操作追溯"}
+
+permission_status: "blocked_pending_matrix"
+
+rule: "不得从页面存在、候选控件或菜单可见性推断写权限；不得绕过菜单、接口、租户或安全控制。"
+
+dependencies:
+
+  upstream: ["设备管理", "产品管理", "推送目标", "告警配置"]
+
+  downstream: ["设备事件接入", "消息推送", "告警记录", "运行审计"]
+
+  note: "模块拆分依赖为范围线索，不代表已验证的数据或接口依赖。"
+
+risks:
+
+  - {id: "R-007-01", level: "critical", description: "监听规则重复触发、漏触发或 OR/AND 逻辑错误", mitigation: "覆盖多监听器 OR、单监听器多条件 AND 和每次事件语义"}
+
+  - {id: "R-007-02", level: "critical", description: "动作失败导致后续动作未执行或自动重试造成重复副作用", mitigation: "验证顺序执行、失败继续、失败记录和禁止自动重试"}
+
+  - {id: "R-007-03", level: "high", description: "停用/删除依赖破坏已有监听规则", mitigation: "验证停用不可新选、已有引用继续、被引用不可删除"}
+
+  - {id: "R-007-04", level: "high", description: "状态未立即生效或处理中事件使用错误状态", mitigation: "明确切换时机和触发时状态快照"}
+
+  - {id: "R-007-05", level: "high", description: "规则编号重复、可编辑或重复请求重复生成", mitigation: "唯一约束、生成异常阻止保存和编号只读"}
+
+  - {id: "R-007-06", level: "high", description: "时区/格式/排序错误", mitigation: "验证用户时区、秒级格式、筛选分页刷新后的倒序"}
+
+  - {id: "R-007-07", level: "high", description: "租户隔离或权限边界缺失", mitigation: "补充权限矩阵、租户过滤和未授权反馈"}
+
+  - {id: "R-007-08", level: "medium", description: "页面库存缺失导致自动化使用错误定位器", mitigation: "补采 data_monitor 专属页面契约，禁止复用其他模块 ID"}
+
+test_design:
+
+  equivalence_partitions:
+
+    rule_id: [system_generated_unique, duplicate_or_generation_failure, duplicate_request_idempotent, attempted_edit]
+
+    rule_name: [required_valid, empty, whitespace, illegal_characters, duplicate_allowed, unlimited_length]
+
+    rule_status: [enabled, disabled, toggle_immediate, in_flight_event_snapshot]
+
+    trigger_type: [device_property, device_event, device_status]
+
+    listener_logic: [single_listener_all_true, single_listener_condition_false, multiple_listeners_one_true, multiple_listeners_all_false]
+
+    action_sequence: [push, alarm_trigger, alarm_cancel, ordered_multiple_actions, middle_action_failure, all_actions_failure]
+
+    dependency: [active_selectable, disabled_not_selectable, existing_reference_retained, referenced_delete_forbidden]
+
+    event_processing: [unique_event, repeated_event, no_throttle_window, action_failure_no_retry]
+
+    time_ordering: [user_timezone_format, default_desc, filtered_desc, paged_desc, refreshed_desc]
+
+    permission: [authorized, unauthorized, cross_tenant]
+
+  boundary_candidates: ["规则编号生成/冲突/异常/重复请求", "规则名称空白/非法字符/重复/不限长度", "启停切换和状态快照", "单监听器条件 AND", "多监听器任一满足 OR", "动作顺序/中间失败/后续继续", "依赖停用/已有引用/删除", "重复事件/无节流/不重试", "用户时区和时间格式", "筛选/分页/刷新倒序", "租户和角色边界"]
+
+  decision_table:
+
+    - {id: "DT-007-01", conditions: ["监听器数量", "每个监听器条件结果"], expected: "任一监听器全部条件满足则触发；单监听器任一条件失败则该监听器不满足"}
+
+    - {id: "DT-007-02", conditions: ["动作顺序", "某动作失败"], expected: "按配置顺序执行；记录失败；继续后续动作；不自动重试"}
+
+    - {id: "DT-007-03", conditions: ["依赖状态", "是否已被引用", "操作"], expected: "停用依赖不可新选；已有引用继续使用；被引用依赖不可删除"}
+
+    - {id: "DT-007-04", conditions: ["事件是否重复", "是否在时间窗口内"], expected: "每次上报均执行；不去重；不节流；无时间窗口"}
+
+    - {id: "DT-007-05", conditions: ["规则状态", "事件处理是否已开始"], expected: "新处理立即使用新状态；已处理事件沿用触发时状态"}
+
+    - {id: "DT-007-06", conditions: ["列表操作", "排序结果"], expected: "默认、筛选、分页、刷新均创建时间倒序"}
+
+  state_transitions: ["不存在->已创建", "已创建->启用", "启用->停用", "停用->启用", "启用/停用->编辑", "被引用依赖->停用请求->禁止新选但旧引用继续", "被引用依赖->删除请求->拒绝", "设备事件上报->规则状态快照->监听器匹配->动作顺序执行->成功/部分失败", "重复事件上报->重复执行", "动作失败->失败记录->不重试"]
+
+  pict_model:
+
+    parameters: ["RuleStatus", "TriggerType", "ListenerLogic", "ActionSequence", "DependencyState", "EventRepeat", "ActionFailure", "Ordering", "Permission"]
+
+    values: {RuleStatus: [enabled, disabled, toggle_immediate, in_flight_snapshot], TriggerType: [device_property, device_event, device_status], ListenerLogic: [single_all_true, single_one_false, multi_one_true, multi_all_false], ActionSequence: [single_push, single_alarm_trigger, single_alarm_cancel, ordered_multiple, middle_failure], DependencyState: [active_selectable, disabled_not_selectable, existing_reference, referenced_delete], EventRepeat: [unique, repeated, no_throttle_window], ActionFailure: [none, recorded_continue, no_auto_retry], Ordering: [default_desc, filtered_desc, paged_desc, refreshed_desc], Permission: [authorized, unauthorized, cross_tenant]}
+
+    constraints: ["IF [ActionSequence] = middle_failure THEN [ActionFailure] = recorded_continue;", "IF [DependencyState] = disabled_not_selectable THEN [Permission] = authorized;", "IF [EventRepeat] = repeated THEN [ActionFailure] = no_auto_retry;", "IF [Permission] IN {unauthorized, cross_tenant} THEN [RuleStatus] <> toggle_immediate;"]
+
+    note: "PICT 为候选模型；页面库存缺失，不执行真实动作、规则写入或接口调用。"
+
+automation_plan:
+
+  framework: "Playwright Python sync API / pytest-playwright"
+
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+
+  status: "blocked_pending_page_inventory_and_permission_verification"
+
+  candidate_route: "/biopark-iot/iot/data/monitor"
+
+  allowed_after_contract_capture: ["复用登录态", "进入数据中心→数据监听", "确认运行时 URL/标题", "只读查看列表/空态/加载状态", "只读筛选/重置/刷新/表头设置", "记录脱敏页面事实"]
+
+  forbidden: ["新增监听规则", "编辑规则", "启用/停用规则", "删除规则", "真实推送", "触发告警", "取消告警", "写 API", "权限绕过", "输出真实业务数据"]
+
+  locator_priority: ["get_by_role", "confirmed data-testid", "get_by_label", "page_inventory element_id", "stable attributes", "CSS last"]
+
+  current_locator_status: "no REQ-007 stable locator exists"
+
+  stop_conditions: ["配置缺失", "登录失败", "人工安全验证", "路由/主机不符", "权限失败", "出现写操作提示", "未授权数据暴露", "页面契约仍缺失"]
+
+data_preconditions:
+
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 或运行时配置读取，不记录具体值。"
+
+  - "不造规则、设备、事件、推送目标、告警配置或业务数据；不执行真实动作。"
+
+  - "敏感信息和未经授权业务数据不得进入 page.json、截图、日志、DOM、报告或下载文件。"
+
+  - "本次不执行新增、编辑、启停、删除、推送、触发/取消告警、导入、导出、接口写入或下载；数据变更：无；清理状态：not_applicable。"
+
+readiness:
+
+  status: "blocked_pending_page_inventory_and_permission_verification"
+
+  reason: "业务规则已结构化，但 page.json 未登记 data_monitor 页面实体，缺少页面契约、权限矩阵、默认校验和运行证据。"
+
+handoff:
+
+  path: "02_analysis/HANDOFF/REQ-007_HANDOFF.md"
+
+  status: "blocked_pending_page_inventory_and_permission_verification"
+
+  next_inputs: ["补采 data_monitor 页面和默认状态", "登记专属稳定 element/form/table/pagination/interaction/evidence", "确认名称和编号校验", "确认启停权限和状态快照", "确认表达式/阈值/动作参数", "确认依赖生命周期", "确认重复事件和失败不重试证据", "确认租户/角色矩阵"]
+

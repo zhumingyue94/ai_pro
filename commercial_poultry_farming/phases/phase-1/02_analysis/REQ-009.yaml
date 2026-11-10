@@ -1,0 +1,150 @@
+id: REQ-009
+title: 养殖日报
+zentao_module_id: 658
+page_url: /biopark-poultry/report/daily
+trace:
+  story: null
+  req: null
+  tp: null
+  project: 商品禽养殖
+  version: 1
+  status: draft
+
+module_complexity: query_report
+testpoint_template: 查询报表
+
+summary: >
+  【本次测试范围外·不生成测点】
+  按“日期”单日查询，展示各栋舍/段区当日养殖核心指标（存栏、死淘、成活率、采食、
+  饮水、水料比等），列表为多级表头结构（采食/饮水分组各含“昨日/今日/差异”及
+  “实际/标准/差异”等子列），共 30 列，支持导出。需求说明书 3.8 无本模块专章，
+  本分析以原型实测（禅道模块 658、原型 /biopark-poultry/report/daily）为准，
+  需求缺口记入 open_questions，不脑补业务口径。
+
+in_scope:
+  - 按日期（单日）查询养殖日报
+  - 30 列多级表头指标展示（存栏/死淘/成活率/采食/饮水/水料比/鸡群状况等）
+  - 导出当前查询结果
+
+out_scope:
+  - 养殖日报数据的新增/编辑/删除（本模块为只读报表）
+  - 饲养日志（REQ-005）、死淘巡检（REQ-004）原始数据录入
+  - 养殖标准（REQ-007）标准值的维护
+
+business_rules:
+  - 查询条件仅“日期”（单日），原型未见栋舍/段区独立查询字段（与批次统计、饲养日志等模块的查询习惯不同），见 open_questions
+  - 日死淘率(%)、成活率(%) 引用需求第4章公共公式“日死淘率”“成活率”
+  - 水料比 引用需求第4章公共公式：单只日饮水量(ml) / 单只日采食量(g)
+  - “标准”类列（日标准(克/只)、累计标准(克/只)）疑似对照养殖标准（REQ-007）按品种+日龄取值，需人工核实取值规则
+  - “实际”类列疑似取自饲养日志（REQ-005）/死淘巡检（REQ-004）逐日汇总数据
+
+roles:
+  - 生产主管
+  - 养殖场长/养殖主管
+
+interfaces:
+  - 饲养日志（REQ-005）：日死亡/淘汰、吃料量、饮水量等基础数据来源
+  - 死淘巡检（REQ-004）：死淘数据来源之一
+  - 养殖标准（REQ-007）：标准采食量/饮水量对照数据来源（推测，见 open_questions）
+
+risks:
+  - 需求说明书未编写本模块章节，全部业务口径依赖原型静态抓取，存在理解偏差风险
+  - 30 列中多组同名子列（今日/昨日/差异等）分属不同分组，静态抓取无法还原真实多级表头层级，可能导致列语义误判
+  - 查询条件仅“日期”而无栋舍/段区筛选，页面如何展示全部栋舍数据（分页/全展开）未明确，可能影响性能与测点设计
+
+open_questions:
+  - 需求说明书 3.8 未编写养殖日报章节，本分析业务口径以原型能力为界，需人工进入原型核实后收窄结论
+  - 30 列原型抓取为扁平列表，“采食”“饮水”分组下的“昨日/今日/差异”“实际/标准/差异”等子列的多级表头层级关系未能通过静态抓取确认，需人工核实原型页面表头结构（含表头合并单元格范围）
+  - “鸡群状况”字段展示形式（文本/图标/颜色标签）未明确
+  - “日标准(克/只)”“累计标准(克/只)”是否直接取自养殖标准（REQ-007）按品种+日龄的标准值，取值节点（品种如何确定）未定义
+  - 查询仅“日期”单字段，页面是否隐含展示全部栋舍/段区数据（每行一个栋舍段区组合），或需要额外交互（如展开）查看，需人工核实
+  - “今日(立方)”“增减(立方)”单位为立方米，与饮水量常用单位(L/ml)换算关系未在需求中定义
+
+test_scope_suggestion:
+  - 本次测试范围外：生产报表模块，本轮不生成测点/用例/执行；分析保留供跨模块引用
+  - 查询条件覆盖：日期默认值（默认当日，需人工核实）、可选日期范围、未来日期、无数据日期
+  - 30 列字段逐列显示准确性核对，尤其“今日/昨日/差异”类比较列的计算是否正确（今日-昨日=差异）
+  - “实际/标准/差异”类列与养殖标准（REQ-007）数据的一致性核对（若确认取数规则后）
+  - 导出功能：导出文件内容与当前查询日期一致，且包含全部 30 列
+  - 分页、单元格省略号、多级表头渲染等通用组件（若确认表头分组后按 list_merge_rules 或 table_column_specs.group 补充）
+  - 无数据日期的空态展示
+  - "不生成“角色可查看”类测点（role_coverage=skip）"
+
+prototype_verification:
+  query_field_specs:
+    - name: 日期
+      control: input
+      editable: true
+      required: false
+      notes: 单日日期选择器，默认值未在原型静态抓取中确认
+  table_column_specs:
+    - { name: 栋舍, order: 1 }
+    - { name: 段区, order: 2 }
+    - { name: 品种, order: 3 }
+    - { name: 日龄, order: 4 }
+    - { name: 存栏数量(只), order: 5 }
+    - { name: 死淘(只), order: 6 }
+    - { name: 日死淘率(%), order: 7 }
+    - { name: 累计死淘率(%), order: 8 }
+    - { name: 成活率(%), order: 9 }
+    - { name: 昨日, order: 10, group: 死淘对比, notes: 分组关系待人工核实原型表头层级 }
+    - { name: 今日, order: 11, group: 死淘对比, notes: 分组关系待人工核实原型表头层级 }
+    - { name: 死淘增减, order: 12, group: 死淘对比 }
+    - { name: 累计死淘, order: 13, group: 死淘对比 }
+    - { name: 水料比, order: 14 }
+    - { name: 鸡群状况, order: 15, notes: 展示形式未明确 }
+    - { name: 实际, order: 16, group: 采食-实际标准对比, notes: 分组关系待人工核实原型表头层级 }
+    - { name: 标准, order: 17, group: 采食-实际标准对比 }
+    - { name: 差异, order: 18, group: 采食-实际标准对比 }
+    - { name: 昨日(克/只), order: 19, group: 采食-单只日采食对比 }
+    - { name: 今日(克/只), order: 20, group: 采食-单只日采食对比 }
+    - { name: 增减(克/只), order: 21, group: 采食-单只日采食对比 }
+    - { name: 日标准(克/只), order: 22, group: 采食-标准对比 }
+    - { name: 日差异(克/只), order: 23, group: 采食-标准对比 }
+    - { name: 累计标准(克/只), order: 24, group: 采食-标准对比 }
+    - { name: 实际累计(克/只), order: 25, group: 采食-标准对比 }
+    - { name: 累计差异(克/只), order: 26, group: 采食-标准对比 }
+    - { name: 今日(立方), order: 27, group: 饮水对比 }
+    - { name: 增减(立方), order: 28, group: 饮水对比 }
+  computed_fields:
+    - name: 日死淘率(%)
+      formula: (当日死亡+当日淘汰)/当日存栏×100%（需求第4章“日死淘率”）
+      editable: false
+    - name: 成活率(%)
+      formula: 引用第4章“成活率”公式，取值节点需人工核实
+      editable: false
+    - name: 水料比
+      formula: 单只日饮水量(ml)/单只日采食量(g)（需求第4章“水料比”）
+      editable: false
+    - name: 死淘增减
+      formula: 今日死淘 - 昨日死淘（推测，需人工核实）
+      editable: false
+  save_validations: []
+  ui_components:
+    - pagination
+    - cell_ellipsis_tooltip
+    - export
+  button_semantics:
+    导出:
+      action: export_list
+      summary: 按当前查询日期导出养殖日报（30列），文件是否保留多级表头格式未核实
+  page_chrome:
+    title: 养殖日报
+    view_tabs: []
+    notes: [多级表头（采食/饮水分组列），30列]
+  list_merge_rules:
+    - scope: 多级表头分组列
+      merge_columns: [采食, 饮水]
+      row_display: 表头合并单元格（分组表头跨子列）
+      notes: 原型静态抓取未能还原真实合并范围，需人工核实后据此调整测点
+  role_coverage: skip
+
+design_artifacts:
+  decision_tables:
+    - name: 养殖日报日期查询
+      conditions: [日期有无数据, 是否对照养殖标准]
+      rules:
+        - 有饲养日志/死淘数据的日期 → 展示对应栋舍行
+        - 无业务数据日期 → 空态
+        - 标准列取值 → 依赖养殖标准匹配规则（见 open_questions）
+  combinatorial_blocks: []

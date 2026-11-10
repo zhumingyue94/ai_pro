@@ -1,0 +1,16 @@
+{
+  "req_id": "REQ-011",
+  "operation": "delete",
+  "remote_case_id": 52038,
+  "local_case_id": "TC-REQ-011-046",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "readback_before": {"id": 52038, "title": "详情权限不足时确认不泄露受保护记录内容", "type": "security", "module": 749},
+  "delete_response": {"status": "success"},
+  "readback_after": {"status": "confirmed_not_found", "message": "Case does not exist."},
+  "status": "validated",
+  "source_hashes": {
+    "TC_REQ-011.yaml": "b235de8250db9ba8b952cc7bca4d6605e3611cc29b3f8f8dce6efba072f7c453",
+    "REV_CASE_REQ-011.yaml": "f7110131ef82763bb0cc1cf27e36451c930c35e33a58bbda9a14a9d36cf537eb"
+  },
+  "policy": "已删除并独立回读确认不存在；未删除重建、未创建替代用例。"
+}

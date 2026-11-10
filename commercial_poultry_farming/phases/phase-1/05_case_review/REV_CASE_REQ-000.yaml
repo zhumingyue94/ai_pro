@@ -1,0 +1,151 @@
+req_id: REQ-000
+gate_passed: true
+exec_check:
+  command: python scripts/check_testcase_executability.py --project D:\01workspace\AItestcase\本仓库\projects\商品禽养殖 --req
+    REQ-000
+  errors: 0
+  warnings: 0
+  exit_code: 0
+checks:
+- id: CG1
+  name: exec_check_errors
+  passed: true
+- id: CG5
+  name: tp_coverage
+  passed: true
+issues: []
+csv_path: 05_case_review/000_商品禽养殖系统总览_测试用例.csv
+human:
+  rewrite_approved: false
+rewrite:
+  round: 0
+  max_rounds: 3
+  status: done
+  history: []
+trace:
+  source_tc: 04_testcases/TC_REQ-000.yaml
+  project: 商品禽养殖
+  status: approved
+next_agent: 06_zentao_sync
+csv_note: 评审通过后的现有 CSV 产物；远程同步需由 06_zentao_sync 取得明确授权
+delta_review:
+  date: '2026-07-23'
+  source: 01_requirements/需求变动.md 9.30更新
+  scope: incremental
+  case_ids:
+  - TC-000-01
+  - TC-000-02
+  - TC-000-03
+  - TC-000-04
+  - TC-000-05
+  - TC-000-06
+  - TC-000-07
+  - TC-000-08
+  - TC-000-09
+  - TC-000-10
+  - TC-000-11
+  - TC-000-12
+  - TC-000-13
+  - TC-000-14
+  - TC-000-15
+  - TC-000-16
+  - TC-000-17
+  - TC-000-18
+  - TC-000-19
+  - TC-000-20
+  - TC-000-21
+  - TC-000-22
+  cases_reviewed: 22
+  delta_passed: true
+  results:
+  - case_id: TC-000-01
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-02
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-03
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-04
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-05
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-06
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-07
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-08
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-09
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-10
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-11
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-12
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-13
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-14
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-15
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-16
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-17
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-18
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-19
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-20
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-21
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-000-22
+    verdict: pass
+    errors: 0
+    warnings: 0
+  issues: []
+  warnings: []
+delta_review_note: 2026-07-23 增量用例评审 22 条；delta_passed=True；模块 gate 保持 True（未全量复评）

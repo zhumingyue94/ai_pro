@@ -1,0 +1,16 @@
+{
+  "req_id": "REQ-011",
+  "operation": "delete",
+  "remote_case_id": 52037,
+  "local_case_id": "TC-REQ-011-045",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "readback_before": {"id": 52037, "title": "悬浮查看详情时确认有权限的字段已脱敏", "type": "feature", "module": 749},
+  "delete_response": {"status": "success"},
+  "readback_after": {"status": "confirmed_not_found", "message": "Case does not exist."},
+  "status": "validated",
+  "source_hashes": {
+    "TC_REQ-011.yaml": "2e07694a88e87e243a9a2e4f2b5fd4532638c579eea1dcb6e0264c4d04632e9a",
+    "REV_CASE_REQ-011.yaml": "1e1fdf2f6a4e4405de187a0352c8c2d6b746ae8a7b5db3f76418dcde9eafc077"
+  },
+  "policy": "已删除并独立回读确认不存在；未删除重建、未创建替代用例。"
+}

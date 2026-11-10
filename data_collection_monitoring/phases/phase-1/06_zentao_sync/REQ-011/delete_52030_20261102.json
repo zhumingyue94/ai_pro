@@ -1,0 +1,16 @@
+{
+  "req_id": "REQ-011",
+  "operation": "delete",
+  "remote_case_id": 52030,
+  "local_case_id": "TC-REQ-011-038",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "readback_before": {"id": 52030, "title": "查看重复上报事件时确认列表展示规则", "type": "feature", "module": 749},
+  "delete_response": {"status": "success"},
+  "readback_after": {"status": "confirmed_not_found", "message": "Case does not exist."},
+  "status": "validated",
+  "source_hashes": {
+    "TC_REQ-011.yaml": "4502b047e6957dcabb27d7f3ac9c580e0c6576ba53208e4ebe268b09790c3b28",
+    "REV_CASE_REQ-011.yaml": "f3f813464204d173ef1253b21ba0408d64e2be7070cc3a3d0a5935c6d72130e6"
+  },
+  "policy": "已删除并独立回读确认不存在；未删除重建、未创建替代用例。"
+}

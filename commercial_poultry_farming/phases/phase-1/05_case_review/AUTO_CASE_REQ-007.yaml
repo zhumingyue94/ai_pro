@@ -1,0 +1,841 @@
+id: AUTO_CASE_REQ-007
+req_id: REQ-007
+module: 养殖标准
+upstream_gate_passed: true
+trace:
+  req: REQ-007
+  source_tc: 04_testcases/TC_REQ-007.yaml
+  source_case_review: 05_case_review/REV_CASE_REQ-007.yaml
+  project: 商品禽养殖
+summary:
+  total: 113
+  auto: 92
+  manual: 21
+items:
+- case_id: TC-007-01
+  tp_id: TP-007-01
+  automation: manual
+  matched:
+  - 闭环
+  reason: 查询区控件存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-007-02
+  tp_id: TP-007-02
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 状态下拉选项可脚本断言
+- case_id: TC-007-03
+  tp_id: TP-007-03
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 标准名称模糊查询主路径
+- case_id: TC-007-04
+  tp_id: TP-007-04
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 状态=启用查询主路径
+- case_id: TC-007-05
+  tp_id: TP-007-05
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 状态=禁用查询主路径
+- case_id: TC-007-06
+  tp_id: TP-007-06
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 名称+状态组合查询可脚本断言
+- case_id: TC-007-07
+  tp_id: TP-007-07
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 重置清空条件并恢复列表主路径
+- case_id: TC-007-08
+  tp_id: TP-007-08
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 无匹配空态可脚本断言
+- case_id: TC-007-09
+  tp_id: TP-007-09
+  automation: manual
+  matched:
+  - 闭环
+  reason: 查询/重置按钮存在性壳层
+- case_id: TC-007-10
+  tp_id: TP-007-10
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 未点查询不刷新、点查询后过滤可断言
+- case_id: TC-007-11
+  tp_id: TP-007-11
+  automation: manual
+  matched:
+  - 闭环
+  reason: 名称输入可用性壳层，非独立业务断言
+- case_id: TC-007-12
+  tp_id: TP-007-12
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 新增目标打开弹窗主入口
+- case_id: TC-007-13
+  tp_id: TP-007-13
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 新增四字段必填可脚本断言
+- case_id: TC-007-14
+  tp_id: TP-007-14
+  automation: manual
+  matched:
+  - 闭环
+  reason: 占位文案壳层
+- case_id: TC-007-15
+  tp_id: TP-007-15
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 标准名称100字边界可脚本断言
+- case_id: TC-007-16
+  tp_id: TP-007-16
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 标准名称可重复保存可断言
+- case_id: TC-007-17
+  tp_id: TP-007-17
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 品种/月份多选可脚本断言
+- case_id: TC-007-18
+  tp_id: TP-007-18
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 适用品种搜索选项可断言
+- case_id: TC-007-19
+  tp_id: TP-007-19
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 仅启用品种可选，本系统品种管理可造数闭环
+- case_id: TC-007-20
+  tp_id: TP-007-20
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 适用月份1–12选项可断言
+- case_id: TC-007-21
+  tp_id: TP-007-21
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 状态启用/禁用单选可断言
+- case_id: TC-007-22
+  tp_id: TP-007-22
+  automation: manual
+  matched:
+  - 闭环
+  reason: 新增弹窗取消/确定按钮存在性壳层
+- case_id: TC-007-23
+  tp_id: TP-007-23
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 必填未填拦截不落库
+- case_id: TC-007-24
+  tp_id: TP-007-24
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 合法主字段新增成功主路径
+- case_id: TC-007-25
+  tp_id: TP-007-25
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 品种×月份重叠拦截主规则
+- case_id: TC-007-26
+  tp_id: TP-007-26
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 无重叠可保存成功
+- case_id: TC-007-27
+  tp_id: TP-007-27
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 取消关闭不落库可断言
+- case_id: TC-007-28
+  tp_id: TP-007-28
+  automation: manual
+  matched:
+  - 闭环
+  reason: 列表标题文案壳层
+- case_id: TC-007-29
+  tp_id: TP-007-29
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 列表列顺序可脚本核对
+- case_id: TC-007-30
+  tp_id: TP-007-30
+  automation: manual
+  matched:
+  - 闭环
+  reason: 行操作入口存在性壳层
+- case_id: TC-007-31
+  tp_id: TP-007-31
+  automation: manual
+  matched: []
+  reason: 启用/禁用标签样式需人工目视
+- case_id: TC-007-32
+  tp_id: TP-007-32
+  automation: manual
+  matched:
+  - 闭环
+  reason: 多选标签展示壳层
+- case_id: TC-007-33
+  tp_id: TP-007-33
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列表主字段与已保存一致可对账
+- case_id: TC-007-34
+  tp_id: TP-007-34
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 禁用记录仍可编辑/明细可断言
+- case_id: TC-007-35
+  tp_id: TP-007-35
+  automation: manual
+  matched: []
+  reason: 长文本省略与悬浮需人工目视
+- case_id: TC-007-36
+  tp_id: TP-007-36
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 启用状态文案可断言
+- case_id: TC-007-37
+  tp_id: TP-007-37
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 禁用状态文案可断言
+- case_id: TC-007-38
+  tp_id: TP-007-38
+  automation: manual
+  matched: []
+  reason: 跨模块排程引用匹配，非本页纯闭环
+- case_id: TC-007-39
+  tp_id: TP-007-39
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 分页总条数与页码可断言
+- case_id: TC-007-40
+  tp_id: TP-007-40
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 切换每页条数后列表刷新可断言
+- case_id: TC-007-41
+  tp_id: TP-007-41
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 行内编辑回填主路径
+- case_id: TC-007-42
+  tp_id: TP-007-42
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 修改标准名称保存成功主路径
+- case_id: TC-007-43
+  tp_id: TP-007-43
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 启用↔禁用切换保存可断言
+- case_id: TC-007-44
+  tp_id: TP-007-44
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 编辑造成重叠拦截主规则
+- case_id: TC-007-45
+  tp_id: TP-007-45
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 去掉重叠月份后可保存
+- case_id: TC-007-46
+  tp_id: TP-007-46
+  automation: manual
+  matched:
+  - 闭环
+  reason: 编辑弹窗无明细表为结构壳层
+- case_id: TC-007-47
+  tp_id: TP-007-47
+  automation: manual
+  matched:
+  - 闭环
+  reason: 编辑弹窗按钮存在性壳层
+- case_id: TC-007-48
+  tp_id: TP-007-48
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 编辑取消不保存可断言
+- case_id: TC-007-49
+  tp_id: TP-007-49
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 编辑必填清空拦截
+- case_id: TC-007-50
+  tp_id: TP-007-50
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 编辑增删品种/月份无冲突可保存
+- case_id: TC-007-51
+  tp_id: TP-007-51
+  automation: manual
+  matched: []
+  reason: 编辑对历史引用影响跨模块，难本页闭环断言
+- case_id: TC-007-52
+  tp_id: TP-007-52
+  automation: manual
+  matched: []
+  reason: 禁用对新引用影响跨模块，难本页闭环断言
+- case_id: TC-007-53
+  tp_id: TP-007-53
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 删除确认框标题与文案可断言
+- case_id: TC-007-54
+  tp_id: TP-007-54
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 删除确定后列表消失主路径
+- case_id: TC-007-55
+  tp_id: TP-007-55
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 删除取消记录仍在可断言
+- case_id: TC-007-56
+  tp_id: TP-007-56
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 删除无强制引用拦截可断言
+- case_id: TC-007-57
+  tp_id: TP-007-57
+  automation: manual
+  matched: []
+  reason: 删除后历史引用跨模块，难本页闭环断言
+- case_id: TC-007-58
+  tp_id: TP-007-58
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 打开目标明细主入口
+- case_id: TC-007-59
+  tp_id: TP-007-59
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 明细固定43行日龄0–42主结构
+- case_id: TC-007-60
+  tp_id: TP-007-60
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日龄正序连贯可断言
+- case_id: TC-007-61
+  tp_id: TP-007-61
+  automation: manual
+  matched:
+  - 闭环
+  reason: 明细列清单存在性壳层
+- case_id: TC-007-62
+  tp_id: TP-007-62
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 非日龄列number录入可断言
+- case_id: TC-007-63
+  tp_id: TP-007-63
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 1位小数精度组可脚本断言
+- case_id: TC-007-64
+  tp_id: TP-007-64
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 2位小数精度组可脚本断言
+- case_id: TC-007-65
+  tp_id: TP-007-65
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 百分比0/100边界与超限拦截可断言
+- case_id: TC-007-66
+  tp_id: TP-007-66
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 全0或空列可保存明细
+- case_id: TC-007-67
+  tp_id: TP-007-67
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 禁止增删行偏离43可断言
+- case_id: TC-007-68
+  tp_id: TP-007-68
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 温度湿度风冷湿热可保存
+- case_id: TC-007-69
+  tp_id: TP-007-69
+  automation: manual
+  matched:
+  - 闭环
+  reason: 明细弹窗按钮存在性壳层
+- case_id: TC-007-70
+  tp_id: TP-007-70
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 保存明细后重开仍在主路径
+- case_id: TC-007-71
+  tp_id: TP-007-71
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 取消不保留未保存修改可断言
+- case_id: TC-007-72
+  tp_id: TP-007-72
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: Excel导入打开导入弹窗主入口
+- case_id: TC-007-73
+  tp_id: TP-007-73
+  automation: manual
+  matched:
+  - 闭环
+  reason: 步骤1字段说明文案壳层/人工核对
+- case_id: TC-007-74
+  tp_id: TP-007-74
+  automation: manual
+  matched: []
+  reason: 模板字段说明与原型一致需人工对照
+- case_id: TC-007-75
+  tp_id: TP-007-75
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 下载模板sheet名与17列表头可脚本核对
+- case_id: TC-007-76
+  tp_id: TP-007-76
+  automation: manual
+  matched:
+  - 闭环
+  reason: 模板样例行非强制，非核心业务断言
+- case_id: TC-007-77
+  tp_id: TP-007-77
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 下载模板获得可打开文件
+- case_id: TC-007-78
+  tp_id: TP-007-78
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 导入向导下一步/上一步与格式提示可断言
+- case_id: TC-007-79
+  tp_id: TP-007-79
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 合法43行导入回写主路径
+- case_id: TC-007-80
+  tp_id: TP-007-80
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日龄非法导入失败可断言
+- case_id: TC-007-81
+  tp_id: TP-007-81
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日龄重复导入失败可断言
+- case_id: TC-007-82
+  tp_id: TP-007-82
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 缺行保留原值规则可断言
+- case_id: TC-007-83
+  tp_id: TP-007-83
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 多行导入失败可断言
+- case_id: TC-007-84
+  tp_id: TP-007-84
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 缺列保留原值规则可断言
+- case_id: TC-007-85
+  tp_id: TP-007-85
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 错误sheet名仍读首sheet可断言
+- case_id: TC-007-86
+  tp_id: TP-007-86
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 多sheet始终读首sheet可断言
+- case_id: TC-007-87
+  tp_id: TP-007-87
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 仅日龄其余空可导入成功
+- case_id: TC-007-88
+  tp_id: TP-007-88
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日龄空导入失败可断言
+- case_id: TC-007-89
+  tp_id: TP-007-89
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 数值0可导入；带%文本失败或去%可断言
+- case_id: TC-007-90
+  tp_id: TP-007-90
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 未改动模板少行与缺行规则一致可断言
+- case_id: TC-007-91
+  tp_id: TP-007-91
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导入后保存明细持久化可断言
+- case_id: TC-007-92
+  tp_id: TP-007-92
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 再次导入全表覆盖可断言
+- case_id: TC-007-93
+  tp_id: TP-007-93
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 非xls/xlsx拒绝可断言
+- case_id: TC-007-94
+  tp_id: TP-007-94
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 未知列忽略可断言
+- case_id: TC-007-95
+  tp_id: TP-007-95
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 列顺序打乱按列名成功可断言
+- case_id: TC-007-96
+  tp_id: TP-007-96
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 英文表头失败可断言
+- case_id: TC-007-97
+  tp_id: TP-007-97
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 多错误不部分脏写可断言
+- case_id: TC-007-98
+  tp_id: TP-007-98
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 结果步成功/总数量可断言
+- case_id: TC-007-99
+  tp_id: TP-007-99
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 结果步重新导入/完成按钮可断言
+- case_id: TC-007-100
+  tp_id: TP-007-100
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 完成回到目标明细可断言
+- case_id: TC-007-101
+  tp_id: TP-007-101
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 重新导入回步骤1且不落库可断言
+- case_id: TC-007-102
+  tp_id: TP-007-102
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 部分成功部分失败拦截可断言
+- case_id: TC-007-103
+  tp_id: TP-007-103
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 明细内导出触发下载主路径
+- case_id: TC-007-104
+  tp_id: TP-007-104
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 导出文件名={标准名称}.xlsx可断言
+- case_id: TC-007-105
+  tp_id: TP-007-105
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 导出sheet与17列表头同构可断言
+- case_id: TC-007-106
+  tp_id: TP-007-106
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出43行日龄0–42可断言
+- case_id: TC-007-107
+  tp_id: TP-007-107
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 未保存修改不进导出主口径
+- case_id: TC-007-108
+  tp_id: TP-007-108
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 保存后再导出含最新值可断言
+- case_id: TC-007-109
+  tp_id: TP-007-109
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 列表页无导出入口可断言
+- case_id: TC-007-110
+  tp_id: TP-007-110
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 导出不改变弹窗明细可断言
+- case_id: TC-007-111
+  tp_id: TP-007-111
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空/全0已保存仍可导出
+- case_id: TC-007-112
+  tp_id: TP-007-112
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出与已保存明细对账可断言
+- case_id: TC-007-113
+  tp_id: TP-007-113
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 连续两次导出均可成功可断言
+actions:
+  yaml_updated: true
+  csv_path: 05_case_review/007_养殖标准_测试用例.csv

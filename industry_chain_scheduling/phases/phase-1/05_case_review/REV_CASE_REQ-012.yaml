@@ -1,0 +1,117 @@
+req_id: REQ-012
+gate_passed: true
+exec_check:
+  command: python scripts/check_testcase_executability.py --project D:\01workspace\ai_test_pro\产业链生产排程系统
+    --req REQ-012
+  errors: 0
+  warnings: 1
+  exit_code: 0
+checks:
+- id: CG1
+  name: exec_check_errors
+  passed: true
+- id: CG5
+  name: tp_coverage
+  passed: true
+issues: []
+csv_path: null
+human:
+  rewrite_approved: false
+  approved_at: '2026-07-14T09:35:22.673097+00:00'
+  approved_by: user
+rewrite:
+  round: 2
+  max_rounds: 3
+  status: done
+  history:
+  - round: 1
+    fixed_case_ids:
+    - TC-012-01
+    - TC-012-02
+    - TC-012-03
+    - TC-012-04
+    - TC-012-05
+    - TC-012-06
+    - TC-012-07
+    - TC-012-08
+    - TC-012-09
+    - TC-012-10
+    - TC-012-11
+    - TC-012-12
+    - TC-012-13
+    - TC-012-14
+    - TC-012-15
+    - TC-012-16
+    - TC-012-17
+    - TC-012-18
+    - TC-012-19
+    - TC-012-20
+    - TC-012-21
+    - TC-012-22
+    - TC-012-23
+    - TC-012-24
+    - TC-012-25
+    - TC-012-26
+    - TC-012-27
+    - TC-012-28
+    - TC-012-29
+    - TC-012-30
+    - TC-012-31
+    - TC-012-32
+    - TC-012-33
+    - TC-012-34
+    - TC-012-35
+    - TC-012-36
+    - TC-012-37
+    - TC-012-38
+    - TC-012-39
+    - TC-012-40
+    - TC-012-41
+    - TC-012-42
+    - TC-012-43
+    - TC-012-44
+    - TC-012-45
+    - TC-012-46
+    - TC-012-47
+    - TC-012-48
+    - TC-012-49
+    at: '2026-07-14T09:33:50.548317+00:00'
+  - round: 2
+    fixed_case_ids:
+    - TC-012-14
+    - TC-012-28
+    - TC-012-29
+    - TC-012-30
+    - TC-012-31
+    - TC-012-32
+    - TC-012-33
+    - TC-012-34
+    - TC-012-40
+    - TC-012-41
+    - TC-012-42
+    - TC-012-43
+    - TC-012-45
+    - TC-012-49
+    at: '2026-07-14T09:35:22.894228+00:00'
+trace:
+  source_tc: 04_testcases/TC_REQ-012.yaml
+  project: 产业链生产排程系统
+  status: approved
+  source_sha256:
+    tc: 5fc4609a52308eec92f9f647aa06ca9c4e89410b35392bda684987d3f7cb52bd
+csv_note: 测试用例 CSV 已按项目清理计划删除；需重新评审通过后再导出，历史文件不作为当前有效产物。
+field_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  registered_cases: 847
+  mapping: local.type=zentao.type; local.auto=zentao.auto
+  local_suitability_assessment: not_performed_for_registered_cases
+  pending_registry_cases: 5
+  remote_write: false
+  verdict: pass
+csv_source:
+  status: deleted
+  tc_sha256: 9a5a8297498d3ebe5c765f3841a2068c1b69f65664f2861a2af933c1eec330bb
+  review_sha256: 15fa2b29ecc9db3ec1e4907ae3e01c808b36644c8e08c43b5a3945427347718b
+  generated_at: '2026-08-20T02:35:11.418257+00:00'

@@ -1,0 +1,780 @@
+id: REQ-007
+title: 养殖标准
+source_inputs:
+- 01_requirements/商品禽养殖管理系统_需求说明书.docx（§3.7）
+- 01_requirements/模块拆分清单.md（REQ-007）
+- 01_requirements/目标明细导入模板.xlsx
+- 原型 http://43.143.148.114:18885/biopark-poultry/portal → 商品禽养殖管理系统 → /biopark-poultry/basic/target
+zentao_module_id: 656
+page_url: /biopark-poultry/basic/target
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: '标准管理下的养殖标准库维护页。按「标准名称 + 适用品种（多选）+ 适用月份（多选）+ 启用/禁用」维护标准主记录； 通过行内「目标明细」打开 0–42 日龄（固定 43 行）×17 列标准参数表（日龄只读，其余 16 维可编辑
+  number）， 支持弹窗内「Excel导入」三步向导（下载模板→上传→结果）与弹窗内「导出」当前标准目标明细。 下游：养殖端首页（REQ-001）按品种+日龄取目标温度/目标湿度/湿热系数/风冷系数； 饲养日志（REQ-005）与标准值对照关系需求未写死，记
+  open_questions。
+
+  '
+in_scope:
+- 查询区：标准名称（模糊）、状态（启用/禁用）；查询 / 重置
+- 列表：标准名称 / 适用品种 / 适用月份 / 状态 / 操作；分页
+- 工具栏：新增目标（无列表导出）
+- 行操作：目标明细、编辑、删除（删除二次确认）
+- 新增目标 / 编辑目标弹窗（主记录四字段；按钮取消/确定）
+- 目标明细弹窗：43×17 可编辑表 + 导出 / Excel导入 / 取消 / 保存明细
+- 目标明细弹窗内「导出」→ 下载当前标准明细 Excel（文件名 {标准名称}.xlsx）
+- Excel 导入向导（导入目标明细）：下载模板、字段说明、上传 .xlsx/.xls、导入结果
+- 本地模板文件约定（与 01_requirements/目标明细导入模板.xlsx 列一致）
+out_scope:
+- 首页体感温度公式落地与段区着色实现（REQ-001）
+- 饲养日志吃料/指标计算实现（REQ-005）
+- 审核流（暂存/待审/通过/驳回）— 需求与原型均仅启用/禁用，不脑补
+- 生产报表模块（REQ-008～012，本次不测）
+business_rules:
+- 主记录维度：标准名称 + 适用品种（多选标签）+ 适用月份（多选标签，1–12 月）+ 状态（启用/禁用）
+- 品种+月份组合唯一：任一「品种×月份」对在全库标准间不可重叠（例：标准A含AA+1–6月，标准B含AA+4/8/10/12月 → AA+4月冲突，不允许保存）
+- 明细主键：日龄整数 0–42，共 43 行；日龄不可重复；日龄列只读；标准名称可含「45日龄」等文案，明细行仍固定 0–42
+- 明细 17 列 = 日龄 + 16 维参数（精度/上限见 form_field_specs）；「累计*」为纯手工输入，非系统自动累加，供其他系统/模块作达成判断标准
+- Excel 导入：校验日龄范围 0–42；仅「日龄」必填，其余 16 维非必填；仅 .xlsx/.xls；页面录入与导入的必填规则一致
+- 明细允许保存 0 / 空（与导入非必填统一）
+- 导入文件格式：仅支持 .xlsx、.xls
+- 删除：二次确认文案「确定要删除目标\"{标准名称}\"吗？」（标题「提示」）；删除不影响已被引用的历史数据
+- 已禁用标准不可被新引用；禁用前已引用的历史数据不受影响
+- 主记录写路径与明细写路径分离：新增/编辑只维护主字段；明细仅在「目标明细」保存或 Excel 导入回写
+- 导出：入口在目标明细弹窗；仅导出已保存内容（未点「保存明细」的新输入不导出）；文件名完整显示标准名称（「{标准名称}.xlsx」）；sheet「目标明细」；43×17，表头与导入模板同构
+roles:
+- 养殖场长/养殖主管（标准维护，原型当前登录角色展示为管理员/运营总监）
+interfaces:
+- REQ-001 养殖端首页：澄清口径为现场设备监测数据仅展示，与本模块养殖标准无匹配/引用关系（需求 3.1.3 旧述取标准值的口径以本澄清为准，不在本模块测跨页匹配）
+- REQ-005 饲养日志：「累计*」等标准值可作为其他模块达成判断输入；具体引用链路不在本模块展开
+- 本地 Excel：下载模板 / 上传导入 / 目标明细导出（已保存的当前标准 0–42×17）
+cross_module_refs:
+- module: REQ-001
+  relation: none
+  notes: 澄清后与养殖标准无关；不测月份匹配
+- module: REQ-005
+  relation: possible_consumer
+  notes: 累计*等可作为达成判断标准；链路不在本模块展开
+risks:
+- 43×16 可编辑单元格量大，手工录入与 Excel 导入两条路径一致性风险高
+- 品种+月份多选组合唯一性校验组合爆炸，易漏测交叉重叠边界
+- 导出仅已保存内容，易与「导出当前网格所见」预期混淆
+open_questions: []
+resolved_clarifications:
+- topic: 品种+月份唯一
+  conclusion: 品种×月份对全库不可重叠，冲突则不允许
+- topic: REQ-001匹配
+  conclusion: REQ-001仅现场监测展示，与养殖标准无关
+- topic: 累计字段
+  conclusion: 纯输入，非自动累加
+- topic: 导出内容与文件名
+  conclusion: 仅已保存内容；文件名完整标准名称
+- topic: 禁用与删除引用
+  conclusion: 禁用后不可新引用，历史引用不受影响；删除不影响历史引用数据
+- topic: 0/空与必填一致
+  conclusion: 允许0/空；页面与导入必填规则统一
+- topic: 名称与日龄行
+  conclusion: 明细固定0–42，与标准名称文案无关
+test_scope_suggestion:
+- P1：新增/编辑主记录；品种+月份唯一拦截；目标明细录入保存；导入成功；明细内导出已保存数据；删除确认
+- P2：查询组合与重置；导入/模板结构边界（PICT+模板）；日龄只读与 BVA；导出不含未保存修改
+- P3：状态标签、单元格省略、分页；列表工具栏无导出
+- 禁止脑补：审核流；REQ-001 按月份匹配养殖标准
+prototype_verification:
+  prototype_capture_status: captured
+  captured_at: '2026-07-16'
+  export_reverified_at: '2026-07-16'
+  page_shell:
+    menu_path: 标准管理 → 养殖标准
+    list_title: 数据列表
+    toolbar_buttons:
+    - 新增目标
+    row_actions:
+    - 目标明细
+    - 编辑
+    - 删除
+    query_actions:
+    - 查询
+    - 重置
+    pagination: 共 N 条 / 10条/页（可切换）
+    sample_rows_observed:
+    - 白羽肉鸡标准42日龄 | 白羽肉鸡 | 1–12月 | 启用
+    - 麻鸭标准45日龄 | 麻鸭 | 1–12月 | 启用
+  query_field_specs:
+  - name: 标准名称
+    control: input
+    editable: true
+    notes: 模糊搜索；需求 3.7.2
+  - name: 状态
+    control: select
+    editable: true
+    validation: 启用/禁用
+    notes: 占位「请选择」；选项以需求与列表口径为准（启用/禁用）
+  form_field_specs:
+  - name: 标准名称
+    control: input
+    editable: true
+    required: true
+    scope: 新增目标/编辑目标弹窗
+    source: 手工输入
+    notes: placeholder「请输入标准名称」；样例「白羽肉鸡标准42日龄」
+  - name: 适用品种
+    control: select
+    editable: true
+    required: true
+    scope: 新增目标/编辑目标弹窗
+    source: 系统品种主数据（多选）
+    notes: 原型下拉可见选项含白羽肉鸡/麻鸡/黄羽肉鸡/817肉鸡等；列表亦见麻鸭；多选标签展示
+  - name: 适用月份
+    control: select
+    editable: true
+    required: true
+    scope: 新增目标/编辑目标弹窗
+    source: 固定 1月–12月（多选）
+    notes: 多选标签；样例记录勾选全年 12 个月
+  - name: 状态
+    control: radio
+    editable: true
+    required: true
+    scope: 新增目标/编辑目标弹窗
+    validation: 启用/禁用
+    notes: 单选；非审核态
+  - name: 日龄
+    control: readonly
+    editable: false
+    required: true
+    scope: 目标明细表
+    source: 系统预置 0–42
+    validation: 整数 0-42，不可重复
+    notes: 原型单元格无 input，只读展示；导入时为唯一必填列
+  - name: 重量(g)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    source: 手工/Excel导入
+    notes: 导入字段说明必填=否；空表默认值可见为 0
+  - name: 日采食量(g)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=1
+  - name: 累计采食量(g)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=1
+    notes: 纯手工输入，非自动累加（澄清）
+  - name: 料肉比
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=2
+  - name: 水料比
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=2
+  - name: 日饮水量(ml)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+  - name: 累计饮水量(ml)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    notes: 纯手工输入，非自动累加（澄清）
+  - name: 日增重(g)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=1
+  - name: 日死淘率(%)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: max=100,precision=2
+  - name: 成活率(%)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: max=100,precision=2
+  - name: 饲料成本(元/只)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=2
+  - name: 用药成本(元/只)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=2
+  - name: 目标温度(℃)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=1
+    notes: 供 REQ-001 引用
+  - name: 目标湿度(%)
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: max=100
+    notes: 供 REQ-001 引用
+  - name: 风冷系数
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=2
+    notes: 供 REQ-001 引用
+  - name: 湿热系数
+    control: number
+    editable: true
+    required: false
+    scope: 目标明细表
+    validation: precision=2
+    notes: 供 REQ-001 引用
+  table_column_specs:
+  - name: 标准名称
+    order: 1
+  - name: 适用品种
+    order: 2
+    notes: 多选标签展示
+  - name: 适用月份
+    order: 3
+    notes: 多选标签展示
+  - name: 状态
+    order: 4
+    notes: 启用(成功色)/禁用(危险色) — 需求 3.7.3 描述
+  - name: 操作
+    order: 5
+    notes: 目标明细 / 编辑 / 删除（link 按钮）
+  button_semantics:
+    查询:
+      action: filter_list
+      summary: 按标准名称模糊 + 状态过滤列表
+    重置:
+      action: reset_query
+      summary: 清空查询条件并恢复列表默认
+    新增目标:
+      action: open_form
+      dialog: 新增目标
+      summary: 仅维护主记录四字段；不在本弹窗编辑 0–42 明细（明细走「目标明细」）
+    编辑:
+      action: open_form
+      dialog: 编辑目标
+      summary: 修改主记录四字段；明细不在本弹窗
+    删除:
+      action: confirm_delete
+      summary: MessageBox 二次确认后删除整条标准（含关联明细，具体级联需求未写）
+    目标明细:
+      action: open_nested_dialog
+      dialog: 目标明细
+      summary: 打开「目标明细 - {标准名称}」编辑 43×17 表
+    保存明细:
+      action: save_subtable
+      scope: 目标明细弹窗
+      summary: 保存当前弹窗内 0–42 日龄标准数据
+    Excel导入:
+      action: open_nested_dialog
+      dialog: 导入目标明细
+      scope: 目标明细弹窗内
+      summary: 打开三步导入向导，非一步上传黑盒
+    下载模板:
+      action: download_file
+      scope: 导入目标明细-步骤1
+      summary: 下载标准导入模板（列与 17 维一致）
+    下一步:
+      action: wizard_next
+      scope: 导入目标明细
+      summary: 步骤1→步骤2（上传）
+    上一步:
+      action: wizard_prev
+      scope: 导入目标明细
+      summary: 返回上一步
+    开始导入:
+      action: import_excel
+      scope: 导入目标明细-步骤2
+      summary: 校验并导入已上传文件
+    重新导入:
+      action: wizard_restart
+      scope: 导入目标明细-步骤3
+      summary: 失败或需重导时回到导入流程
+    完成:
+      action: close_wizard
+      scope: 导入目标明细-步骤3
+      summary: 关闭导入向导，回到目标明细表（回写结果需在用例中观察）
+    导出:
+      action: export_excel
+      scope: 目标明细弹窗内
+      dialog: 目标明细
+      summary: 导出已保存的当前标准目标明细；未保存修改不导出；文件名完整「{标准名称}.xlsx」；0–42×17
+    确定:
+      action: submit_form
+      scope: 新增目标/编辑目标/删除确认
+      summary: 提交主表单或确认删除
+    取消:
+      action: cancel
+      summary: 关闭弹窗/确认框且不保存（导入向导步骤内亦可能出现关闭入口，以原型为准）
+  nested_dialogs:
+  - id: 新增目标
+    type: input
+    trigger: 工具栏「新增目标」
+    title: 新增目标
+    prototype_capture_status: captured
+    buttons:
+    - 取消
+    - 确定
+    field_specs:
+    - name: 标准名称
+      control: input
+      editable: true
+      required: true
+    - name: 适用品种
+      control: select
+      editable: true
+      required: true
+      notes: 多选
+    - name: 适用月份
+      control: select
+      editable: true
+      required: true
+      notes: 多选
+    - name: 状态
+      control: radio
+      editable: true
+      validation: 启用/禁用
+    on_confirm: 点击「确定」创建主记录；明细需另行打开「目标明细」维护
+    on_cancel: 点击「取消」关闭，不保存
+  - id: 编辑目标
+    type: input
+    trigger: 行内「编辑」
+    title: 编辑目标
+    prototype_capture_status: captured
+    buttons:
+    - 取消
+    - 确定
+    field_specs:
+    - name: 标准名称
+      control: input
+      editable: true
+      required: true
+    - name: 适用品种
+      control: select
+      editable: true
+      required: true
+    - name: 适用月份
+      control: select
+      editable: true
+      required: true
+    - name: 状态
+      control: radio
+      editable: true
+      validation: 启用/禁用
+    on_confirm: 点击「确定」更新主记录
+    on_cancel: 点击「取消」关闭，不保存
+    notes: 与需求 3.7.5「编辑修改标准基本信息和明细数据」字面不完全一致——原型将明细拆到「目标明细」
+  - id: 目标明细
+    type: input
+    trigger: 行内「目标明细」
+    title: 目标明细 - {标准名称}
+    prototype_capture_status: captured
+    buttons:
+    - 导出
+    - Excel导入
+    - 取消
+    - 保存明细
+    field_specs: []
+    data_source: 预置 0–42 共 43 行；列见 sub_tables「目标明细表」
+    on_confirm: 点击「保存明细」持久化表格数据
+    on_cancel: 点击「取消」关闭，不保存（未点保存明细时）
+    notes: 实测 rowCount=43；日龄列只读；其余列为 number 输入（空数据时默认 0/0.0/0.00）；导出入口在本弹窗（非列表工具栏）
+    export_spec:
+      trigger: 目标明细弹窗内「导出」
+      filename_pattern: '{标准名称}.xlsx'
+      sheet_name: 目标明细
+      columns:
+      - 日龄
+      - 重量(g)
+      - 日采食量(g)
+      - 累计采食量(g)
+      - 料肉比
+      - 水料比
+      - 日饮水量(ml)
+      - 累计饮水量(ml)
+      - 日增重(g)
+      - 日死淘率(%)
+      - 成活率(%)
+      - 饲料成本(元/只)
+      - 用药成本(元/只)
+      - 目标温度(℃)
+      - 目标湿度(%)
+      - 风冷系数
+      - 湿热系数
+      row_count: 43
+      day_age_range: 0-42
+      content_scope: saved_only
+      notes: 表头与导入模板同构；仅已保存内容；文件名完整标准名称（实核例「白羽肉鸡标准42日龄.xlsx」）
+  - id: 导入目标明细
+    type: input
+    trigger: 目标明细弹窗内「Excel导入」
+    title: 导入目标明细
+    prototype_capture_status: captured
+    parent: 目标明细
+    buttons:
+    - 下载模板
+    - 下一步
+    - 上一步
+    - 开始导入
+    - 重新导入
+    - 完成
+    wizard_steps:
+    - step: 1
+      name: 下载模板
+      summary: 获取标准导入模板；展示模板字段说明表（字段名/显示名/类型/必填/备注）
+    - step: 2
+      name: 上传导入
+      summary: 拖拽或选择文件；仅 .xlsx/.xls；上一步 / 开始导入
+    - step: 3
+      name: 导入结果
+      summary: 查看成功与失败；重新导入 / 完成（结果明细文案以实机导入后为准）
+    import_field_map:
+    - field: dayAge
+      display: 日龄
+      type: number
+      required: true
+      notes: 0-42之间的整数
+    - field: weight
+      display: 重量(g)
+      type: number
+      required: false
+    - field: dailyFeed
+      display: 日采食量(g)
+      type: number
+      required: false
+    - field: totalFeed
+      display: 累计采食量(g)
+      type: number
+      required: false
+    - field: feedConversion
+      display: 料肉比
+      type: number
+      required: false
+    - field: waterFeedRatio
+      display: 水料比
+      type: number
+      required: false
+    - field: dailyWater
+      display: 日饮水量(ml)
+      type: number
+      required: false
+    - field: totalWater
+      display: 累计饮水量(ml)
+      type: number
+      required: false
+    - field: dailyGain
+      display: 日增重(g)
+      type: number
+      required: false
+    - field: dailyDeathRate
+      display: 日死淘率(%)
+      type: number
+      required: false
+    - field: survivalRate
+      display: 成活率(%)
+      type: number
+      required: false
+    - field: feedCost
+      display: 饲料成本(元/只)
+      type: number
+      required: false
+    - field: medicineCost
+      display: 用药成本(元/只)
+      type: number
+      required: false
+    - field: targetTemp
+      display: 目标温度(℃)
+      type: number
+      required: false
+    - field: targetHumidity
+      display: 目标湿度(%)
+      type: number
+      required: false
+    - field: windCooling
+      display: 风冷系数
+      type: number
+      required: false
+    - field: wetCooling
+      display: 湿热系数
+      type: number
+      required: false
+    on_confirm: 导入成功后明细回写至目标明细表，需「保存明细」是否自动完成以实机为准（见 open_questions 可观察点）
+  - id: 删除确认
+    type: input
+    trigger: 行内「删除」
+    title: 提示
+    prototype_capture_status: captured
+    buttons:
+    - 取消
+    - 确定
+    help_texts:
+    - trigger: message
+      content: 确定要删除目标"{标准名称}"吗？
+  sub_tables:
+  - id: 目标明细表
+    parent: 目标明细弹窗
+    columns:
+    - 日龄
+    - 重量(g)
+    - 日采食量(g)
+    - 累计采食量(g)
+    - 料肉比
+    - 水料比
+    - 日饮水量(ml)
+    - 累计饮水量(ml)
+    - 日增重(g)
+    - 日死淘率(%)
+    - 成活率(%)
+    - 饲料成本(元/只)
+    - 用药成本(元/只)
+    - 目标温度(℃)
+    - 目标湿度(%)
+    - 风冷系数
+    - 湿热系数
+    column_editability:
+      日龄: false
+      其余16维: true
+    row_ops:
+    - 逐格 number 录入（非增删行；行数固定 43）
+    - Excel导入整表回写（覆盖/合并策略需求未写，见 open_questions）
+    default_rows: 43
+    topology_rules:
+    - 日龄取值 0–42，固定 43 行，不可重复
+    - 禁止把明细子表只挂在列表或主表单下；parent 必须为目标明细弹窗
+  save_validations:
+  - rule: 主表单必填（标准名称/适用品种/适用月份/状态）
+    when:
+    - 新增目标确定
+    - 编辑目标确定
+  - rule: 品种×月份组合全库不可重叠
+    when:
+    - 新增目标确定
+    - 编辑目标确定
+  - rule: 日龄不可重复且落在 0–42
+    when:
+    - 保存明细
+    - Excel导入-开始导入
+  - rule: Excel 导入日龄范围校验（0–42）
+    when:
+    - Excel导入-开始导入
+  - rule: 上传文件类型限制 .xlsx/.xls
+    when:
+    - Excel导入-步骤2
+  ui_components:
+  - pagination
+  - cell_ellipsis_tooltip
+  - export
+  ui_notes:
+  - 多选标签展示（适用品种/适用月份）
+  - MessageBox 删除确认
+  - Excel 三步导入向导
+  - 导出挂在目标明细弹窗，非列表工具栏
+  master_data_options:
+  - field: 适用品种
+    source_module: 基础数据-品种管理
+    filter: enabled_only
+    searchable: true
+    notes: 人工调整版 TP：停用品种不显示；选择框可搜索
+  name_rules:
+  - field: 标准名称
+    unique: false
+    max_length: 100
+    notes: 人工调整版 TP：名称可重复；100 字以内保存不报错或限制输入
+  reference_impact:
+    on_disable:
+      historical_refs: unaffected
+      new_refs: blocked
+      example: 排程计划-养殖模版按品种+月份匹配不到禁用的养殖标准
+    on_edit:
+      historical_refs: unaffected
+      new_refs: use_latest
+    on_delete:
+      historical_refs: unaffected
+      new_refs: unavailable
+      notes: 删除无强制引用拦截弹窗；历史引用不受影响
+  import_rules:
+    template_sheet: 目标明细
+    sheet_strategy: first_sheet
+    missing_row: keep_existing
+    extra_row: fail
+    missing_col: keep_existing
+    unknown_col: ignore
+    column_match: by_name
+    english_header: fail
+    reimport: overwrite
+    partial_row_success: allow
+    result_step:
+      show_counts: true
+      on_complete: back_to_detail
+      on_reimport: back_to_step1_discard_unsaved
+    notes: 口径对齐 output/TP_REQ-007_养殖标准_调整.xmind；字段说明表列与原型一致
+  export_rules:
+    entry: detail_dialog_only
+    content: saved_only
+    filename_pattern: '{标准名称}.xlsx'
+    sheet_name: 目标明细
+  role_coverage: skip
+  req_vs_prototype_diffs:
+  - item: 编辑范围
+    requirement: 3.7.5 编辑「修改标准基本信息和明细数据」
+    prototype: 编辑目标仅主字段；明细独立「目标明细」
+  - item: 新增后明细
+    requirement: 新增「创建0-42日龄标准数据」
+    prototype: 新增仅主记录；43 行骨架在目标明细中预置，数值可为空/0
+  - item: Excel导入交互
+    requirement: 下载模板并导入、校验日龄范围
+    prototype: 独立三步向导「导入目标明细」+ 字段必填说明表
+  - item: 按钮文案
+    requirement: 操作名「新增」
+    prototype: 「新增目标」
+  - item: 导出入口与对象
+    requirement: 3.7.5 导出「导出当前标准为Excel文件」
+    prototype: 入口在目标明细弹窗「导出」（列表工具栏无导出）；导出 0–42×17 明细，文件名「{标准名称}.xlsx」，非主表列表
+design_artifacts:
+  state_transitions:
+  - name: 标准启用状态
+    states:
+    - 启用
+    - 禁用
+    legal:
+    - - 启用
+      - 禁用
+    - - 禁用
+      - 启用
+    illegal: []
+    notes: 仅主记录状态切换；无审核态
+  decision_tables:
+  - name: 列表查询组合
+    conditions:
+    - 标准名称关键字
+    - 状态
+    rules:
+    - when: 仅名称有值
+      expect: 列表名称模糊匹配
+    - when: 仅状态=启用或禁用
+      expect: 列表状态精确过滤
+    - when: 名称+状态同时有值
+      expect: 同时满足
+    - when: 重置
+      expect: 条件清空，列表恢复默认
+  - name: 导入日龄合法性（摘要）
+    conditions:
+    - 日龄范围
+    - 日龄重复
+    - 数值格式
+    rules:
+    - when: 全部合法且含 0–42
+      expect: 导入成功可回写
+    - when: 存在>42或负数
+      expect: 导入失败并提示（需求明确范围校验）
+    - when: 存在重复日龄
+      expect: 失败或提示（与「不可重复」一致，具体文案待观察）
+    - when: 非数字
+      expect: 导入失败并提示
+  bva_fields:
+  - field: 日龄
+    type: integer
+    min: 0
+    max: 42
+    boundaries:
+    - -1
+    - 0
+    - 1
+    - 41
+    - 42
+    - 43
+  - field: 日死淘率(%)
+    type: decimal
+    max: 100
+    precision: 2
+    boundaries:
+    - -0.01
+    - 0
+    - 100
+    - 100.01
+  - field: 成活率(%)
+    type: decimal
+    max: 100
+    precision: 2
+    boundaries:
+    - -0.01
+    - 0
+    - 100
+    - 100.01
+  - field: 目标湿度(%)
+    type: number
+    max: 100
+    boundaries:
+    - -1
+    - 0
+    - 100
+    - 101
+  - field: 日采食量(g)/日增重(g)/目标温度(℃)
+    notes: precision=1；需求未给数值上下限，不虚构 max
+  - field: 料肉比/水料比/风冷系数/湿热系数/成本类
+    notes: precision=2；需求未给上下限，不虚构
+  combinatorial_blocks:
+  - name: Excel导入校验
+    pict_eligible: true
+    parameters:
+      日龄范围:
+      - 0-42合法
+      - 存在超出42
+      - 存在负数
+      重复日龄行:
+      - 无重复
+      - 存在重复
+      行数完整性:
+      - 43行完整
+      - 缺行
+      - 多行
+      数值格式:
+      - 全部合法
+      - 存在非数字
+      - 存在负数值
+    constraints:
+    - IF 日龄范围=存在超出42 THEN 导入失败
+    - IF 日龄范围=存在负数 THEN 导入失败
+    - IF 重复日龄行=存在重复 THEN 导入失败
+    - IF 数值格式=存在非数字 THEN 导入失败
+  - name: 列表查询
+    pict_eligible: false
+    notes: 仅 2 个查询条件，用 decision_tables 即可，不跑 PICT
+trace:
+  story: null
+  project: 商品禽养殖
+  version: 5
+  status: draft
+  req: REQ-007
+  tp: null
+  notes: v5：按人工调整版 TP 补 import_rules/export_rules/master_data_options/name_rules/reference_impact； 对齐 coverage/分析契约（2026-07-17）
+permission_scope:
+  owner_req: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-007
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  summary: 权限测点归 REQ-000；本模块 role_coverage=skip，不写菜单/接口权限灌水测点

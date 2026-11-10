@@ -1,0 +1,733 @@
+req_id: REQ-PC-047
+module: 计划管理 / 孵化需求
+trace:
+  req: REQ-PC-047
+  tp: TEST_PLAN-REQ-PC-047
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft_with_blocked_cases
+  source_review: REV_CASE_REQ-PC-047
+  source_inputs:
+  - 02_analysis/pc/REQ-PC-047.yaml
+  - 03_test_plan/pc/TEST_PLAN_REQ-PC-047.yaml
+  - 02_analysis/pc/page_inventory/page.json
+  - 02_analysis/pc/page_inventory/dom/req-pc-047-hatching-demand-data-20260904.md
+  - 02_analysis/pc/page_inventory/dom/req-pc-047-create-plan-drawer-20260904.md
+  - 02_analysis/pc/page_inventory/dom/req-pc-047-view-plan-jump-20260904.md
+common_preconditions:
+- id: hatching_demand_page_access
+  name: 孵化需求页面访问前置
+  conditions: []
+  steps:
+  - action: 使用已分配所需权限的测试账号登录系统
+    expected: 登录成功，进入系统门户或应用入口页
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 成功进入系统门户或应用入口页
+  - action: 在左侧菜单中展开「计划管理」，然后点击「孵化需求」菜单项
+    expected: 页面打开「孵化需求」Tab，Tab 处于选中状态且页面标题显示「孵化需求」
+cases:
+- id: TC-PC-047-002
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-02
+  atomic_purpose_ids:
+  - AP-047-02
+  common_preconditions_ref: hatching_demand_page_access
+  title: 无数据时显示正式空态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 空态
+  preconditions:
+  - 准备列表查看权限和可回收的无需求数据环境
+  steps:
+  - action: 查看孵化需求列表
+    expected: 列表显示正式无数据状态且不展示不存在的需求行
+  test_data:
+    page_url: /biopark-breeding/breeding/hatchingplans/hatching-demand
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-02
+    status: blocked_data
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-002
+- id: TC-PC-047-004
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-04
+  atomic_purpose_ids:
+  - AP-047-04
+  common_preconditions_ref: hatching_demand_page_access
+  title: 需求号精确筛选命中目标行
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 需求号筛选
+  preconditions:
+  - 准备列表查询权限和唯一匹配的脱敏需求号
+  steps:
+  - action: 在需求号筛选项输入目标值并点击“查询”
+    expected: 列表仅显示需求号匹配的需求行
+  test_data:
+    query: exact_demand_no
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-04
+    status: blocked_data
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-004
+- id: TC-PC-047-005
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-05
+  atomic_purpose_ids:
+  - AP-047-05
+  common_preconditions_ref: hatching_demand_page_access
+  title: 需求号无匹配时显示空列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 无匹配
+  preconditions:
+  - 准备列表查询权限和不存在的脱敏需求号
+  steps:
+  - action: 输入不存在的需求号并点击“查询”
+    expected: 显示正式无匹配状态，不展示关联需求行
+  test_data:
+    query: unmatched_demand_no
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-05
+    status: blocked_data
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-005
+- id: TC-PC-047-006
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-06
+  atomic_purpose_ids:
+  - AP-047-06
+  common_preconditions_ref: hatching_demand_page_access
+  title: 计划状态筛选覆盖四种枚举
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态筛选
+  preconditions:
+  - 准备列表查询权限和草稿、正常、延迟、终止状态数据
+  steps:
+  - action: 展开高级筛选并查看计划状态选项
+    expected: 选项包含草稿、正常、延迟、终止
+  - action: 选择状态并查询
+    expected: 仅显示该状态记录或正式无匹配状态
+  test_data:
+    statuses:
+    - 草稿
+    - 正常
+    - 延迟
+    - 终止
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-06
+    status: blocked_data
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-006
+- id: TC-PC-047-007
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-07
+  atomic_purpose_ids:
+  - AP-047-07
+  common_preconditions_ref: hatching_demand_page_access
+  title: 重置筛选恢复默认列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 重置
+  preconditions:
+  - 准备可命中的筛选条件和默认列表基线
+  steps:
+  - action: 设置筛选条件并查询后点击“重置”
+    expected: 筛选项恢复默认值且列表恢复默认结果
+  test_data:
+    query: reset
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-07
+    status: blocked_data
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-007
+- id: TC-PC-047-009
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-09
+  atomic_purpose_ids:
+  - AP-047-09
+  common_preconditions_ref: hatching_demand_page_access
+  title: 分页切换显示对应需求行
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 分页
+  preconditions:
+  - 准备超过一页的授权需求数据
+  steps:
+  - action: 点击“下一页”
+    expected: 显示下一页需求行且当前页变化
+  - action: 点击“上一页”
+    expected: 返回上一页需求行
+  test_data:
+    pages: 3
+    page_size: 20
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-09
+    status: blocked_data
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-009
+- id: TC-PC-047-010
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-10
+  atomic_purpose_ids:
+  - AP-047-10
+  common_preconditions_ref: hatching_demand_page_access
+  title: 表头设置重置恢复默认列配置
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 表头设置
+  preconditions:
+  - 准备列表权限和可回收列配置状态
+  steps:
+  - action: 打开表头设置并改变一个列配置
+    expected: 配置变化且业务数据不变
+  - action: 点击“重置”
+    expected: 列配置恢复默认
+  test_data:
+    state: column_settings
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-10
+    status: blocked_page_recheck
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-010
+- id: TC-PC-047-012
+  coverage_ids:
+  - FR-047-02
+  plan_item_ids:
+  - PI-047-12
+  atomic_purpose_ids:
+  - AP-047-12
+  common_preconditions_ref: hatching_demand_page_access
+  title: 目标需求行创建计划打开对应抽屉
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 行级创建
+  preconditions:
+  - 准备列表和创建权限、至少两条可区分需求行及可回收方案
+  steps:
+  - action: 在目标需求号所在行点击“创建计划”
+    expected: 打开“新建上孵计划”抽屉且上下文对应目标行
+  test_data:
+    scope: row_by_demand_no
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-12
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-012
+- id: TC-PC-047-013
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-13
+  atomic_purpose_ids:
+  - AP-047-13
+  common_preconditions_ref: hatching_demand_page_access
+  title: 第一步孵化场必填且带默认值
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 抽屉第一步
+  preconditions:
+  - 准备创建权限和可回收需求行
+  steps:
+  - action: 打开目标行创建计划抽屉并查看第一步
+    expected: 显示必填孵化场及需求行对应默认值
+  - action: 选择孵化场并点击“下一步”
+    expected: 进入第二步
+  test_data:
+    field: hatchery
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-13
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-013
+- id: TC-PC-047-014
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-14
+  atomic_purpose_ids:
+  - AP-047-14
+  common_preconditions_ref: hatching_demand_page_access
+  title: 第二步上孵日期从需求行带入
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 日期默认值
+  preconditions:
+  - 准备创建权限和含上孵日期的需求行
+  steps:
+  - action: 进入抽屉第二步并查看上孵日期
+    expected: 上孵日期带入当前需求行日期且字段不可编辑
+  test_data:
+    field: hatch_date
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-14
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-014
+- id: TC-PC-047-015
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-15
+  atomic_purpose_ids:
+  - AP-047-15
+  common_preconditions_ref: hatching_demand_page_access
+  title: 明细首行自动带入上孵时间和品种
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 明细默认值
+  preconditions:
+  - 准备含上孵时间和品种的授权孵化需求行
+  steps:
+  - action: 进入抽屉第二步并查看首行
+    expected: 上孵时间和品种自动带入当前孵化需求原值，两个字段均不可编辑
+  test_data:
+    fields:
+    - breed
+    - age
+    - average_egg_weight
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-15
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-015
+- id: TC-PC-047-016
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-16
+  atomic_purpose_ids:
+  - AP-047-16
+  common_preconditions_ref: hatching_demand_page_access
+  title: 明细子表新增行保持首行不变
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 新增明细
+  preconditions:
+  - 准备创建权限和可回收创建方案
+  steps:
+  - action: 进入第二步并点击明细子表“新增”
+    expected: 新增可填写明细行且原首行数据不变
+  test_data:
+    action: add_detail_row
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-16
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-016
+- id: TC-PC-047-017
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-17
+  atomic_purpose_ids:
+  - AP-047-17
+  common_preconditions_ref: hatching_demand_page_access
+  title: 明细行复制继承源行字段
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 复制明细
+  preconditions:
+  - 准备创建权限和已填写可复制明细行
+  steps:
+  - action: 点击目标明细行“复制”
+    expected: 生成可区分的新行且复制字段与源行一致
+  test_data:
+    action: copy_detail_row
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-17
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-017
+- id: TC-PC-047-018
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-18
+  atomic_purpose_ids:
+  - AP-047-18
+  common_preconditions_ref: hatching_demand_page_access
+  title: 删除明细行后其他行保持不变
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 删除明细
+  preconditions:
+  - 准备创建权限和至少两条可区分明细行
+  steps:
+  - action: 点击目标明细行“删除”
+    expected: 目标行移除且其他行数据保持不变
+  test_data:
+    action: delete_detail_row
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-18
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-018
+- id: TC-PC-047-019
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-19
+  atomic_purpose_ids:
+  - AP-047-19
+  common_preconditions_ref: hatching_demand_page_access
+  title: 缺少必填项确认时被拦截
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 必填校验
+  preconditions:
+  - 准备创建权限和可回收数据方案，允许在抽屉内观察校验但不提交业务写入
+  steps:
+  - action: 在孵化场或上孵日期缺失状态点击“确认”
+    expected: 显示对应必填校验，确认不产生有效提交或跳转
+  test_data:
+    invalid: required_missing
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-19
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-019
+- id: TC-PC-047-020
+  coverage_ids:
+  - FR-047-03
+  plan_item_ids:
+  - PI-047-20
+  atomic_purpose_ids:
+  - AP-047-20
+  common_preconditions_ref: hatching_demand_page_access
+  title: 上一步和下一步保持抽屉表单上下文
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 多步导航
+  preconditions:
+  - 准备创建权限和可回收抽屉数据
+  steps:
+  - action: 在第一步选择孵化场并进入第二步，再点击“上一步”
+    expected: 返回第一步且已填孵化场值保持不变
+  - action: 再点击“下一步”
+    expected: 返回第二步且当前需求行上下文保持不变
+  test_data:
+    action: prev_next
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-20
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-create-plan-drawer
+    state: st-req-047-create-plan-drawer
+    evidence: available
+  tp_id: TC-PC-047-020
+- id: TC-PC-047-022
+  coverage_ids:
+  - FR-047-05
+  plan_item_ids:
+  - PI-047-22
+  atomic_purpose_ids:
+  - AP-047-22
+  common_preconditions_ref: hatching_demand_page_access
+  title: 当前需求行查看计划跳转上孵计划页面
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 查看计划跳转
+  preconditions:
+  - 准备查看权限和可区分需求行
+  steps:
+  - action: 在目标需求行点击“查看计划”
+    expected: 跳转至“上孵计划”页面
+  test_data:
+    target: /biopark-breeding/breeding/hatchingplans/hatching-plan
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-22
+    status: blocked_permission_data
+  ui_source:
+    page_id: pc-req-047-view-plan-jump
+    state: st-req-047-view-plan-jump
+    evidence: available
+  tp_id: TC-PC-047-022
+- id: TC-PC-047-023
+  coverage_ids:
+  - FR-047-06
+  plan_item_ids:
+  - PI-047-23
+  atomic_purpose_ids:
+  - AP-047-23
+  common_preconditions_ref: hatching_demand_page_access
+  title: 查看计划跳转后按当前需求号默认筛选
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 需求号回填
+  preconditions:
+  - 准备查看权限、目标需求号和上孵计划页可回读数据链路
+  steps:
+  - action: 从目标需求行点击“查看计划”
+    expected: 上孵计划页面需求号筛选项自动回填当前需求号
+  - action: 查看回填后的查询结果
+    expected: 查询结果仅由该需求号对应计划数据决定，有匹配或正式无匹配状态均可观察
+  test_data:
+    dependency: REQ-PC-048
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-23
+    status: blocked_dependency_data
+  ui_source:
+    page_id: pc-req-047-view-plan-jump
+    state: st-req-047-view-plan-jump
+    evidence: available
+  tp_id: TC-PC-047-023
+- id: TC-PC-047-028
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-04
+  atomic_purpose_ids:
+  - AP-047-04-EMPTY
+  common_preconditions_ref: hatching_demand_page_access
+  title: 需求号筛选为空时查询所有符合其他条件的数据
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 列表边界
+  preconditions:
+  - 准备相关权限和可回收测试数据；正式规则或数据待确认
+  steps:
+  - action: 需求号输入框保持空值后点击“查询”
+    expected: 视为没有需求号筛选条件，查询出符合其他条件的所有数据
+  test_data:
+    scenario: AP-047-04-EMPTY
+    formal_rule: 待确认
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-04
+    status: blocked_data_or_permission
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-028
+- id: TC-PC-047-029
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-04
+  atomic_purpose_ids:
+  - AP-047-04-BOUNDARY
+  common_preconditions_ref: hatching_demand_page_access
+  title: 需求号筛选输入边界值时校验或查询
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 列表边界
+  preconditions:
+  - 准备相关权限和可回收测试数据；正式规则或数据待确认
+  steps:
+  - action: 输入边界值和超长值后点击“查询”
+    expected: 查询接口不报错
+  test_data:
+    scenario: AP-047-04-BOUNDARY
+    formal_rule: 待确认
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-04
+    status: blocked_data_or_permission
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-029
+- id: TC-PC-047-030
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-06
+  atomic_purpose_ids:
+  - AP-047-06-NOMATCH
+  common_preconditions_ref: hatching_demand_page_access
+  title: 计划状态筛选无匹配时显示正式空态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 列表异常
+  preconditions:
+  - 准备相关权限和可回收测试数据；准备一个合法但无匹配的计划状态
+  steps:
+  - action: 选择合法但无匹配的计划状态并点击“查询”
+    expected: 列表显示“暂无数据”，旧列表、统计数量和分页状态均被清除
+  test_data:
+    scenario: AP-047-06-NOMATCH
+    formal_rule: 待确认
+  trace:
+    req: REQ-PC-047
+    tp: PI-047-06
+    status: blocked_data_or_permission
+  ui_source:
+    page_id: pc-req-047-hatching-demand
+    state: st-req-047-list-default
+    evidence: available
+  tp_id: TC-PC-047-030
+- id: TC-PC-047-037
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-25
+  atomic_purpose_ids:
+  - AP-047-25-STATUS
+  common_preconditions_ref: hatching_demand_page_access
+  title: 已签收发货单使关联孵化需求变为已完成
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货状态联动
+  preconditions:
+  - 准备具有关联孵化需求的发货单，且发货单可安全变更为已签收并具备回读孵化需求状态的授权数据
+  steps:
+  - action: 将目标发货单完成签收操作并回到“计划管理 / 孵化需求”列表
+    expected: 发货单状态显示为“已签收”，页面允许继续查询关联孵化需求
+  - action: 查询并查看该发货单关联的孵化需求
+    expected: 关联孵化需求状态显示为“已完成”，刷新或重新查询后状态仍保持“已完成”
+  test_data:
+    source_case: received_delivery_with_hatching_demand
+    formal_trigger_scope: 已签收状态触发范围待确认
+  trace:
+    req: REQ-PC-047
+    tp: TEST_PLAN-REQ-PC-047
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+  tp_id: TC-PC-047-037
+- id: TC-PC-047-038
+  coverage_ids:
+  - FR-047-01
+  plan_item_ids:
+  - PI-047-25
+  atomic_purpose_ids:
+  - AP-047-25-CREATE
+  common_preconditions_ref: hatching_demand_page_access
+  title: 已完成孵化需求不允许创建计划
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 创建计划状态边界
+  preconditions:
+  - 准备状态为“已完成”的孵化需求及创建计划权限，且测试数据和创建动作具备安全回收方案
+  steps:
+  - action: 查询并查看状态为“已完成”的孵化需求行
+    expected: 需求行状态显示为“已完成”
+  - action: 查看该需求行的创建计划入口并尝试操作
+    expected: “创建计划”按钮隐藏、置灰不可点击或点击后被业务拒绝；不打开创建计划抽屉且不产生新计划
+  test_data:
+    scenario: completed_hatching_demand_create_plan
+    formal_ui_behavior: 隐藏或不可点击，具体表现待确认
+  trace:
+    req: REQ-PC-047
+    tp: TEST_PLAN-REQ-PC-047
+    project: 种禽孵化管理系统
+    version: 1
+    status: blocked
+  tp_id: TC-PC-047-038
+summary:
+  case_count: 35
+  type_counts:
+    feature: 35
+    interface: 0
+  auto_counts:
+    auto: 35
+    'no': 0
+  priority_counts:
+    P1: 15
+    P2: 7
+    P3: 13
+    P4: 0

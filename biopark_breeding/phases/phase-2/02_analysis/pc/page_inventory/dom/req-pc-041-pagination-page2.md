@@ -1,0 +1,227 @@
+﻿- generic [ref=e1] clickable [onclick]
+  - banner
+    - StaticText "种禽孵化管理系统"
+    - StaticText "返回门户"
+    - image "sun"
+    - StaticText "24°C 晴朗"
+    - image "calendar"
+    - StaticText "2026年9月2日星期三"
+    - image "clock-circle"
+    - StaticText "17:10"
+    - button "bell" [ref=e2]
+      - image "bell"
+    - superscript
+      - StaticText "3"
+    - button "setting" [ref=e3]
+      - image "setting"
+    - generic [ref=e4] clickable [cursor:pointer, onclick]
+      - image "user"
+      - StaticText "管理员"
+      - StaticText "运营总监"
+      - image "right"
+  - complementary
+    - image "home"
+    - StaticText "首页"
+    - button "calendar 计划管理 down" [ref=e5]
+      - image "calendar"
+      - StaticText "计划管理"
+      - image "down"
+    - button "calendar 孵化排程计划" [disabled, ref=e6]
+      - image "calendar"
+      - StaticText "孵化排程计划"
+    - button "appstore 上孵计划" [disabled, ref=e7]
+      - image "appstore"
+      - StaticText "上孵计划"
+    - button "ordered-list 雏苗发货" [ref=e8]
+      - image "ordered-list"
+      - StaticText "雏苗发货"
+    - button "check-circle 生产报表" [disabled, ref=e9]
+      - image "check-circle"
+      - StaticText "生产报表"
+    - button "question-circle 需求说明" [ref=e10]
+      - image "question-circle"
+      - StaticText "需求说明"
+  - main
+    - navigation
+      - list
+        - listitem [level=1]
+          - StaticText "计划管理"
+        - listitem [level=1]
+          - StaticText "雏苗发货"
+    - form
+      - StaticText "计划发货日期"
+      - generic [ref=e18] clickable [onclick]
+        - textbox "开始日期" [ref=e25]: 2026-06-30
+          - StaticText "2026-06-30"
+        - image "swap-right"
+        - textbox "结束日期" [ref=e26]: 2026-06-30
+          - StaticText "2026-06-30"
+      - StaticText "状态"
+      - generic [ref=e19] clickable [cursor:pointer]
+        - generic
+          - StaticText "全部"
+          - combobox [expanded=false, ref=e27]
+        - image "down"
+      - StaticText "栋舍"
+      - generic [ref=e20] clickable [cursor:pointer]
+        - generic
+          - StaticText "全部"
+          - combobox [expanded=false, ref=e28]
+        - image "down"
+      - StaticText "品种"
+      - generic [ref=e21] clickable [cursor:pointer]
+        - generic
+          - StaticText "全部"
+          - combobox [expanded=false, ref=e29]
+        - image "down"
+      - StaticText "发货单号 / 孵化计划号"
+      - textbox "请输入发货单号或孵化计划号" [ref=e22]
+      - button "file-search 查询" [ref=e23]
+        - image "file-search"
+        - StaticText "查询"
+      - button "reload 重置" [ref=e24]
+        - image "reload"
+        - StaticText "重置"
+    - button "全部 12" [ref=e11]
+      - StaticText "全部"
+      - StaticText "12"
+    - button "待发货 4" [ref=e12]
+      - StaticText "待发货"
+      - StaticText "4"
+    - button "发货中 3" [ref=e13]
+      - StaticText "发货中"
+      - StaticText "3"
+    - button "已发货 2" [ref=e14]
+      - StaticText "已发货"
+      - StaticText "2"
+    - button "已签收 3" [ref=e15]
+      - StaticText "已签收"
+      - StaticText "3"
+    - generic
+      - heading "雏苗发货列表" [level=4, ref=e16]
+      - button "export 导出" [ref=e17]
+        - image "export"
+        - StaticText "导出"
+      - generic
+        - table
+          - rowgroup
+            - row
+              - columnheader "发货单号" [ref=e95]
+              - columnheader "计划发货日期" [ref=e96]
+              - columnheader "栋舍" [ref=e97]
+              - columnheader "品种" [ref=e98]
+              - columnheader "状态" [ref=e99]
+              - columnheader "计划上苗数" [ref=e100]
+              - columnheader "发货进度（已发货数/实际可发数）" [ref=e101]
+              - columnheader "待发货数" [ref=e102]
+              - columnheader "计划苗重" [ref=e103]
+              - columnheader "创建时间" [ref=e104]
+              - columnheader "最后更新时间" [ref=e105]
+              - columnheader "孵化计划号" [ref=e106]
+              - columnheader "孵化场" [ref=e107]
+              - columnheader "操作" [ref=e108]
+          - row [ref=e37] clickable [onclick]
+            - cell "BL-20260630-09" [ref=e41]
+              - StaticText "BL-20260630-09"
+            - cell "2026-06-30" [ref=e42]
+            - cell "9栋" [ref=e43]
+            - cell "圣泽" [ref=e44]
+            - cell "发货中" [ref=e45]
+            - cell "13,300" [ref=e46]
+            - cell "64%（8,410 / 13,210） 64" [ref=e47]
+              - StaticText "64%（8,410 / 13,210）"
+              - progressbar: 64
+            - cell "4,800" [ref=e48]
+            - cell "41g" [ref=e49]
+            - cell "2026-06-30 11:36" [ref=e50]
+            - cell "2026-06-30 14:08" [ref=e51]
+            - cell "FH-20260630-09" [ref=e52]
+            - cell "宿迁园区孵化场" [ref=e53]
+            - cell "发 货 明 细" [ref=e54]
+              - button "发 货" [ref=e109]
+                - StaticText "发 货"
+              - button "明 细" [ref=e110]
+                - StaticText "明 细"
+          - row [ref=e38] clickable [onclick]
+            - cell "BL-20260630-10" [ref=e55]
+              - StaticText "BL-20260630-10"
+            - cell "2026-06-30" [ref=e56]
+            - cell "10栋" [ref=e57]
+            - cell "AA+" [ref=e58]
+            - cell "待发货" [ref=e59]
+            - cell "16,600" [ref=e60]
+            - cell "0%（0 / 16,520） 0" [ref=e61]
+              - StaticText "0%（0 / 16,520）"
+              - progressbar: 0
+            - cell "16,520" [ref=e62]
+            - cell "42g" [ref=e63]
+            - cell "2026-06-30 08:55" [ref=e64]
+            - cell
+            - cell "FH-20260630-10" [ref=e65]
+            - cell "宿迁园区孵化场" [ref=e66]
+            - cell "发 货 明 细" [ref=e67]
+              - button "发 货" [ref=e111]
+                - StaticText "发 货"
+              - button "明 细" [ref=e112]
+                - StaticText "明 细"
+          - row [ref=e39] clickable [onclick]
+            - cell "BL-20260630-11" [ref=e68]
+              - StaticText "BL-20260630-11"
+            - cell "2026-06-30" [ref=e69]
+            - cell "3栋" [ref=e70]
+            - cell "光明2号" [ref=e71]
+            - cell "待发货" [ref=e72]
+            - cell "12,400" [ref=e73]
+            - cell "0%（0 / 12,250） 0" [ref=e74]
+              - StaticText "0%（0 / 12,250）"
+              - progressbar: 0
+            - cell "12,250" [ref=e75]
+            - cell "41g" [ref=e76]
+            - cell "2026-06-30 09:03" [ref=e77]
+            - cell
+            - cell "FH-20260630-11" [ref=e78]
+            - cell "宿迁园区孵化场" [ref=e79]
+            - cell "发 货 明 细" [ref=e80]
+              - button "发 货" [ref=e113]
+                - StaticText "发 货"
+              - button "明 细" [ref=e114]
+                - StaticText "明 细"
+          - row [ref=e40] clickable [onclick]
+            - cell "BL-20260630-12" [ref=e81]
+              - StaticText "BL-20260630-12"
+            - cell "2026-06-30" [ref=e82]
+            - cell "4栋" [ref=e83]
+            - cell "圣泽" [ref=e84]
+            - cell "已签收" [ref=e85]
+            - cell "13,600" [ref=e86]
+            - cell "100%（13,490 / 13,490） 100" [ref=e87]
+              - StaticText "100%（13,490 / 13,490）"
+              - progressbar: 100
+            - cell "0" [ref=e88]
+            - cell "41g" [ref=e89]
+            - cell "2026-06-30 12:36" [ref=e90]
+            - cell "2026-06-30 14:28" [ref=e91]
+            - cell "FH-20260630-12" [ref=e92]
+            - cell "宿迁园区孵化场" [ref=e93]
+            - cell "明 细" [ref=e94]
+              - button "明 细" [ref=e115]
+                - StaticText "明 细"
+        - list
+          - listitem [level=1]
+            - StaticText "共 12 条"
+          - listitem "上一页" [level=1, ref=e30] clickable [cursor:pointer, onclick, tabindex]
+            - button "left" [ref=e34]
+              - image "left"
+          - listitem [level=1, ref=e31] clickable [cursor:pointer, onclick, tabindex]
+            - StaticText "1"
+          - listitem [level=1, ref=e32] clickable [cursor:pointer, onclick, tabindex]
+            - StaticText "2"
+          - listitem "下一页" [level=1, disabled, ref=e33] clickable [onclick]
+            - button "right" [disabled, ref=e35]
+              - image "right"
+          - listitem [level=1]
+            - generic
+              - StaticText "跳至"
+              - textbox "页" [ref=e36]
+              - StaticText "页"
+

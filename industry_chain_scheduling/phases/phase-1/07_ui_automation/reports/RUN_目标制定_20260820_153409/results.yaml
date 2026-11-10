@@ -1,0 +1,63 @@
+run_id: RUN_目标制定_20260820_153409
+module: 目标制定
+req_id: REQ-002
+zentao_module_id: 669
+environment:
+  base_host: 192.168.6.163:66
+  headless: 'false'
+generated_at: '2026-08-20T15:34:24'
+source: 04_testcases/TC_REQ-002.yaml
+cases:
+- case_id: TC-002-27
+  zentao_case_id: 47508
+  title: 点击「暂存」保存目标，状态=暂存且不提交审核
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-002-27
+  assertion_scope: target_goal.goal_table.draft_status
+  expected: '必填项齐全且合计相等
+
+    点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」'
+  actual:
+    year: 2035
+    status: 暂存
+  detail: 专属目标保存后仍为暂存
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在状态为「暂存」的记录
+  steps:
+  - action: 打开新增弹窗，选择未占用年度，填写年度宰杀量并均分
+    expected: 必填项齐全且合计相等
+  - action: 点击「暂存」
+    expected: 点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」
+  screenshots:
+  - path: screenshots/TC-002-27_TP-002-27_prepare_2035_scope.png
+    sha256: 3be31fb802bcf4b62db3ecdafaf4ee0a11414118ae707dcdfa5d40f6caf2d7d2
+  - path: screenshots/TC-002-27_TP-002-27_prepare_2035_full.png
+    sha256: 575aa93a1e27cb503eb215f629298a4ad1f0fdfc75fbac03431930824dd798b8
+  - path: screenshots/TC-002-27_TP-002-27_assertion_scope.png
+    sha256: f91bad971c4c93acc1ec5ce675e431f409464f631d4c5be02253d19cff335567
+  - path: screenshots/TC-002-27_TP-002-27_assertion_full.png
+    sha256: 127464a1603837a623a2badb7e88c365024928bb6bfb748fe956e0c240ba0b01
+  screenshot: screenshots/TC-002-27_TP-002-27_prepare_2035_scope.png
+  started_at: '2026-08-20T15:34:10'
+  finished_at: '2026-08-20T15:34:23'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: target_goal_year_2035_draft
+    data_key_template: AUTO测试_勿用_{run_id}_year_2035
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_run_owned_target_draft
+    execute: save_target_as_draft
+    assertions:
+    - target_status_is_draft
+    - target_is_not_submitted
+    contract: 08_ui_automation/data/REQ-002.yaml
+  excluded: false

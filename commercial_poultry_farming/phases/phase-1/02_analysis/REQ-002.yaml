@@ -1,0 +1,199 @@
+id: REQ-002
+title: 补栏计划
+zentao_module_id: 651
+page_url: /biopark-poultry/production/plan
+module_complexity: query_report
+testpoint_template: 查询报表
+summary: 展示由产业链生产排程系统下推生成的补栏（上苗）计划。按年份/月份/计划状态查询列表，每条计划记录一个栋舍在指定日期的补栏信息，含养殖品种/补栏数量/苗重/预计出栏信息及三段养殖标准；提供「饲喂计划」弹窗查看该计划各段的日龄采食计划明细（含料号、配比）。需求明确本模块「只可以查看」，无新增/编辑/删除入口。
+in_scope:
+- 查询（年份/月份/计划状态）
+- 列表展示（计划编号/状态/补栏日期/栋舍/品种/数量/苗重/养殖天数/出栏日期/出栏体重/宰杀线/排程编号/三段养殖计划）
+- 饲喂计划弹窗（引用型，查看该计划各段日龄采食计划明细）
+out_scope:
+- 计划新增/编辑/删除（来源产业链生产排程系统下推，本页不提供写路径）
+- 排程下推逻辑本身（产业链生产排程系统职责，非本模块验收范围）
+business_rules:
+- 计划数据来源：产业链生产排程系统下推，本页仅可查看，无需/无法新增修改
+- 出栏日期 = 补栏日期 + 养殖天数（自动计算）
+- 三段养殖计划（1/2/3段各含养殖天数、空栏天数、体重(g)、料比）随计划下推带出展示
+- 计划状态「待执行」：补栏日期晚于今天（与是否完成补栏确认无关）
+- 计划状态「执行中」：补栏日期≤今天且尚未收到出栏结算单（与是否完成补栏确认无关）
+- 计划状态「已完成」：已收到出栏结算单；查询默认全部
+roles:
+- 智控中心小组成员（排程制定方，查看）
+- 养殖场长/养殖主管
+- 养殖技术人员
+interfaces:
+- 产业链生产排程系统（排程下推，外部系统）：计划编号/上苗日期/栋舍/品种/补栏数量/苗重/出栏体重/宰杀线/排程编号/三段养殖标准/日龄采食计划均由该系统下推生成
+- 补栏确认（REQ-003）：本模块计划记录为补栏确认主数据来源（计划编号/上苗日期/栋舍/品种，确认状态默认待发货）
+risks:
+- 下推数据异常（缺失/延迟）时页面展示口径未明确（需求未描述下推失败/延迟场景）
+open_questions:
+- 排程下推数据缺失或延迟到达时，本页应如何展示（空值/占位/异常提示），需求未明确
+- 「饲喂计划」弹窗内日龄采食计划明细是否支持编辑，需求仅描述「展示」，需确认是否为纯只读引用型弹窗
+test_scope_suggestion:
+- P1：查询条件按年份/月份/状态过滤（含组合过滤）
+- P2：饲喂计划弹窗打开、列/数据展示、关闭
+- P2：列表字段与下推数据一致性、出栏日期自动计算
+- P3：分页、单元格省略提示
+prototype_verification:
+  query_field_specs:
+  - name: 年份
+    control: select
+    editable: true
+    notes: 原型呈现为日期型选择器；需求为「年份选择器」，默认当年
+  - name: 月份
+    control: select
+    editable: true
+    validation: 1~12月
+    notes: 默认当月
+  - name: 计划状态
+    control: select
+    editable: true
+    validation: 待执行/执行中/已完成
+    notes: 默认全部
+  table_column_specs:
+  - name: 序号
+    order: 1
+    notes: 自动编号，行序号
+  - name: 计划编号
+    order: 2
+    notes: 系统生成计划编号
+  - name: 计划状态
+    order: 3
+    notes: 待执行(信息)/执行中(警告)/已完成(成功)
+  - name: 补栏日期
+    order: 4
+    notes: 雏苗进场日期
+  - name: 补栏时间
+    order: 5
+    notes: 补栏具体时间，仅显示小时数字
+  - name: 栋舍
+    order: 6
+    notes: 分配的栋舍编号
+  - name: 养殖品种
+    order: 7
+    notes: 如AA+、罗斯308、科宝500等
+  - name: 补栏数量
+    order: 8
+    notes: 补栏数量（万羽）
+  - name: 苗重(g)
+    order: 9
+    notes: 雏苗均重（克）
+  - name: 养殖天数
+    order: 10
+    notes: 计划养殖总天数
+  - name: 出栏日期
+    order: 11
+    notes: 自动计算 = 补栏日期+养殖天数
+  - name: 出栏体重(kg)
+    order: 12
+    notes: 目标出栏体重
+  - name: 宰杀线
+    order: 13
+    notes: 分配宰杀线
+  - name: 排程编号
+    order: 14
+    notes: 对应产业链排程系统排程编号，下推时提供
+  - name: 1段养殖计划
+    order: 15
+    group: 三段养殖计划
+    notes: 养殖天数/空栏天数/体重(g)/料比
+  - name: 2段养殖计划
+    order: 16
+    group: 三段养殖计划
+    notes: 养殖天数/空栏天数/体重(g)/料比
+  - name: 3段养殖计划
+    order: 17
+    group: 三段养殖计划
+    notes: 养殖天数/空栏天数/体重(g)/料比
+  - name: 操作
+    order: 18
+    notes: 行操作，仅「饲喂计划」，无新增/编辑/删除
+  button_semantics:
+    饲喂计划:
+      action: open_nested_dialog
+      dialog: 饲喂计划
+      summary: 行内操作按钮（非工具栏新增），弹出对话框展示该计划各段的日龄采食计划明细，含料号和配比
+  nested_dialogs:
+  - id: 饲喂计划
+    type: reference
+    trigger: 列表行「饲喂计划」操作按钮
+    title: 饲喂计划
+    buttons:
+    - 取消
+    table_columns:
+    - 段区
+    - 日龄区间(起-止)
+    - 饲料/料号
+    - 配比(%)
+    filters: []
+    search_fields: []
+    data_source: 产业链生产排程系统-制定排程/分段养殖模版下推的日龄采食计划（外部系统数据，本弹窗只读展示）
+    on_confirm: 无（纯查看，无回填）
+    on_cancel: 关闭弹窗
+  cross_module_refs:
+  - field: 饲喂计划明细（弹窗）
+    source_module: 产业链生产排程系统-分段养殖模版/制定排程（外部系统）
+    dialog: 饲喂计划
+    columns:
+    - 段区
+    - 日龄区间(起-止)
+    - 饲料/料号
+    - 配比(%)
+    filters: []
+    search_fields: []
+    external_data:
+    - 产业链生产排程系统-日龄采食计划
+  ui_components:
+  - pagination
+  - cell_ellipsis_tooltip
+  role_coverage: skip
+design_artifacts:
+  decision_tables:
+  - name: 列表查询组合
+    conditions:
+    - 年份
+    - 月份
+    - 计划状态
+    rules:
+    - when: 仅年份
+      then: 按年份过滤列表
+    - when: 年份+月份
+      then: 按年月组合过滤列表
+    - when: 年份+月份+计划状态
+      then: AND组合过滤，无匹配时列表展示空态
+  bva_fields:
+  - field: 补栏数量(万羽)
+    type: decimal
+    boundaries:
+    - 0
+    - 0.01
+    notes: 需求未给出数量上限，暂不虚构上边界
+  - field: 苗重(g)
+    type: number
+    boundaries:
+    - 0
+    notes: 需求未给出上限
+  - field: 养殖天数
+    type: integer
+    boundaries:
+    - 1
+    notes: 需求未给出上限
+trace:
+  story: null
+  project: 商品禽养殖
+  version: 2
+  status: draft
+  req: REQ-002
+  tp: null
+  sync_note: 需求变动：待执行↔执行中仅按补栏日期，与补栏确认无关
+source_inputs:
+- 01_requirements/需求变动.md（补栏计划：待执行↔执行中按补栏日期，与补栏确认无关）
+permission_scope:
+  owner_req: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-002
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  summary: 权限测点归 REQ-000；本模块 role_coverage=skip，不写菜单/接口权限灌水测点

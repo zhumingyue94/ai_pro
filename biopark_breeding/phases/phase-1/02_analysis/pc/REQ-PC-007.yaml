@@ -1,0 +1,661 @@
+id: REQ-PC-007
+title: 库位出入库记录
+module_path: 库存管理 / 合格蛋库 / 库位出入库记录
+trace:
+  story: null
+  req: REQ-PC-007
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: 库存管理 / 合格蛋库 / 库位出入库记录基于当前 PC 5500 原型与需求章节重新分析。
+in_scope:
+- 当前模块实际页面的查询区、列表、表单、弹窗、按钮、状态和页面板块
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 测试点、测试用例、CSV、UI 脚本
+- 真实接口/数据库/权限实现
+- 原型未确认的业务事实
+business_rules:
+- id: BR-001
+  rule: 原因，根据类型、方式对应变动选项。 搜索 重置 出/入库： 全部类型 入库 出库 方式： 全部方式 自动 手动 出入库日期： ~ 出入库记录 原因： 全部原因 种蛋上孵 鸡苗挑选 销售 操作人： 计划号：
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库位出入库记录
+- id: BR-002
+  rule: 库位号：出入库记录如果是因为同一个库位号同时混装了多种蛋，产生了虚拟库位的记录，则此处记录的库位号为当时的虚拟库位号，并且标记“混”。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库位出入库记录
+- id: BR-003
+  rule: 关于操作类型、方式、原因的说明： 1、操作类型：入库、出库； 2、方式：手动、自动；①手动：在仓库中点击出入库进行的入库操作数据；②自动：盘点及任务执行过程中系统自动进行的出入库操作数据； 3、原因：出入库的原因，不同操作类型、方式对应的原因不同：
+    ①入库——手动：种蛋挑选、其他； ②入库——自动：盘点；（目前功能范围中，没有任务过程中的自动入库） ③出库——手动：种蛋上孵、销售、更换仓库、其他； ④出库——自动：种蛋上孵、盘点。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库位出入库记录
+- id: BR-004
+  rule: 上孵计划号：如果是来自计划任务的地总出入库，有上孵计划号，否则没有上孵计划号。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库位出入库记录
+- id: BR-005
+  rule: 出入库记录，按照出入库类型、时间、种蛋、库位号独立生成操作记录。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库位出入库记录
+- id: BR-006
+  rule: 该页面为某一库位出入库记录页。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 库位出入库记录
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces:
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-006
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 依赖模块
+  type: module_dependency
+  source_module: REQ-PC-031
+  contract: 依赖字段、状态和权限由依赖模块确认
+- name: 页面内导航
+  type: prototype_navigation
+  source_module: live prototype
+  targets:
+  - 上孵计划列表
+  - 仓库全景图（待定）
+  - 仓库管理
+  - 出入库记录
+  - 出雏器全景图（待定）
+  - 出雏器管理
+  - 受健率标准管理
+  - 品种管理
+  - 存发苗间管理
+  - 孵化周期管理
+  - 孵化器全景图（待定）
+  - 孵化器管理
+  - 库存查询
+  - 生产报表
+  - 盘点记录
+  - 种蛋上孵任务
+  - 种蛋出雏任务
+  - 种蛋照蛋任务
+  - 蛋重类型管理
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 真实接口、权限、异常提示和字段校验规则是什么？
+  impact: 影响正式契约与下游测试点
+  owner: 产品/研发
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: observed
+    observed_page_count: 1
+    unmapped_pages: []
+    interaction_boundary: 页面树导航和 DOM 观察，未执行写操作
+  page_chrome:
+  - page: 库位出入库记录
+    title: 库位出入库记录
+    url: http://127.0.0.1:5500/%E5%BA%93%E4%BD%8D%E5%87%BA%E5%85%A5%E5%BA%93%E8%AE%B0%E5%BD%95.html
+    notes: live DOM
+  page_block_specs:
+  - id: CHROME
+    name: 页面壳层
+    fields:
+    - 库位出入库记录
+    data_source: live DOM
+    coverage:
+    - l1
+    - l2
+  - id: CONTROLS
+    name: 当前页面控件
+    fields:
+    - checkbox
+    - 全部类型 入库 出库
+    - 全部方式 自动 手动
+    - u12434_input
+    - u12435_input
+    - 全部原因 种蛋上孵 鸡苗挑选 销售
+    - 请输入操作人
+    - 请输入上孵计划号
+    data_source: live DOM visible controls
+    coverage:
+    - l1
+    - l2
+    - l3
+  - id: NOTES
+    name: 原型注释
+    fields:
+    - 原因，根据类型、方式对应变动选项。 搜索 重置 出/入库： 全部类型 入库 出库 方式： 全部方式 自动 手动 出入库日期： ~ 出入库记录 原因： 全部原因 种蛋上孵 鸡苗挑选 销售 操作人： 计划号：
+    - 库位号：出入库记录如果是因为同一个库位号同时混装了多种蛋，产生了虚拟库位的记录，则此处记录的库位号为当时的虚拟库位号，并且标记“混”。
+    - 关于操作类型、方式、原因的说明： 1、操作类型：入库、出库； 2、方式：手动、自动；①手动：在仓库中点击出入库进行的入库操作数据；②自动：盘点及任务执行过程中系统自动进行的出入库操作数据； 3、原因：出入库的原因，不同操作类型、方式对应的原因不同：
+      ①入库——手动：种蛋挑选、其他； ②入库——自动：盘点；（目前功能范围中，没有任务过程中的自动入库） ③出库——手动：种蛋上孵、销售、更换仓库、其他； ④出库——自动：种蛋上孵、盘点。
+    - 上孵计划号：如果是来自计划任务的地总出入库，有上孵计划号，否则没有上孵计划号。
+    - 出入库记录，按照出入库类型、时间、种蛋、库位号独立生成操作记录。
+    - 该页面为某一库位出入库记录页。
+    data_source: requirement/prototype annotations
+    coverage:
+    - l1
+    - l2
+  query_field_specs:
+  - name: 全部类型 入库 出库
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u12430_input
+  - name: 全部方式 自动 手动
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u12432_input
+  - name: u12434_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u12434_input
+  - name: u12435_input
+    control: date
+    options_source: live DOM option/value
+    notes: live control u12435_input
+  - name: 全部原因 种蛋上孵 鸡苗挑选 销售
+    control: select-one
+    options_source: live DOM option/value
+    notes: live control u12440_input
+  - name: 请输入操作人
+    control: text
+    options_source: live DOM option/value
+    notes: live control u12442_input
+  - name: 请输入上孵计划号
+    control: text
+    options_source: live DOM option/value
+    notes: live control u12444_input
+  form_field_specs: []
+  button_semantics:
+    上孵计划:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋上孵:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋照蛋:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    种蛋出雏:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    品种管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    蛋重类型管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    库存查询:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出入库记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    盘点记录:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库全景图:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    生产报表:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    仓库管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    存发苗间管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化周期管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    孵化器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    出雏器全景:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+    受健率标准管理:
+      action: observed_clickable
+      summary: 页面存在该按钮文案，本次未执行写操作，具体语义需确认
+  nested_dialogs: []
+  sub_tables: []
+  table_column_specs:
+  - name: 智孵管家管理平台
+    order: 1
+  - name: 上孵计划
+    order: 2
+  - name: 种蛋上孵
+    order: 3
+  - name: 种蛋照蛋
+    order: 4
+  - name: 种蛋出雏
+    order: 5
+  - name: 品种管理
+    order: 6
+  - name: 蛋重类型管理
+    order: 7
+  - name: 合格蛋蛋库
+    order: 8
+  - name: 次品库
+    order: 9
+  - name: 生产报表
+    order: 10
+  - name: 仓库管理
+    order: 11
+  - name: 存发苗间管理
+    order: 12
+  - name: 孵化器管理
+    order: 13
+  - name: 出雏器管理
+    order: 14
+  - name: 孵化周期管理
+    order: 15
+  - name: 养殖场管理
+    order: 16
+  - name: 孵化场管理
+    order: 17
+  - name: 组织管理
+    order: 18
+  - name: 用户管理
+    order: 19
+  - name: 存发苗间
+    order: 20
+  - name: 库存查询
+    order: 21
+  - name: 出入库记录
+    order: 22
+  - name: 孵化器全景
+    order: 23
+  - name: 出雏器全景
+    order: 24
+  - name: 受健率标准管理
+    order: 25
+  - name: 二级蛋蛋库
+    order: 26
+  - name: 首页/一级菜单/二级菜单/三级菜单…
+    order: 27
+  - name: 出/入库
+    order: 28
+  - name: 孵化场
+    order: 29
+  - name: 仓库
+    order: 30
+  computed_fields:
+  - name: 原型派生/回填字段
+    formula: 原因，根据类型、方式对应变动选项。 搜索 重置 出/入库： 全部类型 入库 出库 方式： 全部方式 自动 手动 出入库日期： ~ 出入库记录 原因： 全部原因 种蛋上孵 鸡苗挑选 销售 操作人： 计划号：
+    editable: false
+  - name: 原型派生/回填字段
+    formula: 关于操作类型、方式、原因的说明： 1、操作类型：入库、出库； 2、方式：手动、自动；①手动：在仓库中点击出入库进行的入库操作数据；②自动：盘点及任务执行过程中系统自动进行的出入库操作数据； 3、原因：出入库的原因，不同操作类型、方式对应的原因不同：
+      ①入库——手动：种蛋挑选、其他； ②入库——自动：盘点；（目前功能范围中，没有任务过程中的自动入库） ③出库——手动：种蛋上孵、销售、更换仓库、其他； ④出库——自动：种蛋上孵、盘点。
+    editable: false
+  save_validations: []
+  ui_components:
+  - input/select/button
+  - table
+  cross_module_refs:
+  - field: 库位出入库记录
+    source_module: REQ-PC-006
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 库位出入库记录
+    source_module: REQ-PC-031
+    dialog: 页面引用入口待确认
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 依赖模块
+  - field: 页面内导航
+    source_module: live prototype
+    dialog: 页面打开链接
+    columns: []
+    filters: []
+    search_fields: []
+    external_data:
+    - 上孵计划列表
+    - 仓库全景图（待定）
+    - 仓库管理
+    - 出入库记录
+    - 出雏器全景图（待定）
+    - 出雏器管理
+    - 受健率标准管理
+    - 品种管理
+    - 存发苗间管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 孵化器管理
+    - 库存查询
+    - 生产报表
+    - 盘点记录
+    - 种蛋上孵任务
+    - 种蛋出雏任务
+    - 种蛋照蛋任务
+    - 蛋重类型管理
+  detail_table_specs: []
+  concurrency_checks: []
+  role_coverage: skip
+  observed_pages:
+  - page: 库位出入库记录
+    nodeurl: 库位出入库记录.html
+    title: 库位出入库记录
+    frame_url: http://127.0.0.1:5500/%E5%BA%93%E4%BD%8D%E5%87%BA%E5%85%A5%E5%BA%93%E8%AE%B0%E5%BD%95.html
+    body_line_count: 574
+    body_lines:
+    - 智孵管家管理平台
+    - 计划管理
+    - 上孵计划
+    - 孵化管理
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 库存管理
+    - 品种管理
+    - 蛋重类型管理
+    - 合格蛋蛋库
+    - 次品库
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 养殖场管理
+    - 孵化场管理
+    - 组织管理
+    - 用户管理
+    - 存发苗间
+    - 库存查询
+    - 出入库记录
+    - 孵化器全景
+    - 出雏器全景
+    - 基础数据
+    - 受健率标准管理
+    - 二级蛋蛋库
+    - 首页/一级菜单/二级菜单/三级菜单…
+    - 出/入库
+    - 孵化场
+    - 仓库
+    - 仓库类型
+    - 库位号
+    - 养殖场
+    - 养殖批次
+    - 品种
+    - 产蛋日期
+    - 蛋重类型
+    - 平均蛋重
+    - 周龄
+    - 种蛋类型
+    - 数量
+    - 方式
+    - 原因
+    - 操作人
+    - 出入库时间
+    - 上孵计划号
+    - 备注
+    - 入库
+    - 孵化一场
+    - 北一号仓库
+    - '1'
+    - 养殖场一
+    - 1p
+    - AA
+    - 2025-12-07 ~ 2025-12-10
+    - 大
+    - '58'
+    - '54'
+    - 合格蛋
+    - '7000'
+    - 手动
+    - 种蛋挑选
+    - 周韬睿
+    - '2025-12-10 17:22:00'
+    - 出库
+    - '600'
+    - 自动
+    - 赵猛
+    - SFJH874932224
+    - 养殖场二
+    - 利丰
+    - '2000'
+    - 其他
+    - '100000'
+    - 销售
+    - 对外销售
+    - 1.1（拼）
+    - '3000'
+    - 1.2（拼）
+    - 3p
+    - '6000'
+    - 1.4（拼）
+    - 盘点
+    - 库存少了
+    - '4000'
+    - 导出
+    - 注释：原因，根据类型、方式对应变动选项。
+    - 搜索
+    - 重置
+    - 出/入库：
+    - 全部类型
+    - 方式：
+    - 全部方式
+    - 出入库日期：
+    - '~'
+    - 原因：
+    annotations:
+    - 原因，根据类型、方式对应变动选项。 搜索 重置 出/入库： 全部类型 入库 出库 方式： 全部方式 自动 手动 出入库日期： ~ 出入库记录 原因： 全部原因 种蛋上孵 鸡苗挑选 销售 操作人： 计划号：
+    - 库位号：出入库记录如果是因为同一个库位号同时混装了多种蛋，产生了虚拟库位的记录，则此处记录的库位号为当时的虚拟库位号，并且标记“混”。
+    - 关于操作类型、方式、原因的说明： 1、操作类型：入库、出库； 2、方式：手动、自动；①手动：在仓库中点击出入库进行的入库操作数据；②自动：盘点及任务执行过程中系统自动进行的出入库操作数据； 3、原因：出入库的原因，不同操作类型、方式对应的原因不同：
+      ①入库——手动：种蛋挑选、其他； ②入库——自动：盘点；（目前功能范围中，没有任务过程中的自动入库） ③出库——手动：种蛋上孵、销售、更换仓库、其他； ④出库——自动：种蛋上孵、盘点。
+    - 上孵计划号：如果是来自计划任务的地总出入库，有上孵计划号，否则没有上孵计划号。
+    - 出入库记录，按照出入库类型、时间、种蛋、库位号独立生成操作记录。
+    - 该页面为某一库位出入库记录页。
+    controls:
+    - tag: INPUT
+      id: u12412_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12413_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12414_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12415_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12416_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12417_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12418_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12419_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12420_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12421_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12422_input
+      type: checkbox
+      value: checkbox
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u12430_input
+      type: select-one
+      value: 全部类型
+      text: 全部类型 入库 出库
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u12432_input
+      type: select-one
+      value: 全部方式
+      text: 全部方式 自动 手动
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12434_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12435_input
+      type: date
+      value: ''
+      text: ''
+      disabled: false
+      visible: true
+    - tag: SELECT
+      id: u12440_input
+      type: select-one
+      value: 全部原因
+      text: 全部原因 种蛋上孵 鸡苗挑选 销售
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12442_input
+      type: text
+      value: 请输入操作人
+      text: ''
+      disabled: false
+      visible: true
+    - tag: INPUT
+      id: u12444_input
+      type: text
+      value: 请输入上孵计划号
+      text: ''
+      disabled: false
+      visible: true
+    dialogs: []
+    buttons:
+    - 上孵计划
+    - 种蛋上孵
+    - 种蛋照蛋
+    - 种蛋出雏
+    - 品种管理
+    - 蛋重类型管理
+    - 库存查询
+    - 出入库记录
+    - 盘点记录
+    - 仓库全景图
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景
+    - 出雏器全景
+    - 受健率标准管理
+    static_actions:
+    - 库存查询
+    - 上孵计划列表
+    - 种蛋上孵任务
+    - 种蛋照蛋任务
+    - 种蛋出雏任务
+    - 品种管理
+    - 蛋重类型管理
+    - 盘点记录
+    - 仓库全景图（待定）
+    - 出入库记录
+    - 生产报表
+    - 仓库管理
+    - 存发苗间管理
+    - 孵化器管理
+    - 出雏器管理
+    - 孵化周期管理
+    - 孵化器全景图（待定）
+    - 出雏器全景图（待定）
+    - 受健率标准管理
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-007
+  outputs:
+  - 02_analysis/pc/REQ-PC-007.yaml
+  - 02_analysis/pc/REQ-PC-007_库位出入库记录.md
+  gate: passed
+  next_agent: testpoint-agent
+  blockers: []

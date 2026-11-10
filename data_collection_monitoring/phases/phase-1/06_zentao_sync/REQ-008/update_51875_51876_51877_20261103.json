@@ -1,0 +1,188 @@
+﻿{
+    "status":  "validated",
+    "operation":  "update",
+    "target":  {
+                   "project_id":  46,
+                   "product_id":  8,
+                   "module_id":  746
+               },
+    "records":  [
+                    {
+                        "case_id":  "TC-REQ-008-053",
+                        "remote_case_id":  51875,
+                        "version":  11,
+                        "project":  46,
+                        "product":  8,
+                        "module":  746,
+                        "title":  "查看 HTTP 表单，检查字段规则",
+                        "type":  "other",
+                        "precondition":  "前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  5,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176559,
+                                          "step":  "点击“新增”按钮",
+                                          "desc":  "点击“新增”按钮",
+                                          "expect":  "新增推送目标弹窗打开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176560,
+                                          "step":  "在弹窗的目标类型选择器中选择“HTTP”",
+                                          "desc":  "在弹窗的目标类型选择器中选择“HTTP”",
+                                          "expect":  "目标类型选择器显示“HTTP”。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176561,
+                                          "step":  "查看 HTTP 表单中业务字段的必填标识",
+                                          "desc":  "查看 HTTP 表单中业务字段的必填标识",
+                                          "expect":  "请求地址和请求方法带必填标识；请求头、请求参数和请求体不带必填标识。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176562,
+                                          "step":  "保持请求地址为空并点击“确定”",
+                                          "desc":  "保持请求地址为空并点击“确定”",
+                                          "expect":  "请求地址字段显示必填校验提示，表单保持打开，未产生业务写入。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "5",
+                                          "id":  176563,
+                                          "step":  "查看 HTTP 表单中业务字段的默认值",
+                                          "desc":  "查看 HTTP 表单中业务字段的默认值",
+                                          "expect":  "请求地址协议默认值为“http://”。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    },
+                    {
+                        "case_id":  "TC-REQ-008-054",
+                        "remote_case_id":  51876,
+                        "version":  11,
+                        "project":  46,
+                        "product":  8,
+                        "module":  746,
+                        "title":  "查看 MQTT 表单，检查字段规则",
+                        "type":  "other",
+                        "precondition":  "前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  5,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176564,
+                                          "step":  "点击“新增”按钮",
+                                          "desc":  "点击“新增”按钮",
+                                          "expect":  "新增推送目标弹窗打开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176565,
+                                          "step":  "在弹窗的目标类型选择器中选择“MQTT”",
+                                          "desc":  "在弹窗的目标类型选择器中选择“MQTT”",
+                                          "expect":  "目标类型选择器显示“MQTT”。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176566,
+                                          "step":  "查看 MQTT 表单中业务字段的必填标识",
+                                          "desc":  "查看 MQTT 表单中业务字段的必填标识",
+                                          "expect":  "服务地址、用户名、密码、客户端ID和主题字段带必填标识。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176567,
+                                          "step":  "保持服务地址、用户名、密码、客户端ID和主题为空并点击“确定”",
+                                          "desc":  "保持服务地址、用户名、密码、客户端ID和主题为空并点击“确定”",
+                                          "expect":  "服务地址、用户名、密码、客户端ID和主题字段分别显示必填校验提示，表单保持打开，未产生业务写入。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "5",
+                                          "id":  176568,
+                                          "step":  "查看 MQTT 表单中业务字段的默认值",
+                                          "desc":  "查看 MQTT 表单中业务字段的默认值",
+                                          "expect":  "服务地址输入框显示占位提示“请输入MQTT服务地址，格式如：192.168.6.163:1883”。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    },
+                    {
+                        "case_id":  "TC-REQ-008-055",
+                        "remote_case_id":  51877,
+                        "version":  10,
+                        "project":  46,
+                        "product":  8,
+                        "module":  746,
+                        "title":  "查看 内置队列 表单，检查协议字段",
+                        "type":  "other",
+                        "precondition":  "前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  3,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176569,
+                                          "step":  "点击“新增”按钮",
+                                          "desc":  "点击“新增”按钮",
+                                          "expect":  "新增弹窗打开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176570,
+                                          "step":  "点击目标类型下拉框并选择“内置队列”",
+                                          "desc":  "点击目标类型下拉框并选择“内置队列”",
+                                          "expect":  "“主题”输入框标签带必填标识。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176571,
+                                          "step":  "保持主题为空并点击“确定”",
+                                          "desc":  "保持主题为空并点击“确定”",
+                                          "expect":  "提交后显示“请输入主题”提示，表单保持打开且未产生业务写入。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    }
+                ],
+    "delete_recreate":  false,
+    "registry_status":  "validated"
+}

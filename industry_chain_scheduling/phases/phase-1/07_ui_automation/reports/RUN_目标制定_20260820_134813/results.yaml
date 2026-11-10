@@ -1,0 +1,50 @@
+run_id: RUN_目标制定_20260820_134813
+module: 目标制定
+req_id: REQ-002
+zentao_module_id: 669
+environment:
+  base_host: 192.168.6.163:66
+  headless: 'false'
+generated_at: '2026-08-20T13:48:24'
+source: 04_testcases/TC_REQ-002.yaml
+cases:
+- case_id: TC-002-04
+  zentao_case_id: 47485
+  title: 仅选年度后点击「查询」，列表按年度过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-002-04
+  assertion_scope: target_goal.query_filters.year_results
+  expected: '仅「年度」有值
+
+    列表仅展示符合该「年度」条件的记录'
+  actual:
+    selected_year: 2033
+    result_years:
+    - 2033
+  detail: 年度查询结果均匹配 2033
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中存在可按「年度」区分的测试数据
+  steps:
+  - action: 在查询区仅设置「年度」，其余条件留空
+    expected: 仅「年度」有值
+  - action: 点击「查询」按钮
+    expected: 列表仅展示符合该「年度」条件的记录
+  screenshots:
+  - path: screenshots/TC-002-04_TP-002-04_assertion_scope.png
+    sha256: e40fa2b6e35a151c30f972f9c0d0e595b972b473e355778b5f9c9e32ba9fa528
+  - path: screenshots/TC-002-04_TP-002-04_assertion_full.png
+    sha256: fd41db96c5752018db23d929a9079503d386d64e4479c3d527628f0fb94fe2aa
+  screenshot: screenshots/TC-002-04_TP-002-04_assertion_scope.png
+  started_at: '2026-08-20T13:48:13'
+  finished_at: '2026-08-20T13:48:24'
+  data_preparation:
+    fixture_type: existing_system_data
+    creates_data: false
+    cleanup_status: not_required
+  excluded: false

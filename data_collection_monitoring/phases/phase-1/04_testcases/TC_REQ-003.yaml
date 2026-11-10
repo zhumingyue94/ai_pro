@@ -1,0 +1,897 @@
+schema_version: '1.0'
+req_id: REQ-003
+module: 产品管理
+trace:
+  req: REQ-003
+  tp: TEST_PLAN_REQ-003
+  project: 数据采集监控平台
+  version: 1
+  status: blocked_by_execution_evidence
+  source_review: REQ-003 case review
+common_preconditions:
+- id: CP-REQ-003-001
+  name: 登录并进入产品管理页面
+  steps:
+  - action: 完成应用门户登录，或复用已有的有效登录态。
+    expected: 登录成功或已有登录态有效，可以正常访问应用门户。
+  - action: 在应用门户选择“数据采集监控平台”。
+    expected: 成功进入数据采集监控平台，并显示对应的平台菜单区域。
+  - action: 展开平台菜单并点击“产品管理”菜单。
+    expected: 点击后浏览器地址包含“/biopark-iot/iot/device/product”，确认已进入产品管理页面。
+cases:
+- id: TC-REQ-003-002
+  coverage_ids:
+  - COV-002-L2
+  plan_item_ids:
+  - PLAN-002
+  atomic_purpose_ids:
+  - AP-002
+  title: 查看产品列表，检查表头、空字段和图片
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 列表字段
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备经授权可读且包含产品图标、产品图片或其他空字段的产品列表数据。
+  steps:
+  - action: 等待产品列表加载完成。
+    expected: 页面显示产品列表；无记录时显示页面定义的空状态文本。
+  - action: 查看列表表头。
+    expected: 表头包含 ProductKey、产品名称、产品分类、设备类型、产品图标、产品图片、状态、创建时间和操作列。
+  - action: 查看一条存在空字段的产品记录。
+    expected: 空字段统一显示“-”，不显示空白占位或 `null`。
+  - action: 查看已有产品的图标和图片。
+    expected: 列表缩略图与该产品已保存的上传内容一致。
+  - action: 点击产品图标或图片。
+    expected: 打开图片预览层，预览内容与列表缩略图对应，关闭控件可用。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-003
+  coverage_ids:
+  - COV-003-L2
+  plan_item_ids:
+  - PLAN-003
+  atomic_purpose_ids:
+  - AP-003
+  title: 按产品名称查询，检查匹配结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 产品名称筛选
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已知一个当前租户中经授权可读的产品名称。
+  steps:
+  - action: 在产品名称筛选框输入已存在的产品名称并点击“查询”。
+    expected: 查询完成后，列表仅显示名称符合输入条件的产品；无匹配时显示空结果状态。
+  - action: 查看查询结果的产品名称。
+    expected: 每条结果的产品名称均满足页面定义的名称匹配规则。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-004
+  coverage_ids:
+  - COV-004-L2
+  plan_item_ids:
+  - PLAN-004
+  atomic_purpose_ids:
+  - AP-004
+  title: 按 ProductKey 查询，检查匹配结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: ProductKey筛选
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已知一个当前租户中经授权可读的 ProductKey，且可在执行环境中脱敏使用。
+  steps:
+  - action: 在 ProductKey 筛选框输入已存在的 ProductKey 并点击“查询”。
+    expected: 查询完成后，列表显示对应 ProductKey 的产品记录。
+  - action: 查看查询结果。
+    expected: 每条结果的 ProductKey 与输入值满足页面定义的匹配规则，不出现其他 ProductKey 记录。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-005
+  coverage_ids:
+  - COV-005-L3
+  plan_item_ids:
+  - PLAN-005
+  atomic_purpose_ids:
+  - AP-005
+  title: 查询不存在的产品，检查空结果
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 空结果
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已确认当前租户中不存在该查询条件对应的产品。
+  steps:
+  - action: 在产品名称筛选框输入确认不存在的名称并点击“查询”。
+    expected: 查询条件保留在输入框中，页面显示空结果状态，列表不显示其他产品记录。
+  - action: 清空名称条件，在 ProductKey 筛选框输入确认不存在的值并点击“查询”。
+    expected: ProductKey 条件保留，页面仍显示空结果状态，不出现不匹配产品。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-006
+  coverage_ids:
+  - COV-006-L2
+  plan_item_ids:
+  - PLAN-006
+  atomic_purpose_ids:
+  - AP-006
+  title: 重置产品筛选，检查输入框和列表
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选重置
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 列表存在至少一条可查询的授权产品记录。
+  steps:
+  - action: 在产品名称和 ProductKey 筛选框分别输入测试条件并点击“查询”。
+    expected: 两个输入框保留输入值，列表仅显示同时满足条件的产品。
+  - action: 点击“重置”。
+    expected: 产品名称和 ProductKey 输入框均恢复为空，日期或其他筛选控件恢复默认值。
+  - action: 查看重置后的列表。
+    expected: 列表按默认查询条件重新加载，分页回到页面定义的默认状态。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-007
+  coverage_ids:
+  - COV-007-L2
+  plan_item_ids:
+  - PLAN-007
+  atomic_purpose_ids:
+  - AP-007
+  title: 刷新产品列表，检查页面和查询结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 列表刷新
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 产品管理页面存在经授权可读的列表数据。
+  steps:
+  - action: 记录当前筛选条件和当前页码，点击“刷新”。
+    expected: 列表重新加载，页面仍位于产品管理页面。
+  - action: 查看筛选控件和列表。
+    expected: 筛选条件按页面定义保留或清空；列表记录与刷新后的当前查询条件一致，未出现重复记录。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-011
+  coverage_ids:
+  - COV-011-L3
+  plan_item_ids:
+  - PLAN-011
+  atomic_purpose_ids:
+  - AP-011
+  title: 查看产品列表，检查创建时间排序
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 默认排序
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备至少两条创建时间不同且经授权可读的产品记录。
+  steps:
+  - action: 等待默认产品列表加载完成并查看创建时间列。
+    expected: 每条记录的创建时间按统一日期时间格式显示。
+  - action: 比较相邻产品的创建时间。
+    expected: 产品按创建时间从新到旧排列，较新的产品位于较前行。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-016
+  coverage_ids:
+  - COV-016-L2
+  plan_item_ids:
+  - PLAN-016
+  atomic_purpose_ids:
+  - AP-016
+  title: 展开更多配置，检查产品描述区域
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 更多配置
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备经授权可读且允许打开编辑页面的产品记录。
+  steps:
+  - action: 打开目标产品编辑页面并点击“更多配置”。
+    expected: 更多配置区域展开，产品描述和页面定义的两个配置区域可见。
+  - action: 查看已保存的描述和配置值。
+    expected: 各字段显示目标产品已保存值，字段标签与输入控件对应。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-017
+  coverage_ids:
+  - COV-017-L2
+  plan_item_ids:
+  - PLAN-017
+  atomic_purpose_ids:
+  - AP-017
+  title: 取消产品编辑，检查列表和产品数据
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 编辑取消
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备经授权可读且允许打开编辑页面的产品记录。
+  steps:
+  - action: 打开目标产品编辑页面。
+    expected: 产品名称、ProductKey、分类、设备类型和其他字段按当前数据回填。
+  - action: 修改允许编辑的字段但不保存，点击“取消”。
+    expected: 编辑页面关闭并返回产品列表，未保存的修改不写入产品数据。
+  - action: 重新查询目标产品。
+    expected: 产品名称、分类、描述和其他可见字段保持修改前值。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-018
+  coverage_ids:
+  - COV-018-L3
+  plan_item_ids:
+  - PLAN-018
+  atomic_purpose_ids:
+  - AP-018
+  title: 编辑已建立产品，检查设备类型不可修改
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 设备类型不变性
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备经授权可读且已建立的产品记录，并已知其设备类型。
+  steps:
+  - action: 打开已建立产品的编辑页面。
+    expected: 设备类型控件显示当前设备类型值。
+  - action: 点击设备类型控件并尝试选择其他类型。
+    expected: 控件处于禁用或只读状态，不能写入其他设备类型。
+  - action: 点击“取消”并重新打开产品。
+    expected: 设备类型仍为原值，未产生未授权修改。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-019
+  coverage_ids:
+  - COV-019-L3
+  plan_item_ids:
+  - PLAN-019
+  atomic_purpose_ids:
+  - AP-019
+  title: 新增产品，检查分类选择限制
+  type: interface
+  auto: 'auto'
+  priority: P2
+  feature: 启用分类限制
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得新增产品表单和启用/停用分类的批准只读证据。
+  steps:
+  - action: 点击“新增产品”并打开产品分类选择器。
+    expected: 分类选择器打开，选项显示分类名称和可识别的状态信息。
+  - action: 查看启用分类。
+    expected: 启用分类出现在可选列表中，可以被选择。
+  - action: 定位停用分类并尝试选择。
+    expected: 停用分类不出现在可选列表，或选项处于禁用状态且不能回填到表单。
+  - action: 点击“取消”。
+    expected: 新增表单关闭，未创建产品。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-020
+  coverage_ids:
+  - COV-020-L3
+  plan_item_ids:
+  - PLAN-020
+  atomic_purpose_ids:
+  - AP-020
+  title: 新增产品名称为空，检查必填提示
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 产品名称必填
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得仅用于观察表单校验且不会产生业务写入的明确授权。
+  steps:
+  - action: 点击“新增产品”，保持产品名称为空，填写其他必要字段并点击“保存”。
+    expected: 产品名称字段显示明确必填提示，表单保持打开且未保存成功。
+  - action: 查询产品列表。
+    expected: 列表不出现名称为空的新产品记录。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-022
+  coverage_ids:
+  - COV-022-L3
+  plan_item_ids:
+  - PLAN-022
+  atomic_purpose_ids:
+  - AP-022
+  title: 编辑产品，检查 ProductKey 和重新生成按钮
+  type: feature
+  auto: auto
+  priority: P2
+  feature: ProductKey规则
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备经授权可读且可打开编辑页面的产品记录。
+  steps:
+  - action: 打开已有产品编辑页面。
+    expected: ProductKey 字段显示已有值。
+  - action: 点击 ProductKey 输入框并尝试修改。
+    expected: ProductKey 字段处于只读或禁用状态，原值保持不变。
+  - action: 查看“重新生成”按钮并尝试点击。
+    expected: 按钮处于禁用状态或页面显示明确不可重新生成提示，ProductKey 不发生变化。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-026
+  coverage_ids:
+  - COV-026-L3
+  plan_item_ids:
+  - PLAN-026
+  atomic_purpose_ids:
+  - AP-026
+  title: 使用查看账号，检查页面和操作权限
+  type: interface
+  auto: 'no'
+  priority: P3
+  feature: 角色权限
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得产品查看人员账号、维护人员账号及正式权限和租户隔离矩阵。
+  steps:
+  - action: 使用仅有产品查看权限的账号登录并进入产品管理页面。
+    expected: 页面显示授权范围内的产品列表，不显示未授权租户或产品数据。
+  - action: 在产品名称或 ProductKey 筛选框输入已知条件并点击“查询”。
+    expected: 查询操作可执行，结果仅包含账号有权查看的产品。
+  - action: 点击“刷新”。
+    expected: 刷新操作可执行，列表重新加载且仍限制在授权数据范围内。
+  - action: 查看新增、编辑、删除、发布等操作控件。
+    expected: 无权限操作按钮隐藏或禁用；若页面仍提供可点击按钮，点击后显示明确无权限提示，产品数据不发生变化。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-028
+  coverage_ids:
+  - COV-028-L3
+  plan_item_ids:
+  - PLAN-028
+  atomic_purpose_ids:
+  - AP-028
+  title: 查看产品列表，检查产品状态值
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 产品状态
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备经授权可读且状态值可脱敏核对的产品列表数据。
+  steps:
+  - action: 查看产品列表的状态列。
+    expected: 每条产品记录均显示状态值。
+  - action: 记录多条产品状态。
+    expected: 状态值只能是“已发布”或“未发布”，没有空值或未定义文本。
+  - action: 打开其中一条产品的物模型详情。
+    expected: 列表状态与物模型页面显示的当前发布状态一致。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-030
+  coverage_ids:
+  - COV-030-L3
+  plan_item_ids:
+  - PLAN-030
+  atomic_purpose_ids:
+  - AP-030
+  title: 修改分类名称后，检查产品关联名称
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 分类关联同步
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得经授权的分类改名结果和产品关联页面脱敏回读证据。
+  steps:
+  - action: 在产品分类管理页面修改目标分类名称并保存。
+    expected: 显示保存成功提示，分类列表显示新名称。
+  - action: 返回产品管理页面并查询关联该分类的产品。
+    expected: 产品分类字段显示新名称，不显示修改前名称。
+  - action: 打开产品详情。
+    expected: 产品详情中的分类名称与分类管理页面的新名称一致；按清理方案恢复原分类名称。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-036
+  coverage_ids:
+  - COV-026-L3
+  plan_item_ids:
+  - PLAN-035
+  atomic_purpose_ids:
+  - AP-035-B
+  title: 切换租户，检查产品数据隔离
+  type: interface
+  auto: 'no'
+  priority: P3
+  feature: 租户隔离
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得两个已批准租户上下文和各自产品列表脱敏回读资料；未确认内容保持待确认。
+  steps:
+  - action: 在租户 A 上下文查询产品列表并记录一条租户 A 专属产品标识。
+    expected: 列表仅显示租户 A 授权范围内的产品。
+  - action: 切换到租户 B 并刷新产品列表。
+    expected: 页面显示租户 B 上下文，列表仅显示租户 B 授权范围内的产品，不显示租户 A 专属产品名称、ProductKey 或分类信息。
+  - action: 返回租户 A 并查询原产品。
+    expected: 租户 A 专属产品恢复显示，租户 B 专属产品不出现在租户 A 列表中。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-037
+  coverage_ids:
+  - COV-033-L2
+  plan_item_ids:
+  - PLAN-036
+  atomic_purpose_ids:
+  - AP-036
+  title: 同时按名称和 ProductKey 查询，检查组合结果
+  type: feature
+  auto: 'auto'
+  priority: P2
+  feature: 组合筛选
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得经授权的只读环境、脱敏数据和对应业务规则；未确认内容保持待确认。
+  steps:
+  - action: 在产品名称筛选框输入测试名称，在 ProductKey 筛选框输入测试 ProductKey。
+    expected: 两个输入框均显示对应值。
+  - action: 点击“查询”。
+    expected: 查询完成后，列表仅显示产品名称和 ProductKey 同时满足条件的记录。
+  - action: 查看查询结果。
+    expected: 每条结果的名称和 ProductKey 分别满足两个输入条件，不显示只满足单一条件的产品。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-039
+  coverage_ids:
+  - COV-035-L3
+  plan_item_ids:
+  - PLAN-038
+  atomic_purpose_ids:
+  - AP-038
+  title: 使用大小写变体查询，记录产品匹配结果
+  type: interface
+  auto: 'auto'
+  priority: P3
+  feature: 大小写筛选
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得经授权的只读环境、脱敏数据和对应业务规则；未确认内容保持待确认。
+  steps:
+  - action: 在产品名称筛选框输入已知名称的大小写变体并点击“查询”。
+    expected: 查询条件保留，列表显示实际匹配结果。
+  - action: 清空名称条件，在 ProductKey 筛选框输入已知 ProductKey 的大小写变体并点击“查询”。
+    expected: ProductKey 条件保留，列表显示实际匹配结果。
+  - action: 记录两次查询的匹配范围。
+    expected: 结果可以明确归类为区分大小写或不区分大小写，并与已确认的产品查询契约进行比对。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-040
+  coverage_ids:
+  - COV-036-L3
+  plan_item_ids:
+  - PLAN-039
+  atomic_purpose_ids:
+  - AP-039
+  title: 查询后重置筛选，检查条件和列表
+  type: feature
+  auto: 'auto'
+  priority: P3
+  feature: 条件交互
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得经授权的只读环境、脱敏数据和对应业务规则；未确认内容保持待确认。
+  steps:
+  - action: 在产品名称和 ProductKey 筛选框输入条件并点击“查询”。
+    expected: 两个条件保留，列表显示组合筛选结果。
+  - action: 点击“重置”。
+    expected: 产品名称和 ProductKey 输入框均清空，其他筛选控件恢复默认值。
+  - action: 查看重置后的列表和分页。
+    expected: 列表按默认查询条件重新加载，分页回到默认页，显示记录不再受已清除条件限制。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-042
+  coverage_ids:
+  - COV-038-L3
+  plan_item_ids:
+  - PLAN-041
+  atomic_purpose_ids:
+  - AP-041
+  title: 发布并撤销发布产品物模型，检查状态变化
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态转换
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已获得经授权的产品数据和可操作的产品管理页面。
+  steps:
+  - action: 打开当前状态为“未发布”的产品物模型页面。
+    expected: 页面显示当前状态为“未发布”，并显示“发布”操作按钮。
+  - action: 点击“发布”并在确认层点击“确定”。
+    expected: 显示发布成功提示，物模型状态更新为“已发布”。
+  - action: 关闭物模型页面并重新打开目标产品。
+    expected: 产品列表或详情显示状态为“已发布”，物模型页面显示“撤销发布”操作。
+  - action: 点击“撤销发布”并在确认层点击“确定”。
+    expected: 显示撤销发布成功提示，物模型状态更新为“未发布”。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-048
+  coverage_ids:
+  - COV-041-L1
+  plan_item_ids:
+  - PLAN-025
+  atomic_purpose_ids:
+  - AP-047
+  title: 新增产品，检查成功提示和列表回读
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 新增成功闭环
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备隔离且经批准的新增产品数据、启用分类和产品维护权限。
+  steps:
+  - action: 点击“新增产品”，输入唯一产品名称和 ProductKey，选择启用分类和设备类型，并填写其他必要字段。
+    expected: 表单字段显示输入值，必填字段均已填写。
+  - action: 点击“保存”。
+    expected: 显示新增成功提示，表单关闭或进入完成状态。
+  - action: 刷新列表并按名称或 ProductKey 查询。
+    expected: 列表出现一条目标产品记录，产品名称、ProductKey、分类和设备类型与输入值一致。
+  - action: 再次查询相同条件。
+    expected: 目标产品只出现一条，没有重复创建记录；按清理方案删除测试产品。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-049
+  coverage_ids:
+  - COV-042-L1
+  plan_item_ids:
+  - PLAN-026
+  atomic_purpose_ids:
+  - AP-048
+  title: 编辑产品，检查成功提示和字段回读
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 编辑成功闭环
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备隔离且经批准的可编辑产品、合法修改值和产品维护权限。
+  steps:
+  - action: 打开隔离测试产品编辑页面。
+    expected: 产品名称、分类、描述和设备类型字段正确回填。
+  - action: 修改允许编辑的名称、分类或配置字段并点击“保存”。
+    expected: 显示编辑成功提示，编辑页面关闭或进入完成状态。
+  - action: 刷新列表并查询修改后的产品。
+    expected: 列表显示修改后的字段值。
+  - action: 打开产品详情。
+    expected: 修改字段回读值与输入值一致，ProductKey、设备类型等不可编辑字段保持修改前值；按清理方案恢复或删除测试产品。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-050
+  coverage_ids:
+  - COV-043-L1
+  plan_item_ids:
+  - PLAN-027
+  atomic_purpose_ids:
+  - AP-049
+  title: 删除无关联产品，检查记录消失
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 删除成功闭环
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备隔离且确认无设备、采集任务、推送配置或告警规则关联的产品。
+  steps:
+  - action: 定位没有关联设备的隔离测试产品并点击“删除”。
+    expected: 显示删除确认层，并展示目标产品名称或 ProductKey及“确定”“取消”按钮。
+  - action: 点击确认层“确定”。
+    expected: 显示删除成功提示，确认层关闭。
+  - action: 刷新产品列表并按原名称查询。
+    expected: 查询结果为空，目标产品不再出现在列表中。
+  - action: 按原 ProductKey 查询并查看其他产品。
+    expected: 目标 ProductKey 无结果，其他产品记录未被删除或修改。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-051
+  coverage_ids:
+  - COV-044-L1
+  plan_item_ids:
+  - PLAN-028
+  atomic_purpose_ids:
+  - AP-050
+  title: 切换产品发布状态，检查列表和物模型回读
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态切换成功闭环
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备处于允许转换状态的隔离产品、对应物模型版本和状态维护权限。
+  steps:
+  - action: 打开目标产品物模型并记录当前状态。
+    expected: 页面显示当前状态及与之对应的状态转换按钮。
+  - action: 点击状态转换按钮并在确认层点击“确定”。
+    expected: 显示操作成功提示，状态更新为目标状态。
+  - action: 关闭物模型并刷新产品列表。
+    expected: 产品列表状态与目标状态一致。
+  - action: 重新打开目标产品物模型。
+    expected: 物模型状态仍为目标状态，页面操作按钮与当前状态匹配；按清理方案恢复原状态。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-052
+  coverage_ids:
+  - COV-045-L1
+  plan_item_ids:
+  - PLAN-029
+  atomic_purpose_ids:
+  - AP-051
+  title: 按筛选条件导出产品，检查文件和字段
+  type: feature
+  auto: 'auto'
+  priority: P2
+  feature: 导出成功闭环
+  common_preconditions_ref: CP-REQ-003-001
+  preconditions:
+  - 已准备经批准的筛选结果、导出权限和脱敏文件验证方案。
+  steps:
+  - action: 设置产品名称或 ProductKey 筛选条件并点击“查询”。
+    expected: 列表仅显示符合筛选条件的产品。
+  - action: 点击“导出”并等待下载完成。
+    expected: 生成一个可打开的导出文件，页面显示下载完成提示或浏览器下载记录出现目标文件。
+  - action: 打开导出文件。
+    expected: 文件可以正常打开，表头与产品列表定义的导出字段一致。
+  - action: 核对导出记录。
+    expected: 文件只包含当前筛选结果，记录数量与查询结果一致。
+  - action: 检查文件字段。
+    expected: 文件不包含产品列表未授权导出的敏感字段。
+  - action: 删除本次下载的临时文件。
+    expected: 临时文件从下载目录删除，测试环境不残留导出文件。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-
+  trace:
+    req: REQ-003
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_by_execution_evidence
+    source_review: REQ-003 case review
+- id: TC-REQ-003-053
+  common_preconditions_ref: CP-REQ-003-001
+  coverage_ids:
+  - COV-003-DELETE-RECREATE-L3
+  plan_item_ids:
+  - PLAN-003-DELETE-RECREATE
+  atomic_purpose_ids:
+  - AP-003-DELETE-RECREATE
+  scenario_branch: 删除后同表单内容重新创建
+  title: 删除后用相同配置重建产品
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 删除后同表单重建
+  preconditions:
+  - 已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。
+  - 已记录删除前表单字段：产品名称、ProductKey、分类及描述；删除后使用相同值，不使用原系统生成的唯一标识。
+  steps:
+  - action: 使用隔离数据新增产品，填写并记录名称、ProductKey、分类、设备类型和描述。
+    expected: 新增成功，列表或详情回读字段与输入值一致。
+  - action: 删除该产品并在确认层点击“确定”。
+    expected: 显示删除成功提示，刷新列表后目标产品不再出现。
+  - action: 使用相同名称、ProductKey、分类、设备类型和描述重新填写新增表单并点击“保存”。
+    expected: 重建成功并显示新增成功提示。
+  - action: 刷新列表并打开重建产品详情。
+    expected: 名称、ProductKey、分类、设备类型和描述与首次创建记录一致；编号、创建时间等系统生成字段按系统规则重新生成。
+  - action: 按清理方案删除重建产品并刷新列表。
+    expected: 测试产品清理完成，列表不再显示测试记录。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-DELETE-RECREATE-
+- id: TC-REQ-003-054
+  common_preconditions_ref: CP-REQ-003-001
+  coverage_ids:
+  - COV-046-L1
+  plan_item_ids:
+  - PLAN-030
+  atomic_purpose_ids:
+  - AP-052
+  title: 复制产品ProductKey并校验粘贴内容
+  type: feature
+  auto: auto
+  priority: P2
+  feature: ProductKey复制成功
+  preconditions:
+  - 已准备经授权可读的产品记录，且可通过“查看”或“物模型”按钮打开产品详情弹窗。
+  - 已准备页面内临时可编辑的粘贴目标，不保存或提交粘贴的 ProductKey。
+  steps:
+  - action: 在产品列表中点击目标产品的“查看”或“物模型”按钮，打开详情或物模型弹窗。
+    expected: 详情或物模型弹窗成功打开，ProductKey 字段显示非空值，并显示对应的复制按钮。
+  - action: 记录弹窗中显示的 ProductKey，点击 ProductKey 对应的复制按钮。
+    expected: 页面显示“复制成功”提示，复制操作完成。
+  - action: 将已复制的内容粘贴到临时可编辑位置。
+    expected: 临时位置成功粘贴内容，粘贴值与弹窗中记录的 ProductKey 完全一致。
+  - action: 关闭弹窗并清理临时粘贴内容。
+    expected: 弹窗正常关闭，临时位置不保留本次测试的 ProductKey，产品数据未被修改。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/product
+    data_prefix: REQ-003-PRODUCTKEY-COPY-
+

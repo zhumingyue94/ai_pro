@@ -1,0 +1,349 @@
+schema_version: "1.0"
+req_id: REQ-APP-005
+module_name: "合格蛋库 / 库存查询"
+zentao_module_id: 567
+platform: app
+analysis_status: analyzed_from_docx_baseline_and_readonly_prototype
+scope:
+  object_scope: 合格蛋库
+  object_scope_evidence: inferred
+  object_scope_basis: "基线将通用蛋库页面分配到合格蛋库；原型页面本身主要使用通用名称，业务对象隔离需确认。"
+  included: "库存查询主流程及其搜索、筛选、筛选结果、库位详情页面契约。"
+  excluded: "P027 蛋库缩略（作废）；入库、盘点确认表单的执行提交；接口实现、权限实现、数据持久化实现。"
+evidence_legend:
+  observed: "本次以 430x932 视口打开实时原型，networkidle 后检查渲染 DOM、页面文本和控件。"
+  static: "DOCX 页面表、Axure 页面树、data.js 静态页面内链接或已保存的 DOM/page_text。"
+  inferred: "基于页面命名、模块基线或跨页关系的分析归纳，不能视为已确认业务规则。"
+  open_question: "输入材料和本次只读探索未明确，需产品/研发确认。"
+inputs:
+  - path: 01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx
+    type: docx
+    sections: ["5.26 蛋库列表", "5.28 蛋库库位详情", "5.29 种蛋搜索", "5.30 种蛋筛选", "5.31 筛选结果"]
+    evidence_level: static
+  - path: 01_requirements/app/模块拆分清单.md
+    type: baseline
+    sections: ["REQ-APP-005", "原型 vs 需求差异 D-04", "实施边界"]
+    evidence_level: static
+  - path: 01_requirements/app/axure_map.md
+    type: axure_map
+    sections: ["P026", "P028", "P029", "P030", "P031", "页面内导航边界"]
+    evidence_level: static
+  - path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/
+    type: readonly_evidence_run
+    evidence_level: static
+  - path: http://127.0.0.1:5500/
+    type: live_prototype
+    viewport: "430x932"
+    wait: networkidle
+    browser_mode: "headless=False"
+    evidence_level: observed
+source_pages:
+  - page_id: P026
+    name: 蛋库列表
+    status: 正常
+    evidence:
+      - level: observed
+        path: "http://127.0.0.1:5500/蛋库列表.html"
+        detail: "实时渲染出搜索、筛选、全景、库位状态、库位卡片、右滑动作、批量入库和批量盘点文本。"
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-026.txt
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-026.html
+  - page_id: P028
+    name: 蛋库库位详情
+    status: 正常
+    evidence:
+      - level: observed
+        path: "http://127.0.0.1:5500/蛋库库位详情.html"
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-028.txt
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-028.html
+  - page_id: P029
+    name: 种蛋搜索
+    status: 正常
+    evidence:
+      - level: observed
+        path: "http://127.0.0.1:5500/种蛋搜索.html"
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-029.txt
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-029.html
+  - page_id: P030
+    name: 种蛋筛选
+    status: 正常
+    evidence:
+      - level: observed
+        path: "http://127.0.0.1:5500/种蛋筛选.html"
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-030.txt
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-030.html
+  - page_id: P031
+    name: 筛选结果
+    status: 正常
+    evidence:
+      - level: observed
+        path: "http://127.0.0.1:5500/筛选结果.html"
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-031.txt
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-031.html
+  - page_id: P027
+    name: 蛋库缩略（作废）
+    status: 作废
+    included: false
+    evidence:
+      - level: static
+        path: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-027.txt
+        detail: "仅作为作废边界证据，不形成正常页面契约。"
+page_contracts:
+  - page_id: P026
+    name: 蛋库列表
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return:
+      entry:
+        level: static
+        detail: "首页的合格蛋蛋库-库存查询入口指向蛋库列表；页面表将首页列为入口。"
+      return:
+        level: static
+        detail: "页面树/静态链接可返回首页；原型未观察到可复现的真实页面内点击导航。"
+    query_area:
+      level: observed
+      items: [搜索, 筛选, 全景, "库位状态：全部（66）、空位（5）、未满（53）、满容（53）、超容（3）、停用（5）"]
+      rules:
+        - level: static
+          detail: "库位状态数字一期可以不做；固定标题栏的库位数量、种蛋数量按筛选后列表汇总。"
+        - level: open_question
+          detail: "合格蛋库对象选择、场区隔离、分页/刷新和空状态处理未明确。"
+    list_or_cards:
+      level: observed
+      items:
+        - "普通库位卡片：库位号、养殖场-批次-品种、周龄、蛋重/蛋重类型、产蛋日期、蛋数、库位状态、种蛋状态。"
+        - "空位：库位号、空位状态、种蛋数量 0。"
+        - "停用：库位号、停用/空位表现、种蛋数量 - -；不可进入详情。"
+        - "拼车：主库位显示库位号、拼车种类数/库位总数、库位状态；子库位显示种蛋信息。"
+    form:
+      level: observed
+      detail: "未观察到库存列表页内联编辑表单；搜索和筛选表单位于独立页面 P029/P030。"
+    dialogs:
+      level: open_question
+      detail: "未观察到可复现的业务弹窗；容量/托盘容量图标的弹框仅由静态注释描述，需确认是否实现。"
+    actions:
+      observed: [搜索, 筛选, 全景, 入库, 盘点, 记录, 批量入库, 批量盘点, "右滑"]
+      static:
+        - "普通/空位库位右滑：记录、盘点、入库；记录带库位 ID 进入记录查询，盘点/入库进入操作页。"
+        - "拼车主库位：记录、入库；点击主库位展开/收缩，不进入详情；拼车子库位：盘点并进入详情。"
+      boundary: "本 REQ 仅分析查询与导航；不执行入库、盘点提交。"
+    status_and_transitions:
+      observed: [全部, 空位, 未满, 满容, 超容, 停用, 待排期, 待孵期, 待上孵, 已超期]
+      inferred: "上述标签在原型中作为库存/种蛋状态展示或筛选项；原型未给出状态转换触发条件和持久化规则。"
+      open_question: "合格蛋状态与库位状态的关系、超容判定、状态切换来源需确认。"
+  - page_id: P028
+    name: 蛋库库位详情
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return:
+      entry:
+        level: static
+        detail: "由 P026 普通库位或拼车子库位进入；停用库位无详情。"
+      return:
+        level: static
+        detail: "返回蛋库列表；入库/盘点为操作页入口，实际返回刷新策略仅有静态注释。"
+    query_area:
+      level: observed
+      detail: "未观察到查询区；页面展示当前库位详情。"
+    list_or_cards:
+      level: observed
+      items: [库位信息, 种蛋信息, 当前库存, 托盘数, 散装数, 库位状态, 仓库, 库位, 孵化场, 关联计划]
+    form:
+      level: observed
+      detail: "未观察到可编辑字段；盘点/入库按钮进入独立操作页。"
+    dialogs:
+      level: static
+      detail: "容量、库位总托盘数、托盘容量可由图标弹框展示；实时 DOM 未观察到可复现弹框。"
+    actions:
+      observed: [入库, 盘点, 复制]
+      static: [展开/收缩关联计划, "复制计划号"]
+    status_and_transitions:
+      observed: [未满, 空位, 满容, 超容, 待上孵]
+      open_question: "详情页字段是否随库位对象类型变化、关联计划展开默认状态和刷新时机需确认。"
+  - page_id: P029
+    name: 种蛋搜索
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return:
+      entry:
+        level: static
+        detail: "由 P026 的搜索入口进入；页面表也列出返回蛋库列表及详情/操作相关静态链接。"
+      return:
+        level: static
+        detail: "有结果进入库存结果列表，空结果展示无库存；返回路径未在实时点击中验证。"
+    query_area:
+      level: observed
+      items: [搜索输入框, 搜索, 历史搜索, "计划号", "库位号", "养殖场", "批次", "品种"]
+      rules:
+        - level: static
+          detail: "输入关键字后可自动查找当前账户现存上孵任务匹配结果；本期也可只按输入关键字查询。"
+        - level: open_question
+          detail: "搜索匹配算法、大小写/模糊匹配和历史搜索持久化未明确。"
+    list_or_cards:
+      level: observed
+      detail: "搜索结果复用蛋库卡片；无结果文本为没有找到相关的库存。"
+    form:
+      level: observed
+      detail: "搜索输入；未观察到其他编辑表单。"
+    dialogs:
+      level: observed
+      detail: "未观察到业务弹窗。"
+    actions:
+      observed: [搜索, "选择历史搜索词"]
+      static: [进入库位详情, 入库, 盘点, 返回蛋库列表]
+    status_and_transitions:
+      observed: [搜索有结果, 搜索无结果]
+      open_question: "查询失败、网络失败和权限不足时的提示未明确。"
+  - page_id: P030
+    name: 种蛋筛选
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return:
+      entry:
+        level: static
+        detail: "由 P026 的筛选入口进入。"
+      return:
+        level: static
+        detail: "确认进入 P031 筛选结果，重置恢复默认筛选；实际点击未执行。"
+    query_area:
+      level: observed
+      items: ["库位状态：全部/空位/满容/超容/停用", "种蛋状态：待排期/待孵期/待上孵/已超期", "上孵日期", 养殖场, 品种, 蛋重类型, 确认, 重置]
+      rules:
+        - level: observed
+          detail: "上孵日期为单选日期范围；实时 DOM 存在日期、文本和选择控件。"
+        - level: static
+          detail: "种蛋状态逻辑在后台已有，原型不重复定义。"
+        - level: open_question
+          detail: "多条件组合关系、默认日期范围、空筛选提交和状态数字是否返回接口未明确。"
+    list_or_cards:
+      level: observed
+      detail: "筛选页同时展示库存卡片预览；结果页为 P031。"
+    form:
+      level: observed
+      items: [上孵日期范围, 养殖场选择, 品种选择, 蛋重类型选择, 库位状态选择, 种蛋状态选择]
+    dialogs:
+      level: observed
+      detail: "未观察到业务弹窗。"
+    actions:
+      observed: [确认, 重置]
+      static: [进入筛选结果, 返回搜索/列表]
+    status_and_transitions:
+      observed: [全部, 空位, 满容, 超容, 停用, 待排期, 待孵期, 待上孵, 已超期]
+      open_question: "筛选状态是展示过滤还是业务状态流转未明确；不应从标签推导状态机。"
+  - page_id: P031
+    name: 筛选结果
+    evidence_levels: [observed, static, inferred, open_question]
+    entry_and_return:
+      entry:
+        level: static
+        detail: "由 P030 确认进入；也可由静态页面链接返回搜索、筛选或列表。"
+      return:
+        level: static
+        detail: "可返回蛋库列表、搜索、筛选或进入库位详情；真实页面内导航未观察到。"
+    query_area:
+      level: observed
+      items: [搜索, 筛选, 全景, "合格蛋仓库一号"]
+      detail: "筛选结果页未观察到独立可编辑查询表单。"
+    list_or_cards:
+      level: observed
+      detail: "复用 P026 库位卡片；支持有结果和没有找到相关的库存文本。"
+    form:
+      level: observed
+      detail: "未观察到内联编辑表单。"
+    dialogs:
+      level: observed
+      detail: "未观察到业务弹窗。"
+    actions:
+      observed: [搜索, 筛选, 全景, 入库, 盘点, 记录]
+      static: [进入库位详情, 返回蛋库列表]
+    status_and_transitions:
+      observed: [空位, 未满, 满容, 超容, 停用, 待孵期, 待上孵, 已超期]
+      open_question: "筛选条件是否在返回列表时保留未明确。"
+interfaces:
+  - name: inventory_query
+    direction: read
+    evidence_level: open_question
+    observed_contract: "页面需要返回库位汇总、库存卡片、种蛋信息、库位状态、种蛋状态和关联计划。"
+    endpoint_or_protocol: "未观察到接口地址、协议、鉴权或分页定义。"
+    candidate_inputs: [孵化场/场区, 合格蛋库标识, 库位状态, 种蛋状态, 上孵日期, 养殖场, 品种, 蛋重类型, 关键词]
+    candidate_outputs: [库位列表, 库位汇总, 种蛋数量, 库位详情, 关联计划]
+  - name: inventory_detail
+    direction: read
+    evidence_level: open_question
+    observed_contract: "P028 需要按库位读取库存、托盘、散装、库位状态和关联计划。"
+    endpoint_or_protocol: "未观察到接口定义。"
+  - name: navigation_to_movement_and_stocktake
+    direction: navigation
+    evidence_level: static
+    observed_contract: "库存卡片存在记录、入库、盘点入口；操作提交不在本 REQ 执行。"
+    endpoint_or_protocol: "未观察到接口调用。"
+cross_module_refs:
+  - ref: REQ-APP-001
+    module: 首页
+    zentao_module_id: 556
+    relation: entry
+    evidence_level: observed
+    detail: "首页实时文本显示合格蛋蛋库及库存查询。"
+  - ref: REQ-APP-002
+    module: 孵化任务 / 种蛋上孵
+    zentao_module_id: 564
+    relation: related_navigation
+    evidence_level: inferred
+    detail: "库存卡片/种蛋状态和上孵操作存在原型关联；具体数据依赖需确认。"
+  - ref: REQ-APP-006
+    module: 合格蛋库 / 出入库记录
+    zentao_module_id: 568
+    relation: record_entry
+    evidence_level: static
+  - ref: REQ-APP-007
+    module: 合格蛋库 / 盘点记录
+    zentao_module_id: 569
+    relation: stocktake_entry
+    evidence_level: static
+business_rules:
+  - id: BR-005-01
+    rule: "库存列表按普通、空位、拼车、停用等库位形态展示。"
+    evidence_level: observed
+  - id: BR-005-02
+    rule: "状态数字在原型注释中标为一期可以不做；汇总数量应按筛选后的展示列表计算。"
+    evidence_level: static
+  - id: BR-005-03
+    rule: "停用库位不可进入详情；拼车主库位展开/收缩，子库位可进入盘点详情。"
+    evidence_level: static
+  - id: BR-005-04
+    rule: "合格蛋库作为本 REQ 的对象边界来自模块基线，通用蛋库页面是否真正隔离对象尚未由原型证明。"
+    evidence_level: inferred
+  - id: BR-005-05
+    rule: "未定义角色权限、字段校验、状态转换、异常提示、缓存、持久化或接口错误处理。"
+    evidence_level: open_question
+open_questions:
+  - id: OQ-005-01
+    question: "合格蛋库与二级蛋库是否共用页面但通过库类型/库 ID 隔离？"
+    impact: high
+  - id: OQ-005-02
+    question: "库位状态、种蛋状态的枚举、转换条件、超容判定和统计口径是什么？"
+    impact: high
+  - id: OQ-005-03
+    question: "搜索、筛选的接口参数、分页、排序、刷新和网络异常提示如何定义？"
+    impact: high
+  - id: OQ-005-04
+    question: "入库/盘点/记录按钮在不同角色、不同库位状态下的权限和置灰规则是什么？"
+    impact: high
+  - id: OQ-005-05
+    question: "库位容量图标弹框及关联计划复制的交互和数据来源是否纳入一期？"
+    impact: medium
+analysis_boundary:
+  read_only: true
+  prohibited_actions: [新增, 编辑, 删除, 入库, 出库, 盘点确认, 任务执行, 远程数据写入]
+  not_claimed: [接口已实现, 权限已实现, 状态机已确认, 数据已持久化, 页面内导航已真实点击验证]
+handoff:
+  next_owner: 产品/研发/测试设计
+  deliverable_use: "以本契约补充接口、权限、状态和异常规则后，再进入测试点设计；不要直接把 inferred/open_question 转成测试事实。"
+  generated_files:
+    - 02_analysis/app/REQ-APP-005.yaml
+    - 02_analysis/app/REQ-APP-005_合格蛋库-库存查询.md

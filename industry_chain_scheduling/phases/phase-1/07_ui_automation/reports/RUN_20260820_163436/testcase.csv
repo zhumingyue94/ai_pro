@@ -1,0 +1,88 @@
+﻿用例编号,所属模块,用例函数名称,标题,前置条件,预期,步骤,结果,错误原因,截图路径
+TC-002-01,目标制定,test_tc_002_01,查询条件包含「年度」「状态」字段,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）",1. 页面顶部查询区可见筛选项：年度、状态两个筛选项,1. 查看页面顶部查询区域,passed,,
+TC-002-04,目标制定,test_tc_002_04,仅选年度后点击「查询」，列表按年度过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在可按「年度」区分的测试数据","1. 仅「年度」有值
+2. 列表仅展示符合该「年度」条件的记录","1. 在查询区仅设置「年度」，其余条件留空
+2. 点击「查询」按钮",passed,,
+TC-002-05,目标制定,test_tc_002_05,仅选状态后点击「查询」，列表按状态过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在可按「状态」区分的测试数据","1. 仅「状态」有值
+2. 列表仅展示符合该「状态」条件的记录","1. 在查询区仅设置「状态」，其余条件留空
+2. 点击「查询」按钮",passed,,
+TC-002-06,目标制定,test_tc_002_06,选择年度+状态后点击「查询」，列表按组合条件过滤,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表存在可组合区分的测试数据","1. 各筛选项均已设置
+2. 列表仅显示同时满足全部条件的记录","1. 同时设置多个查询条件
+2. 点击「查询」按钮",passed,,
+TC-002-08,目标制定,test_tc_002_08,点击「重置」，年度/状态恢复默认并刷新列表,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","1. 列表按条件过滤
+2. 点击「重置」后筛选项回到默认，列表按默认条件重新加载","1. 设置非默认的年度与状态后点击「查询」
+2. 点击「重置」按钮",passed,,
+TC-002-20,目标制定,test_tc_002_20,点击「按月度平均分配」，12个月份均分且合计=年度宰杀量,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","1. 字段填写成功
+2. 执行均分后：年度宰杀量均分到1~12月，末月补差，合计等于年度宰杀量","1. 打开新增弹窗，选择未占用目标年度，输入年度宰杀量 120
+2. 点击「按月度平均分配」",passed,,
+TC-002-27,目标制定,test_tc_002_27,点击「暂存」保存目标，状态=暂存且不提交审核,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中已存在状态为「暂存」的记录","1. 必填项齐全且合计相等
+2. 点击暂存后列表新增/更新记录状态显示为「暂存，不进入待审核」","1. 打开新增弹窗，选择未占用年度，填写年度宰杀量并均分
+2. 点击「暂存」",passed,,
+TC-002-28,目标制定,test_tc_002_28,点击「保存并提交审核」，状态变为待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","1. 必填项齐全且合计相等
+2. 新增弹窗保存并提交后状态显示为「待审核」","1. 打开新增弹窗，选择未占用年度，填写并均分
+2. 点击「保存并提交审核」",blocked,"页面等待超时：Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("".el-dialog:visible"").last to be hidden
+    23 × locator resolved to visible <div tabindex=""-1"" class=""el-dialog is-draggable com-dialog"">…</div>
+",
+TC-002-75,目标制定,test_tc_002_75,暂存行点击「提交」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中已存在状态为「暂存」的记录",1. 弹出提交确认框，文案表达将目标提交审核的意图（不强校验逐字）,1. 在暂存行点击「提交」,blocked,"页面等待超时：Locator.wait_for: Timeout 8000ms exceeded.
+Call log:
+  - waiting for locator("".el-message-box:visible"") to be visible
+",
+TC-002-77,目标制定,test_tc_002_77,提交确认框点击确定，提示成功且状态变待审核,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在应为「待审核」的记录记录",1. 状态显示为「待审核」,1. 定位该行查看状态列,blocked,"页面等待超时：Locator.wait_for: Timeout 8000ms exceeded.
+Call log:
+  - waiting for locator("".el-message-box:visible"") to be visible
+",
+TC-002-84,目标制定,test_tc_002_84,点击「驳回」弹出驳回确认框，填写原因并确认后状态变驳回,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","1. 弹出驳回确认框
+2. 驳回成功，记录状态变为「驳回」","1. 打开审核弹窗，点击「驳回」
+2. 在驳回确认框填写原因后点击确认",blocked,"页面等待超时：Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("".el-dialog:visible"").last to be hidden
+    24 × locator resolved to visible <div tabindex=""-1"" class=""el-dialog is-draggable com-dialog"">…</div>
+",
+TC-002-85,目标制定,test_tc_002_85,驳回原因为空被阻断；填写后列表驳回原因列展示,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","1. 确认被阻断，状态仍为待审核
+2. 驳回成功
+3. 展示所填驳回原因","1. 打开审核弹窗→点击驳回→驳回确认框留空原因点确认
+2. 填写有效原因后再次确认驳回
+3. 查看列表「驳回原因」列",blocked,"页面等待超时：Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("".el-dialog:visible"").last to be hidden
+    23 × locator resolved to visible <div tabindex=""-1"" class=""el-dialog is-draggable com-dialog"">…</div>
+",
+TC-002-86,目标制定,test_tc_002_86,点击「审核通过」直接成功，无二次确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）",1. 无二次确认弹窗，直接提示成功且状态变为「审核通过」,1. 打开审核弹窗，点击「审核通过」或「通过」,blocked,"页面等待超时：Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("".el-dialog:visible"").last to be hidden
+    23 × locator resolved to visible <div tabindex=""-1"" class=""el-dialog is-draggable com-dialog"">…</div>
+",
+TC-002-87,目标制定,test_tc_002_87,审核通过后记录审核人、审核时间,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）","1. 状态=审核通过
+2. 通过后落库：写入审核人员与审核时间","1. 完成审核通过操作
+2. 查看列表审核人员与审核时间",blocked,"页面等待超时：Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("".el-dialog:visible"").last to be hidden
+    23 × locator resolved to visible <div tabindex=""-1"" class=""el-dialog is-draggable com-dialog"">…</div>
+",
+TC-002-88,目标制定,test_tc_002_88,点击「删除」弹出确认框,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）",1. 弹出删除确认框，文案表达删除意图即可（如是否删除所选中数据）,1. 在可删除行点击「删除」,passed,,
+TC-002-90,目标制定,test_tc_002_90,删除确认框点击确定，提示成功且记录从列表消失,"1. 使用智控中心测试账号登录系统
+2. 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+3. 列表中存在可删除的记录/单据测试数据",1. 提示删除成功，记录从列表消失,1. 在删除确认框点击「确定」,failed,确认删除后记录仍存在于列表,

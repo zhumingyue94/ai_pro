@@ -1,0 +1,19 @@
+{
+  "req_id": "REQ-011",
+  "operation": "update",
+  "remote_case_id": 52042,
+  "local_case_id": "TC-REQ-011-050",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 749},
+  "status": "validated",
+  "remote_version_after": 6,
+  "steps_after": 4,
+  "readback": {
+    "title": "重复提交处理，检查只生效一次",
+    "first_step": "在告警记录列表定位目标记录，点击“处理”按钮。",
+    "second_step": "在“处理告警”弹窗填写处理原因并点击提交一次。",
+    "third_step": "在列表的“处理”按钮仍可操作时再次点击“处理”按钮打开弹窗，填写相同或等价原因并再次提交。",
+    "third_expected": "第二次提交被阻止或返回幂等提示，不产生第二条处理结果。",
+    "fourth_step": "刷新并读取记录。"
+  },
+  "policy": "稳定ID原位更新；未删除重建、未创建替代用例。"
+}

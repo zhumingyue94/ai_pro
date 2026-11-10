@@ -1,0 +1,198 @@
+req_id: REQ-003
+gate_passed: true
+exec_check:
+  command: project-local YAML/JSON/type-sync validation
+  errors: 0
+  warnings: 0
+  exit_code: 0
+  note: 本仓库未提供 check_testcase_executability.py；本轮使用项目内静态验证完成门禁。
+checks:
+- id: CG1
+  name: yaml_json_and_zentao_type_consistency
+  passed: true
+- id: CG5
+  name: tp_coverage_and_registry_ids
+  passed: true
+issues: []
+csv_path: null
+review_status: stale
+csv_invalidation:
+  status: deleted
+  previous_csv_path: 05_case_review/003_分段养殖模版_测试用例.csv
+  reason: 测试用例 CSV 已按项目清理计划删除；历史来源不作为当前有效产物，需重新评审后再导出。
+human:
+  rewrite_approved: false
+rewrite:
+  round: 3
+  max_rounds: 5
+  status: done
+trace:
+  source_tc: 04_testcases/TC_REQ-003.yaml
+  source_tp: 03_testpoints/TP_REQ-003.yaml
+  source_testpoint_review: 04_testpoint_review/REV_REQ-003.yaml
+  source: null # original ZenTao evidence deleted by cleanup
+  project: 产业链生产排程系统
+  status: approved_zentao_missing_local_20260819
+  source_sha256:
+    tc: 47168fa359bfc39956603b9c41ef54f738f70ee0fd760220c49aeb37ff7bb7ad
+    tp: 7809223a029b2ab305705c3e49aea694a6d4b3f43f3ca977535b72892ecda79b
+    testpoint_review: 6a517a5efbde5d8afa318212fb3b79a9e2463899a740beb086a0faba2f31336c
+delta_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  scope: zentao_missing_cases_type_sync
+  case_ids:
+  - TC-003-152
+  - TC-003-153
+  cases_reviewed: 2
+  delta_passed: true
+  results:
+  - case_id: TC-003-152
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-003-153
+    verdict: pass
+    errors: 0
+    warnings: 0
+  zentao_type_conflicts: []
+  auto_assessment: not_performed; auto and type copied from zentao type/auto
+  page_evidence: [] # original page evidence deleted by cleanup
+  data_safety: no destructive operation; admin-prepared states remain preconditions
+delta_review_note: 2026-08-13 增量评审 2 条；禅道 type/auto 无冲突；gate_passed=True；不执行本地自动化适配性评估
+csv_note: 测试用例 CSV 已按项目清理计划删除；需重新评审通过后再导出，历史文件不作为当前有效产物。
+auto_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  case_ids:
+  - TC-003-95
+  - TC-003-100
+  - TC-003-101
+  - TC-003-130
+  - TC-003-146
+  - TC-003-147
+  - TC-003-148
+  - TC-003-149
+  - TC-003-150
+  - TC-003-151
+  zentao_case_ids:
+  - 47667
+  - 47672
+  - 47673
+  - 47702
+  - 48738
+  - 48739
+  - 48740
+  - 48741
+  - 48742
+  - 48743
+  cases_reviewed: 10
+  delta_passed: true
+  local_suitability_assessment: not_performed
+  type_source_conflicts: []
+  raw_auto_field_mismatches: []
+  results:
+  - case_id: TC-003-95
+    zentao_case_id: 47667
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-100
+    zentao_case_id: 47672
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-101
+    zentao_case_id: 47673
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-130
+    zentao_case_id: 47702
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-146
+    zentao_case_id: 48738
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-147
+    zentao_case_id: 48739
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-148
+    zentao_case_id: 48740
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-149
+    zentao_case_id: 48741
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-150
+    zentao_case_id: 48742
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+  - case_id: TC-003-151
+    zentao_case_id: 48743
+    type: auto
+    auto: auto
+    status: synced_by_zentao_type
+    verdict: pass
+field_sync_review:
+  date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  source_command: zentao testcase --project=38 --page=1 --recPerPage=1000 --format=json
+  registered_cases: 856
+  mapping: local.type=zentao.type; local.auto=zentao.auto
+  local_suitability_assessment: not_performed_for_registered_cases
+  pending_registry_cases: 5
+  remote_write: false
+  verdict: pass
+csv_source:
+  status: deleted
+  tc_sha256: 47168fa359bfc39956603b9c41ef54f738f70ee0fd760220c49aeb37ff7bb7ad
+  review_sha256: 2f8a0314d6302c747e6533ea6a3e6255bd0a190fed05186cf041c7e1c6532ec9
+  generated_at: '2026-08-13T06:44:35.171494+00:00'
+followup_review:
+  date: '2026-08-19'
+  source: null # original ZenTao evidence deleted by cleanup
+  gate_passed: true
+  cases_reviewed:
+  - case_id: TC-003-154
+    zentao_case_id: 49120
+    type: auto
+    auto: auto
+    verdict: pass
+  - case_id: TC-003-155
+    zentao_case_id: 49121
+    type: auto
+    auto: auto
+    verdict: pass
+  - case_id: TC-003-156
+    zentao_case_id: 49122
+    type: auto
+    auto: auto
+    verdict: pass
+  - case_id: TC-003-157
+    zentao_case_id: 49123
+    type: auto
+    auto: auto
+    verdict: pass
+  local_suitability_assessment: not_performed
+  type_source_conflicts: []
+  verdict: pass

@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.qa/page.schema.json",
+  "title": "Page UI DOM Inventory",
+  "description": "统一的 page.json 页面 DOM 采集结果结构。项目业务页面、地址和数据只能来自经授权的实际采集结果，不得写入公共 Schema。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "capture_id",
+    "captured_at",
+    "capture",
+    "sanitization",
+    "pages"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "capture_id": {
+      "type": "string",
+      "pattern": "^PAGE-[A-Za-z0-9_-]+$",
+      "description": "一次页面采集批次的唯一编号。"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "采集批次完成时间。"
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collector", "browser", "headless", "environment", "scope", "status", "evidence"],
+      "properties": {
+        "collector": {
+          "type": "string",
+          "minLength": 1,
+          "description": "执行页面采集的工具或 Agent 标识。"
+        },
+        "browser": {
+          "type": "string",
+          "minLength": 1,
+          "description": "浏览器类型和版本标识。"
+        },
+        "headless": {
+          "const": false,
+          "description": "项目强制使用可视浏览器。"
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "os", "browser"],
+          "properties": {
+            "id": {"type": "string", "minLength": 1, "description": "环境标识，不保存敏感配置。"},
+            "os": {"type": "string", "minLength": 1},
+            "browser": {"type": "string", "minLength": 1}
+          }
+        },
+        "scope": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1},
+          "description": "本次采集覆盖的页面、入口或功能范围。"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["captured", "partial", "blocked", "not_executed"]
+        },
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "sanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "redacted_fields"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["applied", "not_required", "blocked"],
+          "description": "DOM、属性和表单值的敏感信息清理状态。"
+        },
+        "redacted_fields": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "description": "已清理字段或路径的说明，不保存原始敏感值。"
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/page"},
+      "description": "一次采集批次中的全部页面。"
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+    },
+    "scalar_attributes": {
+      "type": "object",
+      "additionalProperties": {"type": ["string", "number", "boolean", "null"]},
+      "description": "经过清理的 DOM 属性键值。"
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["page_id", "route", "title", "menu_path", "states"],
+      "properties": {
+        "page_id": {"$ref": "#/$defs/identifier", "description": "页面在本次采集结果中的唯一标识。"},
+        "route": {"type": ["string", "null"], "minLength": 1, "description": "页面路由或经授权采集的入口标识。"},
+        "title": {"type": "string", "minLength": 1},
+        "menu_path": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "description": "从页面入口到当前页面的菜单路径。"
+        },
+        "states": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/state"}
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state_id", "parent_state_id", "elements", "forms", "tables", "interactions", "dom_snapshot", "evidence"],
+      "properties": {
+        "state_id": {"$ref": "#/$defs/identifier", "description": "页面交互状态的唯一标识。"},
+        "parent_state_id": {"type": ["string", "null"]},
+        "elements": {"type": "array", "items": {"$ref": "#/$defs/element"}},
+        "forms": {"type": "array", "items": {"$ref": "#/$defs/form"}},
+        "tables": {"type": "array", "items": {"$ref": "#/$defs/table"}},
+        "interactions": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/interaction"},
+          "description": "从当前状态出发的顺序化 UI 操作和状态转移。"
+        },
+        "dom_snapshot": {"$ref": "#/$defs/dom_snapshot"},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "element": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["element_id", "kind", "name", "tag", "role", "label", "text", "attributes", "state", "parent_element_id", "locator_status", "locator_candidates"],
+      "properties": {
+        "element_id": {"$ref": "#/$defs/identifier", "description": "元素在当前页面状态中的唯一标识。"},
+        "kind": {
+          "type": "string",
+          "enum": ["page", "region", "navigation", "menu", "submenu", "button", "link", "tab", "input", "textarea", "select", "combobox", "checkbox", "radio", "datepicker", "form", "dialog", "filter", "pagination", "list", "list_item", "table", "table_header", "table_cell", "text", "other"]
+        },
+        "name": {"type": "string", "minLength": 1},
+        "tag": {"type": "string", "minLength": 1},
+        "role": {"type": ["string", "null"]},
+        "label": {"type": ["string", "null"]},
+        "text": {"type": ["string", "null"]},
+        "attributes": {"$ref": "#/$defs/scalar_attributes"},
+        "state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["visible", "enabled", "required", "readonly", "checked", "value_state"],
+          "properties": {
+            "visible": {"type": "boolean"},
+            "enabled": {"type": "boolean"},
+            "required": {"type": "boolean"},
+            "readonly": {"type": "boolean"},
+            "checked": {"type": ["boolean", "null"]},
+            "value_state": {"type": "string", "enum": ["empty", "populated", "redacted", "unknown"]}
+          }
+        },
+        "parent_element_id": {"type": ["string", "null"]},
+        "locator_status": {"type": "string", "enum": ["available", "ambiguous", "missing"]},
+        "locator_candidates": {"type": "array", "items": {"$ref": "#/$defs/locator_candidate"}}
+      }
+    },
+    "locator_candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "value", "stable", "confidence"],
+      "properties": {
+        "strategy": {"type": "string", "enum": ["role", "test_id", "label", "text", "placeholder", "id", "css"]},
+        "value": {"type": "string", "minLength": 1},
+        "exact": {"type": "boolean"},
+        "scope_element_id": {"type": ["string", "null"]},
+        "stable": {"type": "boolean"},
+        "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+        "reason": {"type": "string"}
+      }
+    },
+    "form": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["form_id", "element_id", "field_element_ids", "submit_element_ids", "cancel_element_ids"],
+      "properties": {
+        "form_id": {"$ref": "#/$defs/identifier"},
+        "element_id": {"$ref": "#/$defs/identifier"},
+        "field_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}},
+        "submit_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}},
+        "cancel_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}}
+      }
+    },
+    "table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["table_id", "element_id", "columns", "row_action_element_ids", "filter_element_ids", "pagination_element_ids"],
+      "properties": {
+        "table_id": {"$ref": "#/$defs/identifier"},
+        "element_id": {"$ref": "#/$defs/identifier"},
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["column_id", "name", "header", "field_element_ids"],
+            "properties": {
+              "column_id": {"$ref": "#/$defs/identifier"},
+              "name": {"type": "string", "minLength": 1},
+              "header": {"type": "string", "minLength": 1},
+              "field_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}}
+            }
+          }
+        },
+        "row_action_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}},
+        "filter_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}},
+        "pagination_element_ids": {"type": "array", "items": {"$ref": "#/$defs/identifier"}}
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequence", "action", "target_element_id", "locator_ref", "result_state_id", "expected_observation"],
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 1},
+        "action": {"type": "string", "enum": ["click", "fill", "select_option", "check", "uncheck", "hover", "press", "upload", "scroll", "navigate", "open", "close", "submit", "inspect"]},
+        "target_element_id": {"$ref": "#/$defs/identifier"},
+        "locator_ref": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["element_id", "strategy", "value"],
+          "properties": {
+            "element_id": {"$ref": "#/$defs/identifier"},
+            "strategy": {"type": "string", "enum": ["role", "test_id", "label", "text", "placeholder", "id", "css"]},
+            "value": {"type": "string", "minLength": 1}
+          }
+        },
+        "input_data_ref": {"type": ["string", "null"], "description": "测试数据契约引用，不直接保存真实输入值。"},
+        "result_state_id": {"type": ["string", "null"]},
+        "expected_observation": {"type": "string", "minLength": 1}
+      }
+    },
+    "dom_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["html", "sha256", "captured_at"],
+      "properties": {
+        "html": {"type": "string", "minLength": 1, "description": "经过敏感信息清理的当前页面状态 HTML。"},
+        "accessibility_snapshot": {"type": ["string", "null"]},
+        "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+        "captured_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "screenshot_paths", "log_paths", "trace_paths"],
+      "properties": {
+        "status": {"type": "string", "enum": ["available", "partial", "missing", "not_collected"]},
+        "screenshot_paths": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "log_paths": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "trace_paths": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+id: REQ-APP-026
+title: APP存发苗间库存查询
+source_mapping:
+  module_split: REQ-APP-026
+  priority: P1
+  prototype_status: 一期功能延续，二期未提供可探索原型
+scope:
+  in_scope: [存发苗间库存查询范围, 发货自动出库后的库存联动和可追溯性]
+  out_of_scope: [虚构二期页面/状态/元素ID, 手工库存调整, 未授权库存数据]
+actors: [存发苗间管理角色, 发货组长, 场长, 系统管理配置的授权角色]
+rules:
+  - 发货自动出库后库存按本次发货数量扣减。
+  - 关联存发苗间库存不足时不得产生负库存，分配按关联排列顺序继续处理。
+  - 库存查询应能与发货记录、上孵计划批次和存发苗间关联追溯。
+interface_contract:
+  required_data: [存发苗间库存, 批次, 上孵计划关联, 发货出库记录]
+  unresolved: [页面路由, 查询条件, 字段、分页和排序, 权限码, 库存并发一致性和错误状态]
+dependencies: [存发苗间库存服务, APP发货执行, 自动出库服务, 上孵计划与园区基础数据]
+risks: [发货成功但库存未扣减, 并发查询读到旧库存, 库存分配与查询口径不一致]
+environment_data:
+  prerequisites: [授权查询角色, 可回溯库存和出库数据, 已定义的批次和关联关系]
+  mutation_boundary: 本模块查询本身不变更数据；联动发货产生的库存变更由发货/库存服务责任方负责，测试数据负责人负责清理并记录状态。
+security: 不记录账号、密码、Token、Cookie 或未经授权业务数据。
+evidence: page_inventory/page.json中未发现二期专属页面证据
+open_questions: [一期库存页面现行契约和二期是否仅复用, 查询时点一致性要求]

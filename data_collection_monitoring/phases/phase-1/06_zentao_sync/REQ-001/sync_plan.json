@@ -1,0 +1,31 @@
+{
+  "status": "validated",
+  "req_id": "REQ-001",
+  "target": "project",
+  "product_id": 8,
+  "project_id": 46,
+  "module_id": 750,
+  "source_case_count": 24,
+  "selected_case_ids": [
+    "TC-REQ-001-003",
+    "TC-REQ-001-004",
+    "TC-REQ-001-005",
+    "TC-REQ-001-009"
+  ],
+  "stable_remote_case_ids": {
+    "TC-REQ-001-003": 52048,
+    "TC-REQ-001-004": 52049,
+    "TC-REQ-001-005": 52050,
+    "TC-REQ-001-009": 52054
+  },
+  "operations": {
+    "create": [],
+    "update": [52048, 52049, 52050, 52054],
+    "delete": [],
+    "delete_recreate": []
+  },
+  "readback": "validated",
+  "entrypoint": "../../../../scripts/zentao_create_testcase.py",
+  "remote_write": "validated",
+  "failure_policy": "任何创建、更新或回读失败立即停止后续远程写入；本次未执行删除，不执行删除重建或替代创建"
+}

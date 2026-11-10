@@ -1,0 +1,117 @@
+{
+    "id": 51625,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 732,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "查看产品编辑字段时确认已有 ProductKey 不可修改且重新生成按钮不可点击",
+    "precondition": "前置准备：\n1、已准备经授权可读且可打开编辑页面的产品记录。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开平台菜单并点击“产品管理”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/product”，确认已进入产品管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:47:58",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-27 16:46:17",
+    "version": 4,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "zhumingyue",
+    "lastRunDate": "2026-10-27 16:26:00",
+    "lastRunResult": "pass",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 4,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174328,
+            "step": "在目标产品记录的操作列点击“编辑”按钮。",
+            "desc": "在目标产品记录的操作列点击“编辑”按钮。",
+            "expect": "编辑页面打开并显示 ProductKey 输入控件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 174329,
+            "step": "查看 ProductKey 当前值及“重新生成”按钮。",
+            "desc": "查看 ProductKey 当前值及“重新生成”按钮。",
+            "expect": "ProductKey 已有值，ProductKey 值不可修改，重新生成按钮不可点击。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51625,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51625",
+        "text": "查看产品编辑字段时确认已有 ProductKey 不可修改且重新生成按钮不可点击",
+        "type": "root",
+        "children": [
+            {
+                "id": 174328,
+                "text": "在目标产品记录的操作列点击“编辑”按钮。",
+                "type": "sub",
+                "parent": "case_51625",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174328",
+                        "text": "编辑页面打开并显示 ProductKey 输入控件。",
+                        "type": "node",
+                        "parent": 174328,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174329,
+                "text": "查看 ProductKey 当前值及“重新生成”按钮。",
+                "type": "sub",
+                "parent": "case_51625",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174329",
+                        "text": "ProductKey 已有值，ProductKey 值不可修改，重新生成按钮不可点击。",
+                        "type": "node",
+                        "parent": 174329,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

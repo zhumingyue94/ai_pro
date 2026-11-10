@@ -1,0 +1,27 @@
+{
+  "status": "validated",
+  "req_id": "REQ-011",
+  "operation": "restore_common_precondition",
+  "common_precondition_id": "CP-REQ-011-001",
+  "common_precondition_step_count": 3,
+  "source_case_count": 50,
+  "referenced_case_count": 50,
+  "target": {
+    "project_id": 46,
+    "product_id": 8,
+    "module_id": 749
+  },
+  "operations": {
+    "create": 0,
+    "update": 50,
+    "delete": 0
+  },
+  "remote_readback": "50 existing cases updated in place and read back successfully; precondition, steps, expects and key fields validated",
+  "failure_policy": "stop on failure; no delete/recreate",
+  "source_hashes": {
+    "04_testcases/TC_REQ-011.yaml": "21d8956e29ffd49d7fa05c4f97408876cb932ffec8345334f83d4ed1e3ae2977",
+    "04_testcases/TC_REQ-011.md": "ed2456edd81324b991280164925915b02813e524251beab9cd30fe49cbb16ab8",
+    "module_case_map.json": "bccfadf762aa3f0974cef1e9d35a2cfa97d59d8fac8dd0b27af655f6629016fb",
+    "05_case_review/REV_CASE_REQ-011.yaml": "0f62e2d4851bfa073578aec982418e74a6b45a9f254aa2affe620ea5aecf2572"
+  }
+}

@@ -1,0 +1,1116 @@
+run_id: RUN_分段养殖模版_20260825_100811
+module: 分段养殖模版
+req_id: REQ-003
+zentao_module_id: 670
+environment:
+  base_host: 192.168.6.163:66
+  headless: 'true'
+generated_at: '2026-08-25T10:14:28'
+source: 04_testcases/TC_REQ-003.yaml
+cases:
+- case_id: TC-003-06
+  zentao_case_id: 47578
+  title: 仅输入模版名称后点击「查询」，列表按名称过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-06
+  assertion_scope: feeding_template.query.name_filter
+  expected: '模版名称筛选项已填入关键字
+
+    其余筛选项未参与过滤
+
+    列表仅展示模版名称匹配该关键字的记录'
+  actual:
+    keyword: 勿用停用模版-44fb
+    result_names:
+    - 勿用停用模版-44fb
+    result_count: 1
+  detail: 名称查询结果均匹配 勿用停用模版-44fb
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「模版名称」输入已知模版名称关键字
+    expected: 模版名称筛选项已填入关键字
+  - action: 确认「品种」「补栏月份」「状态」为空或未选
+    expected: 其余筛选项未参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示模版名称匹配该关键字的记录
+  screenshots:
+  - path: screenshots/TC-003-06_TP-003-06_assertion_scope.png
+    sha256: f1792974a35ec18fc278f4e97d15a89e7b1e92d686a9a14926311cd376acbe5b
+  - path: screenshots/TC-003-06_TP-003-06_assertion_full.png
+    sha256: 0f0958350585e4bdee0a22acc203af9a3709721cb7c806356b4dc2afce17f524
+  screenshot: screenshots/TC-003-06_TP-003-06_assertion_scope.png
+  started_at: '2026-08-25T10:08:12'
+  finished_at: '2026-08-25T10:08:21'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_name
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_template_name
+    assertions:
+    - query_result_rows_contain_name_keyword
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-07
+  zentao_case_id: 47579
+  title: 仅选品种后点击「查询」，列表按品种过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-07
+  assertion_scope: feeding_template.query.breed_filter
+  expected: '品种筛选项已选中
+
+    仅品种参与过滤
+
+    列表仅展示该品种的模版记录'
+  actual:
+    selected_breed: 勿用停用品种
+    result_breeds:
+    - 勿用停用品种
+    - 勿用停用品种
+    result_count: 2
+  detail: 品种查询结果均匹配 勿用停用品种
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「品种」下拉选择某一已知品种
+    expected: 品种筛选项已选中
+  - action: 确认其他筛选项为空
+    expected: 仅品种参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示该品种的模版记录
+  screenshots:
+  - path: screenshots/TC-003-07_TP-003-07_assertion_scope.png
+    sha256: 8161f24868a49f43a73ffca8c8db89b9062afc206989d4a54c4b3f8a28411f74
+  - path: screenshots/TC-003-07_TP-003-07_assertion_full.png
+    sha256: e1a45fae2a758842bad28f9baa15441406f27c30b99226c9f1492c96b095017d
+  screenshot: screenshots/TC-003-07_TP-003-07_assertion_scope.png
+  started_at: '2026-08-25T10:08:21'
+  finished_at: '2026-08-25T10:08:30'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_breed
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_breed
+    assertions:
+    - query_result_rows_match_selected_breed
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-08
+  zentao_case_id: 47580
+  title: 仅选补栏月份后点击「查询」，列表按补栏月份过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-08
+  assertion_scope: feeding_template.query.month_filter
+  expected: '补栏月份筛选项已选中
+
+    仅补栏月份参与过滤
+
+    列表仅展示该补栏月份的模版记录'
+  actual:
+    selected_month: 8月
+    result_months:
+    - 8月
+    - 8月
+    - 8月
+    - 8月
+    - 8月
+    result_count: 5
+  detail: 补栏月份查询结果均匹配 8月
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「补栏月份」下拉选择某一月份（如3）
+    expected: 补栏月份筛选项已选中
+  - action: 确认其他筛选项为空
+    expected: 仅补栏月份参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示该补栏月份的模版记录
+  screenshots:
+  - path: screenshots/TC-003-08_TP-003-08_assertion_scope.png
+    sha256: f8f1454d1baee59549b76d378d34d9e3afc82ba79e994378a01cbf6512c288df
+  - path: screenshots/TC-003-08_TP-003-08_assertion_full.png
+    sha256: 8231622b39ecef32b812f7db2a3e284993363a53240371f3af8bcbcd79806b07
+  screenshot: screenshots/TC-003-08_TP-003-08_assertion_scope.png
+  started_at: '2026-08-25T10:08:30'
+  finished_at: '2026-08-25T10:08:39'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_month
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_restock_month
+    assertions:
+    - query_result_rows_match_selected_month
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-09
+  zentao_case_id: 47581
+  title: 仅选状态后点击「查询」，列表按状态过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-09
+  assertion_scope: feeding_template.query.status_filter
+  expected: '状态筛选项为审核通过
+
+    仅状态参与过滤
+
+    列表仅展示状态为「审核通过」的模版记录'
+  actual:
+    selected_status: 暂存
+    result_statuses:
+    - 暂存
+    - 暂存
+    - 暂存
+    - 暂存
+    - 暂存
+    - 暂存
+    result_count: 6
+  detail: 状态查询结果均匹配 暂存
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「状态」下拉选择「审核通过」
+    expected: 状态筛选项为审核通过
+  - action: 确认其他筛选项为空
+    expected: 仅状态参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示状态为「审核通过」的模版记录
+  screenshots:
+  - path: screenshots/TC-003-09_TP-003-09_assertion_scope.png
+    sha256: e5fff90a4608e5d1d3c412ef0083baa73588e83830f566354d12bbfc42ce1993
+  - path: screenshots/TC-003-09_TP-003-09_assertion_full.png
+    sha256: 2279d7b7c105b3629ef11b9effda6ea3bc1aba24fd481a6b37c43b14f4c9a510
+  screenshot: screenshots/TC-003-09_TP-003-09_assertion_scope.png
+  started_at: '2026-08-25T10:08:39'
+  finished_at: '2026-08-25T10:08:49'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_status
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_status
+    assertions:
+    - query_result_rows_match_selected_status
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-10
+  zentao_case_id: 47582
+  title: 选择多条件后点击「查询」，列表按组合条件过滤
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-10
+  assertion_scope: feeding_template.query.combined_filter
+  expected: '多个筛选项均已设置
+
+    列表仅展示同时满足全部已设条件的记录'
+  actual:
+    selected_name: 勿用停用模版-44fb
+    selected_breed: 勿用停用品种
+    selected_month: 8月
+    selected_status: 暂存
+    result_rows:
+    - name: 勿用停用模版-44fb
+      breed: 勿用停用品种
+      month: 8月
+      status: 暂存
+    result_count: 1
+  detail: 组合查询结果同时匹配全部筛选条件
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 同时设置「模版名称」关键字、「品种」、「补栏月份」、「状态」
+    expected: 多个筛选项均已设置
+  - action: 点击「查询」按钮
+    expected: 列表仅展示同时满足全部已设条件的记录
+  screenshots:
+  - path: screenshots/TC-003-10_TP-003-10_assertion_scope.png
+    sha256: f1792974a35ec18fc278f4e97d15a89e7b1e92d686a9a14926311cd376acbe5b
+  - path: screenshots/TC-003-10_TP-003-10_assertion_full.png
+    sha256: a50c6c02e7028bcf88d766733216a75a2d8d85a38a321f137c65802ff982f2ec
+  screenshot: screenshots/TC-003-10_TP-003-10_assertion_scope.png
+  started_at: '2026-08-25T10:08:49'
+  finished_at: '2026-08-25T10:08:59'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_combined
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_combined_conditions
+    assertions:
+    - query_result_rows_match_all_conditions
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-12
+  zentao_case_id: 47584
+  title: 点击「重置」，查询条件恢复默认并刷新列表
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-12
+  assertion_scope: feeding_template.query.reset
+  expected: '列表按条件过滤
+
+    点击「重置」后各筛选项恢复默认值，列表重新加载'
+  actual:
+    query_values_after_reset:
+      name: ''
+      breed: 请选择品种
+      month: 请选择补栏月份
+      status: 请选择状态
+    row_count: 1
+  detail: 重置后查询条件恢复默认且列表刷新
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 设置查询条件后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 点击「重置」后各筛选项恢复默认值，列表重新加载
+  screenshots:
+  - path: screenshots/TC-003-12_TP-003-12_assertion_scope.png
+    sha256: 10e324d93f8518b62b649a5af0199cddb6ae8f941ee4d14ebe375c3bfa3bfa3b
+  - path: screenshots/TC-003-12_TP-003-12_assertion_full.png
+    sha256: affebf6bc98b5927ab0e229daebd0b1b5b76ad000454567fa68afdda567803fb
+  screenshot: screenshots/TC-003-12_TP-003-12_assertion_scope.png
+  started_at: '2026-08-25T10:08:59'
+  finished_at: '2026-08-25T10:09:09'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_reset
+    data_key_template: null
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: reset_query_after_filter
+    assertions:
+    - query_form_restored_to_default
+    - list_refreshed
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-31
+  zentao_case_id: 47603
+  title: 点击快速分配弹窗的确认按钮，快速分配成功且日龄采食起止自动回填
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-31
+  assertion_scope: feeding_template.new.auto_calc
+  expected: '快速分配弹窗关闭，主表回填养殖/空栏天数
+
+    起=1，止=1段养殖天数-1
+
+    起=1段养殖天数，止=1段养殖天数+2段养殖天数-1
+
+    起=1段养殖天数+2段养殖天数，止=1段养殖天数+2段养殖天数+3段养殖天数-1'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-9037-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-9037-158\" class=\"el-select__input is-default\"/>\n    - fill(\"1月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」后点击「快速分配」，填写合法整批与各段养殖/空栏天数后点击「确认」
+    expected: 快速分配弹窗关闭，主表回填养殖/空栏天数
+  - action: 查看1段默认生成的日龄采食计划
+    expected: 起=1，止=1段养殖天数-1
+  - action: 查看2段默认生成的日龄采食计划
+    expected: 起=1段养殖天数，止=1段养殖天数+2段养殖天数-1
+  - action: 查看3段默认生成的日龄采食计划
+    expected: 起=1段养殖天数+2段养殖天数，止=1段养殖天数+2段养殖天数+3段养殖天数-1
+  screenshots:
+  - path: screenshots/TC-003-31_TP-003-31_timeout_scope.png
+    sha256: 58dac74b61d13f6d959a10730dca24f113a3dfd2659c518b7261ea5cc0564584
+  - path: screenshots/TC-003-31_TP-003-31_timeout_full.png
+    sha256: 4b7a9663bbbe2c9644d0e3868ee64e4efff95cd1fbe731e34d81d2d6b41b8748
+  screenshot: screenshots/TC-003-31_TP-003-31_timeout_scope.png
+  started_at: '2026-08-25T10:09:09'
+  finished_at: '2026-08-25T10:09:32'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_new_with_quick_assign
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list_pick_non_disabled_breed
+    execute: open_new_dialog_fill_form_verify_auto_calc
+    assertions:
+    - dialog_title_is_new_feeding_template
+    - segment_days_auto_calculated
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-62
+  zentao_case_id: 47634
+  title: 点击「保存」，模版状态=暂存且不提交审核
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-62
+  assertion_scope: feeding_template.new.save_draft
+  expected: '打开新增模版弹窗
+
+    提示保存成功，列表新增/更新该模版且状态为「暂存」，未进入待审核'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-2901-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-2901-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 填写完整合法数据（含快速分配、各段至少一方案、占比100%）后点击「保存」
+    expected: 提示保存成功，列表新增/更新该模版且状态为「暂存」，未进入待审核
+  screenshots:
+  - path: screenshots/TC-003-62_TP-003-62_timeout_scope.png
+    sha256: 509b6ae58c01554510cc264b26bc37a10efa7e5cd2b7370f951d8bd55e7912bd
+  - path: screenshots/TC-003-62_TP-003-62_timeout_full.png
+    sha256: f2f573a65a509e88846b359bb55b5d50e418abd06328fb886077cf3406cb07ff
+  screenshot: screenshots/TC-003-62_TP-003-62_timeout_scope.png
+  started_at: '2026-08-25T10:09:36'
+  finished_at: '2026-08-25T10:09:58'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_save_draft
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: new_template_save_draft
+    assertions:
+    - draft_appears_in_list
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-63
+  zentao_case_id: 47635
+  title: 点击「提交」，模版状态变为待审核
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-63
+  assertion_scope: feeding_template.new.save_and_submit
+  expected: '打开新增模版弹窗
+
+    提示提交成功，列表中该模版状态为「待审核」'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-7532-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-7532-158\" class=\"el-select__input is-default\"/>\n    - fill(\"1月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 准备可填写的品种、补栏月份及日龄采食计划测试数据
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增模版弹窗
+  - action: 填写完整合法数据后点击「提交」，并在确认框点「确定」
+    expected: 提示提交成功，列表中该模版状态为「待审核」
+  screenshots:
+  - path: screenshots/TC-003-63_TP-003-63_timeout_scope.png
+    sha256: 940ac43443b931850eef52ddb99fcf65b5ccd7247b021ed5e0a23619922d5a59
+  - path: screenshots/TC-003-63_TP-003-63_timeout_full.png
+    sha256: 13d7d5fc0c117c997100b3449195a8111f7221f25e96fa4b592fe8dd5b844107
+  screenshot: screenshots/TC-003-63_TP-003-63_timeout_scope.png
+  started_at: '2026-08-25T10:10:02'
+  finished_at: '2026-08-25T10:10:26'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_save_and_submit
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: new_template_save_and_submit
+    assertions:
+    - status_becomes_pending_review
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-131
+  zentao_case_id: 47703
+  title: 暂存行点击「提交」弹出确认框
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-131
+  assertion_scope: feeding_template.submit.confirm_box
+  expected: 弹出提交确认框（含确定/取消）
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-856-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-856-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n    - waiting for element to be visible, enabled and editable\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在状态为「暂存」且可提交的记录
+  steps:
+  - action: 点击暂存行「提交」
+    expected: 弹出提交确认框（含确定/取消）
+  screenshots:
+  - path: screenshots/TC-003-131_TP-003-131_timeout_scope.png
+    sha256: c636a0b7cbca8cada02e5094aa28883011d0c93a9622a53512b374c6d0796217
+  - path: screenshots/TC-003-131_TP-003-131_timeout_full.png
+    sha256: 89a7cd30e3b537baea54f0fec3f0c09f52f09fdfd55e9097d3180e229e408bc2
+  screenshot: screenshots/TC-003-131_TP-003-131_timeout_scope.png
+  started_at: '2026-08-25T10:10:29'
+  finished_at: '2026-08-25T10:10:52'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_submit_confirm_box
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_submit_verify_confirm_box_then_cancel
+    assertions:
+    - submit_confirm_box_appears
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-133
+  zentao_case_id: 47705
+  title: 提交确认框点击确定，提示成功且状态变待审核
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-133
+  assertion_scope: feeding_template.submit.status_change
+  expected: '弹出提交确认框
+
+    提示提交成功，记录状态变为「待审核」'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-9317-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-9317-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在状态为「暂存」且可提交的记录
+  steps:
+  - action: 点击暂存行「提交」
+    expected: 弹出提交确认框
+  - action: 点击确认框「确定」
+    expected: 提示提交成功，记录状态变为「待审核」
+  screenshots:
+  - path: screenshots/TC-003-133_TP-003-133_timeout_scope.png
+    sha256: 7e2a307dec14f54232fda7f4efc673a6b67e9976e7597b47dfc01e79e95c400f
+  - path: screenshots/TC-003-133_TP-003-133_timeout_full.png
+    sha256: a895cb8f707f886bb8e63e2e50a6f385ef6a1d7bd1be51ecd26de89d250f0de8
+  screenshot: screenshots/TC-003-133_TP-003-133_timeout_scope.png
+  started_at: '2026-08-25T10:10:56'
+  finished_at: '2026-08-25T10:11:19'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_submit_status_change
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_submit_confirm_verify_status
+    assertions:
+    - status_becomes_pending_review
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-137
+  zentao_case_id: 47709
+  title: 点击「驳回」弹出驳回确认框，包含原因输入框，点击确认按钮后状态变驳回
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-137
+  assertion_scope: feeding_template.review.reject_reason
+  expected: '初始审核弹窗不展示原因输入框
+
+    弹出驳回确认框，包含原因输入框
+
+    记录状态变为「驳回」'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-4102-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-4102-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  steps:
+  - action: 在待审核行点击「审核」打开弹窗
+    expected: 初始审核弹窗不展示原因输入框
+  - action: 点击「驳回」
+    expected: 弹出驳回确认框，包含原因输入框
+  - action: 在驳回确认框填写原因后点击确认
+    expected: 记录状态变为「驳回」
+  screenshots:
+  - path: screenshots/TC-003-137_TP-003-137_timeout_scope.png
+    sha256: c09b98e47c06f549ddc0abc4f9ad3e53041488cfd4f09a984702e4eb3046c20a
+  - path: screenshots/TC-003-137_TP-003-137_timeout_full.png
+    sha256: 08f3ac797a493055e306e9efd711d26a2b67fd77cb59558f289702e0c4d43fcb
+  screenshot: screenshots/TC-003-137_TP-003-137_timeout_scope.png
+  started_at: '2026-08-25T10:11:22'
+  finished_at: '2026-08-25T10:11:45'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_reject_reason_required
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_pending_template
+    execute: click_review_click_reject_verify_reason_input
+    assertions:
+    - reject_reason_input_visible
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-139
+  zentao_case_id: 47711
+  title: 驳回后列表驳回原因列展示所填内容
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-139
+  assertion_scope: feeding_template.review.reject_status
+  expected: 展示审核人填写的驳回原因内容
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-3132-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-3132-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    24 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  - 已执行驳回并填写过原因
+  steps:
+  - action: 查看列表「驳回原因」列
+    expected: 展示审核人填写的驳回原因内容
+  screenshots:
+  - path: screenshots/TC-003-139_TP-003-139_timeout_scope.png
+    sha256: ad2a5f3ba377d7c6aa5b8c80ca11a1be81fb38b300c973f43f6edefff8d84b88
+  - path: screenshots/TC-003-139_TP-003-139_timeout_full.png
+    sha256: 5f46042c86a4419c0286a3159543ecbf6e8e3803a0b313cc1f79d318f293c927
+  screenshot: screenshots/TC-003-139_TP-003-139_timeout_scope.png
+  started_at: '2026-08-25T10:11:48'
+  finished_at: '2026-08-25T10:12:11'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_reject_status
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_pending_template
+    execute: review_reject_with_reason_verify_status
+    assertions:
+    - status_becomes_rejected
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-140
+  zentao_case_id: 47712
+  title: 点击「审核通过」二次确认框后成功
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-140
+  assertion_scope: feeding_template.review.approve_action
+  expected: 显示二次确认弹窗，点击确定按钮后变审核通过
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-1323-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-1323-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在待审核记录，当前账号为审核人
+  steps:
+  - action: 打开审核弹窗，点击「审核通过」
+    expected: 显示二次确认弹窗，点击确定按钮后变审核通过
+  screenshots:
+  - path: screenshots/TC-003-140_TP-003-140_timeout_scope.png
+    sha256: b213cacfc004bb54863f5083e004ff19cf955c2a1cc23f7dbcf819355502a1d9
+  - path: screenshots/TC-003-140_TP-003-140_timeout_full.png
+    sha256: 40a87d4635b493f5e5be753dc75ae77206ee67a1eae10d65e27d33b320befb5d
+  screenshot: screenshots/TC-003-140_TP-003-140_timeout_scope.png
+  started_at: '2026-08-25T10:12:15'
+  finished_at: '2026-08-25T10:12:38'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_approve_action
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_pending_template
+    execute: review_approve_verify_status
+    assertions:
+    - status_becomes_approved
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-141
+  zentao_case_id: 47713
+  title: 审核通过后记录审核人、审核时间
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-141
+  assertion_scope: feeding_template.review.approve_confirm_box
+  expected: '弹出确认框（含确定/取消）
+
+    审核通过，列表记录审核操作人和审核通过的时间'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-6321-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-6321-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用审核员账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 点击审批按钮打开弹窗，点击“通过”按钮
+    expected: 弹出确认框（含确定/取消）
+  - action: 确认框点击“确定”
+    expected: 审核通过，列表记录审核操作人和审核通过的时间
+  screenshots:
+  - path: screenshots/TC-003-141_TP-003-141_timeout_scope.png
+    sha256: 465059e76c5f8023ef7337de496054517abeda00a13c751037d40d15fc6b8650
+  - path: screenshots/TC-003-141_TP-003-141_timeout_full.png
+    sha256: 0adc0cf5bad1b8458bfbcab24f3b32b266cf24b274212cbce0fcc0183b7138ef
+  screenshot: screenshots/TC-003-141_TP-003-141_timeout_scope.png
+  started_at: '2026-08-25T10:12:38'
+  finished_at: '2026-08-25T10:13:00'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_approve_confirm_box
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_pending_template
+    execute: click_approve_verify_confirm_box_then_cancel
+    assertions:
+    - approve_confirm_box_appears
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-142
+  zentao_case_id: 47714
+  title: 审核通过后不可编辑、不可删除、不可再次提交
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-142
+  assertion_scope: feeding_template.review.approve_status
+  expected: '无「编辑」「删除」「提交」按钮，有「查看」「复制」
+
+    弹窗字段只读，无法修改保存'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-4184-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-4184-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 查看审核通过行操作列
+    expected: 无「编辑」「删除」「提交」按钮，有「查看」「复制」
+  - action: 点击「查看」打开查看弹窗
+    expected: 弹窗字段只读，无法修改保存
+  screenshots:
+  - path: screenshots/TC-003-142_TP-003-142_timeout_scope.png
+    sha256: cc842beed3b5382169dec7b1ce46d56f05c0df89bb37c4f60ce7536a0e5e43c9
+  - path: screenshots/TC-003-142_TP-003-142_timeout_full.png
+    sha256: e62673313da1813140c36dc070554125fded66a0d38d01cb602b4a3660d7d201
+  screenshot: screenshots/TC-003-142_TP-003-142_timeout_scope.png
+  started_at: '2026-08-25T10:13:03'
+  finished_at: '2026-08-25T10:13:26'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_approve_status
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_pending_template
+    execute: review_approve_confirm_verify_status
+    assertions:
+    - status_becomes_approved
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-143
+  zentao_case_id: 47715
+  title: 点击「删除」弹出确认框
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-143
+  assertion_scope: feeding_template.delete.confirm_box
+  expected: '弹出删除确认框（含确定/取消）
+
+    提示删除成功，该记录从列表消失'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-590-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-590-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    24 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中存在可删除的记录/单据测试数据
+  steps:
+  - action: 点击目标行操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 提示删除成功，该记录从列表消失
+  screenshots:
+  - path: screenshots/TC-003-143_TP-003-143_timeout_scope.png
+    sha256: cc842beed3b5382169dec7b1ce46d56f05c0df89bb37c4f60ce7536a0e5e43c9
+  - path: screenshots/TC-003-143_TP-003-143_timeout_full.png
+    sha256: 449975e42eb214664639745b6372a66e1c4cbafa9a7d981d108ef497b19d02f7
+  screenshot: screenshots/TC-003-143_TP-003-143_timeout_scope.png
+  started_at: '2026-08-25T10:13:26'
+  finished_at: '2026-08-25T10:13:48'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_delete_confirm_box
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_delete_verify_confirm_box_then_cancel
+    assertions:
+    - delete_confirm_box_appears
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-145
+  zentao_case_id: 47717
+  title: 删除确认框点击确定，提示成功且记录从列表消失
+  type: auto
+  auto: auto
+  status: ignored
+  classification: test_script_error
+  check_id: TP-003-145
+  assertion_scope: feeding_template.delete.removed_from_list
+  expected: '弹出删除确认框（含确定/取消）
+
+    删除成功，列表不再显示该记录'
+  actual: 控件不可编辑
+  detail: "控件实现错误：Locator.fill: Timeout 12000ms exceeded.\nCall log:\n  - waiting\
+    \ for locator(\".el-dialog:visible\").last.locator(\".el-form-item\").filter(has_text=\"\
+    补栏月份\").first.locator(\".el-select__input\").first\n    - locator resolved to\
+    \ <input readonly type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"\
+    off\" spellcheck=\"false\" id=\"el-id-8741-205\" aria-expanded=\"true\" aria-haspopup=\"\
+    listbox\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"\
+    el-id-8741-158\" class=\"el-select__input is-default\"/>\n    - fill(\"3月\")\n\
+    \  - attempting fill action\n    2 × waiting for element to be visible, enabled\
+    \ and editable\n      - element is not editable\n    - retrying fill action\n\
+    \    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n\
+    \      - element is not editable\n    - retrying fill action\n      - waiting\
+    \ 100ms\n    23 × waiting for element to be visible, enabled and editable\n  \
+    \     - element is not editable\n     - retrying fill action\n       - waiting\
+    \ 500ms\n"
+  failure_origin: test_script_error
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 删除成功，列表不再显示该记录
+  screenshots:
+  - path: screenshots/TC-003-145_TP-003-145_timeout_scope.png
+    sha256: cc842beed3b5382169dec7b1ce46d56f05c0df89bb37c4f60ce7536a0e5e43c9
+  - path: screenshots/TC-003-145_TP-003-145_timeout_full.png
+    sha256: 657285f9ef357819acaa20582c4607d865530c70f220fd8258be77afa88a4356
+  screenshot: screenshots/TC-003-145_TP-003-145_timeout_scope.png
+  started_at: '2026-08-25T10:13:51'
+  finished_at: '2026-08-25T10:14:13'
+  data_preparation:
+    fixture_type: self_created
+    natural_unique_key: feeding_template_delete_removed_from_list
+    data_key_template: null
+    creates_data: true
+    cleanup_status: not_required
+    required_roles:
+    - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_delete_confirm_verify_removed
+    assertions:
+    - record_removed_from_list
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false
+- case_id: TC-003-149
+  zentao_case_id: 48741
+  title: 复制确认后列表新增一条状态为暂存的模版
+  type: auto
+  auto: auto
+  status: passed
+  classification: passed
+  check_id: TP-003-149
+  assertion_scope: feeding_template.copy.confirm_box
+  expected: 提示复制成功，列表新增1条状态为「暂存」的模版记录
+  actual:
+    source_name: 勿用停用模版
+    box_text: '系统提示
+
+
+      确定要复制该模版吗？
+
+
+      取消
+
+      确定'
+    copy_candidates:
+    - 勿用停用模版-4f1f
+    - 勿用停用模版-44fb
+    - 勿用停用模版
+  detail: '复制弹出确认框：系统提示
+
+
+    确定要复制该模版吗？
+
+
+    取消
+
+    确定'
+  failure_origin: null
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在状态为「审核通过」的模版
+  steps:
+  - action: 在审核通过行点击「复制」，在确认框点击「确定」
+    expected: 提示复制成功，列表新增1条状态为「暂存」的模版记录
+  screenshots:
+  - path: screenshots/TC-003-149_TP-003-149_assertion_scope.png
+    sha256: 9b974a335778557d0df73528ee8298ae8f21839216b59deb566e2933e4758dc9
+  - path: screenshots/TC-003-149_TP-003-149_assertion_full.png
+    sha256: 3ad839a9b8d768cdfb101f41e28d4df1ce45c981b7f0777b6e20277dfdcf3634
+  screenshot: screenshots/TC-003-149_TP-003-149_assertion_scope.png
+  started_at: '2026-08-25T10:14:13'
+  finished_at: '2026-08-25T10:14:23'
+  data_preparation:
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_copy_confirm_box
+    data_key_template: null
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+    - 智控中心测试账号
+    prepare: find_approved_template
+    execute: click_copy_verify_confirm_box
+    assertions:
+    - copy_confirm_box_appears
+    contract: 08_ui_automation/data/REQ-003.yaml
+  excluded: false

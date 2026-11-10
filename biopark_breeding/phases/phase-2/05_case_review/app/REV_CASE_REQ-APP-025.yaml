@@ -1,0 +1,511 @@
+review:
+  review_id: REV_CASE_REQ-APP-025
+  req_id: REQ-APP-025
+  module_id: REQ-APP-025
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-09'
+  revision: 3
+  revision_reason: 使用 case-review-agent 按五项评审维度完成本轮 report_only 评审；未使用旧评审历史
+  status: completed_with_observations
+  gate_passed: true
+  gate_reasons: []
+  rules_applied:
+  - test-design-enrichment-rule.md
+  - page-block-coverage-rule.md
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope:
+    source_testcase_yaml: 04_testcases/app/TC_REQ-APP-025.yaml
+    source_testcase_markdown: 04_testcases/app/TC_REQ-APP-025.md
+    page_inventory: 02_analysis/app/page_inventory/page.json
+    supporting_analysis: 02_analysis/app/REQ-APP-025.yaml
+    supporting_test_plan: 03_test_plan/app/TEST_PLAN_REQ-APP-025.yaml
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+  scope:
+    case_count: 10
+    ids_unique: true
+    ids_continuous: false
+    id_range: TC-APP-025-001..TC-APP-025-022（当前来源剩余10条）
+    required_fields: pass
+    type_counts:
+      feature: 1
+      interface: 9
+    auto_counts:
+      auto: 10
+    automation_status_counts:
+      blocked: 10
+    priority_counts_from_case_detail:
+      P1: 2
+      P2: 4
+      P3: 4
+      P4: 0
+    priority_counts_in_source_summary:
+      P1: 2
+      P2: 4
+      P3: 4
+      P4: 0
+  alignment:
+    status: pass
+    validator: scripts/validate_testcase_template.py
+    checked_fields:
+    - case_count
+    - case_id
+    - title
+    - priority
+    - auto
+    - type
+    - atomic_purpose_ids
+    - trace
+    - step_count
+    - step_action
+    - step_expected
+    yaml_case_count: 19
+    markdown_case_count: 19
+    yaml_markdown_case_ids_aligned: true
+    differences:
+    - field: removed_out_of_scope_cases
+      source_yaml:
+      - TC-APP-025-005
+      - TC-APP-025-006
+      severity: resolved
+      gate_reason: false
+      reason: 按职责边界删除库存不足分配及整单失败场景，不再由存发苗间出入库记录模块覆盖。
+    - field: responsibility_boundary
+      source_yaml:
+      - TC-APP-025-019
+      - TC-APP-025-020
+      - TC-APP-025-021
+      - TC-APP-025-022
+      severity: observation
+      gate_reason: false
+      reason: 收敛为出入库记录字段及查询展示验证，生成时机和库存扣减由发货执行模块覆盖。
+  structural_review:
+    status: pass_with_observations
+    revision_findings:
+    - TC-APP-025-005、TC-APP-025-006 已删除，库存不足场景不再属于本模块范围。
+    - TC-APP-025-019 至 TC-APP-025-022 已改为出入库记录字段/查询展示职责。
+    - YAML summary 已同步 19 条用例、类型和自动化统计。
+    - Markdown 已同步 19 条用例及对应职责边界。
+    - 发货执行新增联动用例，新增项已注册但暂未建立禅道映射。
+    checks:
+      required_fields: pass
+      unique_case_id: pass
+      continuous_case_id: pass
+      atomic_purpose_ids_present: pass
+      automation_evaluation_present: pass
+      markdown_yaml_case_alignment: pass
+      summary_consistency: pass
+      casely_style: pass_with_observations
+    findings:
+    - YAML 与 Markdown 均包含 19 条用例，ID 唯一但因 005/006/010 缺失而不连续。
+    - 19 条均为 auto=auto，自动化状态均为 blocked，结构字段和原子目的存在。
+    - YAML summary.auto_counts、类型和优先级统计与明细一致。
+    - TC-APP-025-005 标题与预期结果冲突已修复，部分分配接口契约仍待确认。
+    - Markdown 已区分功能/接口统计与自动化候选统计，并保留页面和接口契约待确认项。
+  traceability_review:
+    status: pass_with_observations
+    requirement_coverage:
+      REQ-009: covered
+    plan_coverage:
+      status: covered_with_observations
+      plan_item_range: PLAN-APP025-AUTO-ATTRIBUTES..PLAN-APP025-QUERY-PERMISSION
+      orphan_plan_items: []
+      orphan_cases: []
+      observations:
+      - 自动出库属性、生成、数量、分配、不负库存、幂等、补偿、缺失关联、查询和权限均有用例引用。
+      - TC-APP-025-005 已完成标题与预期统一；库存不足部分分配的记录粒度和失败边界待业务确认。
+    page_reference_review:
+      status: evidence_risk
+      target_page_capture_status: not_available
+      inventory_match: no_app_025_specific_page
+      dependency_evidence:
+      - app-chick-shipment-execute
+      - app-plan-shipment-records
+      conclusion: 页面清单仅能证明 APP-022 发货执行入口和 APP-024 发货记录依赖，不能证明 APP-025 出入库记录页面。
+  systematic_design_review:
+    status: pass_with_observations
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    - exception_coverage
+    covered:
+    - 自动出库属性、数量、记录生成、批次、操作人、时间、园区客户和存发苗间来源
+    - 库存充足/不足、关联缺失、重复确认、失败补偿和权限入口
+    - 数量零值、最小正数、恰好库存、超库存、同序和并发重复确认
+    observations:
+    - 极大值、并发失败响应、事务回滚时点和最终一致性仍需接口契约与专门数据确认。
+    - 多存发苗间排序字段、同序处理、部分分配结果和记录粒度尚未确认。
+    - 查询分页、排序、空态、刷新时机、字段和权限码尚未确认。
+  pairwise_review:
+    status: covered_with_observations_static_pict_model
+    parameters:
+    - ShipmentQuantity
+    - StockState
+    - RelatedRoomCount
+    - RelationState
+    - RetryState
+    - PermissionState
+    - FailurePoint
+    constraints_checked:
+    - 关联缺失时不能生成成功出库记录
+    - 库存不足不得产生负库存
+    - 重复确认不能重复扣减库存
+    - 无查询权限不得显示查询入口
+    - 失败补偿场景不得伪造成功出库
+    execution: not_run
+    observations:
+    - 关键参数和约束已从需求、计划和现有用例抽取。
+    - 未运行外部 PICT，不能宣称已生成组合结果。
+    - 并发和失败点细分仍待接口契约补充。
+  playwright_review:
+    status: candidate_but_blocked
+    mode: headed_planning_only
+    auto_candidate_count: 10
+    automation_executable_count: 0
+    locator_strategy: 优先 role/label/test_id/语义作用域；APP-025 正式页面未登记前不得固化 locator
+    suitable_boundaries:
+    - 发货确认触发
+    - 自动出库属性回读
+    - 数量一致性
+    - 关联缺失
+    - 重复确认
+    - 权限入口
+    blockers:
+    - APP-025 专属页面、路由和元素 ID 未在 page.json 登记
+    - 出库记录查询页面不存在可复核的正式 DOM 证据
+    - 业务变更窗口、测试数据、权限和清理责任未准备
+    - 失败注入、事务回滚和幂等协议未确认
+    - 失败注入、事务回滚和幂等协议未确认
+  headed_page_review:
+    status: static_review_only
+    evidence: page.json contains related APP-022 shipment execution and APP-024 shipment
+      records evidence only
+    confirmed:
+    - APP-022 发货执行依赖入口
+    - APP-024 上孵计划发货记录依赖
+    unconfirmed:
+    - APP-025 出入库记录页面
+    - 路由
+    - 页面标题
+    - 列表字段
+    - 空态
+    - 权限入口
+    - 稳定 locator
+    browser_started: false
+  casely_review:
+    status: pass_with_observations
+    checks:
+    - case_id_unique_continuous
+    - required_fields_present
+    - traceability_present
+    - automation_evaluation_present
+    - markdown_yaml_case_ids_aligned
+    - atomic_steps_style
+    observations:
+    - YAML/Markdown 22 条用例 ID 对齐，字段完整，步骤均有预期。
+    - 标题、前置条件、动作和预期整体符合 Casely 风格；部分待确认契约已明确标记 blocked。
+    - TC-APP-025-005 标题和预期已统一，新增边界、异常、同序和并发场景。
+    - 页面和接口契约缺失被保留为评审观察项，未被写成执行通过。
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md#优先级划分
+    scope: 全部10条 REQ-APP-025 当前用例明细
+    case_count: 10
+    reviewed_case_count: 10
+    unreviewed_case_ids: []
+    distribution:
+      source:
+        P1: 2
+        P2: 4
+        P3: 4
+        P4: 0
+      source_summary:
+        P1: 2
+        P2: 4
+        P3: 4
+        P4: 0
+      case_detail:
+        P1: 2
+        P2: 4
+        P3: 4
+        P4: 0
+    change_summary:
+      changed_case_count: 7
+      unchanged_case_count: 15
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 当前以用例明细优先级为事实源；输入 YAML 未提供有效 summary.priority_counts，需在同步前补齐。
+    items:
+    - case_id: TC-APP-025-001
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      result: retained
+      impact_area: 自动出库属性
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 属性错误影响出库记录可信度，但可通过来源记录复核。
+      gate_reason: false
+    - case_id: TC-APP-025-002
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      result: retained
+      impact_area: 批次关联
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 批次错误影响追溯，可人工对照上孵计划。
+      gate_reason: false
+    - case_id: TC-APP-025-003
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: retained
+      impact_area: 数量一致性
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 数量错误直接造成库存和发货业务数据错误。
+      gate_reason: false
+    - case_id: TC-APP-025-005
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      result: removed_from_current_source
+      impact_area: 库存不足分配
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: medium
+      reason: 当前 YAML 未包含该用例，保留历史评审记录但不计入当前统计。
+      gate_reason: false
+    - case_id: TC-APP-025-006
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: removed_from_current_source
+      impact_area: 不负库存
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 当前 YAML 未包含该用例，保留历史评审记录但不计入当前统计。
+      gate_reason: false
+    - case_id: TC-APP-025-007
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      result: retained
+      impact_area: 自动记录生成
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 发货成功无对应出库记录会造成核心链路断裂。
+      gate_reason: false
+    - case_id: TC-APP-025-008
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      result: retained
+      impact_area: 来源属性
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: high
+      reason: 操作人、时间和客户错误影响审计与追溯，可人工核对来源。
+      gate_reason: false
+    - case_id: TC-APP-025-009
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      result: retained
+      impact_area: 存发苗间关联
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 错误库存位置会导致库存扣减对象错误。
+      gate_reason: false
+    - case_id: TC-APP-025-010
+      current_priority: P4
+      source_priority: P4
+      reviewed_priority: P4
+      result: missing_from_current_source
+      impact_area: 查询入口
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 当前 YAML 未包含该用例，保留历史评审记录但不计入当前统计。
+      gate_reason: false
+    - case_id: TC-APP-025-011
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      result: retained
+      impact_area: 自动记录查询
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 查询不可见影响追溯，可通过授权回读核验。
+      gate_reason: false
+    - case_id: TC-APP-025-017
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      result: retained
+      impact_area: 零数量边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 零数量处理可避免生成错误出库记录，需确认接口契约。
+      gate_reason: false
+    - case_id: TC-APP-025-019
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      result: retained
+      impact_area: 库存恰好满足
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: high
+      reason: 恰好库存是扣减至零且不负库存的核心边界。
+      gate_reason: false
+    - case_id: TC-APP-025-022
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      result: retained
+      impact_area: 并发幂等
+      blocks_core_flow: true
+      causes_key_data_error: true
+      has_workaround: false
+      user_frequency: medium
+      reason: 并发重复确认不得重复扣减库存。
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+    - APP-025正式页面与路由
+    - 查询字段/分页/排序/空态
+    - 权限码
+    - 幂等键
+    - 失败补偿协议
+    - 并发和最终一致性
+    gate_reasons: []
+  design_violations: []
+  traceability_failures: []
+  evidence_risks:
+  - APP_025_PAGE_EVIDENCE_MISSING
+  - FORMAL_ROUTE_NOT_AVAILABLE
+  - FORMAL_LOCATOR_CONFIRMATION_PENDING
+  - QUERY_CONTRACT_PENDING
+  - PERMISSION_CODE_UNCONFIRMED
+  execution_blockers:
+  - FORMAL_ENVIRONMENT_PERMISSION_DATA_NOT_READY
+  - BUSINESS_MUTATION_WINDOW_NOT_READY
+  - ROLLBACK_CLEANUP_NOT_READY
+  - FAILURE_INJECTION_NOT_READY
+  - PLAYWRIGHT_AND_HEADED_EXECUTION_NOT_PERFORMED
+  review_items:
+  - code: CASE_EXPECTATION_TITLE_CONFLICT
+    category: design_violation
+    result: resolved
+    gate_reason: false
+    reason: TC-APP-025-005 标题与步骤预期已统一为按关联顺序分配，接口契约仍待确认。
+    case_ids:
+    - TC-APP-025-005
+  - code: BOUNDARY_EXCEPTION_COVERAGE_ADDED
+    category: design_violation
+    result: added
+    gate_reason: false
+    reason: 已新增零数量、最小正数、恰好库存、超库存、同序和并发幂等场景。
+    case_ids:
+    - TC-APP-025-017
+    - TC-APP-025-018
+    - TC-APP-025-019
+    - TC-APP-025-020
+    - TC-APP-025-021
+    - TC-APP-025-022
+  - code: QUERY_CONTRACT_PENDING
+    category: evidence_risk
+    result: blocked
+    gate_reason: false
+    reason: 查询分页、排序、空态、字段和权限码未确认。
+    case_ids:
+    - TC-APP-025-010
+    - TC-APP-025-011
+    - TC-APP-025-015
+  review_dimensions:
+    systematic_coverage: pass_with_observations
+    pairwise: covered_with_observations_static_pict_model
+    automation_executability: candidate_but_blocked
+    headed_page_executability: static_review_only
+    structure_fields_style: pass_with_observations
+    delivery_format: pass
+  coverage_summary:
+    case_count: 10
+    automation_candidate_count: 10
+    automation_executable_count: 0
+    yaml_markdown_aligned: true
+    requirement_traceability_present: true
+    formal_ui_execution_performed: false
+    formal_business_data_changed: false
+    page_inventory_capture_status: partial
+    page_inventory_evidence_status: dependency_only
+    source_summary_matches_case_detail: true
+  source_hashes:
+  - path: 04_testcases/app/TC_REQ-APP-025.yaml
+    sha256: 39c95f0c88b85cd8af6b1e92c1c2536aa455235533c2f061bf61702b605c4165
+  - path: 04_testcases/app/TC_REQ-APP-025.md
+    sha256: 21109fe29cd9524ea7d7054726dbac37cf93ae87eb11f01d133391712dd44454
+  - path: 02_analysis/app/REQ-APP-025.yaml
+    sha256: 71627cb9c8b4f1ebb76865f9bc5d4bfb4a78937a14692d324428001c1f995e53
+  - path: 02_analysis/app/page_inventory/page.json
+    sha256: b71e83ad448235d533d2e564fc1ba96a0e7725573e4405f12dcf5d5b1a43893d
+  - path: 03_test_plan/app/TEST_PLAN_REQ-APP-025.yaml
+    sha256: 7a59b901329b0a98a7d6f54018eeea4292181a69d7952ec3ce2cd085e028d84d
+  sync_candidates:
+    case_count: 10
+    status: blocked_pending_authorized_sync_and_execution_readiness
+    note: 已完成本地 report_only 评审；须获授权且完成页面、数据、权限和环境准备后同步或执行；未写入远程禅道、CSV 或测试执行系统
+  execution_statement: 仅完成静态结构、覆盖、Pairwise 模型、Playwright 可执行性和页面证据边界评审；未执行 UI、浏览器、Playwright、CSV、远程禅道或测试点/XMind。
+  prohibited_actions_confirmed:
+    ui_execution: false
+    csv_generation: false
+    remote_zentao_write: false
+    test_point_or_xmind_generation: false
+  last_sync_update:
+    date: '2026-10-13'
+    case_id: TC-APP-025-008
+    zentao_case_id: 51439
+    change: 将操作人、操作时间与养殖客户核对拆分为2个独立步骤和预期
+    status: validated
+    readback_steps: 2
+  previous_sync_update:
+    date: '2026-10-13'
+    case_id: TC-APP-025-001
+    zentao_case_id: 51432
+    change: 删除预期中的单位显示为“只”断言
+    status: validated
+    readback_steps: 1
+  handoff:
+    path: 05_case_review/app/HANDOFF/REQ-APP-025_HANDOFF.md
+    module_id: REQ-APP-025

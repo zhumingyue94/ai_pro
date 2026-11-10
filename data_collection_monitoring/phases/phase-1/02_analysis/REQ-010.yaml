@@ -1,0 +1,152 @@
+schema_version: "1.1"
+analysis_id: "REQ-010"
+module_id: "REQ-010"
+module_name: "告警配置"
+project: "数据采集监控平台"
+status: "blocked_scoped_readonly_ui_verification"
+source:
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+  latest_changes: "01_requirements/需求变动.md"
+  latest_change_range: "REQ-010: 209-233"
+  latest_change_items: ["REQ-010-001", "REQ-010-002", "REQ-010-003", "REQ-010-004", "REQ-010-005", "REQ-010-006", "REQ-010-007", "REQ-010-008", "REQ-010-009", "REQ-010-010", "REQ-010-011", "REQ-010-012", "REQ-010-013", "REQ-010-014", "REQ-010-015", "REQ-010-016", "REQ-010-017", "REQ-010-018", "REQ-010-019", "REQ-010-020", "REQ-010-021"]
+  scope_baseline: "01_requirements/模块拆分清单.md"
+  page_inventory: "02_analysis/page_inventory/page.json"
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录具体值"
+identity:
+  zentao_module_path: "iot平台/告警中心/告警配置"
+  zentao_module_id: 748
+  parent_module_id: 729
+  priority: 10
+  priority_band: "P1"
+  route: "/iot/alert/config"
+  runtime_route: "/biopark-iot/iot/alert/config"
+  title: "数据采集 - 告警配置"
+  menu_path: ["告警中心", "告警配置"]
+  dependency_modules: ["产品管理", "设备管理", "数据采集", "数据监听", "用户管理"]
+  discrepancy: "模块清单确认页面和路由；字段、权限、保存反馈、引用限制及通知配置事实以最新确认项和 page.json 证据为准。"
+scope:
+  in_scope:
+    - "列表、配置名称/状态/日期筛选、查询、重置、刷新、表头设置、分页和创建时间倒序。"
+    - "新增、编辑、删除、启用/停用的字段、基础必填校验、引用限制、权限和取消边界；本阶段不提交写操作。"
+    - "配置名称、描述、告警级别、配置状态、接收用户、接收类型、模板变量和通知送达结果的页面契约识别。"
+    - "角色、租户、脱敏、异步反馈、字段错误、引用阻止和数据变更责任边界。"
+  out_of_scope:
+    - "告警对象、条件表达式、多条件、采样窗口、数据缺失、阈值、单位、精度、滞回、持续时间和恢复条件。"
+    - "连续触发、频率限制、冷却、抑制、升级、规则版本、草稿、审批、发布、回滚和生效时间。"
+    - "告警生命周期、通知失败/重试/限流/熔断/死信/人工重发、沙箱和真实通知发送。"
+    - "API endpoint、状态码、请求/响应、规则引擎、性能 SLA、真实写操作和接口验收。"
+  acceptance_boundary:
+    - "业务基准为需求变动.md 最新 REQ-010 和公共确认项。"
+    - "页面事实以 page.json 页面、状态、元素、交互和脱敏 evidence 为准。"
+    - "控件可见或表单打开不等于保存成功、状态生效、引用校验完成或通知送达。"
+page_contract:
+  page_id: "alarm_config"
+  route: "/biopark-iot/iot/alert/config"
+  title: "数据采集 - 告警配置"
+  menu_path: ["告警中心", "告警配置"]
+  target: {element_id: "alarm_config_state", strategy: "css", value: "body"}
+  page_ready: ["URL contains /biopark-iot/iot/alert/config", "title contains 告警配置", "body visible", "no loading/error failure"]
+  states:
+    alarm_config_default:
+      expected: "配置名称/状态/日期筛选、查询、重置、刷新、表头设置、新增、列表和分页可见；不提交变更。"
+      elements: ["alarm_config_name_filter", "alarm_config_status_filter", "alarm_config_start_date", "alarm_config_end_date", "alarm_config_query", "alarm_config_reset", "alarm_config_refresh", "alarm_config_columns", "alarm_config_add_button", "alarm_config_table", "alarm_edit_button", "alarm_delete_button"]
+      columns: ["编号", "配置名称", "配置描述", "告警级别", "配置状态", "接收人", "接收类型", "创建时间", "操作"]
+      observed_page_size: "10条/页"
+    alarm_config_add:
+      expected: "新增表单显示名称、描述、级别、状态、接收用户、接收类型及提交/取消；仅打开并取消。"
+      elements: ["alarm_add_dialog", "alarm_add_name", "alarm_add_desc", "alarm_add_level", "alarm_add_status", "alarm_add_receivers", "alarm_add_types", "alarm_add_submit", "alarm_add_cancel"]
+    alarm_config_edit:
+      expected: "编辑字段规则与新增一致；仅观察并取消。"
+      elements: ["alarm_edit_dialog", "alarm_edit_name", "alarm_edit_desc", "alarm_edit_level", "alarm_edit_status", "alarm_edit_receivers", "alarm_edit_types", "alarm_edit_submit", "alarm_edit_cancel"]
+    alarm_config_delete:
+      expected: "删除确认层可见；仅观察并取消。"
+      elements: ["alarm_delete_dialog", "alarm_delete_cancel", "alarm_delete_submit"]
+    alarm_config_columns:
+      expected: "表头设置可见；操作列复选框禁用且保持勾选；不修改。"
+      elements: ["alarm_columns_dialog", "alarm_columns_reset", "alarm_columns_operation_checkbox"]
+  evidence:
+    dom: ["02_analysis/page_inventory/dom/alarm-config.html", "02_analysis/page_inventory/dom/alarm-config-add.html", "02_analysis/page_inventory/dom/alarm-config-edit.html", "02_analysis/page_inventory/dom/alarm-config-delete.html", "02_analysis/page_inventory/dom/alarm-config-columns.html"]
+    logs: ["02_analysis/page_inventory/logs/alarm-config.txt"]
+    screenshots: ["02_analysis/page_inventory/screenshots/alarm-config-default.png", "02_analysis/page_inventory/screenshots/alarm-config-add.png", "02_analysis/page_inventory/screenshots/alarm-config-edit.png", "02_analysis/page_inventory/screenshots/alarm-config-delete.png", "02_analysis/page_inventory/screenshots/alarm-config-columns.png"]
+    sanitized: true
+  missing_or_unverified: ["保存成功/失败/字段校验/异步处理中稳定定位器", "权限提示独立 ID 和角色租户矩阵", "引用标识及删除阻止提示", "停用/启用控件独立 ID", "模板变量和送达结果页面元素", "站内信类型页面证据", "正式 PDF 逐条页码追溯"]
+observed_values:
+  severity: ["INFO", "WARN", "ERROR"]
+  status: ["开启"]
+  receive_type: ["邮箱", "短信"]
+  page_size: "10条/页"
+  note: "页面样例不替代最新完整确认：状态为开启/停用，接收类型为短信/邮箱/站内信。"
+business_rules:
+  confirmed:
+    REQ-010-001: "本模块不配置告警对象；具体对象在数据监听模块配置。"
+    REQ-010-002: "本模块不配置条件类型、表达式、多条件、采样窗口和数据缺失处理。"
+    REQ-010-003: "本模块不配置阈值、单位、精度、滞回、持续时间和恢复条件。"
+    REQ-010-004: "连续触发、频率限制、冷却、抑制、升级和启停生效时间由数据监听模块配置。"
+    REQ-010-005: "规则版本由数据监听模块管理；历史告警关联触发时生效的规则版本。"
+    REQ-010-006: "支持选择接收用户、通知渠道和模板变量；系统记录通知送达结果。"
+    REQ-010-007: "本模块仅配置级别、接收用户和接收类型，不负责触发、通知失败、重试、等待、限流、熔断、死信或人工重发。"
+    REQ-010-008: "本模块不负责重复、乱序、缺失、去重、合并、恢复、确认和关闭等告警生命周期。"
+    REQ-010-009: "本模块配置不涉及产品、设备、分组、采集任务或字段变化，也不负责规则迁移和历史告警保留处理。"
+    REQ-010-010: "不提供沙箱、模拟数据或虚拟接收人；安全测试不属于本模块职责。"
+    REQ-010-011: "列表默认创建时间倒序；筛选、分页和刷新后保持。"
+    REQ-010-012: "配置名称必填，同租户允许重复，编辑可修改；长度、大小写、空格和特殊字符按系统默认规则。"
+    REQ-010-013: "描述可为空、不限字数、单行且不允许换行；级别默认不选且必填；状态默认开启；接收用户和接收类型必填并支持多选；新增编辑规则一致。"
+    REQ-010-014: "级别仅 INFO/WARN/ERROR；状态仅开启/停用；状态切换即时生效；无草稿、发布中或失效状态。"
+    REQ-010-015: "接收类型为短信、邮箱、站内信；接收用户来自本系统用户管理；不支持 Webhook、队列；未单独配置模板、模板变量和渠道参数。"
+    REQ-010-016: "被引用配置不可删除但可停用和编辑；停用后已有监听规则继续使用旧配置；历史告警保留触发时配置快照。"
+    REQ-010-017: "仅校验级别、接收用户、接收类型等基础必填项；缺失禁止保存；错误定位具体字段；不校验对象/条件/阈值组合。"
+    REQ-010-018: "按角色和租户验证查看、查询、新增、编辑、删除、停用、启用及无权限提示；不验接口细节。"
+    REQ-010-019: "保存成功、失败、字段校验和异步处理中状态按实际页面记录，定位沿用 PUB-015。"
+    REQ-010-020: "引用标识、删除阻止提示和列表行数据按实际页面记录，定位沿用 PUB-015。"
+    REQ-010-021: "名称和描述不限制字段长度但限制非法字符；接收用户和接收类型必填；使用隔离测试数据并脱敏通知信息。"
+  public_confirmed: ["无权限提示没有操作权限", "默认每页10条", "筛选回第一页", "无结果显示暂无数据", "查询失败/超时/网络异常/权限不足显示失败提示且无重试入口", "重复提交只生效一次", "处理中禁止重复操作", "不缓存，刷新重新加载最新数据", "取消关闭无需二次确认", "校验失败字段旁提示并保留输入", "保存失败保留输入", "删除软删除且列表不显示", "停用仍显示并可恢复", "被引用阻止相关操作", "不要求审计记录"]
+  pending: ["正式 PDF REQ-010 章节逐条页码追溯", "模板变量具体页面归属与字段", "通知送达结果页面归属和展示契约", "站内信页面选项证据", "权限角色/租户矩阵", "保存/校验/异步/引用阻止稳定定位器", "名称/描述非法字符和接收用户数量的系统默认边界"]
+roles:
+  - {role: "告警配置管理员", responsibility: "维护配置基础字段、级别、状态、接收用户和接收类型"}
+  - {role: "数据监听管理员", responsibility: "维护告警对象、条件、阈值、触发和规则版本"}
+  - {role: "用户/通知管理员", responsibility: "维护系统用户及通知渠道上下文"}
+  - {role: "只读用户", responsibility: "查看授权配置，不执行变更"}
+permission_status: "partial_blocked"
+permission_rule: "不得从按钮、菜单或表单可见推断写权限；不得绕过角色、租户或安全控制。"
+dependencies:
+  upstream: ["REQ-003 产品管理", "REQ-005 设备管理", "REQ-007 数据监听", "REQ-009 数据采集", "用户管理", "登录/门户/权限/租户上下文"]
+  downstream: ["REQ-011 告警记录", "短信/邮箱/站内信通知渠道"]
+  note: "依赖表示责任边界，不代表接口、通知或历史快照已验证。"
+risks:
+  - {id: "R-010-01", level: "high", description: "错误接收用户或渠道配置导致真实人员收到通知", control: "只读观察，不保存、不触发、不发送通知"}
+  - {id: "R-010-02", level: "high", description: "被引用配置删除或停用行为不符合规则，影响监听和历史快照", control: "仅规划页面证据，不执行写操作"}
+  - {id: "R-010-03", level: "high", description: "接收人、手机号、邮箱、模板变量或通知结果泄露", control: "脱敏，不写入截图、日志、DOM、报告或下载文件"}
+  - {id: "R-010-04", level: "medium", description: "模板变量/送达结果职责与页面归属不清", control: "记录待确认，不推断实现"}
+  - {id: "R-010-05", level: "medium", description: "权限和租户边界不完整导致越权结论失真", control: "记录阻塞，不绕过权限"}
+test_design:
+  equivalence_partitions: ["名称有效/空/非法字符/同租户重复", "描述空/单行/换行", "级别未选/INFO/WARN/ERROR", "状态开启/停用", "接收用户单选/多选/空/越权", "接收类型短信/邮箱/站内信/不支持渠道", "新增/编辑/删除/停用/启用", "未引用/已引用", "完整权限/只读/拒绝/跨租户", "有结果/无结果/查询失败"]
+  boundary_candidates: ["名称和描述空、最小、最大、非法字符（长度未定义）", "接收用户数量空、1、最大、超限（上限未定义）", "日期空值、同日、开始晚于结束、跨月跨年", "分页空、单条、10条、末页、无结果"]
+  decision_tables:
+    - {id: "DT-010-01", conditions: ["基础必填字段", "提交"], expected: "级别、接收用户或接收类型缺失时字段错误，禁止保存并保留输入"}
+    - {id: "DT-010-02", conditions: ["引用状态", "删除/停用/编辑"], expected: "被引用不可删除，可停用和编辑；停用后已有监听继续使用旧配置"}
+    - {id: "DT-010-03", conditions: ["状态", "动作"], expected: "开启/停用即时生效；无草稿、发布中或失效状态"}
+    - {id: "DT-010-04", conditions: ["接收类型"], expected: "短信/邮箱/站内信允许；Webhook/队列不支持"}
+    - {id: "DT-010-05", conditions: ["列表操作"], expected: "默认、筛选、分页、刷新均创建时间倒序；筛选回第一页"}
+  state_transitions: ["未认证->登录->门户->告警配置默认态", "默认态->新增/编辑->校验失败或保存成功并列表回读", "开启<->停用（即时生效并状态回读）", "未引用/已引用->删除允许或阻止并列表回读", "配置触发->历史告警保存触发时配置快照（仅契约分析，不触发）"]
+  pict_model:
+    parameters: ["Permission", "Tenant", "RequiredFields", "Severity", "Status", "ReceiverCount", "ReceiveType", "Reference", "Action", "Result"]
+    values: {Permission: [full_control, read_only, denied, cross_tenant_limited], Tenant: [same, other, missing], RequiredFields: [complete, missing_name, missing_severity, missing_receiver, missing_type], Severity: [INFO, WARN, ERROR, unselected], Status: [enabled, disabled], ReceiverCount: [zero, one, multiple, over_limit], ReceiveType: [SMS, Email, InApp, Webhook, Queue], Reference: [unreferenced, referenced], Action: [view, query, add, edit, delete, enable, disable], Result: [visible, validation_error, permission_error, saved, blocked, no_data]}
+    constraints: ["IF [Permission] IN {read_only, denied, cross_tenant_limited} THEN protected write action is permission_error;", "IF [RequiredFields] != complete THEN [Result] = validation_error;", "IF [Severity] = unselected OR [ReceiverCount] = zero THEN [Result] = validation_error;", "IF [ReceiveType] IN {Webhook, Queue} THEN [Result] = validation_error;", "IF [Reference] = referenced AND [Action] = delete THEN [Result] = blocked;", "IF [Status] = disabled AND [Action] = disable THEN [Result] = visible;", "IF [Tenant] = other THEN protected data/action is permission_error;"]
+automation_plan:
+  framework: "Playwright Python sync API / pytest-playwright"
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+  allowed: ["复用登录态", "进入告警中心→告警配置", "只读检查路由、列表、筛选、分页、排序、枚举和脱敏标签", "打开新增/编辑/删除/表头弹窗后取消"]
+  forbidden: ["提交新增", "提交编辑", "确认删除", "启用/停用", "触发告警", "发送通知", "捕获 endpoint/认证/载荷", "读取联系人/接收地址", "绕过权限"]
+  locator_priority: ["confirmed alarm_* IDs", "get_by_role/name", "get_by_test_id", "get_by_label", "get_by_text", "stable attributes", "CSS fallback"]
+  page_ready: ["runtime URL is /biopark-iot/iot/alert/config", "title contains 告警配置", "alarm_config_default available", "body visible", "no failure prompt"]
+data_preconditions:
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 或运行时配置读取，不记录具体值。"
+  - "只使用已授权页面数据，不造配置、不修改状态、不触发告警、不发送通知。"
+  - "账号、密码、Token、Cookie、接收地址、联系人、设备标识、模板变量、通知载荷、送达结果及未经授权业务数据不得写入 page.json、截图、日志、DOM、报告或下载文件。"
+  - "本阶段无数据变更；清理状态：not_applicable。未来若获批造数或触发通知，需由测试负责人、告警配置负责人、数据监听负责人、用户/通知管理员确认隔离用户/渠道、停止条件、回滚与清理结果。"
+readiness:
+  status: "blocked"
+  reason: "保存/反馈/权限/引用契约及模板变量、送达结果页面归属不完整；无沙箱或虚拟接收人；真实写操作和通知发送未授权。"
+handoff:
+  path: "02_analysis/HANDOFF/REQ-010_HANDOFF.md"
+  status: "blocked"

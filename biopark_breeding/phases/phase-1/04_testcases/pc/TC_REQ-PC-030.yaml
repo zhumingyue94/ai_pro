@@ -1,0 +1,2420 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-030
+title: 蛋重类型管理
+module: 蛋重类型管理
+zentao_module_id: 547
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-030
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-39100
+  title: 行操作-删除按钮二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 找到一条停用状态的蛋重类型
+    expected: 找到停用状态蛋重类型
+  - action: 点击该行的删除按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“删除成功“，该蛋重类型从表格中消失
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39100
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39100
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39101
+  title: 行操作-停用按钮二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 找到一条启用状态的蛋重类型
+    expected: 找到启用状态蛋重类型
+  - action: 点击该行的停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“停用成功“，该蛋重类型状态变为“停用“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39101
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39101
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39102
+  title: 行操作-启用按钮二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 找到一条停用状态的蛋重类型
+    expected: 找到停用状态蛋重类型
+  - action: 点击该行的启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“启用成功“，该蛋重类型状态变为“启用“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39102
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39102
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39103
+  title: 修改-校验规则与新建一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限<br />
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: ''
+  - action: 点击某条数据的修改按钮
+    expected: ''
+  - action: 将蛋重类型名称清空
+    expected: ''
+  - action: 点击确定按钮
+    expected: 无法保存，提示“蛋重类型名称不能为空“，与新建时的校验规则一致
+  - action: 蛋重类型名称重复
+    expected: ''
+  - action: 点击确定按钮
+    expected: 无法保存，提示蛋重类型名称不能重复
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39103
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39103
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39104
+  title: 修改-取消修改不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击某条数据的修改按钮
+    expected: 打开修改弹窗
+  - action: 修改蛋重类型名称
+    expected: 蛋重类型名称已修改
+  - action: 点击取消或关闭按钮
+    expected: 弹窗关闭，表格中数据未更新，仍为原值
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39104
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39104
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39105
+  title: 修改-蛋重类型名称修改成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击某条数据的修改按钮
+    expected: 打开修改弹窗，蛋重类型名称显示“小蛋“
+  - action: 将蛋重类型名称从“小蛋“修改为“中蛋“
+    expected: 蛋重类型名称修改为“中蛋“
+  - action: 点击确定按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“修改成功“，表格中该行的蛋重类型名称更新为“中蛋“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39105
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39105
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39106
+  title: 修改-蛋重类型编号不可修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击某条数据的修改按钮
+    expected: 打开修改弹窗
+  - action: 尝试修改蛋重类型编号输入框
+    expected: 蛋重类型编号输入框为禁用状态或只读，无法修改
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39106
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39106
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39107
+  title: 修改-表单数据回显正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 找到一条蛋重类型数据（蛋重类型编号DZ001，蛋重类型名称小蛋，最小蛋重40，最大蛋重50，状态启用，备注测试）
+    expected: 找到目标蛋重类型
+  - action: 点击该行的修改按钮
+    expected: 打开修改弹窗
+  - action: 观察弹窗中的表单数据
+    expected: 弹窗中蛋重类型编号显示“DZ001“，蛋重类型名称显示“小蛋“，最小蛋重显示“40“，最大蛋重显示“50“，状态选中“启用“，备注显示“测试“，与表格数据一致
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39107
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39107
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39108
+  title: 修改-打开修改弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 找到一条蛋重类型数据
+    expected: 找到目标蛋重类型
+  - action: 点击该行的修改按钮
+    expected: 打开修改弹窗，弹窗标题显示“修改蛋重类型“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39108
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39108
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39109
+  title: 表格-数据显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 观察表格中每列的数据
+    expected: 表格中各列数据显示正确，蛋重类型编号、蛋重类型名称、平均蛋重、状态、创建时间与数据库中一致
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39109
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39109
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39110
+  title: 表格-表头字段正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 观察表格表头
+    expected: 表格表头显示：蛋重类型编号、蛋重类型名称、平均蛋重、状态、创建时间、操作
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39110
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39110
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39111
+  title: 删除-取消二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 勾选一个停用状态的蛋重类型
+    expected: 勾选停用状态的蛋重类型
+  - action: 点击删除按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击取消
+    expected: 弹窗关闭，蛋重类型未被删除，仍在表格中显示
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39111
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39111
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39112
+  title: 删除-批量删除过滤启用蛋重类型
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用和停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 同时勾选启用和停用状态的蛋重类型
+    expected: 勾选多个不同状态的蛋重类型
+  - action: 点击删除按钮
+    expected: 弹出二次确认对话框或直接提示
+  - action: 观察系统行为
+    expected: 系统过滤掉启用状态的蛋重类型，只删除停用状态的蛋重类型，或提示“只能删除停用状态的蛋重类型“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39112
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39112
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39113
+  title: 删除-单个停用蛋重类型删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 勾选一个停用状态的蛋重类型
+    expected: 勾选停用状态的蛋重类型
+  - action: 点击删除按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“删除成功“，该蛋重类型从表格中消失
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39113
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39113
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39114
+  title: 删除-未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 不勾选任何数据
+    expected: 无数据被勾选
+  - action: 点击删除按钮
+    expected: 弹窗提示“请先勾选要删除的蛋重类型“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39114
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39114
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39115
+  title: 停用-取消二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 勾选一个启用状态的蛋重类型
+    expected: 勾选启用状态的蛋重类型
+  - action: 点击停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击取消
+    expected: 弹窗关闭，蛋重类型状态不变，仍为“启用“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39115
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39115
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39116
+  title: 停用-批量停用混合状态
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用和停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 同时勾选启用和停用状态的蛋重类型
+    expected: 勾选多个不同状态的蛋重类型
+  - action: 点击停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，已停用的蛋重类型维持停用状态，启用的蛋重类型变为停用状态
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39116
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39116
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39117
+  title: 停用-单个蛋重类型停用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 勾选一个启用状态的蛋重类型
+    expected: 勾选启用状态的蛋重类型
+  - action: 点击停用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，提示“停用成功“，该蛋重类型状态变为“停用“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39117
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39117
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39118
+  title: 停用-未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 不勾选任何数据
+    expected: 无数据被勾选
+  - action: 点击停用按钮
+    expected: 弹窗提示“请先勾选要停用的蛋重类型“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39118
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39118
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39119
+  title: 启用-取消二次确认
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 勾选一个停用状态的蛋重类型
+    expected: 勾选停用状态的蛋重类型
+  - action: 点击启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击取消
+    expected: 弹窗关闭，蛋重类型状态不变，仍为“停用“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39119
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39119
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39120
+  title: 启用-批量启用混合状态
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用和停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 同时勾选启用和停用状态的蛋重类型
+    expected: 勾选多个不同状态的蛋重类型
+  - action: 点击启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后，已启用的蛋重类型维持启用状态，停用的蛋重类型变为启用状态
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39120
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39120
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39121
+  title: 启用-单个蛋重类型启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 勾选一个停用状态的蛋重类型
+    expected: 勾选停用状态的蛋重类型
+  - action: 点击启用按钮
+    expected: 弹出二次确认对话框
+  - action: 在二次确认弹窗中点击确认
+    expected: 确认后可用，提示“启用成功“，该蛋重类型状态变为“启用“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39121
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39121
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39122
+  title: 启用-未勾选数据提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 不勾选任何数据
+    expected: 无数据被勾选
+  - action: 点击启用按钮
+    expected: 弹窗提示“请先勾选要启用的蛋重类型“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39122
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39122
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39123
+  title: 导出-筛选后导出数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在多条蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在蛋重类型名称输入框中输入“小蛋“
+    expected: 输入筛选条件
+  - action: 点击搜索按钮
+    expected: 表格中只显示筛选后的数据
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 打开导出文件检查数据
+    expected: 导出文件中只包含筛选后的数据，不包含全部数据
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39123
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39123
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39124
+  title: 导出-数据准确性验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在多条蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 记录表格中的数据
+    expected: 表格中显示多条蛋重类型数据
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 打开导出文件对比数据
+    expected: 导出文件中的数据与页面表格中的数据完全一致
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39124
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39124
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39125
+  title: 导出-表头字段与页面一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 打开导出文件检查表头
+    expected: 导出文件的表头字段为：蛋重类型编号、蛋重类型名称、平均蛋重、状态、创建时间、操作，与页面表格一致
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39125
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39125
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39126
+  title: 导出-文件格式正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击导出按钮
+    expected: 开始导出
+  - action: 下载文件并检查文件后缀
+    expected: 下载的文件后缀为.xls或.xlsx
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39126
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39126
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39127
+  title: 新建-再次打开弹窗数据清空
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 填写部分表单数据
+    expected: 表单数据已填写
+  - action: 点击取消按钮关闭弹窗
+    expected: 弹窗关闭
+  - action: 再次点击新建按钮
+    expected: 再次打开新建弹窗
+  - action: 观察表单数据
+    expected: 表单中所有字段为空或恢复默认值，不会带入上次的数据
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39127
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39127
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39128
+  title: 新建-关闭按钮不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 填写部分表单数据
+    expected: 表单数据已填写
+  - action: 点击弹窗右上角的×关闭按钮
+    expected: 弹窗关闭，表格中无新增数据
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39128
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39128
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39129
+  title: 新建-取消按钮不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 填写部分表单数据
+    expected: 表单数据已填写
+  - action: 点击取消按钮
+    expected: 弹窗关闭，表格中无新增数据
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39129
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39129
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39130
+  title: 新建-备注非必填
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 备注输入框不填写任何内容
+    expected: 备注输入框为空
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的备注为空
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39130
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39130
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39131
+  title: 新建-状态默认选中启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 观察状态字段的默认选中值
+    expected: 状态单选框默认选中“启用“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39131
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39131
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39132
+  title: 新建-状态选择停用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 状态选择“停用“
+    expected: 状态单选框选中“停用“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，下游流程中该蛋重类型不在选项中显示
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39132
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39132
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39133
+  title: 新建-状态选择启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 状态选择“启用“
+    expected: 状态单选框选中“启用“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，下游流程中该蛋重类型可在选项中选择
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39133
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39133
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39134
+  title: 新建-平均蛋重负数输入校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重输入框填写“-10“
+    expected: 最小蛋重显示“-10“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“只能输入正整数“或输入框不允许输入负数
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39134
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39134
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39135
+  title: 新建-平均蛋重区间重叠校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在蛋重类型区间为“40~50“的数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重输入框填写“45“
+    expected: 最小蛋重显示“45“
+  - action: 最大蛋重输入框填写“55“
+    expected: 最大蛋重显示“55“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“蛋重区间与已有蛋重类型重叠，请调整区间“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39135
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39135
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39136
+  title: 新建-平均蛋重左区间小于等于右区间校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重输入框填写“50“
+    expected: 最小蛋重显示“50“
+  - action: 最大蛋重输入框填写“40“
+    expected: 最大蛋重显示“40“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“最大蛋重必须大于等于最小蛋重“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39136
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39136
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39137
+  title: 新建-平均蛋重输入非数字校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重输入框填写“abc“
+    expected: 最小蛋重显示“abc“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“只能输入数字“或输入框不允许输入非数字字符
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39137
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39137
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39138
+  title: 新建-平均蛋重两个都不填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重和最大蛋重输入框都不填写
+    expected: 最小蛋重和最大蛋重都为空
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“最小蛋重和最大蛋重至少填写一个“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39138
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39138
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39139
+  title: 新建-平均蛋重两个都填
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重输入框填写“40“
+    expected: 最小蛋重显示“40“
+  - action: 最大蛋重输入框填写“50“
+    expected: 最大蛋重显示“50“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的平均蛋重为“40~50“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39139
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39139
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39140
+  title: 新建-平均蛋重只填最大蛋重
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重输入框不填写
+    expected: 最小蛋重为空
+  - action: 最大蛋重输入框填写“50“
+    expected: 最大蛋重显示“50“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的平均蛋重为“~50“或“<50“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39140
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39140
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39141
+  title: 新建-平均蛋重只填最小蛋重
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 最小蛋重输入框填写“40“
+    expected: 最小蛋重显示“40“
+  - action: 最大蛋重输入框不填写
+    expected: 最大蛋重为空
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的平均蛋重为“40~“或“>=40“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39141
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39141
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39142
+  title: 新建-蛋重类型名称仅输入空格校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 蛋重类型名称输入框只输入空格“   “
+    expected: 蛋重类型名称输入框显示空格
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“蛋重类型名称不能为空“或“蛋重类型名称不能只包含空格“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39142
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39142
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39143
+  title: 新建-蛋重类型编码和名称重复校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限<br />
+  - 2、已存在蛋重类型名称为“小蛋“的数据
+  - 3、已存在编码为DZ001的数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: ''
+  - action: 点击新建按钮
+    expected: ''
+  - action: 蛋重类型编码输入框填写“DZ001“（与已有数据重复），其他必填项填写完整
+    expected: ''
+  - action: 点击确定按钮
+    expected: 无法保存，提示“蛋重类型编码已存在，请使用其他编码“
+  - action: 蛋重类型名称输入框填写“小蛋“（与已有数据重复），其他必填项填写完整
+    expected: ''
+  - action: 点击确定按钮
+    expected: 无法保存，提示“蛋重类型名称已存在，请使用其他名称“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39143
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39143
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39144
+  title: 新建-蛋重类型名称正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 蛋重类型名称输入框填写“中蛋“
+    expected: 蛋重类型名称显示“中蛋“
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 保存成功，表格中新增数据的蛋重类型名称为“中蛋“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39144
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39144
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39145
+  title: 新建-蛋重类型名称必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 蛋重类型名称输入框不填写任何内容
+    expected: 蛋重类型名称输入框为空
+  - action: 其他必填项填写完整
+    expected: 其他必填项填写完整
+  - action: 点击确定按钮
+    expected: 无法保存，提示“蛋重类型名称不能为空“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39145
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39145
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39146
+  title: 新建-蛋重类型编号必填
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 尝试修改蛋重类型编号输入框
+    expected: 蛋重类型编号可以修改
+  - action: 编码清空不填写
+    expected: 无法保存，提示必填
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39146
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39146
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39147
+  title: 新建-蛋重类型编号自动生成
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 观察蛋重类型编号输入框的默认值
+    expected: 蛋重类型编号输入框显示系统自动生成的编号
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39147
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39147
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39148
+  title: 新建弹窗-表单字段显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 观察弹窗中的表单字段
+    expected: 弹窗中显示蛋重类型编号、蛋重类型名称、平均蛋重（最小蛋重、最大蛋重）、状态、备注五个字段
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39148
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39148
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39149
+  title: 新建弹窗-打开弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗，弹窗标题显示“新建蛋重类型“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39149
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39149
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39150
+  title: 重置按钮-自动执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已设置筛选条件并搜索
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 设置筛选条件并点击搜索
+    expected: 表格显示筛选后的数据
+  - action: 点击重置按钮
+    expected: 筛选条件清空
+  - action: 观察是否需再次点击搜索
+    expected: 表格自动刷新显示全部数据，无需再次点击搜索
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39150
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39150
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39151
+  title: 重置按钮-清空所有筛选条件
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已设置多个筛选条件
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 设置蛋重类型名称、状态等筛选条件
+    expected: 筛选条件正确设置
+  - action: 点击搜索按钮
+    expected: 表格显示筛选后的数据
+  - action: 点击重置按钮
+    expected: 所有筛选条件清空，表格自动显示全部数据
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39151
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39151
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39152
+  title: 组合筛选-多条件组合
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在多条蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在蛋重类型名称输入框中输入“小蛋“
+    expected: 各筛选条件正确显示
+  - action: 在状态下拉框中选择“启用“
+    expected: 表格中只显示蛋重类型名称包含“小蛋“且状态为“启用“的数据
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39152
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39152
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39153
+  title: 状态筛选-选择停用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用和停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在状态下拉框中选择“停用“
+    expected: 下拉框显示选中“停用“
+  - action: 点击搜索按钮
+    expected: 表格中只显示状态为“停用“的蛋重类型数据
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39153
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39153
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39154
+  title: 状态筛选-选择启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  - 2、已存在启用和停用状态的蛋重类型数据
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 在状态下拉框中选择“启用“
+    expected: 下拉框显示选中“启用“
+  - action: 点击搜索按钮
+    expected: 表格中只显示状态为“启用“的蛋重类型数据
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39154
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39154
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39155
+  title: 新建-确定按钮保存成功
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 填写所有必填项和选填项的正常值
+    expected: 表单数据填写完整
+  - action: 点击确定按钮
+    expected: 弹窗关闭，提示“保存成功“，表格中新增一行数据，各字段值与填写的一致
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39155
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39155
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39156
+  title: 新建-正常保存
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 蛋重类型管理
+  preconditions:
+  - 1、用户登录成功并且有蛋重类型管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-蛋重类型管理
+    expected: 进入蛋重类型管理页面
+  - action: 点击新建按钮
+    expected: 打开新建蛋重类型弹窗
+  - action: 蛋重类型编号保持系统自动生成
+    expected: 蛋重类型编号显示系统生成的编号
+  - action: 蛋重类型名称输入框填写“小蛋“
+    expected: 蛋重类型名称显示“小蛋“
+  - action: 最小蛋重输入框填写“40“
+    expected: 最小蛋重显示“40“
+  - action: 最大蛋重输入框填写“50“
+    expected: 最大蛋重显示“50“
+  - action: 状态选择“启用“
+    expected: 状态默认选中“启用“
+  - action: 备注输入框填写“测试蛋重类型“
+    expected: 备注显示“测试蛋重类型“
+  - action: 点击确定按钮
+    expected: 弹窗关闭，提示“保存成功“，表格中新增一行数据，蛋重类型编号为系统生成值，蛋重类型名称为“小蛋“，平均蛋重为“40~50“，状态为“启用“，备注为“测试蛋重类型“
+  test_data:
+    module: 蛋重类型管理
+    zentao_module_id: 547
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-030
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39156
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39156
+    raw_module: /一期/pc/基础数据/蛋重类型管理(#547)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

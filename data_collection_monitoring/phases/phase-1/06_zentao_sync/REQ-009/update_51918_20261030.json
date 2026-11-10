@@ -1,0 +1,20 @@
+{
+  "req_id": "REQ-009",
+  "case_id": "TC-REQ-009-040",
+  "remote_case_id": 51918,
+  "operation": "update",
+  "execution_mode": "real_update",
+  "target": {"import_target": "project", "product_id": 8, "project_id": 46, "module_id": 747},
+  "status": "validated",
+  "readback": {
+    "title": "停止运行中任务并确认停止提示与已停止状态",
+    "step_count": 5,
+    "step_3": {"action": "点击“取消”。", "expected": "弹窗关闭，任务仍为运行中。"},
+    "step_4": {"action": "再次打开弹窗并点击“确认”。", "expected": "页面显示停止处理中的按钮状态。"},
+    "step_5": {"action": "查看任务状态反馈。", "expected": "页面显示停止提示，且任务状态变成“已停止”。"},
+    "product": 8, "project": 46, "module": 747
+  },
+  "registry": "registered",
+  "source": "04_testcases/TC_REQ-009.yaml",
+  "source_hash": "bfb00b95b217f1f3839b777ce62c4fed4856421078174cb5d38e7ca2d3d6c700"
+}

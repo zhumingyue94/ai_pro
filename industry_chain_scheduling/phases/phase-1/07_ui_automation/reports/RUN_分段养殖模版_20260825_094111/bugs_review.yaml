@@ -1,0 +1,159 @@
+run_id: RUN_分段养殖模版_20260825_094111
+review_status: pending
+generated_at: '2026-08-25T09:42:06'
+rule: 仅明确产品断言失败进入审核；脚本错误、用例错误和 blocked 不自动创建禅道 Bug。
+bugs:
+- case_id: TC-003-06
+  zentao_case_id: 47578
+  classification: product_defect
+  title: 仅输入模版名称后点击「查询」，列表按名称过滤
+  keywords:
+  - REQ-003
+  - TC-003-06
+  - TP-003-06
+  precondition:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「模版名称」输入已知模版名称关键字
+    expected: 模版名称筛选项已填入关键字
+  - action: 确认「品种」「补栏月份」「状态」为空或未选
+    expected: 其余筛选项未参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示模版名称匹配该关键字的记录
+  actual:
+    keyword: 勿用停用
+    result_names:
+    - 勿用停用模版
+    - 测试停用模板（勿用）
+    - AUTO测试_勿用_分段模版_T2436
+    - AUTO测试_勿用_分段模版_T2434
+    result_count: 4
+  expected: '模版名称筛选项已填入关键字
+
+    其余筛选项未参与过滤
+
+    列表仅展示模版名称匹配该关键字的记录'
+  evidence:
+    screenshots:
+    - path: screenshots/TC-003-06_TP-003-06_assertion_scope.png
+      sha256: 91bb95df0cde48fba2ace02e2133c650e6f591779126c8ba99d477721e506734
+    - path: screenshots/TC-003-06_TP-003-06_assertion_full.png
+      sha256: 499af20214c385aa1b9763165075e19b8c065a69e051ab85c860f30deb3e9d5d
+    - path: screenshots/TC-003-06_TP-003-06_failure_scope.png
+      sha256: 91bb95df0cde48fba2ace02e2133c650e6f591779126c8ba99d477721e506734
+    - path: screenshots/TC-003-06_TP-003-06_failure_full.png
+      sha256: ff161cc125625202a48d851480d01bc55059a4259b4d895a73b6d758fc7cfe88
+    console_errors: []
+    page_errors: []
+    request_errors: []
+  zentao_bug_id: null
+- case_id: TC-003-08
+  zentao_case_id: 47580
+  classification: product_defect
+  title: 仅选补栏月份后点击「查询」，列表按补栏月份过滤
+  keywords:
+  - REQ-003
+  - TC-003-08
+  - TP-003-08
+  precondition:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「补栏月份」下拉选择某一月份（如3）
+    expected: 补栏月份筛选项已选中
+  - action: 确认其他筛选项为空
+    expected: 仅补栏月份参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示该补栏月份的模版记录
+  actual:
+    selected_month: 8月
+    result_months:
+    - 8月
+    - 9月
+    - 8月
+    - 8月
+    result_count: 4
+  expected: '补栏月份筛选项已选中
+
+    仅补栏月份参与过滤
+
+    列表仅展示该补栏月份的模版记录'
+  evidence:
+    screenshots:
+    - path: screenshots/TC-003-08_TP-003-08_assertion_scope.png
+      sha256: 56352a7d8b9527a95ecaa4457417edcb99afc6f949cc15610b4193bda170d6fd
+    - path: screenshots/TC-003-08_TP-003-08_assertion_full.png
+      sha256: 17d17eea1e8e40f1c96f82a70f01f534946bff4f2546c8a31513c402ccbdd030
+    - path: screenshots/TC-003-08_TP-003-08_failure_scope.png
+      sha256: 56352a7d8b9527a95ecaa4457417edcb99afc6f949cc15610b4193bda170d6fd
+    - path: screenshots/TC-003-08_TP-003-08_failure_full.png
+      sha256: 4a147cdf2b72acd25e9f068a432ac8a4869ab601f7be34d9d2d11007d561339d
+    console_errors: []
+    page_errors: []
+    request_errors: []
+  zentao_bug_id: null
+- case_id: TC-003-09
+  zentao_case_id: 47581
+  classification: product_defect
+  title: 仅选状态后点击「查询」，列表按状态过滤
+  keywords:
+  - REQ-003
+  - TC-003-09
+  - TP-003-09
+  precondition:
+  - 使用智控中心测试账号登录系统
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已准备可区分的模版测试数据（不同名称/品种/补栏月份/状态）
+  steps:
+  - action: 在查询区「状态」下拉选择「审核通过」
+    expected: 状态筛选项为审核通过
+  - action: 确认其他筛选项为空
+    expected: 仅状态参与过滤
+  - action: 点击「查询」按钮
+    expected: 列表仅展示状态为「审核通过」的模版记录
+  actual:
+    selected_status: 审核通过
+    result_statuses:
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 待审核
+    - 待审核
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    - 审核通过
+    result_count: 20
+  expected: '状态筛选项为审核通过
+
+    仅状态参与过滤
+
+    列表仅展示状态为「审核通过」的模版记录'
+  evidence:
+    screenshots:
+    - path: screenshots/TC-003-09_TP-003-09_assertion_scope.png
+      sha256: 77bdb5b34b83ef1e610822559a9b5b20bb795b6ec88f07839a899c62af4f084b
+    - path: screenshots/TC-003-09_TP-003-09_assertion_full.png
+      sha256: d76d47c0c5ebd4ebb4e956dc626f72f82c44ae12528180b1854dc90c9d53f46c
+    - path: screenshots/TC-003-09_TP-003-09_failure_scope.png
+      sha256: 77bdb5b34b83ef1e610822559a9b5b20bb795b6ec88f07839a899c62af4f084b
+    - path: screenshots/TC-003-09_TP-003-09_failure_full.png
+      sha256: 3dc0ff4891c4733a3a3045fcac77a64ccdc00c7fdf23b582c723dd0e3cd1e2e7
+    console_errors: []
+    page_errors: []
+    request_errors: []
+  zentao_bug_id: null

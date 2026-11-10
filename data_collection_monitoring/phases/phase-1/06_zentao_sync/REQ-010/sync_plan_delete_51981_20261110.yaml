@@ -1,0 +1,22 @@
+req_id: REQ-010
+product_id: 8
+project_id: 46
+module_id: 748
+operation: delete
+zentao_case_id: 51981
+source_case_id: TC-REQ-010-054
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+rebuild: forbidden_and_not_used
+local_source_case_count_after: 40
+source_hashes_after:
+  yaml: 2430169b0d6b4c1117ae8cd3402e2a834bd3a30af983d3fbaed5899b2214a656
+  markdown: 72669d5231c74367e8174e9bd005896cf58c228031c5a1a8a25513211a1c23c2
+  review_yaml: 7e8ec4d13865668b532224498487a620bced5363b7bafc4a7799ab19675699e2
+execution:
+  status: validated
+  delete_response: success
+  readback_after: confirmed_not_found
+registry:
+  action: removed_mapping_after_confirmed_absence
+  status: validated

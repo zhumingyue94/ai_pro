@@ -1,0 +1,1806 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-035
+title: 受健率标准管理
+module: 受健率标准管理
+zentao_module_id: 552
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-035
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-39005
+  title: 受健率标准管理_修改_不影响历史数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  - 3、该数据已被其他业务引用
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 修改只会影响修改后的数据，不影响历史数据，下游相关页面中该数据名称正常显示
+  - action: 找到一条已被引用的数据
+    expected: ''
+  - action: 点击修改按钮
+    expected: ''
+  - action: 修改受精率或受健率
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  - action: 查看下游相关业务页面
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39005
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39005
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39006
+  title: 受健率标准管理_修改_表单数据回显
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 弹窗中表单字段与新建弹窗一致，表单数据回显正确
+  - action: 找到一条数据
+    expected: ''
+  - action: 点击该行的修改按钮
+    expected: ''
+  - action: 查看弹窗中的表单数据
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39006
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39006
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39007
+  title: 受健率标准管理_修改_打开弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 打开修改弹窗，弹窗标题合适
+  - action: 找到一条数据
+    expected: ''
+  - action: 点击该行的修改按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39007
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39007
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39008
+  title: 受健率标准管理_表格_修改时间格式
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 修改时间显示日期时间格式，如：2025.12.19 17:24:00
+  - action: 查看表格中的修改时间列
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39008
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39008
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39009
+  title: 受健率标准管理_表格_受健率百分比格式
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 受健率显示百分比格式，如：60%、85%、90.5%、91%
+  - action: 查看表格中的受健率列
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39009
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39009
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39010
+  title: 受健率标准管理_表格_受精率百分比格式
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 受精率显示百分比格式，如：50%、75%、78%、86%
+  - action: 查看表格中的受精率列
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39010
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39010
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39011
+  title: 受健率标准管理_表格_周龄范围固定
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 周龄范围固定为25-64
+  - action: 查看表格中的周龄列
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39011
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39011
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39012
+  title: 受健率标准管理_表格_数据显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 表格中每列的数据显示正确，与数据库中存储的一致
+  - action: 查看表格中的数据
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39012
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39012
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39013
+  title: 受健率标准管理_表格_表头字段
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 表头包含：复选框、年份、孵化场、周龄、受精率、受健率、修改时间、修改人、操作
+  - action: 查看表格表头
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39013
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39013
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39014
+  title: 受健率标准管理_导出_筛选后导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有多个年份的数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导出的文件只包含筛选后的数据（2026年的数据），不需要勾选表格数据
+  - action: 选择年份&#039;2026&#039;并点击搜索
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39014
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39014
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39015
+  title: 受健率标准管理_导出_数据准确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导出文件中的各个字段数据与页面显示一致
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出的Excel文件
+    expected: ''
+  - action: 对比导出数据与页面数据
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39015
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39015
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39016
+  title: 受健率标准管理_导出_表头字段一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导出文件的表头字段与页面表格一致
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出的Excel文件
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39016
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39016
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39017
+  title: 受健率标准管理_导出_文件名规范
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 文件名清晰易懂，如&#039;受健率标准管理_20260512.xlsx&#039;，不会出现随机数字
+  - action: 点击导出按钮
+    expected: ''
+  - action: 查看下载的文件名
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39017
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39017
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39018
+  title: 受健率标准管理_导出_文件格式
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导出的文件为Excel格式，后缀为xls或xlsx
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39018
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39018
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39019
+  title: 受健率标准管理_导入_失败提示原因
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导入失败，提示&#039;年份不能为空&#039;等具体失败原因
+  - action: 准备导入文件，其中某行年份为空
+    expected: ''
+  - action: 点击导入按钮并选择该文件
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39019
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39019
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39020
+  title: 受健率标准管理_导入_数据校验规则
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导入失败，提示受精率必须在0-100之间
+  - action: 准备导入文件，其中受精率填写&#039;150&#039;（超出范围）
+    expected: ''
+  - action: 点击导入按钮并选择该文件
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39020
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39020
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39021
+  title: 受健率标准管理_导入_表头字段一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导入模板的表头字段与页面表格一致：年份、孵化场、周龄、受精率、受健率
+  - action: 下载导入模板
+    expected: ''
+  - action: 查看模板文件的表头字段
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39021
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39021
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39022
+  title: 受健率标准管理_导入_模板下载
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 成功下载Excel格式的导入模板文件
+  - action: 点击下载导入模板
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39022
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39022
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39023
+  title: 受健率标准管理_导入_文件格式校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 提示错误，只支持xls或xlsx格式的Excel文件
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择一个非Excel格式的文件（如.txt）
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39023
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39023
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39024
+  title: 受健率标准管理_新建_平均行自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 平均行固定不动，自动计算所有行的平均值
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 填写所有行的受精率和受健率
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39024
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39024
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39025
+  title: 受健率标准管理_新建_受健率大于100校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 提示错误，受健率必须在0-100之间
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 在某一行受健率输入框中输入&#039;101&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39025
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39025
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39026
+  title: 受健率标准管理_新建_受健率小于0校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 提示错误，受健率必须在0-100之间
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 在某一行受健率输入框中输入&#039;-1&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39026
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39026
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39027
+  title: 受健率标准管理_新建_受健率非数字校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 提示错误，受健率只能输入数字
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 在某一行受健率输入框中输入非数字字符&#039;abc&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39027
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39027
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39028
+  title: 受健率标准管理_新建_受健率必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 无法保存，提示&#039;受健率不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 某一行受健率不填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39028
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39028
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39029
+  title: 受健率标准管理_新建_受精率大于100校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 提示错误，受精率必须在0-100之间
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 在某一行受精率输入框中输入&#039;101&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39029
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39029
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39030
+  title: 受健率标准管理_新建_受精率小于0校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 提示错误，受精率必须在0-100之间
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 在某一行受精率输入框中输入&#039;-1&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39030
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39030
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39031
+  title: 受健率标准管理_新建_受精率非数字校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 提示错误，受精率只能输入数字
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 在某一行受精率输入框中输入非数字字符&#039;abc&#039;
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39031
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39031
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39032
+  title: 受健率标准管理_新建_受精率必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 无法保存，提示&#039;受精率不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份和孵化场
+    expected: ''
+  - action: 某一行受精率不填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39032
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39032
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39033
+  title: 受健率标准管理_新建_周龄固定行数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 周龄固定显示25-64，共40行数据
+  - action: 点击新建按钮
+    expected: ''
+  - action: 查看表格中的周龄列
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39033
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39033
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39034
+  title: 受健率标准管理_新建_孵化场选项来源
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已存在启用和停用状态的孵化场
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 下拉选项中只显示启用状态的孵化场数据
+  - action: 点击新建按钮
+    expected: ''
+  - action: 点击孵化场下拉框
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39034
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39034
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39035
+  title: 受健率标准管理_新建_孵化场必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 无法保存，提示&#039;孵化场不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份，孵化场不选择，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39035
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39035
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39036
+  title: 受健率标准管理_新建_年份选项范围
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 年份选项包含当前年份及明年年份，最多选到明年
+  - action: 点击新建按钮
+    expected: ''
+  - action: 点击年份下拉框
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39036
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39036
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39037
+  title: 受健率标准管理_新建_年份必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 无法保存，提示&#039;年份不能为空&#039;
+  - action: 点击新建按钮
+    expected: ''
+  - action: 年份不选择，其他字段填写完整
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39037
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39037
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39038
+  title: 受健率标准管理_新建_打开弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 打开新建弹窗，弹窗标题为&#039;新建受健率标准&#039;
+  - action: 点击新建按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39038
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39038
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39039
+  title: 受健率标准管理_筛选_重置后自动搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已设置筛选条件并执行过搜索
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 筛选条件清空后自动执行搜索，不需要再点搜索按钮，表格显示全部数据
+  - action: 设置筛选条件并点击搜索
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39039
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39039
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39040
+  title: 受健率标准管理_筛选_重置清空条件
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已设置筛选条件
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 所有筛选条件清空，回到默认状态
+  - action: 设置年份、孵化场、周龄等筛选条件
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39040
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39040
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39041
+  title: 受健率标准管理_筛选_翻页后搜索回首页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、数据量超过一页
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 搜索结果回到第1页显示
+  - action: 翻到第2页
+    expected: ''
+  - action: 在筛选条件中输入搜索内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39041
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39041
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39042
+  title: 受健率标准管理_筛选_周龄正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已存在不同周龄的受健率标准数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 表格中只显示周龄包含&#039;30&#039;的数据
+  - action: 在周龄输入框中输入&#039;30&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39042
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39042
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39043
+  title: 受健率标准管理_筛选_孵化场选项来源
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已存在启用和停用状态的孵化场
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 下拉选项中只显示启用状态的孵化场数据
+  - action: 点击孵化场下拉框
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39043
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39043
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39044
+  title: 受健率标准管理_筛选_孵化场正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已存在多个启用状态的孵化场
+  - 3、已存在多个孵化场的受健率标准数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 表格中只显示对应孵化场的数据
+  - action: 在孵化场下拉框中选择一个孵化场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39044
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39044
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39045
+  title: 受健率标准管理_筛选_年份正常选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已存在多个年份的受健率标准数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 表格中只显示对应年份的数据
+  - action: 在年份下拉框中选择一个年份
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39045
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39045
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39046
+  title: 受健率标准管理_修改_正常保存
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、表格中有数据
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 修改成功，提示&#039;保存成功&#039;，表格中该数据的受精率或受健率更新为新值
+  - action: 找到一条数据
+    expected: ''
+  - action: 点击该行的修改按钮
+    expected: ''
+  - action: 修改某些行的受精率或受健率
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39046
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39046
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39047
+  title: 受健率标准管理_导入_正常导入
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已准备好符合规则的Excel导入文件
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 导入成功，数据在表格中正确显示
+  - action: 点击导入按钮
+    expected: ''
+  - action: 选择符合规则的Excel文件
+    expected: ''
+  - action: 确认导入
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39047
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39047
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-39048
+  title: 受健率标准管理_新建_正常保存
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 受健率标准管理
+  preconditions:
+  - 1、用户登录成功并且有受健率标准管理菜单权限
+  - 2、已存在至少一个启用的孵化场
+  steps:
+  - action: 登录后进入基础数据-受健率标准管理
+    expected: 新建成功，提示&#039;保存成功&#039;，表格中新增一行数据，年份为&#039;2026&#039;，孵化场为选择的孵化场，周龄范围为25-64，受精率和受健率与填入的一致
+  - action: 点击新建按钮
+    expected: ''
+  - action: 选择年份&#039;2026&#039;
+    expected: ''
+  - action: 选择孵化场
+    expected: ''
+  - action: 填写所有行的受精率和受健率（0-100之间的数值）
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  - action: 在二次确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 受健率标准管理
+    zentao_module_id: 552
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-035
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 39048
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 39048
+    raw_module: /一期/pc/基础数据/受健率标准管理(#552)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

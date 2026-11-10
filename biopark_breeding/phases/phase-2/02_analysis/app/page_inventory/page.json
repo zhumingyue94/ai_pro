@@ -1,0 +1,694 @@
+{
+  "schema_version": "1.1",
+  "capture_id": "PAGE-APP-REQ021-022-024-20260908-REEXPLORE-CORRECTED",
+  "captured_at": "2026-09-08T15:00:00+08:00",
+  "previous_capture_id": "PAGE-APP-REQ021-20260907-REEXPLORE-HEADED",
+  "schema_validation": {
+    "status": "input_missing",
+    "schema_path": "../../../../../.agents/references/page.schema.json",
+    "reason": "schema 文件在项目中不存在，无法执行校验；本次按已有 page.json 结构（隐式 schema）保持一致",
+    "structural_consistency_check": "passed_against_existing_page_json"
+  },
+  "capture": {
+    "collector": "codebuddy-qa-agent + browser_use subagent (headed visible browser)",
+    "browser": "chromium (browser_use)",
+    "headless": false,
+    "environment": {
+      "id": "prototype-biopark-breeding-app-req021-022-024-reexplore-corrected",
+      "os": "win32",
+      "browser": "chromium",
+      "viewport": "673x814 (mobile emulation) / 1280x800 (desktop fallback)"
+    },
+    "scope": [
+      "REQ-APP-021 APP 雏苗发货列表与筛选",
+      "首页/雏苗发货列表默认态、日期筛选、栋舍筛选、状态页签、搜索入口和空结果态",
+      "发货记录、去发货/继续发货作为后续模块入口，仅记录入口存在，不探索其业务细节",
+      "REQ-APP-023 APP 发货单发货记录：从列表进入有记录与无记录页面，记录累计发货、历史记录、返回列表和真实可达只读状态",
+      "REQ-APP-022 APP 发货执行：发货执行页默认态（BL-20260630-01，待发货）通过直接 URL /m/orders/{单号}/execute 可达；发货单汇总卡片（日期 2026.06.30 - 栋舍 1栋 - 品种 AA+、单号、孵化计划号、计划上苗数、计划苗重、进度 0%）、三栏统计（实际可发 8050只、累计发货 0只、待分配 8050只）、上孵计划卡片列表（4 条 SFJH 计划）",
+      "REQ-APP-022 上孵计划卡片交互：SFJH-20260601-01（平邑一场 1P 实际可发 4200只）、SFJH-20260601-02（平邑二场 2P 实际可发 3850只）各含“记 录”“发 货”按钮；SFJH-20260602-01、SFJH-20260602-02 实际可发 0只仅含“记 录”按钮",
+      "REQ-APP-022 原型交互缺陷：列表页“去发货”按钮点击跳回首页、执行页“发 货”“记 录”按钮点击均跳回发货单列表（/m/orders），预期应为发货位置编辑弹窗/上孵计划发货记录页，原型路由未实现；已通过 URL 直接验证 /m/orders/{单号}/plan-shipments/{计划号} 可达空状态（REQ-APP-024 路由存在但无 mock 数据）",
+      "REQ-APP-024 APP 上孵计划发货记录：通过发货执行页“记 录”按钮进入（原型内部使用 HP-{订单号尾}{计划序号} 作为计划 ID，如 BL-20260630-07 的计划为 HP-071/HP-072）；页面展示上孵计划详情（计划号、状态、发货单号、种禽养殖场、养殖批次、周龄、平均蛋重、蛋重类型、产蛋日期、出雏时间、备注）、发货进度、三栏统计（实际可发、累计发货、待分配数）和历史发货记录列表（提交时间、操作人、本次发货数量、完成状态、剩余未发、列层位置明细含新增/累计数量）",
+      "REQ-APP-024 状态覆盖：待发货（0%进度，暂无发货记录）、发货中（67%进度，多条未发完记录）、已发货（100%进度，已发完/未发完混合）、已签收（100%进度，已发完）；空状态区分“暂无发货记录”（计划存在但无发货记录）和“未找到上孵计划发货记录”（计划不存在或直接 URL 用 SFJH 号访问）",
+      "REQ-APP-024 交互：返回按钮回到发货执行页；页面只读，不提供新增、修改、删除；记录按提交时间倒序展示；列层累计数量跨发货记录累加",
+      "REQ-APP-021 2026-09-08 补采：日期弹层完整形态（昨天/今天/明天快捷选项 + 自定义日期滚轮 + 重置 + 确定）；点击昨天后弹层不自动关闭，需点确定才生效，生效后列表统计从待发货4变为0并显示空状态；栋舍弹层全部栋舍选项点击后恢复默认列表；搜索结果页去发货按钮正确跳转到发货执行页（修正之前误判为跳回首页的缺陷记录）；需求说明弹窗内容完整采集；两端关系弹窗内容完整采集",
+      "REQ-APP-022 2026-09-08 重大修正：之前记录的'原型路由缺陷：发货按钮点击跳回列表'是错误的。实际验证：点击发 货按钮正确弹出位置编辑弹窗（包含计划号、待分配数量、选择列 combobox、选择层 combobox、当前累计数量、发货数量 spinbutton、备注 textbox、取消、确认发货按钮）",
+      "REQ-APP-022 2026-09-08 新增采集：发货弹窗完整状态（app022-ship-dialog）；校验失败-未输入数量（app022-validation-no-quantity，提示'发货数量需为大于 0 的整数'）；校验失败-超过待分配数量（app022-validation-exceed-quantity，提示'本次发货数量不能超过待分配数量 4,200 只'）；已发货状态发货执行页 BL-20260630-07（app022-execute-shipped，进度100% 16420/16420，无发 货按钮）；BL-20260630-02 发货中状态发货执行页（app022-execute-bl02，进度65% 10050/15550，4个计划含待发货/发货中/已发货/已签收四种状态）；BL-02 发货弹窗（app022-bl02-ship-dialog）；备注15字限制验证（app022-remark-15-limit，输入超过15字时仅保留15字，无字符计数器）",
+      "REQ-APP-022 2026-09-08 原型缺陷确认：发货弹窗无列/层字段校验（app022-validation-no-position，未选择列层仍可提交发货成功）；发货执行页和列表页均无'更多操作(...)'按钮（修正之前 exec-more-menu 元素记录，应标记为 missing）；发货记录页无折叠/展开按钮（默认全展开，与需求变动'默认折叠3条+展开全部'规则冲突）",
+      "REQ-APP-024 2026-09-08 验证：HP-022 折叠/展开状态确认默认全展开无折叠按钮（app024-shipping-record-expanded）；HP-011（SFJH-20260601-01 对应 BL-20260630-01）直接 URL 访问显示未找到上孵计划发货记录（与已有 app024-empty-notfound 状态一致）"
+    ],
+    "status": "partial_corrected",
+    "correction_summary": {
+      "corrected_findings": [
+        "发货按钮点击正确弹出位置编辑弹窗，非跳回列表（之前记录的 prototype_bug 是错误的）",
+        "搜索结果去发货按钮正确跳转到发货执行页，非跳回首页",
+        "exec-more-menu 元素在发货执行页和列表页均不存在，应标记为 missing"
+      ],
+      "new_state_count": 18,
+      "still_blocked": [
+        "发货弹窗无列层字段校验（原型缺陷）",
+        "备注字段无字符计数器（原型缺陷）",
+        "发货记录无折叠/展开按钮（与需求变动冲突）"
+      ]
+    },
+    "evidence": {
+      "status": "available",
+      "screenshot_paths": [
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-default.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-date-dialog.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-house-dialog.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-house-filter.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-search-empty.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-search-result.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-shipped.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-signed.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-progress.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-headed-exec.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-pw-exec-default.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-empty-state.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-pending-hp021.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-shipping-hp022.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-populated-hp071.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-hp072.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-date-picker.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-date-yesterday-result.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-house-all.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-search-result-input.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-search-result-ship.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-requirements-modal.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-021-two-end-relationship-modal.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-execute-default.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-ship-dialog.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-ship-dialog-form.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-ship-dialog-fields.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-validation-error-no-quantity.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-validation-exceed-quantity.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-no-position-validation.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-remark-15.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-execute-shipped-full.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-execute-bl02.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-022-bl02-ship-dialog.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-shipping-collapse.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-shipping-expand.png",
+        "02_analysis/app/page_inventory/screenshots/req-app-024-hp011.png"
+      ],
+      "log_paths": [],
+      "trace_paths": []
+    }
+  },
+  "sanitization": {
+    "status": "applied",
+    "redacted_fields": [
+      "搜索输入值仅记录为 value_state=redacted，未写入 page.json；截图中的发货单号为原型公开 mock 演示数据",
+      "未采集账号、密码、Token、Cookie 或未经授权业务数据",
+      "本次仅执行查询、筛选、返回、刷新恢复初始化数据和搜索展示；未执行发货提交、创建、删除或持久化业务变更",
+      "本次 headed 重新探索读取到默认页面 viewport=1258x622、document=1258x973；日期弹层 document=1243x973，栋舍弹层和筛选结果均无横向溢出；未使用 CSS zoom、body.style.zoom、内容压缩或滚动拼接；所有新截图使用 agent-browser screenshot --full 保存，截图页面原始比例保留。发货执行入口仅查看页面和发货控件，未填写、提交、创建、删除或持久化业务数据；搜索使用原型公开 mock 发货单号查询，最终清空会话状态。需求说明书文本提取工具不可用，本次边界依据模块拆分清单和需求变动文件，并以原型实际探索结果为准。",
+      "REQ-APP-022 探索：agent-browser 0.27.0 headed 模式 viewport=1036x905、document=1036x1462，无横向溢出；通过 /m/orders/BL-20260630-01/execute 直接 URL 进入发货执行页；列表页“去发货”按钮点击跳回首页、执行页“发 货”“记 录”按钮点击跳回发货单列表，均属原型路由缺陷；未执行发货提交、位置录入、草稿保存等持久化业务变更；未采集账号、密码、Token、Cookie 或未经授权业务数据",
+      "REQ-APP-024 探索：agent-browser 0.27.0 headed 模式 viewport=1036x905、document=1021x1141，无横向溢出；通过发货执行页“记 录”按钮进入上孵计划发货记录页，覆盖待发货/发货中/已发货/已签收四种状态及两种空状态；页面为只读，未执行任何数据变更；截图中的操作人姓名（曹建军）为原型公开 mock 演示数据",
+      "2026-09-08 重新探索修正：之前记录的'列表页去发货按钮点击跳回首页、执行页发 货/记 录按钮点击跳回列表，均属原型路由缺陷'是错误的。实际验证：执行页发 货按钮正确弹出位置编辑弹窗（含计划号/待分配数量/选择列 combobox/选择层 combobox/当前累计数量/发货数量 spinbutton/备注 textbox/取消/确认发货按钮）；搜索结果去发货按钮正确跳转到发货执行页。本次修正保留原 prototype_bug 记录作为追溯，但在 interaction deviation 字段中将 prototype_bug 修正为 prototype_bug_corrected",
+      "2026-09-08 探索：browser_use subagent headed 模式 viewport=673x814（移动端模拟），document 视页面状态而异；所有截图使用 fullPage=true 模式，无 CSS zoom、body.style.zoom、内容压缩或滚动拼接。新增采集发货弹窗、校验失败状态、BL-02 发货执行页、BL-02 发货弹窗、备注15字限制、需求说明弹窗、两端关系弹窗、日期弹层快捷选项效果、栋舍弹层全部栋舍选项效果、搜索结果去发货跳转、HP-011 未找到状态、HP-022 折叠/展开（实际全展开无折叠按钮）",
+      "2026-09-08 数据安全：未执行真实业务数据变更。发货弹窗中的'确认发货'按钮在 mock 环境下可触发成功提示'已完成 SFJH-20260602-03 本次发货，共 100 只'并更新累计/待分配数量，但这是原型 mock 行为，不持久化到后端数据库；截图中的操作人姓名、计划号、发货单号均为原型公开 mock 演示数据。搜索输入值记录为 value_state=redacted。未采集账号、密码、Token、Cookie。"
+    ]
+  },
+  "pages": [
+    {
+      "page_id": "app-chick-shipping-list",
+      "route": "http://43.143.148.114:18885/biopark-breeding/m/orders",
+      "title": "雏苗发货单列表 - React 原型",
+      "menu_path": ["首页", "雏苗发货"],
+      "states": [
+        {
+          "state_id": "app021-default",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id":"page-default","kind":"page","name":"雏苗发货列表页","tag":"main","role":"main","label":null,"text":"雏苗发货；viewport 1258x622；document 1258x973；完整截图","attributes":{"viewport":"1258x622","content_width":"1258","content_height":"973","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-021"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-order-list-page","stable":true,"confidence":"high"}]},
+            {"element_id":"date-filter","kind":"datepicker","name":"任务日期","tag":"button","role":"button","label":"06月30日","text":"06月30日","attributes":{"class":"mobile-filter-trigger"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"text","value":"06月30日","stable":false,"confidence":"medium"},{"strategy":"css","value":".mobile-task-filter-row .mobile-filter-trigger:nth-child(1)","stable":true,"confidence":"high"}]},
+            {"element_id":"house-filter","kind":"filter","name":"栋舍筛选","tag":"button","role":"button","label":"全部栋舍","text":"全部栋舍","attributes":{"class":"mobile-filter-trigger"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"text","value":"全部栋舍","stable":false,"confidence":"medium"},{"strategy":"css","value":".mobile-task-filter-row .mobile-filter-trigger:nth-child(2)","stable":true,"confidence":"high"}]},
+            {"element_id":"search-entry","kind":"button","name":"搜索发货单","tag":"button","role":"button","label":"搜索发货单","text":"搜索","attributes":{"aria-label":"搜索发货单"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"label","value":"搜索发货单","stable":true,"confidence":"high"}]},
+            {"element_id":"status-tabs","kind":"tab","name":"发货单状态筛选","tag":"nav","role":"tablist","label":"发货单状态筛选","text":"待发货4 发货中3 已发货2 已签收3","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-status-tabs","stable":true,"confidence":"high"}]},
+            {"element_id":"order-card-pending","kind":"list_item","name":"待发货单卡片","tag":"section","role":"listitem","label":null,"text":"1栋 - AA+；待发货；0%；待分配 8050","attributes":{"class":"mobile-order-card"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-order-card","stable":true,"confidence":"high"}]},
+            {"element_id":"shipment-record-entry","kind":"button","name":"发货记录入口","tag":"button","role":"button","label":"发货记录","text":"发货记录","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"order-card-pending","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发货记录","stable":false,"confidence":"medium"}]},
+            {"element_id":"ship-entry","kind":"button","name":"去发货入口","tag":"button","role":"button","label":"去发货","text":"去发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"order-card-pending","locator_status":"available","locator_candidates":[{"strategy":"text","value":"去发货","stable":false,"confidence":"medium"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"date-filter","locator_ref":{"element_id":"date-filter","strategy":"css","value":".mobile-task-filter-row .mobile-filter-trigger:nth-child(1)"},"input_data_ref":null,"result_state_id":"app021-date-dialog","expected_observation":"打开日期筛选弹层，显示昨天、今天、明天、年月日选择、重置和确定"},
+            {"sequence":2,"action":"click","target_element_id":"house-filter","locator_ref":{"element_id":"house-filter","strategy":"css","value":".mobile-task-filter-row .mobile-filter-trigger:nth-child(2)"},"input_data_ref":null,"result_state_id":"app021-house-dialog","expected_observation":"打开栋舍筛选弹层，显示全部栋舍和1栋至10栋"},
+            {"sequence":3,"action":"click","target_element_id":"search-entry","locator_ref":{"element_id":"search-entry","strategy":"label","value":"搜索发货单"},"input_data_ref":null,"result_state_id":"app021-search-empty","expected_observation":"进入搜索页，显示搜索输入框和搜索引导"},
+            {"sequence":4,"action":"click","target_element_id":"status-tabs","locator_ref":{"element_id":"status-tabs","strategy":"css","value":".mobile-status-tabs"},"input_data_ref":null,"result_state_id":"app021-progress","expected_observation":"切换状态页签后仅显示对应状态卡片，统计数字同步变化"},
+            {"sequence":5,"action":"click","target_element_id":"shipment-record-entry","locator_ref":{"element_id":"shipment-record-entry","strategy":"text","value":"发货记录"},"input_data_ref":null,"result_state_id":"app023-records-empty","expected_observation":"进入发货记录页；当前待发货单显示累计发货0只、共0条记录和暂无发货记录空状态"}
+          ],
+          "dom_snapshot":{"html":"<main class=\"mobile-order-list-page\"><header><div class=\"mobile-page__title\">雏苗发货</div></header><section class=\"mobile-filter-panel\"><button>日期</button><button>栋舍</button><button aria-label=\"搜索发货单\">搜索</button></section><nav role=\"tablist\">待发货/发货中/已发货/已签收</nav><section class=\"mobile-order-card\">状态、进度、数量、发货记录、去发货</section></main>","accessibility_snapshot":"雏苗发货列表；日期；栋舍；搜索发货单；待发货；发货中；已发货；已签收；发货记录；去发货","sha256":"1111111111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-07T09:41:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-default.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id":"app021-date-dialog","parent_state_id":"app021-default","elements":[{"element_id":"date-dialog","kind":"dialog","name":"任务日期筛选弹层","tag":"div","role":"dialog","label":"任务日期筛选","text":"昨天 06月29日；今天 06月30日；明天 07月01日；重置；确定","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"role","value":"dialog","stable":true,"confidence":"high"}]},{"element_id":"date-reset","kind":"button","name":"重置日期","tag":"button","role":"button","label":"重置","text":"重置","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"date-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"重置","stable":true,"confidence":"high"}]},{"element_id":"date-confirm","kind":"button","name":"确定日期","tag":"button","role":"button","label":"确定","text":"确定","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"date-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"确定","stable":true,"confidence":"high"}]}],"forms":[],"tables":[],"interactions":[{"sequence":1,"action":"click","target_element_id":"date-reset","locator_ref":{"element_id":"date-reset","strategy":"text","value":"重置"},"input_data_ref":null,"result_state_id":"app021-default","expected_observation":"恢复原型默认日期并可通过确定应用"},{"sequence":2,"action":"click","target_element_id":"date-confirm","locator_ref":{"element_id":"date-confirm","strategy":"text","value":"确定"},"input_data_ref":null,"result_state_id":"app021-default","expected_observation":"关闭弹层并按选定日期刷新状态统计和卡片列表"}],"dom_snapshot":{"html":"<div role=\"dialog\"><button>昨天</button><button>今天</button><button>明天</button><button>重置</button><button>确定</button></div>","accessibility_snapshot":"任务日期筛选；昨天；今天；明天；重置；确定","sha256":"2222222222222222222222222222222222222222222222222222222222222222","captured_at":"2026-09-07T09:42:00+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-date-dialog.png"],"log_paths":[],"trace_paths":[]}},
+        {
+          "state_id":"app021-house-dialog","parent_state_id":"app021-default","elements":[{"element_id":"house-dialog","kind":"dialog","name":"栋舍筛选弹层","tag":"div","role":"dialog","label":"选择栋舍","text":"全部栋舍；1栋至10栋","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"role","value":"dialog","stable":true,"confidence":"high"}]},{"element_id":"house-option-3","kind":"button","name":"栋舍选项3栋","tag":"button","role":"button","label":"3栋","text":"3栋","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"house-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"3栋","stable":false,"confidence":"medium"}]}],"forms":[],"tables":[],"interactions":[{"sequence":1,"action":"click","target_element_id":"house-option-3","locator_ref":{"element_id":"house-option-3","strategy":"text","value":"3栋"},"input_data_ref":null,"result_state_id":"app021-house-filter","expected_observation":"弹层关闭，列表切换为3栋，统计变为待发货1、发货中0、已发货1、已签收0"}],"dom_snapshot":{"html":"<div role=\"dialog\"><button>全部栋舍</button><button>1栋</button><button>2栋</button><button>3栋</button><button>4栋</button><button>5栋</button><button>6栋</button><button>7栋</button><button>8栋</button><button>9栋</button><button>10栋</button></div>","accessibility_snapshot":"选择栋舍；全部栋舍；1栋；2栋；3栋；4栋；5栋；6栋；7栋；8栋；9栋；10栋","sha256":"3333333333333333333333333333333333333333333333333333333333333333","captured_at":"2026-09-07T09:43:00+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-house-dialog.png"] ,"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app021-house-filter","parent_state_id":"app021-house-dialog","elements":[{"element_id":"house-filtered-list","kind":"list","name":"3栋筛选结果","tag":"div","role":"list","label":null,"text":"3栋；待发货1；发货中0；已发货1；已签收0；去发货","attributes":{"viewport":"1258x622"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-order-list","stable":true,"confidence":"high"}]}],"forms":[],"tables":[],"interactions":[],"dom_snapshot":{"html":"<main><div>3栋</div><nav role=\"tablist\">待发货1/发货中0/已发货1/已签收0</nav><section>3栋 - 光明2号；待发货；去发货</section></main>","accessibility_snapshot":"3栋；待发货1；发货中0；已发货1；已签收0；去发货","sha256":"4444444444444444444444444444444444444444444444444444444444444444","captured_at":"2026-09-07T09:43:30+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-house-filter.png"],"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app021-search-empty","parent_state_id":"app021-default","elements":[{"element_id":"search-form","kind":"form","name":"发货单搜索表单","tag":"div","role":"search","label":"搜索发货单","text":"搜索仅支持发货单号、孵化计划号；开始搜索","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"role","value":"search","stable":true,"confidence":"high"}]},{"element_id":"search-input","kind":"input","name":"发货单号或孵化计划号","tag":"input","role":"textbox","label":"搜索发货单号 / 孵化计划号","text":null,"attributes":{"placeholder":"搜索发货单号 / 孵化计划号"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"redacted"},"parent_element_id":"search-form","locator_status":"available","locator_candidates":[{"strategy":"placeholder","value":"搜索发货单号 / 孵化计划号","stable":true,"confidence":"high"}]},{"element_id":"search-empty-text","kind":"text","name":"搜索引导","tag":"div","role":null,"label":null,"text":"搜索仅支持发货单号、孵化计划号","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"search-form","locator_status":"missing","locator_candidates":[]}],"forms":[{"form_id":"shipment-search","element_id":"search-form","field_element_ids":["search-input"],"submit_element_ids":["search-input"],"cancel_element_ids":[]}],"tables":[],"interactions":[{"sequence":1,"action":"fill","target_element_id":"search-input","locator_ref":{"element_id":"search-input","strategy":"placeholder","value":"搜索发货单 / 孵化计划号"},"input_data_ref":"prototype_public_mock_shipment_identifier","result_state_id":"app021-search-result","expected_observation":"输入发货单号或孵化计划号后显示匹配结果；输入值不写入页面清单"}],"dom_snapshot":{"html":"<section role=\"search\"><input placeholder=\"搜索发货单 / 孵化计划号\" value=\"[REDACTED]\"><div>搜索仅支持发货单号、孵化计划号</div></section>","accessibility_snapshot":"搜索发货单号 / 孵化计划号；搜索仅支持发货单号、孵化计划号","sha256":"5555555555555555555555555555555555555555555555555555555555555555","captured_at":"2026-09-07T09:44:00+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-search-empty.png"],"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app021-search-result","parent_state_id":"app021-search-empty","elements":[{"element_id":"search-result-card","kind":"list_item","name":"搜索结果卡片","tag":"button","role":"button","label":"匹配发货单","text":"待发货；计划日期；0%；去发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"search-form","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-search-result-card","stable":true,"confidence":"medium"}]},{"element_id":"search-result-ship","kind":"button","name":"搜索结果去发货","tag":"button","role":"button","label":"去发货","text":"去发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"search-result-card","locator_status":"available","locator_candidates":[{"strategy":"text","value":"去发货","stable":false,"confidence":"medium"}]}],"forms":[],"tables":[],"interactions":[],"dom_snapshot":{"html":"<section role=\"search\"><input value=\"[REDACTED]\"><button>匹配发货单；待发货；去发货</button></section>","accessibility_snapshot":"搜索结果；待发货；计划日期；去发货","sha256":"6666666666666666666666666666666666666666666666666666666666666666","captured_at":"2026-09-07T09:44:20+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-search-result.png"],"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app021-progress","parent_state_id":"app021-default","elements":[{"element_id":"progress-list","kind":"list","name":"发货中列表","tag":"div","role":"list","label":null,"text":"发货中3；卡片显示继续发货","attributes":{"viewport":"1258x622"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-order-list","stable":true,"confidence":"high"}]},{"element_id":"continue-shipping","kind":"button","name":"继续发货","tag":"button","role":"button","label":"继续发货","text":"继续发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"progress-list","locator_status":"available","locator_candidates":[{"strategy":"text","value":"继续发货","stable":false,"confidence":"medium"}]}],"forms":[],"tables":[],"interactions":[],"dom_snapshot":{"html":"<nav role=\"tablist\"><button>发货中3</button></nav><section>发货中；64%；发货记录；继续发货</section>","accessibility_snapshot":"发货中3；发货中；64%；发货记录；继续发货","sha256":"7777777777777777777777777777777777777777777777777777777777777777","captured_at":"2026-09-07T09:44:30+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-progress.png"],"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app021-shipped","parent_state_id":"app021-default","elements":[{"element_id":"shipped-list","kind":"list","name":"已发货列表","tag":"div","role":"list","label":null,"text":"已发货2；卡片仅显示发货记录","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-order-list","stable":true,"confidence":"high"}]}],"forms":[],"tables":[],"interactions":[],"dom_snapshot":{"html":"<nav role=\"tablist\"><button>已发货2</button></nav><section>已发货；100%；发货记录</section>","accessibility_snapshot":"已发货2；已发货；100%；发货记录","sha256":"8888888888888888888888888888888888888888888888888888888888888888","captured_at":"2026-09-07T09:44:40+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-shipped.png"],"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app021-signed","parent_state_id":"app021-default","elements":[{"element_id":"signed-list","kind":"list","name":"已签收列表","tag":"div","role":"list","label":null,"text":"已签收3；卡片仅显示发货记录","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-order-list","stable":true,"confidence":"high"}]}],"forms":[],"tables":[],"interactions":[],"dom_snapshot":{"html":"<nav role=\"tablist\"><button>已签收3</button></nav><section>已签收；100%；发货记录</section>","accessibility_snapshot":"已签收3；已签收；100%；发货记录","sha256":"9999999999999999999999999999999999999999999999999999999999999999","captured_at":"2026-09-07T09:44:50+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-reexplore-signed.png"],"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app023-records-empty","parent_state_id":"app021-default","elements":[{"element_id":"records-empty-page","kind":"page","name":"发货记录空状态页","tag":"main","role":"main","label":"发货记录","text":"发货记录；2026.06.30 - 1栋 - AA+；BL-20260630-01；累计发货0只；共0条记录；暂无发货记录；完成发货后，历史记录会显示在这里。","attributes":{"viewport":"1258x622","content_width":"1258","content_height":"622","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-023"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-shipment-records-page","stable":true,"confidence":"high"}]},{"element_id":"records-back","kind":"button","name":"返回发货单列表","tag":"button","role":"button","label":"返回发货单列表","text":null,"attributes":{"aria-label":"返回发货单列表"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"records-empty-page","locator_status":"available","locator_candidates":[{"strategy":"label","value":"返回发货单列表","stable":true,"confidence":"high"}]},{"element_id":"records-empty-text","kind":"text","name":"暂无发货记录","tag":"div","role":null,"label":null,"text":"暂无发货记录；完成发货后，历史记录会显示在这里。","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"records-empty-page","locator_status":"missing","locator_candidates":[]}],"forms":[],"tables":[],"interactions":[{"sequence":1,"action":"click","target_element_id":"records-back","locator_ref":{"element_id":"records-back","strategy":"label","value":"返回发货单列表"},"input_data_ref":null,"result_state_id":"app021-default","expected_observation":"返回雏苗发货列表；本次从默认日期、全部栋舍、待发货页签进入，返回后仍显示相同筛选状态"}],"dom_snapshot":{"html":"<main class=\"mobile-shipment-records-page\"><header><button aria-label=\"返回发货单列表\"></button><h1>发货记录</h1></header><section>2026.06.30 - 1栋 - AA+</section><section>BL-20260630-01</section><section>累计发货 <strong>0只</strong>；共 0 条记录</section><section><div>暂无发货记录</div><p>完成发货后，历史记录会显示在这里。</p></section></main>","accessibility_snapshot":"发货记录；2026.06.30 - 1栋 - AA+；BL-20260630-01；累计发货0只；共0条记录；暂无发货记录；完成发货后，历史记录会显示在这里。","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","captured_at":"2026-09-07T10:12:00+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-023-records-empty.png"],"log_paths":[],"trace_paths":[]}},
+        {"state_id":"app023-records-populated","parent_state_id":"app021-shipped","elements":[{"element_id":"records-populated-page","kind":"page","name":"发货记录历史记录页","tag":"main","role":"main","label":"发货记录","text":"发货记录；2026.06.30 - 7栋 - AA+；BL-20260630-07；累计发货16420只；共5条记录；展示5条历史记录","attributes":{"viewport":"1258x622","content_width":"1258","content_height":"1427","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-023"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-shipment-records-page","stable":true,"confidence":"high"}]},{"element_id":"records-history-list","kind":"list","name":"历史发货记录列表","tag":"div","role":"list","label":"共5条记录","text":"SFJH-20260606-05；2026-06-30 10:28；+4140只；SFJH-20260605-07；+2460只；SFJH-20260606-04；+4120只；SFJH-20260605-07；+1600只；SFJH-20260605-06；+4100只","attributes":{"class":"mobile-shipment-record-list"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"records-populated-page","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-shipment-record-list","stable":true,"confidence":"high"}]},{"element_id":"records-back-populated","kind":"button","name":"返回发货单列表","tag":"button","role":"button","label":"返回发货单列表","text":null,"attributes":{"aria-label":"返回发货单列表"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"records-populated-page","locator_status":"available","locator_candidates":[{"strategy":"label","value":"返回发货单列表","stable":true,"confidence":"high"}]}],"forms":[],"tables":[],"interactions":[{"sequence":1,"action":"click","target_element_id":"records-back-populated","locator_ref":{"element_id":"records-back-populated","strategy":"label","value":"返回发货单列表"},"input_data_ref":null,"result_state_id":"app021-shipped","expected_observation":"返回已发货列表；页面显示06月30日、全部栋舍、已发货页签和原订单列表"}],"dom_snapshot":{"html":"<main class=\"mobile-shipment-records-page\"><header><button aria-label=\"返回发货单列表\"></button><h1>发货记录</h1></header><section>2026.06.30 - 7栋 - AA+</section><section>BL-20260630-07</section><section>累计发货 <strong>16,420只</strong>；共 5 条记录</section><section class=\"mobile-shipment-record-list\"><article>SFJH-20260606-05；2026-06-30 10:28；+4,140只；操作人信息已按页面显示采集</article><article>SFJH-20260605-07；+2,460只</article><article>SFJH-20260606-04；+4,120只</article><article>SFJH-20260605-07；+1,600只</article><article>SFJH-20260506-06；+4,100只</article></section></main>","accessibility_snapshot":"发货记录；2026.06.30 - 7栋 - AA+；BL-20260630-07；累计发货16,420只；共5条记录；历史发货记录5条","sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","captured_at":"2026-09-07T10:13:00+08:00"},"evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-023-records-shipped.png"],"log_paths":[],"trace_paths":[]}},
+        {
+          "state_id": "app021-date-picker",
+          "parent_state_id": "app021-default",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:43:08+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-021",
+            "correction_of_previous": "之前记录的 app021-date-dialog 仅描述元素存在，未记录快捷选项的真实交互行为"
+          },
+          "elements": [
+            {"element_id":"date-picker-dialog","kind":"dialog","name":"任务日期筛选弹层（完整形态）","tag":"div","role":"dialog","label":"任务日期筛选","text":"昨天 06月29日；今天 06月30日；明天 07月01日；年月日滚轮选择器；重置；确定","attributes":{"aria-modal":"true","class":"ant-modal"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"role","value":"dialog","stable":true,"confidence":"high"}]},
+            {"element_id":"date-yesterday-btn","kind":"button","name":"昨天快捷选项","tag":"button","role":"button","label":"昨天 06月29日","text":"昨天 06月29日","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"date-picker-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"昨天 06月29日","stable":true,"confidence":"high"}]},
+            {"element_id":"date-today-btn","kind":"button","name":"今天快捷选项","tag":"button","role":"button","label":"今天 06月30日","text":"今天 06月30日","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"date-picker-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"今天 06月30日","stable":true,"confidence":"high"}]},
+            {"element_id":"date-tomorrow-btn","kind":"button","name":"明天快捷选项","tag":"button","role":"button","label":"明天 07月01日","text":"明天 07月01日","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"date-picker-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"明天 07月01日","stable":true,"confidence":"high"}]},
+            {"element_id":"date-wheel-year","kind":"spinbutton","name":"年滚轮","tag":"div","role":"spinbutton","label":"年","text":"2026","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"date-picker-dialog","locator_status":"available","locator_candidates":[{"strategy":"css","value":".ant-picker-wheel-year","stable":true,"confidence":"medium"}]},
+            {"element_id":"date-wheel-month","kind":"spinbutton","name":"月滚轮","tag":"div","role":"spinbutton","label":"月","text":"06","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"date-picker-dialog","locator_status":"available","locator_candidates":[{"strategy":"css","value":".ant-picker-wheel-month","stable":true,"confidence":"medium"}]},
+            {"element_id":"date-wheel-day","kind":"spinbutton","name":"日滚轮","tag":"div","role":"spinbutton","label":"日","text":"30","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"date-picker-dialog","locator_status":"available","locator_candidates":[{"strategy":"css","value":".ant-picker-wheel-day","stable":true,"confidence":"medium"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"date-yesterday-btn","locator_ref":{"element_id":"date-yesterday-btn","strategy":"text","value":"昨天 06月29日"},"input_data_ref":null,"result_state_id":"app021-date-yesterday-result","expected_observation":"点击昨天后弹层不自动关闭，需额外点击确定按钮才生效"}
+          ],
+          "dom_snapshot":{"html":"<div role=\"dialog\" aria-modal=\"true\"><button>昨天 06月29日</button><button>今天 06月30日</button><button>明天 07月01日</button><div class=\"ant-picker-wheel\"><div>2026</div><div>06</div><div>30</div></div><button>重置</button><button>确定</button></div>","accessibility_snapshot":"任务日期筛选；昨天 06月29日；今天 06月30日；明天 07月01日；2026；06；30；重置；确定","sha256":"fff111111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:43:08+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-date-picker.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app021-date-yesterday-result",
+          "parent_state_id": "app021-date-picker",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:43:31+08:00",
+            "viewport": "673x814",
+            "document_size": "673x814",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-021"
+          },
+          "elements": [
+            {"element_id":"date-yesterday-button","kind":"button","name":"任务日期按钮（昨天应用后）","tag":"button","role":"button","label":"06月29日","text":"06月29日","attributes":{"class":"mobile-filter-trigger"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"text","value":"06月29日","stable":false,"confidence":"medium"}]},
+            {"element_id":"date-yesterday-empty","kind":"text","name":"空状态提示","tag":"div","role":null,"label":null,"text":"当前没有匹配的发货单 可调整状态筛选或关键字后重试。","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"missing","locator_candidates":[]},
+            {"element_id":"date-yesterday-tabs","kind":"tab","name":"状态页签（昨天）","tag":"nav","role":"tablist","label":"发货单状态筛选","text":"待发货0 发货中0 已发货1 已签收1","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-status-tabs","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"date-confirm","locator_ref":{"element_id":"date-confirm","strategy":"text","value":"确定"},"input_data_ref":null,"result_state_id":"app021-date-yesterday-result","expected_observation":"点击确定后弹层关闭，列表刷新为 06月29日数据；统计从待发货4 变为 待发货0/发货中0/已发货1/已签收1；当前页签无匹配卡片，显示空状态'当前没有匹配的发货单 可调整状态筛选或关键字后重试'"}
+          ],
+          "dom_snapshot":{"html":"<main class=\"mobile-order-list-page\"><header>雏苗发货</header><section class=\"mobile-filter-panel\"><button>06月29日</button><button>全部栋舍</button><button>搜索</button></section><nav role=\"tablist\">待发货0 发货中0 已发货1 已签收1</nav><section><div>当前没有匹配的发货单</div><p>可调整状态筛选或关键字后重试。</p></section></main>","accessibility_snapshot":"雏苗发货；06月29日；全部栋舍；搜索；待发货0；发货中0；已发货1；已签收1；当前没有匹配的发货单；可调整状态筛选或关键字后重试","sha256":"fff211111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:43:31+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-date-yesterday-result.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app021-house-all",
+          "parent_state_id": "app021-default",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:46:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-021"
+          },
+          "elements": [
+            {"element_id":"house-all-option","kind":"button","name":"全部栋舍选项（带选中标识）","tag":"button","role":"button","label":"全部栋舍","text":"全部栋舍","attributes":{"class":"ant-btn ant-btn-selected","aria-pressed":"true"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":true,"value_state":"populated"},"parent_element_id":"house-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"全部栋舍","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"house-all-option","locator_ref":{"element_id":"house-all-option","strategy":"text","value":"全部栋舍"},"input_data_ref":null,"result_state_id":"app021-default","expected_observation":"点击全部栋舍选项，弹层关闭，列表恢复默认状态（待发货4），与默认页面一致"}
+          ],
+          "dom_snapshot":{"html":"<div role=\"dialog\"><button class=\"ant-btn-selected\" aria-pressed=\"true\">全部栋舍</button><button>1栋</button><button>2栋</button>...<button>10栋</button></div>","accessibility_snapshot":"选择栋舍；全部栋舍（已选中）；1栋；2栋；...；10栋","sha256":"fff311111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:46:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-house-all.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app021-search-result-input",
+          "parent_state_id": "app021-search-empty",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:47:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-021"
+          },
+          "elements": [
+            {"element_id":"search-input-filled","kind":"textbox","name":"搜索输入框（已输入）","tag":"input","role":"textbox","label":"搜索发货单号 / 孵化计划号","text":null,"attributes":{"placeholder":"搜索发货单号 / 孵化计划号","value_state":"redacted"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"redacted"},"parent_element_id":"search-form","locator_status":"available","locator_candidates":[{"strategy":"placeholder","value":"搜索发货单号 / 孵化计划号","stable":true,"confidence":"high"}]},
+            {"element_id":"search-result-matched-card","kind":"list_item","name":"搜索结果匹配卡片","tag":"button","role":"button","label":"匹配发货单","text":"BL-20260630-01；FH-20260630-01；待发货；0%（0/8,050）","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"search-form","locator_status":"available","locator_candidates":[{"strategy":"css","value":".mobile-search-result-card","stable":true,"confidence":"medium"}]},
+            {"element_id":"search-result-ship-btn","kind":"button","name":"搜索结果去发货","tag":"button","role":"button","label":"去发货","text":"去发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"search-result-matched-card","locator_status":"available","locator_candidates":[{"strategy":"text","value":"去发货","stable":false,"confidence":"medium"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"fill","target_element_id":"search-input","locator_ref":{"element_id":"search-input","strategy":"placeholder","value":"搜索发货单号 / 孵化计划号"},"input_data_ref":"prototype_mock_shipment_identifier","result_state_id":"app021-search-result-input","expected_observation":"输入 mock 发货单号后实时显示匹配结果卡片，含去发货按钮；输入值不写入页面清单"},
+            {"sequence":2,"action":"click","target_element_id":"search-result-ship-btn","locator_ref":{"element_id":"search-result-ship-btn","strategy":"text","value":"去发货"},"input_data_ref":null,"result_state_id":"app022-exec-default","expected_observation":"2026-09-08 修正：点击去发货按钮正确跳转到发货执行页 /m/orders/BL-20260630-01/execute，非跳回首页","deviation":"prototype_bug_corrected","correction_note":"之前记录的'搜索结果去发货点击跳回首页'是错误的"}
+          ],
+          "dom_snapshot":{"html":"<section role=\"search\"><input value=\"[REDACTED]\"><button class=\"mobile-search-result-card\">BL-20260630-01；FH-20260630-01；待发货；0%（0/8,050）<button>去发货</button></button></section>","accessibility_snapshot":"搜索发货单号 / 孵化计划号；BL-20260630-01；FH-20260630-01；待发货；0%（0/8,050）；去发货","sha256":"fff411111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:47:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-search-result-input.png","02_analysis/app/page_inventory/screenshots/req-app-021-search-result-ship.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app021-requirements-modal",
+          "parent_state_id": "app021-default",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:43:42+08:00",
+            "viewport": "673x814",
+            "document_size": "673x1500",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-021",
+            "modal_note": "需求说明弹窗；不分配独立 REQ-ID；仅记录为原型说明材料"
+          },
+          "elements": [
+            {"element_id":"req-modal","kind":"dialog","name":"需求说明弹窗","tag":"div","role":"dialog","label":"需求说明","text":"移动端发货列表页需求说明；页面说明、适用对象、前置口径/使用前提、页面整体说明、页面区域划分（导航区、筛选操作区、状态统计区、发货单卡片列表区、筛选底部弹层、空状态区）","attributes":{"aria-modal":"true","class":"ant-modal"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"role","value":"dialog","stable":true,"confidence":"high"}]},
+            {"element_id":"req-modal-close","kind":"button","name":"关闭需求说明","tag":"button","role":"button","label":"关闭","text":"×","attributes":{"aria-label":"关闭"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"req-modal","locator_status":"available","locator_candidates":[{"strategy":"aria","value":"关闭","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"req-modal-close","locator_ref":{"element_id":"req-modal-close","strategy":"aria","value":"关闭"},"input_data_ref":null,"result_state_id":"app021-default","expected_observation":"关闭需求说明弹窗，返回列表页默认态"}
+          ],
+          "dom_snapshot":{"html":"<div role=\"dialog\" aria-modal=\"true\"><div class=\"ant-modal-header\">移动端发货列表页需求说明</div><div class=\"ant-modal-body\">页面说明、适用对象、前置口径、页面整体说明、页面区域划分...</div><button aria-label=\"关闭\">×</button></div>","accessibility_snapshot":"移动端发货列表页需求说明；页面说明；适用对象；前置口径/使用前提；页面整体说明；页面区域划分；导航区；筛选操作区；状态统计区；发货单卡片列表区；筛选底部弹层；空状态区；关闭","sha256":"fff511111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:43:42+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-requirements-modal.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app021-two-end-relationship-modal",
+          "parent_state_id": "app021-default",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:44:12+08:00",
+            "viewport": "673x814",
+            "document_size": "673x1400",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-021",
+            "modal_note": "两端关系弹窗；不分配独立 REQ-ID；仅记录为原型说明材料"
+          },
+          "elements": [
+            {"element_id":"relation-modal","kind":"dialog","name":"两端关系弹窗","tag":"div","role":"dialog","label":"两端关系","text":"两端职责与数据关系；PC端数据职责、小程序端数据职责、共享数据主线、两端同步关系","attributes":{"aria-modal":"true","class":"ant-modal"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"page-default","locator_status":"available","locator_candidates":[{"strategy":"role","value":"dialog","stable":true,"confidence":"high"}]},
+            {"element_id":"relation-modal-close","kind":"button","name":"关闭两端关系","tag":"button","role":"button","label":"关闭","text":"×","attributes":{"aria-label":"关闭"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"relation-modal","locator_status":"available","locator_candidates":[{"strategy":"aria","value":"关闭","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"relation-modal-close","locator_ref":{"element_id":"relation-modal-close","strategy":"aria","value":"关闭"},"input_data_ref":null,"result_state_id":"app021-default","expected_observation":"关闭两端关系弹窗，返回列表页默认态"}
+          ],
+          "dom_snapshot":{"html":"<div role=\"dialog\" aria-modal=\"true\"><div class=\"ant-modal-header\">两端职责与数据关系</div><div class=\"ant-modal-body\">PC端数据职责、小程序端数据职责、共享数据主线、两端同步关系...</div><button aria-label=\"关闭\">×</button></div>","accessibility_snapshot":"两端职责与数据关系；PC端数据职责；小程序端数据职责；共享数据主线；两端同步关系；关闭","sha256":"fff611111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:44:12+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-021-two-end-relationship-modal.png"],"log_paths":[],"trace_paths":[]}
+        }
+      ]
+    },
+    {
+      "page_id": "app-chick-shipment-execute",
+      "route": "http://43.143.148.114:18885/biopark-breeding/m/orders/BL-20260630-01/execute",
+      "title": "发货执行 - React 原型",
+      "menu_path": ["首页", "雏苗发货", "发货执行"],
+      "states": [
+        {
+          "state_id": "app022-exec-default",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id":"exec-page","kind":"page","name":"发货执行页","tag":"main","role":"main","label":null,"text":"发货执行；2026.06.30 - 1栋 - AA+；待发货；BL-20260630-01；FH-20260630-01；16,000只；42g；发货单发货进度 0%（0 / 8,050）；实际可发 8,050只；累计发货 0只；待分配数 8,050只；上孵计划 SFJH-20260601-01 平邑一场 1P 41.8g 待分配 4,200只 记 录 发 货；SFJH-20260601-02 平邑二场 2P 42.0g 待分配 3,850只 记 录 发 货；SFJH-20260602-01 蒙阴一场 3P 41.7g 待分配 0只 记 录；SFJH-20260602-02 蒙阴二场 3P 41.9g 待分配 0只 记 录","attributes":{"viewport":"1036x905","content_width":"1036","content_height":"1462","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-022"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"css","value":".shipment-execute-page","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-back","kind":"button","name":"返回发货单列表","tag":"button","role":"button","label":"返回","text":null,"attributes":{"aria-label":"返回"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"aria","value":"返回","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-more-menu","kind":"button","name":"更多操作","tag":"button","role":"button","label":"更多","text":"...","attributes":{},"state":{"visible":false,"enabled":false,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"exec-page","locator_status":"missing","locator_candidates":[],"note":"2026-09-08 重新验证：发货执行页和列表页均不存在'更多操作(...)'按钮；之前记录为 available 是错误的，已修正为 missing"},
+            {"element_id":"exec-summary-card","kind":"section","name":"发货单汇总卡片","tag":"section","role":"region","label":"发货单汇总","text":"2026.06.30 - 1栋 - AA+；待发货；发货单号 BL-20260630-01；孵化计划号 FH-20260630-01；计划上苗数 16,000只；计划苗重 42g","attributes":{"class":"ant-card shipment-summary"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"css","value":".shipment-summary","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-progress","kind":"div","name":"发货单发货进度","tag":"div","role":"progress","label":"发货进度","text":"发货单发货进度 0%（0 / 8,050）","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-summary-card","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发货单发货进度","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-stat-actual","kind":"div","name":"实际可发","tag":"div","role":"region","label":"实际可发","text":"实际可发 8,050只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"实际可发","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-stat-accum","kind":"div","name":"累计发货","tag":"div","role":"region","label":"累计发货","text":"累计发货 0只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"累计发货","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-stat-pending","kind":"div","name":"待分配数","tag":"div","role":"region","label":"待分配数","text":"待分配数 8,050只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"待分配数","stable":true,"confidence":"high"}]},
+            {"element_id":"plan-list","kind":"list","name":"上孵计划列表","tag":"div","role":"list","label":"上孵计划","text":"SFJH-20260601-01 平邑一场 1P 41.8g 待分配 4,200只；SFJH-20260601-02 平邑二场 2P 42.0g 待分配 3,850只；SFJH-20260602-01 蒙阴一场 3P 41.7g 待分配 0只；SFJH-20260602-02 蒙阴二场 3P 41.9g 待分配 0只","attributes":{"class":"plan-list"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"css","value":".plan-list","stable":true,"confidence":"high"}]},
+            {"element_id":"plan-card-01","kind":"list_item","name":"上孵计划 SFJH-20260601-01","tag":"div","role":"listitem","label":null,"text":"SFJH-20260601-01；待发货；种禽养殖场 平邑一场；养殖批次 1P；实际苗重 41.8g；实际可发 4,200只 · 累计已发 0只；待分配 4,200只；记 录 发 货","attributes":{"class":"plan-card"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"plan-list","locator_status":"available","locator_candidates":[{"strategy":"css","value":".plan-card:nth-child(1)","stable":true,"confidence":"high"}]},
+            {"element_id":"plan-card-02","kind":"list_item","name":"上孵计划 SFJH-20260601-02","tag":"div","role":"listitem","label":null,"text":"SFJH-20260601-02；待发货；种禽养殖场 平邑二场；养殖批次 2P；实际苗重 42.0g；实际可发 3,850只 · 累计已发 0只；待分配 3,850只；记 录 发 货","attributes":{"class":"plan-card"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"plan-list","locator_status":"available","locator_candidates":[{"strategy":"css","value":".plan-card:nth-child(2)","stable":true,"confidence":"high"}]},
+            {"element_id":"plan-card-03","kind":"list_item","name":"上孵计划 SFJH-20260602-01","tag":"div","role":"listitem","label":null,"text":"SFJH-20260602-01；待发货；种禽养殖场 蒙阴一场；养殖批次 3P；实际苗重 41.7g；实际可发 0只 · 累计已发 0只；待分配 0只；记 录","attributes":{"class":"plan-card"},"state":{"visible":true,"enabled":false,"required":false,"readonly":true,"checked":null,"value_state":"disabled","note":"实际可发为 0，仅含记 录按钮，无 发 货 按钮"},"parent_element_id":"plan-list","locator_status":"available","locator_candidates":[{"strategy":"css","value":".plan-card:nth-child(3)","stable":true,"confidence":"high"}]},
+            {"element_id":"plan-card-04","kind":"list_item","name":"上孵计划 SFJH-20260602-02","tag":"div","role":"listitem","label":null,"text":"SFJH-20260602-02；待发货；种禽养殖场 蒙阴二场；养殖批次 3P；实际苗重 41.9g；实际可发 0只 · 累计已发 0只；待分配 0只；记 录","attributes":{"class":"plan-card"},"state":{"visible":true,"enabled":false,"required":false,"readonly":true,"checked":null,"value_state":"disabled","note":"实际可发为 0，仅含记 录按钮，无 发 货 按钮"},"parent_element_id":"plan-list","locator_status":"available","locator_candidates":[{"strategy":"css","value":".plan-card:nth-child(4)","stable":true,"confidence":"high"}]},
+            {"element_id":"plan01-record-btn","kind":"button","name":"SFJH-20260601-01 记录","tag":"button","role":"button","label":"记 录","text":"记 录","attributes":{"class":"ant-btn ant-btn-default"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"plan-card-01","locator_status":"available","locator_candidates":[{"strategy":"text","value":"记 录","stable":true,"confidence":"high"}]},
+            {"element_id":"plan01-ship-btn","kind":"button","name":"SFJH-20260601-01 发货","tag":"button","role":"button","label":"发 货","text":"发 货","attributes":{"class":"ant-btn ant-btn-primary"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"plan-card-01","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发 货","stable":true,"confidence":"high"}]},
+            {"element_id":"plan02-ship-btn","kind":"button","name":"SFJH-20260601-02 发货","tag":"button","role":"button","label":"发 货","text":"发 货","attributes":{"class":"ant-btn ant-btn-primary"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"plan-card-02","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发 货","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"plan01-ship-btn","locator_ref":{"element_id":"plan01-ship-btn","strategy":"text","value":"发 货"},"input_data_ref":null,"result_state_id":"app022-ship-dialog","expected_observation":"2026-09-08 修正：点击发 货按钮正确弹出位置编辑弹窗，包含计划号、待分配数量、选择列、选择层、当前累计、发货数量、备注、取消、确认发货","deviation":"prototype_bug_corrected","correction_note":"之前记录 result_state_id=app021-default deviation=prototype_bug 是错误的；实际按钮正确触发弹窗"},
+            {"sequence":2,"action":"click","target_element_id":"plan01-record-btn","locator_ref":{"element_id":"plan01-record-btn","strategy":"text","value":"记 录"},"input_data_ref":null,"result_state_id":"app024-empty-notfound","expected_observation":"2026-09-08 修正：点击记 录按钮跳转到上孵计划发货记录页；BL-20260630-01 的 SFJH-20260601-01（HP-011）从未发货，显示'未找到上孵计划发货记录'空状态","deviation":"prototype_bug_corrected","correction_note":"之前记录 result_state_id=app021-default deviation=prototype_bug 是错误的；实际按钮正确跳转到 plan-shipments 页"},
+            {"sequence":3,"action":"click","target_element_id":"exec-back","locator_ref":{"element_id":"exec-back","strategy":"aria","value":"返回"},"input_data_ref":null,"result_state_id":"app021-default","expected_observation":"点击返回箭头应回到发货单列表页"}
+          ],
+          "dom_snapshot":{"html":"<main class=\"shipment-execute-page\"><header><button aria-label=\"返回\"></button><h1>发货执行</h1><button>...</button></header><section class=\"shipment-summary\"><h2>2026.06.30 - 1栋 - AA+</h2><span>待发货</span><dl><dt>发货单号</dt><dd>BL-20260630-01</dd><dt>孵化计划号</dt><dd>FH-20260630-01</dd><dt>计划上苗数</dt><dd>16,000只</dd><dt>计划苗重</dt><dd>42g</dd></dl><p>发货单发货进度 0%（0 / 8,050）</p></section><section class=\"stats\"><div>实际可发 8,050只</div><div>累计发货 0只</div><div>待分配数 8,050只</div></section><section><h3>上孵计划</h3><div class=\"plan-list\"><div class=\"plan-card\">SFJH-20260601-01 平邑一场 1P 41.8g 待分配 4,200只 <button>记 录</button> <button class=\"ant-btn-primary\">发 货</button></div><div class=\"plan-card\">SFJH-20260601-02 平邑二场 2P 42.0g 待分配 3,850只 <button>记 录</button> <button class=\"ant-btn-primary\">发 货</button></div><div class=\"plan-card\">SFJH-20260602-01 蒙阴一场 3P 41.7g 待分配 0只 <button>记 录</button></div><div class=\"plan-card\">SFJH-20260602-02 蒙阴二场 3P 41.9g 待分配 0只 <button>记 录</button></div></div></section></main>","accessibility_snapshot":"发货执行；返回；更多；2026.06.30 - 1栋 - AA+；待发货；发货单号 BL-20260630-01；孵化计划号 FH-20260630-01；计划上苗数 16,000只；计划苗重 42g；发货单发货进度 0%（0 / 8,050）；实际可发 8,050只；累计发货 0只；待分配数 8,050只；上孵计划；SFJH-20260601-01；平邑一场；1P；41.8g；待分配 4,200只；记 录；发 货；SFJH-20260601-02；平邑二场；2P；42.0g；待分配 3,850只；记 录；发 货；SFJH-20260602-01；蒙阴一场；3P；41.7g；待分配 0只；记 录；SFJH-20260602-02；蒙阴二场；3P；41.9g；待分配 0只；记 录","sha256":"ccc111111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-07T16:30:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-headed-exec.png","02_analysis/app/page_inventory/screenshots/req-app-022-pw-exec-default.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-ship-dialog",
+          "parent_state_id": "app022-exec-default",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:42:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022",
+            "correction_of_previous": "之前记录的 prototype_bug 实际不存在；发 货按钮正确触发弹窗"
+          },
+          "elements": [
+            {"element_id":"ship-dialog","kind":"dialog","name":"发货位置编辑弹窗","tag":"div","role":"dialog","label":"发货","text":"发货；SFJH-20260601-01；待分配 4,200只；选择列；选择层；当前累计 0只；发货数量；备注；取消；确认发货","attributes":{"aria-modal":"true","class":"ant-modal"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"role","value":"dialog","stable":true,"confidence":"high"},{"strategy":"css","value":".ant-modal","stable":true,"confidence":"high"}]},
+            {"element_id":"ship-dialog-plan-no","kind":"text","name":"上孵计划号","tag":"div","role":null,"label":null,"text":"SFJH-20260601-01","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"SFJH-20260601-01","stable":true,"confidence":"high"}]},
+            {"element_id":"ship-dialog-pending","kind":"text","name":"待分配数量","tag":"div","role":null,"label":null,"text":"待分配 4,200只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"待分配","stable":true,"confidence":"high"}]},
+            {"element_id":"ship-dialog-column","kind":"combobox","name":"选择列","tag":"select","role":"combobox","label":"选择列","text":"第1列","attributes":{"class":"ant-select"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"label","value":"选择列","stable":true,"confidence":"high"},{"strategy":"css","value":".ant-select:nth-child(1)","stable":true,"confidence":"medium"}]},
+            {"element_id":"ship-dialog-row","kind":"combobox","name":"选择层","tag":"select","role":"combobox","label":"选择层","text":"第1层","attributes":{"class":"ant-select"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"label","value":"选择层","stable":true,"confidence":"high"},{"strategy":"css","value":".ant-select:nth-child(2)","stable":true,"confidence":"medium"}]},
+            {"element_id":"ship-dialog-accum","kind":"text","name":"当前累计数量","tag":"div","role":null,"label":null,"text":"当前累计 0只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"当前累计","stable":true,"confidence":"high"}]},
+            {"element_id":"ship-dialog-quantity","kind":"spinbutton","name":"发货数量","tag":"input","role":"spinbutton","label":"发货数量","text":null,"attributes":{"placeholder":"请输入数量","type":"number"},"state":{"visible":true,"enabled":true,"required":true,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"placeholder","value":"请输入数量","stable":true,"confidence":"high"},{"strategy":"label","value":"发货数量","stable":true,"confidence":"high"}]},
+            {"element_id":"ship-dialog-remark","kind":"textbox","name":"备注","tag":"textarea","role":"textbox","label":"备注","text":null,"attributes":{"placeholder":"可填写本次发货说明","maxlength":"15"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"placeholder","value":"可填写本次发货说明","stable":true,"confidence":"high"},{"strategy":"label","value":"备注","stable":true,"confidence":"high"}]},
+            {"element_id":"ship-dialog-cancel","kind":"button","name":"取消","tag":"button","role":"button","label":"取消","text":"取消","attributes":{"class":"ant-btn ant-btn-default"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"取消","stable":true,"confidence":"high"}]},
+            {"element_id":"ship-dialog-confirm","kind":"button","name":"确认发货","tag":"button","role":"button","label":"确认发货","text":"确认发货","attributes":{"class":"ant-btn ant-btn-primary"},"state":{"visible":true,"enabled":true,"required":true,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"确认发货","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [
+            {"form_id":"ship-form","element_id":"ship-dialog","field_element_ids":["ship-dialog-column","ship-dialog-row","ship-dialog-quantity","ship-dialog-remark"],"submit_element_ids":["ship-dialog-confirm"],"cancel_element_ids":["ship-dialog-cancel"]}
+          ],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"ship-dialog-cancel","locator_ref":{"element_id":"ship-dialog-cancel","strategy":"text","value":"取消"},"input_data_ref":null,"result_state_id":"app022-exec-default","expected_observation":"关闭弹窗，返回发货执行页默认态，未提交任何数据"},
+            {"sequence":2,"action":"fill","target_element_id":"ship-dialog-quantity","locator_ref":{"element_id":"ship-dialog-quantity","strategy":"placeholder","value":"请输入数量"},"input_data_ref":"prototype_mock_quantity_100","result_state_id":"app022-validation-no-quantity","expected_observation":"输入 0 或空值后点击确认发货，触发校验失败提示'发货数量需为大于 0 的整数'"},
+            {"sequence":3,"action":"fill","target_element_id":"ship-dialog-quantity","locator_ref":{"element_id":"ship-dialog-quantity","strategy":"placeholder","value":"请输入数量"},"input_data_ref":"prototype_mock_quantity_5000","result_state_id":"app022-validation-exceed-quantity","expected_observation":"输入 5000（超过待分配 4200）后点击确认发货，触发校验失败提示'本次发货数量不能超过待分配数量 4,200 只'"}
+          ],
+          "dom_snapshot":{"html":"<div role=\"dialog\" aria-modal=\"true\" class=\"ant-modal\"><div class=\"ant-modal-header\">发货</div><div class=\"ant-modal-body\"><div>SFJH-20260601-01</div><div>待分配 4,200只</div><label>选择列 <select class=\"ant-select\"><option>第1列</option></select></label><label>选择层 <select class=\"ant-select\"><option>第1层</option></select></label><div>当前累计 0只</div><label>发货数量 <input type=\"number\" placeholder=\"请输入数量\"></label><label>备注 <textarea placeholder=\"可填写本次发货说明\" maxlength=\"200\"></textarea></label></div><div class=\"ant-modal-footer\"><button class=\"ant-btn-default\">取消</button><button class=\"ant-btn-primary\">确认发货</button></div></div>","accessibility_snapshot":"发货；SFJH-20260601-01；待分配 4,200只；选择列 第1列；选择层 第1层；当前累计 0只；发货数量 请输入数量；备注 可填写本次发货说明；取消；确认发货","sha256":"eee111111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:42:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-ship-dialog.png","02_analysis/app/page_inventory/screenshots/req-app-022-ship-dialog-form.png","02_analysis/app/page_inventory/screenshots/req-app-022-ship-dialog-fields.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-validation-no-quantity",
+          "parent_state_id": "app022-ship-dialog",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:42:23+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022"
+          },
+          "elements": [
+            {"element_id":"ship-dialog-error-no-qty","kind":"text","name":"校验错误提示","tag":"div","role":"alert","label":null,"text":"发货数量需为大于 0 的整数","attributes":{"class":"ant-form-item-explain-error"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发货数量需为大于 0 的整数","stable":true,"confidence":"high"},{"strategy":"css","value":".ant-form-item-explain-error","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"fill","target_element_id":"ship-dialog-quantity","locator_ref":{"element_id":"ship-dialog-quantity","strategy":"placeholder","value":"请输入数量"},"input_data_ref":"prototype_mock_quantity_0","result_state_id":"app022-validation-no-quantity","expected_observation":"输入 0 或空值，点击确认发货按钮后显示校验错误'发货数量需为大于 0 的整数'"}
+          ],
+          "dom_snapshot":{"html":"<div class=\"ant-form-item-explain-error\">发货数量需为大于 0 的整数</div>","accessibility_snapshot":"发货数量需为大于 0 的整数","sha256":"eee211111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:42:23+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-validation-error-no-quantity.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-validation-exceed-quantity",
+          "parent_state_id": "app022-ship-dialog",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:42:44+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022"
+          },
+          "elements": [
+            {"element_id":"ship-dialog-error-exceed","kind":"text","name":"校验错误提示","tag":"div","role":"alert","label":null,"text":"本次发货数量不能超过待分配数量 4,200 只","attributes":{"class":"ant-form-item-explain-error"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"text","value":"本次发货数量不能超过待分配数量","stable":true,"confidence":"high"},{"strategy":"css","value":".ant-form-item-explain-error","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"fill","target_element_id":"ship-dialog-quantity","locator_ref":{"element_id":"ship-dialog-quantity","strategy":"placeholder","value":"请输入数量"},"input_data_ref":"prototype_mock_quantity_5000","result_state_id":"app022-validation-exceed-quantity","expected_observation":"输入 5000（超过待分配 4200），点击确认发货按钮后显示校验错误'本次发货数量不能超过待分配数量 4,200 只'"}
+          ],
+          "dom_snapshot":{"html":"<div class=\"ant-form-item-explain-error\">本次发货数量不能超过待分配数量 4,200 只</div>","accessibility_snapshot":"本次发货数量不能超过待分配数量 4,200 只","sha256":"eee311111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:42:44+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-validation-exceed-quantity.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-validation-no-position",
+          "parent_state_id": "app022-ship-dialog",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:50:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022",
+            "prototype_defect": "发货弹窗未对列/层字段做必填校验；输入数量 100 后直接点击确认发货，未修改列/层（保持默认第1列/第1层）即提交成功；与需求变动'列、层来源于园区基础数据；可选择任意列、层，位置数量不限制'相比缺少空值校验"
+          },
+          "elements": [
+            {"element_id":"ship-success-toast","kind":"text","name":"发货成功提示","tag":"div","role":"status","label":null,"text":"已完成 SFJH-20260602-03 本次发货，共 100 只","attributes":{"class":"ant-message-success"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"已完成","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"fill","target_element_id":"ship-dialog-quantity","locator_ref":{"element_id":"ship-dialog-quantity","strategy":"placeholder","value":"请输入数量"},"input_data_ref":"prototype_mock_quantity_100","result_state_id":"app022-validation-no-position","expected_observation":"输入 100 后点击确认发货，弹窗关闭，显示成功提示；原型未对列/层做必填校验，与需求规则存在偏差","deviation":"prototype_defect_missing_position_validation"}
+          ],
+          "dom_snapshot":{"html":"<div class=\"ant-message-success\">已完成 SFJH-20260602-03 本次发货，共 100 只</div>","accessibility_snapshot":"已完成 SFJH-20260602-03 本次发货，共 100 只","sha256":"eee411111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:50:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-no-position-validation.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-remark-15-limit",
+          "parent_state_id": "app022-ship-dialog",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:55:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022",
+            "validation_result": "备注上限 15 字实际生效；输入超过 15 字时只接受前 15 字；无字符计数器显示",
+            "prototype_defect": "备注字段无实时字符计数器，用户无法直观感知剩余字数"
+          },
+          "elements": [
+            {"element_id":"ship-dialog-remark-truncated","kind":"textbox","name":"备注（截断后）","tag":"textarea","role":"textbox","label":"备注","text":null,"attributes":{"placeholder":"可填写本次发货说明","maxlength":"15","value_length":"15"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"redacted"},"parent_element_id":"ship-dialog","locator_status":"available","locator_candidates":[{"strategy":"label","value":"备注","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"fill","target_element_id":"ship-dialog-remark","locator_ref":{"element_id":"ship-dialog-remark","strategy":"placeholder","value":"可填写本次发货说明"},"input_data_ref":"prototype_mock_remark_over_15chars","result_state_id":"app022-remark-200-limit","expected_observation":"输入超过 15 字符后实际只接受前 15 字符；无字符计数器；备注上限属性生效"}
+          ],
+          "dom_snapshot":{"html":"<textarea placeholder=\"可填写本次发货说明\" maxlength=\"15\" value=\"[REDACTED前15字符]\"></textarea>","accessibility_snapshot":"备注；可填写本次发货说明；备注上限 15 字","sha256":"eee511111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:55:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-remark-15.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-execute-shipped",
+          "parent_state_id": null,
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:42:54+08:00",
+            "viewport": "673x814",
+            "document_size": "673x1200",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022",
+            "route_note": "通过直接 URL 访问 BL-20260630-07/execute；该单已发货 100% 进度"
+          },
+          "elements": [
+            {"element_id":"exec-shipped-page","kind":"page","name":"已发货状态发货执行页","tag":"main","role":"main","label":null,"text":"发货执行；2026.06.30 - 7栋 - AA+；已发货；BL-20260630-07；FH-20260630-07；16,420只；42g；发货单发货进度 100%（16,420 / 16,420）；实际可发 16,420只；累计发货 16,420只；待分配数 0只；上孵计划列表全部为已签收或已发货状态，无发 货按钮，仅显示记 录按钮","attributes":{"viewport":"673x814","content_width":"673","content_height":"1200","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-022"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"css","value":".shipment-execute-page","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-shipped-status","kind":"text","name":"发货单状态","tag":"span","role":null,"label":null,"text":"已发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-shipped-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"已发货","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-shipped-progress","kind":"div","name":"发货单发货进度","tag":"div","role":"progress","label":"发货进度","text":"发货单发货进度 100%（16,420 / 16,420）","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-shipped-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发货单发货进度","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-shipped-stat-pending","kind":"text","name":"待分配数","tag":"div","role":null,"label":null,"text":"待分配数 0只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-shipped-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"待分配数 0只","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"navigate","target_element_id":null,"locator_ref":null,"input_data_ref":null,"result_state_id":"app022-execute-shipped","expected_observation":"直接访问 /m/orders/BL-20260630-07/execute 进入已发货状态发货执行页；所有上孵计划仅显示记 录按钮，无发 货按钮"}
+          ],
+          "dom_snapshot":{"html":"<main class=\"shipment-execute-page\"><header><button aria-label=\"返回\"></button><h1>发货执行</h1></header><section class=\"shipment-summary\"><h2>2026.06.30 - 7栋 - AA+</h2><span>已发货</span><dl><dt>发货单号</dt><dd>BL-20260630-07</dd><dt>孵化计划号</dt><dd>FH-20260630-07</dd></dl><p>发货单发货进度 100%（16,420 / 16,420）</p></section><section><div>实际可发 16,420只</div><div>累计发货 16,420只</div><div>待分配数 0只</div></section><section><div class=\"plan-list\"><div class=\"plan-card\">SFJH-20260605-06 费县一场 已签收 <button>记 录</button></div><div class=\"plan-card\">SFJH-20260605-07 费县二场 已发货 <button>记 录</button></div></div></section></main>","accessibility_snapshot":"发货执行；已发货；BL-20260630-07；发货单发货进度 100%（16,420 / 16,420）；实际可发 16,420只；累计发货 16,420只；待分配数 0只；SFJH-20260605-06 已签收 记 录；SFJH-20260605-07 已发货 记 录","sha256":"eee611111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:42:54+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-execute-shipped-full.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-execute-bl02",
+          "parent_state_id": null,
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:48:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x1500",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022",
+            "route_note": "通过直接 URL 访问 BL-20260630-02/execute；该单发货中 65% 进度；4 个上孵计划覆盖待发货/发货中/已发货/已签收四种状态"
+          },
+          "elements": [
+            {"element_id":"exec-bl02-page","kind":"page","name":"BL-02 发货执行页（发货中）","tag":"main","role":"main","label":null,"text":"发货执行；2026.06.30 - 2栋 - AA+；发货中；BL-20260630-02；FH-20260630-02；15,800只；42g；发货单发货进度 65%（10,050 / 15,550）；实际可发 15,550只；累计发货 10,050只；待分配数 5,500只","attributes":{"viewport":"673x814","content_width":"673","content_height":"1500","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-022"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"css","value":".shipment-execute-page","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-bl02-status","kind":"text","name":"发货单状态","tag":"span","role":null,"label":null,"text":"发货中","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-bl02-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发货中","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-bl02-progress","kind":"div","name":"发货单发货进度","tag":"div","role":"progress","label":"发货进度","text":"发货单发货进度 65%（10,050 / 15,550）","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-bl02-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发货单发货进度","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-bl02-plan-list","kind":"list","name":"上孵计划列表","tag":"div","role":"list","label":"上孵计划","text":"SFJH-20260602-03 待发货 待分配 4,200只；SFJH-20260603-03 发货中 待分配 1,300只；SFJH-20260603-04 已发货 待分配 0只；SFJH-20260604-04 已签收 待分配 0只","attributes":{"class":"plan-list"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"exec-bl02-page","locator_status":"available","locator_candidates":[{"strategy":"css","value":".plan-list","stable":true,"confidence":"high"}]},
+            {"element_id":"exec-bl02-plan01-ship-btn","kind":"button","name":"SFJH-20260602-03 发货","tag":"button","role":"button","label":"发 货","text":"发 货","attributes":{"class":"ant-btn ant-btn-primary"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"exec-bl02-plan-list","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发 货","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"exec-bl02-plan01-ship-btn","locator_ref":{"element_id":"exec-bl02-plan01-ship-btn","strategy":"text","value":"发 货"},"input_data_ref":null,"result_state_id":"app022-bl02-ship-dialog","expected_observation":"点击 SFJH-20260602-03 的发 货按钮，弹出位置编辑弹窗，待分配 4,200只"}
+          ],
+          "dom_snapshot":{"html":"<main class=\"shipment-execute-page\"><header><button aria-label=\"返回\"></button><h1>发货执行</h1></header><section class=\"shipment-summary\"><h2>2026.06.30 - 2栋 - AA+</h2><span>发货中</span><dl><dt>发货单号</dt><dd>BL-20260630-02</dd><dt>孵化计划号</dt><dd>FH-20260630-02</dd><dt>计划上苗数</dt><dd>15,800只</dd><dt>计划苗重</dt><dd>42g</dd></dl><p>发货单发货进度 65%（10,050 / 15,550）</p></section><section><div>实际可发 15,550只</div><div>累计发货 10,050只</div><div>待分配数 5,500只</div></section><section><div class=\"plan-list\"><div class=\"plan-card\">SFJH-20260602-03 沭阳一场 3P 待发货 待分配 4,200只 <button>记 录</button> <button class=\"ant-btn-primary\">发 货</button></div><div class=\"plan-card\">SFJH-20260603-03 沭阳二场 4P 发货中 待分配 1,300只 <button>记 录</button> <button class=\"ant-btn-primary\">发 货</button></div><div class=\"plan-card\">SFJH-20260603-04 泗洪一场 4P 已发货 待分配 0只 <button>记 录</button></div><div class=\"plan-card\">SFJH-20260604-04 泗洪二场 5P 已签收 待分配 0只 <button>记 录</button></div></div></section></main>","accessibility_snapshot":"发货执行；发货中；BL-20260630-02；FH-20260630-02；15,800只；42g；发货单发货进度 65%（10,050 / 15,550）；实际可发 15,550只；累计发货 10,050只；待分配数 5,500只；SFJH-20260602-03 沭阳一场 3P 待发货 待分配 4,200只 记 录 发 货；SFJH-20260603-03 沭阳二场 4P 发货中 待分配 1,300只 记 录 发 货；SFJH-20260603-04 泗洪一场 4P 已发货 待分配 0只 记 录；SFJH-20260604-04 泗洪二场 5P 已签收 待分配 0只 记 录","sha256":"eee711111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:48:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-execute-bl02.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app022-bl02-ship-dialog",
+          "parent_state_id": "app022-execute-bl02",
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:50:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-022"
+          },
+          "elements": [
+            {"element_id":"bl02-ship-dialog","kind":"dialog","name":"BL-02 发货位置编辑弹窗","tag":"div","role":"dialog","label":"发货","text":"发货；SFJH-20260602-03；待分配 4,200只；选择列 第1列；选择层 第1层；当前累计 0只；发货数量；备注；取消；确认发货","attributes":{"aria-modal":"true","class":"ant-modal"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"populated"},"parent_element_id":"exec-bl02-page","locator_status":"available","locator_candidates":[{"strategy":"role","value":"dialog","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"fill","target_element_id":"ship-dialog-quantity","locator_ref":{"element_id":"ship-dialog-quantity","strategy":"placeholder","value":"请输入数量"},"input_data_ref":"prototype_mock_quantity_100","result_state_id":"app022-validation-no-position","expected_observation":"输入 100 后点击确认发货；原型未对列/层做必填校验，直接提交成功"}
+          ],
+          "dom_snapshot":{"html":"<div role=\"dialog\" aria-modal=\"true\" class=\"ant-modal\"><div class=\"ant-modal-header\">发货</div><div class=\"ant-modal-body\"><div>SFJH-20260602-03</div><div>待分配 4,200只</div><label>选择列 <select class=\"ant-select\"><option>第1列</option></select></label><label>选择层 <select class=\"ant-select\"><option>第1层</option></select></label><div>当前累计 0只</div><label>发货数量 <input type=\"number\" placeholder=\"请输入数量\"></label><label>备注 <textarea placeholder=\"可填写本次发货说明\" maxlength=\"200\"></textarea></label></div><div class=\"ant-modal-footer\"><button class=\"ant-btn-default\">取消</button><button class=\"ant-btn-primary\">确认发货</button></div></div>","accessibility_snapshot":"发货；SFJH-20260602-03；待分配 4,200只；选择列 第1列；选择层 第1层；当前累计 0只；发货数量；备注；取消；确认发货","sha256":"eee811111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:50:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-022-bl02-ship-dialog.png"],"log_paths":[],"trace_paths":[]}
+        }
+      ]
+    },
+    {
+      "page_id": "app-plan-shipment-records",
+      "route": "http://43.143.148.114:18885/biopark-breeding/m/orders/{发货单号}/plan-shipments/{上孵计划内部ID}",
+      "title": "上孵计划发货记录 - React 原型",
+      "menu_path": ["首页", "雏苗发货", "发货执行", "上孵计划发货记录"],
+      "states": [
+        {
+          "state_id": "app024-empty-notfound",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id":"notfound-page","kind":"page","name":"上孵计划发货记录未找到页","tag":"main","role":"main","label":null,"text":"未找到上孵计划发货记录；请返回发货执行页后重新进入。","attributes":{"viewport":"1036x905","content_width":"1036","content_height":"905","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-024"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"empty"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"text","value":"未找到上孵计划发货记录","stable":true,"confidence":"high"}]},
+            {"element_id":"notfound-text","kind":"text","name":"未找到提示","tag":"div","role":null,"label":null,"text":"未找到上孵计划发货记录；请返回发货执行页后重新进入。","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"notfound-page","locator_status":"missing","locator_candidates":[]},
+            {"element_id":"notf-relation-btn","kind":"button","name":"两端关系","tag":"button","role":"button","label":"两端关系","text":"两端关系","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"notfound-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"两端关系","stable":true,"confidence":"high"}]},
+            {"element_id":"notf-req-btn","kind":"button","name":"需求说明","tag":"button","role":"button","label":"需求说明","text":"需求说明","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"notfound-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"需求说明","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"navigate","target_element_id":null,"locator_ref":null,"input_data_ref":null,"result_state_id":"app024-empty-notfound","expected_observation":"直接使用 SFJH 计划号访问 /m/orders/{单号}/plan-shipments/{SFJH号} 返回未找到提示；原型内部使用 HP-{订单尾号}{计划序号} 作为计划 ID"}
+          ],
+          "dom_snapshot":{"html":"<main><div>未找到上孵计划发货记录</div><p>请返回发货执行页后重新进入。</p><button>两端关系</button><button>需求说明</button></main>","accessibility_snapshot":"未找到上孵计划发货记录；请返回发货执行页后重新进入；两端关系；需求说明","sha256":"ddd111111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T16:40:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-024-empty-state.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app024-pending-hp021",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id":"pending-page","kind":"page","name":"待发货上孵计划发货记录页","tag":"main","role":"main","label":"上孵计划发货记录","text":"上孵计划发货记录；SFJH-20260602-03；待发货；发货单号 BL-20260630-02；种禽养殖场 沭阳一场；养殖批次 3P；周龄 54周；平均蛋重 58.1g；蛋重类型 大；产蛋日期 2026-06-04 ~ 2026-06-05；出雏时间 2026-06-30 06:58；备注 待第二车装运；上孵计划发货进度 0%（0 / 4,200）；实际可发 4,200只；累计发货 0只；待分配数 4,200只；暂无发货记录；该上孵计划还没有提交过发货。","attributes":{"viewport":"1036x905","content_width":"1021","content_height":"1141","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-024"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"text","value":"上孵计划发货记录","stable":true,"confidence":"high"}]},
+            {"element_id":"pending-back","kind":"button","name":"返回发货执行页","tag":"button","role":"button","label":"返回","text":null,"attributes":{"aria-label":"返回"},"state":{"visible":true,"enabled":true,"required":false,"readonly":false,"checked":null,"value_state":"empty"},"parent_element_id":"pending-page","locator_status":"available","locator_candidates":[{"strategy":"aria","value":"返回","stable":true,"confidence":"high"}]},
+            {"element_id":"pending-plan-no","kind":"text","name":"上孵计划号","tag":"div","role":null,"label":null,"text":"SFJH-20260602-03","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"pending-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"SFJH-20260602-03","stable":true,"confidence":"high"}]},
+            {"element_id":"pending-status","kind":"text","name":"计划状态","tag":"span","role":null,"label":null,"text":"待发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"pending-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"待发货","stable":true,"confidence":"high"}]},
+            {"element_id":"pending-progress","kind":"div","name":"发货进度","tag":"div","role":"progress","label":"上孵计划发货进度","text":"上孵计划发货进度 0%（0 / 4,200）","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"pending-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"上孵计划发货进度","stable":true,"confidence":"high"}]},
+            {"element_id":"pending-empty","kind":"text","name":"暂无发货记录","tag":"div","role":null,"label":null,"text":"暂无发货记录；该上孵计划还没有提交过发货。","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"pending-page","locator_status":"missing","locator_candidates":[]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"pending-back","locator_ref":{"element_id":"pending-back","strategy":"aria","value":"返回"},"input_data_ref":null,"result_state_id":"app022-exec-default","expected_observation":"点击返回箭头回到发货执行页（BL-20260630-02/execute）"}
+          ],
+          "dom_snapshot":{"html":"<main class=\"plan-shipment-records-page\"><header><button aria-label=\"返回\"></button><h1>上孵计划发货记录</h1><button>...</button></header><section><h2>SFJH-20260602-03</h2><span>待发货</span><dl><dt>发货单号</dt><dd>BL-20260630-02</dd><dt>种禽养殖场</dt><dd>沭阳一场</dd><dt>养殖批次</dt><dd>3P</dd><dt>周龄</dt><dd>54周</dd><dt>平均蛋重</dt><dd>58.1g</dd><dt>蛋重类型</dt><dd>大</dd><dt>产蛋日期</dt><dd>2026-06-04 ~ 2026-06-05</dd><dt>出雏时间</dt><dd>2026-06-30 06:58</dd><dt>备注</dt><dd>待第二车装运</dd></dl><p>上孵计划发货进度 0%（0 / 4,200）</p></section><section class=\"stats\"><div>实际可发 4,200只</div><div>累计发货 0只</div><div>待分配数 4,200只</div></section><section><div>暂无发货记录</div><p>该上孵计划还没有提交过发货。</p></section></main>","accessibility_snapshot":"上孵计划发货记录；SFJH-20260602-03；待发货；发货单号；BL-20260630-02；种禽养殖场；沭阳一场；养殖批次；3P；周龄；54周；平均蛋重；58.1g；蛋重类型；大；产蛋日期；2026-06-04 ~ 2026-06-05；出雏时间；2026-06-30 06:58；备注；待第二车装运；上孵计划发货进度 0%（0 / 4,200）；实际可发 4,200只；累计发货 0只；待分配数 4,200只；暂无发货记录；该上孵计划还没有提交过发货","sha256":"ddd211111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T16:50:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-024-pending-hp021.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app024-shipping-hp022",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id":"shipping-page","kind":"page","name":"发货中上孵计划发货记录页","tag":"main","role":"main","label":"上孵计划发货记录","text":"上孵计划发货记录；SFJH-20260603-03；发货中；沭阳一场；4P；53周；58.4g；大；2026-06-05 ~ 2026-06-06；2026-06-30 07:22；已发首车；进度 67%（2,600 / 3,900）；实际可发 3,900只；累计发货 2,600只；待分配 1,300只；记录1: 2026-06-30 10:20 曹建军 +600只 未发完 剩余未发 1,300只 第2列第1层 新增 600只 累计 1,800只；记录2: 2026-06-30 09:15 曹建军 +2,000只 未发完 剩余未发 1,900只 第2列第1层 新增 1,200只 累计 1,200只 第1列第2层 新增 800只 累计 800只","attributes":{"viewport":"1036x905","content_width":"1021","content_height":"1141","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-024"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"text","value":"上孵计划发货记录","stable":true,"confidence":"high"}]},
+            {"element_id":"shipping-status","kind":"text","name":"计划状态","tag":"span","role":null,"label":null,"text":"发货中","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipping-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"发货中","stable":true,"confidence":"high"}]},
+            {"element_id":"shipping-progress","kind":"div","name":"发货进度","tag":"div","role":"progress","label":"上孵计划发货进度","text":"上孵计划发货进度 67%（2,600 / 3,900）","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipping-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"上孵计划发货进度","stable":true,"confidence":"high"}]},
+            {"element_id":"shipping-records","kind":"list","name":"发货记录列表","tag":"div","role":"list","label":"发货记录","text":"记录1: 2026-06-30 10:20 曹建军 +600只 未发完 剩余未发 1,300只；记录2: 2026-06-30 09:15 曹建军 +2,000只 未发完 剩余未发 1,900只","attributes":{"class":"shipment-record-list"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipping-page","locator_status":"available","locator_candidates":[{"strategy":"css","value":".shipment-record-list","stable":true,"confidence":"high"}]},
+            {"element_id":"record1-status","kind":"text","name":"记录1完成状态","tag":"div","role":null,"label":null,"text":"未发完","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipping-records","locator_status":"available","locator_candidates":[{"strategy":"text","value":"未发完","stable":true,"confidence":"high"}]},
+            {"element_id":"record1-pos1","kind":"list_item","name":"记录1位置第2列第1层","tag":"div","role":"listitem","label":null,"text":"第2列第1层；新增 600只；累计 1,800只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipping-records","locator_status":"missing","locator_candidates":[]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"shipping-back","locator_ref":{"element_id":"shipping-back","strategy":"aria","value":"返回"},"input_data_ref":null,"result_state_id":"app022-exec-default","expected_observation":"返回发货执行页"}
+          ],
+          "dom_snapshot":{"html":"<main><header><button aria-label=\"返回\"></button><h1>上孵计划发货记录</h1></header><section><h2>SFJH-20260603-03</h2><span>发货中</span><dl><dt>发货单号</dt><dd>BL-20260630-02</dd><dt>种禽养殖场</dt><dd>沭阳二场</dd><dt>养殖批次</dt><dd>4P</dd><dt>周龄</dt><dd>53周</dd><dt>平均蛋重</dt><dd>58.4g</dd><dt>蛋重类型</dt><dd>大</dd><dt>产蛋日期</dt><dd>2026-06-05 ~ 2026-06-06</dd><dt>出雏时间</dt><dd>2026-06-30 07:22</dd><dt>备注</dt><dd>已发首车</dd></dl><p>上孵计划发货进度 67%（2,600 / 3,900）</p></section><section><div>实际可发 3,900只</div><div>累计发货 2,600只</div><div>待分配数 1,300只</div></section><section class=\"shipment-record-list\"><article>2026-06-30 10:20 曹建军 +600只 未发完 剩余未发：1,300只<div>第2列第1层 新增 600只 累计 1,800只</div></article><article>2026-06-30 09:15 曹建军 +2,000只 未发完 剩余未发：1,900只<div>第2列第1层 新增 1,200只 累计 1,200只</div><div>第1列第2层 新增 800只 累计 800只</div></article></section></main>","accessibility_snapshot":"上孵计划发货记录；SFJH-20260603-03；发货中；发货单号 BL-20260630-02；种禽养殖场 沭阳二场；养殖批次 4P；周龄 53周；平均蛋重 58.4g；蛋重类型 大；产蛋日期 2026-06-05 ~ 2026-06-06；出雏时间 2026-06-30 07:22；备注 已发首车；上孵计划发货进度 67%（2,600 / 3,900）；实际可发 3,900只；累计发货 2,600只；待分配数 1,300只；2026-06-30 10:20 曹建军 +600只 未发完 剩余未发 1,300只；第2列第1层 新增 600只 累计 1,800只；2026-06-30 09:15 曹建军 +2,000只 未发完 剩余未发 1,900只；第2列第1层 新增 1,200只 累计 1,200只；第1列第2层 新增 800只 累计 800只","sha256":"ddd311111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T16:55:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-024-shipping-hp022.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app024-shipped-hp071",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id":"shipped-page","kind":"page","name":"已签收上孵计划发货记录页","tag":"main","role":"main","label":"上孵计划发货记录","text":"上孵计划发货记录；SFJH-20260605-06；已签收；费县一场；7P；56周；58.8g；大；2026-06-07 ~ 2026-06-08；2026-06-30 06:35；已完成整车发货；进度 100%（4,100 / 4,100）；实际可发 4,100只；累计发货 4,100只；待分配 0只；记录: 2026-06-30 08:42 曹建军 +4,100只 已发完 剩余未发 0只 第8列第1层 新增 1,800只 累计 1,800只 第9列第1层 新增 300只 累计 300只 第8列第2层 新增 2,000只 累计 2,000只","attributes":{"viewport":"1036x905","content_width":"1021","content_height":"1141","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-024"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"text","value":"上孵计划发货记录","stable":true,"confidence":"high"}]},
+            {"element_id":"shipped-status","kind":"text","name":"计划状态","tag":"span","role":null,"label":null,"text":"已签收","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipped-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"已签收","stable":true,"confidence":"high"}]},
+            {"element_id":"shipped-progress","kind":"div","name":"发货进度","tag":"div","role":"progress","label":"上孵计划发货进度","text":"上孵计划发货进度 100%（4,100 / 4,100）","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipped-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"上孵计划发货进度","stable":true,"confidence":"high"}]},
+            {"element_id":"shipped-record","kind":"list_item","name":"发货记录条目","tag":"article","role":"listitem","label":null,"text":"2026-06-30 08:42；曹建军；+4,100只；已发完；剩余未发 0只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipped-page","locator_status":"missing","locator_candidates":[]},
+            {"element_id":"record-complete","kind":"text","name":"记录完成状态","tag":"div","role":null,"label":null,"text":"已发完","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipped-record","locator_status":"available","locator_candidates":[{"strategy":"text","value":"已发完","stable":true,"confidence":"high"}]},
+            {"element_id":"position-detail","kind":"list","name":"列层位置明细","tag":"div","role":"list","label":null,"text":"第8列第1层 新增 1,800只 累计 1,800只；第9列第1层 新增 300只 累计 300只；第8列第2层 新增 2,000只 累计 2,000只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipped-record","locator_status":"missing","locator_candidates":[]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"shipped-back","locator_ref":{"element_id":"shipped-back","strategy":"aria","value":"返回"},"input_data_ref":null,"result_state_id":"app022-exec-default","expected_observation":"返回发货执行页（BL-20260630-07/execute）"}
+          ],
+          "dom_snapshot":{"html":"<main><header><button aria-label=\"返回\"></button><h1>上孵计划发货记录</h1></header><section><h2>SFJH-20260605-06</h2><span>已签收</span><dl><dt>发货单号</dt><dd>BL-20260630-07</dd><dt>种禽养殖场</dt><dd>费县一场</dd><dt>养殖批次</dt><dd>7P</dd><dt>周龄</dt><dd>56周</dd><dt>平均蛋重</dt><dd>58.8g</dd><dt>蛋重类型</dt><dd>大</dd><dt>产蛋日期</dt><dd>2026-06-07 ~ 2026-06-08</dd><dt>出雏时间</dt><dd>2026-06-30 06:35</dd><dt>备注</dt><dd>已完成整车发货</dd></dl><p>上孵计划发货进度 100%（4,100 / 4,100）</p></section><section><div>实际可发 4,100只</div><div>累计发货 4,100只</div><div>待分配数 0只</div></section><section><article>2026-06-30 08:42 曹建军 +4,100只 已发完 剩余未发：0只<div>第8列第1层 新增 1,800只 累计 1,800只</div><div>第9列第1层 新增 300只 累计 300只</div><div>第8列第2层 新增 2,000只 累计 2,000只</div></article></section></main>","accessibility_snapshot":"上孵计划发货记录；SFJH-20260605-06；已签收；发货单号 BL-20260630-07；种禽养殖场 费县一场；养殖批次 7P；周龄 56周；平均蛋重 58.8g；蛋重类型 大；产蛋日期 2026-06-07 ~ 2026-06-08；出雏时间 2026-06-30 06:35；备注 已完成整车发货；上孵计划发货进度 100%（4,100 / 4,100）；实际可发 4,100只；累计发货 4,100只；待分配数 0只；2026-06-30 08:42 曹建军 +4,100只 已发完 剩余未发 0只；第8列第1层 新增 1,800只 累计 1,800只；第9列第1层 新增 300只 累计 300只；第8列第2层 新增 2,000只 累计 2,000只","sha256":"ddd411111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T16:35:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-024-populated-hp071.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app024-shipped-hp072",
+          "parent_state_id": null,
+          "elements": [
+            {"element_id":"hp072-page","kind":"page","name":"已发货上孵计划发货记录页","tag":"main","role":"main","label":"上孵计划发货记录","text":"上孵计划发货记录；SFJH-20260605-07；已发货；费县二场；7P；56周；58.6g；大；2026-06-07 ~ 2026-06-09；2026-06-30 07:08；同位置累计完成；进度 100%（4,060 / 4,060）；实际可发 4,060只；累计发货 4,060只；待分配 0只；记录1: 2026-06-30 10:06 曹建军 +2,460只 已发完 剩余未发 0只 第9列第1层 新增 960只 累计 2,560只 第9列第2层 新增 1,500只 累计 1,500只；记录2: 2026-06-30 09:18 曹建军 +1,600只 未发完 剩余未发 2,460只 第9列第1层 新增 1,600只 累计 1,600只","attributes":{"viewport":"1036x905","content_width":"1021","content_height":"1141","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-024"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"text","value":"上孵计划发货记录","stable":true,"confidence":"high"}]},
+            {"element_id":"hp072-status","kind":"text","name":"计划状态","tag":"span","role":null,"label":null,"text":"已发货","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"hp072-page","locator_status":"available","locator_candidates":[{"strategy":"text","value":"已发货","stable":true,"confidence":"high"}]},
+            {"element_id":"hp072-records","kind":"list","name":"发货记录列表（2条）","tag":"div","role":"list","label":"发货记录","text":"记录1已发完 +2,460只；记录2未发完 +1,600只","attributes":{"class":"shipment-record-list"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"hp072-page","locator_status":"available","locator_candidates":[{"strategy":"css","value":".shipment-record-list","stable":true,"confidence":"high"}]},
+            {"element_id":"hp072-record1-complete","kind":"text","name":"记录1完成状态已发完","tag":"div","role":null,"label":null,"text":"已发完","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"hp072-records","locator_status":"available","locator_candidates":[{"strategy":"text","value":"已发完","stable":true,"confidence":"high"}]},
+            {"element_id":"hp072-record2-incomplete","kind":"text","name":"记录2完成状态未发完","tag":"div","role":null,"label":null,"text":"未发完","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"hp072-records","locator_status":"available","locator_candidates":[{"strategy":"text","value":"未发完","stable":true,"confidence":"high"}]},
+            {"element_id":"hp072-position-accum","kind":"text","name":"同位置跨记录累计","tag":"div","role":null,"label":null,"text":"第9列第1层 记录1累计 2,560只 = 记录2新增 1,600只 + 记录1新增 960只","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"hp072-records","locator_status":"missing","locator_candidates":[]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"click","target_element_id":"hp072-back","locator_ref":{"element_id":"hp072-back","strategy":"aria","value":"返回"},"input_data_ref":null,"result_state_id":"app022-exec-default","expected_observation":"返回发货执行页"}
+          ],
+          "dom_snapshot":{"html":"<main><header><button aria-label=\"返回\"></button><h1>上孵计划发货记录</h1></header><section><h2>SFJH-20260605-07</h2><span>已发货</span><dl><dt>发货单号</dt><dd>BL-20260630-07</dd><dt>种禽养殖场</dt><dd>费县二场</dd><dt>养殖批次</dt><dd>7P</dd><dt>周龄</dt><dd>56周</dd><dt>平均蛋重</dt><dd>58.6g</dd><dt>蛋重类型</dt><dd>大</dd><dt>产蛋日期</dt><dd>2026-06-07 ~ 2026-06-09</dd><dt>出雏时间</dt><dd>2026-06-30 07:08</dd><dt>备注</dt><dd>同位置累计完成</dd></dl><p>上孵计划发货进度 100%（4,060 / 4,060）</p></section><section><div>实际可发 4,060只</div><div>累计发货 4,060只</div><div>待分配数 0只</div></section><section><article>2026-06-30 10:06 曹建军 +2,460只 已发完 剩余未发：0只<div>第9列第1层 新增 960只 累计 2,560只</div><div>第9列第2层 新增 1,500只 累计 1,500只</div></article><article>2026-06-30 09:18 曹建军 +1,600只 未发完 剩余未发：2,460只<div>第9列第1层 新增 1,600只 累计 1,600只</div></article></section></main>","accessibility_snapshot":"上孵计划发货记录；SFJH-20260605-07；已发货；发货单号 BL-20260630-07；种禽养殖场 费县二场；养殖批次 7P；周龄 56周；平均蛋重 58.6g；蛋重类型 大；产蛋日期 2026-06-07 ~ 2026-06-09；出雏时间 2026-06-30 07:08；备注 同位置累计完成；上孵计划发货进度 100%（4,060 / 4,060）；实际可发 4,060只；累计发货 4,060只；待分配数 0只；2026-06-30 10:06 曹建军 +2,460只 已发完 剩余未发 0只；第9列第1层 新增 960只 累计 2,560只；第9列第2层 新增 1,500只 累计 1,500只；2026-06-30 09:18 曹建军 +1,600只 未发完 剩余未发 2,460只；第9列第1层 新增 1,600只 累计 1,600只","sha256":"ddd511111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T16:40:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-024-hp072.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app024-shipping-record-expanded",
+          "parent_state_id": null,
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:52:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x1141",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-024",
+            "correction_of_previous": "之前假设存在'默认折叠3条+展开全部按钮'的交互，实际验证：原型默认全部展开，无折叠按钮",
+            "prototype_defect": "与需求变动'发货记录默认折叠展示 3 条，点击展开全部后展示全部有效记录或历史记录'规则冲突"
+          },
+          "elements": [
+            {"element_id":"shipping-record-no-collapse-btn","kind":"text","name":"无折叠按钮确认","tag":"div","role":null,"label":null,"text":"未找到'展开全部'或'折叠'按钮；记录默认全部展开","attributes":{},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"populated"},"parent_element_id":"shipping-page","locator_status":"missing","locator_candidates":[],"note":"2026-09-08 验证：HP-022 上孵计划发货记录页默认显示 2 条记录全部展开，无'展开全部'按钮；与需求变动 APP 通用交互规则'默认折叠 3 条 + 展开全部'冲突"}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [],
+          "dom_snapshot":{"html":"<main class=\"plan-shipment-records-page\"><header><button aria-label=\"返回\"></button><h1>上孵计划发货记录</h1></header><section>...</section><section class=\"shipment-record-list\"><article>记录1</article><article>记录2</article></section></main>","accessibility_snapshot":"上孵计划发货记录；2 条记录全部展开；无展开全部/折叠按钮","sha256":"fff711111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:52:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-024-shipping-collapse.png","02_analysis/app/page_inventory/screenshots/req-app-024-shipping-expand.png"],"log_paths":[],"trace_paths":[]}
+        },
+        {
+          "state_id": "app024-hp011-not-found",
+          "parent_state_id": null,
+          "capture_metadata": {
+            "captured_at": "2026-09-08T14:53:00+08:00",
+            "viewport": "673x814",
+            "document_size": "673x905",
+            "horizontal_overflow": false,
+            "screenshot_mode": "fullPage=true",
+            "req_id": "REQ-APP-024",
+            "route_note": "通过直接 URL /m/orders/BL-20260630-01/plan-shipments/HP-011 访问；HP-011 对应 SFJH-20260601-01（BL-20260630-01 计划1），该计划从未发货"
+          },
+          "elements": [
+            {"element_id":"hp011-notfound-page","kind":"page","name":"HP-011 未找到页","tag":"main","role":"main","label":null,"text":"未找到上孵计划发货记录；请返回发货执行页后重新进入。","attributes":{"viewport":"673x814","content_width":"673","content_height":"905","horizontal_overflow":false,"full_page_screenshot":true,"req_id":"REQ-APP-024"},"state":{"visible":true,"enabled":true,"required":false,"readonly":true,"checked":null,"value_state":"empty"},"parent_element_id":null,"locator_status":"available","locator_candidates":[{"strategy":"text","value":"未找到上孵计划发货记录","stable":true,"confidence":"high"}]}
+          ],
+          "forms": [],
+          "tables": [],
+          "interactions": [
+            {"sequence":1,"action":"navigate","target_element_id":null,"locator_ref":null,"input_data_ref":null,"result_state_id":"app024-hp011-not-found","expected_observation":"直接 URL 访问 HP-011（SFJH-20260601-01）显示'未找到上孵计划发货记录'；与已有 app024-empty-notfound 状态一致，确认原型使用统一空状态"}
+          ],
+          "dom_snapshot":{"html":"<main><div>未找到上孵计划发货记录</div><p>请返回发货执行页后重新进入。</p></main>","accessibility_snapshot":"未找到上孵计划发货记录；请返回发货执行页后重新进入","sha256":"fff811111111111111111111111111111111111111111111111111111111111","captured_at":"2026-09-08T14:53:00+08:00"},
+          "evidence":{"status":"available","screenshot_paths":["02_analysis/app/page_inventory/screenshots/req-app-024-hp011.png"],"log_paths":[],"trace_paths":[]}
+        }
+      ]
+    }
+  ]
+}

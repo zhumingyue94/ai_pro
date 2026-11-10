@@ -1,0 +1,103 @@
+﻿{
+    "status":  "validated",
+    "operation":  "update",
+    "target":  {
+                   "project_id":  46,
+                   "product_id":  8,
+                   "module_id":  746
+               },
+    "records":  [
+                    {
+                        "case_id":  "TC-REQ-008-018",
+                        "remote_case_id":  51840,
+                        "remote_version":  11,
+                        "precondition":  "前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  2,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176513,
+                                          "step":  "点击“新增”按钮",
+                                          "desc":  "点击“新增”按钮",
+                                          "expect":  "新增弹窗打开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176514,
+                                          "step":  "查看“HTTP”表单字段",
+                                          "desc":  "查看“HTTP”表单字段",
+                                          "expect":  "表单显示目标名称、目标描述、目标类型、请求地址、请求方法、请求头、请求参数、请求体和目标状态字段。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    },
+                    {
+                        "case_id":  "TC-REQ-008-030",
+                        "remote_case_id":  51852,
+                        "remote_version":  10,
+                        "precondition":  "前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  2,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176515,
+                                          "step":  "点击“新增”按钮",
+                                          "desc":  "点击“新增”按钮",
+                                          "expect":  "新增弹窗打开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176516,
+                                          "step":  "查看“MQTT”表单字段",
+                                          "desc":  "查看“MQTT”表单字段",
+                                          "expect":  "表单显示目标名称、目标描述、目标类型、服务地址、用户名、密码、客户端ID、主题和目标状态字段。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    },
+                    {
+                        "case_id":  "TC-REQ-008-031",
+                        "remote_case_id":  51853,
+                        "remote_version":  10,
+                        "precondition":  "前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“数据中心”菜单并点击“数据推送”菜单。；数据推送页面成功加载，浏览器地址包含“/biopark-iot/iot/data/sink”，确认已进入数据推送页面。",
+                        "step_count":  2,
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176517,
+                                          "step":  "点击“新增”按钮打开新增推送目标表单",
+                                          "desc":  "点击“新增”按钮打开新增推送目标表单",
+                                          "expect":  "新增弹窗打开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176518,
+                                          "step":  "查看“内置队列”表单字段",
+                                          "desc":  "查看“内置队列”表单字段",
+                                          "expect":  "表单显示目标名称、目标描述、目标类型、主题、目标状态字段。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "priority":  2
+                    }
+                ],
+    "delete_recreate":  false,
+    "registry_status":  "validated"
+}

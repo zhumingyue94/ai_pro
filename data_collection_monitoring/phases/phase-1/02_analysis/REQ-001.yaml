@@ -1,0 +1,160 @@
+schema_version: "1.0"
+analysis_id: "REQ-001"
+module_id: "REQ-001"
+module_name: "首页"
+project: "数据采集监控平台"
+status: "partial_ready_for_test_planning"
+source:
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+  latest_changes: "01_requirements/需求变动.md"
+  latest_change_items: ["REQ-001-001", "REQ-001-002", "REQ-001-003", "REQ-001-004", "REQ-001-005", "REQ-001-006", "REQ-001-007", "REQ-001-008", "REQ-001-009", "REQ-001-010", "REQ-001-011", "REQ-001-012", "REQ-001-013", "REQ-001-014", "REQ-001-015", "REQ-001-016", "REQ-001-017"]
+  scope_baseline: "01_requirements/模块拆分清单.md"
+  page_inventory: "02_analysis/page_inventory/page.json"
+  runtime_config: ".env/config.yaml；仅引用配置键名，不记录值"
+identity:
+  zentao_module_path: "iot平台/首页"
+  zentao_module_id: 750
+  parent_module_id: 0
+  priority: 1
+  page_id: "home"
+  route: "/biopark-iot/iot/home"
+  runtime_title: "首页"
+  menu_path: ["首页"]
+  identity_rule: "运行时页面身份和page.json事实优先，PDF及模块清单用于追溯。"
+scope:
+  in_scope:
+    - "首页可达性、页面身份和门户导航"
+    - "统计指标：home_metric_category、home_metric_product、home_metric_device、home_metric_message"
+    - "统计图表：home_chart_device_count、home_chart_device_status、home_chart_message_count"
+    - "日期范围、时间间隔和筛选结果"
+    - "当前租户、用户时区、唯一编号去重、时间桶和异常/空数据规则"
+    - "只读UI/行为验证、定位器规划、风险、依赖、环境和数据前提"
+  out_of_scope:
+    - "接口endpoint、状态码、请求响应结构和性能SLA"
+    - "新增、编辑、删除、导入、导出、造数和任何写操作"
+    - "指标卡片/图表钻取、业务跳转和导出"
+    - "未经页面证据支持的刷新、加载、错误和权限定位器"
+  acceptance_boundary:
+    - "REQ-001-001至REQ-001-017为业务规则基准。"
+    - "page.json中home页面、状态、元素和证据为页面事实基准。"
+    - "页面显示不等于统计正确性、权限正确性或异常处理已验收。"
+    - "数据不足时记录无法验证，不据此判定失败。"
+requirements:
+  confirmed:
+    REQ-001-001: "分类、产品、设备、设备消息量及今日新增按当前租户和筛选范围统计；实体按唯一编号、消息按消息编号去重。"
+    REQ-001-002: "今日按用户时区；起止均包含；默认前一天开始往前7个完整自然日；无最大跨度；支持跨日、跨月、跨年和未来时间。"
+    REQ-001-003: "支持天、周、月、季度、年；按时间桶汇总；周一至周日；季度按自然季度；缺失和异常按0处理，异常不计入汇总。"
+    REQ-001-004: "在线、离线、待激活和未知按确认的连接、心跳、激活和数据缺失规则判定；重复设备去重，未知不计入状态统计。"
+    REQ-001-005: "只统计消息总数；消息编号去重；延迟消息按实际到达时间；缺失为0；首页不分页。"
+    REQ-001-006: "进入、筛选变化和手动刷新获取最新数据；无自动刷新和缓存；刷新中禁用并去重；失败/超时/权限不足清空并提示。"
+    REQ-001-007: "无数据为0或空状态；部分缺失为0；失败/超时清空并提示；权限不足不展示数据。"
+    REQ-001-008: "指标卡片和图表仅汇总展示，不支持钻取、跳转和导出。"
+    REQ-001-009: "指标来自产品分类、产品、设备和消息/采集模块，通过唯一编号关联并实时计算。"
+    REQ-001-010: "本次验收仅验证指标值和筛选结果；设备实时性、刷新失败清空和权限提示不纳入确认范围。"
+    REQ-001-011: "运行时路由、标题和菜单路径优先；正式文档和旧产物仅作追溯。"
+    REQ-001-012: "页面证据按实际DOM记录；缺少稳定ID时使用名称、可访问名称、层级、class或CSS；缺失证据按现状说明。"
+    REQ-001-013: "只读检查日期筛选及五种时间间隔、切换和空结果；数据不足时记录无法验证。"
+    REQ-001-014: "核对用户时区、租户上下文、去重键、来源关联和跨模块一致性；无法核对则记录缺失项。"
+    REQ-001-015: "检查刷新/筛选时间范围传递、重复请求、并发响应、缓存绕过、错误和权限边界；接口细节不纳入测试。"
+    REQ-001-016: "沿用公共权限规则；仅检查当前账号可访问首页和数据范围；不新增性能SLA。"
+    REQ-001-017: "本次不执行写操作；如未来批准写操作，仍须以测试数据和清理边界为前置条件。"
+page_contract:
+  collection_status: "partial"
+  default_state: "home_default"
+  states:
+    home_default:
+      evidence_status: "available"
+      elements: ["home_start_date", "home_end_date", "home_interval", "home_metric_category", "home_metric_product", "home_metric_device", "home_metric_message", "home_chart_device_count", "home_chart_device_status", "home_chart_message_count"]
+    home_date_range:
+      parent_state_id: "home_default"
+      evidence_status: "available"
+      elements: ["home_start_date", "home_end_date", "home_today", "home_yesterday", "home_recent_7", "home_recent_30", "home_this_month", "home_this_year", "home_prev_year", "home_prev_month", "home_next_year", "home_next_month"]
+    home_menu_expanded:
+      parent_state_id: "home_default"
+      evidence_status: "available"
+      elements: ["home_device_access_menu", "home_product_category_menu"]
+    home_filtered_week_recent7:
+      parent_state_id: "home_default"
+      evidence_status: "available"
+      elements: ["home_result_region", "home_interval_week", "home_metric_category", "home_chart_device_count", "home_chart_device_status", "home_chart_message_count"]
+  evidence_refs:
+    default: ["02_analysis/page_inventory/dom/req001-home-runtime.html", "02_analysis/page_inventory/screenshots/req001-home-runtime.png", "02_analysis/page_inventory/logs/req001-runtime-exploration.txt"]
+    filtered: ["02_analysis/page_inventory/dom/req001-home-filtered.html", "02_analysis/page_inventory/screenshots/req001-home-filtered.png", "02_analysis/page_inventory/logs/req001-runtime-exploration.txt"]
+  known_gaps: ["五种时间桶完整运行时结果未全部采集", "刷新/加载/错误/权限/空数据状态未真实触发", "用户时区、租户上下文、去重字段和跨模块统计一致性未由页面证据确认"]
+roles:
+  - role: "首页查看人员"
+    responsibility: "在授权范围查看指标、图表和筛选结果"
+  - role: "平台运维/管理员"
+    responsibility: "维护租户和访问范围"
+  - role: "产品/设备/采集管理员"
+    responsibility: "维护指标来源及唯一编号关联"
+dependencies:
+  upstream: []
+  data_sources: ["产品分类", "产品管理", "设备管理", "消息/采集"]
+  related_modules: ["设备分组", "插件管理", "数据推送", "数据监听", "告警配置", "告警记录"]
+  note: "仅表示统计来源或业务关联，不代表跨模块一致性已验证。"
+risks:
+  - id: "R-001-01"
+    level: "critical"
+    description: "租户边界或去重错误导致越权或重复统计"
+    mitigation: "只读核对当前页面上下文和确认规则；不写入业务值。"
+  - id: "R-001-02"
+    level: "high"
+    description: "日期起止、用户时区或自然时间桶边界错误"
+    mitigation: "覆盖同日、跨日/月/年、未来、周边界和季度边界。"
+  - id: "R-001-03"
+    level: "high"
+    description: "缺失/异常归零或消息去重口径错误"
+    mitigation: "采用空、部分缺失、异常排除和重复编号等边界数据前提。"
+  - id: "R-001-04"
+    level: "high"
+    description: "刷新重复请求、旧响应覆盖或缓存造成结果过期"
+    mitigation: "规划页面级刷新按钮状态、结果更新和重复点击观察；接口契约保持范围外。"
+  - id: "R-001-05"
+    level: "high"
+    description: "统计卡片和canvas图表缺少稳定定位导致自动化误判"
+    mitigation: "优先使用page.json已登记元素ID和文本/标签候选，不猜测动态ID。"
+test_design:
+  equivalence_partitions:
+    tenant: ["current", "cross_tenant", "missing_context"]
+    range: ["default_7_days", "same_day", "cross_day", "cross_month", "cross_year", "future", "invalid"]
+    boundary: ["inclusive_start", "inclusive_end", "outside_range"]
+    interval: ["day", "week", "month", "quarter", "year"]
+    data: ["normal", "empty", "partial_missing", "anomalous_excluded", "duplicate_ids"]
+    message: ["unique", "duplicate_id", "delayed", "missing"]
+    action: ["initial", "filter_change", "manual_refresh", "rapid_repeat", "no_auto_refresh"]
+    result: ["success", "failure", "timeout", "permission_denied"]
+  boundary_value_candidates: ["开始00:00:00", "结束23:59:59", "周一", "周日", "月末", "季度末", "年度末", "未来范围", "重复编号", "快速重复刷新"]
+  decision_table:
+    - "当前租户+筛选范围+重复ID=>仅计一次"
+    - "起始和结束命中=>均纳入"
+    - "五种间隔=>按对应时间桶汇总"
+    - "缺失/异常=>0或排除"
+    - "筛选变化=>重新获取最新数据"
+    - "指标/图表点击=>无钻取、跳转、导出"
+  state_transitions: ["未认证->登录页->门户->home_default", "home_default->home_date_range", "home_default->home_menu_expanded", "筛选/刷新->更新或失败"]
+  pict_candidate:
+    parameters: ["Tenant", "Range", "Boundary", "Interval", "Data", "Message", "Action", "Result"]
+    constraints: ["Tenant=cross_tenant or missing_context => Result=permission_denied", "Data=duplicate_ids => Result=success_and_deduplicated", "Data in {empty,partial_missing,anomalous_excluded} => Result=success_with_zero_or_empty", "Action=no_auto_refresh => no_automatic_request"]
+automation_plan:
+  framework: "Playwright Python sync API / pytest-playwright"
+  reusable_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+  locator_priority: ["get_by_role", "get_by_test_id", "get_by_label", "get_by_placeholder", "get_by_text", "stable_attribute", "page.json element mapping", "hierarchy/class/CSS as last resort"]
+  page_mapping:
+    default: ["home_metric_category", "home_metric_product", "home_metric_device", "home_metric_message", "home_chart_device_count", "home_chart_device_status", "home_chart_message_count", "home_start_date", "home_end_date", "home_interval"]
+    filtered: ["home_result_region", "home_interval_week", "home_recent_7"]
+  stop_conditions: ["配置缺失", "登录失败或人工安全验证", "主机不匹配", "权限失败", "关键内容缺失", "意外写入提示", "未授权数据暴露"]
+data_preconditions:
+  - "仅引用.env/config.yaml配置键名，不记录其值。"
+  - "使用系统已有页面数据，不造分类、产品、设备、消息或其他业务数据。"
+  - "指标值和筛选结果可因数据不足而无法判定；应记录无法验证而非猜测。"
+  - "本阶段不执行写入、导入、导出、下载或清理业务数据；数据变更：无；清理状态：not_applicable。"
+readiness:
+  status: "partial_ready_for_test_planning"
+  completed: ["默认首页结构、统计指标、图表、日期面板、周时间间隔和最近七天筛选的运行时证据", "业务确认项和页面事实映射", "系统性边界、风险、依赖和自动化定位规划"]
+  pending: ["天/周/月/季度/年全部运行时结果", "刷新/加载/错误/权限/空数据状态", "用户时区、租户上下文、去重键和跨模块统计一致性"]
+handoff:
+  path: "02_analysis/HANDOFF/REQ-001_HANDOFF.md"
+  module_id: "REQ-001"
+  status: "partial_ready_for_test_planning"
+  next_action: "按本分析生成UI行为测试计划；对pending证据标记blocked或not_verified，不将partial改为complete。"

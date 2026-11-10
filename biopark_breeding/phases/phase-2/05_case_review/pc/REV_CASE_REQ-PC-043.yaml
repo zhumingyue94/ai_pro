@@ -1,0 +1,308 @@
+review:
+  review_id: REV_CASE_REQ-PC-043
+  req_id: REQ-PC-043
+  module_id: REQ-PC-043
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-10'
+  status: completed_with_findings
+  overall_status: completed_with_findings
+  gate_passed: true
+  gate_reasons: []
+  review_scope:
+    testcase_yaml: 04_testcases/pc/TC_REQ-PC-043.yaml
+    testcase_markdown: 04_testcases/pc/TC_REQ-PC-043.md
+    page_inventory: 02_analysis/pc/page_inventory/page.json
+    analysis: 02_analysis/pc/REQ-PC-043.yaml
+    test_plan: 03_test_plan/pc/TEST_PLAN_REQ-PC-043.yaml
+    casely: reference/casely/
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+    execution_review: not_in_scope
+    ui_execution: not_in_scope
+    playwright_execution: not_in_scope
+    pict_execution: not_in_scope
+    remote_sync: not_in_scope
+    forbidden_artifacts: not_generated
+  execution_status: not_executed
+  execution_gate_passed: false
+  execution_review:
+    status: not_in_scope
+    reason: 未执行 UI、Playwright、有头浏览器、PICT、CSV 或 XMind；禅道同步结果见 06_zentao_sync 证据。
+  case_inventory:
+    actual_case_count: 37
+    id_range: TC-PC-043-002..TC-PC-043-044
+    ids_unique: true
+    ids_continuous: false
+    yaml_summary_case_count: 37
+    markdown_case_count: 37
+    markdown_summary_case_count: 37
+    statistics:
+      actual_type_counts:
+        feature: 30
+        negative: 2
+        boundary: 5
+      yaml_summary_type_counts:
+        feature: 30
+        negative: 2
+        boundary: 5
+      actual_auto_counts:
+        auto: 37
+        'no': 0
+      yaml_summary_auto_counts:
+        auto: 37
+        'no': 0
+      actual_priority_counts:
+        P1: 18
+        P2: 23
+        P3: 3
+        P4: 0
+      yaml_summary_priority_counts:
+        P1: 18
+        P2: 23
+        P3: 3
+        P4: 0
+    markdown_ids_aligned: true
+    summary_matches_detail: false
+  findings:
+  - id: RV-043-001
+    severity: blocker
+    category: structural_consistency
+    title: YAML summary 与实际类型统计不一致
+    case_ids: []
+    evidence:
+      actual_case_count: 42
+      yaml_summary_case_count: 42
+      actual_type_counts: feature=30, negative=3, boundary=5
+      yaml_summary_type_counts: feature=30, negative=3, boundary=5
+    recommendation: 已同步 summary.type_counts 与 cases 明细统计。
+  - id: RV-043-002
+    severity: major
+    category: evidence_risk
+    title: 正式页面证据、路由、权限、数据和运行时定位器未确认
+    case_ids: []
+    evidence:
+      capture_id: PAGE-PC-REQ047-20260904-HEADED-CAPTURED
+      page_inventory_status: partial
+      candidate_route: /biopark-breeding/breeding/delivery/detail/{id}
+      locator_risks:
+      - 位置明细按钮可能重复，需按栋舍/列/层或位置行限定
+      - 发货记录展开按钮可能重复，需按批次记录行限定
+      - 来源明细弹窗未采集独立元素和稳定定位器
+    recommendation: 执行前确认正式 URL、路由、DOM、稳定 locator、查看权限、菜单权限和脱敏测试数据；当前不得宣称自动化或页面执行通过。
+  - id: RV-043-003
+    severity: major
+    category: requirement_evidence
+    title: 原型证据与当前需求契约存在空态和重置默认项差异
+    case_ids:
+    - TC-PC-043-009
+    - TC-PC-043-010
+    - TC-PC-043-040
+    - TC-PC-043-044
+    evidence:
+      requirement_contract: 筛选无结果时计划、栋舍分布和发货记录均暂无数据；清空后默认第一条有效计划
+      prototype_observation: page.json 记录的历史状态存在发货记录未清空及默认选择非第一条的差异
+    recommendation: 以当前需求契约为判定标准，将历史原型差异保留为风险，不作为正式通过依据。
+  - id: RV-043-004
+    severity: observation
+    category: traceability
+    title: 终止计划扩展规则和正式计划项编号待确认
+    case_ids:
+    - TC-PC-043-011
+    evidence:
+      explicit_rule: 雏苗发货执行页面不显示终止的上孵计划
+      unconfirmed_extensions:
+      - 不计入总条数
+      - 不参与筛选、选择、发货和记录查看
+    recommendation: 仅将明确规则作为通过断言；扩展规则和正式计划项编号确认前不纳入当前追溯。
+  - id: RV-043-005
+    severity: observation
+    category: casely_executability
+    title: 公共前置引用字段结构与正式执行语义仍待确认
+    case_ids: []
+    evidence:
+      common_preconditions_ref: delivery_detail_readonly
+      cases_with_reference: 29
+      cases_without_reference: 8
+      steps: 登录、进入系统、进入雏苗发货列表、定位发货单并进入明细页
+      conditions: []
+    recommendation: 正常明细查看用例引用公共前置；权限、无效参数和失败场景保留独立触发步骤，不套用成功明细页前置。
+  structural_review:
+    status: failed_with_findings
+    checks:
+      yaml_parsing: pass
+      case_id_unique: pass
+      case_id_continuous: pass
+      yaml_markdown_ids: pass
+      yaml_summary_alignment: pass
+      casely_required_fields: pass
+      casely_style_review: pass_with_observations
+    findings:
+    - 公共前置步骤已同步，正常与异常用例的入口边界已按方案区分
+    - 标题、前置、步骤和预期总体符合 Casely 风格；正式数据和入口语义仍待确认
+  systematic_design_review:
+    status: passed_with_observations
+    techniques:
+    - equivalence_partitioning
+    - boundary_value_analysis
+    - decision_table
+    - state_transition
+    covered:
+    - 四种发货单状态及 0%、中间进度、100% 未出雏边界
+    - 有效、无效、缺失发货单标识
+    - 计划筛选有结果、无结果、清空和默认第一条
+    - 终止计划排除、栋舍范围、网格/列表和位置来源
+    - 发货记录范围、展开收起、权限和加载异常
+    gaps:
+    - 计划筛选状态与权限/路由/数据组合未被实际执行验证
+    - 来源明细弹窗行为缺少正式页面证据
+    - summary 类型统计需修正后才可闭合结构门禁
+  pairwise_review:
+    status: partial_static_review
+    execution: not_run
+    external_pict: not_run
+    csv_generated: false
+    parameters:
+    - OrderStatus
+    - ProgressBand
+    - PlanState
+    - FilterResult
+    - HouseScope
+    - ViewMode
+    - PositionSource
+    - RecordState
+    - PermissionState
+    - RouteIdentifierState
+    constraints_checked:
+    - 发货进度状态互斥
+    - 终止计划不显示
+    - 无结果时三块区域均暂无数据
+    - 栋舍总览与当前计划范围不同
+    - 只读操作不修改业务数据
+    - 权限和路由失败不得展示受保护内容
+    conclusion: 已完成静态参数识别、等价类和约束审查；未生成 CSV、未执行外部 PICT。
+    gaps:
+    - 未形成可运行的 PICT 模型和覆盖矩阵；正式数据状态确认后补充
+  automation_review:
+    status: blocked
+    execution_status: not_executed
+    candidate_count: 37
+    executable_now_count: 0
+    blocker_codes:
+    - locator_evidence_pending
+    - test_data_not_provisioned
+    - permission_not_ready
+    - route_not_confirmed
+    - source_detail_locator_pending
+    conclusion: 按 Playwright Python 可执行性规则，操作和断言大多可表达，但正式 locator、路由、权限和数据缺失，不能生成或执行可靠脚本。
+  headed_page_review:
+    status: static_reference_only
+    execution_status: not_executed
+    page_json_status: partial
+    capture_id: PAGE-PC-REQ047-20260904-HEADED-CAPTURED
+    confirmed_areas:
+    - 顶部信息
+    - 上孵计划
+    - 栋舍范围和视图
+    - 位置明细
+    - 发货记录
+    - 计划筛选
+    unconfirmed:
+    - 正式路由和入口
+    - 运行时 DOM 定位器
+    - 权限矩阵
+    - 正式业务数据
+    - 来源明细弹窗独立结构
+  casely_review:
+    status: passed_with_findings
+    style_reference: reference/casely/
+    checks:
+      title: pass
+      preconditions: pass_with_observations
+      steps_expected_pairs: pass
+      observable_assertions: pass_with_observations
+      forbidden_implementation_details: pass
+    findings:
+    - 用例大多保持业务条件、操作对象和可观察结果结构
+    - 29 条用例使用公共前置引用，8 条未使用；正式执行前需确认语义边界
+  traceability:
+    coverage_ids:
+    - FR-043-01
+    - FR-043-02
+    - FR-043-03
+    - FR-043-04
+    - FR-043-05
+    - FR-043-06
+    - FR-043-07
+    - FR-043-08
+    - FR-043-09
+    - FR-043-10
+    - FR-043-11
+    - FR-043-12
+    - FR-043-13
+    - FR-043-14
+    explicit_requirement:
+      id: FR-043-12
+      statement: 雏苗发货执行页面不显示终止的上孵计划。
+      case_ids:
+      - TC-PC-043-011
+    pending_confirmations:
+    - 正式计划项编号和标题
+    - 来源明细弹窗行为和 locator
+    - 终止计划扩展规则
+  sync_checklist:
+  - item: 清理旧的 REQ-PC-043 评审 YAML、Markdown 和 HANDOFF
+    status: completed
+  - item: 按删除后的 37 条用例更新评审结论
+    status: completed
+  - item: 修正 YAML/Markdown summary 类型统计
+    status: pending_repair
+  - item: 正式路由、DOM、定位器、权限和数据
+    status: pending_confirmation
+  - item: UI、Playwright、有头页面、PICT
+    status: not_executed
+  - item: CSV、测试点、XMind、远程禅道
+    status: prohibited_and_not_generated
+  source_hashes:
+    algorithm: SHA-256
+    status: calculated
+    files:
+    - 04_testcases/pc/TC_REQ-PC-043.yaml
+    - 04_testcases/pc/TC_REQ-PC-043.md
+    - 02_analysis/pc/REQ-PC-043.yaml
+    - 02_analysis/pc/page_inventory/page.json
+    - 03_test_plan/pc/TEST_PLAN_REQ-PC-043.yaml
+    - 03_test_plan/pc/TEST_PLAN_REQ-PC-043.md
+    - reference/casely/test_style_guide.md
+    - reference/casely/examples.md
+    digests:
+      testcase_yaml: d8a0a58e7133dda5f7e23d2666a2ecaa1335248090e26bf62a1252ae44eab43c
+      testcase_markdown: 7342d842b4738eaab95cb3268f0fbcd1088579ba9b4c85c405a718316160c941
+      analysis_yaml: 0c1e9f0a082f60e0df1146bae193595dbb8f264ced3f70b0e97605fec9cd75f8
+      page_json: 2d1ee96de735f18ec1d4073f47e818179201051059da6a22ed41ccef7b830c7d
+      test_plan_yaml: 079cc6d613c2eee6e826aeab411e8dd02687b85c6b1a216a6a0cbad7c5c3dc2e
+      test_plan_markdown: d081b0c238bbb457a296a9bcfed7f9d5e6c7c47b68da0f926ec8985bc5a2f81b
+      casely_style_guide: a0fe964beffcf8a2f144ea8b61eba451e6d51f574bc2deba720f0b2b1e112cb7
+      casely_examples: 9431d2bb316050ee7f6e4ea5ab94192987a9ad8f492654d624fa76bd2c9b1385
+  last_sync_update:
+    date: '2026-10-14'
+    case_id: TC-PC-043-002, TC-PC-043-003, TC-PC-043-027..TC-PC-043-032, TC-PC-043-035..TC-PC-043-040, TC-PC-043-042, TC-PC-043-044
+    zentao_case_id: 51470, 51478, 51502..51507, 51511..51516, 51518, 51520
+    change: 统一 REQ-PC-043 左侧菜单导航措辞，明确雏苗发货和上孵计划为菜单项；保留发货记录明细页上孵计划表格语义不变
+    status: validated
+    readback_steps: 37
+    sync_evidence: 06_zentao_sync/pc/execution_log_REQ-PC-043_20261014_navigation.json
+  previous_sync_update:
+    case_id: TC-PC-043-001
+    zentao_case_id: 51469
+    change: 删除禅道用例及对应本地来源用例
+    status: validated
+    readback_steps: 1
+    deletion_evidence: 06_zentao_sync/pc/delete_51469_20261013.json
+  earlier_sync_update:
+    case_id: TC-PC-043-002
+    zentao_case_id: 51470
+    change: 重写完整步骤，补充上孵计划基线记录、孵化需求号查询发货单、发货日期选择今天往前半年，以及在发货记录上孵计划搜索框中按上孵计划号定位后核对字段
+    status: validated
+    readback_steps: 1
+  handoff: {path: 05_case_review/pc/HANDOFF/REQ-PC-043_HANDOFF.md, module_id: REQ-PC-043}

@@ -1,0 +1,336 @@
+analysis:
+  schema_version: "1.0"
+  analysis_id: "REQ-PC-044"
+  title: "雏苗发货导出"
+  stage: "02_analysis"
+  business_partition: "pc"
+  analyzed_at: "2026-09-03T16:00:00+08:00"
+  source_traceability:
+    requirement_document:
+      path: "01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx"
+      requirement_id: "REQ-004"
+      mapped_requirement_id: "REQ-PC-044"
+      sections:
+        - "1.2.4 REQ-004 雏苗发货导出"
+        - "1.2.4.1 功能概述"
+        - "1.2.4.3 导出交互"
+        - "1.3.3 共用业务规则与数据口径"
+        - "1.4.2 待确认项"
+    module_split:
+      path: "01_requirements/pc/模块拆分清单.md"
+      requirement_id: "REQ-PC-044"
+      module: "雏苗发货导出"
+      zentao_alignment: "二期 / pc / 计划管理 / 雏苗发货 / 雏苗发货导出，模块 ID=739"
+      priority: "P1"
+    change_log:
+      path: "01_requirements/需求变动.md"
+      applicable_items:
+        - "导出列表全部字段，不支持自定义字段"
+        - "文件名使用中文且不得乱码"
+        - "下载格式为 Excel"
+        - "导出权限由系统管理的角色权限控制"
+        - "2026.9.3：取消导出配置弹窗，改为确认导出全部数据项的系统提示框"
+        - "有筛选条件时导出筛选后的全部数据项，取消不导出"
+        - "导出预览、导出失败/超时/重复点击反馈不作为当前需求能力"
+    page_inventory:
+      path: "02_analysis/pc/page_inventory/page.json"
+      page_id: "pc-chick-shipping"
+      capture_id: "PAGE-PC-REQ045-20260903-ENV-RETRY"
+      capture_status: "available; page.json 同时包含其他模块页面，REQ-PC-044 仅引用 pc-chick-shipping 导出证据"
+      schema_note: "最新全量 page.schema.json 校验存在 1 项外部采集元数据错误：$.capture.status=available 不在允许值中；REQ-PC-044 页面引用完整，本需求不修改或回滚 page.json"
+      observed_sha256: "5596E0144AA0C76F8E86087ECD33DBEA3FE1C825EFF33154DBF1FC1180D1B011"
+      observed_at: "2026-09-04T13:22:15+08:00"
+  prototype_observation:
+    prototype_url: "http://43.143.148.114:18885/biopark-breeding/"
+    collection_status: "captured_from_existing_page_inventory"
+    browser: "Chromium visible mode"
+    headless: false
+    environment_id: "prototype-biopark-breeding-pc-req041-req042"
+    menu_path: ["计划管理", "雏苗发货"]
+    evidence:
+      page_inventory: "02_analysis/pc/page_inventory/page.json"
+      screenshots:
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-044-export-scope-options.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-044-export-field-options.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-044-export-processing.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-044-export-result.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-044-export-reopen.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-044-export-filter-status.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-044-export-filter-keyword.png"
+      dom_snapshots:
+        - "02_analysis/pc/page_inventory/dom/req-pc-044-export-scope-options.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-044-export-field-options.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-044-export-processing.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-044-export-result.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-044-export-reopen.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-044-export-filter-status.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-044-export-filter-keyword.md"
+    data_safety:
+      interaction_scope: "仅引用既有导出页面证据，不重新执行确认导出或下载"
+      business_submission_executed: false
+      formal_business_data_changed: false
+      data_change_responsibility: "正式环境导出和下载验证由授权测试责任人执行；本分析不创建、不修改业务数据"
+      cleanup_status: "not_applicable；本次未执行导出，不产生本次任务新增下载文件"
+      sanitization: "不复制 DOM 快照中的演示业务值；不写入账号、密码、Token、Cookie 或未授权业务数据"
+  workflow_gate:
+    policy: "report_only"
+    gate_passed: false
+    gate_reasons:
+      - "正式测试数据、平台导出权限配置、下载验证环境和清理责任尚未提供"
+    continuation: "allowed"
+    pipeline_summary: "completed_with_gate_issues"
+scope:
+  in_scope:
+    - "从 pc-chick-shipping 列表页进入导出流程"
+    - "读取当前已应用的日期、状态卡、栋舍、品种和关键字筛选条件"
+    - "点击导出后展示系统确认提示：是否确认导出全部数据项？"
+    - "确认后导出当前筛选结果中的全部字段，字段、顺序和显示名称与页面表格一致"
+    - "有筛选条件时只导出筛选结果，无筛选条件时导出全部列表数据"
+    - "取消确认后关闭提示且不导出数据"
+    - "导出文件名固定为发货单.xls"
+    - "筛选无数据时仍执行相同确认和导出交互，文件仅包含表头"
+    - "导出权限由平台角色菜单/接口权限配置，不写死具体角色"
+    - "无导出权限时点击导出显示没有操作权限"
+    - "导出操作不得改变列表、状态统计和已应用筛选条件"
+  out_of_scope:
+    - "自定义字段选择和简版字段方案"
+    - "导出配置弹窗中的导出范围选择"
+    - "导出结果预览、再次导出和预览关闭"
+    - "导出失败、接口超时和重复点击专属反馈；需求变动已标记为不考虑"
+    - "具体接口路径、HTTP 方法、请求体、响应体、错误码和文件生成接口契约"
+    - "APP 导出和移动端专属规则"
+    - "REQ-PC-041 列表筛选、状态统计和分页本身的实现"
+    - "发货执行、发货单明细、库存和出入库联动"
+requirements_facts:
+  - id: "FR-044-01"
+    statement: "导出承接雏苗发货列表当前已应用的筛选条件，导出对象为当前筛选结果。"
+    source: "requirement"
+    source_ref: "REQ-004 1.2.4.1；需求变动.md 2026.9.3"
+  - id: "FR-044-02"
+    statement: "最新需求取消历史导出配置弹窗，点击导出后显示系统提示框：是否确认导出全部数据项？"
+    source: "change_log"
+    source_ref: "需求变动.md 2026.9.3 11:00:00"
+  - id: "FR-044-03"
+    statement: "点击确认后导出全部数据项；存在筛选条件时导出筛选后的全部数据项；点击取消不导出。"
+    source: "change_log"
+    source_ref: "需求变动.md 2026.9.3 11:00:00"
+  - id: "FR-044-04"
+    statement: "导出列表全部字段，不支持自定义字段；字段、顺序和显示名称均与页面表格一致。"
+    source: "change_log"
+    source_ref: "需求变动.md REQ-PC-044"
+  - id: "FR-044-05"
+    statement: "下载文件固定为发货单.xls；字段、顺序和显示名称与页面表格一致。"
+    source: "change_log"
+    source_ref: "需求变动.md REQ-PC-044"
+  - id: "FR-044-06"
+    statement: "导出权限由平台角色权限树配置；无导出权限时点击导出显示没有操作权限。"
+    source: "supplemented_requirement"
+    source_ref: "用户已确认的 REQ-PC-041 导出权限口径；需求变动.md 2026.9.3 权限规则"
+  - id: "FR-044-07"
+    statement: "导出确认、取消和下载操作不改变列表数据、状态统计或已应用筛选条件。"
+    source: "requirement"
+    source_ref: "REQ-004 1.2.4.3；REQ-004 1.3.3"
+prototype_facts:
+  page_id: "pc-chick-shipping"
+  route: "http://43.143.148.114:18885/biopark-breeding/"
+  real_route: "/biopark-breeding/breeding/hatchingplans/delivery"
+  route_status: "confirmed_from_REQ-PC-041_not_explored"
+  historical_states:
+    - state_id: "st-export-dialog"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-041-export-dialog.md"
+      page_json_elements: ["el-dialog-export", "el-dlg-data-scope", "el-dlg-field-scheme", "el-dlg-cancel", "el-dlg-confirm"]
+    - state_id: "st-export-scope-options"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-044-export-scope-options.md"
+      page_json_elements: ["el-option-current-filter", "el-option-current-page"]
+    - state_id: "st-export-field-options"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-044-export-field-options.md"
+      page_json_elements: ["el-option-all-fields", "el-option-simple-fields"]
+    - state_id: "st-export-processing"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-044-export-processing.md"
+      page_json_elements: ["el-dialog-export", "el-dlg-confirm"]
+    - state_id: "st-export-result"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-044-export-result.md"
+      page_json_elements: ["el-dialog-result", "el-result-file-name", "el-result-file-info", "el-result-condition-summary", "el-table-result-preview", "el-btn-reexport", "el-btn-result-close"]
+    - state_id: "st-export-reopen"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-044-export-reopen.md"
+      page_json_elements: ["el-dialog-export", "el-dlg-cancel"]
+    - state_id: "st-export-filter-status"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-044-export-filter-status.md"
+      page_json_elements: ["el-dialog-export", "el-stats-shipped"]
+    - state_id: "st-export-filter-keyword"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-044-export-filter-keyword.md"
+      page_json_elements: ["el-dialog-export", "el-filter-keyword"]
+  requirement_prototype_differences:
+    - difference: "历史原型使用导出配置弹窗，支持导出范围和字段方案选择"
+      handling: "以最新需求变动为准；配置弹窗、范围选择和自定义字段不属于当前需求能力"
+    - difference: "历史原型展示处理状态、结果预览和再次导出"
+      handling: "以最新需求变动为准；预览、失败/超时/重复点击反馈不纳入当前需求"
+    - difference: "page.json 当前采集批次同时包含其他模块页面"
+      handling: "REQ-PC-044 只引用 pc-chick-shipping 的导出状态和元素；不修改 page.json，不将其他模块问题归入本需求"
+roles:
+  - role: "雏苗发货列表查看人员"
+    capability: "在有菜单和导出权限时从列表发起导出"
+    permission_status: "由平台角色菜单/接口权限树配置，不绑定具体角色"
+  - role: "发货组长/场长"
+    capability: "按当前列表筛选结果导出业务数据"
+    permission_status: "实际能力依赖正式环境角色权限配置"
+  - role: "产品/研发/测试/实施/业务培训人员"
+    capability: "评审和验收导出页面可见规则"
+    permission_status: "不作为正式权限矩阵结论"
+data_contract:
+  source_entities:
+    - entity: "雏苗发货列表数据"
+      responsibility: "提供当前筛选结果和全部可导出字段"
+      fields: ["页面表格全部字段；字段、顺序和显示名称与页面表格一致"]
+    - entity: "列表筛选条件"
+      responsibility: "限定导出数据范围"
+      fields: ["计划发货日期", "状态卡", "栋舍", "品种", "关键字"]
+  derived_views:
+    current_filter_result: "当前已应用筛选条件下的全部雏苗发货列表数据"
+    all_list_result: "未应用筛选条件时的全部列表数据"
+  export_contract:
+    field_selection: "固定导出页面表格全部字段；字段、顺序和显示名称与页面表格一致，不支持自定义字段"
+    format: "Excel .xls"
+    filename: "发货单.xls"
+    empty_result: "与有数据时使用完全相同的确认导出交互，下载文件仅包含表头"
+    preview: "不考虑"
+    generated_file_content: "不分析接口字段和二进制生成实现；页面功能阶段仅确认下载触发及可观察文件属性"
+page_contract:
+  page:
+    page_id: "pc-chick-shipping"
+    menu_path: ["计划管理", "雏苗发货"]
+    prototype_route: "http://43.143.148.114:18885/biopark-breeding/"
+    real_route: "/biopark-breeding/breeding/hatchingplans/delivery"
+    route_status: "confirmed_not_explored"
+  entry_elements:
+    export_button: "el-btn-export"
+    list_table: "el-table"
+    status_cards: ["el-stats-all", "el-stats-pending", "el-stats-shipping", "el-stats-shipped", "el-stats-signed"]
+    applied_filter_elements: ["el-filter-date-start", "el-filter-date-end", "el-filter-house", "el-filter-breed", "el-filter-keyword"]
+  latest_required_interaction:
+    confirm_message: "是否确认导出全部数据项？"
+    confirm_action: "点击确认后下载当前筛选结果的全部字段"
+    cancel_action: "点击取消后关闭提示，不触发导出"
+    no_permission: "没有操作权限"
+    empty_result: "交互与有数据时一致；确认后下载仅包含表头的发货单.xls"
+    page_json_status: "系统确认提示框尚未在 page.json 中单独采集；不新增状态或元素 ID"
+  historical_prototype_elements: ["el-dialog-export", "el-dlg-data-scope", "el-dlg-field-scheme", "el-dlg-cancel", "el-dlg-confirm", "el-option-current-filter", "el-option-current-page", "el-option-all-fields", "el-option-simple-fields", "el-dialog-result", "el-result-file-name", "el-result-file-info", "el-result-condition-summary", "el-table-result-preview", "el-btn-reexport", "el-btn-result-close"]
+  readonly_contract:
+    prohibited_actions: ["修改发货单", "发货", "删除业务数据"]
+    allowed_actions: ["打开导出确认", "确认导出", "取消导出"]
+    data_mutation: "导出只生成下载结果，不改变列表业务数据、统计或筛选条件"
+  permission_contract:
+    menu: "无菜单权限时雏苗发货菜单不显示"
+    export: "导出权限由平台角色菜单/接口权限树配置；无导出权限点击导出显示没有操作权限"
+state_transition_analysis:
+  transitions:
+    - from_state: "st-default"
+      action: "点击 el-btn-export"
+      target: "系统确认提示框（当前需求；page.json 未单独采集）"
+      observation: "显示是否确认导出全部数据项？"
+    - from_state: "系统确认提示框"
+      action: "取消"
+      target: "st-default"
+      observation: "关闭提示，不导出，列表和筛选条件保持不变"
+    - from_state: "系统确认提示框"
+      action: "确认"
+      target: "下载结果"
+      observation: "导出当前筛选结果的全部字段，字段、顺序和显示名称与页面表格一致，文件名为发货单.xls"
+    - from_state: "系统确认提示框 + 筛选无数据"
+      action: "确认"
+      target: "下载结果"
+      observation: "交互与有数据时一致，发货单.xls 仅包含表头"
+    - from_state: "st-default + 已应用筛选条件"
+      action: "点击 el-btn-export 后确认"
+      target: "下载结果"
+      observation: "仅导出筛选结果，不改变筛选条件"
+  historical_only_transitions: ["st-export-dialog → st-export-scope-options/st-export-field-options", "st-export-processing → st-export-result → st-export-reopen"]
+systematic_boundary_analysis:
+  equivalence_and_boundary_candidates: ["筛选条件：无条件、单条件、多条件、筛选无结果", "状态卡：全部、待发货、发货中、已发货、已签收", "日期范围：单日、跨日、空日期范围；日期筛选边界由 REQ-PC-041 列表筛选契约承接", "关键字：空、完整匹配、部分匹配、无匹配；长度边界由 REQ-PC-041 列表筛选契约承接", "导出权限：有菜单和导出权限、无菜单权限、无导出接口权限", "确认操作：确认、取消、关闭系统提示", "结果数据：有数据、无数据", "文件属性：发货单.xls、中文文件名、无数据时仅表头"]
+  decision_table_dimensions: ["是否显示雏苗发货菜单", "是否拥有导出权限", "是否存在已应用筛选条件", "筛选结果是否为空", "是否点击确认", "是否发生下载"]
+  pict_parameter_candidates:
+    parameters:
+      - name: "MenuPermission"
+        values: ["Allowed", "Denied"]
+      - name: "ExportPermission"
+        values: ["Allowed", "Denied"]
+      - name: "FilterState"
+        values: ["None", "SingleCondition", "MultipleConditions", "NoResult"]
+      - name: "StatusCard"
+        values: ["All", "Pending", "Shipping", "Shipped", "Signed"]
+      - name: "ConfirmAction"
+        values: ["Confirm", "Cancel"]
+      - name: "DataState"
+        values: ["HasData", "Empty"]
+      - name: "FileProperty"
+        values: ["ExcelChineseName", "HeaderOnlyWhenEmpty"]
+    constraints: ["IF MenuPermission = Denied THEN export entry is not visible", "IF ExportPermission = Denied THEN clicking export shows 没有操作权限 and no download occurs", "IF ConfirmAction = Cancel THEN no download occurs", "IF FilterState = NoResult THEN the same confirmation flow is used and the downloaded 发货单.xls contains headers only", "Export fields, order and display names equal the page table; custom field selection is excluded"]
+  design_boundary_status: "analysis_candidate_only; not test cases"
+interface_contract:
+  scope: "known_concepts_only"
+  execution_status: "not_executed; interface testing out of scope for this page-function analysis"
+  known_page_visible_results: ["点击导出进入当前需求确认提示", "确认导出当前筛选结果的全部字段", "字段、顺序和显示名称与页面表格一致", "取消不导出", "无导出权限显示没有操作权限", "下载文件为发货单.xls", "无数据时下载文件仅包含表头"]
+  not_defined: ["接口路径、HTTP 方法、请求体、响应体和错误码", "文件二进制生成和浏览器下载实现细节；页面功能契约已固定文件名和空结果表现"]
+  prohibition: "不得依据 page.json mock 数据补写接口契约，不执行接口注入或接口断言"
+automation_boundary_plan:
+  locator_priority: ["get_by_role", "get_by_label", "get_by_test_id", "scoped semantic locator"]
+  locator_candidates:
+    - element_id: "el-btn-export"
+      preferred: "get_by_role('button', name matching /导出/)"
+    - element_id: "el-table"
+      preferred: "page region or table role scoped to 雏苗发货列表"
+    - element_id: "system-confirm-dialog"
+      preferred: "正式页面提供 role=dialog、button name=确认/取消 或 data-testid 后再绑定；当前不写入 page.json"
+  unstable_or_ambiguous:
+    - element_id: "system-confirm-dialog"
+      reason: "最新需求移除了历史配置弹窗，当前 page.json 未采集新的系统确认框定位器"
+    - element_id: "download-result"
+      reason: "浏览器下载对象和正式成功提示未在当前需求证据中定义"
+  execution_constraints: ["自动化使用可视浏览器 headless=False", "使用可观察状态等待，不使用固定 sleep", "下载验证使用临时受控目录，责任人负责清理；不保存业务数据到报告", "不在脚本中写入账号、密码、Token、Cookie 或真实业务数据"]
+dependencies:
+  - dependency: "REQ-PC-041 雏苗发货列表"
+    impact: "提供导出入口、已应用筛选条件、状态卡和列表结果"
+    status: "available_as_analysis_dependency"
+  - dependency: "平台角色菜单/接口权限配置"
+    impact: "控制菜单可见性和导出操作权限"
+    status: "required_configuration_not_provided"
+  - dependency: "页面表格字段和固定文件命名规则"
+    impact: "确认下载内容和文件名契约"
+    status: "confirmed_from_supplemented_requirement"
+  - dependency: "正式测试环境下载能力"
+    impact: "验证 Excel 文件、中文文件名和下载清理"
+    status: "required_environment_not_provided"
+environment_and_data:
+  prototype:
+    status: "available_from_page_inventory"
+    browser: "Chromium visible mode"
+    data_character: "公开 mock 数据；分析不复制其中的业务值"
+    login: "not_required_for_existing_prototype_evidence"
+  real_test_environment:
+    url_source: ".env: UI_TEST_URL；具体地址不写入分析产物"
+    real_route: "/biopark-breeding/breeding/hatchingplans/delivery"
+    credentials_source: "运行时安全配置；不写入分析产物"
+    authorization: "按平台角色菜单/接口权限树配置；具体角色和权限编码由执行前准备"
+  data_preconditions: ["需准备可安全清理的导出测试数据，覆盖有结果和无结果筛选", "需准备有导出权限和无导出权限的授权测试配置", "需确定导出下载目录的责任人和清理状态", "不得使用生产数据或未经授权的真实业务数据"]
+risks:
+  - id: "R-044-01"
+    risk: "最新需求与历史原型在配置弹窗、字段选择和结果预览上不一致"
+    mitigation: "以需求变动.md 2026.9.3 为当前契约，page.json 状态仅作为历史偏差证据"
+  - id: "R-044-02"
+    risk: "mock 导出结果不能证明正式发货单.xls 的实际下载行为"
+    mitigation: "测试计划阶段准备授权测试数据和下载目录，按页面表格核对字段并由责任人清理下载文件"
+  - id: "R-044-03"
+    risk: "无导出权限和无数据分支尚未在正式页面执行验证"
+    mitigation: "准备平台权限配置和无结果数据，验证无权限提示及仅表头文件表现"
+  - id: "R-044-04"
+    risk: "系统确认框和浏览器下载缺少稳定定位/可观察契约"
+    mitigation: "自动化阶段优先使用 role/label，要求正式确认框和下载结果提供可观察 UI 契约"
+  - id: "R-044-05"
+    risk: "page.json 当前采集批次包含其他模块，且其公共 Schema 状态可能独立变化"
+    mitigation: "REQ-PC-044 仅使用 pc-chick-shipping 导出证据，不修改 page.json，不将其他模块问题作为本需求业务结论"
+open_questions: []
+handoff:
+  next_agent: "stage-test-plan-agent"
+  gate_policy: "report_only"
+  data_change: "本分析未执行导出、下载或业务数据变更；cleanup_status=not_applicable"
+  sensitive_data: "未写入账号、密码、Token、Cookie、具体环境配置值或未经授权业务数据"

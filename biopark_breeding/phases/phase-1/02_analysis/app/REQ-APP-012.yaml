@@ -1,0 +1,195 @@
+schema_version: "1.0"
+artifact_type: requirement_analysis
+req_id: REQ-APP-012
+module_name: "孵化器 / 出入库记录"
+zentao_module_id: 574
+platform: app
+analysis_date: "2026-08-25"
+source:
+  docx: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+  baseline: "01_requirements/app/模块拆分清单.md"
+  axure_map: "01_requirements/app/axure_map.md"
+  axure_run: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511"
+  source_pages: [P057, P058, P059, P060, P061]
+  evidence_paths:
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-057.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-057.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-057.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-058.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-058.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-058.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-059.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-059.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-059.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-060.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-060.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-060.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-061.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-061.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-061.txt"
+  evidence_levels:
+    observed: "DOCX 页面表、已保存 DOM/正文及本次可视浏览器 networkidle 后的渲染页面事实"
+    static: "axure_map.md 记录的页面树/链接候选"
+    inferred: "根据记录页面结构归纳的业务关系，不作为正式接口或状态规则"
+    open_question: "原型未明确，需产品/研发确认"
+scope:
+  baseline_statement: "孵化器 / 出入库记录（574）；P057–P061：出入库记录列表、搜索、筛选、结果、详情存在；通用记录页面需绑定孵化器对象。"
+  included: "孵化器对象下的出入库记录列表、搜索、筛选、结果、详情和只读导航。"
+  excluded: "新增/修改/删除记录、入库/出库执行、任务执行、接口实现、权限和持久化实现。"
+  safety_boundary: "只读核验；未点击或提交任何业务写操作。"
+pages:
+  - id: P057
+    name: "出入库记录列表"
+    page_file: "出入库记录列表_1.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-057.png,dom/page-057.html,page_text/page-057.txt}"
+    entry_and_return:
+      entry: "observed/static：首页、孵化器列表/库存结果的出入库记录入口。"
+      return: "static：首页、出入库记录搜索、出入库记录筛选、出入库详情。"
+    contract:
+      query_area: "observed：顶部搜索、筛选；列表上下文提供孵化器一号/二号/三号、出入库原因、时间快捷项和入库/出库切换。"
+      list_or_cards: "observed：记录卡片包含数量、方向、计划号、库位号、周龄、平均蛋重、产蛋日期、时间、原因、蛋类型、养殖场-批次-品种、自动/手动。"
+      form: "未观察到新增记录表单；筛选和搜索为独立页面。"
+      dialogs: "未观察到详情弹窗；记录详情为独立页面。"
+      buttons_actions: "observed：搜索、筛选、记录卡片；点击记录进入 P061。未执行入库/出库动作。"
+      state: "observed：方向为入库/出库，方式为自动/手动，原因出现种蛋上孵/销售等；未观察到记录状态转换。"
+  - id: P058
+    name: "出入库记录搜索"
+    page_file: "出入库记录搜索_1.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-058.png,dom/page-058.html,page_text/page-058.txt}"
+    entry_and_return:
+      entry: "observed/static：从出入库记录列表进入。"
+      return: "static：出入库记录列表、出入库详情。"
+    contract:
+      query_area: "observed：搜索输入和搜索按钮；字段提示为计划号、库位号、养殖场、批次、品种；有代孵/树田代孵等历史候选。"
+      list_or_cards: "observed：搜索结果以记录卡片呈现，可同时展示入库与出库记录。"
+      form: "observed：关键字输入；未观察到字段校验、长度限制或复杂搜索表单。"
+      dialogs: "未观察到独立弹窗；有无结果为页面状态文案。"
+      buttons_actions: "observed：搜索、历史项、结果卡片；页面注释提出输入后自动查询，但实现状态需确认。"
+      state: "observed：没有找到相关的记录、搜索有结果、搜索无结果；历史最多三行来自注释。"
+  - id: P059
+    name: "出入库记录筛选"
+    page_file: "出入库记录筛选_1.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-059.png,dom/page-059.html,page_text/page-059.txt}"
+    entry_and_return:
+      entry: "observed/static：从记录列表或记录搜索进入。"
+      return: "static：记录搜索、记录筛选、记录详情、相关上孵任务、记录列表和筛选结果。"
+    contract:
+      query_area: "observed：库位/仓库候选、出入库方式自动/手动、原因、时间范围、操作类型入库/出库、种蛋信息筛选。"
+      list_or_cards: "observed：页面展示筛选前的记录卡片预览，含方向、方式、库位、时间和原因。"
+      form: "observed：选择类筛选项、时间快捷项/日期范围、养殖场、品种、蛋重类型、种蛋类型、周龄和平均蛋重候选；必填和单多选未确认。"
+      dialogs: "未观察到独立弹窗；筛选为独立页面。"
+      buttons_actions: "observed：确认、重置、筛选项选择；确认后进入 P060。"
+      state: "observed：方向、方式和原因是记录维度，不代表可操作状态机。"
+  - id: P060
+    name: "筛选结果"
+    page_file: "筛选结果_4.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-060.png,dom/page-060.html,page_text/page-060.txt}"
+    entry_and_return:
+      entry: "observed/static：由记录筛选确认进入。"
+      return: "static：当前证据的链接摘要混有蛋库/种蛋任务页面，需确认实际返回应绑定孵化器记录列表。"
+    contract:
+      query_area: "observed：顶部搜索、筛选、孵化器/仓库上下文；未观察到新增筛选字段。"
+      list_or_cards: "observed：展示入库/出库记录卡片，含方向、计划号、库位、种蛋信息、时间、原因和方式。"
+      form: "未观察到独立表单。"
+      dialogs: "未观察到独立弹窗；有无结果文案显隐条件未确认。"
+      buttons_actions: "observed/static：搜索、筛选、记录卡片/详情入口；未执行写操作。"
+      state: "observed：记录方向入库/出库、方式自动/手动、原因种蛋上孵/种蛋照蛋等；未观察到转换。"
+  - id: P061
+    name: "出入库详情"
+    page_file: "出入库详情_1.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-061.png,dom/page-061.html,page_text/page-061.txt}"
+    entry_and_return:
+      entry: "observed/static：从记录列表、搜索、筛选结果的记录项进入。"
+      return: "static：出入库记录列表。"
+    contract:
+      query_area: "不适用；详情页未观察到查询区。"
+      list_or_cards: "observed：种蛋信息、出/入库信息、数量、方式、原因、时间、计划号（有则显示并可复制）、备注、操作人、库位信息（孵化器、库位、孵化场）。"
+      form: "未观察到编辑表单。"
+      dialogs: "未观察到独立弹窗。"
+      buttons_actions: "observed：关联计划复制、返回记录列表；复制后的反馈未观察到。"
+      state: "observed：方向入库/出库，方式手动/自动；未观察到记录状态转换或撤销。"
+interfaces:
+  - id: IF-012-UI-NAV
+    type: navigation
+    name: "孵化器出入库记录导航"
+    evidence_level: observed
+    endpoint_or_api: "未观察到具体接口路径"
+    input: "记录列表、搜索、筛选、卡片点击"
+    output: "记录结果或详情页面"
+    note: "页面树链接只能证明候选导航。"
+  - id: IF-012-RECORD-QUERY
+    type: data_query
+    name: "孵化器出入库记录查询"
+    evidence_level: open_question
+    endpoint_or_api: "未观察到"
+    input: "计划号、库位号、养殖场、批次、品种、方向、方式、原因、时间和种蛋信息筛选"
+    output: "出入库记录卡片和详情数据结构未确认"
+    note: "不推断 HTTP 方法、参数名、分页、排序、错误码或权限。"
+  - id: IF-012-COPY-PLAN
+    type: client_action
+    name: "详情页计划号复制"
+    evidence_level: observed
+    endpoint_or_api: "未观察到"
+    input: "详情页计划号"
+    output: "复制反馈未观察到"
+    note: "仅记录控件存在。"
+cross_module_refs:
+  - ref: "孵化器 / 库存查询"
+    relation: "object_context"
+    evidence_level: static
+    note: "记录页面必须绑定孵化器对象，不能泛化为蛋库记录。"
+  - ref: "种蛋上孵/照蛋/出雏"
+    relation: "record_reason_context"
+    evidence_level: static
+    note: "原型原因出现种蛋上孵、种蛋照蛋等；是否由任务自动产生未确认。"
+  - ref: "首页"
+    relation: "entry"
+    evidence_level: static
+    note: "P057 页面链接含首页。"
+  - ref: "设备出入库动作"
+    relation: "write_boundary"
+    evidence_level: inferred
+    note: "基线提到设备出入库动作，本 REQ 只分析记录查询，不执行动作。"
+business_rules:
+  - id: BR-012-01
+    statement: "记录列表、搜索、筛选结果和详情均应绑定孵化器/库位对象。"
+    evidence_level: inferred
+    source: "模块拆分清单 REQ-APP-012"
+  - id: BR-012-02
+    statement: "记录卡片展示入库/出库方向、自动/手动方式、原因、数量、时间及种蛋/库位信息。"
+    evidence_level: observed
+    source: "P057/P058/P059/P060/P061 live DOM 和 DOCX 页面表"
+  - id: BR-012-03
+    statement: "计划号在详情中有则显示并提供复制入口；页面未明确无计划号时的字段占位方式。"
+    evidence_level: observed
+    source: "P061 页面内容"
+  - id: BR-012-04
+    statement: "搜索历史最多三行、输入后自动查询是页面注释建议，不能直接当作正式性能或持久化要求。"
+    evidence_level: inferred
+    source: "P058 页面注释"
+  - id: BR-012-05
+    statement: "入库/出库和自动/手动是记录属性；未观察到可从本模块触发的状态转换。"
+    evidence_level: observed
+    source: "P057/P059/P061"
+open_questions:
+  - id: OQ-012-01
+    question: "P060 static 链接出现蛋库/种蛋任务页面，筛选结果是否错误复用通用页面，真实返回和对象绑定如何定义？"
+    evidence_level: open_question
+    impact: "影响模块隔离、路由和验收。"
+  - id: OQ-012-02
+    question: "正式记录字段、方向/原因枚举、时间时区、分页排序和接口错误处理是什么？"
+    evidence_level: open_question
+    impact: "影响接口契约和查询测试。"
+  - id: OQ-012-03
+    question: "记录是否允许撤销、冲正或修改，权限和审计字段如何定义？"
+    evidence_level: open_question
+    impact: "影响状态/权限边界；当前未执行任何写操作。"
+  - id: OQ-012-04
+    question: "搜索历史和复制计划号是否落本地，是否涉及敏感数据处理？"
+    evidence_level: open_question
+    impact: "影响客户端持久化和隐私检查。"
+handoff:
+  next_stage: "03_testpoints"
+  status: "analysis_complete_candidate"
+  review_gate: "先确认孵化器对象绑定、字段和记录生命周期，再进入测点设计。"
+  prohibited_next_actions: "未经授权不得新增、修改、删除、入库、出库、撤销或提交记录。"

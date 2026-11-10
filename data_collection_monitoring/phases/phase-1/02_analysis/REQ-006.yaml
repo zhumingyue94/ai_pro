@@ -1,0 +1,316 @@
+schema_version: "1.1"
+
+analysis_id: "REQ-006"
+
+module_id: "REQ-006"
+
+module_name: "插件管理"
+
+project: "数据采集监控平台"
+
+status: "partial_pending_contract_verification"
+
+source:
+
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+
+  latest_changes: "01_requirements/需求变动.md"
+
+  latest_change_items: ["REQ-006-001", "REQ-006-002", "REQ-006-003", "REQ-006-004", "REQ-006-005", "REQ-006-006", "REQ-006-007", "REQ-006-008", "REQ-006-009", "REQ-006-010", "REQ-006-011", "REQ-006-012", "REQ-006-013", "REQ-006-014", "REQ-006-015", "REQ-006-016"]
+
+  scope_baseline: "01_requirements/模块拆分清单.md"
+
+  page_inventory: "02_analysis/page_inventory/page.json"
+
+  evidence_log: "02_analysis/page_inventory/logs/plugin-management.txt"
+
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录具体值"
+
+identity:
+
+  zentao_module_path: "iot平台/设备接入/插件管理"
+
+  zentao_module_id: 744
+
+  parent_module_id: 727
+
+  priority: 6
+
+  priority_band: "P1"
+
+  route_baseline: "/iot/device/device-protocol"
+
+  runtime_route: "/biopark-iot/iot/device/device-protocol"
+
+  title: "数据采集 - 插件管理"
+
+  menu_path: ["数据采集", "设备接入", "插件管理"]
+
+  dependencies: ["产品管理", "设备管理"]
+
+  route_discrepancy: "模块清单为短路由，page.json为完整运行时路由；以运行时实际确认为准。"
+
+scope:
+
+  confirmed:
+
+    - "名称由系统默认名称与端口拼接生成，默认名称不可修改，最终名称随端口确定。"
+
+    - "新增仅选择插件类型，不单独选择协议；类型包括 emqx、mqtt、http。"
+
+    - "同协议端口不可重复；最新确认补充同协议和跨协议均不允许重复。端口必须为合法数字端口且禁止保留端口。"
+
+    - "插件编号由系统生成，创建后不可修改且全局唯一；重复时拒绝创建。"
+
+    - "支持创建、启动、停止、删除；状态为已创建、运行中、已停止；停止后可再次启动；列表创建时间倒序。"
+
+    - "设备数统计全部未删除设备，包含停用设备，按设备唯一编号去重；进入页面或手动刷新重新查询，不使用缓存。"
+
+    - "创建后不支持配置编辑，不涉及配置升级、灰度、回滚及设备类型兼容规则。"
+
+    - "运行中禁止删除但允许停用；停用后允许删除。"
+
+    - "地址按业务需要展示；证书、密钥和敏感配置在表单、运行详情、日志、错误提示中脱敏，删除或替换后清理旧值。"
+
+    - "仅按页面行为记录生命周期按钮、状态变化和反馈，不纳入接口契约或接口测试。"
+
+    - "按角色验证页面操作权限；插件管理列表不需要针对不同租户进行管理，不将租户差异作为列表管理、筛选或隔离条件，接口细节不纳入测试。"
+
+  in_scope: ["插件列表、筛选、刷新、表头设置、分页", "新建字段和类型状态选项", "端口和名称派生规则", "编号、生命周期、设备数和排序", "详情/运行/错误反馈的敏感信息脱敏", "停用和删除边界", "角色、租户和页面权限边界"]
+
+  out_of_scope: ["接口状态码、错误码、审计字段和性能指标", "配置升级、灰度、回滚和设备类型兼容", "真实创建/启动/停止/停用/删除", "敏感配置提交", "导入导出", "绕过权限或安全控制"]
+
+acceptance_boundary:
+
+  - "需求变动.md 中已存在的 REQ-006 最新确认回答优先于旧分析。"
+
+  - "page.json 为当前页面事实基准；需求与页面冲突必须保留，不得擅自择一覆盖。"
+
+  - "当前只允许限定范围只读 UI 验证，不执行业务写操作。"
+
+page_contract:
+
+  page_inventory_status: "partial"
+
+  page_id: "plugin_management"
+
+  route: "/biopark-iot/iot/device/device-protocol"
+
+  title: "数据采集 - 插件管理"
+
+  menu_path: ["数据采集", "设备接入", "插件管理"]
+
+  default_state: "plugin_management_default"
+
+  check_target: "plugin_management_state"
+
+  evidence_status: "available_redacted"
+
+  evidence:
+
+    page: "02_analysis/page_inventory/page.json:49-62"
+
+    default_state: "02_analysis/page_inventory/page.json:60-438"
+
+    status_options: "02_analysis/page_inventory/page.json:440-505"
+
+    columns_options: "02_analysis/page_inventory/page.json:508-572"
+
+    add_state: "02_analysis/page_inventory/page.json:574-796"
+
+    type_options: "02_analysis/page_inventory/page.json:799-863"
+
+    restart_options: "02_analysis/page_inventory/page.json:866-930"
+
+    stop_confirm: "02_analysis/page_inventory/page.json:933-1053"
+
+  evidence_files:
+
+    screenshots: ["02_analysis/page_inventory/screenshots/plugin-management-default-new.png", "02_analysis/page_inventory/screenshots/plugin-management-status-new.png", "02_analysis/page_inventory/screenshots/plugin-management-columns-new.png", "02_analysis/page_inventory/screenshots/plugin-management-add-new.png", "02_analysis/page_inventory/screenshots/plugin-management-add-type-new.png", "02_analysis/page_inventory/screenshots/plugin-management-add-restart-new.png", "02_analysis/page_inventory/screenshots/plugin-management-stop-confirm-new.png"]
+
+    logs: ["02_analysis/page_inventory/logs/plugin-management.txt"]
+
+    dom_snapshots_status: "page.json references DOM paths, but files are not currently present; do not treat them as evidence."
+
+  elements:
+
+    filters: ["plugin_management_name", "plugin_management_status"]
+
+    actions: ["plugin_management_query", "plugin_management_reset", "plugin_management_refresh", "plugin_management_columns", "plugin_management_add"]
+
+    row_actions: ["plugin_management_stop", "plugin_management_plugin_link"]
+
+    add_form: ["plugin_management_add_form", "plugin_management_add_dialog", "plugin_management_add_name", "plugin_management_add_type", "plugin_management_add_port", "plugin_management_add_restart", "plugin_management_add_confirm", "plugin_management_add_cancel"]
+
+    stop_confirm: ["plugin_management_stop_dialog", "plugin_management_stop_confirm_button", "plugin_management_stop_cancel"]
+
+  table:
+
+    table_id: "plugin_management_table"
+
+    element_id: "plugin_management_table_element"
+
+    locator: ".el-table"
+
+    columns: ["plugin_name", "plugin_type", "plugin_port", "device_count", "plugin_id", "status", "status_description", "created_at", "actions"]
+
+    pagination_element_ids: []
+
+    pagination_status: "missing_stable_element_ids"
+
+  observed_options:
+
+    status: ["运行中", "已停止"]
+
+    type: ["MQTT", "HTTP"]
+
+    restart_policy: ["总是", "失败时", "从不"]
+
+  requirement_page_conflicts:
+
+    - {field: "plugin_management_add_name", page_json: "required=true, readonly=false", requirement: "系统生成且不可修改", status: "pending_page_verification"}
+
+    - {field: "plugin_management_status", page_json: ["运行中", "已停止"], requirement: ["已创建", "运行中", "已停止"], status: "已创建未观察到"}
+
+    - {field: "plugin_management_add_type", page_json: ["MQTT", "HTTP"], requirement: ["emqx", "mqtt", "http"], status: "emqx未观察到"}
+
+requirements:
+
+  confirmed:
+
+    REQ-006-001: "名称由系统默认名称与端口拼接生成，默认名称不可编辑。"
+
+    REQ-006-002: "类型代表协议，包含 emqx、mqtt、http，不单独选择协议。"
+
+    REQ-006-003: "端口为合法数字端口，禁止保留端口；创建时同协议和跨协议均不可重复。"
+
+    REQ-006-004: "编号系统生成、创建后不可修改、全局唯一，重复拒绝创建。"
+
+    REQ-006-005: "支持创建/启动/停止/删除；状态为已创建/运行中/已停止；停止后可启动；创建时间倒序。"
+
+    REQ-006-006: "设备数统计未删除设备，包含停用设备，按唯一编号去重；进入页面/刷新重新查询。"
+
+    REQ-006-007: "创建后配置不可修改且无编辑功能；不涉及升级/灰度/回滚/设备兼容。"
+
+    REQ-006-008: "运行中不可删除但可停用，停用后可删除；其他关系规则按页面记录。"
+
+    REQ-006-009: "地址按业务需要展示；证书、密钥和敏感配置全链路脱敏，旧值清理。"
+
+    REQ-006-010: "确认表用于补充 PDF 和页面探索内容，不与 PDF 逐条直接对应。"
+
+    REQ-006-011: "名称是否实际只读、默认名称生成和端口变化结果按页面确认。"
+
+    REQ-006-012: "新增支持 emqx、mqtt、http；列表和筛选含已创建；枚举按页面实际记录。"
+
+    REQ-006-013: "端口合法数字、禁用保留端口；创建时检查同协议和跨协议冲突；具体范围和提示按页面记录。"
+
+    REQ-006-014: "只记录创建、启动、停止、再次启动、重启、故障恢复、删除和停用的页面按钮、状态和反馈。"
+
+    REQ-006-015: "分页、筛选、刷新、排序和表头设置控件定位沿用 PUB-015，具体字段和持久化范围按页面记录。"
+
+    REQ-006-016: "按角色验证查看、创建、启动、停止和删除等页面权限；插件管理列表不需要针对不同租户进行管理，不将租户差异作为列表管理、筛选或隔离条件；接口细节不测试。"
+
+  pending: ["PDF REQ-006章节逐条追溯", "名称只读实现和端口变化后的派生显示", "emqx与已创建选项的页面证据", "端口具体范围、保留端口和错误提示", "完整生命周期页面反馈及异步失败表现", "设备数刷新/去重/删除排除/停用包含的页面证据", "稳定分页定位器、并列排序处理和表头设置持久化", "详情/运行日志/错误提示中的敏感信息脱敏与旧值清理", "角色权限矩阵和无权限页面反馈"]
+
+roles:
+
+  - {name: "插件查看人员", responsibility: "查看授权范围内插件、状态、设备数和详情"}
+
+  - {name: "插件管理员", responsibility: "按权限创建、启动、停止、停用和删除插件"}
+
+  - {name: "设备/产品管理员", responsibility: "维护插件关联设备和产品依赖"}
+
+  - {name: "平台运维/审计人员", responsibility: "维护运行状态、安全保护和异常处置"}
+
+permission_status: "partial_role_matrix_tenant_not_management_scope"
+
+dependencies:
+
+  upstream: ["产品管理", "设备管理"]
+
+  downstream: ["设备消息", "采集/连接链路", "运行监控", "告警和审计"]
+
+risks:
+
+  - {id: "R-006-01", level: "critical", description: "证书、密钥或敏感配置明文泄露", control: "表单/详情/日志/错误提示全链路脱敏，禁止记录真实值"}
+
+  - {id: "R-006-02", level: "critical", description: "运行中插件被删除或停用后状态不一致", control: "只读确认状态按钮和反馈，本阶段不写入"}
+
+  - {id: "R-006-03", level: "high", description: "端口重复规则与最新确认不一致", control: "覆盖同协议、跨协议、保留端口和创建时冲突"}
+
+  - {id: "R-006-04", level: "high", description: "名称、编号或状态选项与确认规则冲突", control: "保留 page.json 差异，不强行覆盖"}
+
+  - {id: "R-006-05", level: "high", description: "设备数统计未去重或未按刷新重查", control: "记录页面可见刷新行为，不推断接口结果"}
+
+test_design:
+
+  equivalence_partitions:
+
+    name: [system_generated, derived_from_port, attempted_edit]
+
+    type: [emqx, mqtt, http, unsupported]
+
+    port: [valid_unique, same_protocol_duplicate, cross_protocol_duplicate, reserved, out_of_range, invalid_format]
+
+    lifecycle: [created, running, stopped, stop_then_start, restart, fault_recovery, async_failure]
+
+    device_count: [active_included, disabled_included, deleted_excluded, duplicate_id_deduped, refreshed]
+
+    security: [address_allowed, certificate_masked, key_masked, secret_masked, old_value_cleared, plaintext_forbidden]
+
+    permission: [authorized, unauthorized, tenant_not_management_scope]
+
+  boundary_candidates: ["端口最小/最大/保留/越界/格式", "同协议与跨协议重复", "名称派生和端口变化", "已创建/运行中/已停止", "运行中删除与停用", "设备删除排除/停用包含/编号去重", "进入页面和刷新", "四类敏感展示位置", "筛选/分页/刷新后的创建时间倒序", "未授权", "租户差异不作为插件列表管理条件"]
+
+  decision_table: ["同协议或跨协议端口重复均拒绝；合法唯一端口按页面反馈处理", "运行中删除拒绝但停用允许；停用后删除允许", "设备数包含停用、排除删除、唯一编号去重", "敏感字段全链路脱敏且旧值清理", "默认/筛选/分页/刷新均创建时间倒序", "未授权不允许执行超出角色权限的操作；租户差异不作为插件列表管理条件"]
+
+  state_transitions: ["不存在->已创建->运行中->已停止->运行中", "运行中->停用->删除允许", "运行中->删除请求->拒绝", "关联变化->进入页面/刷新->重新查询->设备数更新", "敏感值存在->删除/替换->旧值清理"]
+
+  pict_model:
+
+    parameters: ["Type", "PortRelation", "Lifecycle", "DeviceSet", "SecurityLocation", "Ordering", "Permission"]
+
+    values: {Type: [emqx, mqtt, http, unsupported], PortRelation: [unique, same_protocol_duplicate, cross_protocol_duplicate, reserved, out_of_range, invalid], Lifecycle: [created, running, stopped, restart, fault_recovery], DeviceSet: [active, disabled, deleted, duplicate_id, refreshed], SecurityLocation: [form, detail, log, error], Ordering: [default, filtered, paged, refreshed], Permission: [authorized, unauthorized, tenant_not_management_scope]}
+
+    constraints: ["IF [PortRelation] IN {same_protocol_duplicate, cross_protocol_duplicate, reserved, out_of_range, invalid} THEN [Lifecycle] <> created;", "IF [SecurityLocation] IN {form, detail, log, error} THEN [Permission] = authorized;", "IF [Permission] = unauthorized THEN [Lifecycle] <> restart;"]
+
+    note: "候选模型，不执行真实创建、启动、停止、删除或敏感配置提交。"
+
+automation_plan:
+
+  framework: "Playwright Python sync API / pytest-playwright"
+
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+
+  allowed: ["复用登录态", "进入插件管理", "确认运行时路由和标题", "打开筛选/表头/详情/新建/类型/状态/重启策略/停止确认等只读界面", "记录脱敏页面事实"]
+
+  forbidden: ["提交新建", "启动", "停止确认", "停用", "删除", "提交敏感配置", "导入导出", "写API", "绕过权限或安全控制"]
+
+  locator_priority: ["get_by_role", "get_by_test_id", "get_by_label", "get_by_placeholder", "get_by_text", "稳定属性", "CSS last"]
+
+  stop_conditions: ["配置缺失", "登录失败", "人工安全验证", "路由/主机不符", "权限失败", "出现写操作提示", "发现未授权数据暴露"]
+
+data_preconditions:
+
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 运行时读取。"
+
+  - "只读使用既有页面数据，不造插件、端口、设备、密钥或关系数据。"
+
+  - "敏感信息和未经授权业务数据不得进入 page.json、截图、日志、DOM、报告或下载文件。"
+
+  - "本次数据变更：无；清理状态：not_applicable。"
+
+readiness:
+
+  status: "ready_for_scoped_readonly_ui_verification"
+
+  reason: "已有插件管理页面契约和脱敏证据，但需求与页面存在名称、类型、状态差异，且分页、生命周期、设备数、安全详情和权限证据未闭环。"
+
+handoff:
+
+  path: "02_analysis/HANDOFF/REQ-006_HANDOFF.md"
+
+  status: "ready_for_scoped_readonly_ui_verification"
+
+  next_inputs: ["名称只读和派生显示证据", "emqx/已创建页面证据", "端口范围/保留端口/冲突提示", "生命周期和异步反馈", "设备数统计页面证据", "分页和表头持久化", "详情/日志/错误提示脱敏证据", "角色租户矩阵"]
+

@@ -1,0 +1,40 @@
+{
+  "status": "validated",
+  "case_id": "TC-REQ-003-025",
+  "remote_case_id": 51628,
+  "operation": "update",
+  "remote_context": {
+    "project": 46,
+    "product": 8,
+    "module": 732
+  },
+  "title": "导出产品列表时确认导出内容与筛选条件一致",
+  "step_count": 3,
+  "steps": [
+    {
+      "action": "进入产品列表页面，查看“导出”按钮。",
+      "expected": "页面显示“导出”按钮，按钮文字清晰可见。"
+    },
+    {
+      "action": "点击“导出”按钮。",
+      "expected": "系统开始导出产品列表，并成功下载导出文件。"
+    },
+    {
+      "action": "打开导出的文件，检查文件中的数据。",
+      "expected": "导出文件中的数据符合当前筛选条件，且不包含隐藏的敏感信息。"
+    }
+  ],
+  "defects": [],
+  "readback_source": "raw_readback_51628_utf8.json",
+  "source_hashes_after": {
+    "04_testcases\\TC_REQ-003.yaml": "2a3330344ecd0e1dabd96502614e1b3c8198b5c0143bbed6357c5864a5525d33",
+    "04_testcases\\TC_REQ-003.md": "a8f0d493aed0f124ac92cb00a88a91dca86ff7213b12d113c7bfced5c8ac8cac",
+    "05_case_review\\REV_CASE_REQ-003.yaml": "4f278af6eca1914c43ebaf6526515c38c6c2bbadc6dab66d30577c962f078e1c",
+    "05_case_review\\REV_CASE_REQ-003.md": "ba6fbe90415367be8006f16d1f5e720e2e6587d8b29240aa3ebf403727c3802c",
+    "05_case_review\\HANDOFF\\REQ-003_HANDOFF.md": "122c2720917937760eea57c342831ff18e3c51f6ae68cc4b2d3706c477891965",
+    "04_testcases\\HANDOFF\\REQ-003_HANDOFF.md": "34dbe4763dff6d7bc392aad95df4d22d01573de81940f1fae238b6e7bf6d3fda",
+    "06_zentao_sync\\REQ-003\\HANDOFF\\REQ-003_HANDOFF.md": "5e89fc804058bae3c4a90cfea8c506f8419ae59371dc70b5c1f168ccb6793daf",
+    "module_case_map.json": "17a9d02ee36b08127780111367cc0d74ad0ee1b9dd263ba500bb1f2534de19b4",
+    "06_zentao_sync\\REQ-003\\raw_readback_51628_utf8.json": "f9cabca266121b98967a185f1e184aab70dbf662412f2e498c9e533b9a1e56ca"
+  }
+}

@@ -1,0 +1,279 @@
+run_id: RUN_目标制定等4模块_20260831_154916
+source: 04_testcases/TC_REQ-002.yaml
+sources:
+  REQ-002:
+    source: 04_testcases/TC_REQ-002.yaml
+    local_yaml_case_count: 91
+    local_auto_case_count: 82
+  REQ-003:
+    source: 04_testcases/TC_REQ-003.yaml
+    local_yaml_case_count: 157
+    local_auto_case_count: 153
+  REQ-004:
+    source: 04_testcases/TC_REQ-004.yaml
+    local_yaml_case_count: 227
+    local_auto_case_count: 221
+  REQ-014:
+    source: 04_testcases/TC_REQ-014.yaml
+    local_yaml_case_count: 36
+    local_auto_case_count: 35
+filter:
+  req: null
+  module: null
+  priority: null
+  zentao_case_id: null
+requirement_ids:
+- REQ-002
+- REQ-003
+- REQ-004
+- REQ-014
+module_names:
+- 目标制定
+- 分段养殖模版
+- 制定排程
+- 宰杀线管理
+local_yaml_case_count: 511
+local_auto_case_count: 491
+selected_case_ids:
+- TC-002-01
+- TC-002-04
+- TC-002-05
+- TC-002-06
+- TC-002-08
+- TC-002-12
+- TC-002-20
+- TC-002-27
+- TC-002-28
+- TC-002-75
+- TC-002-77
+- TC-002-84
+- TC-002-85
+- TC-002-86
+- TC-002-87
+- TC-002-88
+- TC-002-90
+- TC-003-06
+- TC-003-07
+- TC-003-08
+- TC-003-09
+- TC-003-10
+- TC-003-12
+- TC-003-31
+- TC-003-62
+- TC-003-63
+- TC-003-131
+- TC-003-133
+- TC-003-137
+- TC-003-139
+- TC-003-140
+- TC-003-141
+- TC-003-142
+- TC-003-143
+- TC-003-145
+- TC-004-04
+- TC-004-05
+- TC-004-06
+- TC-004-07
+- TC-004-09
+- TC-004-51
+- TC-004-55
+- TC-004-57
+- TC-004-69
+- TC-004-77
+- TC-004-81
+- TC-004-144
+- TC-004-148
+- TC-004-150
+- TC-004-160
+- TC-004-162
+- TC-014-01
+- TC-014-02
+- TC-014-03
+- TC-014-04
+- TC-014-05
+- TC-014-06
+- TC-014-07
+- TC-014-08
+- TC-014-09
+- TC-014-10
+- TC-014-11
+- TC-014-12
+- TC-014-13
+- TC-014-14
+- TC-014-15
+- TC-014-16
+- TC-014-17
+- TC-014-18
+- TC-014-19
+- TC-014-20
+- TC-014-21
+- TC-014-22
+- TC-014-23
+- TC-014-24
+- TC-014-25
+- TC-014-26
+- TC-014-27
+- TC-014-28
+- TC-014-29
+- TC-014-30
+- TC-014-31
+- TC-014-32
+- TC-014-33
+- TC-014-34
+- TC-014-35
+- TC-003-149
+- TC-004-175
+- TC-004-176
+- TC-004-223
+selected_zentao_case_ids:
+- 47482
+- 47485
+- 47486
+- 47487
+- 47489
+- 47493
+- 47501
+- 47508
+- 47509
+- 47556
+- 47558
+- 47565
+- 47566
+- 47567
+- 47568
+- 47569
+- 47571
+- 47578
+- 47579
+- 47580
+- 47581
+- 47582
+- 47584
+- 47603
+- 47634
+- 47635
+- 47703
+- 47705
+- 47709
+- 47711
+- 47712
+- 47713
+- 47714
+- 47715
+- 47717
+- 47721
+- 47722
+- 47723
+- 47724
+- 47726
+- 47768
+- 47772
+- 47774
+- 47786
+- 47794
+- 47798
+- 47861
+- 47865
+- 47867
+- 47877
+- 47879
+- 48114
+- 48115
+- 48116
+- 48117
+- 48118
+- 48119
+- 48120
+- 48121
+- 48122
+- 48123
+- 48124
+- 48125
+- 48126
+- 48127
+- 48128
+- 48129
+- 48130
+- 48131
+- 48132
+- 48133
+- 48134
+- 48135
+- 48136
+- 48137
+- 48138
+- 48139
+- 48140
+- 48141
+- 48142
+- 48143
+- 48144
+- 48145
+- 48146
+- 48147
+- 48148
+- 48741
+- 48827
+- 48861
+- 48864
+new_mapping_count: 0
+fixed_mapping_count: 14
+executed_case_count: 90
+excluded_case_count: 0
+pending_registry_count: 5
+environment:
+  base_host: browser_not_started
+  headless: 'false'
+browser_started: false
+dry_run: false
+test_data_prefix: AUTO测试_勿用_{run_id}_
+review_gate:
+  REQ-002:
+    gate_passed: true
+    gate_reasons: []
+    review_status: null
+  REQ-003:
+    gate_passed: true
+    gate_reasons: []
+    review_status: stale
+  REQ-004:
+    gate_passed: true
+    gate_reasons: []
+    review_status: stale
+  REQ-014:
+    gate_passed: false
+    gate_reasons: []
+    review_status: stale
+zentao_sync_evidence:
+  REQ-002:
+    log_files:
+    - zentao_sync_types_REQ-002.log
+    - zentao_update_REQ-002.log
+    last_line: ok=10 fail=0
+    operations_executed: false
+    note: 仅读取 07_zentao_sync 本地历史日志；本次执行未访问禅道远端，未写入任何结果或缺陷。
+  REQ-003:
+    log_files:
+    - zentao_import_REQ-003.log
+    - zentao_sync_types_REQ-003.log
+    - zentao_update_REQ-003.log
+    last_line: ok=6 fail=0
+    operations_executed: false
+    note: 仅读取 07_zentao_sync 本地历史日志；本次执行未访问禅道远端，未写入任何结果或缺陷。
+  REQ-004:
+    log_files:
+    - zentao_import_REQ-004.log
+    - zentao_import_REQ-004_时间冲突验证_20260806.log
+    - zentao_sync_types_REQ-004.log
+    - zentao_update_REQ-004.log
+    last_line: ok=6 fail=0
+    operations_executed: false
+    note: 仅读取 07_zentao_sync 本地历史日志；本次执行未访问禅道远端，未写入任何结果或缺陷。
+  REQ-014:
+    log_files:
+    - zentao_sync_types_REQ-014.log
+    - zentao_update_REQ-014.log
+    last_line: ok=19 fail=0
+    operations_executed: false
+    note: 仅读取 07_zentao_sync 本地历史日志；本次执行未访问禅道远端，未写入任何结果或缺陷。
+generated_at: '2026-08-31T15:49:14'

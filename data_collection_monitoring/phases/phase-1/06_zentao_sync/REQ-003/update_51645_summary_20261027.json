@@ -1,0 +1,48 @@
+{
+  "status": "validated",
+  "case_id": "TC-REQ-003-042",
+  "remote_case_id": 51645,
+  "operation": "update",
+  "remote_context": {
+    "project": 46,
+    "product": 8,
+    "module": 732
+  },
+  "title": "发布和撤销发布产品物模型时确认状态正确变化",
+  "precondition_local": [
+    "已获得经授权的产品数据和可操作的产品管理页面。"
+  ],
+  "step_count": 4,
+  "steps": [
+    {
+      "action": "点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+      "expected": "物模型弹窗成功打开，并显示“发布”按钮。"
+    },
+    {
+      "action": "在物模型弹窗中点击“发布”按钮。",
+      "expected": "物模型发布成功，产品状态变为“已发布”。"
+    },
+    {
+      "action": "再次点击产品列表中的“物模型”按钮，打开物模型弹窗。",
+      "expected": "物模型弹窗成功打开，并显示“撤销发布”按钮。"
+    },
+    {
+      "action": "在物模型弹窗中点击“撤销发布”按钮。",
+      "expected": "撤销发布成功，产品状态变为“未发布”。"
+    }
+  ],
+  "removed_text": "未确认内容保持待确认",
+  "defects": [],
+  "readback_source": "raw_readback_51645_utf8.json",
+  "source_hashes_after": {
+    "04_testcases\\TC_REQ-003.yaml": "95166422b63c4632a6e44cf49a23cc3e807190a2247358bebe4dae4aa062a6f0",
+    "04_testcases\\TC_REQ-003.md": "89be2f54cd6036ad8950551f971f78c7124dc8ba5357a9cf3adbd7f39df5cd14",
+    "05_case_review\\REV_CASE_REQ-003.yaml": "9a617aa93a961b9c0f31b44a988335896334c0667ff9c01a8a1734186b4f7cf2",
+    "05_case_review\\REV_CASE_REQ-003.md": "4ab9bf9285ccf23234522c14a0b5d454e43aadf0afe891d7b405053c023102bb",
+    "05_case_review\\HANDOFF\\REQ-003_HANDOFF.md": "a8a2437a0c95cc9180b9128478f4a530312be143660a11dc96a1deab439885ce",
+    "04_testcases\\HANDOFF\\REQ-003_HANDOFF.md": "5d4f5569dd28aca9af7a544ea6371a203b3fea6dfc2326e78c0608d3fa069fa8",
+    "06_zentao_sync\\REQ-003\\HANDOFF\\REQ-003_HANDOFF.md": "b8d652b69f2e14aa5473ebfd81059ba0dcb8dcb316dab24fcad93227cd82c0bc",
+    "module_case_map.json": "ce84b74d0e07a9d24d00eeeb72126281aca80dd27e58c605e8a0f49e5d271641",
+    "06_zentao_sync\\REQ-003\\raw_readback_51645_utf8.json": "1f26635096562d7dad8c48386c20771082ba32eed09fec3a244cda770a877ea4"
+  }
+}

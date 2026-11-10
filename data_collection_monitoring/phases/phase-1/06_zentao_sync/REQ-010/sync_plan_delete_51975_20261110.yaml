@@ -1,0 +1,24 @@
+req_id: REQ-010
+project_id: 46
+product_id: 8
+module_id: 748
+operation: delete
+target: project
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+cases:
+- local_case_id: TC-REQ-010-048
+  remote_case_id: 51975
+source_hashes_after:
+  yaml: cb185e95f39dde7f207a4022ff9366fff61ca13ac3fdeab8c58d038b3ed5c2fa
+  markdown: 16a6f4a9786c259bc2929bd4e22915ef3dd118e45d418193eda441b185b95a4b
+  review_yaml: e50f52265c8b3c4d726abdc4848b4af5dbd838d583fada394a9a439bc8a92526
+execution:
+  status: blocked
+  stop_on_failure: true
+  records:
+  - remote_case_id: 51975
+    local_case_id: TC-REQ-010-048
+    status: not_executed
+    reason: Stopped after REQ-002 remote delete returned Case does not exist.
+registry:
+  mappings_retained: true

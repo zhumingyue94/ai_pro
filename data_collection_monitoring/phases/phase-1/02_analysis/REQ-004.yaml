@@ -1,0 +1,564 @@
+schema_version: "1.0"
+
+analysis_id: "REQ-004"
+
+module_id: "REQ-004"
+
+module_name: "设备分组"
+
+project: "数据采集监控平台"
+
+status: "ready_for_scoped_readonly_ui_verification"
+
+source:
+
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+
+  latest_changes: "01_requirements/需求变动.md"
+
+  latest_change_items: ["REQ-004-001", "REQ-004-002", "REQ-004-003", "REQ-004-004", "REQ-004-005", "REQ-004-006", "REQ-004-007", "REQ-004-008", "REQ-004-009", "REQ-004-010", "REQ-004-011", "REQ-004-012", "REQ-004-013"]
+
+  scope_baseline: "01_requirements/模块拆分清单.md"
+
+  page_inventory: "02_analysis/page_inventory/page.json"
+
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录值"
+
+identity:
+
+  zentao_module_path: "iot平台/设备接入/设备分组"
+
+  zentao_module_id: 733
+
+  parent_module_id: 727
+
+  route: "/biopark-iot/iot/device/device-group"
+
+  title: "数据采集 - 设备分组"
+
+  menu_path: ["数据采集", "设备接入", "设备分组"]
+
+scope:
+
+  confirmed:
+
+    - "设备分组支持一级分组，不建立上下级关系。"
+
+    - "分组名称必填，同一层级允许重复；长度不限制，允许特殊字符；名称不得仅输入空格，按页面规则处理首尾空格，且允许修改。"
+
+    - "分组描述非必填，支持为空、换行、空白和常见特殊字符；长度不限制，允许修改，描述不要求处理空格。"
+
+    - "分组状态仅有启用和停用；停用后禁止新设备归属，已有设备保留；停用分组可恢复启用。"
+
+    - "一台设备可同时属于多个分组；加入或移出后立即生效。"
+
+    - "设备数量统计当前分组下全部未删除设备，包含停用设备，按设备唯一编号去重，并受当前用户权限范围影响。"
+
+    - "每次进入页面或手动刷新重新查询设备数量，不设置缓存；不一致时以最新实际关联数据为准。"
+
+    - "创建时间按当前用户时区显示，格式为 YYYY-MM-DD HH:mm:ss；时间起止均包含；列表默认创建时间倒序；默认每页10条。"
+
+    - "存在关联设备时仅禁止删除；允许停用、改名和恢复，无需解绑；设备及历史记录保留。"
+
+  in_scope:
+
+    - "列表默认进入、分组名称与创建时间筛选、查询、重置、刷新、表头设置、分页和排序。"
+
+    - "分组名称、状态、描述、创建时间、设备数量和操作列。"
+
+    - "新增、编辑、停用/恢复、删除限制、设备多分组和数量统计的页面级规则边界。"
+
+    - "权限、租户隔离、异常提示、加载/异步状态、接口契约和数据安全责任。"
+
+  out_of_scope:
+
+    - "设备管理页面内部的设备生命周期、产品绑定和设备属性实现。"
+
+    - "多级分组、上下级关系、循环引用和每层数量限制。"
+
+    - "真实环境新增、编辑、删除、停用、恢复、设备加入/移出、批量关联、导出和接口写入。"
+
+    - "接口 endpoint、请求/响应字段、错误码、性能 SLA 和跨模块实现细节。"
+
+  acceptance_boundary:
+
+    - "以需求变动.md 的 REQ-004-001 至 REQ-004-011、REQ-004-012、REQ-004-013 确认回答作为业务规则基准；未登记编号不作为正式源需求。"
+
+    - "以 page.json 的页面、状态、元素 ID 和脱敏证据作为页面事实基准。"
+
+    - "页面存在、列表有数据或弹层可见，不等于 CRUD、关联统计、删除限制、权限和接口契约已验收。"
+
+page_contract:
+
+  page_id: "device_group"
+
+  route: "/biopark-iot/iot/device/device-group"
+
+  title: "数据采集 - 设备分组"
+
+  menu_path: ["数据采集", "设备接入", "设备分组"]
+
+  default_state: "device_group_default"
+
+  target: {element_id: "device_group_state", strategy: "css", value: "body"}
+
+  page_ready: ["URL contains /biopark-iot/iot/device/device-group", "title contains 设备分组", "body visible", "loading indicator gone", "no authentication/permission failure"]
+
+  evidence:
+
+    page_inventory: "02_analysis/page_inventory/page.json"
+
+    dom: "02_analysis/page_inventory/dom/device-group.html"
+
+    screenshots: ["02_analysis/page_inventory/screenshots/device-group-capture.png", "02_analysis/page_inventory/screenshots/req004-default-explored.png", "02_analysis/page_inventory/screenshots/req004-columns-expanded.png", "02_analysis/page_inventory/screenshots/req004-date-filter-expanded.png", "02_analysis/page_inventory/screenshots/req004-add-form-20261021.png"]
+
+    logs: ["02_analysis/page_inventory/logs/device-group.txt", "02_analysis/page_inventory/logs/req004-exploration.txt"]
+
+    sanitized: true
+
+  states:
+
+    - state_id: "device_group_default"
+
+      expected: "列表、分组名字/创建时间筛选、查询、重置、刷新、表头设置、新增、编辑、删除和分页可见；业务数据脱敏。"
+
+      elements: ["device_group_add_button", "device_group_table", "device_group_query", "device_group_reset", "device_group_refresh", "device_group_columns", "device_group_add", "device_group_edit", "device_group_delete", "device_group_page_size", "device_group_prev", "device_group_page", "device_group_next"]
+
+      filters: ["device_group_name", "device_group_start_date", "device_group_end_date"]
+
+      columns: ["编号", "分组名字", "分组状态", "分组描述", "创建时间", "设备数量", "操作"]
+
+      observed_page_size: "10条/页"
+
+    - state_id: "device_group_columns_expanded"
+
+      parent_state_id: "device_group_default"
+
+      expected: "表头设置显示7列的显示、宽度和固定配置；关闭后恢复列表。"
+
+      element: "device_group_columns"
+
+    - state_id: "device_group_date_filter_expanded"
+
+      parent_state_id: "device_group_default"
+
+      expected: "日期选择面板显示开始日期和结束日期；未提交日期筛选。"
+
+      elements: ["device_group_start_date", "device_group_end_date"]
+
+    - state_id: "device_group_dialogs_partial"
+
+      parent_state_id: "device_group_default"
+
+      expected: "新增、编辑、删除入口和新增弹层部分可见；未提交业务变更，详情字段、删除确认和结果反馈不作事实推断。"
+
+      elements: ["device_group_add_dialog", "device_group_dialogs_partial_root", "device_group_edit", "device_group_delete", "device_group_delete_cancel"]
+
+      locator_status: "partial"
+
+  table:
+
+    table_id: "device_group_table"
+
+    element_id: "device_group_table"
+
+    column_ids: ["device_group_column_0", "device_group_column_1", "device_group_column_2", "device_group_column_3", "device_group_column_4", "device_group_column_5", "device_group_column_6"]
+
+    row_action_element_ids: ["device_group_edit", "device_group_delete"]
+
+    filter_element_ids: ["device_group_name", "device_group_start_date", "device_group_end_date"]
+
+    pagination_element_ids: ["device_group_page_size", "device_group_prev", "device_group_page", "device_group_next"]
+
+  form_observation:
+
+    add_dialog_id: "device_group_add_dialog"
+
+    observed_fields: ["分组名称", "分组描述", "启用/停用状态"]
+
+    submit_cancel_observed: true
+
+    stable_field_ids: false
+
+    action: "空提交后取消关闭；未保存业务数据"
+
+observed_facts:
+
+  - "page.json 标记 device_group/device_group_default 存在，目标为 device_group_state。"
+
+  - "device_group_add_button 和 device_group_add 均记录为可见/启用按钮，候选定位为 role=button。"
+
+  - "观察到列表控件、分组名字筛选、日期面板、查询、重置、刷新、表头设置、新增、编辑/删除入口和分页。"
+
+  - "表格列为编号、分组名字、分组状态、分组描述、创建时间、设备数量、操作。"
+
+  - "脱敏观察到两条记录、10条/页、状态文本和设备数量文本；样例不代表完整数据规则。"
+
+  - "新增弹层部分观察到分组名称、描述、状态及确定/取消语义；未提交。"
+
+  - "page.json 中部分原始名称存在编码显示异常，分析按需求与脱敏观察归一化含义，不修改原始清单。"
+
+requirements:
+
+  confirmed:
+
+    - id: "REQ-004-001"
+
+      rule: "分组名称必填；同一层级允许重复。长度、空白、特殊字符和修改规则以 REQ-004-011 的最新确认为准。"
+
+    - id: "REQ-004-010"
+
+      rule: "当前确认表用于补充 PDF 和页面探索中未明确的内容，与正式 PDF 不存在直接逐条对应关系。"
+
+    - id: "REQ-004-011"
+
+      rule: "分组名称和描述长度不限制，允许特殊字符；分组名称不允许仅输入空格并按页面规则处理首尾空格，分组描述不要求处理空格；名称和描述均允许修改；必填错误在字段下提示，其他校验错误通过提示框显示。"
+
+    - id: "REQ-004-012"
+
+      rule: "停用或恢复立即生效；新设备按确认规则归属；设备可同时属于多个分组；分组编辑允许；有关联设备时禁止删除并记录页面实际阻止提示。"
+
+    - id: "REQ-004-013"
+
+      rule: "沿用公共筛选、分页、空结果、失败、重复提交和刷新规则；分组名字模糊匹配不区分大小写但不忽略首尾/连续空格，日期与名称同时生效，筛选后回第一页，失败无重试入口，处理中禁用重复操作，证据以页面反馈记录。"
+
+    - id: "REQ-004-002"
+
+      rule: "分组描述非必填可为空；支持换行、空白和常见特殊字符；长度和修改规则以 REQ-004-011 的最新确认为准。"
+
+    - id: "REQ-004-003"
+
+      rule: "分组仅有启用和停用；停用后禁止新设备归属，已有设备保留原分组；停用分组允许恢复启用。"
+
+    - id: "REQ-004-004"
+
+      rule: "仅支持一级分组，不建立上下级关系；多级层级、每层数量、上下级关系和循环引用不适用。"
+
+    - id: "REQ-004-005"
+
+      rule: "一台设备可以同时属于多个分组；设备加入或移出分组后立即生效。"
+
+    - id: "REQ-004-006"
+
+      rule: "统计当前分组下全部未删除设备，包含停用设备，按设备唯一编号去重；受当前用户权限影响；进入页面或刷新重新查询，无缓存；不一致以最新实际关联数据为准。"
+
+    - id: "REQ-004-007"
+
+      rule: "创建时间按当前用户时区显示，格式 YYYY-MM-DD HH:mm:ss；时间筛选起止均包含；默认创建时间倒序；默认每页10条。"
+
+    - id: "REQ-004-008"
+
+      rule: "存在关联设备时仅禁止删除；允许停用、改名和恢复，无需先解绑；设备及历史记录保留。"
+
+    - id: "REQ-004-009"
+
+      rule: "验证当前页面实际字段、筛选结果、设备数量、状态和操作反馈；与确认规则不一致时记录缺陷。"
+
+  public_rules_confirmed:
+
+    - "本模块无公共规则差异：搜索框模糊匹配且不区分大小写，首尾空格和连续空格不忽略。"
+
+    - "多个筛选条件同时生效；筛选后回第一页；无结果显示暂无数据。"
+
+    - "请求失败、超时、网络异常或权限不足显示失败提示且无重试入口。"
+
+    - "重复提交只生效一次，处理中禁用重复操作；完成后通过重新查询或手动刷新获取最新数据。"
+
+    - "权限由系统管理角色配置；无权限时按页面实际显示无操作权限提示；本阶段不进行接口测试。"
+
+  pending:
+
+    - "正式 PDF 的 REQ-004 章节与需求变动.md逐条差异。"
+
+    - "日期控件实际时区、起止边界、最大跨度、默认排序及分页交互。"
+
+    - "设备数量去重、停用设备计入、权限过滤、刷新无缓存和一致性结果。"
+
+    - "停用/恢复、新设备归属、多分组、编辑和关联删除阻止的稳定页面反馈。"
+
+    - "REQ-004-013 更新后的公共规则与页面实际筛选、空状态、失败提示、重复提交禁用和刷新结果的稳定证据。"
+
+    - "编辑、删除确认、异常、权限和异步提示的稳定元素定位契约。"
+
+roles:
+
+  - role: "设备分组查看人员"
+
+    responsibility: "在授权租户范围内查询、筛选和查看分组及设备数量。"
+
+  - role: "设备分组维护人员"
+
+    responsibility: "按授权新增、编辑、停用、恢复或处理分组关联。"
+
+  - role: "设备管理员"
+
+    responsibility: "维护设备与多个分组的归属关系，处理分组引用约束。"
+
+  - role: "平台/审计人员"
+
+    responsibility: "按权限查看操作反馈、历史记录、审计及留存结果。"
+
+permission_status: "partial_pending_matrix"
+
+candidate_actions: ["查询", "新增", "编辑", "停用", "恢复", "删除", "设备加入", "设备移出", "跨租户查看"]
+
+rule: "不得从按钮可见性推断权限，不得绕过菜单、接口、租户或安全验证。"
+
+interfaces:
+
+  ui:
+
+    status: "partial_observed"
+
+    locator_priority: ["role/name", "accessible label", "data-testid if confirmed", "element_id semantic mapping", "row context", "visible text", "CSS fallback"]
+
+    stable_ids_available: ["device_group_add_button", "device_group_table", "device_group_name", "device_group_start_date", "device_group_end_date", "device_group_query", "device_group_reset", "device_group_refresh", "device_group_columns", "device_group_add", "device_group_col_0", "device_group_col_1", "device_group_col_2", "device_group_col_3", "device_group_col_4", "device_group_col_5", "device_group_col_6", "device_group_edit", "device_group_delete", "device_group_page_size", "device_group_prev", "device_group_page", "device_group_next"]
+
+    missing_or_partial: ["新增/编辑表单字段稳定 ID", "停用/恢复操作 ID", "删除确认稳定 ID", "保存成功/失败提示 ID", "权限/认证/网络失败提示 ID", "设备关联操作 ID", "加载状态 ID"]
+
+  api:
+
+    status: "not_observed"
+
+    contract: "未确认列表查询、数量统计、增改删、启停、设备关联、权限、审计和留存接口、字段、错误码、幂等、并发与性能契约。"
+
+dependencies:
+
+  upstream: ["REQ-001 首页", "REQ-003 产品管理", "登录/权限/租户上下文"]
+
+  downstream: ["REQ-005 设备管理", "REQ-007 数据监听", "REQ-008 数据推送", "REQ-009 数据采集", "REQ-010 告警配置", "首页统计"]
+
+  note: "依赖仅用于范围分析，不代表跨模块链路或接口联动已验证。"
+
+risks:
+
+  - id: "R-004-01"
+
+    level: "critical"
+
+    description: "关联设备时误删分组可能造成设备归属和历史记录丢失。"
+
+    mitigation: "只读核验删除阻止；任何删除操作需授权、隔离数据和明确不可恢复边界。"
+
+  - id: "R-004-02"
+
+    level: "high"
+
+    description: "停用分组、恢复和多分组立即生效规则错误可能导致新设备错误归属或设备不可见。"
+
+    mitigation: "核验状态迁移、已有设备保留、新设备禁止和多分组关系，不提交真实变更。"
+
+  - id: "R-004-03"
+
+    level: "high"
+
+    description: "设备数量未去重、遗漏停用设备或未按权限过滤会导致分组统计错误。"
+
+    mitigation: "补充只读数据样本或接口契约；以设备唯一编号、未删除范围和当前权限作为核验条件。"
+
+  - id: "R-004-04"
+
+    level: "high"
+
+    description: "时区、包含边界、排序或分页错误可能导致分组记录漏查或错序。"
+
+    mitigation: "使用边界日期和当前用户时区设计只读验证；确认筛选后回第一页及创建时间倒序。"
+
+  - id: "R-004-05"
+
+    level: "medium"
+
+    description: "分组名称/描述输入限制未明确，可能产生校验不一致或敏感内容留存。"
+
+    mitigation: "按最新确认处理名称/描述字段规则；不写入真实分组名、设备编号或租户值。"
+
+  - id: "R-004-06"
+
+    level: "high"
+
+    description: "截图、DOM、日志或错误信息可能泄露租户、分组、设备或内部地址。"
+
+    mitigation: "字段级脱敏；不保存业务原文、凭据、Cookie、Token 或未授权数据。"
+
+test_design:
+
+  equivalence_partitions:
+
+    group_name: [valid, empty, duplicate_same_level_allowed, whitespace_only, special_chars, default_limit]
+
+    group_description: [empty, valid, multiline, whitespace, special_chars, default_limit]
+
+    date_filter: [none, single_day, valid_range, inclusive_edges, reversed, invalid, timezone_boundary]
+
+    group_state: [enabled, disabled, unknown]
+
+    device_relation: [none, one, many, device_in_other_group, unavailable]
+
+    permission: [full_write, read_only, denied, session_expired]
+
+  boundary_candidates:
+
+    - "名称不限制长度；覆盖名称空、全空白、首尾/连续空格、Unicode、特殊字符和修改；描述为空、换行、空白、特殊字符和修改。"
+
+    - "日期当天00:00:00、23:59:59、单日、跨日、跨月/年、最大跨度、反向区间和时区边界。"
+
+    - "设备数量0、1、单页容量、容量+1、大规模统计和重复设备唯一编号。"
+
+    - "分页第1/10/11条、首末页、空列表和筛选后回第一页。"
+
+    - "并发新增同名、并发编辑、设备加入/移出与删除竞态。"
+
+    - "搜索大小写、首尾/连续空格、日期组合筛选、筛选回第一页、空结果、失败无重试和处理中按钮禁用。"
+
+  decision_table:
+
+    - id: "DT-004-001"
+
+      conditions: ["分组名称为空", "新增或编辑"]
+
+      expected: "校验失败，不提交；编辑时保留输入。"
+
+    - id: "DT-004-002"
+
+      conditions: ["同一层级同名", "新增或编辑"]
+
+      expected: "按确认规则允许保存；同一层级重复名称不作为唯一性错误。"
+
+    - id: "DT-004-003"
+
+      conditions: ["分组停用", "新设备归属"]
+
+      expected: "禁止新设备归属；已有设备保留原分组。"
+
+    - id: "DT-004-004"
+
+      conditions: ["分组存在关联设备", "删除"]
+
+      expected: "禁止删除；停用、改名和恢复允许；设备及历史记录保留。"
+
+    - id: "DT-004-005"
+
+      conditions: ["设备加入或移出分组", "查询或刷新"]
+
+      expected: "立即生效；设备数量按未删除设备唯一编号去重并受权限过滤。"
+
+    - id: "DT-004-006"
+
+      conditions: ["日期筛选起止值", "合法含边界"]
+
+      expected: "起止时间均纳入，按当前用户时区显示与筛选。"
+
+    - id: "DT-004-007"
+
+      conditions: ["无权限或会话过期", "任意业务操作"]
+
+      expected: "显示权限/认证失败提示并停止验证。"
+
+  state_transitions:
+
+    - "未认证 -> 登录页 -> 门户 -> device_group_default"
+
+    - "默认列表 -> 查询中 -> 有结果/暂无数据/失败"
+
+    - "分组草稿 -> 校验失败/保存成功/取消"
+
+    - "启用 -> 停用 -> 恢复启用；停用禁止新设备归属，已有设备保留"
+
+    - "无设备 -> 关联设备 -> 移出/设备删除；设备可同时属于多个分组"
+
+    - "有关联设备 -> 删除阻止；停用、改名、恢复允许"
+
+    - "无日期条件 -> 合法日期范围 -> 无结果/失败/非法范围"
+
+  pict_model:
+
+    parameters:
+
+      Auth: [valid, expired, security_blocked]
+
+      Permission: [full_write, read_only, denied]
+
+      Name: [valid, empty, duplicate_allowed, whitespace_only, special_chars, default_boundary]
+
+      Description: [empty, valid, multiline, whitespace, special_chars, default_boundary]
+
+      DateFilter: [none, single_day, valid_range, inclusive_edges, reversed, invalid, timezone_boundary]
+
+      DeviceRelation: [none, one, many, in_other_group, unavailable]
+
+      GroupState: [enabled, disabled]
+
+      Membership: [single_group, multi_group]
+
+      Action: [query, add, edit, toggle, delete, move_device, reset, refresh]
+
+      Result: [success, validation_error, blocked_by_reference, membership_error, timeout, permission_error]
+
+    constraints:
+
+      - "IF [Permission] = read_only THEN [Action] IN {query, reset, refresh};"
+
+      - "IF [Permission] = denied OR [Auth] != valid THEN [Result] = permission_error;"
+
+      - "IF [Action] IN {add, edit} AND [Name] = empty THEN [Result] = validation_error;"
+
+      - "IF [Action] = delete AND [DeviceRelation] != none THEN [Result] = blocked_by_reference;"
+
+      - "IF [Action] = toggle AND [DeviceRelation] != none THEN [Result] = success;"
+
+      - "IF [Action] = move_device AND [GroupState] = disabled THEN [Result] = membership_error;"
+
+      - "IF [Action] = query AND [DateFilter] = reversed THEN [Result] = validation_error;"
+
+      - "IF [Membership] = multi_group THEN [Result] IN {success, membership_error};"
+
+      - "IF [Action] = refresh THEN [Result] = success;"
+
+      - "IF [DateFilter] = inclusive_edges THEN [Result] IN {success, timeout};"
+
+    note: "PICT 仅用于候选场景设计；具体错误码、并发和接口结果待契约确认。"
+
+automation_plan:
+
+  framework: "Playwright Python sync API / pytest-playwright"
+
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+
+  safe_actions: ["reuse login state", "open portal app", "navigate 数据采集→设备接入→设备分组", "inspect default/date filter/columns/table/pagination/sort/redacted values", "open and cancel add/edit/delete confirmation when stable"]
+
+  forbidden_actions: ["submit add", "save edit", "confirm delete", "toggle state", "add/remove device membership", "bulk update", "export", "write API", "bypass permission/security"]
+
+  locator_priority: ["role/name", "accessible label", "confirmed data-testid", "page.json element semantic mapping", "row context", "visible text", "CSS last resort"]
+
+  stop_conditions: ["missing runtime config", "login failure", "manual security verification", "host mismatch", "permission denied", "missing key content", "load failure", "unstable content"]
+
+readiness:
+
+  status: "ready_for_scoped_readonly_ui_verification"
+
+  reason: "需求规则和列表页面契约已形成；编辑、删除确认、设备关联、错误提示、权限和接口契约仍需补充，所有写操作保持禁止。"
+
+handoff:
+
+  path: "02_analysis/HANDOFF/REQ-004_HANDOFF.md"
+
+  status: "ready_for_scoped_readonly_ui_verification"
+
+  next_inputs: ["正式 PDF REQ-004 章节追溯", "日期筛选和分页的稳定页面行为", "稳定的新增/编辑/删除/状态/设备关联/错误提示定位器", "权限与租户矩阵", "数量统计和设备关联接口契约", "隔离测试数据与写操作清理方案"]
+
+data_preconditions:
+
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 或运行时配置读取，不记录具体值。"
+
+  - "只使用系统现有页面数据进行只读观察，不创建真实分组、设备关系或测试租户。"
+
+  - "禁止将账号、密码、Token、Cookie、设备编号、分组名称、租户值、内部地址或未经授权业务数据写入截图、日志、DOM、报告或下载文件。"
+
+  - "本次不执行新增、编辑、删除、停用、恢复、设备加入/移出、导出或接口写入。"
+
+  - "本次数据变更：无；清理状态：not_applicable。"
+
+  - "未来若批准写操作，须由业务负责人、平台运维和测试负责人共同确认隔离数据、责任人、停止条件、回滚或删除方案及清理结果。"
+change_log:
+  - date: "2026-10-23"
+    summary: "补充 TC-REQ-004-036 至 TC-REQ-004-046，覆盖新增、编辑、无关联删除、停用恢复、设备关联、数量刷新和失败保留闭环；写操作统一 blocked。"

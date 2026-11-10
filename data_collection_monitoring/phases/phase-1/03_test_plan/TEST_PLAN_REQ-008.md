@@ -1,0 +1,141 @@
+# 测试计划
+
+## 执行摘要
+
+- **计划编号**：`TEST_PLAN-REQ-008`
+- **模块**：数据推送
+- **需求**：`REQ-008`
+- **状态**：draft；本阶段仅输出测试计划。
+- **目标**：规划数据推送目标页面的默认进入、筛选、查询、重置、刷新、表头设置、列表分页、协议类型、失败/死信/人工重发契约、引用生命周期、脱敏、排序和权限边界的页面级验证。
+- **页面状态**：`page.json` 已登记 `data_push` 页面和脱敏只读证据，但权限为 `partial_blocked`；新增/编辑表单字段已由三种类型截图确认，RocketMQ 运行时入口、稳定定位器、提交反馈、死信和重发页面契约仍不完整，计划保留相应风险和待确认项。
+
+## 测试范围
+
+### 范围内
+
+- 只读验证已登记 `data_push` 页面：运行时 URL `/biopark-iot/iot/data/sink`、标题“数据采集 - 数据推送”、菜单“数据中心 → 数据推送”、默认状态 `data_push_default`。
+- 只读验证已登记筛选 `data_push_target_name`、`data_push_status`、`data_push_type`、`data_push_start_date`、`data_push_end_date`，以及查询、重置、刷新、表头设置、列表和分页元素。
+- 只读验证已登记 `data_push_table` / `data_push_table_element` 及列：编号、目标名称、目标描述、目标状态、目标类型、创建时间、操作。
+- 以已采集 `data_push_status_options` 验证开启/关闭选项，以 `data_push_type_options` 仅记录当前观察到 HTTP、MQTT；RocketMQ 虽为需求确认项但页面证据缺失，保持待确认。
+- `REQ-008-015`：编辑表单与新增表单字段一致。HTTP 包含目标名称、目标描述、目标类型、请求地址、请求方法、请求头、请求参数、请求体和目标状态；MQTT 包含目标名称、目标描述、目标类型、服务地址、用户名、密码、客户端 ID、主题和目标状态；RocketMQ 包含目标名称、目标描述、目标类型、`NameServer`、`AccessKey`、`SecretKey`、消费组、主题、标签和目标状态；三种表单均有确定/取消操作。截图确认的必填/选填和目标状态默认开启纳入设计；格式校验、编辑可修改范围、提交反馈、重复提交、列表回显和稳定定位器仍待确认，不执行提交。
+- `REQ-008-016`：RocketMQ 表单显示 `NameServer`、`AccessKey`、`SecretKey`、消费组、主题和标签等类型专属字段；与 HTTP/MQTT 的字段差异按截图记录，RocketMQ 入口、运行时控件、校验和提交结果页面证据仍待补采，保持 `blocked`。
+- 规划超时/重连、按产生顺序逐条发送、重复消息按事件唯一标识、失败进入死信、不自动重试及人工选择重发；本阶段不制造失败、不发送、不重放。
+- 规划停用目标不可被新监听规则或采集任务选择、已有引用继续使用、被引用目标不可删除；本阶段不改变目标状态或引用关系。
+- 补充核心流程缺口设计：停用后恢复及恢复后的新引用、必填字段提交失败、未引用目标删除后的软删除/列表刷新回读、重复提交只生效一次和处理中禁止重复操作；均保持 blocked，待页面契约、权限、隔离租户和回滚条件满足后执行。
+- 规划地址展示和证书、密钥、消息、返回内容的脱敏，以及删除/替换后旧值清理；仅使用脱敏证据。
+- 规划默认、筛选、分页、刷新后的创建时间倒序、筛选回第一页、默认每页 10 条、无结果显示“暂无数据”及失败提示无页面重试入口。
+- 规划数据推送管理员、数据监听/采集管理员、平台运维人员和只读用户的角色、租户与跨租户边界；不从菜单或按钮可见性推断写权限。
+
+### 范围外
+
+- 新增、编辑、删除、停用、连接测试、发送/重放消息、真实 HTTP/MQTT/RocketMQ 联调和外部系统污染。
+- API endpoint、状态码、请求/响应结构、接口幂等、审计、异步实现和性能 SLA。
+- 未确认的协议默认参数、字段长度、消息映射、编码、乱序处理和重复重发细节。
+- 未登记的新增/编辑表单字段、RocketMQ 状态、死信/失败详情/重发页面定位器和权限独立元素。
+- 复用其他模块的 page/state/element/form/table/interaction/evidence ID。
+- 测试点、测试用例、CSV、禅道数据和 UI 自动化脚本。
+
+## 测试策略
+
+- 采用黑盒、风险优先、限定范围只读规划；当前 `readiness=blocked`，页面执行项不得伪造通过或失败。
+- 等价类覆盖字段完整/分别缺失名称、类型、地址、方法、状态；HTTP/MQTT/RocketMQ；开启/关闭；合法、格式错误、不可达、超时地址；成功、客户端失败、服务端失败、超时、网络失败、拒绝；唯一、重复、延迟、乱序、突发事件；可读、可写、拒绝、跨租户；有结果、无结果、查询失败。
+- 边界候选覆盖名称/地址/主题/路径/消息体上限减一、等于上限、超过上限（上限待确认）；日期空值、同日、开始晚于结束、跨月跨年；空列表、单条、10 条、末页、无结果；不把未确认限制写成断言。
+- 判定表覆盖停用目标的新引用阻止、已有引用继续、被引用删除阻止；HTTP 请求体与 MQTT/RocketMQ 主题适用性；响应成功确认、失败分类进入死信且不自动重试、人工重发确认和结果；默认/筛选/分页/刷新倒序及筛选回第一页。
+- 状态转换覆盖未认证 -> 登录 -> 门户 -> 数据推送默认态、默认态 -> 查询中 -> 有结果/无结果/失败、开启 -> 关闭 -> 新引用阻止/已有引用继续、事件到达 -> 逐条发送 -> 响应/失败 -> 死信 -> 人工选择重发；当前只作为待验证模型。
+- Pairwise/2-way 评估 `Permission`、`TargetType`、`TargetState`、`RequiredFields`、`Endpoint`、`Event`、`Response`、`Retry`、`Result`。模型约束包括停用目标阻止新引用/投递、必填字段缺失导致验证失败、失败进入死信、不自动重试、拒绝/跨租户对应权限失败、MQTT/RocketMQ 请求体不适用。不代表真实投递或接口验证。
+- Playwright Python/pytest-playwright 仅规划：复用公共登录和门户导航；以已确认 `data_push_*` ID 优先，其次 role/name、label、稳定文本，CSS 最后兜底。只读检查筛选、表头、列表、分页和脱敏权限提示。不得从缺失状态创建 locator。
+- Web 执行先确认运行时 URL、标题、`data_push_default` 和页面加载状态，再进行只读观察。配置缺失、登录失败、人工验证、路由/标题不符、权限失败、写操作提示、真实外部连接或敏感信息暴露时停止。
+
+## 测试环境
+
+- **客户端**：PC Web
+- **操作系统**：`win32`；正式执行前记录实际客户端版本
+- **浏览器**：Chromium；Playwright Python 规划可视模式 `headless=False`
+- **正式地址**：`${UI_TEST_URL}`
+- **页面路径**：`/biopark-iot/iot/data/sink`
+- **门户入口**：数据采集监控平台 / 数据中心 / 数据推送；对应 `page_id=data_push`，默认状态 `data_push_default`
+- **登录**：使用测试账号登录；凭据仅从 `UI_TEST_USERNAME`、`UI_TEST_PASSWORD`、`UI_TEST_TENANT` 运行时读取，不写入计划、日志或证据；当前权限状态为 `partial_blocked`。
+
+## 测试数据与角色
+
+### 测试数据
+
+- 只读账号、角色和租户上下文；账号、密码、租户值不写入产物。
+- 已授权可读的数据推送列表、状态、类型、创建时间和脱敏列值；不创建目标、不修改状态、不发送消息。
+- 使用 `page.json` 已登记的 `data_push_default`、`data_push_status_options`、`data_push_type_options`、`data_push_columns_options` 及其脱敏 evidence。
+- 补采新增/编辑表单字段、RocketMQ 类型主题字段、死信/失败详情/人工重发页面、结果提示和权限独立 ID。
+- 补充角色、租户、跨租户权限矩阵，以及失败/超时/重发的安全页面证据。
+- 数据准备由测试、业务/产品、权限负责人、数据推送管理员、平台运维和外部系统负责人负责；本计划不修改业务数据，清理状态为 `not_applicable`。
+
+### 角色
+
+- 测试：执行已登记页面的只读观察，不提交目标、不连接外部系统、不发送或重放消息。
+- 数据推送管理员：确认目标、状态、协议配置和引用边界，但本阶段不写入。
+- 数据监听/采集管理员：确认停用目标对新引用和已有引用的业务边界。
+- 平台运维人员：确认外部对接、失败/死信和运行风险，但不进行联调。
+- 只读用户：确认授权租户内目标可见性和敏感信息脱敏。
+- 权限负责人：提供角色、租户、跨租户矩阵；不允许绕过权限。
+- 研发：补采表单、RocketMQ、死信/重发和权限提示页面契约。
+- 测试设计：在计划通过且阻塞项关闭后生成下游测试设计。
+
+## 依赖与风险
+
+### 依赖
+
+- 产品管理、设备管理、数据监听、数据采集：提供依赖范围和引用责任；不得复用其页面定位器。
+- 外部 HTTP 接收端、MQTT Broker、RocketMQ、可能关联告警记录：仅为责任边界线索，不代表外部行为已验证。
+- 登录、门户、权限和租户上下文：控制页面可达性、角色范围和数据隔离。
+- 已登记页面契约：`data_push`、`/biopark-iot/iot/data/sink`、`data_push_default`、`data_push_status_options`、`data_push_type_options`、`data_push_columns_options`、`data_push_table/data_push_table_element`。
+- 缺失页面契约：新增/编辑字段、RocketMQ 字段、死信/失败详情/人工重发/确认/结果、权限独立 element ID、trace 文件。
+- 公共页面对象 `07_ui_automation/pages/common/login_page.py`、`07_ui_automation/pages/common/portal_navigation.py`。
+- 运行时配置键 `UI_TEST_URL`、`UI_TEST_USERNAME`、`UI_TEST_PASSWORD`、`UI_TEST_TENANT`；只引用键名，不复制值。
+
+### 风险
+
+- 错误地址、认证、Topic 或消息映射造成误投递或外部污染；只读观察，不保存目标、不发送或重放消息。
+- 权限阻塞被绕过导致越权和结论失真；记录 blocked，不绕过权限。
+- 地址、密钥、消息或响应进入页面产物；证据必须脱敏，不写入截图、日志、DOM、报告或下载文件。
+- 失败消息未进入死信或人工重发造成重复副作用；仅规划页面证据，不执行真实发送/重放。
+- RocketMQ、协议默认参数、表单、死信和重发未形成页面契约；保持待确认，不作接口结论。
+- `REQ-008-011` 在需求变动、分析产物和 `page.json` 中未出现；记录追溯缺口，不假定语义。
+- 列表排序、筛选回第一页、分页和刷新稳定性错误；需补稳定排序及分页证据。
+
+## 准入标准
+
+- `REQ-008.yaml`、`REQ-008.md`、`需求变动.md`、`模块拆分清单.md`、`page.json`、`config.yaml` 和 `../../../.agents/references/test-plan.schema.json` 可读取，REQ-ID 与模块身份一致。
+- 已确认 `page.json` 中 `data_push` 页面、路由、标题、菜单、默认态、状态/类型/表头状态、筛选/操作/行操作/分页 ID、表格和脱敏 evidence 的实际登记内容。
+- 已确认当前观察到的类型只有 HTTP、MQTT；RocketMQ、表单、死信、重发和权限独立 ID 标记为缺失或待确认，不写成原型事实。
+- 只读账号/角色/租户、脱敏数据、权限阻塞责任和停止条件已准备，或缺失项明确标记 blocked。
+- 等价类、边界、判定表、状态转换、Pairwise、自动化停止条件和禁止真实投递边界已评审。
+
+## 准出标准
+
+- YAML 通过 `test-plan.schema.json`，未新增字段且不含 `tp/tp_id`；Markdown 与 YAML 的范围、策略、风险、准入/准出、证据和套件建议一致。
+- 冒烟、定向、全量三个计划层级已定义；未生成测试点、测试用例、CSV、禅道数据或 UI 脚本。
+- 已登记页面事实与缺失契约分离；RocketMQ、表单、死信、重发、权限、`REQ-008-011` 和外部协议风险均已交接。
+- 只读执行不产生业务数据变更；出现意外写入、真实外部连接、未授权数据暴露、主机/路由不符或权限绕过迹象时停止。
+- 不宣称保存成功、真实投递成功、死信生成成功、重发成功或接口行为已验证。
+
+## 证据要求
+
+- 已登记页面事实：`page_id=data_push`；路由 `/biopark-iot/iot/data/sink`；标题“数据采集 - 数据推送”；菜单“数据中心 / 数据推送”；默认状态 `data_push_default`。
+- 已登记状态证据：`data_push_default`、`data_push_status_options`、`data_push_type_options`、`data_push_columns_options`；截图分别为 `req008-default.png`、`req008-status-options.png`、`req008-type-options.png`、`req008-columns.png`；日志为 `req008-exploration.txt`；均标记 available/sanitized。
+- 已登记元素：`data_push_target_name`、`data_push_status`、`data_push_type`、`data_push_start_date`、`data_push_end_date`、`data_push_query`、`data_push_reset`、`data_push_refresh`、`data_push_columns`、`data_push_add`、`data_push_edit`、`data_push_delete`、`data_push_page_size`、`data_push_prev`、`data_push_current`、`data_push_next`、`data_push_jump`。
+- 已登记表格：`data_push_table/data_push_table_element`；列为编号、目标名称、目标描述、目标状态、目标类型、创建时间、操作。
+- 页面契约缺失：新增/编辑表单字段 ID、RocketMQ 类型/主题字段、死信列表、失败详情、人工重发入口/确认/结果提示、权限提示独立 element ID、trace 文件。
+- 当前类型 evidence 只支持观察到 HTTP、MQTT；不得把 RocketMQ 需求确认项写成页面已存在事实。
+- 执行证据仅保存脱敏 URL、标题、菜单、状态、截图、DOM/可访问性快照、浏览器版本、时间和必要日志；禁止保存账号、租户、密钥、证书、外部地址、载荷、响应和未授权业务数据。
+
+## 冒烟 / 定向 / 全量回归套件建议
+
+- **冒烟**：使用可视 Chromium 登录，确认实际主机、`/biopark-iot/iot/data/sink`、标题、`data_push_default`、已登记筛选/表格/分页可读性及无敏感信息；当前因权限状态 `partial_blocked`，执行可能 blocked。
+- **定向**：定向验证状态/类型选项、筛选/重置/刷新/表头/分页、创建时间倒序、筛选回第一页、无结果/失败提示、脱敏和权限边界；RocketMQ、表单、死信和重发仅在补采契约后纳入只读验证，禁止真实写入或投递。
+- **全量**：覆盖 REQ-008-001 至 REQ-008-012 的追溯、字段等价类和边界、HTTP/MQTT/RocketMQ 页面差异、超时/失败/死信/人工重发、引用生命周期、敏感信息清理、排序分页刷新、角色租户和 Pairwise；接口、外部联调、真实发送、性能和未确认事实不纳入。
+
+## 阶段交接边界
+
+- **当前阶段代理**：`stage-test-plan-agent`
+- **下一阶段**：`testcase-generation-agent`
+- 本阶段不生成测试点、测试用例、CSV、禅道数据或 UI 自动化脚本。
+- Schema 校验：`TEST_PLAN_REQ-008.yaml` 已通过 `.agents/references/test-plan.schema.json`。
+- 交接状态：`blocked`；REQ-008 需先处理权限阻塞并补齐表单、RocketMQ、死信、人工重发和权限页面契约，才能进入限定范围只读 UI 验证。

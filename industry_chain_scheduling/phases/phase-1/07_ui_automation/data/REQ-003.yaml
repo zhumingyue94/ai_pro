@@ -1,0 +1,238 @@
+req_id: REQ-003
+module: 分段养殖模版
+module_id: 670
+source: 04_testcases/TC_REQ-003.yaml
+fixture_policy: existing_system_data_for_query_self_created_for_mutation
+cases:
+  # ===== 查询类（6 条 P1，只读，复用列表现有数据）=====
+  - case_id: TC-003-06
+    zentao_case_id: 47578
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_name
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_template_name
+    assertions:
+      - query_result_rows_contain_name_keyword
+  - case_id: TC-003-07
+    zentao_case_id: 47579
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_breed
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_breed
+    assertions:
+      - query_result_rows_match_selected_breed
+  - case_id: TC-003-08
+    zentao_case_id: 47580
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_month
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_restock_month
+    assertions:
+      - query_result_rows_match_selected_month
+  - case_id: TC-003-09
+    zentao_case_id: 47581
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_by_status
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_status
+    assertions:
+      - query_result_rows_match_selected_status
+  - case_id: TC-003-10
+    zentao_case_id: 47582
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_combined
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: query_by_combined_conditions
+    assertions:
+      - query_result_rows_match_all_conditions
+  - case_id: TC-003-12
+    zentao_case_id: 47584
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_query_reset
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: reset_query_after_filter
+    assertions:
+      - query_form_restored_to_default
+      - list_refreshed
+  # ===== 改动类（13 条 P1，自造数据，尝试自动回滚）=====
+  - case_id: TC-003-31
+    zentao_case_id: 47603
+    fixture_type: self_created
+    natural_unique_key: feeding_template_new_with_quick_assign
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list_pick_non_disabled_breed
+    execute: open_new_dialog_fill_form_verify_auto_calc
+    assertions:
+      - dialog_title_is_new_feeding_template
+      - segment_days_auto_calculated
+  - case_id: TC-003-62
+    zentao_case_id: 47634
+    fixture_type: self_created
+    natural_unique_key: feeding_template_save_draft
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: new_template_save_draft
+    assertions:
+      - draft_appears_in_list
+  - case_id: TC-003-63
+    zentao_case_id: 47635
+    fixture_type: self_created
+    natural_unique_key: feeding_template_save_and_submit
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_feeding_template_list
+    execute: new_template_save_and_submit
+    assertions:
+      - status_becomes_pending_review
+  - case_id: TC-003-131
+    zentao_case_id: 47703
+    fixture_type: self_created
+    natural_unique_key: feeding_template_submit_confirm_box
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_submit_verify_confirm_box_then_cancel
+    assertions:
+      - submit_confirm_box_appears
+  - case_id: TC-003-133
+    zentao_case_id: 47705
+    fixture_type: self_created
+    natural_unique_key: feeding_template_submit_status_change
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_submit_confirm_verify_status
+    assertions:
+      - status_becomes_pending_review
+  - case_id: TC-003-137
+    zentao_case_id: 47709
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_reject_reason_required
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_pending_template
+    execute: click_review_click_reject_verify_reason_input
+    assertions:
+      - reject_reason_input_visible
+  - case_id: TC-003-139
+    zentao_case_id: 47711
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_reject_status
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_pending_template
+    execute: review_reject_with_reason_verify_status
+    assertions:
+      - status_becomes_rejected
+  - case_id: TC-003-140
+    zentao_case_id: 47712
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_approve_action
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_pending_template
+    execute: review_approve_verify_status
+    assertions:
+      - status_becomes_approved
+  - case_id: TC-003-141
+    zentao_case_id: 47713
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_approve_confirm_box
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_pending_template
+    execute: click_approve_verify_confirm_box_then_cancel
+    assertions:
+      - approve_confirm_box_appears
+  - case_id: TC-003-142
+    zentao_case_id: 47714
+    fixture_type: self_created
+    natural_unique_key: feeding_template_review_approve_status
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_pending_template
+    execute: review_approve_confirm_verify_status
+    assertions:
+      - status_becomes_approved
+  - case_id: TC-003-143
+    zentao_case_id: 47715
+    fixture_type: self_created
+    natural_unique_key: feeding_template_delete_confirm_box
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_delete_verify_confirm_box_then_cancel
+    assertions:
+      - delete_confirm_box_appears
+  - case_id: TC-003-145
+    zentao_case_id: 47717
+    fixture_type: self_created
+    natural_unique_key: feeding_template_delete_removed_from_list
+    creates_data: true
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_then_query
+    execute: click_delete_confirm_verify_removed
+    assertions:
+      - record_removed_from_list
+  - case_id: TC-003-149
+    zentao_case_id: 48741
+    fixture_type: existing_system_data
+    natural_unique_key: feeding_template_copy_confirm_box
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: find_approved_template
+    execute: click_copy_verify_confirm_box
+    assertions:
+      - copy_confirm_box_appears

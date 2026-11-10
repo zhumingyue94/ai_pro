@@ -1,0 +1,370 @@
+id: REQ-014
+title: 宰杀线管理
+parent_req: REQ-000
+zentao_module_id: null
+page_url: /apm/bases/slaughter-line
+module_complexity: simple_config
+testpoint_template: 简单配置
+summary: '基础数据-宰杀线管理：维护宰杀线主数据。支持按编码/名称/状态查询；手工新增与编辑（含单日产能、排序）； 行级停用与批量启用/停用；批量删除（启用态不可删，本页未重复点删，按同类模块推断待执行复核）。
+  无审核流、无独立查看、无「同步数据」入口。编码前缀观察似 SL…（与饲料编号撞型）。栋舍「关联线体」疑似引用本实体。
+
+  '
+in_scope:
+- 宰杀线列表查询与重置
+- 新增/编辑（弹窗确定/取消），含单日产能(万只)、排序
+- 行级停用确认；批量启用/停用
+- 批量删除及启用态拦截（执行阶段复核 toast）
+- 列表列展示、分页、刷新、表头设置
+out_scope:
+- 数据中台同步（本菜单无入口）
+- 品种/饲料/栋舍其它基础数据（REQ-012/013/015）
+- 排程看板对宰杀线产能/排序的消费规则（下游，页面未详述）
+business_rules:
+- 状态枚举：启用 / 停用
+- 新增时宰杀线编码系统预填（可改），宰杀线名称必填；空提交提示「宰杀线名称不能为空」
+- 宰杀线编码本表唯一：改为库中已存在编码须唯一性拦截（文案待确认；与饲料编号同前缀时仍仅本表内唯一）
+- 宰杀线名称本表唯一：填已存在名称须唯一性拦截（是否强制及文案待确认）
+- 单日产能(万只)、排序：number，非必填（观察）
+- 编辑时宰杀线编码只读；名称/产能/排序/状态/备注可改
+- 行状态=启用时操作：编辑、停用；停用确认「确定要停用该宰杀线吗？」
+- 未勾选行时批量「删除/启用/停用」disabled；勾选后可点
+- 批量删除启用态拦截：同类 toast「选择的数据均为启用状态，无法删除」（本页未重复点删，待执行复核）
+- 无「同步数据」按钮
+roles:
+- 管理员账户（本次侦察唯一角色；其它角色矩阵未测）
+interfaces:
+- 页面 /apm/bases/slaughter-line
+- 潜在引用方：栋舍管理「关联线体编码/名称」；排程/看板选线（页面未展示完整规则）
+risks:
+- 编码与饲料同为 SL… 前缀，规则不明易混淆
+- 停用后栋舍/排程仍引用该线的处理未提示
+- 删除拦截仅按同类推断，执行未复核可能漏差
+open_questions:
+- 编码生成规则与饲料编号前缀是否共用序列？
+- 排序字段用途（列表展示序 vs 业务优先级）？
+- 与栋舍「关联线体」是否同一实体？手输还是应对齐本模块编码/名称？
+- 新增状态默认值是否恒为启用？
+- 停用后删除确认文案与是否物理删除？
+- 单日产能精度/上下限与排程校验关系？
+- 宰杀线名称唯一性是否强制及前后端文案？
+- 是否规划中台同步入口？（当前无）
+- 多角色权限差异？
+test_scope_suggestion:
+- P1：新增保存成功；编辑编码只读；停用确认；启用态删除拦截（复核 toast）
+- P2：查询组合与重置；单日产能/排序录入与列表展示；批量启停
+- P3：分页、刷新、表头设置、备注
+- 禁止：虚构同步弹窗、审核流、查看页；勿写成排程看板模块
+prototype_verification:
+  page_chrome:
+    menu_path: 基础数据 / 宰杀线管理
+    doc_title: 产业链生产排程系统 - 宰杀线管理
+    tags:
+    - 首页
+    - 宰杀线管理
+    toolbar_buttons:
+    - 查询
+    - 重置
+    - 删除
+    - 启用
+    - 停用
+    - 刷新
+    - 表头设置
+    - 新增
+    view_tabs: N/A
+    calendar: N/A
+    notes: 菜单全称「宰杀线管理」；无「同步数据」
+  query_fields:
+  - 宰杀线编码
+  - 宰杀线名称
+  - 状态
+  query_field_specs:
+  - name: 宰杀线编码
+    control: input
+    editable: true
+    placeholder: 请输入宰杀线编码
+  - name: 宰杀线名称
+    control: input
+    editable: true
+    placeholder: 请输入宰杀线名称
+  - name: 状态
+    control: select
+    editable: true
+    options_source: 枚举启用/停用
+    placeholder: 请选择状态
+  table_columns:
+  - 勾选
+  - 宰杀线编码
+  - 宰杀线名称
+  - 单日产能(万只)
+  - 排序
+  - 状态
+  - 备注
+  - 创建时间
+  - 更新时间
+  - 创建人
+  - 更新人
+  - 操作
+  table_column_specs:
+  - name: 宰杀线编码
+    notes: 文本；前缀观察似 SL…
+  - name: 宰杀线名称
+    notes: 文本
+  - name: 单日产能(万只)
+    notes: 数值；编辑样例 112.0000
+  - name: 排序
+    notes: 数值；编辑样例 1
+  - name: 状态
+    notes: 启用/停用
+  - name: 操作
+    notes: 启用行见编辑、停用
+  form_fields:
+  - 宰杀线编码
+  - 宰杀线名称
+  - 单日产能(万只)
+  - 排序
+  - 状态
+  - 备注
+  form_field_specs:
+  - name: 宰杀线编码
+    control: input
+    editable: true
+    required: true
+    scope: 新增弹窗
+    source: 系统自动生成（可改）
+    notes: 前缀观察似 SL…
+  - name: 宰杀线编码
+    control: input
+    editable: false
+    required: true
+    scope: 编辑弹窗
+    source: 已有档案
+    notes: 编辑只读
+  - name: 宰杀线名称
+    control: input
+    editable: true
+    required: true
+    scope: 新增/编辑弹窗
+    validation: 不能为空（空提交提示「宰杀线名称不能为空」）
+  - name: 单日产能(万只)
+    control: number
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+  - name: 排序
+    control: number
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+  - name: 状态
+    control: select
+    editable: true
+    required: true
+    scope: 新增/编辑弹窗
+    options_source: 启用/停用
+  - name: 备注
+    control: textarea
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+    placeholder: 请输入备注
+  buttons:
+  - 查询
+  - 重置
+  - 新增
+  - 编辑
+  - 停用
+  - 启用
+  - 删除
+  - 刷新
+  - 表头设置
+  button_semantics:
+    新增:
+      action: open_dialog
+      summary: 打开新增表单；编码预填；确定保存/取消关闭
+    编辑:
+      action: open_dialog
+      summary: 打开编辑表单；宰杀线编码只读
+    停用:
+      action: confirm
+      scope: 行操作（启用态）
+      summary: 确认文案「确定要停用该宰杀线吗？」→ 取消/确定
+    启用:
+      action: batch_or_row_status
+      summary: 批量条有勾选时可点；行级启用在停用态预期出现（未实察停用行）
+    删除:
+      action: batch_delete
+      summary: 需勾选；启用态拦截 toast 按同类模块推断，本页待执行复核
+    查询:
+      action: filter_list
+      summary: 按编码/名称/状态过滤列表
+    重置:
+      action: clear_query
+      summary: 清空查询条件并恢复列表
+  dialogs:
+    新增/编辑:
+    - 取消
+    - 确定
+  nested_dialogs: skip
+  nested_dialogs_reason: 无二级选择弹窗、无同步数据弹窗
+  save_validations:
+  - trigger: 新增空表点确定
+    message: 宰杀线名称不能为空
+  - trigger: 新增宰杀线编码与库中已有重复
+    message: 唯一性拦截（具体文案待确认）
+  - trigger: 新增宰杀线名称与库中已有重复
+    message: 唯一性拦截（是否强制、文案待确认）
+  - trigger: 行停用
+    message: 确定要停用该宰杀线吗？
+  - trigger: 批量删除启用数据
+    message: 选择的数据均为启用状态，无法删除（同类推断，待复核）
+  ui_components:
+  - 查询表单
+  - 数据表格（多选）
+  - 分页
+  - 新增/编辑弹窗
+  - MessageBox 确认
+  - Message toast
+  cross_module_refs:
+  - from: 栋舍管理
+    to: 宰杀线管理
+    via: 关联线体编码/名称（栋舍侧手输）
+    notes: 疑似同一实体；当前非弹窗引用，待确认
+  - from: 排程/看板
+    to: 宰杀线管理
+    via: 选线/产能消费
+    notes: 线索；勿在本 REQ 虚构看板 UI
+  concurrency_checks: skip
+  concurrency_checks_reason: 未观察多人协作
+  role_coverage: skip
+  role_coverage_reason: 仅管理员账户
+  calendar_actions: N/A
+  calendar_ui_specs: N/A
+  detail_table_specs: N/A
+trace:
+  story: null
+  project: 产业链生产排程系统
+  version: 1
+  status: draft
+  req: REQ-014
+  tp: null
+  source: 01_requirements/REQ-基础数据_page_recon.md
+design_artifacts:
+  state_transitions:
+  - name: 宰杀线启用状态
+    states:
+    - 启用
+    - 停用
+    legal:
+    - from: 启用
+      to: 停用
+      trigger: 行停用确认确定 / 批量停用
+    - from: 停用
+      to: 启用
+      trigger: 批量启用（及预期行启用，待实察）
+    illegal:
+    - from: 启用
+      action: 批量删除
+      expected: toast 拦截（待执行复核）
+  decision_tables:
+  - name: 列表查询
+    conditions:
+    - 宰杀线编码
+    - 宰杀线名称
+    - 状态
+    rules:
+    - when: 单条件或组合
+      then: AND 过滤（以实现为准）
+    - when: 重置
+      then: 条件清空，列表恢复
+  - name: 删除可否
+    conditions:
+    - 所选行状态集合
+    rules:
+    - when: 全为启用
+      then: toast 拦截（待复核）
+    - when: 含停用
+      then: 删除确认或成功（未观察）
+  - name: 工具栏批量按钮
+    conditions:
+    - 勾选条数
+    rules:
+    - when: 已选 0 条
+      then: 删除/启用/停用 disabled
+    - when: 已选 ≥1 条
+      then: 删除/启用/停用可点
+  bva_fields:
+  - field: 宰杀线名称
+    type: string
+    boundaries:
+    - 空
+    - 1字符
+    - 常规
+    - 超长
+  - field: 单日产能(万只)
+    type: decimal
+    notes: 非必填；样例含四位小数
+    boundaries:
+    - 空
+    - 0
+    - 正数常规
+    - 极大值
+    - 负数（若允许则记录实际，否则应拒）
+  - field: 排序
+    type: integer
+    notes: 非必填
+    boundaries:
+    - 空
+    - 0
+    - 1
+    - 极大值
+    - 负数
+  - field: 宰杀线编码
+    type: string
+    notes: 新增预填可改；编辑只读
+    boundaries:
+    - 系统预填
+    - 手工修改
+    - 空（若可清空）
+  combinatorial_blocks:
+  - name: 列表查询三条件
+    pict_eligible: false
+    notes: 仅 3 查询参数，未达 pict 阈值 4
+    parameters:
+      宰杀线编码:
+      - 有匹配
+      - 无匹配
+      - 空
+      宰杀线名称:
+      - 有匹配
+      - 无匹配
+      - 空
+      状态:
+      - 启用
+      - 停用
+      - 空
+  - name: 新增表单关键可选字段
+    pict_eligible: false
+    notes: 产能×排序×状态交互可用等价类；未强制 pict
+    parameters:
+      单日产能:
+      - 空
+      - 有值
+      排序:
+      - 空
+      - 有值
+      状态:
+      - 启用
+      - 停用
+permission_scope:
+  owner: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-014
+  testpoints_ref: 03_testpoints/TP_REQ-000.yaml
+  actions:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  note: 权限测点统一见 REQ-000（TP-000-17 起）

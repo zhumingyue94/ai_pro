@@ -1,0 +1,976 @@
+req_id: REQ-014
+module: 宰杀线管理
+zentao_module_id: 683
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-014
+  tp: TP_REQ-014
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-014.yaml
+cases:
+- id: TC-014-01
+  tp_id: TP-014-01
+  title: 查询条件包含「宰杀线编码」「宰杀线名称」「状态」字段
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 查看页面查询区域
+    expected: 页面顶部查询区可见筛选项：宰杀线编码、宰杀线名称、状态三个筛选项
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48114
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-02
+  tp_id: TP-014-02
+  title: 状态下拉选项为启用、停用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「状态」下拉或查看筛选项
+    expected: 打开「状态」下拉，选项列表仅为启用、停用两种选项
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48115
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-03
+  tp_id: TP-014-03
+  title: 填写宰杀线编码+名称+状态后点击「查询」，列表按AND条件过滤
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表中已有测试数据
+  steps:
+  - action: 在查询区填写本条涉及的筛选项后点击「查询」
+    expected: 列表结果与所设条件一致
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48116
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-04
+  tp_id: TP-014-04
+  title: 点击「查询」按钮才触发查询
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表中已有数据
+  steps:
+  - action: 修改筛选项但不点「查询」
+    expected: 列表不随输入自动变成新条件结果
+  - action: 点击「查询」按钮
+    expected: 列表按当前条件刷新
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48117
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-05
+  tp_id: TP-014-05
+  title: 点击「重置」，查询条件清空并刷新列表
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 设置查询条件后点击「查询」
+    expected: 列表按条件过滤
+  - action: 点击「重置」
+    expected: 点击「重置」后筛选项回到默认，列表按默认条件重新加载
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48118
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-06
+  tp_id: TP-014-06
+  title: 点击「新增」打开新增弹窗
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增弹窗/表单
+  - action: 查看表单字段
+    expected: 关键字段齐全且可编辑性符合页面设计（对照标题字段）
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48119
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-07
+  tp_id: TP-014-07
+  title: 新增弹窗宰杀线编码系统自动预填且可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 查看「宰杀线编码」字段值并尝试修改
+    expected: 「宰杀线编码」已由系统预填且可手工修改
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48120
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-08
+  tp_id: TP-014-08
+  title: 新增留空宰杀线名称点确定，提示「宰杀线名称不能为空」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 不填写「宰杀线名称」（保持为空），点击「确定」
+    expected: 保存被阻断，页面提示「宰杀线名称不能为空」
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48121
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-09
+  tp_id: TP-014-09
+  title: 填写宰杀线名称等必填项点确定，新增保存成功
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 准备宰杀线测试数据
+  steps:
+  - action: 点击「新增」打开表单，将「必填项」填写后点击保存
+    expected: 提示保存成功，弹窗关闭，表格中可见新增的宰杀线编码
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48122
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-10
+  tp_id: TP-014-10
+  title: 新增点「取消」，弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」打开新增弹窗并填写部分字段
+    expected: 新增弹窗打开且字段有输入
+  - action: 点击「取消」
+    expected: 弹窗关闭，列表未新增对应记录
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48123
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-11
+  tp_id: TP-014-11
+  title: 新增单日产能(万只)留空，保存成功
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」打开弹窗，填写宰杀线名称，单日产能(万只)留空，点击「确定」
+    expected: 保存成功，列表新增记录且单日产能按空/默认规则展示
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48124
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-12
+  tp_id: TP-014-12
+  title: 新增单日产能(万只)输入0，保存后列表展示0
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表中至少有一条宰杀线数据
+  steps:
+  - action: 查看列表表头
+    expected: 表头包含核心列：宰杀线编码、宰杀线名称、单日产能(万只)、排序、状态，字段齐全且顺序符合需求/原型
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48125
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-13
+  tp_id: TP-014-13
+  title: 新增单日产能(万只)输入正数112.0000，列表展示一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」
+    expected: 打开新增弹窗
+  - action: 填写宰杀线名称，单日产能(万只)输入 112.0000，点击「确定」
+    expected: 保存成功，列表「单日产能(万只)」显示与录入一致（112.0000）
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48126
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-14
+  tp_id: TP-014-14
+  title: 新增排序留空，保存成功
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」，填写宰杀线名称，排序留空，点击「确定」
+    expected: 保存成功，列表新增记录
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48127
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-15
+  tp_id: TP-014-15
+  title: 新增排序输入0，保存后列表展示0
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」按钮
+    expected: 打开新增弹窗
+  - action: 在「排序」输入框输入 0
+    expected: 排序输入框显示 0
+  - action: 填写必填的宰杀线名称后点击「确定」保存
+    expected: 保存成功，列表中新增行的「排序」列显示为 0
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48128
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-16
+  tp_id: TP-014-16
+  title: 新增排序输入正整数1，列表展示一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「新增」
+    expected: 打开新增弹窗
+  - action: 填写宰杀线名称，排序输入 1，点击「确定」
+    expected: 保存成功，列表该行「排序」显示为 1
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48129
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-17
+  tp_id: TP-014-17
+  title: 新增将宰杀线编码改为库中已存在编码点「确定」，触发唯一性拦截
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 库中已存在一条宰杀线记录（记下其宰杀线编码）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 将「宰杀线编码」改为库中已存在的值，填写其余必填项后点击「确定」
+    expected: 保存被拦截并提示唯一性冲突（或同等错误提示），列表未新增重复编码
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48130
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-17
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-18
+  tp_id: TP-014-18
+  title: 新增宰杀线名称填库中已存在名称点「确定」，触发唯一性拦截
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 新增
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 库中已存在一条宰杀线记录（记下其宰杀线名称）
+  steps:
+  - action: 点击「新增」打开新增弹窗
+    expected: 新增弹窗打开
+  - action: 「宰杀线名称」填写为库中已存在的名称，填写其余必填项后点击「确定」
+    expected: 保存被拦截并提示名称唯一性冲突，列表未新增重复名称
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48131
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-18
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-19
+  tp_id: TP-014-19
+  title: 列表列字段依次为勾选、宰杀线编码、宰杀线名称、单日产能(万只)、排序、状态、备注、创建时间、更新时间、创建人、更新人、操作
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 查看列表表头
+    expected: 表头列名依次为：勾选、宰杀线编码、宰杀线名称、单日产能(万只)、排序、状态、备注、创建时间、更新时间、创建人、更新人、操作
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48132
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-19
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-20
+  tp_id: TP-014-20
+  title: 列表宰杀线编码、名称、单日产能(万只)、排序与录入一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 刚完成一条新增或编辑并记住录入值
+  steps:
+  - action: 回到列表核对刚保存记录的各字段
+    expected: 列表展示的编码、名称及业务字段与刚才录入内容一致
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48133
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-20
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-21
+  tp_id: TP-014-21
+  title: 启用状态行操作列显示「编辑」「停用」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表存在状态为「启用」的宰杀线
+  steps:
+  - action: 查看该启用行操作列
+    expected: 操作列显示「编辑」「停用」入口
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48134
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-21
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-22
+  tp_id: TP-014-22
+  title: 无匹配记录时列表展示空状态，页面无报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 构造无数据查询结果或清空数据后查看列表
+    expected: 展示空状态，无前端报错
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48135
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-22
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-23
+  tp_id: TP-014-23
+  title: 列表分页默认展示第1页，总条数与查询结果一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 结果集足够分页
+  steps:
+  - action: 切换每页显示条数
+    expected: 列表按新条数重新分页
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48136
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-23
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-24
+  tp_id: TP-014-24
+  title: 点击「编辑」打开编辑弹窗
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表存在可编辑的宰杀线/单据
+  steps:
+  - action: 点击「编辑」打开弹窗
+    expected: 编辑弹窗打开
+  - action: 修改标题涉及字段后保存
+    expected: 保存成功，列表对应字段更新
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48137
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-24
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-25
+  tp_id: TP-014-25
+  title: 编辑弹窗宰杀线编码只读不可修改
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 打开查看或只读界面，尝试编辑字段
+    expected: 核对后：编辑弹窗中宰杀线编码输入框为只读，不可手工修改
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48138
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-25
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-26
+  tp_id: TP-014-26
+  title: 编辑修改名称/单日产能(万只)/排序后点确定，列表数据更新
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表存在可编辑的启用宰杀线
+  steps:
+  - action: 点击操作列「编辑」打开弹窗
+    expected: 编辑弹窗打开
+  - action: 修改宰杀线名称、单日产能(万只)、排序后点击「确定」
+    expected: 保存成功，列表对应行名称/单日产能/排序已更新为修改后的值
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48139
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-26
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-27
+  tp_id: TP-014-27
+  title: 编辑点「取消」，弹窗关闭且不保存
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 编辑
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表存在可编辑的宰杀线
+  steps:
+  - action: 点击「编辑」打开弹窗并修改某一字段
+    expected: 编辑弹窗打开且字段已改动
+  - action: 点击「取消」
+    expected: 弹窗关闭，列表该行数据未保存修改
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48140
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-27
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-28
+  tp_id: TP-014-28
+  title: 启用行点击「停用」，弹出确认「确定要停用该宰杀线吗？」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表存在状态为「启用」的宰杀线
+  steps:
+  - action: 在启用行点击操作列「停用」
+    expected: 弹出确认框，文案为「确定要停用该宰杀线吗？」
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48141
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-28
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-29
+  tp_id: TP-014-29
+  title: 停用确认框点确定，状态变为停用
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表中存在应为「停用」的宰杀线记录
+  steps:
+  - action: 定位该行查看状态列
+    expected: 状态显示为「停用」
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48142
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-29
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-30
+  tp_id: TP-014-30
+  title: 停用确认框点取消，状态保持启用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表存在可切换启停的宰杀线记录
+  steps:
+  - action: 点击「停用」或「启用」
+    expected: 弹出确认框
+  - action: 点击「取消」
+    expected: 状态不变化
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48143
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-30
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-31
+  tp_id: TP-014-31
+  title: 未勾选行时批量「删除」「启用」「停用」按钮不可用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 确认列表无任何行处于勾选状态，观察工具栏批量「删除」按钮
+    expected: 未勾选时批量「删除」按钮不可点击，或点击后提示未勾选任何行
+  - action: 确认未勾选任何行，观察或点击批量「启用」按钮
+    expected: 未勾选时批量「启用」按钮不可用，或点击后提示未勾选任何行
+  - action: 确认未勾选任何行，观察或点击批量「停用」按钮
+    expected: 未勾选时批量「停用」按钮不可用，或点击后提示未勾选任何行
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48144
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-31
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-32
+  tp_id: TP-014-32
+  title: 勾选停用行点批量「启用」，状态变为启用
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 启停
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表存在至少一条「停用」状态的宰杀线
+  steps:
+  - action: 勾选一条或多条停用行，点击批量「启用」
+    expected: 所选行状态变为「启用」
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48145
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-32
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-33
+  tp_id: TP-014-33
+  title: 勾选启用行点批量「删除」，toast提示「选择的数据均为启用状态，无法删除」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「删除」
+    expected: 操作后：仅勾选启用状态记录点击删除，页面toast提示「选择的数据均为启用状态，无法删除」且记录未删除
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48146
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-33
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-34
+  tp_id: TP-014-34
+  title: 已选≥1条时批量「删除」按钮可点击
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 点击「删除」
+    expected: 界面上可见：勾选至少一条记录后，工具栏「删除」按钮由禁用变为可点
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48147
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-34
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-35
+  tp_id: TP-014-35
+  title: 勾选停用态记录后点击「删除」，弹出确认框或删除成功
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 删除
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 在列表找到目标状态行，点击操作列「删除」
+    expected: 弹出删除确认框（含确定/取消）
+  - action: 在确认框点击「确定」
+    expected: 删除成功，列表不再显示该记录
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48148
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-35
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-014-36
+  tp_id: TP-014-36
+  title: 栋舍管理「关联线体编码/名称」与宰杀线主数据关系待确认
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 对照当前页面与关联模块可见字段
+    expected: 记录「栋舍管理「关联线体编码/名称」与宰杀线主数据关系待确认」相关实际表现，供产品确认；本步以页面可见结果为准
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48149
+  trace:
+    story: null
+    req: REQ-014
+    tp: TP-014-36
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+summary:
+  type_counts:
+    auto: 35
+    feature: 1
+  auto_counts:
+    auto: 35
+    false: 1
+  registry_counts:
+    registered: 36

@@ -1,0 +1,1005 @@
+schema_version: '1.0'
+req_id: REQ-005
+module: 设备管理
+trace:
+  req: REQ-005
+  project: 数据采集监控平台
+  version: 1
+  status: blocked_pending_req005_page_contract
+  source_review: REQ-005 case review
+common_preconditions:
+- id: CP-REQ-005-001
+  name: 登录并进入设备管理页面
+  steps:
+  - action: 完成应用门户登录，或复用已有的有效登录态。
+    expected: 登录成功或已有登录态有效，可以正常访问应用门户。
+  - action: 在应用门户选择“数据采集监控平台”。
+    expected: 成功进入数据采集监控平台，并显示对应的平台菜单区域。
+  - action: 展开“设备接入”菜单并点击“设备管理”菜单。
+    expected: 设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。
+cases:
+- id: TC-REQ-005-003
+  coverage_ids:
+  - COV-005-003-L3
+  plan_item_ids:
+  - PLAN-005-003
+  atomic_purpose_ids:
+  - AP-005-003
+  title: 新增设备名称为空，检查必填提示
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得仅用于表单校验观察且不会产生业务写入的明确授权。
+  steps:
+  - action: 点击“新增设备”。
+    expected: 新增设备表单打开，并显示设备名称输入框。
+  - action: 保持设备名称为空，填写其他必要字段并点击“保存”。
+    expected: 设备名称字段显示明确必填提示，提示定位在名称字段或其相邻校验区域，表单保持打开且未新增设备。
+  - action: 查询设备列表。
+    expected: 列表不出现名称为空的新设备记录。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-004
+  coverage_ids:
+  - COV-005-004-L3
+  plan_item_ids:
+  - PLAN-005-004
+  atomic_purpose_ids:
+  - AP-005-004
+  title: 新增设备，检查名称唯一性
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得同一产品下的既有设备、相同设备名称样本，以及不同产品下可使用相同名称的批准脱敏样本和校验授权。
+  steps:
+  - action: 打开新增设备表单，选择目标产品并输入该产品下已有的设备名称。
+    expected: 产品和名称字段显示输入值。
+  - action: 填写其他必要字段并点击“保存”。
+    expected: 名称字段显示同产品重复提示，表单保持打开且未新增重复设备。
+  - action: 将产品改为允许跨产品同名的另一产品，保留相同设备名称并点击“保存”。
+    expected: 保存成功时显示成功提示，并新增一条产品为新产品、名称为输入值的设备记录。
+  - action: 刷新列表并查询测试设备。
+    expected: 同一产品下没有重复名称记录，另一产品下的同名设备字段回读正确；按清理方案删除测试数据。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: /biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-005
+  coverage_ids:
+  - COV-005-005-L3
+  plan_item_ids:
+  - PLAN-005-005
+  atomic_purpose_ids:
+  - AP-005-005
+  title: 编辑设备名称，检查重复校验
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得同一产品下的既有设备、相同设备名称样本，以及不同产品下可使用相同名称的批准脱敏样本和校验授权。
+  steps:
+  - action: 打开目标设备编辑表单，将名称改为同一产品下已有名称并点击“保存”。
+    expected: 名称字段显示重复提示，表单保持打开，原设备名称和其他字段未改变。
+  - action: 将名称改为同一产品下未使用的名称并点击“保存”。
+    expected: 显示保存成功提示，编辑表单关闭或进入完成状态。
+  - action: 重新打开目标设备详情。
+    expected: 设备名称显示新名称，产品、序列号和其他未修改字段保持原值。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: /biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-007
+  coverage_ids:
+  - COV-005-007-L3
+  plan_item_ids:
+  - PLAN-005-007
+  atomic_purpose_ids:
+  - AP-005-007-A
+  title: 编辑设备序列号，检查字段是否可修改
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得既有设备、重复序列号脱敏样本和表单校验观察授权。
+  steps:
+  - action: 打开目标设备编辑表单，在序列号输入框输入批准的合法新序列号。
+    expected: 序列号输入框显示新值，字段允许编辑。
+  - action: 查看编辑表单其他字段并点击“取消”。
+    expected: 表单关闭，本次序列号修改未保存，设备列表中的序列号保持原值。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-008
+  coverage_ids:
+  - COV-005-007-L3
+  plan_item_ids:
+  - PLAN-005-007
+  atomic_purpose_ids:
+  - AP-005-007-B
+  title: 输入重复序列号，检查保存校验
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得既有设备、重复序列号脱敏样本和表单校验观察授权。
+  steps:
+  - action: 打开设备编辑表单，将序列号改为同一作用域内已有序列号。
+    expected: 序列号字段显示输入值。
+  - action: 点击“保存”。
+    expected: 序列号字段显示重复提示，表单保持打开且保存不成功。
+  - action: 查询两个设备的序列号。
+    expected: 原设备和目标设备的序列号数据未产生重复新增或错误覆盖。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-009
+  coverage_ids:
+  - COV-005-008-L3
+  plan_item_ids:
+  - PLAN-005-008
+  atomic_purpose_ids:
+  - AP-005-008-A
+  title: 备注名称为空时保存，检查提交结果
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得脱敏空白和常见特殊字符样本及不写入业务数据的观察授权。
+  steps:
+  - action: 打开新增设备表单，保持备注名称为空并填写其他必要字段。
+    expected: 备注名称单行输入框为空，其他必要字段显示有效值。
+  - action: 点击“保存”。
+    expected: 保存成功并显示成功提示；备注名称为空不触发必填错误。
+  - action: 在列表或详情中重新打开测试设备。
+    expected: 设备记录存在，备注名称字段为空或显示页面定义的空值文本；按清理方案删除测试数据。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-010
+  coverage_ids:
+  - COV-005-008-L3
+  plan_item_ids:
+  - PLAN-005-008
+  atomic_purpose_ids:
+  - AP-005-008-B
+  title: 输入备注名称空白，检查单行字段处理
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得脱敏空白样本及不写入业务数据的观察授权。
+  steps:
+  - action: 打开设备新增或编辑表单，在备注名称单行输入框输入包含首尾空白的测试值。
+    expected: 单行输入框显示输入值，内容在单行内完整可见。
+  - action: 使备注名称输入框失去焦点。
+    expected: 页面按已确认规则保留、裁剪或清除首尾空白，并显示具体字段值或校验提示。
+  - action: 点击“取消”。
+    expected: 表单关闭，本次备注名称值未写入设备数据。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-011
+  coverage_ids:
+  - COV-005-008-L3
+  plan_item_ids:
+  - PLAN-005-008
+  atomic_purpose_ids:
+  - AP-005-008-C
+  title: 输入备注名称特殊字符，检查字段处理
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得脱敏空白和常见特殊字符样本及不写入业务数据的观察授权。
+  steps:
+  - action: 打开设备新增或编辑表单，在备注名称单行输入框输入批准的常见特殊字符样本。
+    expected: 单行输入框显示实际输入值，未出现未授权脚本执行或页面结构异常。
+  - action: 使备注名称输入框失去焦点。
+    expected: 页面显示具体格式提示，或保留/清除字符后的实际字段值。
+  - action: 点击“取消”。
+    expected: 表单关闭，本次备注名称特殊字符测试未产生设备写入。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-012
+  coverage_ids:
+  - COV-005-009-L2
+  plan_item_ids:
+  - PLAN-005-009
+  atomic_purpose_ids:
+  - AP-005-009
+  title: 打开设备表单，检查序列号输入框
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已具备设备管理页面的运行时表单观察权限。
+  steps:
+  - action: 点击“新增设备”并查看表单。
+    expected: 表单显示序列号输入框，输入框有明确标签或占位文本。
+  - action: 在序列号输入框输入批准的序列号。
+    expected: 输入框显示完整序列号，字段未显示格式错误。
+  - action: 点击“取消”。
+    expected: 表单关闭，未新增设备记录。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-013
+  coverage_ids:
+  - COV-005-010-L3
+  plan_item_ids:
+  - PLAN-005-010
+  atomic_purpose_ids:
+  - AP-005-010
+  title: 新增设备，检查产品和设备类型
+  type: feature
+  auto: 'auto'
+  priority: P1
+  feature: 产品绑定
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得可用于只读观察的可用产品及其设备类型信息。
+  steps:
+  - action: 点击“新增根设备”或页面定义的新增设备入口，打开表单。
+    expected: 新增表单打开，并显示产品选择控件和设备类型字段。
+  - action: 打开产品选择器并选择目标产品。
+    expected: 产品字段显示所选产品，产品字段被标记为必填或具有明确选择状态。
+  - action: 查看设备类型字段。
+    expected: 设备类型显示与所选产品属性一致的值；若产品契约允许编辑，控件处于可编辑状态，否则处于只读或禁用状态。
+  - action: 点击“取消”。
+    expected: 表单关闭，未新增设备。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-014
+  coverage_ids:
+  - COV-005-011-L3
+  plan_item_ids:
+  - PLAN-005-011
+  atomic_purpose_ids:
+  - AP-005-011
+  title: 编辑已绑定设备，检查产品是否只读
+  type: interface
+  auto: 'auto'
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已准备经授权可读且已有产品绑定的设备记录。
+  steps:
+  - action: 打开已绑定设备的编辑表单。
+    expected: 产品字段显示当前绑定产品。
+  - action: 点击产品选择控件并尝试选择其他产品。
+    expected: 产品字段处于只读或禁用状态，不能将设备更换到其他产品。
+  - action: 点击“取消”。
+    expected: 表单关闭，设备原产品绑定保持不变。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-015
+  coverage_ids:
+  - COV-005-012-L3
+  plan_item_ids:
+  - PLAN-005-012
+  atomic_purpose_ids:
+  - AP-005-012
+  title: 撤销发布产品，检查已有绑定和新建选项
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 产品联动
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已准备一台绑定该产品的已有设备，以及一台用于新增设备测试的设备记录。
+  - 已将该产品撤销发布，并准备好经授权可查看的产品和设备数据。
+  steps:
+  - action: 定位绑定目标产品的已有设备并记录其产品字段。
+    expected: 已有设备显示目标产品，设备记录可正常查询。
+  - action: 在产品管理中撤销目标产品发布并返回设备管理页面。
+    expected: 产品状态显示为已撤销发布或页面定义的非发布状态。
+  - action: 打开新增设备表单并打开产品选择器。
+    expected: 撤销发布产品不出现在新建设备可选产品中。
+  - action: 查询原有设备。
+    expected: 原有设备仍保留目标产品绑定，产品字段未被自动清空；按清理方案恢复产品和设备数据。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-016
+  coverage_ids:
+  - COV-005-013-L3
+  plan_item_ids:
+  - PLAN-013
+  atomic_purpose_ids:
+  - AP-005-013
+  title: 查看未激活设备，检查设备状态
+  type: feature
+  auto: 'auto'
+  priority: P1
+  feature: 设备状态
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得未完成激活设备的批准只读状态证据。
+  steps:
+  - action: 定位一条未完成激活的设备记录。
+    expected: 设备存在且激活条件未完成。
+  - action: 查看该设备状态字段。
+    expected: 状态明确显示“未激活”，不显示为“在线”或“离线”。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-017
+  coverage_ids:
+  - COV-005-014-L3
+  plan_item_ids:
+  - PLAN-014
+  atomic_purpose_ids:
+  - AP-005-014
+  title: 查看已连接设备，检查在线状态
+  type: feature
+  auto: 'auto'
+  priority: P1
+  feature: 在线状态
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得已建立连接设备的批准只读状态证据。
+  steps:
+  - action: 定位一条已激活且已建立连接的设备。
+    expected: 设备连接条件满足，设备记录可查询。
+  - action: 查看设备状态字段。
+    expected: 状态显示“在线”。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-018
+  coverage_ids:
+  - COV-005-015-L3
+  plan_item_ids:
+  - PLAN-015
+  atomic_purpose_ids:
+  - AP-005-015
+  title: 查看已断开设备，检查离线状态
+  type: feature
+  auto: 'auto'
+  priority: P1
+  feature: 离线状态
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得连接已断开设备的批准只读状态证据。
+  steps:
+  - action: 定位一条已激活但连接已断开的设备。
+    expected: 设备记录可查询，连接状态为断开。
+  - action: 查看设备状态字段。
+    expected: 状态显示“离线”。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-019
+  coverage_ids:
+  - COV-005-016-L3
+  plan_item_ids:
+  - PLAN-016
+  atomic_purpose_ids:
+  - AP-005-016
+  title: 设备重新连接后，检查在线状态
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 状态恢复
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得激活设备重连后的批准只读状态证据。
+  steps:
+  - action: 定位一条当前为“离线”的已激活设备并恢复设备连接。
+    expected: 设备重新建立连接，连接事件可被系统接收。
+  - action: 刷新设备列表并定位该设备。
+    expected: 设备状态更新为“在线”。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-020
+  coverage_ids:
+  - COV-005-017-L3
+  plan_item_ids:
+  - PLAN-017
+  atomic_purpose_ids:
+  - AP-005-017
+  title: 对比两个页面的设备状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 跨模块状态
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得同一在线设备和同一离线设备在设备管理页面、插件管理页面设备数弹窗中的批准脱敏回读证据。
+  steps:
+  - action: 在设备管理页面分别定位一条在线设备和一条离线设备并记录状态。
+    expected: 两条设备记录的状态分别显示“在线”和“离线”。
+  - action: 打开插件管理页面对应插件的设备数详情。
+    expected: 详情中包含相同设备记录或页面定义的设备状态字段。
+  - action: 对比两处状态。
+    expected: 同一设备在设备管理和插件管理中的在线/离线状态一致；设备数量统计不重复计入同一设备。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-021
+  coverage_ids:
+  - COV-005-018-L3
+  plan_item_ids:
+  - PLAN-018
+  atomic_purpose_ids:
+  - AP-005-018
+  title: 查看设备列表，检查同级设备排序
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得同级设备排序值不同及相等的批准脱敏数据。
+  steps:
+  - action: 定位同一父级下至少两条设备记录并记录排序字段值。
+    expected: 每条设备的排序字段均可读取。
+  - action: 比较同级设备在列表中的顺序。
+    expected: 设备按已定义排序字段从小到大排列，排序字段较小的设备位于较前行。
+  - action: 查看排序字段相同的设备。
+    expected: 并列设备顺序按已确认的次级规则显示；没有次级规则时仅记录实际稳定顺序，不以其他字段替代主排序字段。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-022
+  coverage_ids:
+  - COV-005-019-L3
+  plan_item_ids:
+  - PLAN-019
+  atomic_purpose_ids:
+  - AP-005-019
+  title: 查看设备上线时间，检查时间含义
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 上线时间
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得同一设备上线、重新上线和离线后的批准脱敏时间回读证据。
+  steps:
+  - action: 定位一条已重新上线的设备并记录当前上线时间。
+    expected: 上线时间字段显示一个完整的日期和时间值。
+  - action: 使该设备断开连接并刷新列表。
+    expected: 设备状态更新为“离线”，上线时间保留最近一次上线时间。
+  - action: 恢复设备连接并刷新列表。
+    expected: 设备状态更新为“在线”，上线时间更新为本次最近上线时间，且晚于断开前记录的上线时间。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-023
+  coverage_ids:
+  - COV-005-020-L3
+  plan_item_ids:
+  - PLAN-020
+  atomic_purpose_ids:
+  - AP-005-020-A
+  title: 查看父子设备，检查产品关系
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 父子关系
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得根、子、多级和循环尝试关系的批准脱敏回读证据。
+  steps:
+  - action: 展开一条包含子设备的父设备记录。
+    expected: 子设备行显示在目标父设备下，并具有明确层级关系。
+  - action: 查看父设备和子设备的产品字段。
+    expected: 两条记录的产品字段均有值，父设备和子设备可以显示不同产品。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-024
+  coverage_ids:
+  - COV-005-020-L3
+  plan_item_ids:
+  - PLAN-020
+  atomic_purpose_ids:
+  - AP-005-020-B
+  title: 移动子设备，检查父子关系
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 父子关系
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得根、子、多级和循环尝试关系的批准脱敏回读证据。
+  steps:
+  - action: 打开子设备编辑表单，选择批准的新父设备并点击“保存”。
+    expected: 显示保存成功提示，编辑表单关闭或进入完成状态。
+  - action: 刷新设备列表并展开新父设备。
+    expected: 子设备出现在新父设备下，父设备字段显示新父设备标识。
+  - action: 展开原父设备。
+    expected: 子设备不再出现在原父设备下；按清理方案恢复原父子关系。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-025
+  coverage_ids:
+  - COV-005-020-L3
+  plan_item_ids:
+  - PLAN-020
+  atomic_purpose_ids:
+  - AP-005-020-C
+  title: 编辑设备，检查上级设备选项
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 父子关系
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得根、子、多级和循环尝试关系的批准脱敏回读证据。
+  steps:
+  - action: 打开目标子设备编辑表单并打开上级设备选择器。
+    expected: 选择器显示可选上级设备列表。
+  - action: 查看当前父设备选项。
+    expected: 当前设备的父设备不出现在会造成循环的可选项中；设备自身也不出现在可选项中。
+  - action: 点击“取消”。
+    expected: 表单关闭，父子关系未改变。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-026
+  coverage_ids:
+  - COV-005-021-L3
+  plan_item_ids:
+  - PLAN-021
+  atomic_purpose_ids:
+  - AP-005-021
+  title: 删除有子设备的父设备，检查删除限制
+  type: interface
+  auto: 'auto'
+  priority: P1
+  feature: 父子删除限制
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得存在子设备的父设备批准只读关系证据。
+  steps:
+  - action: 定位包含至少一条子设备的父设备。
+    expected: 父设备和子设备关系可在列表中读取。
+  - action: 查看父设备操作列并点击“删除”（入口可用时）。
+    expected: 删除按钮隐藏或禁用；若入口可点击，页面显示不能删除有子设备父设备的明确提示，不进入有效删除确认层。
+  - action: 刷新列表并展开父设备。
+    expected: 父设备仍存在，子设备仍归属于原父设备。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-027
+  coverage_ids:
+  - COV-005-022-L3
+  plan_item_ids:
+  - PLAN-022
+  atomic_purpose_ids:
+  - AP-005-022
+  title: 给设备加入分组，检查重复关系
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得同一设备多分组和重复加入后的批准脱敏关系回读证据。
+  steps:
+  - action: 打开目标设备的分组管理控件，选择第一个分组并点击“保存”。
+    expected: 显示保存成功提示，设备详情或分组列表包含第一个分组。
+  - action: 再次打开分组管理控件，选择第二个分组并点击“保存”。
+    expected: 保存成功，设备同时关联第一个和第二个分组。
+  - action: 再次选择已经关联的第一个分组并点击“保存”。
+    expected: 页面显示重复关联提示，或保存后关联列表仍只包含一条第一个分组关系。
+  - action: 刷新设备详情。
+    expected: 设备分组关系数量不因重复操作增加；按清理方案解除测试分组关系。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-030
+  coverage_ids:
+  - COV-005-025-L3
+  plan_item_ids:
+  - PLAN-025
+  atomic_purpose_ids:
+  - AP-005-025
+  title: 解除业务引用后，检查设备删除
+  type: interface
+  auto: auto
+  priority: P1
+  feature: 引用解除
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得设备全部业务引用解除后的批准脱敏回读证据。
+  steps:
+  - action: 解除目标设备的全部业务引用并刷新设备详情。
+    expected: 页面不再显示阻止删除的业务引用，设备状态和基本字段仍可读取。
+  - action: 点击目标设备“删除”。
+    expected: 显示删除确认层，并展示目标设备标识及“确定”“取消”按钮。
+  - action: 点击确认层“确定”。
+    expected: 显示删除成功提示，确认层关闭。
+  - action: 刷新设备列表并按设备名称或序列号查询。
+    expected: 目标设备不再出现在列表中，其他设备记录不受影响。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-036
+  coverage_ids:
+  - COV-005-028-L3
+  plan_item_ids:
+  - PLAN-028
+  atomic_purpose_ids:
+  - AP-005-028-C
+  title: 切换租户，检查设备数据隔离
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 权限租户
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得设备查看人员、设备管理员、分组管理员和产品管理员账号及正式租户/业务范围矩阵。
+  steps:
+  - action: 在租户 A 上下文查询设备列表并记录一条租户 A 专属设备标识。
+    expected: 列表仅显示租户 A 授权设备。
+  - action: 切换到租户 B 并刷新设备列表。
+    expected: 页面显示租户 B 上下文，列表仅显示租户 B 授权设备，不显示租户 A 专属设备的名称、序列号或产品字段。
+  - action: 返回租户 A 并查询原设备。
+    expected: 租户 A 专属设备恢复显示，租户 B 专属设备不出现在租户 A 列表中。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-037
+  coverage_ids:
+  - COV-005-001-L3
+  plan_item_ids:
+  - PLAN-005-003
+  atomic_purpose_ids:
+  - AP-005-029
+  title: 输入空白设备名称，检查必填校验
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得仅用于表单校验观察且不会产生业务写入的明确授权。
+  steps:
+  - action: 打开新增设备表单，在设备名称输入框输入仅包含空格的值。
+    expected: 输入框显示空白值或按页面规则清除该值。
+  - action: 填写其他必要字段并点击“保存”。
+    expected: 设备名称字段显示明确必填提示，表单保持打开且未新增设备。
+  - action: 查询设备列表。
+    expected: 列表不出现名称为空或仅空白的新设备记录。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-038
+  coverage_ids:
+  - COV-005-016-L3
+  plan_item_ids:
+  - PLAN-005-003
+  atomic_purpose_ids:
+  - AP-005-030
+  title: 输入非法设备名称，检查校验结果
+  type: interface
+  auto: auto
+  priority: P3
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得仅用于表单校验观察且不会产生业务写入的明确授权。
+  steps:
+  - action: 打开新增或编辑设备表单，在设备名称输入框输入已确认的非法字符样本。
+    expected: 输入值按页面输入规则显示或被页面明确拒绝。
+  - action: 点击“保存”。
+    expected: 名称字段显示具体非法字符或格式错误提示，表单保持打开且未提交成功。
+  - action: 查询设备列表。
+    expected: 列表不新增或修改为非法名称的设备记录。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-039
+  coverage_ids:
+  - COV-005-016-L3
+  plan_item_ids:
+  - PLAN-005-006
+  atomic_purpose_ids:
+  - AP-005-031
+  title: 输入非法序列号，检查校验结果
+  type: interface
+  auto: auto
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得仅用于表单校验观察且不会产生业务写入的明确授权。
+  steps:
+  - action: 打开新增或编辑设备表单，在序列号输入框输入非法字符样本“ABC@#$%”。
+    expected: 输入值中的“@#$%”属于非法字符，页面按序列号规则拒绝这些字符或明确提示序列号只能包含字母、数字、中划线和下划线。
+  - action: 点击“保存”。
+    expected: 序列号字段显示具体格式错误提示，表单保持打开且未提交成功。
+  - action: 查询设备列表。
+    expected: 列表不新增或修改为非法序列号的设备记录。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-040
+  coverage_ids:
+  - COV-005-005-L3
+  plan_item_ids:
+  - PLAN-005-010
+  atomic_purpose_ids:
+  - AP-005-032
+  title: 不选择产品保存，检查必选提示
+  type: interface
+  auto: 'auto'
+  priority: P2
+  feature: 设备管理核心功能
+  common_preconditions_ref: CP-REQ-005-001
+  preconditions:
+  - 已获得可用于只读观察的可用产品及其设备类型信息。
+  steps:
+  - action: 点击“新增设备”，保持产品选择框为空并填写其他必要字段。
+    expected: 产品字段为空，其他必要字段显示有效值。
+  - action: 点击“保存”。
+    expected: 产品字段显示明确必选提示，表单保持打开且设备未保存成功。
+  - action: 查询设备列表。
+    expected: 列表不出现未绑定产品的新设备记录。
+  trace:
+    req: REQ-005
+    project: 数据采集监控平台
+    version: 1
+    status: blocked_pending_req005_page_contract
+    source_review: REQ-005 case review
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-
+- id: TC-REQ-005-043
+  common_preconditions_ref: CP-REQ-005-001
+  coverage_ids:
+  - COV-005-DELETE-RECREATE-L3
+  plan_item_ids:
+  - PLAN-005-DELETE-RECREATE
+  atomic_purpose_ids:
+  - AP-005-DELETE-RECREATE
+  scenario_branch: 删除后同表单内容重新创建
+  title: 删除后用相同配置重建设备
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 删除后同表单重建
+  preconditions:
+  - 已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。
+  - 已记录删除前表单字段：设备名称、序列号、产品、父级关系及备注名称；删除后使用相同值，不使用原系统生成的唯一标识。
+  steps:
+  - action: 使用隔离数据创建一条设备，填写并记录名称、序列号、产品、父设备和备注名称。
+    expected: 创建成功，列表或详情中的业务字段与输入值一致。
+  - action: 删除该设备并在确认层点击“确定”。
+    expected: 显示删除成功提示，刷新列表后目标设备不再出现。
+  - action: 使用与首次创建相同的名称、序列号、产品、父设备和备注名称重新填写表单并点击“保存”。
+    expected: 重建成功并显示新增成功提示。
+  - action: 刷新列表并打开重建设备详情。
+    expected: 名称、序列号、产品、父设备和备注名称与首次创建记录一致；系统生成字段按系统规则重新生成。
+  - action: 按清理方案删除重建设备并回读列表。
+    expected: 测试设备清理完成，列表不再显示测试记录。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-DELETE-RECREATE-
+- id: TC-REQ-005-044
+  common_preconditions_ref: CP-REQ-005-001
+  coverage_ids:
+  - COV-005-EDIT-FORM-REFILL-L1
+  plan_item_ids:
+  - PLAN-005-EDIT-DEVICE
+  atomic_purpose_ids:
+  - AP-005-EDIT-FORM-REFILL
+  scenario_branch: 点击编辑打开弹窗并核对已有数据回填
+  title: 点击编辑打开弹窗，校验设备数据回填
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 编辑弹窗数据回填
+  preconditions:
+  - 已准备一条可授权查看且包含名称、序列号、产品、设备类型、父设备和备注名称的设备记录。
+  - 已从列表或详情记录该设备的名称、序列号、产品、设备类型、父设备和备注名称原始值。
+  steps:
+  - action: 在设备管理页面定位已记录的目标设备，点击该行“编辑”按钮。
+    expected: 编辑弹窗成功打开。
+  - action: 逐项对比编辑弹窗各字段与列表或详情中记录的原始值。
+    expected: 名称、序列号、产品、设备类型、父设备和备注名称的回填值与原始值完全一致；选择框显示当前选项名称而不是内部 ID；未出现空值、错位值或其他设备的数据。
+  test_data:
+    page_url: ${UI_TEST_URL}/biopark-iot/iot/device/device
+    data_prefix: REQ-005-EDIT-REFILL-

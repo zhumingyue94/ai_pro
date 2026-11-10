@@ -1,0 +1,6795 @@
+{
+  "status": "validated",
+  "product_id": 8,
+  "project_id": 46,
+  "project_context_id": 46,
+  "module": {
+    "name": "告警配置",
+    "id": 748,
+    "path": "iot平台/告警中心/告警配置"
+  },
+  "source_hashes_before": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-010.yaml": "2d509ecf15be312ffea64d6726d7df739925ad78434f59b18ae4782e41fdfcd9",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-010.yaml": "d387109bc48dea8bd84d41a98dd57432a3f5dd8f4056454159498dee8af8152b",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  },
+  "records": [
+    {
+      "case_id": "TC-REQ-010-001",
+      "operation": "update",
+      "remote_case_id": 51928,
+      "readback": {
+        "id": 51928,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "打开告警配置页面，检查页面区域",
+        "precondition": "前置准备：\n1、测试环境、账号、租户从运行时配置读取，并具备告警配置页面的授权查看范围。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:51:49",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:19",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175375,
+            "step": "等待告警配置页面加载完成",
+            "desc": "等待告警配置页面加载完成",
+            "expect": "地址为 `/biopark-iot/iot/alert/config`，页面标题或菜单高亮显示“告警配置”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175376,
+            "step": "查看筛选区、配置列表和分页区",
+            "desc": "查看筛选区、配置列表和分页区",
+            "expect": "三个区域均显示；有数据时显示表头和数据行，无数据时显示明确空状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51928,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51928",
+          "text": "打开告警配置页面，检查页面区域",
+          "type": "root",
+          "children": [
+            {
+              "id": 175375,
+              "text": "等待告警配置页面加载完成",
+              "type": "sub",
+              "parent": "case_51928",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175375",
+                  "text": "地址为 `/biopark-iot/iot/alert/config`，页面标题或菜单高亮显示“告警配置”。",
+                  "type": "node",
+                  "parent": 175375,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175376,
+              "text": "查看筛选区、配置列表和分页区",
+              "type": "sub",
+              "parent": "case_51928",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175376",
+                  "text": "三个区域均显示；有数据时显示表头和数据行，无数据时显示明确空状态。",
+                  "type": "node",
+                  "parent": 175376,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-002",
+      "operation": "update",
+      "remote_case_id": 51929,
+      "readback": {
+        "id": 51929,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "按配置名称查询，检查匹配结果",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权的脱敏配置列表数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:51:51",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:21",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175377,
+            "step": "在配置名称输入框输入已授权的配置名称并点击“查询”",
+            "desc": "在配置名称输入框输入已授权的配置名称并点击“查询”",
+            "expect": "输入框保留查询值，列表刷新完成。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175378,
+            "step": "查看列表结果",
+            "desc": "查看列表结果",
+            "expect": "每条记录的配置名称与查询条件匹配，不匹配的配置不显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51929,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51929",
+          "text": "按配置名称查询，检查匹配结果",
+          "type": "root",
+          "children": [
+            {
+              "id": 175377,
+              "text": "在配置名称输入框输入已授权的配置名称并点击“查询”",
+              "type": "sub",
+              "parent": "case_51929",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175377",
+                  "text": "输入框保留查询值，列表刷新完成。",
+                  "type": "node",
+                  "parent": 175377,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175378,
+              "text": "查看列表结果",
+              "type": "sub",
+              "parent": "case_51929",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175378",
+                  "text": "每条记录的配置名称与查询条件匹配，不匹配的配置不显示。",
+                  "type": "node",
+                  "parent": 175378,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-003",
+      "operation": "update",
+      "remote_case_id": 51930,
+      "readback": {
+        "id": 51930,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "按开启状态查询，检查配置状态",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权的开启配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:51:53",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:23",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175379,
+            "step": "在配置状态下拉框选择“开启”并点击“查询”",
+            "desc": "在配置状态下拉框选择“开启”并点击“查询”",
+            "expect": "状态控件回显“开启”，列表完成刷新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175380,
+            "step": "查看列表状态列",
+            "desc": "查看列表状态列",
+            "expect": "每条记录的配置状态均为“开启”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51930,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51930",
+          "text": "按开启状态查询，检查配置状态",
+          "type": "root",
+          "children": [
+            {
+              "id": 175379,
+              "text": "在配置状态下拉框选择“开启”并点击“查询”",
+              "type": "sub",
+              "parent": "case_51930",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175379",
+                  "text": "状态控件回显“开启”，列表完成刷新。",
+                  "type": "node",
+                  "parent": 175379,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175380,
+              "text": "查看列表状态列",
+              "type": "sub",
+              "parent": "case_51930",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175380",
+                  "text": "每条记录的配置状态均为“开启”。",
+                  "type": "node",
+                  "parent": 175380,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-004",
+      "operation": "update",
+      "remote_case_id": 51931,
+      "readback": {
+        "id": 51931,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "按停用状态查询，检查配置状态",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权的停用配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:51:54",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:26",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175381,
+            "step": "在配置状态下拉框选择“停用”并点击“查询”",
+            "desc": "在配置状态下拉框选择“停用”并点击“查询”",
+            "expect": "状态控件回显“停用”，列表完成刷新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175382,
+            "step": "查看列表状态列",
+            "desc": "查看列表状态列",
+            "expect": "每条记录的配置状态均为“停用”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51931,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51931",
+          "text": "按停用状态查询，检查配置状态",
+          "type": "root",
+          "children": [
+            {
+              "id": 175381,
+              "text": "在配置状态下拉框选择“停用”并点击“查询”",
+              "type": "sub",
+              "parent": "case_51931",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175381",
+                  "text": "状态控件回显“停用”，列表完成刷新。",
+                  "type": "node",
+                  "parent": 175381,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175382,
+              "text": "查看列表状态列",
+              "type": "sub",
+              "parent": "case_51931",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175382",
+                  "text": "每条记录的配置状态均为“停用”。",
+                  "type": "node",
+                  "parent": 175382,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-005",
+      "operation": "update",
+      "remote_case_id": 51932,
+      "readback": {
+        "id": 51932,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "按开始日期查询，检查日期边界",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和包含日期边界的脱敏配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:51:56",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:28",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175383,
+            "step": "在开始日期控件选择批准的开始日期并点击“查询”",
+            "desc": "在开始日期控件选择批准的开始日期并点击“查询”",
+            "expect": "开始日期控件回显所选日期，列表完成刷新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175384,
+            "step": "查看结果的创建时间",
+            "desc": "查看结果的创建时间",
+            "expect": "记录符合页面定义的开始日期边界，边界日期的包含规则与已确认契约一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51932,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51932",
+          "text": "按开始日期查询，检查日期边界",
+          "type": "root",
+          "children": [
+            {
+              "id": 175383,
+              "text": "在开始日期控件选择批准的开始日期并点击“查询”",
+              "type": "sub",
+              "parent": "case_51932",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175383",
+                  "text": "开始日期控件回显所选日期，列表完成刷新。",
+                  "type": "node",
+                  "parent": 175383,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175384,
+              "text": "查看结果的创建时间",
+              "type": "sub",
+              "parent": "case_51932",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175384",
+                  "text": "记录符合页面定义的开始日期边界，边界日期的包含规则与已确认契约一致。",
+                  "type": "node",
+                  "parent": 175384,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-006",
+      "operation": "update",
+      "remote_case_id": 51933,
+      "readback": {
+        "id": 51933,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "按结束日期查询，检查日期边界",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和包含日期边界的脱敏配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:51:57",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:31",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175385,
+            "step": "在结束日期控件选择批准的结束日期并点击“查询”",
+            "desc": "在结束日期控件选择批准的结束日期并点击“查询”",
+            "expect": "结束日期控件回显所选日期，列表完成刷新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175386,
+            "step": "查看结果的创建时间",
+            "desc": "查看结果的创建时间",
+            "expect": "记录符合页面定义的结束日期边界，边界日期的包含规则与已确认契约一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51933,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51933",
+          "text": "按结束日期查询，检查日期边界",
+          "type": "root",
+          "children": [
+            {
+              "id": 175385,
+              "text": "在结束日期控件选择批准的结束日期并点击“查询”",
+              "type": "sub",
+              "parent": "case_51933",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175385",
+                  "text": "结束日期控件回显所选日期，列表完成刷新。",
+                  "type": "node",
+                  "parent": 175385,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175386,
+              "text": "查看结果的创建时间",
+              "type": "sub",
+              "parent": "case_51933",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175386",
+                  "text": "记录符合页面定义的结束日期边界，边界日期的包含规则与已确认契约一致。",
+                  "type": "node",
+                  "parent": 175386,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-007",
+      "operation": "update",
+      "remote_case_id": 51934,
+      "readback": {
+        "id": 51934,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "重置筛选条件，检查列表回到第一页",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限、至少两页脱敏配置数据，且已存在筛选条件和非第一页状态。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:51:59",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:33",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175387,
+            "step": "设置配置名称、状态和日期条件并跳转到非第一页",
+            "desc": "设置配置名称、状态和日期条件并跳转到非第一页",
+            "expect": "控件显示设置值，分页显示非第一页。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175388,
+            "step": "点击“重置”",
+            "desc": "点击“重置”",
+            "expect": "名称、状态和日期恢复默认值，当前页回到第一页，列表按默认条件显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51934,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51934",
+          "text": "重置筛选条件，检查列表回到第一页",
+          "type": "root",
+          "children": [
+            {
+              "id": 175387,
+              "text": "设置配置名称、状态和日期条件并跳转到非第一页",
+              "type": "sub",
+              "parent": "case_51934",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175387",
+                  "text": "控件显示设置值，分页显示非第一页。",
+                  "type": "node",
+                  "parent": 175387,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175388,
+              "text": "点击“重置”",
+              "type": "sub",
+              "parent": "case_51934",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175388",
+                  "text": "名称、状态和日期恢复默认值，当前页回到第一页，列表按默认条件显示。",
+                  "type": "node",
+                  "parent": 175388,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-008",
+      "operation": "update",
+      "remote_case_id": 51935,
+      "readback": {
+        "id": 51935,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "刷新配置列表，检查数据保持",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权的脱敏配置列表数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:00",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:36",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175389,
+            "step": "记录当前筛选条件、页码和目标配置字段，点击“刷新”",
+            "desc": "记录当前筛选条件、页码和目标配置字段，点击“刷新”",
+            "expect": "列表重新加载，筛选条件和当前页按页面规则保持。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175390,
+            "step": "查看目标配置",
+            "desc": "查看目标配置",
+            "expect": "配置名称、状态、描述等字段显示完整且没有重复行。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51935,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51935",
+          "text": "刷新配置列表，检查数据保持",
+          "type": "root",
+          "children": [
+            {
+              "id": 175389,
+              "text": "记录当前筛选条件、页码和目标配置字段，点击“刷新”",
+              "type": "sub",
+              "parent": "case_51935",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175389",
+                  "text": "列表重新加载，筛选条件和当前页按页面规则保持。",
+                  "type": "node",
+                  "parent": 175389,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175390,
+              "text": "查看目标配置",
+              "type": "sub",
+              "parent": "case_51935",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175390",
+                  "text": "配置名称、状态、描述等字段显示完整且没有重复行。",
+                  "type": "node",
+                  "parent": 175390,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-009",
+      "operation": "update",
+      "remote_case_id": 51936,
+      "readback": {
+        "id": 51936,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "打开列设置，检查配置字段",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和表头设置只读观察权限。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:02",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:38",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175391,
+            "step": "点击表头列设置入口",
+            "desc": "点击表头列设置入口",
+            "expect": "面板显示编号、配置名称、配置描述、告警级别、配置状态、接收人、接收类型、创建时间和操作列。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175392,
+            "step": "查看操作列设置并关闭面板",
+            "desc": "查看操作列设置并关闭面板",
+            "expect": "操作列保持勾选且不可修改，面板关闭后列表正常显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51936,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51936",
+          "text": "打开列设置，检查配置字段",
+          "type": "root",
+          "children": [
+            {
+              "id": 175391,
+              "text": "点击表头列设置入口",
+              "type": "sub",
+              "parent": "case_51936",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175391",
+                  "text": "面板显示编号、配置名称、配置描述、告警级别、配置状态、接收人、接收类型、创建时间和操作列。",
+                  "type": "node",
+                  "parent": 175391,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175392,
+              "text": "查看操作列设置并关闭面板",
+              "type": "sub",
+              "parent": "case_51936",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175392",
+                  "text": "操作列保持勾选且不可修改，面板关闭后列表正常显示。",
+                  "type": "node",
+                  "parent": 175392,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-010",
+      "operation": "update",
+      "remote_case_id": 51937,
+      "readback": {
+        "id": 51937,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看配置列表，检查字段和脱敏内容",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权的脱敏配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:03",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:41",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175393,
+            "step": "查看告警配置列表",
+            "desc": "查看告警配置列表",
+            "expect": "列表显示编号、配置名称、描述、级别、状态、接收人、接收类型、创建时间和操作列。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175394,
+            "step": "读取接收人及通知渠道字段",
+            "desc": "读取接收人及通知渠道字段",
+            "expect": "字段内容按脱敏要求展示，不出现未授权真实信息。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51937,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51937",
+          "text": "查看配置列表，检查字段和脱敏内容",
+          "type": "root",
+          "children": [
+            {
+              "id": 175393,
+              "text": "查看告警配置列表",
+              "type": "sub",
+              "parent": "case_51937",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175393",
+                  "text": "列表显示编号、配置名称、描述、级别、状态、接收人、接收类型、创建时间和操作列。",
+                  "type": "node",
+                  "parent": 175393,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175394,
+              "text": "读取接收人及通知渠道字段",
+              "type": "sub",
+              "parent": "case_51937",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175394",
+                  "text": "字段内容按脱敏要求展示，不出现未授权真实信息。",
+                  "type": "node",
+                  "parent": 175394,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-011",
+      "operation": "update",
+      "remote_case_id": 51938,
+      "readback": {
+        "id": 51938,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看默认分页大小，检查每页数量",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和至少十条已授权的脱敏配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:05",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:43",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175395,
+            "step": "查看分页大小和当前页记录数",
+            "desc": "查看分页大小和当前页记录数",
+            "expect": "分页控件显示每页十条，当前页记录数符合总数和分页规则。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175396,
+            "step": "打开分页大小选择器并关闭",
+            "desc": "打开分页大小选择器并关闭",
+            "expect": "选择器显示当前页大小和可选项，关闭后列表数据不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51938,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51938",
+          "text": "查看默认分页大小，检查每页数量",
+          "type": "root",
+          "children": [
+            {
+              "id": 175395,
+              "text": "查看分页大小和当前页记录数",
+              "type": "sub",
+              "parent": "case_51938",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175395",
+                  "text": "分页控件显示每页十条，当前页记录数符合总数和分页规则。",
+                  "type": "node",
+                  "parent": 175395,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175396,
+              "text": "打开分页大小选择器并关闭",
+              "type": "sub",
+              "parent": "case_51938",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175396",
+                  "text": "选择器显示当前页大小和可选项，关闭后列表数据不变。",
+                  "type": "node",
+                  "parent": 175396,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-012",
+      "operation": "update",
+      "remote_case_id": 51939,
+      "readback": {
+        "id": 51939,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "切换分页，检查页码和配置数据",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和至少两页已授权的脱敏配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:06",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:45",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175397,
+            "step": "点击下一页，或输入已存在的页码并提交",
+            "desc": "点击下一页，或输入已存在的页码并提交",
+            "expect": "当前页码更新为目标页码，列表显示对应页记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175398,
+            "step": "对比目标页与上一页的编号",
+            "desc": "对比目标页与上一页的编号",
+            "expect": "不出现跨页混入或重复记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51939,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51939",
+          "text": "切换分页，检查页码和配置数据",
+          "type": "root",
+          "children": [
+            {
+              "id": 175397,
+              "text": "点击下一页，或输入已存在的页码并提交",
+              "type": "sub",
+              "parent": "case_51939",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175397",
+                  "text": "当前页码更新为目标页码，列表显示对应页记录。",
+                  "type": "node",
+                  "parent": 175397,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175398,
+              "text": "对比目标页与上一页的编号",
+              "type": "sub",
+              "parent": "case_51939",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175398",
+                  "text": "不出现跨页混入或重复记录。",
+                  "type": "node",
+                  "parent": 175398,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-013",
+      "operation": "update",
+      "remote_case_id": 51940,
+      "readback": {
+        "id": 51940,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查询、翻页和刷新后检查创建时间排序",
+        "precondition": "前置准备：\n1、具备至少两条创建时间不同的已授权脱敏配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:08",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:48",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175399,
+            "step": "查看列表创建时间和行顺序",
+            "desc": "查看列表创建时间和行顺序",
+            "expect": "列表按创建时间倒序排列。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175400,
+            "step": "设置筛选条件并点击“查询”，再切换页码",
+            "desc": "设置筛选条件并点击“查询”，再切换页码",
+            "expect": "查询结果和目标页仍按创建时间倒序排列。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175401,
+            "step": "点击“刷新”并重新读取创建时间",
+            "desc": "点击“刷新”并重新读取创建时间",
+            "expect": "刷新后排序规则保持不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51940,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51940",
+          "text": "查询、翻页和刷新后检查创建时间排序",
+          "type": "root",
+          "children": [
+            {
+              "id": 175399,
+              "text": "查看列表创建时间和行顺序",
+              "type": "sub",
+              "parent": "case_51940",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175399",
+                  "text": "列表按创建时间倒序排列。",
+                  "type": "node",
+                  "parent": 175399,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175400,
+              "text": "设置筛选条件并点击“查询”，再切换页码",
+              "type": "sub",
+              "parent": "case_51940",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175400",
+                  "text": "查询结果和目标页仍按创建时间倒序排列。",
+                  "type": "node",
+                  "parent": 175400,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175401,
+              "text": "点击“刷新”并重新读取创建时间",
+              "type": "sub",
+              "parent": "case_51940",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175401",
+                  "text": "刷新后排序规则保持不变。",
+                  "type": "node",
+                  "parent": 175401,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-014",
+      "operation": "update",
+      "remote_case_id": 51941,
+      "readback": {
+        "id": 51941,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查询无匹配配置，检查空状态",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和不会暴露业务数据的无匹配筛选条件。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:10",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:51",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175402,
+            "step": "输入确认无匹配的筛选条件并点击“查询”",
+            "desc": "输入确认无匹配的筛选条件并点击“查询”",
+            "expect": "列表显示“暂无数据”或等价空状态，不保留旧结果。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175403,
+            "step": "查看筛选条件",
+            "desc": "查看筛选条件",
+            "expect": "输入条件仍回显，空状态与当前条件一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51941,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51941",
+          "text": "查询无匹配配置，检查空状态",
+          "type": "root",
+          "children": [
+            {
+              "id": 175402,
+              "text": "输入确认无匹配的筛选条件并点击“查询”",
+              "type": "sub",
+              "parent": "case_51941",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175402",
+                  "text": "列表显示“暂无数据”或等价空状态，不保留旧结果。",
+                  "type": "node",
+                  "parent": 175402,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175403,
+              "text": "查看筛选条件",
+              "type": "sub",
+              "parent": "case_51941",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175403",
+                  "text": "输入条件仍回显，空状态与当前条件一致。",
+                  "type": "node",
+                  "parent": 175403,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-016",
+      "operation": "update",
+      "remote_case_id": 51943,
+      "readback": {
+        "id": 51943,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "打开新增窗口，检查表单字段",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和新增表单只读观察权限。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:13",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:53",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175404,
+            "step": "点击“新增”",
+            "desc": "点击“新增”",
+            "expect": "新增窗口打开，显示名称、描述、告警级别、配置状态、接收用户和接收类型字段，以及确定、取消控件。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175405,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "新增窗口关闭，列表记录和筛选条件不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51943,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51943",
+          "text": "打开新增窗口，检查表单字段",
+          "type": "root",
+          "children": [
+            {
+              "id": 175404,
+              "text": "点击“新增”",
+              "type": "sub",
+              "parent": "case_51943",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175404",
+                  "text": "新增窗口打开，显示名称、描述、告警级别、配置状态、接收用户和接收类型字段，以及确定、取消控件。",
+                  "type": "node",
+                  "parent": 175404,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175405,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51943",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175405",
+                  "text": "新增窗口关闭，列表记录和筛选条件不变。",
+                  "type": "node",
+                  "parent": 175405,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-017",
+      "operation": "update",
+      "remote_case_id": 51944,
+      "readback": {
+        "id": 51944,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "打开编辑窗口，检查字段回填",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权配置的编辑表单只读观察权限。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:15",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:55",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175406,
+            "step": "在已授权配置行点击“编辑”",
+            "desc": "在已授权配置行点击“编辑”",
+            "expect": "编辑窗口打开，名称、描述、级别、状态、接收用户和接收类型回填当前脱敏值。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175407,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "编辑窗口关闭，列表字段和配置状态不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51944,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51944",
+          "text": "打开编辑窗口，检查字段回填",
+          "type": "root",
+          "children": [
+            {
+              "id": 175406,
+              "text": "在已授权配置行点击“编辑”",
+              "type": "sub",
+              "parent": "case_51944",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175406",
+                  "text": "编辑窗口打开，名称、描述、级别、状态、接收用户和接收类型回填当前脱敏值。",
+                  "type": "node",
+                  "parent": 175406,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175407,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51944",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175407",
+                  "text": "编辑窗口关闭，列表字段和配置状态不变。",
+                  "type": "node",
+                  "parent": 175407,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-018",
+      "operation": "update",
+      "remote_case_id": 51945,
+      "readback": {
+        "id": 51945,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "取消删除操作，检查配置保持",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权配置行的删除确认层只读观察权限。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:16",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:10:58",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175408,
+            "step": "在已授权配置行点击“删除”，等待确认层显示",
+            "desc": "在已授权配置行点击“删除”，等待确认层显示",
+            "expect": "确认层显示待删除配置相关信息，并提供“取消”和“确定”按钮。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175409,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "确认层关闭，原配置仍显示在列表中。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51945,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51945",
+          "text": "取消删除操作，检查配置保持",
+          "type": "root",
+          "children": [
+            {
+              "id": 175408,
+              "text": "在已授权配置行点击“删除”，等待确认层显示",
+              "type": "sub",
+              "parent": "case_51945",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175408",
+                  "text": "确认层显示待删除配置相关信息，并提供“取消”和“确定”按钮。",
+                  "type": "node",
+                  "parent": 175408,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175409,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51945",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175409",
+                  "text": "确认层关闭，原配置仍显示在列表中。",
+                  "type": "node",
+                  "parent": 175409,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-019",
+      "operation": "update",
+      "remote_case_id": 51946,
+      "readback": {
+        "id": 51946,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "恢复默认列设置，检查列配置",
+        "precondition": "前置准备：\n1、具备告警配置页面访问权限和表头设置只读观察权限。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:18",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:01",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175410,
+            "step": "打开列设置并点击“恢复默认”",
+            "desc": "打开列设置并点击“恢复默认”",
+            "expect": "列配置恢复页面定义的默认列集合，操作列保持勾选且不可修改。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175411,
+            "step": "关闭列设置面板",
+            "desc": "关闭列设置面板",
+            "expect": "列表按恢复后的列集合显示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51946,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51946",
+          "text": "恢复默认列设置，检查列配置",
+          "type": "root",
+          "children": [
+            {
+              "id": 175410,
+              "text": "打开列设置并点击“恢复默认”",
+              "type": "sub",
+              "parent": "case_51946",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175410",
+                  "text": "列配置恢复页面定义的默认列集合，操作列保持勾选且不可修改。",
+                  "type": "node",
+                  "parent": 175410,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175411,
+              "text": "关闭列设置面板",
+              "type": "sub",
+              "parent": "case_51946",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175411",
+                  "text": "列表按恢复后的列集合显示。",
+                  "type": "node",
+                  "parent": 175411,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-020",
+      "operation": "update",
+      "remote_case_id": 51947,
+      "readback": {
+        "id": 51947,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "打开配置表单，检查级别、状态和接收类型",
+        "precondition": "前置准备：\n1、具备新增或编辑表单的只读观察权限，页面中的接收人和通知信息已脱敏。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:20",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:05",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175412,
+            "step": "打开新增或编辑窗口，分别展开告警级别、配置状态和接收类型控件",
+            "desc": "打开新增或编辑窗口，分别展开告警级别、配置状态和接收类型控件",
+            "expect": "级别显示 `INFO`、`WARN`、`ERROR`；状态显示“开启”“停用”；接收类型显示短信、邮箱、站内信等已确认选项。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175413,
+            "step": "选择一个接收类型后关闭控件，不保存",
+            "desc": "选择一个接收类型后关闭控件，不保存",
+            "expect": "选择值回显在控件中，关闭窗口后列表不产生新增或修改。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51947,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51947",
+          "text": "打开配置表单，检查级别、状态和接收类型",
+          "type": "root",
+          "children": [
+            {
+              "id": 175412,
+              "text": "打开新增或编辑窗口，分别展开告警级别、配置状态和接收类型控件",
+              "type": "sub",
+              "parent": "case_51947",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175412",
+                  "text": "级别显示 `INFO`、`WARN`、`ERROR`；状态显示“开启”“停用”；接收类型显示短信、邮箱、站内信等已确认选项。",
+                  "type": "node",
+                  "parent": 175412,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175413,
+              "text": "选择一个接收类型后关闭控件，不保存",
+              "type": "sub",
+              "parent": "case_51947",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175413",
+                  "text": "选择值回显在控件中，关闭窗口后列表不产生新增或修改。",
+                  "type": "node",
+                  "parent": 175413,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-021",
+      "operation": "update",
+      "remote_case_id": 51948,
+      "readback": {
+        "id": 51948,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "不填写必填项，检查表单提示",
+        "precondition": "前置准备：\n1、具备获批的脱敏表单校验观察证据，表单处于未保存状态。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:21",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:09",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175414,
+            "step": "打开表单，保持告警级别、接收用户或接收类型中的目标必填项为空，点击“确定”",
+            "desc": "打开表单，保持告警级别、接收用户或接收类型中的目标必填项为空，点击“确定”",
+            "expect": "对应字段显示明确必填提示，表单不关闭。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175415,
+            "step": "查看其他已填写字段",
+            "desc": "查看其他已填写字段",
+            "expect": "已输入的脱敏内容保留，未生成保存成功结果。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51948,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51948",
+          "text": "不填写必填项，检查表单提示",
+          "type": "root",
+          "children": [
+            {
+              "id": 175414,
+              "text": "打开表单，保持告警级别、接收用户或接收类型中的目标必填项为空，点击“确定”",
+              "type": "sub",
+              "parent": "case_51948",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175414",
+                  "text": "对应字段显示明确必填提示，表单不关闭。",
+                  "type": "node",
+                  "parent": 175414,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175415,
+              "text": "查看其他已填写字段",
+              "type": "sub",
+              "parent": "case_51948",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175415",
+                  "text": "已输入的脱敏内容保留，未生成保存成功结果。",
+                  "type": "node",
+                  "parent": 175415,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-022",
+      "operation": "update",
+      "remote_case_id": 51949,
+      "readback": {
+        "id": 51949,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "选择接收类型，检查类型约束",
+        "precondition": "前置准备：\n1、具备脱敏表单字段约束的只读观察证据，不使用真实通知地址。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:23",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:21",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175416,
+            "step": "打开接收类型选择器",
+            "desc": "打开接收类型选择器",
+            "expect": "可选项仅包含已确认的短信、邮箱和站内信，不显示 Webhook、队列等无效类型。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175417,
+            "step": "选择有效类型并关闭窗口，不提交",
+            "desc": "选择有效类型并关闭窗口，不提交",
+            "expect": "有效类型回显，列表数据不发生变化。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51949,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51949",
+          "text": "选择接收类型，检查类型约束",
+          "type": "root",
+          "children": [
+            {
+              "id": 175416,
+              "text": "打开接收类型选择器",
+              "type": "sub",
+              "parent": "case_51949",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175416",
+                  "text": "可选项仅包含已确认的短信、邮箱和站内信，不显示 Webhook、队列等无效类型。",
+                  "type": "node",
+                  "parent": 175416,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175417,
+              "text": "选择有效类型并关闭窗口，不提交",
+              "type": "sub",
+              "parent": "case_51949",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175417",
+                  "text": "有效类型回显，列表数据不发生变化。",
+                  "type": "node",
+                  "parent": 175417,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-023",
+      "operation": "update",
+      "remote_case_id": 51950,
+      "readback": {
+        "id": 51950,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "打开新增窗口，检查状态默认值",
+        "precondition": "前置准备：\n1、具备新增表单只读观察权限和脱敏字段证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:24",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:23",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175418,
+            "step": "点击“新增”并查看配置状态",
+            "desc": "点击“新增”并查看配置状态",
+            "expect": "配置状态默认显示“开启”，不显示草稿、发布中或失效状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175419,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "窗口关闭，列表没有新增记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51950,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51950",
+          "text": "打开新增窗口，检查状态默认值",
+          "type": "root",
+          "children": [
+            {
+              "id": 175418,
+              "text": "点击“新增”并查看配置状态",
+              "type": "sub",
+              "parent": "case_51950",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175418",
+                  "text": "配置状态默认显示“开启”，不显示草稿、发布中或失效状态。",
+                  "type": "node",
+                  "parent": 175418,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175419,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51950",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175419",
+                  "text": "窗口关闭，列表没有新增记录。",
+                  "type": "node",
+                  "parent": 175419,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-024",
+      "operation": "update",
+      "remote_case_id": 51951,
+      "readback": {
+        "id": 51951,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "删除已引用配置，检查删除限制",
+        "precondition": "前置准备：\n1、具备已引用配置的脱敏状态证据和删除反馈页面观察证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:25",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:25",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 09:35:57",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": {
+          "595": {
+            "id": 595,
+            "title": "删除被引用的告警配置提示词需要优化",
+            "severity": 3,
+            "openedDate": "2026-11-02 09:39:51",
+            "status": "resolved"
+          }
+        },
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175420,
+            "step": "定位一条已被其他功能使用的配置",
+            "desc": "定位一条已被其他功能使用的配置",
+            "expect": "列表显示该配置的名称及已确认的引用标识或使用状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175421,
+            "step": "点击该行“删除”，等待反馈",
+            "desc": "点击该行“删除”，等待反馈",
+            "expect": "显示删除确认层或明确的引用限制提示，配置没有直接从列表消失。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51951,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51951",
+          "text": "删除已引用配置，检查删除限制",
+          "type": "root",
+          "children": [
+            {
+              "id": 175420,
+              "text": "定位一条已被其他功能使用的配置",
+              "type": "sub",
+              "parent": "case_51951",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175420",
+                  "text": "列表显示该配置的名称及已确认的引用标识或使用状态。",
+                  "type": "node",
+                  "parent": 175420,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175421,
+              "text": "点击该行“删除”，等待反馈",
+              "type": "sub",
+              "parent": "case_51951",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175421",
+                  "text": "显示删除确认层或明确的引用限制提示，配置没有直接从列表消失。",
+                  "type": "node",
+                  "parent": 175421,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-025",
+      "operation": "update",
+      "remote_case_id": 51952,
+      "readback": {
+        "id": 51952,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "修改已引用配置状态，检查保存结果",
+        "precondition": "前置准备：\n1、具备已引用配置的脱敏状态证据和操作权限矩阵。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:27",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:28",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 09:54:01",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175422,
+            "step": "定位已引用配置并点击“编辑”",
+            "desc": "定位已引用配置并点击“编辑”",
+            "expect": "编辑窗口打开，配置字段正确回填。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175423,
+            "step": "将配置状态切换为“开启”或“停用”，点击“保存”",
+            "desc": "将配置状态切换为“开启”或“停用”，点击“保存”",
+            "expect": "显示保存成功提示，窗口关闭或保持页面定义状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175424,
+            "step": "刷新或重新查询目标配置",
+            "desc": "刷新或重新查询目标配置",
+            "expect": "配置状态为本次选择值，编号和其他未修改字段保持不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51952,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51952",
+          "text": "修改已引用配置状态，检查保存结果",
+          "type": "root",
+          "children": [
+            {
+              "id": 175422,
+              "text": "定位已引用配置并点击“编辑”",
+              "type": "sub",
+              "parent": "case_51952",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175422",
+                  "text": "编辑窗口打开，配置字段正确回填。",
+                  "type": "node",
+                  "parent": 175422,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175423,
+              "text": "将配置状态切换为“开启”或“停用”，点击“保存”",
+              "type": "sub",
+              "parent": "case_51952",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175423",
+                  "text": "显示保存成功提示，窗口关闭或保持页面定义状态。",
+                  "type": "node",
+                  "parent": 175423,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175424,
+              "text": "刷新或重新查询目标配置",
+              "type": "sub",
+              "parent": "case_51952",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175424",
+                  "text": "配置状态为本次选择值，编号和其他未修改字段保持不变。",
+                  "type": "node",
+                  "parent": 175424,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-028",
+      "operation": "update",
+      "remote_case_id": 51955,
+      "readback": {
+        "id": 51955,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "提交字段错误，检查提示和输入保留",
+        "precondition": "前置准备：\n1、具备经批准的脱敏表单校验观察证据；表单处于未保存状态。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:31",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:30",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175427,
+            "step": "打开新增或编辑窗口，缺少一个必填字段后点击“确定”",
+            "desc": "打开新增或编辑窗口，缺少一个必填字段后点击“确定”",
+            "expect": "对应字段显示字段级错误提示，窗口保持打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175428,
+            "step": "查看其他输入内容",
+            "desc": "查看其他输入内容",
+            "expect": "已填写的脱敏内容保留，按钮和表单处于可继续修正状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51955,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51955",
+          "text": "提交字段错误，检查提示和输入保留",
+          "type": "root",
+          "children": [
+            {
+              "id": 175427,
+              "text": "打开新增或编辑窗口，缺少一个必填字段后点击“确定”",
+              "type": "sub",
+              "parent": "case_51955",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175427",
+                  "text": "对应字段显示字段级错误提示，窗口保持打开。",
+                  "type": "node",
+                  "parent": 175427,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175428,
+              "text": "查看其他输入内容",
+              "type": "sub",
+              "parent": "case_51955",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175428",
+                  "text": "已填写的脱敏内容保留，按钮和表单处于可继续修正状态。",
+                  "type": "node",
+                  "parent": 175428,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-029",
+      "operation": "update",
+      "remote_case_id": 51956,
+      "readback": {
+        "id": 51956,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看模板变量，确认所属页面",
+        "precondition": "前置准备：\n1、具备已授权的脱敏告警配置页面和模板上下文页面观察证据；不读取真实模板变量。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:33",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:32",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175429,
+            "step": "查看告警配置页面及已确认的模板上下文入口",
+            "desc": "查看告警配置页面及已确认的模板上下文入口",
+            "expect": "能明确模板变量实际所属页面和可读取字段；不读取真实敏感变量。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175430,
+            "step": "点击存在的详情或关联入口后返回",
+            "desc": "点击存在的详情或关联入口后返回",
+            "expect": "目标区域正常加载，返回后仍位于告警配置页面，筛选条件不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51956,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51956",
+          "text": "查看模板变量，确认所属页面",
+          "type": "root",
+          "children": [
+            {
+              "id": 175429,
+              "text": "查看告警配置页面及已确认的模板上下文入口",
+              "type": "sub",
+              "parent": "case_51956",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175429",
+                  "text": "能明确模板变量实际所属页面和可读取字段；不读取真实敏感变量。",
+                  "type": "node",
+                  "parent": 175429,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175430,
+              "text": "点击存在的详情或关联入口后返回",
+              "type": "sub",
+              "parent": "case_51956",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175430",
+                  "text": "目标区域正常加载，返回后仍位于告警配置页面，筛选条件不变。",
+                  "type": "node",
+                  "parent": 175430,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-030",
+      "operation": "update",
+      "remote_case_id": 51957,
+      "readback": {
+        "id": 51957,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查询超时时，检查超时反馈",
+        "precondition": "前置准备：\n1、具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:34",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:35",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175431,
+            "step": "使用批准的超时观察条件填写脱敏筛选条件并点击“查询”",
+            "desc": "使用批准的超时观察条件填写脱敏筛选条件并点击“查询”",
+            "expect": "页面显示加载状态，查询按钮按页面规则保持可用或禁用。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175432,
+            "step": "等待超时反馈",
+            "desc": "等待超时反馈",
+            "expect": "显示明确的查询超时提示，不泄露敏感信息，旧列表是否保留符合页面契约。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51957,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51957",
+          "text": "查询超时时，检查超时反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175431,
+              "text": "使用批准的超时观察条件填写脱敏筛选条件并点击“查询”",
+              "type": "sub",
+              "parent": "case_51957",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175431",
+                  "text": "页面显示加载状态，查询按钮按页面规则保持可用或禁用。",
+                  "type": "node",
+                  "parent": 175431,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175432,
+              "text": "等待超时反馈",
+              "type": "sub",
+              "parent": "case_51957",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175432",
+                  "text": "显示明确的查询超时提示，不泄露敏感信息，旧列表是否保留符合页面契约。",
+                  "type": "node",
+                  "parent": 175432,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-031",
+      "operation": "update",
+      "remote_case_id": 51958,
+      "readback": {
+        "id": 51958,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "网络异常时，检查错误反馈",
+        "precondition": "前置准备：\n1、具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:36",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:37",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175433,
+            "step": "使用批准的网络异常观察条件点击“查询”",
+            "desc": "使用批准的网络异常观察条件点击“查询”",
+            "expect": "页面显示加载状态，不展示新的未确认结果。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175434,
+            "step": "等待网络异常反馈",
+            "desc": "等待网络异常反馈",
+            "expect": "显示明确网络错误提示，查询控件恢复页面定义状态，敏感信息不出现在提示中。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51958,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51958",
+          "text": "网络异常时，检查错误反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175433,
+              "text": "使用批准的网络异常观察条件点击“查询”",
+              "type": "sub",
+              "parent": "case_51958",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175433",
+                  "text": "页面显示加载状态，不展示新的未确认结果。",
+                  "type": "node",
+                  "parent": 175433,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175434,
+              "text": "等待网络异常反馈",
+              "type": "sub",
+              "parent": "case_51958",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175434",
+                  "text": "显示明确网络错误提示，查询控件恢复页面定义状态，敏感信息不出现在提示中。",
+                  "type": "node",
+                  "parent": 175434,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-041",
+      "operation": "update",
+      "remote_case_id": 51968,
+      "readback": {
+        "id": 51968,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "保存配置时，检查处理中反馈",
+        "precondition": "前置准备：\n1、具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:50",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:40",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175449,
+            "step": "填写批准的脱敏配置并点击“确定”",
+            "desc": "填写批准的脱敏配置并点击“确定”",
+            "expect": "保存按钮显示加载、禁用或页面定义的处理中状态，表单不能重复提交。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175450,
+            "step": "等待最终反馈",
+            "desc": "等待最终反馈",
+            "expect": "成功时显示明确成功提示并关闭窗口；失败时保留表单并显示明确错误。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51968,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51968",
+          "text": "保存配置时，检查处理中反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175449,
+              "text": "填写批准的脱敏配置并点击“确定”",
+              "type": "sub",
+              "parent": "case_51968",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175449",
+                  "text": "保存按钮显示加载、禁用或页面定义的处理中状态，表单不能重复提交。",
+                  "type": "node",
+                  "parent": 175449,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175450,
+              "text": "等待最终反馈",
+              "type": "sub",
+              "parent": "case_51968",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175450",
+                  "text": "成功时显示明确成功提示并关闭窗口；失败时保留表单并显示明确错误。",
+                  "type": "node",
+                  "parent": 175450,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-042",
+      "operation": "update",
+      "remote_case_id": 51969,
+      "readback": {
+        "id": 51969,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "重复点击保存，检查重复提交控制",
+        "precondition": "前置准备：\n1、具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:52",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:44",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175451,
+            "step": "填写批准的脱敏配置并点击“确定”，立即再次点击同一按钮",
+            "desc": "填写批准的脱敏配置并点击“确定”，立即再次点击同一按钮",
+            "expect": "第二次操作被按钮禁用、明确提示或幂等处理，不产生第二条配置。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175452,
+            "step": "刷新列表并按配置标识查找",
+            "desc": "刷新列表并按配置标识查找",
+            "expect": "只存在一条本次配置结果，字段没有重复写入。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51969,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51969",
+          "text": "重复点击保存，检查重复提交控制",
+          "type": "root",
+          "children": [
+            {
+              "id": 175451,
+              "text": "填写批准的脱敏配置并点击“确定”，立即再次点击同一按钮",
+              "type": "sub",
+              "parent": "case_51969",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175451",
+                  "text": "第二次操作被按钮禁用、明确提示或幂等处理，不产生第二条配置。",
+                  "type": "node",
+                  "parent": 175451,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175452,
+              "text": "刷新列表并按配置标识查找",
+              "type": "sub",
+              "parent": "case_51969",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175452",
+                  "text": "只存在一条本次配置结果，字段没有重复写入。",
+                  "type": "node",
+                  "parent": 175452,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-043",
+      "operation": "update",
+      "remote_case_id": 51970,
+      "readback": {
+        "id": 51970,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "查看通知送达结果，确认页面归属",
+        "precondition": "前置准备：\n1、具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:53",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:47",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175453,
+            "step": "查看告警配置关联的通知上下文或送达结果入口",
+            "desc": "查看告警配置关联的通知上下文或送达结果入口",
+            "expect": "明确送达结果实际所属页面和可观察字段，不触发真实通知。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175454,
+            "step": "打开存在的详情入口后返回",
+            "desc": "打开存在的详情入口后返回",
+            "expect": "目标区域正常加载，返回后配置列表和筛选条件保持不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51970,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51970",
+          "text": "查看通知送达结果，确认页面归属",
+          "type": "root",
+          "children": [
+            {
+              "id": 175453,
+              "text": "查看告警配置关联的通知上下文或送达结果入口",
+              "type": "sub",
+              "parent": "case_51970",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175453",
+                  "text": "明确送达结果实际所属页面和可观察字段，不触发真实通知。",
+                  "type": "node",
+                  "parent": 175453,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175454,
+              "text": "打开存在的详情入口后返回",
+              "type": "sub",
+              "parent": "case_51970",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175454",
+                  "text": "目标区域正常加载，返回后配置列表和筛选条件保持不变。",
+                  "type": "node",
+                  "parent": 175454,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-044",
+      "operation": "update",
+      "remote_case_id": 51971,
+      "readback": {
+        "id": 51971,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "对比配置和通知页面，确认职责边界",
+        "precondition": "前置准备：\n1、具备经批准的脱敏页面观察证据；页面契约、权限和具体反馈待确认。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:55",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:49",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175455,
+            "step": "对照告警配置页面与通知责任模块页面查看模板变量、接收类型和送达结果",
+            "desc": "对照告警配置页面与通知责任模块页面查看模板变量、接收类型和送达结果",
+            "expect": "明确已确认的页面责任边界，未确认内容标记在评审备注而非步骤预期中。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175456,
+            "step": "使用返回或关闭结束查看",
+            "desc": "使用返回或关闭结束查看",
+            "expect": "回到告警配置页面，不触发通知，不修改配置。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51971,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51971",
+          "text": "对比配置和通知页面，确认职责边界",
+          "type": "root",
+          "children": [
+            {
+              "id": 175455,
+              "text": "对照告警配置页面与通知责任模块页面查看模板变量、接收类型和送达结果",
+              "type": "sub",
+              "parent": "case_51971",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175455",
+                  "text": "明确已确认的页面责任边界，未确认内容标记在评审备注而非步骤预期中。",
+                  "type": "node",
+                  "parent": 175455,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175456,
+              "text": "使用返回或关闭结束查看",
+              "type": "sub",
+              "parent": "case_51971",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175456",
+                  "text": "回到告警配置页面，不触发通知，不修改配置。",
+                  "type": "node",
+                  "parent": 175456,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-045",
+      "operation": "update",
+      "remote_case_id": 51972,
+      "readback": {
+        "id": 51972,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "新增告警配置，检查保存结果",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:56",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:52",
+        "version": 5,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 10:08:30",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 5,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175457,
+            "step": "点击“新增”，填写批准的名称、描述、级别、状态、接收用户和接收类型",
+            "desc": "点击“新增”，填写批准的名称、描述、级别、状态、接收用户和接收类型",
+            "expect": "必填控件均回显输入值，表单允许提交。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175458,
+            "step": "点击“保存”或“确定”",
+            "desc": "点击“保存”或“确定”",
+            "expect": "显示处理中状态；保存成功后显示明确成功提示并关闭窗口。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175459,
+            "step": "刷新或重新查询并定位新配置",
+            "desc": "刷新或重新查询并定位新配置",
+            "expect": "列表显示新配置，字段与提交值一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51972,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51972",
+          "text": "新增告警配置，检查保存结果",
+          "type": "root",
+          "children": [
+            {
+              "id": 175457,
+              "text": "点击“新增”，填写批准的名称、描述、级别、状态、接收用户和接收类型",
+              "type": "sub",
+              "parent": "case_51972",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175457",
+                  "text": "必填控件均回显输入值，表单允许提交。",
+                  "type": "node",
+                  "parent": 175457,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175458,
+              "text": "点击“保存”或“确定”",
+              "type": "sub",
+              "parent": "case_51972",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175458",
+                  "text": "显示处理中状态；保存成功后显示明确成功提示并关闭窗口。",
+                  "type": "node",
+                  "parent": 175458,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175459,
+              "text": "刷新或重新查询并定位新配置",
+              "type": "sub",
+              "parent": "case_51972",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175459",
+                  "text": "列表显示新配置，字段与提交值一致。",
+                  "type": "node",
+                  "parent": 175459,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-046",
+      "operation": "update",
+      "remote_case_id": 51973,
+      "readback": {
+        "id": 51973,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "编辑告警配置，检查保存结果",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:52:58",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:54",
+        "version": 5,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 10:09:30",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 5,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175460,
+            "step": "定位可编辑配置并点击“编辑”",
+            "desc": "定位可编辑配置并点击“编辑”",
+            "expect": "编辑窗口打开，当前字段值正确回填。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175461,
+            "step": "修改批准的字段并点击“保存”",
+            "desc": "修改批准的字段并点击“保存”",
+            "expect": "显示处理中状态，保存成功后显示明确成功提示并关闭窗口。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175462,
+            "step": "刷新或重新查询目标配置",
+            "desc": "刷新或重新查询目标配置",
+            "expect": "修改字段显示新值，配置编号保持不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51973,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51973",
+          "text": "编辑告警配置，检查保存结果",
+          "type": "root",
+          "children": [
+            {
+              "id": 175460,
+              "text": "定位可编辑配置并点击“编辑”",
+              "type": "sub",
+              "parent": "case_51973",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175460",
+                  "text": "编辑窗口打开，当前字段值正确回填。",
+                  "type": "node",
+                  "parent": 175460,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175461,
+              "text": "修改批准的字段并点击“保存”",
+              "type": "sub",
+              "parent": "case_51973",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175461",
+                  "text": "显示处理中状态，保存成功后显示明确成功提示并关闭窗口。",
+                  "type": "node",
+                  "parent": 175461,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175462,
+              "text": "刷新或重新查询目标配置",
+              "type": "sub",
+              "parent": "case_51973",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175462",
+                  "text": "修改字段显示新值，配置编号保持不变。",
+                  "type": "node",
+                  "parent": 175462,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-047",
+      "operation": "update",
+      "remote_case_id": 51974,
+      "readback": {
+        "id": 51974,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "不选择接收用户，检查必填校验",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:00",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:57",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 10:10:05",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175463,
+            "step": "打开表单，填写其他必填项但不选择接收用户",
+            "desc": "打开表单，填写其他必填项但不选择接收用户",
+            "expect": "接收用户控件保持空值。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175464,
+            "step": "点击“保存”或“确定”",
+            "desc": "点击“保存”或“确定”",
+            "expect": "配置不保存，接收用户字段显示“接收用户不能为空”或页面定义的等价提示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175465,
+            "step": "选择批准用户后再次提交",
+            "desc": "选择批准用户后再次提交",
+            "expect": "接收用户必填提示消失，页面进入明确的保存结果状态。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51974,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51974",
+          "text": "不选择接收用户，检查必填校验",
+          "type": "root",
+          "children": [
+            {
+              "id": 175463,
+              "text": "打开表单，填写其他必填项但不选择接收用户",
+              "type": "sub",
+              "parent": "case_51974",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175463",
+                  "text": "接收用户控件保持空值。",
+                  "type": "node",
+                  "parent": 175463,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175464,
+              "text": "点击“保存”或“确定”",
+              "type": "sub",
+              "parent": "case_51974",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175464",
+                  "text": "配置不保存，接收用户字段显示“接收用户不能为空”或页面定义的等价提示。",
+                  "type": "node",
+                  "parent": 175464,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175465,
+              "text": "选择批准用户后再次提交",
+              "type": "sub",
+              "parent": "case_51974",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175465",
+                  "text": "接收用户必填提示消失，页面进入明确的保存结果状态。",
+                  "type": "node",
+                  "parent": 175465,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-048",
+      "operation": "update",
+      "remote_case_id": 51975,
+      "readback": {
+        "id": 51975,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "选择一个接收用户，检查数量反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:01",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:11:59",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175466,
+            "step": "打开表单并选择一个批准接收用户",
+            "desc": "打开表单并选择一个批准接收用户",
+            "expect": "接收用户控件回显一个用户标签或等价选中状态，数量显示为 1（如页面提供数量）。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175467,
+            "step": "移除该用户并关闭表单",
+            "desc": "移除该用户并关闭表单",
+            "expect": "选中状态被清除，未提交任何配置变更。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51975,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51975",
+          "text": "选择一个接收用户，检查数量反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175466,
+              "text": "打开表单并选择一个批准接收用户",
+              "type": "sub",
+              "parent": "case_51975",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175466",
+                  "text": "接收用户控件回显一个用户标签或等价选中状态，数量显示为 1（如页面提供数量）。",
+                  "type": "node",
+                  "parent": 175466,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175467,
+              "text": "移除该用户并关闭表单",
+              "type": "sub",
+              "parent": "case_51975",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175467",
+                  "text": "选中状态被清除，未提交任何配置变更。",
+                  "type": "node",
+                  "parent": 175467,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-049",
+      "operation": "update",
+      "remote_case_id": 51976,
+      "readback": {
+        "id": 51976,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "选择最大数量接收用户，检查边界反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:03",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:02",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175468,
+            "step": "按已批准的最大数量选择接收用户",
+            "desc": "按已批准的最大数量选择接收用户",
+            "expect": "每个选中用户均显示为已选状态，数量达到页面定义上限。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175469,
+            "step": "尝试继续选择用户",
+            "desc": "尝试继续选择用户",
+            "expect": "页面拒绝超出上限的选择或显示明确上限提示，已选用户不丢失；关闭表单不保存。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51976,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51976",
+          "text": "选择最大数量接收用户，检查边界反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175468,
+              "text": "按已批准的最大数量选择接收用户",
+              "type": "sub",
+              "parent": "case_51976",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175468",
+                  "text": "每个选中用户均显示为已选状态，数量达到页面定义上限。",
+                  "type": "node",
+                  "parent": 175468,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175469,
+              "text": "尝试继续选择用户",
+              "type": "sub",
+              "parent": "case_51976",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175469",
+                  "text": "页面拒绝超出上限的选择或显示明确上限提示，已选用户不丢失；关闭表单不保存。",
+                  "type": "node",
+                  "parent": 175469,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-050",
+      "operation": "update",
+      "remote_case_id": 51977,
+      "readback": {
+        "id": 51977,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "超出接收用户上限，检查校验反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:04",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:04",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175470,
+            "step": "选择超过批准上限的接收用户数量",
+            "desc": "选择超过批准上限的接收用户数量",
+            "expect": "页面拒绝超限选择或显示明确数量校验提示，不接受超限结果。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175471,
+            "step": "查看已选用户和保存按钮",
+            "desc": "查看已选用户和保存按钮",
+            "expect": "已选内容按页面规则保留或回退到上限，不能提交超限配置。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51977,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51977",
+          "text": "超出接收用户上限，检查校验反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175470,
+              "text": "选择超过批准上限的接收用户数量",
+              "type": "sub",
+              "parent": "case_51977",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175470",
+                  "text": "页面拒绝超限选择或显示明确数量校验提示，不接受超限结果。",
+                  "type": "node",
+                  "parent": 175470,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175471,
+              "text": "查看已选用户和保存按钮",
+              "type": "sub",
+              "parent": "case_51977",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175471",
+                  "text": "已选内容按页面规则保留或回退到上限，不能提交超限配置。",
+                  "type": "node",
+                  "parent": 175471,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-051",
+      "operation": "update",
+      "remote_case_id": 51978,
+      "readback": {
+        "id": 51978,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "输入非法配置名称，检查校验反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:06",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:06",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175472,
+            "step": "在配置名称输入框输入批准规则之外的字符并触发失焦校验",
+            "desc": "在配置名称输入框输入批准规则之外的字符并触发失焦校验",
+            "expect": "页面显示明确非法字符提示或拒绝非法字符，输入框状态可判定。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175473,
+            "step": "点击“取消”关闭窗口",
+            "desc": "点击“取消”关闭窗口",
+            "expect": "非法输入未保存，列表配置不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51978,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51978",
+          "text": "输入非法配置名称，检查校验反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175472,
+              "text": "在配置名称输入框输入批准规则之外的字符并触发失焦校验",
+              "type": "sub",
+              "parent": "case_51978",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175472",
+                  "text": "页面显示明确非法字符提示或拒绝非法字符，输入框状态可判定。",
+                  "type": "node",
+                  "parent": 175472,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175473,
+              "text": "点击“取消”关闭窗口",
+              "type": "sub",
+              "parent": "case_51978",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175473",
+                  "text": "非法输入未保存，列表配置不变。",
+                  "type": "node",
+                  "parent": 175473,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-052",
+      "operation": "update",
+      "remote_case_id": 51979,
+      "readback": {
+        "id": 51979,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "输入最大长度配置名称，检查边界反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:07",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:09",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175474,
+            "step": "输入批准的最大长度配置名称并触发失焦校验",
+            "desc": "输入批准的最大长度配置名称并触发失焦校验",
+            "expect": "页面接受该长度或显示与长度规则一致的提示，输入值按页面规则保留。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175475,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "边界输入未保存，列表不产生修改。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51979,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51979",
+          "text": "输入最大长度配置名称，检查边界反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175474,
+              "text": "输入批准的最大长度配置名称并触发失焦校验",
+              "type": "sub",
+              "parent": "case_51979",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175474",
+                  "text": "页面接受该长度或显示与长度规则一致的提示，输入值按页面规则保留。",
+                  "type": "node",
+                  "parent": 175474,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175475,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51979",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175475",
+                  "text": "边界输入未保存，列表不产生修改。",
+                  "type": "node",
+                  "parent": 175475,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-053",
+      "operation": "update",
+      "remote_case_id": 51980,
+      "readback": {
+        "id": 51980,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "描述为空时，检查字段反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:09",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:11",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175476,
+            "step": "打开表单并保持描述为空，触发失焦或提交校验",
+            "desc": "打开表单并保持描述为空，触发失焦或提交校验",
+            "expect": "显示描述字段是否必填的明确结果；若允许为空，不显示错误提示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175477,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "表单关闭，未产生配置变更。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51980,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51980",
+          "text": "描述为空时，检查字段反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175476,
+              "text": "打开表单并保持描述为空，触发失焦或提交校验",
+              "type": "sub",
+              "parent": "case_51980",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175476",
+                  "text": "显示描述字段是否必填的明确结果；若允许为空，不显示错误提示。",
+                  "type": "node",
+                  "parent": 175476,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175477,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51980",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175477",
+                  "text": "表单关闭，未产生配置变更。",
+                  "type": "node",
+                  "parent": 175477,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-054",
+      "operation": "update",
+      "remote_case_id": 51981,
+      "readback": {
+        "id": 51981,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "输入最大长度描述，检查边界反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:10",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:13",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175478,
+            "step": "输入批准的最大长度描述并触发失焦校验",
+            "desc": "输入批准的最大长度描述并触发失焦校验",
+            "expect": "字符计数、截断或提示符合页面定义的最大长度规则。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175479,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "边界描述未保存，列表内容不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51981,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51981",
+          "text": "输入最大长度描述，检查边界反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175478,
+              "text": "输入批准的最大长度描述并触发失焦校验",
+              "type": "sub",
+              "parent": "case_51981",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175478",
+                  "text": "字符计数、截断或提示符合页面定义的最大长度规则。",
+                  "type": "node",
+                  "parent": 175478,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175479,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51981",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175479",
+                  "text": "边界描述未保存，列表内容不变。",
+                  "type": "node",
+                  "parent": 175479,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-055",
+      "operation": "update",
+      "remote_case_id": 51982,
+      "readback": {
+        "id": 51982,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "设置反向日期范围，检查范围校验",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:11",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:16",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175480,
+            "step": "将开始日期设置为晚于结束日期",
+            "desc": "将开始日期设置为晚于结束日期",
+            "expect": "两个日期控件分别回显所选日期，开始日期晚于结束日期。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175481,
+            "step": "点击“查询”",
+            "desc": "点击“查询”",
+            "expect": "显示明确日期范围校验提示，不更新为有效查询结果，原列表保持不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51982,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51982",
+          "text": "设置反向日期范围，检查范围校验",
+          "type": "root",
+          "children": [
+            {
+              "id": 175480,
+              "text": "将开始日期设置为晚于结束日期",
+              "type": "sub",
+              "parent": "case_51982",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175480",
+                  "text": "两个日期控件分别回显所选日期，开始日期晚于结束日期。",
+                  "type": "node",
+                  "parent": 175480,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175481,
+              "text": "点击“查询”",
+              "type": "sub",
+              "parent": "case_51982",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175481",
+                  "text": "显示明确日期范围校验提示，不更新为有效查询结果，原列表保持不变。",
+                  "type": "node",
+                  "parent": 175481,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-056",
+      "operation": "update",
+      "remote_case_id": 51983,
+      "readback": {
+        "id": 51983,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "删除未引用告警配置，检查列表移除",
+        "precondition": "前置准备：\n1、已登录系统，并具备告警配置的默认操作权限。\n2、已准备一条未被其他功能使用的告警配置。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:13",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:18",
+        "version": 5,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 10:11:18",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 5,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175482,
+            "step": "定位已确认未被其他功能使用的配置并点击“删除”，等待确认层",
+            "desc": "定位已确认未被其他功能使用的配置并点击“删除”，等待确认层",
+            "expect": "确认层显示目标配置名称或唯一标识以及“确定”“取消”按钮。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175483,
+            "step": "点击“确定”",
+            "desc": "点击“确定”",
+            "expect": "显示明确删除成功提示，确认层关闭。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175484,
+            "step": "刷新或重新查询列表",
+            "desc": "刷新或重新查询列表",
+            "expect": "目标配置不再显示，列表加载正常。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51983,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51983",
+          "text": "删除未引用告警配置，检查列表移除",
+          "type": "root",
+          "children": [
+            {
+              "id": 175482,
+              "text": "定位已确认未被其他功能使用的配置并点击“删除”，等待确认层",
+              "type": "sub",
+              "parent": "case_51983",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175482",
+                  "text": "确认层显示目标配置名称或唯一标识以及“确定”“取消”按钮。",
+                  "type": "node",
+                  "parent": 175482,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175483,
+              "text": "点击“确定”",
+              "type": "sub",
+              "parent": "case_51983",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175483",
+                  "text": "显示明确删除成功提示，确认层关闭。",
+                  "type": "node",
+                  "parent": 175483,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175484,
+              "text": "刷新或重新查询列表",
+              "type": "sub",
+              "parent": "case_51983",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175484",
+                  "text": "目标配置不再显示，列表加载正常。",
+                  "type": "node",
+                  "parent": 175484,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-058",
+      "operation": "update",
+      "remote_case_id": 51985,
+      "readback": {
+        "id": 51985,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "将开启配置改为停用，检查状态更新",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:16",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:21",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 10:17:01",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175485,
+            "step": "定位状态为“开启”的配置并点击“编辑”",
+            "desc": "定位状态为“开启”的配置并点击“编辑”",
+            "expect": "编辑窗口打开，当前状态显示“开启”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175486,
+            "step": "将状态改为“停用/关闭”并点击“保存”",
+            "desc": "将状态改为“停用/关闭”并点击“保存”",
+            "expect": "显示保存成功提示，窗口关闭或完成提交。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175487,
+            "step": "刷新或重新查询目标配置",
+            "desc": "刷新或重新查询目标配置",
+            "expect": "目标配置状态更新为“停用/关闭”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51985,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51985",
+          "text": "将开启配置改为停用，检查状态更新",
+          "type": "root",
+          "children": [
+            {
+              "id": 175485,
+              "text": "定位状态为“开启”的配置并点击“编辑”",
+              "type": "sub",
+              "parent": "case_51985",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175485",
+                  "text": "编辑窗口打开，当前状态显示“开启”。",
+                  "type": "node",
+                  "parent": 175485,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175486,
+              "text": "将状态改为“停用/关闭”并点击“保存”",
+              "type": "sub",
+              "parent": "case_51985",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175486",
+                  "text": "显示保存成功提示，窗口关闭或完成提交。",
+                  "type": "node",
+                  "parent": 175486,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175487,
+              "text": "刷新或重新查询目标配置",
+              "type": "sub",
+              "parent": "case_51985",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175487",
+                  "text": "目标配置状态更新为“停用/关闭”。",
+                  "type": "node",
+                  "parent": 175487,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-059",
+      "operation": "update",
+      "remote_case_id": 51986,
+      "readback": {
+        "id": 51986,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "将停用配置改为开启，检查状态更新",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 1,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:17",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:23",
+        "version": 4,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "zhumingyue",
+        "lastRunDate": "2026-11-02 10:19:29",
+        "lastRunResult": "pass",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 4,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175488,
+            "step": "定位状态为“停用”的配置并点击“编辑”",
+            "desc": "定位状态为“停用”的配置并点击“编辑”",
+            "expect": "编辑窗口打开，当前状态显示“停用”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175489,
+            "step": "将状态改为“启用/开启”并点击“保存”",
+            "desc": "将状态改为“启用/开启”并点击“保存”",
+            "expect": "显示保存成功提示，窗口关闭或完成提交。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175490,
+            "step": "刷新或重新查询目标配置",
+            "desc": "刷新或重新查询目标配置",
+            "expect": "目标配置状态更新为“启用/开启”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51986,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51986",
+          "text": "将停用配置改为开启，检查状态更新",
+          "type": "root",
+          "children": [
+            {
+              "id": 175488,
+              "text": "定位状态为“停用”的配置并点击“编辑”",
+              "type": "sub",
+              "parent": "case_51986",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175488",
+                  "text": "编辑窗口打开，当前状态显示“停用”。",
+                  "type": "node",
+                  "parent": 175488,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175489,
+              "text": "将状态改为“启用/开启”并点击“保存”",
+              "type": "sub",
+              "parent": "case_51986",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175489",
+                  "text": "显示保存成功提示，窗口关闭或完成提交。",
+                  "type": "node",
+                  "parent": 175489,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175490,
+              "text": "刷新或重新查询目标配置",
+              "type": "sub",
+              "parent": "case_51986",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175490",
+                  "text": "目标配置状态更新为“启用/开启”。",
+                  "type": "node",
+                  "parent": 175490,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-061",
+      "operation": "update",
+      "remote_case_id": 51988,
+      "readback": {
+        "id": 51988,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "选择多个接收用户，检查数量反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:21",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:25",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175492,
+            "step": "打开表单并选择多个批准接收用户",
+            "desc": "打开表单并选择多个批准接收用户",
+            "expect": "每个用户显示为已选标签或等价状态，数量与实际选择一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175493,
+            "step": "移除其中一个用户并关闭表单",
+            "desc": "移除其中一个用户并关闭表单",
+            "expect": "仅被移除用户取消选中，未提交配置变更。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51988,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51988",
+          "text": "选择多个接收用户，检查数量反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175492,
+              "text": "打开表单并选择多个批准接收用户",
+              "type": "sub",
+              "parent": "case_51988",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175492",
+                  "text": "每个用户显示为已选标签或等价状态，数量与实际选择一致。",
+                  "type": "node",
+                  "parent": 175492,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175493,
+              "text": "移除其中一个用户并关闭表单",
+              "type": "sub",
+              "parent": "case_51988",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175493",
+                  "text": "仅被移除用户取消选中，未提交配置变更。",
+                  "type": "node",
+                  "parent": 175493,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-062",
+      "operation": "update",
+      "remote_case_id": 51989,
+      "readback": {
+        "id": 51989,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "输入超长配置名称，检查校验反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:23",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:27",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175494,
+            "step": "在配置名称输入框输入超过批准最大长度的值并触发失焦校验",
+            "desc": "在配置名称输入框输入超过批准最大长度的值并触发失焦校验",
+            "expect": "页面拒绝超长值、截断超出内容或显示明确长度提示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175495,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "超长值未保存，列表配置不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51989,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51989",
+          "text": "输入超长配置名称，检查校验反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175494,
+              "text": "在配置名称输入框输入超过批准最大长度的值并触发失焦校验",
+              "type": "sub",
+              "parent": "case_51989",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175494",
+                  "text": "页面拒绝超长值、截断超出内容或显示明确长度提示。",
+                  "type": "node",
+                  "parent": 175494,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175495,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51989",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175495",
+                  "text": "超长值未保存，列表配置不变。",
+                  "type": "node",
+                  "parent": 175495,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-063",
+      "operation": "update",
+      "remote_case_id": 51990,
+      "readback": {
+        "id": 51990,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "输入单行描述，检查字段反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:25",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:29",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175496,
+            "step": "在描述输入框输入一条单行内容并触发失焦",
+            "desc": "在描述输入框输入一条单行内容并触发失焦",
+            "expect": "描述内容保留为单行，控件类型和格式符合页面定义。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175497,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "单行描述未保存，列表不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51990,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51990",
+          "text": "输入单行描述，检查字段反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175496,
+              "text": "在描述输入框输入一条单行内容并触发失焦",
+              "type": "sub",
+              "parent": "case_51990",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175496",
+                  "text": "描述内容保留为单行，控件类型和格式符合页面定义。",
+                  "type": "node",
+                  "parent": 175496,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175497,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51990",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175497",
+                  "text": "单行描述未保存，列表不变。",
+                  "type": "node",
+                  "parent": 175497,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-064",
+      "operation": "update",
+      "remote_case_id": 51991,
+      "readback": {
+        "id": 51991,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "输入换行描述，检查字段反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:29",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:32",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175498,
+            "step": "在描述输入框输入包含换行的内容并触发失焦",
+            "desc": "在描述输入框输入包含换行的内容并触发失焦",
+            "expect": "换行被保留、转换或拒绝，页面呈现结果与已确认格式规则一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175499,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "换行内容未保存，列表不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51991,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51991",
+          "text": "输入换行描述，检查字段反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175498,
+              "text": "在描述输入框输入包含换行的内容并触发失焦",
+              "type": "sub",
+              "parent": "case_51991",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175498",
+                  "text": "换行被保留、转换或拒绝，页面呈现结果与已确认格式规则一致。",
+                  "type": "node",
+                  "parent": 175498,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175499,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51991",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175499",
+                  "text": "换行内容未保存，列表不变。",
+                  "type": "node",
+                  "parent": 175499,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-065",
+      "operation": "update",
+      "remote_case_id": 51992,
+      "readback": {
+        "id": 51992,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "输入超长描述，检查校验反馈",
+        "precondition": "前置准备：\n1、使用已授权的脱敏数据和经批准的边界规则；不执行真实保存、删除或状态变更。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 3,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:53:30",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:34",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175500,
+            "step": "在描述输入框输入超过批准最大长度的内容并触发校验",
+            "desc": "在描述输入框输入超过批准最大长度的内容并触发校验",
+            "expect": "页面拒绝、截断或提示超长，错误信息明确指向描述字段。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175501,
+            "step": "点击“取消”",
+            "desc": "点击“取消”",
+            "expect": "超长描述未保存，列表内容不变。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51992,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51992",
+          "text": "输入超长描述，检查校验反馈",
+          "type": "root",
+          "children": [
+            {
+              "id": 175500,
+              "text": "在描述输入框输入超过批准最大长度的内容并触发校验",
+              "type": "sub",
+              "parent": "case_51992",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175500",
+                  "text": "页面拒绝、截断或提示超长，错误信息明确指向描述字段。",
+                  "type": "node",
+                  "parent": 175500,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175501,
+              "text": "点击“取消”",
+              "type": "sub",
+              "parent": "case_51992",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175501",
+                  "text": "超长描述未保存，列表内容不变。",
+                  "type": "node",
+                  "parent": 175501,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    },
+    {
+      "case_id": "TC-REQ-010-066",
+      "operation": "update",
+      "remote_case_id": 52121,
+      "readback": {
+        "id": 52121,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 748,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "删除后使用相同内容重新创建，检查重建结果",
+        "precondition": "前置准备：\n1、已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。\n2、已记录删除前表单字段：配置名称、描述、级别、状态、接收类型及接收用户；删除后使用相同值，不使用原系统生成的唯一标识。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+        "keywords": "",
+        "pri": 2,
+        "type": "other",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-27 11:19:14",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-11-03 09:12:36",
+        "version": 2,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 2,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 175502,
+            "step": "在隔离环境创建一条测试配置并记录名称、描述、级别、状态、接收类型和接收用户",
+            "desc": "在隔离环境创建一条测试配置并记录名称、描述、级别、状态、接收类型和接收用户",
+            "expect": "创建成功，回读字段与提交值一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 175503,
+            "step": "删除该配置并确认删除，刷新列表",
+            "desc": "删除该配置并确认删除，刷新列表",
+            "expect": "显示删除成功提示，目标配置不再出现在列表中。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 175504,
+            "step": "再次打开新增窗口，填写删除前记录的相同字段并提交",
+            "desc": "再次打开新增窗口，填写删除前记录的相同字段并提交",
+            "expect": "新配置保存成功，不出现重复或残留数据冲突。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 175505,
+            "step": "刷新列表并回读新配置",
+            "desc": "刷新列表并回读新配置",
+            "expect": "字段与删除前记录一致；按批准方案清理测试数据。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 52121,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_52121",
+          "text": "删除后使用相同内容重新创建，检查重建结果",
+          "type": "root",
+          "children": [
+            {
+              "id": 175502,
+              "text": "在隔离环境创建一条测试配置并记录名称、描述、级别、状态、接收类型和接收用户",
+              "type": "sub",
+              "parent": "case_52121",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175502",
+                  "text": "创建成功，回读字段与提交值一致。",
+                  "type": "node",
+                  "parent": 175502,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175503,
+              "text": "删除该配置并确认删除，刷新列表",
+              "type": "sub",
+              "parent": "case_52121",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175503",
+                  "text": "显示删除成功提示，目标配置不再出现在列表中。",
+                  "type": "node",
+                  "parent": 175503,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175504,
+              "text": "再次打开新增窗口，填写删除前记录的相同字段并提交",
+              "type": "sub",
+              "parent": "case_52121",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175504",
+                  "text": "新配置保存成功，不出现重复或残留数据冲突。",
+                  "type": "node",
+                  "parent": 175504,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 175505,
+              "text": "刷新列表并回读新配置",
+              "type": "sub",
+              "parent": "case_52121",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_175505",
+                  "text": "字段与删除前记录一致；按批准方案清理测试数据。",
+                  "type": "node",
+                  "parent": 175505,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "defects": [],
+      "status": "validated",
+      "registry": "registered"
+    }
+  ],
+  "source_hashes_after": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-010.yaml": "2d509ecf15be312ffea64d6726d7df739925ad78434f59b18ae4782e41fdfcd9",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-010.yaml": "d387109bc48dea8bd84d41a98dd57432a3f5dd8f4056454159498dee8af8152b",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\模块拆分清单.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\禅道模块id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  }
+}

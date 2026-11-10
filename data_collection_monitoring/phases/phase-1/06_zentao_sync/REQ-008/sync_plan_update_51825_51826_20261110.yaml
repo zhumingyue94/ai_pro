@@ -1,0 +1,25 @@
+req_id: REQ-008
+product_id: 8
+project_id: 46
+module_id: 746
+operation: update
+source_yaml: 04_testcases/TC_REQ-008.yaml
+source_markdown: 04_testcases/TC_REQ-008.md
+case_ids:
+  - source_case_id: TC-REQ-008-003
+    zentao_case_id: 51825
+    operation: update
+    change: 开启 -> 启用
+    status: validated
+  - source_case_id: TC-REQ-008-004
+    zentao_case_id: 51826
+    operation: update
+    change: 关闭 -> 停用
+    status: validated
+source_hashes_after:
+  yaml: 85e467655394996e7db271a4b0afea24a602683b3ad811dffd691c7c3a3afcf0
+  markdown: 28699f7b241acc653ed3070a545be9b08fb9ee66dd872d4fd832a4cdee160761
+policy: ../../../.agents/rules/zentao-sync-default-rule.md
+execution_evidence:
+  - 06_zentao_sync/REQ-008/update_51825_51826_20261110.json
+  - 06_zentao_sync/REQ-008/update_51826_20261110.json

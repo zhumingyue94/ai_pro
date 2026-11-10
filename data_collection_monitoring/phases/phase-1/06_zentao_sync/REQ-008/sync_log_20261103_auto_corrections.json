@@ -1,0 +1,24 @@
+{
+  "req_id": "REQ-008",
+  "operation": "update",
+  "status": "blocked",
+  "command_entrypoint": "scripts/zentao_create_testcase.py",
+  "execution_mode": "real",
+  "product_id": 8,
+  "project_id": 46,
+  "module_id": 746,
+  "case_ids": ["TC-REQ-008-044", "TC-REQ-008-045", "TC-REQ-008-046", "TC-REQ-008-050", "TC-REQ-008-052", "TC-REQ-008-053", "TC-REQ-008-054", "TC-REQ-008-055"],
+  "zentao_case_ids": [51866, 51867, 51868, 51872, 51874, 51875, 51876, 51877],
+  "attempts": [
+    {
+      "case_id": "TC-REQ-008-044",
+      "zentao_case_id": 51866,
+      "status": "blocked",
+      "reason": "module reference files are missing: 01_requirements/禅道模块id.md",
+      "remote_write_executed": false,
+      "fallback_create_or_delete": false
+    }
+  ],
+  "remaining_cases": "not_attempted_after_first_failure",
+  "created_at": "2026-11-03"
+}

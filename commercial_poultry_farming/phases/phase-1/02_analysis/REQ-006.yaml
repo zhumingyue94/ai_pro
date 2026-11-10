@@ -1,0 +1,375 @@
+id: REQ-006
+title: 出栏结算
+source_inputs:
+- 01_requirements/商品禽养殖管理系统_需求说明书.docx（§3.6）
+- 01_requirements/模块拆分清单.md（REQ-006）
+- 原型 http://43.143.148.114:18885/biopark-poultry/portal → 商品禽养殖管理系统 → /biopark-poultry/production/slaughter-settlement
+- 旧分析 02_analysis/REQ-006.yaml（v1）合并保留公式/跨模块/风险口径
+- 01_requirements/需求变动.md（2026-7-21：结算日期与补栏计划出栏日期脱钩）
+zentao_module_id: 655
+page_url: /biopark-poultry/production/slaughter-settlement
+module_complexity: query_report
+testpoint_template: 查询报表
+summary: '养殖管理下的出栏结算页。数据由财务系统推送（云星瀚食品结算单、成品入库），页面无新增/编辑。 按栋舍养殖批次、出栏月份查询；列表展示结算指标与自动计算列（均重/饲养天数=出栏日龄/日增重/成活率/料肉比/欧指）； 工具栏/行内「详情」只读查看结算头信息与「成品入库明细」子表；支持导出。
+  结算日期取自结算表推送字段，与补栏计划出栏日期无关；饲养天数/出栏日龄=结算日期−补栏日期； 总料量取补栏日～结算日饲养日志日吃料累计；不强制结算只数≤上苗数量。
+
+  '
+in_scope:
+- 查询（栋舍养殖批次、出栏月份）；查询 / 重置
+- 结算列表（含计算列与关联列）
+- 详情弹窗（只读：结算指标 + 成品入库明细）
+- 导出
+out_scope:
+- 云星瀚/财务同步机制本体与接口联调
+- 批次复盘（REQ-012）、批次统计（REQ-008）等本次不测报表
+- 结算审核/审批流（需求未提及）
+- 新增/编辑结算登记及成品入库明细增删（财务推送、无入口；将来手工登记异常处理不在本版）
+- 将来手工 vs 同步冲突优先级（当前无手工入口）
+business_rules:
+- 均重(kg) = 结算重量(kg) / 结算只数
+- 饲养天数 = 结算日期 - 补栏日期
+- 日增重(g) = 均重(kg) × 1000 / 饲养天数
+- 成活率(%) = 结算只数 / 上苗数量 × 100%
+- 料肉比 = 总料量(kg) / 结算重量(kg)
+- 欧指 = (均重 × 成活率) / (料肉比 × 出栏日龄) × 10000
+- 出栏日龄 = 结算日期 − 补栏日期（与列表「饲养天数」同一量；结算日期取自出栏结算表推送字段）
+- 饲养天数 = 结算日期 − 补栏日期（结算日期取自出栏结算表，与补栏计划出栏日期无关）
+- 结算日期 = 出栏结算表格中的结算日期（外系统推送），与补栏计划的出栏日期无关，二者可不一致
+- 上苗数量关联 REQ-003 补栏确认初始进苗数量
+- 总料量(kg) = 补栏日期～结算日期（结算表推送字段）区间内 REQ-005 饲养日志日吃料量累计
+- 数据来源：财务系统推送（云星瀚食品结算单、成品入库）；页面无新增/编辑手工登记
+- 不强制校验结算只数 ≤ 上苗数量（结算只数可大于上苗数量；成活率可 >100%）
+- 成品入库明细列：产品编号、产品名称、规格、数量、单价（详情内只读展示）
+- 将来若开通手工登记异常处理：以手工点击落库数据为主（当前无入口，不测）
+roles:
+- 养殖场长/养殖主管（报表查看）
+interfaces:
+- 依赖 REQ-003：栋舍养殖批次、上苗数量、补栏日期（饲养天数/出栏日龄）
+- 依赖 REQ-005：总料量(kg)（补栏日～结算日累计吃料）
+- 流向 REQ-008 / REQ-012（本次不测）
+- 外部：财务/云星瀚系统推送（食品结算单、成品入库）
+risks:
+- 样例详情中部分关联字段（如上苗数量、均重、饲养天数）可能为空，需区分「未同步」与「计算失败」
+- 将来手工登记入口若上线，须重新 Analyze 并上调模板；冲突规则以手工数据为主
+open_questions: []
+clarifications:
+- topic: 新增/编辑入口
+  resolved: 出栏结算由财务系统推送，无新增/编辑功能
+- topic: 出栏日龄 vs 饲养天数
+  resolved: 出栏日龄 = 饲养天数 = 结算日期 − 补栏日期；结算日期取自结算表推送字段，与补栏计划出栏日期无关（2026-7-21）
+- topic: 总料量取数时点
+  resolved: 补栏日期～结算日期（结算表字段）累计的日吃料量（关联饲养日志 REQ-005）
+- topic: 结算只数 vs 上苗数量
+  resolved: 不强制校验结算只数 ≤ 上苗数量
+- topic: 同步与手工登记冲突
+  resolved: 当前无手工登记；以后异常手工登记时以手工点击数据为主
+test_scope_suggestion:
+- P1：列表计算列（均重/饲养天数=出栏日龄/日增重/成活率/料肉比/欧指）对照公式
+- P1：详情打开与只读展示（头信息 + 成品入库明细列）
+- P1：总料量按补栏日～结算日累计吃料对账
+- P1：结算日期可与补栏计划出栏日期不一致仍正常展示
+- P2：查询（批次 × 出栏月份）与重置；总料量为空时料肉比/欧指为空；结算只数>上苗数量仍展示
+- P3：导出、分页、单元格省略
+- 禁止：生成「新增/编辑结算」「成品入库增删行」测点（财务推送、无入口）
+prototype_verification:
+  prototype_capture_status: captured
+  captured_at: '2026-07-16'
+  page_shell:
+    menu_path: 养殖管理 → 出栏结算
+    list_title: 数据列表
+    toolbar_buttons:
+    - 导出
+    row_actions:
+    - 详情
+    query_actions:
+    - 查询
+    - 重置
+    absent_buttons_vs_docx:
+    - 新增
+    - 编辑
+    notes: 全页可见按钮仅 查询/重置/导出/详情；无新增结算、无行内编辑
+  query_field_specs:
+  - name: 栋舍养殖批次
+    control: select
+    editable: true
+    required: false
+    source: 选择批次
+    notes: placeholder「请选择养殖批次」；来源 REQ-003
+  - name: 出栏月份
+    control: select
+    editable: true
+    required: false
+    notes: 月份选择器（UI 为 month picker，schema 记为 select）
+  table_column_specs:
+  - name: 序号
+    order: 1
+  - name: 栋舍
+    order: 2
+  - name: 栋舍养殖批次
+    order: 3
+  - name: 结算日期
+    order: 4
+    notes: 需求标注手工录入；当前页只读展示（同步数据）
+  - name: 结算只数
+    order: 5
+  - name: 结算重量(kg)
+    order: 6
+  - name: 上苗数量
+    order: 7
+    notes: 关联 REQ-003
+  - name: 均重(kg)
+    order: 8
+    notes: compute = 结算重量/结算只数
+  - name: 总料量(kg)
+    order: 9
+    notes: 关联 REQ-005；补栏日～出栏日（=结算日）日吃料累计
+  - name: 饲养天数
+    order: 10
+    notes: compute = 结算日期-补栏日期；与出栏日龄同一量
+  - name: 日增重(g)
+    order: 11
+    notes: compute = 均重×1000/饲养天数
+  - name: 成活率
+    order: 12
+    notes: compute = 结算只数/上苗数量×100%；可不强制≤100%
+  - name: 料肉比
+    order: 13
+    notes: compute = 总料量/结算重量
+  - name: 欧指
+    order: 14
+    notes: compute = (均重×成活率)/(料肉比×出栏日龄)×10000；出栏日龄=饲养天数
+  - name: 操作
+    order: 15
+    notes: 行内「详情」
+  buttons:
+  - 查询
+  - 重置
+  - 导出
+  - 详情
+  button_semantics:
+    详情:
+      action: open_dialog
+      dialog: 结算详情
+      summary: 只读打开结算详情，含成品入库明细；无编辑控件
+    导出:
+      action: export
+      summary: 按当前查询条件导出结算列表
+  dialogs:
+    结算详情: []
+  nested_dialogs:
+  - id: 结算详情
+    prototype_capture_status: captured
+    trigger: 行内「详情」（工具栏无独立详情按钮；列表操作列）
+    title: 结算详情
+    buttons: []
+    field_specs:
+    - name: 栋舍
+      control: readonly
+      editable: false
+    - name: 栋舍养殖批次
+      control: readonly
+      editable: false
+    - name: 结算日期
+      control: readonly
+      editable: false
+    - name: 结算只数
+      control: readonly
+      editable: false
+      notes: 展示带单位「只」
+    - name: 结算重量(kg)
+      control: readonly
+      editable: false
+    - name: 上苗数量
+      control: readonly
+      editable: false
+      notes: 样例可能为空
+    - name: 均重(kg)
+      control: readonly
+      editable: false
+    - name: 总料量(kg)
+      control: readonly
+      editable: false
+    - name: 饲养天数
+      control: readonly
+      editable: false
+      notes: 展示可带「天」
+    - name: 日增重(g)
+      control: readonly
+      editable: false
+    - name: 成活率
+      control: readonly
+      editable: false
+    - name: 料肉比
+      control: readonly
+      editable: false
+    - name: 欧指
+      control: readonly
+      editable: false
+    notes: 无可编辑表单；关闭靠遮罩/Esc（无取消按钮）
+  - id: 新增结算登记
+    type: input
+    prototype_capture_status: not_present_on_page
+    trigger: 需求 3.6.5「新增」（原型无按钮）
+    title: 结算登记（需求推断，未实核）
+    buttons:
+    - 取消
+    - 确定
+    field_specs: []
+    notes: '需求：选择栋舍和批次，录入结算数据。2026-07-16 原型无入口，不推断表单字段； 不得作为 TestPoint 写路径依据。入口出现后须重新 Analyze。
+
+      '
+  - id: 编辑结算登记
+    type: input
+    prototype_capture_status: not_present_on_page
+    trigger: 需求 3.6.5「编辑」（原型无按钮）
+    title: 结算登记（需求推断，未实核）
+    buttons:
+    - 取消
+    - 确定
+    field_specs: []
+    notes: 同新增；原型未捕获
+  sub_tables:
+  - id: 成品入库明细
+    parent: 结算详情（只读）
+    columns:
+    - 序号
+    - 产品编号
+    - 产品名称
+    - 规格
+    - 数量
+    - 单价
+    row_ops: []
+    topology_rules:
+    - 详情内只读展示；无增删行控件
+    - 样例行如 CP-001 鸡胸肉 1kg/袋 等
+    - 需求写新增/编辑弹窗内可增删——当前原型无该写路径
+  computed_fields:
+  - name: 均重(kg)
+    formula: 结算重量(kg)/结算只数
+    editable: false
+  - name: 饲养天数
+    formula: 结算日期-补栏日期
+    editable: false
+  - name: 日增重(g)
+    formula: 均重(kg)×1000/饲养天数
+    editable: false
+  - name: 成活率(%)
+    formula: 结算只数/上苗数量×100%
+    editable: false
+  - name: 料肉比
+    formula: 总料量(kg)/结算重量(kg)
+    editable: false
+  - name: 欧指
+    formula: (均重×成活率)/(料肉比×出栏日龄)×10000
+    editable: false
+    notes: 出栏日龄 = 饲养天数 = 结算表结算日期 − 补栏日期（与计划出栏日期无关）
+  - name: 出栏日龄
+    formula: 结算日期−补栏日期
+    editable: false
+    notes: 与饲养天数同一量；结算日期取自结算表推送字段；用于欧指分母
+  save_validations: []
+  ui_components:
+  - pagination
+  - cell_ellipsis_tooltip
+  - export
+  role_coverage: skip
+  cross_module_refs:
+  - field: 上苗数量
+    source_module: REQ-003
+    dialog: 无选择弹窗，按批次自动关联
+    columns: []
+    filters: []
+    search_fields: []
+    external_data: []
+  - field: 总料量(kg)
+    source_module: REQ-005
+    dialog: 无选择弹窗，按批次关联饲养日志
+    notes: 补栏日期～结算日期（结算表推送字段）日吃料累计
+    columns: []
+    filters: []
+    search_fields: []
+    external_data: []
+  detail_table_specs:
+  - name: 成品入库明细
+    parent: 结算详情（只读）
+    columns:
+    - 产品编号
+    - 产品名称
+    - 规格
+    - 数量
+    - 单价
+    row_rules:
+    - 需求未写唯一性约束
+    date_range: ''
+    compute_formula: ''
+    data_source: 自动同步云星瀚-成品入库
+    switch_dimension: ''
+trace:
+  story: null
+  req: REQ-006
+  tp: null
+  project: 商品禽养殖
+  version: 3
+  status: draft
+  merged_from: v2 + 2026-07-20 风险/待澄清产品澄清同步
+design_artifacts:
+  decision_tables:
+  - name: 列表查询组合
+    conditions:
+    - 栋舍养殖批次
+    - 出栏月份
+    rules:
+    - when: 仅批次
+      then: 过滤该批次结算
+    - when: 仅月份
+      then: 过滤该月出栏结算
+    - when: 批次+月份
+      then: AND
+    - when: 无匹配
+      then: 空列表
+  bva_fields: []
+  combinatorial_blocks:
+  - name: 列表查询
+    pict_eligible: false
+    parameters:
+      栋舍养殖批次:
+      - 有数据批次
+      - 无数据批次
+      - 空
+      出栏月份:
+      - 有数据月
+      - 空月
+      - 空
+    constraints: []
+    notes: 仅 2 参数，不强制 PICT
+docx_vs_prototype_deltas:
+- item: 功能操作
+  docx_3_6_5:
+  - 查询/重置
+  - 新增
+  - 编辑
+  - 详情
+  - 导出
+  prototype_2026_07_16:
+  - 查询/重置
+  - 详情
+  - 导出
+  gap: 新增、编辑入口缺失
+- item: 成品入库明细写路径
+  docx: 随结算登记子表增删
+  prototype: 仅详情只读表
+- item: 模块复杂度
+  step0_estimate: compound_form / 复合表单CRUD审核
+  analyze_v2: query_report / 查询报表（以原型可测写路径为准）
+docx_gap:
+- 新增结算登记弹窗字段与校验未实核（无入口）
+- 编辑结算登记弹窗字段与校验未实核（无入口）
+- 成品入库明细在写路径下的产品编号控件类型（选择器 vs 文本）未实核
+complexity_note: 步骤0预估 compound_form；因原型无新增/编辑/子表增删，Analyze 下调为 query_report / 查询报表。入口恢复后须重新 Analyze 并上调模板。
+permission_scope:
+  owner_req: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-006
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  summary: 权限测点归 REQ-000；本模块 role_coverage=skip，不写菜单/接口权限灌水测点

@@ -1,0 +1,14 @@
+{
+  "status": "blocked",
+  "operation": "restore",
+  "project_id": 46,
+  "product_id": 8,
+  "module_id": 734,
+  "source_case_ids": ["TC-REQ-005-004", "TC-REQ-005-005", "TC-REQ-005-006"],
+  "requested_zentao_case_ids": [51689, 51690, 51691],
+  "records": [
+    {"zentao_case_id": 51689, "status": "blocked_invalid_registered_id", "reason": "Case does not exist"}
+  ],
+  "not_executed": [51690, 51691],
+  "policy": "首条恢复校验失败即停止；未删除重建，未创建替代用例；注册表未保留未经回读验证的ID。"
+}

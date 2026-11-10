@@ -1,0 +1,503 @@
+id: REQ-005
+title: 饲养日志
+source_inputs:
+- 01_requirements/商品禽养殖管理系统_需求说明书.docx（§3.5）
+- 01_requirements/模块拆分清单.md（REQ-005）
+- 原型 http://43.143.148.114:18885/biopark-poultry/portal → 商品禽养殖管理系统 → /biopark-poultry/production/feeding-log
+- 旧分析 02_analysis/REQ-005.yaml（v1）合并保留计算列/跨模块/风险口径
+- 01_requirements/需求变动.md（饲养日志：定时生成/补历史/存栏递推/统计截止：死淘+吃料+饮水）
+- 01_requirements/需求变动.md（2026-7-21：有结算单的栋舍养殖批次不再定时生成日志）
+- output/TP_REQ-005_饲养日志_调整.xmind（人工测点校准）
+zentao_module_id: 654
+page_url: /biopark-poultry/production/feeding-log
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: 养殖管理下的饲养日志页。日志由定时任务按栋舍段区自动生成（无「新增记录」「删除」）；按养殖日期范围/栋舍/段区查询；树形列表按「养殖日期+栋舍」父行汇总、段区子行展开，行内仅编辑。「编辑饲养日志」头区批次/栋舍/段区/日期只读；死亡/淘汰从死淘巡检同步不可改；转运体重/当日饮水/吃料量可由机器读取并可修改；饲料表名称/配比/单位只读。「注释说明」展示欧指/料肉比/水料比公式；「日报表导出」按查询条件导出。
+in_scope:
+- 查询区：养殖日期（范围，默认当日）、栋舍、段区；查询 / 重置
+- 树形列表：父行日期+栋舍汇总，子行段区；展开/折叠；分页
+- 工具栏：注释说明、日报表导出（无新增记录）
+- 行操作：仅编辑（无删除）
+- 定时任务生成饲养日志（有批次的栋+段；发货状态已发货/已签收等，见 generation_rules）
+- 编辑饲养日志弹窗（头区只读 + 取消/确定；死淘只读同步；机读字段可改）
+- 饲料吃料量子表（饲料名称/配比/吃料量/单位；总吃料量展示）
+- 注释说明（公式只读）
+- 日报表导出
+out_scope:
+- 移动端录入交互本体
+- 手工「新增记录」/「删除」入口与流程（已移除）
+- 养殖标准明细维护（REQ-007）
+- 批次统计（REQ-008）、养殖日报（REQ-009）等生产报表（本次不测）
+- 出栏结算自身结算逻辑（REQ-006）
+- 列表不再展示的 V1.1 已移除累计列
+business_rules:
+- 日志由定时任务生成：有批次的栋舍+段区才生成；无批次段区不生成
+- 发货状态为已发货、已签收才生成日志；待发货/发货中不生成；变为已发货当日补齐补栏日期～今日历史日龄日志（见需求变动）
+- 已有出栏结算单的栋舍养殖批次（补栏计划已完成）→ 定时任务不再生成新日志（2026-7-21）
+- 已发货时 0 日龄存栏数取发货总量（不论是否确认）
+- 补历史日死淘取对应日巡检实际值，无巡检则死淘=0
+- 存栏递推：0日龄存栏=上苗数；n日龄存栏=前一日存栏−前一日死淘
+- 统计截止（统一）：死亡数量、淘汰数量、日吃料量、日饮水量均以本条日志生成时间为界；生成时间之后的巡检或机读推送计入次日日志
+- 日死淘数量 = 日死亡数量 + 日淘汰数量
+- 存栏只数 = 上苗量 - 累计死淘（列表展示口径；补历史日另按日龄递推）
+- 成活率(%) = 存栏只数 / 上苗量
+- 料肉比 = 只累计吃料量 / 转运体重；转运体重为空则料肉比显示空；为0则显示0或空且不报错
+- 日吃料量(kg) = 各料号吃料量之和（弹窗「总吃料量」）
+- 只日吃料量(g) = 日吃料量(kg) / 存栏只数 × 1000
+- 只日饮水量(ml) = 日饮水量(L) / 存栏只数 × 1000
+- 饲料名称/配比按审核通过排程的三段养殖标准-日龄采食计划带出；吃料量机读可改；单位 kg；不可手动增删行
+- 编辑历史日志改吃料量会影响日累计采食量，进而影响料肉比
+- 关联补栏计划状态为「已完成」（已收到出栏结算单）时，饲养日志不允许编辑：子行「编辑」不可用（禁用或隐藏）
+- 关联补栏计划为「执行中」/「待执行」（未结算）时，饲养日志仍可编辑保存
+- 无删除入口
+- V1.1：列表无累计死淘/累计吃料/累计饮水等列
+roles:
+- 养殖技术人员（录入、栋舍日常饲养管理）
+- 养殖场长/养殖主管（死淘异常处理、数据查看）
+interfaces:
+- 依赖 REQ-002 补栏计划：计划状态「已完成」=已收到出栏结算单；已完成时锁定本模块编辑
+- 依赖 REQ-003 补栏确认：栋舍养殖批次、上苗量/发货量（存栏）、生成触发相关发货状态
+- 依赖 REQ-004 死淘巡检：日死亡/淘汰同步到日志（只读）
+- 饲料名称、配比：排程系统审核通过排程 → 三段养殖标准日龄采食计划
+- 转运体重/当日饮水/吃料量：机器/接口推送可读，编辑可改（计划未完成时）
+- 数据被 REQ-006 出栏结算消费（累计吃料等）
+- 数据被 REQ-008/REQ-009 等报表消费（本次不测）
+risks:
+- 定时任务触发时点与「生成时刻」统计窗口需与环境配置一致
+- 料肉比体重=0 时展示 0 或空，产品展示口径需与实现一致
+- 空与 0 在死亡/淘汰/饮水/吃料上的展示（空或者0）需与实现一致
+- 已完成锁定依赖出栏结算单回写补栏计划状态；状态延迟可能导致短暂仍可编
+open_questions:
+- 死亡/淘汰/饮水/吃料「空」与「0」在列表上的最终展示是否统一为单一口径
+- 转运体重=0 时料肉比显示 0 还是空（测点保留双可选时需产品钉死）
+test_scope_suggestion:
+- P1：定时生成可见；编辑打开/保存；树汇总；日死淘公式；巡检同步一致；日吃料汇总；补栏计划已完成时编辑不可用；有结算单批次不再定时生成
+- P2：查询组合/重置；机读字段可改与空零；饲料表；料肉比公式与空体重；执行中计划仍可编辑；并发编辑
+- P3：注释说明；日报表导出；分页；省略号；小数位一致
+- 禁止：生成「新增记录」「删除」入口测点；禁止把死亡/淘汰写成可编辑必填清空拦截
+- 禁止：保留「结算后仍可编辑」旧口径测点
+prototype_verification:
+  prototype_capture_status: captured
+  captured_at: '2026-07-16'
+  page_shell:
+    menu_path: 养殖管理 → 饲养日志
+    list_title: 数据列表
+    toolbar_buttons:
+    - 注释说明
+    - 日报表导出
+    row_actions:
+    - 编辑
+    query_actions:
+    - 查询
+    - 重置
+    tree_list: true
+    tree_notes: 父行=养殖日期+栋舍汇总；子行段区明细，仅含编辑
+    removed_actions:
+    - 新增记录
+    - 删除
+  query_field_specs:
+  - name: 养殖日期
+    control: input
+    editable: true
+    required: false
+    validation: 日期范围选择；默认当日
+    notes: 原型为 date range（起止「至」）；schema control 记 input
+  - name: 栋舍
+    control: select
+    editable: true
+    required: false
+    notes: placeholder「请选择栋舍」；1-4栋等
+  - name: 段区
+    control: select
+    editable: true
+    required: false
+    notes: placeholder「请选择段区」；1段/2段/3段
+  table_column_specs:
+  - name: 养殖日期
+    order: 1
+  - name: 栋舍
+    order: 2
+  - name: 段区
+    order: 3
+    notes: 仅子行有值；父行空
+  - name: 栋舍养殖批次
+    order: 4
+    notes: 子行展示；来源 REQ-003
+  - name: 日龄
+    order: 5
+  - name: 日死亡数量
+    order: 6
+  - name: 日淘汰数量
+    order: 7
+  - name: 日死淘数量
+    order: 8
+    notes: compute = 日死亡+日淘汰
+  - name: 存栏只数
+    order: 9
+    notes: compute = 上苗量-累计死淘
+  - name: 成活率(%)
+    order: 10
+    notes: compute = 存栏/上苗
+  - name: 料肉比
+    order: 11
+    notes: 需求=累计吃料/体重；注释说明见 note_formulas
+  - name: 日吃料量(kg)
+    order: 12
+  - name: 只日吃料量(g)
+    order: 13
+  - name: 日饮水量(L)
+    order: 14
+  - name: 只日饮水量(ml)
+    order: 15
+  - name: 转运体重(g)
+    order: 16
+  - name: 情况说明
+    order: 17
+  - name: 操作
+    order: 18
+    notes: 子行 编辑/删除；父行无操作
+  buttons:
+  - 查询
+  - 重置
+  - 注释说明
+  - 日报表导出
+  - 编辑
+  button_semantics:
+    编辑:
+      action: open_dialog
+      dialog: 编辑饲养日志
+      summary: '打开该（日期+栋舍+段区）记录编辑弹窗；头区只读；死淘只读；机读字段可改。 当关联补栏计划状态为「已完成」（已收到出栏结算单）时，子行「编辑」不可用（禁用或隐藏）。
+
+        '
+    注释说明:
+      action: show_info
+      summary: 只读展示欧指/料肉比/水料比公式
+    日报表导出:
+      action: export
+      summary: 按当前查询条件导出
+  edit_lock_rules:
+  - when: 关联补栏计划状态=已完成（已收到出栏结算单）
+    effect: 子行「编辑」不可用（禁用或隐藏）；不允许进入可保存的编辑态
+  - when: 关联补栏计划状态=执行中或待执行（未结算）
+    effect: 子行「编辑」可用；可保存成功
+  dialogs:
+    编辑饲养日志:
+    - 取消
+    - 确定
+    注释说明: []
+  note_formulas:
+  - name: 欧指
+    formula: 欧指 = [(体重 × 成活率) / (料肉比 × 出栏日龄)] × 10000
+  - name: 料肉比
+    formula: 料肉比 = 单只累计采食量(g) / 只当前体重(g)
+  - name: 水料比
+    formula: 水料比 = 单只日饮水量(ml) / 单只日采食量(g)
+  nested_dialogs:
+  - id: 编辑饲养日志
+    type: input
+    prototype_capture_status: captured
+    trigger: 行内「编辑」
+    title: 编辑饲养日志
+    buttons:
+    - 取消
+    - 确定
+    header_fields:
+    - name: 养殖批次
+      editable: false
+      notes: 文案「养殖批次：PC-…」
+    - name: 栋舍
+      editable: false
+    - name: 段区
+      editable: false
+    - name: 养殖日期
+      editable: false
+    field_specs:
+    - name: 死亡数量
+      control: number
+      editable: false
+      required: true
+      validation: 非负整数 min=0
+      source: sync_from_死淘巡检
+      notes: 从死淘巡检同步，编辑不可改；可为空
+    - name: 淘汰数量
+      control: number
+      editable: false
+      required: false
+      validation: 非负整数 min=0
+      source: sync_from_死淘巡检
+      notes: 从死淘巡检同步，编辑不可改；可为空
+    - name: 转运体重(g)
+      control: number
+      editable: true
+      required: false
+      validation: 非负数
+      source: device_or_api
+      notes: 机器读取可修改；可为空；小数位与保存显示一致
+    - name: 当日饮水量(L)
+      control: number
+      editable: true
+      required: false
+      validation: 非负数
+      source: device_or_api
+      notes: 机器读取可修改；可为空；小数位与保存显示一致
+    - name: 情况说明
+      control: textarea
+      editable: true
+      required: false
+    - name: 总吃料量
+      control: computed
+      editable: false
+      compute_rule: 各行吃料量之和
+    on_confirm: 保存修改回填列表
+    on_cancel: 关闭不保存
+    notes: 无分段 Tab；死淘只读；饲料吃料量机读可改；按钮取消/确定
+  - id: 注释说明
+    prototype_capture_status: captured
+    trigger: 工具栏「注释说明」
+    title: 注释说明
+    buttons: []
+    notes: 纯展示三公式（非 input/reference 写路径弹窗），见 note_formulas
+  sub_tables:
+  - id: 饲料吃料量表格
+    parent: 新增饲养日志 / 编辑饲养日志
+    columns:
+    - 饲料名称
+    - 配比(%)
+    - 吃料量(kg)
+    - 单位
+    row_ops: []
+    topology_rules:
+    - 行由日龄匹配采食方案自动带出，不可手动增删行
+    - 饲料名称、配比(%)、单位只读；吃料量(kg)可编辑
+    - 展示「已选 N 种饲料」与「总吃料量」
+    - 需求 TABLE 未写「单位」列；以原型四列为准
+  computed_fields:
+  - name: 日死淘数量
+    formula: 日死亡数量+日淘汰数量
+    editable: false
+  - name: 存栏只数
+    formula: 上苗量-累计死淘
+    editable: false
+  - name: 成活率(%)
+    formula: 存栏只数/上苗量
+    editable: false
+  - name: 料肉比
+    formula: 只累计吃料量/转运体重；体重空→料肉比空；体重0→0或空不报错
+    editable: false
+  - name: 日吃料量(kg)
+    formula: 各料号吃料量之和
+    editable: false
+  - name: 只日吃料量(g)
+    formula: 日吃料量(kg)/存栏只数×1000
+    editable: false
+  - name: 只日饮水量(ml)
+    formula: 日饮水量(L)/存栏只数×1000
+    editable: false
+  save_validations:
+  - rule: 转运体重(g)若填写须非负；空与0区分（空不视为0）
+    when:
+    - 确定
+  - rule: 当日饮水量(L)若填写须非负
+    when:
+    - 确定
+  - rule: 吃料量(kg)若填写须非负
+    when:
+    - 确定
+  ui_components:
+  - pagination
+  - cell_ellipsis_tooltip
+  - export
+  tree_list_notes: 树形展开/折叠（schema ui_components 无独立枚举，记于此）
+  role_coverage: skip
+  concurrency_checks:
+  - action: 编辑饲养日志保存
+    check: 记录仍存在且未被他人更新
+    concurrent_event: 他人已改同条
+    result: 保存失败并提示，刷新后重编
+  cross_module_refs:
+  - field: 死亡数量、淘汰数量
+    source_module: REQ-004
+    dialog: 无选择弹窗，编辑内只读同步
+    filters:
+    - 仅统计日志创建时间之前的巡检明细
+    search_fields: []
+    external_data: []
+  - field: 饲料名称、配比(%)
+    source_module: 排程/养殖标准日龄采食
+    dialog: 无独立选择弹窗，随日龄自动带出
+    filters:
+    - 审核通过排程
+    - 按当前日龄匹配
+    search_fields: []
+    external_data:
+    - 三段养殖标准-日龄采食计划
+  - field: 栋舍养殖批次 / 上苗量
+    source_module: REQ-003
+    dialog: 列表展示/头区只读
+    filters: []
+    search_fields: []
+    external_data: []
+trace:
+  story: null
+  req: REQ-005
+  tp: null
+  project: 商品禽养殖
+  version: 5
+  status: draft
+  sync_note: 需求变动增量：发货存栏/补历史/递推/统计截止（死淘+吃料+饮水）
+  merged_from: v2 + 需求变动定时生成 + 人工调整版测点回写
+design_artifacts:
+  decision_tables:
+  - name: 列表查询组合
+    conditions:
+    - 养殖日期范围
+    - 栋舍
+    - 段区
+    rules:
+    - when: 仅日期范围
+      then: 按日期过滤，父行按日期+栋舍分组
+    - when: 仅栋舍
+      then: 该栋舍全部日期
+    - when: 日期+栋舍+段区
+      then: AND，仅匹配段区子行
+    - when: 无匹配
+      then: 空列表
+  - name: 新增分段提交
+    conditions:
+    - 当前Tab
+    - 点击按钮
+    rules:
+    - when: Tab=1段 且 提交 1段 数据
+      then: 仅持久化 1 段
+    - when: Tab=2段 且 提交 2段 数据
+      then: 仅持久化 2 段
+    - when: Tab=3段 且 提交 3段 数据
+      then: 仅持久化 3 段
+    - when: 点取消
+      then: 不保存关闭
+  bva_fields:
+  - field: 死亡数量
+    type: integer
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 1
+  - field: 淘汰数量
+    type: integer
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 1
+  - field: 转运体重(g)
+    type: number
+    min: 0
+    step: 10
+    boundaries:
+    - -10
+    - 0
+    - 10
+  - field: 当日饮水量(L)
+    type: number
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 1
+  - field: 吃料量(kg)
+    type: number
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 0.1
+  combinatorial_blocks:
+  - name: 列表查询
+    pict_eligible: true
+    parameters:
+      养殖日期范围:
+      - 默认当日
+      - 历史区间
+      - 空
+      栋舍:
+      - 有数据栋
+      - 无数据栋
+      - 空
+      段区:
+      - 1段
+      - 2段
+      - 3段
+      - 空
+    constraints: []
+docx_vs_prototype_deltas:
+- item: 新增弹窗标题
+  docx: 新增记录（操作名）
+  prototype: 弹窗标题「新增饲养日志」；工具栏仍「新增记录」
+- item: 新增确认按钮
+  docx: 未写具体文案（旧分析误写「确定」）
+  prototype: 「提交 1段/2段/3段 数据」+「取消」
+- item: 饲料表列
+  docx: 饲料名称/料号、配比(%)、吃料量(kg)
+  prototype: 另有「单位」列 +「总吃料量」展示
+- item: 编辑头区
+  docx: 未强调只读
+  prototype: 养殖批次/栋舍/段区/养殖日期只读展示
+- item: 列表累计列
+  docx_v1.0: 含累计列
+  docx_v1.1_and_prototype: 已移除，列表无累计列
+complexity_note: 步骤0预估 standard_crud；因多段 Tab + 饲料子表 + 分按钮提交，Analyze 上调为 compound_form / 复合表单CRUD审核
+generation_rules:
+  mode: scheduled
+  toolbar_no_add: true
+  row_no_delete: true
+  rules:
+  - 有批次的栋+段才生成日志；无批次段区不生成
+  - 补栏确认发货状态已发货/已签收才生成；待发货/发货中不生成
+  - 变为已发货当日可补从补栏日期0日龄至当日的历史日志
+  - 已有出栏结算单的栋舍养殖批次（补栏计划已完成）不再定时生成新日志
+  - 已发货时 0 日龄存栏=发货总量（不论是否确认）
+  - 变已发货当日补齐从补栏日期0日龄至当日的历史日志；补历史死淘按对应日巡检，无则0
+  - 存栏递推：0日龄=上苗数；n日龄=前一日存栏−前一日死淘
+  - 死亡/淘汰/日吃料量/日饮水量统计截止到本次生成时刻，之后数据计入次日
+field_sources:
+- fields:
+  - 死亡数量
+  - 淘汰数量
+  source: sync_from_REQ-004
+  editable: false
+  cutoff: before_log_created_at
+  notes: ；超时巡检计入次日日志
+- fields:
+  - 转运体重(g)
+  - 当日饮水量(L)
+  - 吃料量(kg)
+  source: device_or_api
+  editable: true
+  cutoff: before_log_created_at
+  notes: ；超时机读推送计入次日日志
+- fields:
+  - 情况说明
+  source: manual
+  editable: true
+- fields:
+  - 饲料名称
+  - 配比(%)
+  - 单位
+  source: schedule_feeding_plan
+  editable: false
+stat_cutoff:
+  anchor: log_created_at
+  fields:
+  - 死亡数量
+  - 淘汰数量
+  - 日吃料量
+  - 日饮水量
+  rule: 仅统计本条日志生成时间之前的数据；超时计入次日日志
+permission_scope:
+  owner_req: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-005
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  summary: 权限测点归 REQ-000；本模块 role_coverage=skip，不写菜单/接口权限灌水测点

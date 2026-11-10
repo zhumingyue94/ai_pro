@@ -1,0 +1,2683 @@
+req_id: REQ-003
+module: 补栏确认
+zentao_module_id: 652
+zentao_product_id: 5
+zentao_project_id: 20
+page_url: /biopark-poultry/production/chick-sign
+trace:
+  req: REQ-003
+  tp: TP_REQ-003
+  project: 商品禽养殖
+  version: 1
+  status: draft
+  source_review: 04_testpoint_review/REV_REQ-003.yaml
+  gate_note: 测点评审已通过；本阶段未跑用例自检/未写 CSV；对齐需求变动后测点
+  tp_version: 3
+summary:
+  case_count: 92
+  priority_counts:
+    P1: 13
+    P2: 55
+    P3: 23
+    P4: 1
+  feature_counts:
+    查询: 10
+    表格: 18
+    确认: 55
+    明细: 1
+    导出: 6
+  type_counts:
+    feature: 90
+    auto: 2
+  auto_counts:
+    auto: 88
+    'no': 4
+cases:
+- id: TC-003-01
+  tp_id: TP-003-01
+  title: 查询区包含「上苗日期」「状态」条件控件
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：查询区可见上苗日期与状态两个可操作条件
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-01
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48274
+  auto: 'no'
+- id: TC-003-02
+  tp_id: TP-003-02
+  title: 「上苗日期」为日期选择控件
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：上苗日期控件可打开日期面板并选中日期
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-02
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48275
+  auto: auto
+- id: TC-003-03
+  tp_id: TP-003-03
+  title: 选择上苗日期后点击「查询」→ 列表仅展示该日期补栏确认记录
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条上苗日期等于所选日期；无匹配时列表为空态；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-03
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48276
+  auto: auto
+- id: TC-003-04
+  tp_id: TP-003-04
+  title: 选择确认状态后点击「查询」→ 列表仅展示该状态记录
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条确认状态等于所选状态；无匹配时列表为空态；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-04
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48277
+  auto: auto
+- id: TC-003-05
+  tp_id: TP-003-05
+  title: 选择上苗日期+确认状态后点击「查询」→ 按 AND 组合过滤
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表同时满足日期与状态；无匹配时列表为空态；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-05
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48278
+  auto: auto
+- id: TC-003-06
+  tp_id: TP-003-06
+  title: 确认状态下拉选项含「待发货」「待确认」「部分确认」「已完成」
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：状态下拉可选值与四态枚举一致且无缺失冗余；须可见：「待发货」、「待确认」、「部分确认」、「已完成」、已完成、待发货、待确认、部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-06
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48279
+  auto: auto
+- id: TC-003-07
+  tp_id: TP-003-07
+  title: 设置条件后必须点击「查询」才刷新列表结果
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：仅改条件未点查询时列表不随条件即时替换为新过滤结果
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-07
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48280
+  auto: auto
+- id: TC-003-08
+  tp_id: TP-003-08
+  title: 组合条件无匹配数据时列表呈现空态
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：无匹配记录时列表为空或不展示业务数据行，页面不报错
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-08
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48281
+  auto: auto
+- id: TC-003-09
+  tp_id: TP-003-09
+  title: 进入「补栏确认」页 → 查询区状态可按默认值发起查询
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：进入页面后可立即点击查询并得到列表响应（含空列表）；须可见：「补栏确认」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-09
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48282
+  auto: auto
+- id: TC-003-10
+  tp_id: TP-003-10
+  title: 切换不同确认状态再查询 → 列表结果随状态切换
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：先后查询两种不同状态，列表内容分别对应该状态集合
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-10
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48283
+  auto: auto
+- id: TC-003-11
+  tp_id: TP-003-11
+  title: 列表展示「栋舍养殖批次」列（补栏确认生成时已有值，待发货行亦非空）
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：列存在；新生成/待发货记录批次非空，格式符合 PC-yyyy-栋舍编号-xx；须可见：「栋舍养殖批次」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-11
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48284
+  auto: auto
+- id: TC-003-89
+  tp_id: TP-003-89
+  title: 到达计划补栏日期前，系统已提前生成对应补栏确认行
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：对应补栏计划在补栏日期到达前，补栏确认列表已可见该行
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-89
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48285
+  auto: auto
+- id: TC-003-90
+  tp_id: TP-003-90
+  title: 新生成补栏确认行：计划编号/上苗日期/栋舍/品种齐全，确认状态默认待发货，批次已按 PC-yyyy-栋舍编号-xx 分配
+  type: feature
+  priority: P1
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：新生成行主数据齐全；确认状态=待发货；栋舍养殖批次非空且格式正确
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-90
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48286
+  auto: auto
+- id: TC-003-12
+  tp_id: TP-003-12
+  title: 计划编号/上苗日期/栋舍/品种与补栏计划主数据一致
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：抽样行与 REQ-002/排程侧同计划编号主数据一致
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-12
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48287
+  auto: auto
+- id: TC-003-13
+  tp_id: TP-003-13
+  title: 发货单=待发货且无已确认明细的记录 → 确认状态为「待发货」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：满足前置的行确认状态文案为待发货
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-13
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48288
+  auto: auto
+- id: TC-003-14
+  tp_id: TP-003-14
+  title: 发货单=发货中且无已确认明细 → 确认状态为「待确认」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：满足前置的行确认状态为待确认；场景标识=TC-003-14
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-14
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48289
+  auto: auto
+- id: TC-003-15
+  tp_id: TP-003-15
+  title: 发货单=发货中，存在已确认明细且未全部确认 → 确认状态为「部分确认」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：满足前置的行确认状态为部分确认；场景标识=TC-003-15
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-15
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48290
+  auto: auto
+- id: TC-003-16
+  tp_id: TP-003-16
+  title: 发货单=已发货且无已确认明细 → 确认状态为「待确认」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：满足前置的行确认状态为待确认；场景标识=TC-003-16
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-16
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48291
+  auto: auto
+- id: TC-003-17
+  tp_id: TP-003-17
+  title: 发货单=已发货，存在已确认明细且未全部确认 → 确认状态为「部分确认」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：满足前置的行确认状态为部分确认；场景标识=TC-003-17
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-17
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48292
+  auto: auto
+- id: TC-003-18
+  tp_id: TP-003-18
+  title: 发货单=已发货且明细全部确认 → 确认状态为「已完成」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：满足前置的行确认状态为已完成
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-18
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48293
+  auto: auto
+- id: TC-003-19
+  tp_id: TP-003-19
+  title: 确认状态为「已完成」→发货单=已签收
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：确认状态为已完成的计划，对应的发货单状态更新为已签收
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-19
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48294
+  auto: auto
+- id: TC-003-20
+  tp_id: TP-003-20
+  title: 列表「上苗数量」「苗重(g)」展示上孵计划明细中已确认的数量和平均苗重
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：列表「上苗数量」「苗重(g)」展示上孵计划明细中已确认的数量和平均苗重
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-20
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48295
+  auto: auto
+- id: TC-003-21
+  tp_id: TP-003-21
+  title: 行内操作列提供「确认」入口
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：待确认或部分确认等可操作行可见行内确认按钮
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-21
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48296
+  auto: auto
+- id: TC-003-22
+  tp_id: TP-003-22
+  title: 生成补栏确认后「栋舍养殖批次」按 PC-yyyy-栋舍编号-xx 格式展示。年份+栋舍编号一样，编号从01开始依次递增
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：生成后（含待发货）批次编号匹配 PC-四位年-栋舍编号-序号 模式；须可见：「栋舍养殖批次」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-22
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48297
+  auto: auto
+- id: TC-003-23
+  tp_id: TP-003-23
+  title: 列表支持分页且翻页后数据切换
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  - 数据量足以分页
+  steps:
+  - action: 操作列表分页控件
+    expected: 页面展示满足：多页时翻页列表内容变化且页码状态正确
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-23
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48298
+  auto: 'no'
+- id: TC-003-24
+  tp_id: TP-003-24
+  title: 超长单元格省略展示并可悬浮查看完整内容
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  - 存在超长文本单元格
+  steps:
+  - action: 定位超长单元格并鼠标悬浮
+    expected: 页面展示满足：超长字段显示省略号，悬浮或展开可见全文
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-24
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48299
+  auto: 'no'
+- id: TC-003-25
+  tp_id: TP-003-25
+  title: 列表序号列按页内顺序展示
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：序号列存在且当前页顺序自洽
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-25
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48300
+  auto: auto
+- id: TC-003-26
+  tp_id: TP-003-26
+  title: 无数据权限或条件过严时列表空态友好
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可核对的业务数据
+  steps:
+  - action: 在列表中定位目标行并核对对应列/状态/汇总
+    expected: 页面展示满足：空列表时无前端崩溃，可区分加载失败与空数据（按实际文案）
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-26
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48301
+  auto: auto
+- id: TC-003-27
+  tp_id: TP-003-27
+  title: 点击行内「确认」→ 打开标题为「补栏确认」的弹窗
+  type: feature
+  priority: P1
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：弹窗打开且标题精确为补栏确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-27
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48302
+  auto: auto
+- id: TC-003-28
+  tp_id: TP-003-28
+  title: 补栏确认弹窗顶部显示补栏计划编号，且与主表「计划编号」一致
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：补栏确认弹窗顶部显示补栏计划编号，且与主表「计划编号」一致
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-28
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48303
+  auto: auto
+- id: TC-003-29
+  tp_id: TP-003-29
+  title: 补栏确认弹窗顶部的发货状态只有：发货中、已发货、已签收
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：补栏确认弹窗顶部的发货状态只有：发货中、已发货、已签收
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-29
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48304
+  auto: auto
+- id: TC-003-30
+  tp_id: TP-003-30
+  title: 补栏计划号对应的孵化端发货单只发了一部分，发货状态显示：发货中
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：补栏计划号对应的孵化端发货单只发了一部分，发货状态显示：发货中
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-30
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48305
+  auto: auto
+- id: TC-003-31
+  tp_id: TP-003-31
+  title: 补栏计划号对应的孵化端发货单全部发送完毕，发货状态显示：已发货
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：补栏计划号对应的孵化端发货单全部发送完毕，发货状态显示：已发货
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-31
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48306
+  auto: auto
+- id: TC-003-32
+  tp_id: TP-003-32
+  title: 发货状态是已发货，并且上孵计划明细全部确认完毕，发货状态变成已签收
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：发货状态是已发货，并且上孵计划明细全部确认完毕，发货状态变成已签收
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-32
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48307
+  auto: auto
+- id: TC-003-33
+  tp_id: TP-003-33
+  title: 补栏确认弹窗展示左侧「上孵计划明细」列表
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：弹窗左侧可见上孵计划明细列表区域
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-33
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48308
+  auto: auto
+- id: TC-003-34
+  tp_id: TP-003-34
+  title: 「上孵计划明细」右侧显示上孵计划明细总数，统计数据正确
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：「上孵计划明细」右侧显示上孵计划明细总数，统计数据正确
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-34
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48309
+  auto: auto
+- id: TC-003-35
+  tp_id: TP-003-35
+  title: 「上孵计划明细」右侧显示说明图标，点击图标显示文字“发货状态来源孵化发货单：发货中、已发货、已签收。若上孵计划明细左侧列表为空发货状态显示：待发货，其他情况直接读取发货单对应的状态。当发货单状态为已完成&& 上孵计划明细左侧列表全部确认后更新列表状态为已完成，其他情况更新列表状态为部分确认”
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 核对通过：「上孵计划明细」右侧显示说明图标，点击图标显示文字“发货状态来源孵化发货单：发货中、已发货、已签收。若上孵计划明细左侧列表为空发货状态显示：待发货，其他情况直接读取发货单对应的状态。当发货单状态为已完…；须可见：已完成、部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-35
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48310
+  auto: auto
+- id: TC-003-36
+  tp_id: TP-003-36
+  title: 补栏确认弹窗展示右侧「笼位明细」列表
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：弹窗右侧可见笼位明细列表区域
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-36
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48311
+  auto: auto
+- id: TC-003-37
+  tp_id: TP-003-37
+  title: 左侧上孵计划明细含「上孵计划明细号」「数量」「苗重」「确认按钮」列
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：左表四列表头齐全；须可见：「上孵计划明细号」、「数量」、「苗重」、「确认按钮」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-37
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48312
+  auto: auto
+- id: TC-003-38
+  tp_id: TP-003-38
+  title: 左侧上孵计划明细列表顶部显示已确认数量统计，格式是：已确认/明细总数（例如 3/6）
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：左侧上孵计划明细列表顶部显示已确认数量统计，格式是：已确认/明细总数（例如 3/6）
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-38
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48313
+  auto: auto
+- id: TC-003-39
+  tp_id: TP-003-39
+  title: 左侧明细确认状态仅为「待确认」或「已确认」
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：左表各行确认状态属于待确认/已确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-39
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48314
+  auto: auto
+- id: TC-003-40
+  tp_id: TP-003-40
+  title: 右侧笼位明细含「序号」「笼子列号」「笼子层号」「数量」列
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：右表三列表头齐全；须可见：「序号」、「笼子列号」、「笼子层号」、「数量」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-40
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48315
+  auto: auto
+- id: TC-003-41
+  tp_id: TP-003-41
+  title: 右侧笼位明细含表格上孵显示上孵计划号，与左侧上孵计划明细列表的计划号一致
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：右侧笼位明细含表格上孵显示上孵计划号，与左侧上孵计划明细列表的计划号一致
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-41
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48316
+  auto: auto
+- id: TC-003-42
+  tp_id: TP-003-42
+  title: 右侧笼位明细表格顶部显示笼位数量，例如：2条笼位
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：右侧笼位明细表格顶部显示笼位数量，例如：2条笼位
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-42
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48317
+  auto: auto
+- id: TC-003-43
+  tp_id: TP-003-43
+  title: 右侧笼位明细为只读展示 → 不可编辑保存
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：右表字段无编辑落库控件
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-43
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48318
+  auto: auto
+- id: TC-003-44
+  tp_id: TP-003-44
+  title: 选中左侧不同上孵明细 → 右侧笼位明细随关联切换
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：切换左行后右表内容对应该明细的苗放位置数据
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-44
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48319
+  auto: auto
+- id: TC-003-45
+  tp_id: TP-003-45
+  title: 左侧明细数据由发货明细提供 → 用户不可新增明细行
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：弹窗内无新增上孵计划明细行入口
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-45
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48320
+  auto: auto
+- id: TC-003-46
+  tp_id: TP-003-46
+  title: 左表数量/苗重与孵化发货明细一致
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：抽样左行数量、苗重与孵化侧对应发货明细一致
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-46
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48321
+  auto: auto
+- id: TC-003-47
+  tp_id: TP-003-47
+  title: 右表列号/层号/数量与孵化苗放位置一致
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：抽样右行与孵化位置明细一致
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-47
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48322
+  auto: auto
+- id: TC-003-48
+  tp_id: TP-003-48
+  title: 右表的数量列加起来应该等于左侧对应上孵计划明细的数量
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：右表的数量列加起来应该等于左侧对应上孵计划明细的数量
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-48
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48323
+  auto: auto
+- id: TC-003-49
+  tp_id: TP-003-49
+  title: 对左侧「待确认」明细执行单个「确认」→ 该明细变为「已确认」
+  type: feature
+  priority: P1
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：操作后目标明细确认状态=已确认；须可见：「待确认」、待确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-49
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48324
+  auto: auto
+- id: TC-003-50
+  tp_id: TP-003-50
+  title: 左侧「已确认」明细背景色变成绿色，序号变为蓝底白字，「上孵计划明细号」「数量」「苗重」的数值文字变成绿色
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：左侧「已确认」明细背景色变成绿色，序号变为蓝底白字，「上孵计划明细号」「数量」「苗重」的数值文字变成绿色
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-50
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48325
+  auto: auto
+- id: TC-003-51
+  tp_id: TP-003-51
+  title: 批量确认勾选多条待确认明细 → 所选明细均变为「已确认」
+  type: feature
+  priority: P1
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗并勾选目标上孵明细
+    expected: 目标明细已勾选
+  - action: 点击弹窗底部「批量确认」
+    expected: 页面展示满足：批量确认后勾选行全部为已确认；须可见：待确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-51
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48326
+  auto: auto
+- id: TC-003-52
+  tp_id: TP-003-52
+  title: 首次确认任意一条上孵明细 → 主表确认状态变为「部分确认」
+  type: feature
+  priority: P1
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：此前无已确认明细时，确认一条后主表为部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-52
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48327
+  auto: auto
+- id: TC-003-53
+  tp_id: TP-003-53
+  title: 首次确认任意一条上孵明细 → 不新建栋舍养殖批次（批次已在生成时分配）
+  type: feature
+  priority: P1
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：确认前后主表栋舍养殖批次号不变且非空；仅确认状态变化
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-53
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48328
+  auto: auto
+- id: TC-003-54
+  tp_id: TP-003-54
+  title: 发货单已发货且全部明细确认完成 → 主表确认状态变为「已完成」
+  type: feature
+  priority: P1
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：全部确认后列表/主表状态=已完成
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-54
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48329
+  auto: auto
+- id: TC-003-55
+  tp_id: TP-003-55
+  title: 主表变为「已完成」后可观测向孵化端回推签收（已签收）结果
+  type: feature
+  priority: P4
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：完成后孵化侧发货状态变为已签收或本系统有等价完成回写可观测点；须可见：「已完成」、已完成
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-55
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48330
+  auto: 'no'
+- id: TC-003-56
+  tp_id: TP-003-56
+  title: 发货中且尚无已确认明细时打开弹窗 → 可对明细执行确认
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：左表存在待确认明细且单个/批量确认可用
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-56
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48331
+  auto: auto
+- id: TC-003-57
+  tp_id: TP-003-57
+  title: 已发货且尚无已确认明细时首次单个确认 → 主表变为部分确认
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：确认后主表部分确认；批次号保持生成时分配值
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-57
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48332
+  auto: auto
+- id: TC-003-58
+  tp_id: TP-003-58
+  title: 部分确认状态下继续单个确认其他明细 → 主表仍为「部分确认」直至全部完成
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：未全部确认前主表保持部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-58
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48333
+  auto: auto
+- id: TC-003-59
+  tp_id: TP-003-59
+  title: 部分确认状态下批量确认剩余明细（发货单已发货）→ 主表变为「已完成」
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗并勾选目标上孵明细
+    expected: 目标明细已勾选
+  - action: 点击弹窗底部「批量确认」
+    expected: 页面展示满足：批量确认完成后主表已完成；须可见：部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-59
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48334
+  auto: auto
+- id: TC-003-60
+  tp_id: TP-003-60
+  title: 多波次上孵明细场景下批次号在生成确认单时已唯一分配，确认过程不另生成
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：多波明细场景下全程仅一个批次号且格式正确，确认不另生成
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-60
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48335
+  auto: auto
+- id: TC-003-61
+  tp_id: TP-003-61
+  title: 多波次场景下逐条确认不同波明细 → 状态由部分确认直至已完成
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：逐波确认过程状态符合推导，最终在已发货且全部确认后为已完成；须可见：部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-61
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48336
+  auto: auto
+- id: TC-003-62
+  tp_id: TP-003-62
+  title: 弹窗内点击「取消」→ 关闭且未确认明细保持待确认、主表状态不变
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开补栏确认弹窗
+    expected: 确认弹窗打开，可见上孵计划明细与笼位明细
+  - action: 点击弹窗「取消」
+    expected: 页面展示满足：取消后弹窗关闭；未点确认的明细仍待确认；主表确认状态与批次不变
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-62
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48337
+  auto: auto
+- id: TC-003-63
+  tp_id: TP-003-63
+  title: 勾选的明细后点击弹窗底部「批量确认」按钮，勾选的明细变成已确认状态，未勾选的明细保持原本状态不变
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗并勾选目标上孵明细
+    expected: 目标明细已勾选
+  - action: 点击弹窗底部「批量确认」
+    expected: 页面展示满足：勾选的明细后点击弹窗底部「批量确认」按钮，勾选的明细变成已确认状态，未勾选的明细保持原本状态不变
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-63
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48338
+  auto: auto
+- id: TC-003-64
+  tp_id: TP-003-64
+  title: 已确认明细不可再次被确认为待确认（只读或按钮失效）
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：已确认行无再次确认生效路径或确认无状态回退；须可见：待确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-64
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48339
+  auto: auto
+- id: TC-003-65
+  tp_id: TP-003-65
+  title: 发货单=已签收对应记录 → 确认操作为只读观察不改变状态
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：已签收/已完成记录确认操作不产生新的状态变更
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-65
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48340
+  auto: auto
+- id: TC-003-66
+  tp_id: TP-003-66
+  title: 发货中且本端明细已全部确认时 → 主表状态为部分确认
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：按 demand 规则核对主表状态字面量，若与预期不符记入缺陷而非改需求；须可见：部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-66
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48341
+  auto: auto
+- id: TC-003-67
+  tp_id: TP-003-67
+  title: 批量确认一次覆盖多条上孵计划明细
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗并勾选目标上孵明细
+    expected: 目标明细已勾选
+  - action: 点击弹窗底部「批量确认」
+    expected: 页面展示满足：一次批量操作使不少于两条待确认明细变为已确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-67
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48342
+  auto: auto
+- id: TC-003-68
+  tp_id: TP-003-68
+  title: 左侧空明细（异常发货数据）时确认不导致前端崩溃
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：无明细或空列表时操作有明确提示或禁用，页面不白屏
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-68
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48343
+  auto: auto
+- id: TC-003-69
+  tp_id: TP-003-69
+  title: 右表随左表无选中时为空或默认首行关联数据（与原型一致）
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：打开弹窗时右表展示规则与原型一致且可复核
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-69
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48344
+  auto: auto
+- id: TC-003-70
+  tp_id: TP-003-70
+  title: 同一计划确认过程中继续确认其他明细 → 栋舍养殖批次号保持生成时分配值，不另生成新号
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：第二次及以后确认时栋舍养殖批次号保持生成时分配值
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-70
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48345
+  auto: auto
+- id: TC-003-71
+  tp_id: TP-003-71
+  title: 确认后关闭弹窗返回列表 → 行状态与批次即时刷新可见
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：返回列表后无需手工清缓存即可看到更新后的确认状态与批次
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-71
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48346
+  auto: auto
+- id: TC-003-72
+  tp_id: TP-003-72
+  title: 部分确认行再次打开弹窗 → 已确认与待确认明细区分展示
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：左表同时可见已确认与待确认行且与上次操作结果一致；须可见：部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-72
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48347
+  auto: auto
+- id: TC-003-73
+  tp_id: TP-003-73
+  title: 「已发货+全部确认」完成路径支持单个确认凑齐最后一条
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：仅剩一条待确认时用单个确认可到已完成；须可见：「已发货+全部确认」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-73
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48348
+  auto: auto
+- id: TC-003-74
+  tp_id: TP-003-74
+  title: 「已发货+全部确认」完成路径支持批量确认一次性完成
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗并勾选目标上孵明细
+    expected: 目标明细已勾选
+  - action: 点击弹窗底部「批量确认」
+    expected: 页面展示满足：多条待确认时批量确认可直接到已完成；须可见：「已发货+全部确认」
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-74
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48349
+  auto: auto
+- id: TC-003-75
+  tp_id: TP-003-75
+  title: 确认状态非法回退：已完成不可因界面操作变回待确认
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：已完成记录无操作路径使其变为待确认/部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-75
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48350
+  auto: auto
+- id: TC-003-76
+  tp_id: TP-003-76
+  title: 弹窗内确认状态文案与列表主表口径一致（部分确认/已完成）
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：操作前后列表状态与规则口径一致，无同义混用导致歧义；须可见：已完成、部分确认
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-76
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48351
+  auto: auto
+- id: TC-003-77
+  tp_id: TP-003-77
+  title: 多波+批量确认剩余明细 → 主表更新符合全部确认规则
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗并勾选目标上孵明细
+    expected: 目标明细已勾选
+  - action: 点击弹窗底部「批量确认」
+    expected: 页面展示满足：多波批量确认后明细全已确认，已发货时主表已完成
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-77
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48352
+  auto: auto
+- id: TC-003-78
+  tp_id: TP-003-78
+  title: 养殖技术人员角色可执行确认（本模块操作账号可用性）
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：使用规定测试账号可打开确认并成功确认一条明细（非多角色矩阵）
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-78
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48353
+  auto: auto
+- id: TC-003-79
+  tp_id: TP-003-79
+  title: 确认弹窗关闭后未提交的勾选状态不回写列表
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击行内或工具栏「确认」
+    expected: 页面展示满足：取消关闭后列表无半成品勾选状态残留影响
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-79
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48354
+  auto: auto
+- id: TC-003-80
+  tp_id: TP-003-80
+  title: 左表「数量」汇总与发货侧对应合计量可对账
+  type: feature
+  priority: P3
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 打开补栏确认弹窗并完成与本条场景对应的确认动作
+    expected: 页面展示满足：抽样计划左表明细数量合计与发货主信息数量口径一致或可解释
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-80
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48355
+  auto: auto
+- id: TC-003-81
+  tp_id: TP-003-81
+  title: 确认入口在「待发货」行按产品规则隐藏或点按后提示
+  type: feature
+  priority: P2
+  feature: 确认
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在符合本条发货单状态与明细确认情况的补栏确认记录
+  steps:
+  - action: 点击「确认」打开弹窗
+    expected: 弹窗打开且左侧可见上孵计划明细
+  - action: 对目标明细执行确认（单个或按场景批量）
+    expected: 页面展示满足：待发货行确认入口隐藏或点击后有明确不可确认反馈
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-81
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48356
+  auto: auto
+- id: TC-003-82
+  tp_id: TP-003-82
+  title: 已完成主表记录只显示「明细」按钮，点击「明细」按钮打开确认相关入口 → 仅可查看或按产品现状不可回改明细
+  type: feature
+  priority: P3
+  feature: 明细
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可查看明细的补栏确认记录
+  steps:
+  - action: 点击工具栏或行内「明细」入口
+    expected: 页面展示满足：不虚构允许重开编辑；记录观察结果：只读或不可再次确认落库；须可见：「明细」、「明细」、已完成
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-82
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48357
+  auto: auto
+- id: TC-003-83
+  tp_id: TP-003-83
+  title: 点击「导出」→ 如果有勾选行，按勾选导出列表文件
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 当前查询有可导出数据
+  steps:
+  - action: 点击工具栏「导出」并打开下载文件
+    expected: 页面展示满足：点击「导出」→ 如果有勾选行，按勾选导出列表文件
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-83
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48358
+  auto: auto
+- id: TC-003-84
+  tp_id: TP-003-84
+  title: 点击「导出」→ 无勾选行，按当前查询条件导出列表文件
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 当前查询有可导出数据
+  steps:
+  - action: 点击工具栏「导出」并打开下载文件
+    expected: 页面展示满足：导出成功且文件数据范围与当前查询过滤结果一致
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-84
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48359
+  auto: auto
+- id: TC-003-85
+  tp_id: TP-003-85
+  title: 无勾选行并且无查询过滤时导出覆盖当前列表可见范围（全量或当前页按产品）
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 当前查询有可导出数据
+  steps:
+  - action: 点击工具栏「导出」并打开下载文件
+    expected: 页面展示满足：导出行集合与产品约定一致且含关键列
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-85
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48360
+  auto: auto
+- id: TC-003-86
+  tp_id: TP-003-86
+  title: 导出文件中包含页面表格全部的列（除了操作列）
+  type: feature
+  priority: P2
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 当前查询有可导出数据
+  steps:
+  - action: 点击工具栏「导出」并打开下载文件
+    expected: 页面展示满足：导出文件中包含页面表格全部的列（除了操作列）
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-86
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48361
+  auto: auto
+- id: TC-003-87
+  tp_id: TP-003-87
+  title: 查询无数据时导出为空文件或友好提示
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 当前查询结果为空
+  steps:
+  - action: 点击工具栏「导出」
+    expected: 页面展示满足：空结果导出不导致前端异常
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-87
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48362
+  auto: auto
+- id: TC-003-88
+  tp_id: TP-003-88
+  title: 导出过程中页面有完成反馈（下载开始或成功提示）
+  type: feature
+  priority: P3
+  feature: 导出
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 当前查询有可导出数据
+  steps:
+  - action: 点击工具栏「导出」并打开下载文件
+    expected: 页面展示满足：用户可感知导出已触发/完成
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  trace:
+    story: null
+    req: REQ-003
+    tp: TP-003-88
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-003.yaml
+  zentao_case_id: 48363
+  auto: auto
+- id: TC-003-91
+  tp_id: null
+  feature: null
+  title: 选择栋舍养殖批次后点击「查询」→ 列表仅展示该状态记录
+  type: auto
+  priority: P1
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条记录的栋舍批次等于所选栋舍养殖批次
+  trace:
+    story: null
+    req: REQ-003
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48812
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  auto: auto
+  zentao_case_id: 48812
+- id: TC-003-92
+  tp_id: null
+  feature: null
+  title: 选择栋舍后点击「查询」→ 列表仅展示该状态记录
+  type: auto
+  priority: P1
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏确认」页面（/biopark-poultry/production/chick-sign）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条记录的栋舍等于所选栋舍
+  trace:
+    story: null
+    req: REQ-003
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48813
+  test_data:
+    page_url: /biopark-poultry/production/chick-sign
+    data_prefix: AUTO测试_勿用_
+    module: 补栏确认
+    zentao_module_id: 652
+  auto: auto
+  zentao_case_id: 48813

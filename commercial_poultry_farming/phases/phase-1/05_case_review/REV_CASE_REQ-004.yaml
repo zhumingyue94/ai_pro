@@ -1,0 +1,33 @@
+req_id: REQ-004
+gate_passed: true
+exec_check:
+  command: python scripts/check_testcase_executability.py --project D:\01workspace\AItestcase\mycursorpro\本仓库\projects\商品禽养殖
+    --req REQ-004
+  errors: 0
+  warnings: 49
+  exit_code: 0
+checks:
+- id: CG1
+  name: exec_check_errors
+  passed: true
+- id: CG5
+  name: tp_coverage
+  passed: true
+issues: []
+csv_path: 05_case_review/004_死淘巡检_测试用例.csv
+human:
+  rewrite_approved: true
+  rewrite_note: 用户确认后按评审意见改写并复评通过
+rewrite:
+  round: 1
+  max_rounds: 3
+  status: done
+  history:
+  - round: 1
+    note: fix E01/E02/E07
+trace:
+  source_tc: 04_testcases/TC_REQ-004.yaml
+  project: 商品禽养殖
+  status: approved
+next_agent: 06_zentao_sync
+csv_note: 评审通过后的现有 CSV 产物；远程同步需由 06_zentao_sync 取得明确授权

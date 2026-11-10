@@ -1,0 +1,117 @@
+﻿{
+    "id": 51930,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 748,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "按启用状态查询，检查配置状态",
+    "precondition": "前置准备：\n1、具备告警配置页面访问权限和已授权的启用配置数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“告警中心”菜单并点击“告警配置”菜单。；告警配置页面成功加载，确认已进入告警配置页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-23 13:51:53",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-11-04 17:01:51",
+    "version": 3,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 3,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176648,
+            "step": "在配置状态下拉框选择“启用”并点击“查询”",
+            "desc": "在配置状态下拉框选择“启用”并点击“查询”",
+            "expect": "状态控件回显“启用”，列表完成刷新。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176649,
+            "step": "查看列表状态列",
+            "desc": "查看列表状态列",
+            "expect": "每条记录的配置状态均为“启用”。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51930,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51930",
+        "text": "按启用状态查询，检查配置状态",
+        "type": "root",
+        "children": [
+            {
+                "id": 176648,
+                "text": "在配置状态下拉框选择“启用”并点击“查询”",
+                "type": "sub",
+                "parent": "case_51930",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176648",
+                        "text": "状态控件回显“启用”，列表完成刷新。",
+                        "type": "node",
+                        "parent": 176648,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176649,
+                "text": "查看列表状态列",
+                "type": "sub",
+                "parent": "case_51930",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176649",
+                        "text": "每条记录的配置状态均为“启用”。",
+                        "type": "node",
+                        "parent": 176649,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

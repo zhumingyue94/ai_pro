@@ -1,0 +1,2695 @@
+req_id: REQ-APP-021
+module: APP雏苗发货列表与筛选
+trace:
+  req: REQ-APP-021
+  project: 种禽孵化管理系统
+  version: 2
+  status: designed
+  source_review: REV_CASE_REQ-APP-021
+common_preconditions:
+- id: app_shipment_list_access_steps
+  name: APP雏苗发货列表页面访问前置
+  steps:
+  - action: 打开小程序并登录，切换到正确孵化场
+    expected: 进入当前孵化场的小程序首页
+  - action: 点击「雏苗发货」入口
+    expected: 进入「雏苗发货」列表页，页面标题正确且列表页可用
+cases:
+- id: TC-APP-021-001
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 打开「雏苗发货」任务日期筛选弹层
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-PICKER-OPEN
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 点击「日期」筛选并查看任务日期筛选弹层
+    expected: 显示昨天、今天、明天、自定义日期、重置和确定控件
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-002
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 选择昨天并确认后列表刷新为昨天结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-YESTERDAY-CONFIRM
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备昨天日期对应的脱敏只读发货数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"日期"筛选
+    expected: 显示日期筛选弹层
+  - action: 选择"昨天"
+    expected: 日期弹层保持打开，所选日期显示为昨天
+  - action: 点击"确定"
+    expected: 日期弹层关闭，日期筛选显示昨天，列表仅显示昨天日期对应的结果
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-003
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 重置日期选择恢复默认日期
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-RESET-SELECTION
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备非系统当天日期的脱敏只读发货数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"日期"筛选，选择非系统当天日期
+    expected: 日期弹层显示所选日期，且弹层保持打开
+  - action: 点击"重置"
+    expected: 日期选择恢复系统当天对应的默认日期，日期弹层保持打开
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-004
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 选择全部栋舍后筛选项与列表均为全部范围
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 栋舍筛选
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-HOUSE-ALL-SCOPE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备全部栋舍数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"栋舍"筛选，选择"全部栋舍"
+    expected: 栋舍筛选显示全部栋舍，发货列表保留全部栋舍范围
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-005
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 按单栋舍筛选发货列表
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍筛选
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-HOUSE-SINGLE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备3栋发货数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"栋舍"筛选，选择"3栋"
+    expected: 栋舍筛选控件显示3栋，列表仅显示3栋对应的发货单，其他栋舍发货单不出现。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-006
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 选择发货中状态后筛选项回显且列表仅显示发货中订单
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单状态筛选
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-TAB-PROGRESS
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备发货中状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在状态区域点击"发货中"
+    expected: 当前状态显示发货中，列表仅显示发货中订单，待发货、已发货和已签收订单不出现在结果中。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-007
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 待发货页签统计值与卡片数量一致
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-STATS-PENDING-COUNT
+  scenario_branch: 待发货统计
+  preconditions:
+  - 授权查询角色可用
+  - 已准备待发货状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看待发货页签标题并逐卡片计数
+    expected: 标题统计值为3，当前页签实际发货单卡片数为3；该断言只验证待发货统计。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-008
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 部分发货发货单归入发货中页签
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-PROGRESS-PARTIAL
+  scenario_branch: 部分发货状态归属
+  preconditions:
+  - 授权查询角色可用
+  - 已准备发货中状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看已发货数大于0且小于实际可发数的样本所在页签
+    expected: 已发货数满足0＜已发货数＜实际可发数的样本归入发货中页签，且不出现在待发货、已发货或已签收页签。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-009
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 全部出雏且签收未完成样本归入已发货页签
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-SHIPPED-UNSIGNED
+  scenario_branch: 全部出雏且签收未完成归属
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看全部出雏且签收未完成的样本所在页签
+    expected: 该样本归入已发货页签。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-010
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 展示已签收状态统计
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-STATS-SIGNED
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已签收状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看状态统计区域
+    expected: 独立显示已签收统计
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-011
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 状态统计按发货单号去重
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-STATS-ORDER-COUNT
+  scenario_branch: 发货单号计数口径
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可核对状态数量的数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看一张包含多条上孵计划的发货单并读取其状态统计
+    expected: 该发货单按发货单号只计1张，不按上孵计划数或雏苗数量累加。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-012
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 空关键字搜索显示空态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-EMPTY
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 点击搜索入口，在搜索框保持空值后提交
+    expected: 提示“请输入搜索内容”
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-013
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 按发货单号匹配搜索
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-ORDER-NO
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可脱敏匹配的发货单号
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在搜索框输入已准备的发货单号
+    expected: 仅显示发货单号匹配的发货单，搜索框保留已输入关键字，非匹配卡片不出现。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-014
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 按孵化计划号匹配搜索
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-PLAN-NO
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可脱敏匹配的孵化计划号
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在搜索框输入已准备的孵化计划号
+    expected: 显示该孵化计划号关联的发货单卡片
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-015
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 不存在发货单号显示空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-NONEXIST-ORDER
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备不存在的发货单号
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在搜索框输入不存在的发货单号
+    expected: 显示无匹配结果空状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-016
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 不存在孵化计划号显示无结果
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-NONEXIST-PLAN
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备不存在的孵化计划号
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在搜索框输入不存在的孵化计划号
+    expected: 显示无匹配结果空状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-017
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 空格关键字搜索按空输入处理
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-SPACES
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在搜索框输入仅包含空格的关键字后提交
+    expected: 提示“请输入搜索内容”
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-018
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 超长关键字搜索显示可判定结果
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-LONG
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备超过业务允许长度的脱敏关键字
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在搜索框输入超长关键字后提交
+    expected: 显示无匹配结果空状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-019
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 特殊字符关键字搜索显示可判定结果
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 发货单搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-SEARCH-SPECIAL
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备不含敏感信息的特殊字符关键字
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在搜索框输入特殊字符关键字后提交
+    expected: 显示无匹配结果空状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-021
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 有权限但无发货数据时显示无数据空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货单列表
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-NO-DATA
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 当前日期和筛选条件下无发货单数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看列表区域
+    expected: 显示无数据空状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-023
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 选择今天并确认后列表刷新为今天结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-DATE-BASELINE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备对应筛选条件的脱敏只读发货数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"日期"筛选，选择"今天"并点击"确定"
+    expected: 日期筛选显示今天，确认后列表刷新且仅显示今天日期对应的发货单。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-024
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 返回列表后保留日期条件
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 筛选条件保持
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-PERSIST-DATE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备指定日期的脱敏只读发货数据和可返回列表的业务入口
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 确认指定日期后打开该结果卡片的可用入口，再返回列表
+    expected: 返回列表后日期条件保持进入后续页面前的选择
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-026
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 无关联上孵计划卡片不显示行内操作
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片入口
+  coverage_ids:
+  - COV-APP021-ACTION
+  plan_item_ids:
+  - PLAN-APP021-ACTION
+  atomic_purpose_ids:
+  - AP-APP021-NO-PLAN-ACTION
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备无关联上孵计划的发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看无关联上孵计划的订单卡片
+    expected: 该卡片行内不显示发货入口和明细入口
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-027
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已发货卡片显示发货记录入口
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 已发货卡片
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SHIPPED-RECORD-VISIBLE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货订单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 切换"已发货"页签
+    expected: 页面显示已发货订单列表
+  - action: 查看已发货订单卡片
+    expected: 已发货卡片显示发货记录入口，且不显示发货入口。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-028
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 外部签收结果明确时显示已签收
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 已签收状态
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SIGNED-CONFIRMED
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备外部系统明确返回签收结果的订单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 切换"已签收"页签
+    expected: 页面显示已签收状态结果
+  - action: 查看外部签收结果明确的订单卡片
+    expected: 该订单卡片显示已签收状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-029
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 外部签收结果缺失时不显示已签收
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 已签收状态
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SIGNED-MISSING
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备外部系统未返回明确签收结果的订单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看外部签收结果缺失的订单状态
+    expected: 该订单不显示已签收状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-033
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 选择昨天后未确定前列表不刷新
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-YESTERDAY-LIST-UNCHANGED
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已记录打开日期弹层前的发货单列表结果
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"日期"筛选
+    expected: 到达日期筛选弹层
+  - action: 选择"昨天"后查看发货单列表
+    expected: 未点击确定前发货单列表筛选条件不发生变化
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-034
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 返回列表后保留栋舍条件
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 筛选条件保持
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-PERSIST-HOUSE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备指定栋舍的脱敏只读发货数据和可返回列表的业务入口
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 选择指定栋舍后打开该结果卡片的可用入口，再返回列表
+    expected: 返回列表后栋舍条件保持进入后续页面前的选择
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-035
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 返回列表后保留状态页签
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 筛选条件保持
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-PERSIST-STATUS
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备指定状态的脱敏只读发货数据和可返回列表的业务入口
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 选择指定状态页签后打开该结果卡片的可用入口，再返回列表
+    expected: 返回列表后状态页签保持进入后续页面前的选择
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-036
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 返回列表后保留搜索关键字
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 筛选条件保持
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-PERSIST-KEYWORD
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备匹配关键字对应的脱敏只读发货数据和可返回列表的业务入口
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 输入匹配关键字后打开该结果卡片的可用入口，再返回列表
+    expected: 返回列表后搜索关键字保持进入后续页面前的内容
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-037
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 默认加载系统当天任务日期
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-DEFAULT-TODAY
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可核对系统当天日期的运行环境
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看日期筛选
+    expected: 日期筛选显示系统当天对应的任务日期
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-039
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 确认明天日期后刷新发货列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-CONFIRM-TOMORROW-LIST
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可核对的明天日期结果数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"日期"筛选
+    expected: 到达日期筛选弹层
+  - action: 选择"明天"并点击"确定"
+    expected: 发货单列表刷新为明天日期对应的列表结果
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-040
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 确认自定义日期后刷新发货列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-CONFIRM-CUSTOM-LIST
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可核对且不同于昨天、今天、明天的自定义日期结果数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"日期"筛选
+    expected: 到达日期筛选弹层
+  - action: 选择自定义日期并点击"确定"
+    expected: 发货单列表刷新为该自定义日期对应的列表结果
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-041
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 关闭日期弹层且不确认时已生效日期不变
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 任务日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-CANCEL-KEEP
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备昨天日期和今天日期对应的脱敏只读发货数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"日期"筛选
+    expected: 到达日期筛选弹层
+  - action: 选择"今天"后关闭日期弹层且不点击"确定"
+    expected: 日期筛选仍显示已生效的昨天
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-042
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 待发货页签筛选发货列表
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单状态筛选
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-TAB-PENDING
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备待发货状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在状态区域点击"待发货"
+    expected: 列表仅显示待发货订单卡片
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-043
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已发货页签筛选发货列表
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单状态筛选
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-TAB-SHIPPED
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在状态区域点击"已发货"
+    expected: 列表仅显示已发货订单卡片
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-044
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已签收页签筛选发货列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货单状态筛选
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-TAB-SIGNED
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已签收状态数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在状态区域点击"已签收"
+    expected: 列表仅显示已签收订单卡片
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-045
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 发货单列表不出现分页控件
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 发货单列表
+  coverage_ids:
+  - COV-APP021-SORT
+  plan_item_ids:
+  - PLAN-APP021-SORT
+  atomic_purpose_ids:
+  - AP-APP021-NO-PAGINATION
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可滚动查看的多条发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看列表区域
+    expected: 发货单列表区域不显示分页控件
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-052
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 指定栋舍无发货数据时显示空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 栋舍筛选
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-HOUSE-NO-DATA
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备指定栋舍无发货数据的脱敏只读样本
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开"栋舍"筛选，选择无发货数据的栋舍
+    expected: 列表区域显示指定栋舍无发货数据的空状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-055
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 当前状态页签统计值与卡片数量一致
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-STATS-CARD-COUNT
+  scenario_branch: 单状态统计一致性
+  preconditions:
+  - 授权查询角色可用
+  - 已准备四个状态均有非零和至少一个状态为零的脱敏只读数据
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在一个状态页签逐卡片计数并读取标题统计
+    expected: 标题统计值等于当前页签实际发货单卡片数；本用例只验证当前状态页签。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-056
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 发货单卡片展示基础字段及其值
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片
+  coverage_ids:
+  - COV-APP021-CARD
+  plan_item_ids:
+  - PLAN-APP021-CARD
+  atomic_purpose_ids:
+  - AP-APP021-CARD-BASIC-FIELDS
+  scenario_branch: 卡片基础字段
+  preconditions:
+  - 授权查询角色可用
+  - 已准备四种状态且字段值可核对的发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看一张代表性发货单卡片
+    expected: 卡片显示栋舍-品种、发货状态、计划发货日期和发货单号，且字段与该发货单登记值一致。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-058
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 任意发货单点击发货
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SHIP-NAVIGATION-CONTEXT
+  scenario_branch: 任意合法发货入口导航
+  preconditions:
+  - 授权发货角色可用
+  - 已准备任意具有关联上孵计划且存在合法“发货”入口的发货单，覆盖待发货和发货中状态，并登记发货单号、栋舍和品种
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在任意存在合法“发货”入口的发货单卡片点击“发货”
+    expected: 进入发货执行页面，页面身份或标题明确为发货执行；页面展示的来源发货单号、栋舍、品种与点击前卡片一致，业务上下文未切换到其他发货单；已发货、已签收、无权限或无关联上孵计划的发货单不属于本用例范围
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-061
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 组合筛选命中目标发货单
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 组合筛选与统计
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-HIT-COMBINATION
+  scenario_branch: 组合筛选命中
+  preconditions:
+  - 授权查询角色可用
+  - 已准备昨天/今天、指定栋舍和四状态的匹配样本，不使用关键字条件
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 选择昨天、3栋和发货中条件并查看结果
+    expected: 仅显示同时满足日期、栋舍和状态条件的发货单；本用例不输入或验证关键字。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-105
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 关键字搜索命中目标发货单
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 关键字搜索
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-KEYWORD-HIT
+  scenario_branch: 关键字搜索命中
+  preconditions:
+  - 授权查询角色可用
+  - 已准备发货单号和孵化计划号匹配样本
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 点击搜索入口进入搜索页面
+    expected: 进入搜索页面，日期和栋舍条件不被带入，本用例不使用组合筛选。
+  - action: 输入发货单号或孵化计划号关键字并提交
+    expected: 仅显示关键字匹配的发货单。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-064
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已发完但存在待出雏计划仍归入发货中
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-PROGRESS-UNHATCHED
+  scenario_branch: 已发完但待出雏
+  preconditions:
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看已发货数等于实际可发数但存在待出雏计划的样本
+    expected: 样本归入发货中页签。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-065
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 全部出雏且全部签收归入已签收
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-SIGNED-ALL
+  scenario_branch: 全部出雏全部签收
+  preconditions:
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看全部计划已出雏且全部签收的样本
+    expected: 样本归入已签收页签。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-066
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 待发货/发货中卡片显示发货进度
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-CARD-PROGRESS-SHOW
+  scenario_branch: 待发货/发货中卡片进度展示
+  preconditions:
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看待发货/发货中卡片的发货进度字段
+    expected: 待发货/发货中卡片显示发货进度。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-067
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已发货/已签收卡片隐藏发货进度
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-CARD-PROGRESS-HIDE
+  scenario_branch: 已发货/已签收卡片进度隐藏
+  preconditions:
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看已发货/已签收卡片的字段区域
+    expected: 已发货/已签收卡片不显示发货进度。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-068
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 相邻发货单卡片字段不串用
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-CARD-FIELD-SCOPE
+  scenario_branch: 卡片字段作用域
+  preconditions:
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 连续查看两张不同发货单卡片
+    expected: 每张卡片字段均属于自身发货单，不串用相邻卡片数据。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-071
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 组合筛选结果不包含非命中发货单
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-RESULT-SCOPE
+  scenario_branch: 筛选结果作用域
+  preconditions:
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开“日期”筛选选择今天，打开“栋舍”筛选选择3栋，选择“发货中”状态页签，提交组合筛选
+    expected: 列表仅包含同时满足今天、3栋及发货中条件的发货单。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-072
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 组合筛选后统计与当前结果一致
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-FILTER-STAT-CONSISTENCY
+  scenario_branch: 筛选后统计一致
+  preconditions:
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开“日期”筛选选择今天，打开“栋舍”筛选选择3栋，选择“发货中”状态页签，输入已准备命中样本的发货单号或孵化计划号关键字并提交组合筛选
+    expected: 当前状态统计值等于同时满足今天、3栋、发货中及关键字条件的筛选结果发货单卡片数。
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    page_url: null
+    data_prefix: AUTO测试_勿用_
+- id: TC-APP-021-074
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已到计划发货日期的待发货卡片显示发货入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SHIP-ENTRY-VISIBLE
+  scenario_branch: 常规业务场景
+  preconditions: &id001
+  - 授权发货角色可用
+  - 已准备计划发货日期不晚于当前业务日期、具有关联上孵计划且实际可发数大于0的待发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看已到计划发货日期的待发货卡片的行内操作区域
+    expected: 该卡片显示「发货」入口，入口归属于该卡片且处于可点击状态，未显示为禁用或缺失。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-075
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已到计划发货日期的待发货卡片显示发货记录入口
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单卡片入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-RECORD-ENTRY-VISIBLE
+  scenario_branch: 常规业务场景
+  preconditions: *id001
+  steps:
+  - action: 查看已到计划发货日期的待发货卡片的行内操作区域
+    expected: 该卡片显示「记录」入口，入口归属于该卡片且处于可点击状态，未显示为禁用或缺失。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-076
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 列表按最后更新时间排序
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货单排序
+  coverage_ids:
+  - COV-APP021-SORT
+  plan_item_ids:
+  - PLAN-APP021-SORT
+  atomic_purpose_ids:
+  - AP-APP021-SORT-BY-UPDATE-TIME
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备三条脱敏只读发货单：最后更新时间互不相同，计划发货日期与发货单号的顺序与更新时间顺序不一致
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看三条发货单卡片的最后更新时间，并按页面显示顺序记录卡片编号
+    expected: 三条卡片按最后更新时间倒序，最后更新的放在最前面。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-077
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 最后更新时间相同时按计划发货日期排序
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货单排序
+  coverage_ids:
+  - COV-APP021-SORT
+  plan_item_ids:
+  - PLAN-APP021-SORT
+  atomic_purpose_ids:
+  - AP-APP021-SORT-BY-PLAN-DATE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备三条脱敏只读发货单：A 与 B 最后更新时间相同且计划发货日期不同，C 最后更新时间与 A、B 不同
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看最后更新时间相同的 A、B 卡片，并核对其在列表中的相对顺序
+    expected: A、B 在相同最后更新时间的组内按计划发货日期排序，相对顺序与业务确认方向一致；排序方向待业务确认时标记 blocked。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-078
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 最后更新时间和计划发货日期均相同时按发货单号排序
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 发货单排序
+  coverage_ids:
+  - COV-APP021-SORT
+  plan_item_ids:
+  - PLAN-APP021-SORT
+  atomic_purpose_ids:
+  - AP-APP021-SORT-BY-ORDER-NO
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备三条脱敏只读发货单：最后更新时间与计划发货日期均相同，发货单号不同
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看三条发货单卡片的发货单号，并核对其在列表中的相对顺序
+    expected: 三条卡片按发货单号排序，相对顺序与业务确认方向一致；排序方向待业务确认时标记 blocked。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-082
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 指定日期无发货数据时列表显示空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 日期筛选
+  coverage_ids:
+  - COV-APP021-DATE
+  plan_item_ids:
+  - PLAN-APP021-DATE
+  atomic_purpose_ids:
+  - AP-APP021-DATE-NO-DATA-EMPTY
+  - AP-APP021-DATE-NO-DATA-STAT
+  scenario_branch: 指定日期无发货数据
+  preconditions: &id002
+  - 授权查询角色可用
+  - 已准备无发货数据的指定日期
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 打开「日期」筛选，选择无发货数据的指定日期并点击「确定」
+    expected: 列表区域显示无数据空状态提示，不显示任何发货单卡片；各状态统计值均为 0，与当前空列表的卡片数量一致。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-084
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 卡片已发货数等于关联上孵计划发货数之和
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-CARD-SHIPPED-COUNT
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备包含未出雏、已出雏和已发货上孵计划的脱敏发货单，并登记每个上孵计划的发货数
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看代表性发货单卡片展示的已发货数
+    expected: 已发货数等于该发货单下所有上孵计划发货数之和，与登记值一致。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-085
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 卡片实际可发数等于已出雏计划实际可发数之和
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-CARD-AVAILABLE-COUNT
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备包含未出雏和已出雏上孵计划的脱敏发货单，并登记每个计划的实际可发数
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看代表性发货单卡片展示的实际可发数
+    expected: 实际可发数等于已出雏上孵计划实际可发数之和，未出雏计划的计划发货数不计入，与登记值一致。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-086
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 卡片待发货数等于实际可发数减已发货数
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-CARD-PENDING-COUNT
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备包含已发货上孵计划的脱敏发货单，并登记已发货数和实际可发数
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看代表性发货单卡片展示的待发货数
+    expected: 待发货数等于实际可发数减已发货数，与按公式计算的结果一致。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-088
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已发货卡片仅显示发货记录入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SHIPPED-RECORD-ENTRY
+  scenario_branch: 完成状态卡片记录入口
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货状态发货单，登记发货单号、栋舍和品种
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看已发货状态卡片的行内操作区域
+    expected: 卡片仅显示「发货记录」入口，不显示「发货」入口。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-089
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已签收卡片仅显示发货记录入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SIGNED-RECORD-ENTRY
+  scenario_branch: 完成状态卡片记录入口
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已签收状态发货单，登记发货单号、栋舍和品种
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看已签收状态卡片的行内操作区域
+    expected: 卡片仅显示「发货记录」入口，不显示「发货」入口。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-090
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 点击发货记录进入发货记录页并保持来源发货单上下文
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-RECORD-NAVIGATION-CONTEXT
+  scenario_branch: 完成状态卡片记录入口
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货或已签收发货单，登记发货单号、栋舍和品种
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 点击该卡片的「发货记录」入口
+    expected: 进入发货记录页面，页面展示的发货单号、栋舍和品种与来源卡片一致。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-091
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 无匹配组合筛选后列表不包含目标发货单
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-COMBO-NO-MATCH-RESULT
+  scenario_branch: 组合筛选无匹配
+  preconditions: &id003
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 选择今天、3 栋、发货中（预置无匹配组合）并执行组合筛选
+    expected: 列表不返回任何同时满足日期、栋舍和状态三项条件的发货单，原目标发货单不出现在结果中。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-092
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 无匹配组合筛选后列表显示空状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-COMBO-NO-MATCH-EMPTY
+  scenario_branch: 组合筛选无匹配
+  preconditions: *id003
+  steps:
+  - action: 选择今天、3 栋、发货中（预置无匹配组合）并执行组合筛选
+    expected: 列表区域显示无数据空状态提示，不展示任何发货单卡片。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-093
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 无匹配组合筛选后统计值刷新为 0
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单状态判定
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-COMBO-NO-MATCH-STAT
+  scenario_branch: 组合筛选无匹配
+  preconditions: *id003
+  steps:
+  - action: 选择今天、3 栋、发货中（预置无匹配组合）并执行组合筛选
+    expected: 当前页签统计值刷新为 0，不沿用筛选前的统计值。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-094
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 组合筛选后日期条件正确回显
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 组合筛选条件回显
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-COMBO-ECHO-DATE
+  scenario_branch: 筛选条件回显
+  preconditions: &id004
+  - 授权查询角色可用
+  - 已准备五条状态样本：已发货数为0；0<已发货数<实际可发数；已发货数=实际可发数且存在待出雏计划；已发货数=实际可发数且存在已发货未签收计划；已发货数=实际可发数且全部计划已签收
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 执行日期、栋舍、状态和关键字组合筛选
+    expected: 日期筛选控件回显已选择的日期，不被重置为默认日期。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-095
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 组合筛选后栋舍条件正确回显
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 组合筛选条件回显
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-COMBO-ECHO-BUILDING
+  scenario_branch: 筛选条件回显
+  preconditions: *id004
+  steps:
+  - action: 执行日期、栋舍、状态和关键字组合筛选
+    expected: 栋舍筛选控件回显已选择的栋舍，不被重置为全部栋舍。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-096
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 组合筛选后状态条件正确回显
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 组合筛选条件回显
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-COMBO-ECHO-STATUS
+  scenario_branch: 筛选条件回显
+  preconditions: *id004
+  steps:
+  - action: 执行日期、栋舍、状态和关键字组合筛选
+    expected: 列表停留在已选择的状态页签，不被重置为默认页签。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-097
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 组合筛选后搜索关键字正确回显
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 组合筛选条件回显
+  coverage_ids:
+  - COV-APP021-FILTER
+  plan_item_ids:
+  - PLAN-APP021-FILTER
+  atomic_purpose_ids:
+  - AP-APP021-COMBO-ECHO-KEYWORD
+  scenario_branch: 筛选条件回显
+  preconditions: *id004
+  steps:
+  - action: 执行日期、栋舍、状态和关键字组合筛选
+    expected: 搜索框保留已输入的关键字，不清空已提交内容。
+  ui_source:
+    page_ids:
+    - app-chick-shipping-list
+    page_json: 02_analysis/app/page_inventory/page.json
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-098
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 发货中卡片显示发货入口并可操作
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货单卡片入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SHIPPING-CARD-SHIP-ENTRY
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权发货角色可用
+  - 已准备发货中且具有关联上孵计划的发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在状态区域点击"发货中"
+    expected: 列表显示发货中订单卡片
+  - action: 查看目标发货中订单卡片的行内操作入口
+    expected: 该卡片显示"发货"入口
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-099
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 发货中卡片显示发货记录入口并可操作
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单卡片入口
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-SHIPPING-CARD-RECORD-ENTRY
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权发货角色可用
+  - 已准备发货中且具有关联上孵计划的发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在状态区域点击"发货中"
+    expected: 列表显示发货中订单卡片
+  - action: 查看目标发货中订单卡片的行内操作入口
+    expected: 该卡片显示"记录"入口
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-100
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 目标状态统计为零时显示零值
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-STATS-ZERO-VALUE
+  scenario_branch: 常规业务场景
+  preconditions:
+  - 授权查询角色可用
+  - 已准备目标状态统计为零的脱敏只读样本
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看状态统计区域的目标状态统计值
+    expected: 目标状态统计显示为0，以数字零值呈现，不显示空白或占位符
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-101
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 统计为零时对应状态列表显示无数据空状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 状态统计
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-STATUS-STATS-ZERO-EMPTY-LIST
+  scenario_branch: 状态统计为零
+  preconditions:
+  - 授权查询角色可用
+  - 已准备目标状态统计为零且该状态无业务数据的脱敏只读样本
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在状态区域点击统计为零的目标状态
+    expected: 该状态列表无业务数据，显示无数据空状态
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-102
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已发货数为零值时待发货数等于实际可发数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单卡片
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-PENDING-COUNT-ZERO-BOUNDARY
+  scenario_branch: 数量零值边界
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货数为0且实际可发数大于0的脱敏只读样本
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看该样本的发货进度数量
+    expected: 已发货数显示为0，待发货数等于实际可发数，显示值不出现负数
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+- id: TC-APP-021-104
+  common_preconditions_ref: app_shipment_list_access_steps
+  title: 已发完时待发货数为零且不为负
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单卡片
+  coverage_ids:
+  - COV-APP021-STATUS
+  plan_item_ids:
+  - PLAN-APP021-STATUS
+  atomic_purpose_ids:
+  - AP-APP021-PENDING-COUNT-COMPLETE-BOUNDARY
+  scenario_branch: 数量完成值边界
+  preconditions:
+  - 授权查询角色可用
+  - 已准备已发货数等于实际可发数的脱敏只读样本
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 查看该样本的发货进度数量
+    expected: 待发货数显示为0，显示值不出现负数
+  ui_source:
+    page_json: 02_analysis/app/page_inventory/page.json
+    page_ids:
+    - app-chick-shipping-list
+  trace:
+    req: REQ-APP-021
+    tp: 未提供
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed
+  tp_id: 未提供
+  test_data:
+    data_prefix: AUTO测试_勿用_
+    page_url: null
+summary:
+  case_count: 77
+  type_counts:
+    feature: 77
+    interface: 0
+    auto: 0
+  auto_counts:
+    auto: 77
+    'no': 0
+  priority_counts:
+    P1: 24
+    P2: 24
+    P3: 23
+    P4: 6

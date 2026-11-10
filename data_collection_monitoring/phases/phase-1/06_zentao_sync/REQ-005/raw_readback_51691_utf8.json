@@ -1,0 +1,143 @@
+{
+    "id": 51691,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 734,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "查看新增设备序列号为空时确认必填错误定位到序列号字段",
+    "precondition": "前置准备：\n1、已获得仅用于表单校验观察且不会产生业务写入的明确授权。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-22 15:57:51",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-10-28 10:05:41",
+    "version": 4,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 4,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 174371,
+            "step": "点击“新增设备/新增”按钮打开设备表单。",
+            "desc": "点击“新增设备/新增”按钮打开设备表单。",
+            "expect": "新增设备表单成功打开。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 174372,
+            "step": "在序列号输入框保持为空。",
+            "desc": "在序列号输入框保持为空。",
+            "expect": "序列号字段保持为空。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 174373,
+            "step": "点击“保存/确定”按钮触发校验。",
+            "desc": "点击“保存/确定”按钮触发校验。",
+            "expect": "页面显示序列号必填错误，错误定位到序列号字段，不产生有效新增记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 51691,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_51691",
+        "text": "查看新增设备序列号为空时确认必填错误定位到序列号字段",
+        "type": "root",
+        "children": [
+            {
+                "id": 174371,
+                "text": "点击“新增设备/新增”按钮打开设备表单。",
+                "type": "sub",
+                "parent": "case_51691",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174371",
+                        "text": "新增设备表单成功打开。",
+                        "type": "node",
+                        "parent": 174371,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174372,
+                "text": "在序列号输入框保持为空。",
+                "type": "sub",
+                "parent": "case_51691",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174372",
+                        "text": "序列号字段保持为空。",
+                        "type": "node",
+                        "parent": 174372,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 174373,
+                "text": "点击“保存/确定”按钮触发校验。",
+                "type": "sub",
+                "parent": "case_51691",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_174373",
+                        "text": "页面显示序列号必填错误，错误定位到序列号字段，不产生有效新增记录。",
+                        "type": "node",
+                        "parent": 174373,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

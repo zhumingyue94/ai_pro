@@ -1,0 +1,627 @@
+analysis:
+  schema_version: "1.0"
+  analysis_id: "REQ-PC-042"
+  title: "发货单发货执行"
+  stage: "02_analysis"
+  business_partition: "pc"
+  analyzed_at: "2026-09-03T12:10:00+08:00"
+  source_traceability:
+    requirement_document:
+      path: "01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx"
+      requirement_id: "REQ-002"
+      mapped_requirement_id: "REQ-PC-042"
+      sections:
+        - "1.1.3 业务流程"
+        - "1.2.2 REQ-002 发货单发货执行"
+        - "1.3.1 数量与进度"
+        - "1.3.2 状态与操作矩阵"
+        - "1.3.3 共用交互约束"
+        - "术语定义：发货单、上孵计划、实际可发、待分配数、发货记录"
+    module_split:
+      path: "01_requirements/pc/模块拆分清单.md"
+      requirement_id: "REQ-PC-042"
+      module: "发货单发货执行"
+      zentao_alignment: "二期 / pc / 计划管理 / 雏苗发货 / 发货单发货执行，模块 ID=737"
+      priority: "P0"
+    change_log:
+      path: "01_requirements/需求变动.md"
+      applicable_items:
+        - "剩余待发货数量 = 实际可发数 - 所有发货位置累计数量"
+        - "累计数量包含已完成发货和本次暂存但尚未完成发货的数量"
+        - "多个上孵计划的列表顺序不限制"
+        - "不考虑发货草稿保存规则、商品禽养殖端签收回写、操作人/操作时间/备注审计要求"
+        - "PC 发货执行规则不套用 APP 专属交互"
+        - "所有页面和功能的菜单/接口权限由平台角色权限配置；无权限菜单不显示，无权限接口返回无操作权限"
+    page_inventory:
+      path: "02_analysis/pc/page_inventory/page.json"
+      capture_id: "PAGE-PC-REQ041-REQ042-20260903"
+      captured_at: "2026-09-03T10:55:00+08:00"
+      page_ids:
+        - "pc-chick-shipping-ship"
+        - "pc-chick-shipping-ship-bl02"
+  prototype_observation:
+    url: "http://43.143.148.114:18885/biopark-breeding/"
+    collection_status: "captured"
+    browser: "chromium"
+    headless: false
+    environment_id: "prototype-biopark-breeding-pc-req041-req042"
+    menu_path:
+      - "计划管理"
+      - "雏苗发货"
+      - "发货执行"
+    evidence:
+      page_inventory: "02_analysis/pc/page_inventory/page.json"
+      screenshots:
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-ship-default.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-ship-filter-progress.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-ship-mode.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-location-dialog.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-location-overlimit.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-draft-accumulated.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-exit-draft-confirm.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-complete-confirm.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-submitted.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-reset-after-refresh.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-default.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-status-filter.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-status-shipped.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-ship-mode.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-draft.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-complete-confirm.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-submitted.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-042-bl02-reset.png"
+      dom_snapshots:
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-ship-default.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-ship-filter-progress.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-ship-mode.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-location-dialog.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-location-overlimit.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-draft-accumulated.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-exit-draft-confirm.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-complete-confirm.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-submitted.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-reset-after-refresh.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-default.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-status-filter.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-status-shipped.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-ship-mode.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-draft.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-complete-confirm.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-submitted.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-reset.md"
+    data_safety:
+      authentication: "原型无需登录；不保存账号、密码、Token 或 Cookie"
+      interaction_scope: "只探索雏苗发货；使用既有只读和 mock 演示证据"
+      prototype_demo_submission_in_evidence: true
+      formal_business_data_changed: false
+      data_change_responsibility: "正式环境创建、修改和清理由授权测试责任人负责；本分析不执行正式业务变更"
+      cleanup_status: "mock 演示提交已通过刷新恢复初始态并有 st-reset 证据；正式环境清理不适用"
+      sanitization: "沿用 page.json 已记录的输入值 redacted 和敏感字段脱敏；本产物不写入演示输入值"
+  workflow_gate:
+    policy: "report_only"
+    gate_passed: false
+    gate_reasons:
+      - "正式页面测试所需的授权数据、权限配置和可清理测试数据尚未提供"
+    continuation: "allowed"
+    pipeline_summary: "completed_with_gate_issues"
+
+scope:
+  in_scope:
+    - "从雏苗发货列表进入发货执行页的页面承接"
+    - "发货单主表信息、实际可发数、发货进度和发货状态展示"
+    - "上孵计划列表、计划进度/发货状态/关键字筛选、查询和重置"
+    - "已出雏且待发货数大于零的计划进入发货模式"
+    - "发货模式下的当前计划锁定和其他计划发货入口状态"
+    - "栋舍位置选择、数量和备注录入"
+    - "同一位置数量和备注回显、修改保存及多位置暂存"
+    - "数量输入自动校正：0/负数校正为1，小数四舍五入，超剩余校正为剩余数；汉字、字母等非数字字符不可输入"
+    - "无草稿退出、有草稿退出确认和完成发货确认"
+    - "确认提交后位置、计划、发货单进度、状态和发货记录的页面联动"
+    - "不同发货单状态及上孵计划状态下的入口可用性"
+    - "页面刷新后 mock 初始状态恢复的既有证据"
+  out_of_scope:
+    - "REQ-PC-041 雏苗发货列表查询、状态卡、分页和列表导出"
+    - "REQ-PC-043 发货单明细、来源明细和只读追溯"
+    - "REQ-PC-044 实际导出文件生成和下载"
+    - "APP 发货执行、移动端刷新、返回及签收展示规则"
+    - "发货草稿的持久化保存规则"
+    - "商品禽养殖端签收结果的回写和外部系统联动"
+    - "操作人、操作时间和备注的审计要求"
+    - "库存查询、出入库记录和库存扣减联动"
+    - "具体接口路径、方法、请求体、响应体、权限编码和接口独立测试"
+    - "未开放的孵化排程计划、上孵计划和生产报表管理页面"
+
+requirements_facts:
+  - id: "FR-042-01"
+    statement: "发货执行页展示发货单基础信息、实际可发数、进度、关联上孵计划、栋舍工作区和发货记录。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.1-1.2.2.2"
+  - id: "FR-042-02"
+    statement: "上孵计划区支持计划进度、发货状态和计划号关键字筛选，并展示计划进度、发货进度、待发货数及计划基础信息。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.2"
+  - id: "FR-042-03"
+    statement: "仅计划进度为已出雏且待发货数大于零的上孵计划允许进入发货模式；终止计划不参与发货。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.3；1.3.2"
+  - id: "FR-042-04"
+    statement: "进入发货模式后当前计划进入发货中状态，其他计划的发货入口暂不可用，以避免未提交草稿时切换计划。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.3"
+  - id: "FR-042-05"
+    statement: "剩余待发货数量 = 实际可发数 - 所有发货位置累计数量；累计数量包含已完成发货和本次暂存但尚未完成发货的数量。"
+    source: "change_log"
+    source_ref: "需求变动.md：PC 独有需求 REQ-PC-042"
+  - id: "FR-042-06"
+    statement: "发货数量输入框仅允许数字；0 或负数失焦后自动校正为 1，小数失焦后四舍五入为整数，超过当前剩余数失焦后自动校正为剩余数，点击完成按校正后的数量保存。"
+    source: "requirement"
+    source_ref: "需求变动.md：发货提交的共同约束；REQ-002 1.3.3"
+  - id: "FR-042-07"
+    statement: "点击栋舍/列/层位置格打开位置录入弹窗；再次打开同一位置时回显发货数量和备注，修改后点击完成按最新数量和备注保存，不叠加旧值。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.3"
+  - id: "FR-042-08"
+    statement: "无草稿时退出发货直接退出；存在草稿时先提示继续发货或继续退出，继续退出不保留未完成页面草稿。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.3；page.json 状态证据"
+  - id: "FR-042-09"
+    statement: "无论当前未发货数量为 0 还是大于 0，点击完成发货均展示结束确认；点击确认结束后才提交当前计划暂存结果并刷新位置、计划、发货单进度、状态和发货记录；点击继续发货不提交。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.3；page.json 状态证据"
+  - id: "FR-042-10"
+    statement: "发货单处于待发货或发货中时开放编辑；已发货或已签收时不开放发货编辑。多个上孵计划的列表顺序不限制。"
+    source: "requirement"
+    source_ref: "REQ-002 1.2.2.3；需求变动.md"
+  - id: "FR-042-11"
+    statement: "实际可发数来自关联上孵计划实际出雏总数；未达到已出雏的计划按零处理，实际可发数为零时进度不得发生除零错误。"
+    source: "requirement"
+    source_ref: "术语定义；REQ-002 1.3.1"
+  - id: "FR-042-12"
+    statement: "页面层保留提交成功、超量、无匹配数据和刷新恢复等可见表现；不依据 mock 数据补写正式接口契约。"
+    source: "analysis_boundary"
+    source_ref: "本阶段范围约束"
+  - id: "FR-042-13"
+    statement: "上孵计划列表待发货数为 0 时不可进入发货模式；该规则不等同于栋舍分布完成发货文字中的未发货数为 0。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 2；REQ-002 1.2.2.3"
+  - id: "FR-042-14"
+    statement: "2 秒内重复提交时后一次提交失败；并发提交按上孵计划最新待发货数校验，超出最新数量时不得提交。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 3；需求变动.md 2026.9.3 共用提交约束"
+  - id: "FR-042-15"
+    statement: "无关联计划、全部计划终止、加载失败和无数据时，相关表格均显示暂无数据。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 4"
+  - id: "FR-042-16"
+    statement: "正式页面路由为 /biopark-breeding/breeding/delivery/execute/{id}；测试环境地址来源于 .env，具体配置值不写入分析产物。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 1"
+  - id: "FR-042-17"
+    statement: "菜单和接口权限由平台角色权限配置；无菜单权限时菜单不显示，无接口权限时页面操作返回无操作权限。"
+    source: "supplemented_requirement"
+    source_ref: "需求变动.md 2026.9.3；用户补充答案 1"
+
+prototype_facts:
+  pages:
+    - page_id: "pc-chick-shipping-ship"
+      menu_path: ["计划管理", "雏苗发货", "发货执行"]
+      route: "http://43.143.148.114:18885/biopark-breeding/"
+      states:
+        - state_id: "st-default"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-ship-default.md"
+          page_json_elements:
+            - "el-page"
+            - "el-btn-back"
+            - "el-card-ship-doc"
+            - "el-stats-available"
+            - "el-progress-ship"
+            - "el-section-incubate"
+            - "el-filter-ship-status"
+            - "el-filter-progress"
+            - "el-filter-keyword"
+            - "el-btn-query"
+            - "el-btn-reset"
+            - "el-table-incubate"
+            - "el-section-house"
+            - "el-section-record"
+        - state_id: "st-filter-progress"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-ship-filter-progress.md"
+          page_json_elements: ["el-filter-progress", "el-table-incubate"]
+        - state_id: "st-ship-mode"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-ship-mode.md"
+          page_json_elements: ["el-view-mode-badge", "el-mode-tip", "el-btn-finish-ship", "el-btn-exit-ship", "el-row1-ship", "el-row2-ship", "el-house-cell"]
+        - state_id: "st-location-dialog"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-location-dialog.md"
+          page_json_elements: ["el-dlg-location", "el-dlg-qty", "el-dlg-note", "el-dlg-cancel", "el-dlg-confirm"]
+        - state_id: "st-location-overlimit"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-location-overlimit.md"
+          page_json_elements: ["el-dlg-qty", "el-dlg-toast"]
+        - state_id: "st-draft"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-draft-accumulated.md"
+          page_json_elements: ["el-house-cell", "el-draft-stats", "el-row1-progress"]
+        - state_id: "st-exit-draft-confirm"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-exit-draft-confirm.md"
+          page_json_elements: ["el-dlg-exit-confirm", "el-dlg-keep-shipping", "el-dlg-exit-direct"]
+        - state_id: "st-complete-confirm"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-complete-confirm.md"
+          page_json_elements: ["el-dlg-complete-confirm", "el-dlg-back-shipping", "el-dlg-submit-end"]
+        - state_id: "st-submitted"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-submitted.md"
+          page_json_elements: ["el-ship-toast", "el-progress-ship", "el-row1-ship-status", "el-record-table"]
+        - state_id: "st-reset"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-reset-after-refresh.md"
+          page_json_elements: ["el-page-reset"]
+    - page_id: "pc-chick-shipping-ship-bl02"
+      menu_path: ["计划管理", "雏苗发货", "发货执行"]
+      route: "http://43.143.148.114:18885/biopark-breeding/"
+      states:
+        - state_id: "st-default"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-default.md"
+          page_json_elements: ["el-card-ship-doc", "el-stats-available", "el-progress-ship", "el-filter-ship-status", "el-filter-progress", "el-filter-keyword", "el-btn-query", "el-btn-reset", "el-table-incubate", "el-section-house", "el-section-record"]
+        - state_id: "st-status-filter"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-status-filter.md"
+          page_json_elements: ["el-filter-ship-status-open", "el-option-all", "el-option-pending", "el-option-shipping", "el-option-shipped", "el-option-signed"]
+        - state_id: "st-status-shipped"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-status-shipped.md"
+          page_json_elements: ["el-filter-ship-status", "el-table-incubate", "el-section-record"]
+        - state_id: "st-ship-mode"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-ship-mode.md"
+          page_json_elements: ["el-btn-complete-ship", "el-btn-exit-ship", "el-house-grid", "el-row1-ship-editing"]
+        - state_id: "st-draft"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-draft.md"
+          page_json_elements: ["el-btn-complete-ship", "el-house-pos1"]
+        - state_id: "st-complete-confirm"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-complete-confirm.md"
+          page_json_elements: ["el-dlg-complete", "el-btn-continue", "el-btn-end"]
+        - state_id: "st-submitted"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-submitted.md"
+          page_json_elements: ["el-card-ship-doc", "el-table-incubate"]
+        - state_id: "st-reset"
+          evidence: "02_analysis/pc/page_inventory/dom/req-pc-042-bl02-reset.md"
+          page_json_elements: ["el-page-reset"]
+  current_requirement_boundary:
+    status_filter: "发货执行页的 el-filter-ship-status 是上孵计划区筛选；不等同于 REQ-PC-041 列表页已移除的状态下拉"
+    route_boundary: "正式路由已确认但本次不访问；原型历史路由仅作为页面证据"
+    confirmed_real_route: "/biopark-breeding/breeding/delivery/execute/{id}"
+    environment_source: ".env；不写入具体地址、账号或密码"
+    permission_boundary: "平台角色权限树配置菜单和接口权限；无菜单权限不显示菜单，无接口权限返回无操作权限"
+    mock_boundary: "page.json 中的 mock 值只作为页面状态证据，不作为正式业务数据"
+
+roles:
+  - role: "孵化场发货填报人"
+    capability: "查看发货单和上孵计划，录入位置数量并完成发货提交"
+    permission_status: "具体角色授权和数据权限由平台配置，分析不写死权限编码"
+  - role: "发货组长"
+    capability: "复核发货任务、执行发货并查看提交结果"
+    permission_status: "具体角色授权和数据权限由平台配置，分析不写死权限编码"
+  - role: "场长"
+    capability: "查看发货进度、计划状态和发货记录"
+    permission_status: "实际可见范围依赖正式环境权限配置"
+  - role: "产品/研发/测试/实施/业务培训人员"
+    capability: "评审、承接和验证页面规则"
+    permission_status: "不作为正式业务操作角色写入权限矩阵"
+
+data_contract:
+  source_entities:
+    - entity: "雏苗发货单"
+      responsibility: "提供主表基础信息、状态、实际可发数和发货单进度"
+      fields: ["发货单基础信息", "计划发货日期", "计划上苗数", "品种", "实际可发数", "状态", "进度"]
+    - entity: "上孵计划"
+      responsibility: "提供可执行计划、计划进度、计划发货状态和基础信息"
+      fields: ["计划号", "计划进度", "发货状态", "实际出雏结果", "实际可发数", "待发货数"]
+    - entity: "发货位置累计结果"
+      responsibility: "提供位置累计数量和当前页面暂存数量"
+      fields: ["栋舍位置", "已完成数量", "暂存数量", "累计数量"]
+    - entity: "发货记录"
+      responsibility: "提供已完成发货批次、数量、位置和页面结果展示"
+      fields: ["提交批次", "上孵计划", "位置", "本次数量", "剩余数量"]
+    - entity: "栋舍基础数据"
+      responsibility: "提供发货目标栋舍和位置工作区"
+    - entity: "实际出雏结果"
+      responsibility: "参与实际可发数和可执行计划判定"
+  derived_fields:
+    actual_available: "关联计划实际出雏结果汇总；未达到已出雏按 0"
+    accumulated_quantity: "所有发货位置已完成数量 + 当前页面暂存数量"
+    pending_quantity: "actual_available - accumulated_quantity"
+    shipping_progress: "已完成发货数量 / actual_available；actual_available=0 时按 0% 展示"
+  query_fields:
+    - "发货状态"
+    - "计划进度"
+    - "上孵计划号关键字"
+
+page_contract:
+  pages:
+    - page_id: "pc-chick-shipping-ship"
+      menu_path: ["计划管理", "雏苗发货", "发货执行"]
+      prototype_route: "http://43.143.148.114:18885/biopark-breeding/"
+      real_route: "/biopark-breeding/breeding/delivery/execute/{id}"
+      route_status: "confirmed_not_explored"
+      states:
+        - state_id: "st-default"
+          behavior: "查看发货单主表、关联计划、栋舍分布和发货记录"
+        - state_id: "st-filter-progress"
+          behavior: "按计划进度筛选上孵计划"
+        - state_id: "st-ship-mode"
+          behavior: "进入当前计划发货填写模式"
+        - state_id: "st-location-dialog"
+          behavior: "录入位置本次数量和备注"
+        - state_id: "st-location-overlimit"
+          behavior: "超出剩余数量时保留弹窗并提示"
+        - state_id: "st-draft"
+          behavior: "展示位置累计和当前页面暂存统计"
+        - state_id: "st-exit-draft-confirm"
+          behavior: "有草稿退出时确认是否放弃"
+        - state_id: "st-complete-confirm"
+          behavior: "仍有未发货数量时确认结束"
+        - state_id: "st-submitted"
+          behavior: "展示提交结果、更新进度和发货记录"
+        - state_id: "st-reset"
+          behavior: "刷新后回到 mock 初始状态"
+    - page_id: "pc-chick-shipping-ship-bl02"
+      menu_path: ["计划管理", "雏苗发货", "发货执行"]
+      prototype_route: "http://43.143.148.114:18885/biopark-breeding/"
+      real_route: "/biopark-breeding/breeding/delivery/execute/{id}"
+      route_status: "confirmed_not_explored"
+      states:
+        - state_id: "st-default"
+          behavior: "覆盖不同发货状态的上孵计划展示"
+        - state_id: "st-status-filter"
+          behavior: "打开上孵计划发货状态筛选"
+        - state_id: "st-status-shipped"
+          behavior: "按已发货计划筛选并查看结果"
+        - state_id: "st-ship-mode"
+          behavior: "可执行计划进入发货模式"
+        - state_id: "st-draft"
+          behavior: "位置录入后形成当前页面草稿"
+        - state_id: "st-complete-confirm"
+          behavior: "完成发货确认"
+        - state_id: "st-submitted"
+          behavior: "提交后更新页面结果"
+        - state_id: "st-reset"
+          behavior: "刷新后恢复 mock 初始状态"
+  elements:
+    order_summary: ["el-card-ship-doc", "el-stats-available", "el-progress-ship"]
+    plan_filter: ["el-filter-ship-status", "el-filter-progress", "el-filter-keyword", "el-btn-query", "el-btn-reset"]
+    plan_table: ["el-table-incubate"]
+    shipping_actions: ["el-row1-ship", "el-row2-ship", "el-btn-finish-ship", "el-btn-exit-ship"]
+    location_input: ["el-house-cell", "el-dlg-location", "el-dlg-qty", "el-dlg-note", "el-dlg-cancel", "el-dlg-confirm"]
+    validation: ["el-dlg-toast"]
+    draft_and_confirm: ["el-draft-stats", "el-dlg-exit-confirm", "el-dlg-complete-confirm"]
+    result: ["el-ship-toast", "el-record-table"]
+  table_columns:
+    - "计划号"
+    - "计划进度"
+    - "发货状态"
+    - "已发货数"
+    - "发货进度"
+    - "剩余待发货数"
+    - "客户场/种禽养殖场"
+    - "批次"
+    - "周龄"
+    - "平均蛋重"
+    - "规格/蛋重类型"
+    - "日期信息"
+    - "备注"
+    - "操作"
+  action_contract:
+    ship_entry: "已出雏且待发货数大于零时可进入；上孵计划列表待发货数为 0 时不可进入；当前计划发货模式下其他计划入口不可用"
+    location_confirm: "数量满足正整数且不超过当前剩余数量时形成页面暂存；不满足时保留弹窗并提示"
+    exit: "无草稿直接退出；有草稿展示退出确认"
+    complete: "无论当前未发货数量为 0 还是大于 0，点击完成发货均进入完成确认；点击继续发货返回编辑且不提交，点击确认结束后才提交并刷新页面区域"
+  interface_contract:
+    scope: "known_concepts_only"
+    execution_status: "not_executed"
+    known_concepts:
+      - "发货单查询结果"
+      - "上孵计划和实际出雏结果"
+      - "发货位置累计与当前页面暂存"
+      - "发货记录和提交后状态"
+    not_defined:
+      - "接口路径、HTTP 方法、请求体和响应体"
+      - "字段命名、精度、分页和排序参数"
+      - "具体权限编码、并发控制和幂等技术实现"
+      - "正式错误码和网络异常协议"
+    known_business_constraints:
+      - "前端对数量输入自动校正"
+      - "2 秒内重复提交时后一次提交失败"
+      - "并发提交按上孵计划最新待发货数校验，超出时不得提交"
+    prohibition: "不得依据原型 mock 数据补写正式接口契约"
+
+systematic_boundary_analysis:
+  equivalence_partitions:
+    plan_progress: ["未达到已出雏", "已出雏", "终止"]
+    order_status: ["待发货", "发货中", "已发货", "已签收"]
+    date_eligibility: ["未到计划日期", "已到计划日期"]
+    available_and_pending: ["实际可发为 0", "实际可发大于 0 且待发货大于 0", "待发货为 0"]
+    draft: ["无草稿", "有单个位置草稿", "有多个位置草稿"]
+    position: ["新位置", "同一位置重复录入", "多个位置"]
+    quantity: ["空", "0", "负数", "小数", "正整数", "等于剩余", "超过剩余", "汉字/字母等非数字", "失焦自动校正"]
+    submission: ["首次提交", "2秒内重复提交", "并发提交且未超最新剩余", "并发提交且超过最新剩余"]
+  boundary_values:
+    - "计划进度从未出雏到已出雏"
+    - "待发货数 = 0、1、最大剩余值、最大剩余值 + 1"
+    - "发货数量 = 0、负数、小数、1、等于剩余、超过剩余"
+    - "同一位置首次录入与第二次回显修改的覆盖边界"
+    - "实际可发数 = 0 时进度显示 0%"
+    - "无关联计划或全部计划终止"
+  decision_table_dimensions:
+    - "计划是否已出雏"
+    - "计划日期是否已到"
+    - "待发货数是否大于零"
+    - "发货单是否待发货/发货中"
+    - "当前是否已进入发货模式"
+    - "是否存在页面草稿"
+    - "完成时未发货数量是 0 还是大于 0（仅影响确认文案，不影响是否弹窗）"
+    - "数量和位置输入是否有效"
+    - "是否触发前端自动校正"
+    - "是否为 2 秒内重复提交"
+    - "并发提交时是否超过最新待发货数"
+  state_transition_dimensions:
+    - "st-default → st-filter-progress/st-status-shipped"
+    - "查看模式 → st-ship-mode"
+    - "st-ship-mode → st-location-dialog"
+    - "st-location-dialog → st-location-overlimit 或 st-draft"
+    - "st-draft → st-exit-draft-confirm 或 st-complete-confirm"
+    - "确认结束 → st-submitted"
+    - "提交结果 → st-reset"
+  design_boundary_status: "analysis_candidate_only"
+
+pict_candidate_analysis:
+  status: "candidate_only_no_test_cases_generated"
+  parameters:
+    PlanProgress: ["NotHatched", "Hatched", "Terminated"]
+    ShipStatus: ["Pending", "Shipping", "Shipped", "Signed"]
+    DateEligibility: ["BeforePlanDate", "PlanDateReached"]
+    AvailableQty: ["Zero", "Positive"]
+    AccumulatedQty: ["Zero", "Partial", "EqualsAvailable"]
+    PendingQty: ["Zero", "Positive"]
+    DraftState: ["None", "OnePosition", "MultiplePositions"]
+    PositionState: ["New", "Repeated", "Multiple"]
+    InputQtyClass: ["Empty", "Zero", "Negative", "Decimal", "PositiveWithin", "EqualRemaining", "OverRemaining", "NonNumeric"]
+    SubmissionState: ["First", "DuplicateWithin2Seconds", "ConcurrentWithinLatestPending", "ConcurrentOverLatestPending"]
+    CurrentPlan: ["Selectable", "Editing", "OtherPlan"]
+    ActionState: ["ShipEnabled", "ShipDisabled", "Complete", "Exit"]
+  constraints:
+    - "IF [PlanProgress] = NotHatched OR [PlanProgress] = Terminated THEN [ActionState] != ShipEnabled"
+    - "IF [PendingQty] = Zero THEN [ActionState] != ShipEnabled"
+    - "IF [CurrentPlan] = Editing THEN other plan ship actions are disabled"
+    - "IF [InputQtyClass] = PositiveWithin OR [InputQtyClass] = EqualRemaining THEN location input may be accepted"
+    - "IF [InputQtyClass] = Zero OR Negative THEN blur quantity to 1 before save"
+    - "IF [InputQtyClass] = Decimal THEN blur quantity to the rounded integer before save"
+    - "IF [InputQtyClass] = OverRemaining THEN blur quantity to the current remaining quantity before save"
+    - "IF [InputQtyClass] = NonNumeric THEN non-numeric characters cannot be entered or pasted"
+    - "IF [SubmissionState] = DuplicateWithin2Seconds THEN the later submission is rejected"
+    - "IF [SubmissionState] = ConcurrentOverLatestPending THEN submission is rejected against the latest pending quantity"
+    - "IF [ActionState] = Complete THEN confirmation is required regardless of [PendingQty]"
+    - "IF [PositionState] = Repeated THEN quantity and note are recalled and the latest completed values replace the previous position values"
+    - "IF [AvailableQty] = Zero THEN progress displays 0% and no positive pending quantity is derived"
+    - "IF [DraftState] != None AND [ActionState] = Exit THEN exit confirmation is required"
+
+automation_boundary_plan:
+  locator_priority:
+    - "get_by_role"
+    - "get_by_label"
+    - "get_by_placeholder"
+    - "page/section scoped semantic locator"
+    - "scoped CSS only when semantic locators are unavailable"
+  stable_locator_candidates:
+    - element_id: "el-btn-query"
+      preferred: "get_by_role('button', name='查询')"
+    - element_id: "el-btn-reset"
+      preferred: "get_by_role('button', name='重置')"
+    - element_id: "el-btn-finish-ship"
+      preferred: "get_by_role('button', name='完成发货')"
+    - element_id: "el-btn-exit-ship"
+      preferred: "get_by_role('button', name='退出发货')"
+    - element_id: "el-dlg-qty"
+      preferred: "get_by_placeholder('请输入数量')"
+    - element_id: "el-dlg-note"
+      preferred: "get_by_role('textbox') scoped to the location dialog"
+    - element_id: "el-dlg-confirm"
+      preferred: "get_by_role('button', name='确认') scoped to the location dialog"
+    - element_id: "el-dlg-toast"
+      preferred: "get_by_role('alert')"
+    - element_id: "el-dlg-exit-confirm"
+      preferred: "get_by_role('dialog', name='退出发货')"
+    - element_id: "el-dlg-complete-confirm"
+      preferred: "get_by_role('dialog', name='完成发货')"
+    - element_id: "el-record-table"
+      preferred: "get_by_role('table') scoped to the shipment record region"
+  unstable_or_ambiguous:
+    - element_id: "el-row1-ship"
+      reason: "重复行级发货按钮；必须按计划号等唯一业务键或正式 data-testid 作用域定位"
+    - element_id: "el-row2-ship"
+      reason: "重复行级发货按钮；必须按计划号等唯一业务键或正式 data-testid 作用域定位"
+    - element_id: "el-house-cell"
+      reason: "位置格重复；必须使用栋舍/列/层上下文或正式 data-testid"
+    - element_id: "el-filter-ship-status"
+      reason: "发货执行页上孵计划筛选，需限定在上孵计划区域"
+    - element_id: "automation-locator-contract"
+      reason: "稳定行级定位器/data-testid 是自动化执行前提，不是业务待确认项"
+  execution_constraints:
+    - "后续自动化规划使用可视浏览器 headless=False"
+    - "使用可观察状态等待，不使用固定 sleep 作为稳定性策略"
+    - "不在脚本中写入账号、密码、Token、Cookie 或真实业务数据"
+    - "发货提交仅可在授权测试数据和明确清理责任下执行"
+    - "若正式页面没有稳定唯一定位器，自动化只能使用计划号/栋舍/列/层作用域定位"
+
+dependencies:
+  - dependency: "REQ-PC-041 雏苗发货列表与筛选"
+    impact: "提供进入发货执行页的发货单和入口上下文"
+    status: "upstream_analysis_available"
+  - dependency: "排程计划"
+    impact: "形成发货单及计划日期"
+    status: "prototype_menu_disabled_real_contract_unknown"
+  - dependency: "上孵计划"
+    impact: "提供计划进度、实际出雏、实际可发及关联基础信息"
+    status: "required_contract_not_provided"
+  - dependency: "实际出雏结果"
+    impact: "决定计划是否可执行和实际可发数量"
+    status: "required_data_not_provided"
+  - dependency: "历史发货记录和位置结果"
+    impact: "提供累计数量、剩余数量、进度和提交后追溯结果"
+    status: "required_data_not_provided"
+  - dependency: "栋舍基础数据"
+    impact: "提供位置工作区"
+    status: "required_data_not_provided"
+  - dependency: "REQ-PC-045/046 库存与出入库"
+    impact: "后续承接确认发货后的库存联动；不属于本需求页面范围"
+    status: "downstream_out_of_scope"
+
+environment_and_data:
+  prototype:
+    status: "available"
+    browser: "Chromium visible mode"
+    data_character: "原型公开 mock 数据"
+    login: "not_required"
+  real_test_environment:
+    url_source: ".env: UI_TEST_URL；具体地址不写入分析产物，本分析不访问真实执行路由"
+    credentials_source: "运行时安全配置；不写入分析产物"
+    authorization: "使用需求变动.md 2026.9.3 的平台角色菜单/接口权限配置；具体角色和数据权限由执行前准备"
+  data_preconditions:
+    - "需有可进入发货执行页的安全测试发货单"
+    - "需覆盖已出雏、未出雏、终止、待发货、发货中、已发货和已签收数据状态"
+    - "需覆盖实际可发为零、部分发货、全部发货和多位置结果"
+    - "需明确页面提交数据的创建、修改、回收和清理责任"
+    - "本次分析未创建、修改或删除正式业务数据"
+
+interface_contract:
+  scope: "known_concepts_only"
+  execution_status: "not_executed"
+  known_page_visible_results:
+    - "计划不可执行时不提供有效发货入口"
+    - "数量超限时弹窗保持并显示可见提示"
+    - "提交后更新进度、状态、位置累计和发货记录"
+    - "刷新后 mock 初始状态恢复"
+  not_defined:
+    - "查询、计划筛选、位置暂存和完成发货的接口路径及方法"
+    - "请求响应字段、错误码和服务端校验细节"
+    - "重复提交、并发提交和他人更新后的正式处理协议"
+    - "权限标识、签收回写和库存联动接口"
+  prohibition: "不得依据 page.json 的 mock 数据补写接口路径、字段或响应契约"
+
+risks:
+  - id: "R-042-01"
+    risk: "原型使用 mock 数据，不能证明正式发货提交、持久化和跨模块联动"
+    mitigation: "测试计划阶段准备安全测试数据并明确清理责任；不把 mock 行为当作正式接口契约"
+  - id: "R-042-02"
+    risk: "页面暂存与正式提交边界可能被误认为草稿持久化"
+    mitigation: "只验证页面内暂存、退出确认和完成提交可见行为；持久化规则明确排除"
+  - id: "R-042-03"
+    risk: "并发提交、重复提交和服务端最新数量校验虽已明确规则，但本次未执行正式页面验证"
+    mitigation: "作为页面功能测试计划中的可见结果验证前提；不补写具体接口契约"
+  - id: "R-042-04"
+    risk: "重复的计划发货按钮和位置格可能导致自动化误定位"
+    mitigation: "使用计划/栋舍/列/层作用域或正式 data-testid"
+  - id: "R-042-06"
+    risk: "正式页面测试数据和安全清理责任尚未配置"
+    mitigation: "权限规则已确认；以 report_only 门禁记录测试前提，不阻断下游，但禁止未授权业务提交"
+
+open_questions: []
+
+handoff:
+  output_paths:
+    yaml: "02_analysis/pc/REQ-PC-042.yaml"
+    markdown: "02_analysis/pc/REQ-PC-042_发货单发货执行.md"
+    partition_handoff: "02_analysis/pc/HANDOFF.md"
+  next_agent: "stage-test-plan-agent"

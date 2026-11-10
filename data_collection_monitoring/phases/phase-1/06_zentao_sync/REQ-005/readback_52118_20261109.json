@@ -1,0 +1,203 @@
+﻿{
+    "id": 52118,
+    "project": 46,
+    "product": 8,
+    "execution": 53,
+    "branch": 0,
+    "lib": 0,
+    "module": 734,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "删除后用相同配置重建设备",
+    "precondition": "前置准备：\n1、已准备无业务关联且允许删除的隔离测试数据，并获得写操作授权。\n2、已记录删除前表单字段：设备名称、序列号、产品、父级关系及备注名称；删除后使用相同值，不使用原系统生成的唯一标识。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-10-27 11:19:09",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "AI",
+    "lastEditedDate": "2026-11-09 10:08:30",
+    "version": 3,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "zhumingyue",
+    "lastRunDate": "2026-10-27 11:32:30",
+    "lastRunResult": "fail",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": {
+        "584": {
+            "id": 584,
+            "title": "删除设备后使用完全相同表单内容重新创建，服务器报错",
+            "severity": 3,
+            "openedDate": "2026-10-27 11:35:11",
+            "status": "closed"
+        }
+    },
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 3,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176692,
+            "step": "使用隔离数据创建一条设备，填写并记录名称、序列号、产品、父设备和备注名称。",
+            "desc": "使用隔离数据创建一条设备，填写并记录名称、序列号、产品、父设备和备注名称。",
+            "expect": "创建成功，列表或详情中的业务字段与输入值一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176693,
+            "step": "删除该设备并在确认层点击“确定”。",
+            "desc": "删除该设备并在确认层点击“确定”。",
+            "expect": "显示删除成功提示，刷新列表后目标设备不再出现。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 176694,
+            "step": "使用与首次创建相同的名称、序列号、产品、父设备和备注名称重新填写表单并点击“保存”。",
+            "desc": "使用与首次创建相同的名称、序列号、产品、父设备和备注名称重新填写表单并点击“保存”。",
+            "expect": "重建成功并显示新增成功提示。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "4",
+            "id": 176695,
+            "step": "刷新列表并打开重建设备详情。",
+            "desc": "刷新列表并打开重建设备详情。",
+            "expect": "名称、序列号、产品、父设备和备注名称与首次创建记录一致；系统生成字段按系统规则重新生成。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "5",
+            "id": 176696,
+            "step": "按清理方案删除重建设备并回读列表。",
+            "desc": "按清理方案删除重建设备并回读列表。",
+            "expect": "测试设备清理完成，列表不再显示测试记录。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 52118,
+    "needconfirm": false,
+    "caseFails": 1,
+    "mindMapSteps": {
+        "id": "case_52118",
+        "text": "删除后用相同配置重建设备",
+        "type": "root",
+        "children": [
+            {
+                "id": 176692,
+                "text": "使用隔离数据创建一条设备，填写并记录名称、序列号、产品、父设备和备注名称。",
+                "type": "sub",
+                "parent": "case_52118",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176692",
+                        "text": "创建成功，列表或详情中的业务字段与输入值一致。",
+                        "type": "node",
+                        "parent": 176692,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176693,
+                "text": "删除该设备并在确认层点击“确定”。",
+                "type": "sub",
+                "parent": "case_52118",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176693",
+                        "text": "显示删除成功提示，刷新列表后目标设备不再出现。",
+                        "type": "node",
+                        "parent": 176693,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176694,
+                "text": "使用与首次创建相同的名称、序列号、产品、父设备和备注名称重新填写表单并点击“保存”。",
+                "type": "sub",
+                "parent": "case_52118",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176694",
+                        "text": "重建成功并显示新增成功提示。",
+                        "type": "node",
+                        "parent": 176694,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176695,
+                "text": "刷新列表并打开重建设备详情。",
+                "type": "sub",
+                "parent": "case_52118",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176695",
+                        "text": "名称、序列号、产品、父设备和备注名称与首次创建记录一致；系统生成字段按系统规则重新生成。",
+                        "type": "node",
+                        "parent": 176695,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176696,
+                "text": "按清理方案删除重建设备并回读列表。",
+                "type": "sub",
+                "parent": "case_52118",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176696",
+                        "text": "测试设备清理完成，列表不再显示测试记录。",
+                        "type": "node",
+                        "parent": 176696,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,2275 @@
+﻿{
+    "created_at":  "2026-11-03T11:01:09.3381663+08:00",
+    "targets":  [
+                    {
+                        "id":  52050,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "跨月日期范围包含起止日期",
+                        "precondition":  "前置准备：\n1、已准备脱敏跨月只读数据\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 14:15:53",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 09:54:53",
+                        "version":  5,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:00:09",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  5,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174575,
+                                          "step":  "点击时间范围选择框，打开日期范围弹窗；设置跨越月末的开始和结束日期",
+                                          "desc":  "点击时间范围选择框，打开日期范围弹窗；设置跨越月末的开始和结束日期",
+                                          "expect":  "命中范围的月末前后数据均被纳入",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52050,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52050",
+                                             "text":  "跨月日期范围包含起止日期",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174575,
+                                                                  "text":  "点击时间范围选择框，打开日期范围弹窗；设置跨越月末的开始和结束日期",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52050",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174575",
+                                                                                       "text":  "命中范围的月末前后数据均被纳入",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174575,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52051,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "时间间隔天按自然日形成时间桶",
+                        "precondition":  "前置准备：\n1、已准备跨日脱敏数据\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 14:15:54",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-28 16:59:59",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 09:53:29",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174549,
+                                          "step":  "通过时间间隔标签选择天并观察结果",
+                                          "desc":  "通过时间间隔标签选择天并观察结果",
+                                          "expect":  "按自然日形成时间桶，缺失日按需求归零",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52051,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52051",
+                                             "text":  "时间间隔天按自然日形成时间桶",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174549,
+                                                                  "text":  "通过时间间隔标签选择天并观察结果",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52051",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174549",
+                                                                                       "text":  "按自然日形成时间桶，缺失日按需求归零",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174549,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52052,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "时间间隔周按周一至周日形成时间桶",
+                        "precondition":  "前置准备：\n1、已准备周边界脱敏数据\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 14:15:56",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-28 17:00:00",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:01:02",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174550,
+                                          "step":  "通过时间间隔标签选择周并观察结果",
+                                          "desc":  "通过时间间隔标签选择周并观察结果",
+                                          "expect":  "按周一至周日形成时间桶，缺失周按需求归零",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52052,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52052",
+                                             "text":  "时间间隔周按周一至周日形成时间桶",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174550,
+                                                                  "text":  "通过时间间隔标签选择周并观察结果",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52052",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174550",
+                                                                                       "text":  "按周一至周日形成时间桶，缺失周按需求归零",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174550,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52053,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "月季度和年按自然周期汇总",
+                        "precondition":  "前置准备：\n1、已准备自然周期脱敏数据\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 14:15:58",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:12:50",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:20:35",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174586,
+                                          "step":  "点击首页时间间隔控件，打开时间间隔选项",
+                                          "desc":  "点击首页时间间隔控件，打开时间间隔选项",
+                                          "expect":  "时间间隔选项展开，并显示月、季度和年三个可选择的自然周期",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174587,
+                                          "step":  "选择“月”选项，等待结果区域完成刷新",
+                                          "desc":  "选择“月”选项，等待结果区域完成刷新",
+                                          "expect":  "结果区域按自然月划分时间桶并汇总当前筛选范围内的数据，页面显示与月周期对应的统计结果",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174588,
+                                          "step":  "重新打开时间间隔控件，选择“季度”选项，等待结果区域完成刷新",
+                                          "desc":  "重新打开时间间隔控件，选择“季度”选项，等待结果区域完成刷新",
+                                          "expect":  "结果区域按自然季度划分时间桶并汇总当前筛选范围内的数据，页面显示与季度周期对应的统计结果",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174589,
+                                          "step":  "重新打开时间间隔控件，选择“年”选项，等待结果区域完成刷新",
+                                          "desc":  "重新打开时间间隔控件，选择“年”选项，等待结果区域完成刷新",
+                                          "expect":  "结果区域按自然年划分时间桶并汇总当前筛选范围内的数据，页面显示与年周期对应的统计结果",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52053,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52053",
+                                             "text":  "月季度和年按自然周期汇总",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174586,
+                                                                  "text":  "点击首页时间间隔控件，打开时间间隔选项",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52053",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174586",
+                                                                                       "text":  "时间间隔选项展开，并显示月、季度和年三个可选择的自然周期",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174586,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174587,
+                                                                  "text":  "选择“月”选项，等待结果区域完成刷新",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52053",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174587",
+                                                                                       "text":  "结果区域按自然月划分时间桶并汇总当前筛选范围内的数据，页面显示与月周期对应的统计结果",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174587,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174588,
+                                                                  "text":  "重新打开时间间隔控件，选择“季度”选项，等待结果区域完成刷新",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52053",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174588",
+                                                                                       "text":  "结果区域按自然季度划分时间桶并汇总当前筛选范围内的数据，页面显示与季度周期对应的统计结果",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174588,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174589,
+                                                                  "text":  "重新打开时间间隔控件，选择“年”选项，等待结果区域完成刷新",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52053",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174589",
+                                                                                       "text":  "结果区域按自然年划分时间桶并汇总当前筛选范围内的数据，页面显示与年周期对应的统计结果",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174589,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52055,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "无数据时显示零值或空状态",
+                        "precondition":  "前置准备：\n1、已取得批准的无数据范围或回读证据\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 14:16:01",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:17:03",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:20:40",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174590,
+                                          "step":  "点击首页日期范围选择控件，打开日期范围面板",
+                                          "desc":  "点击首页日期范围选择控件，打开日期范围面板",
+                                          "expect":  "日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174591,
+                                          "step":  "在日期范围面板中设置并确认批准的无数据范围",
+                                          "desc":  "在日期范围面板中设置并确认批准的无数据范围",
+                                          "expect":  "日期控件显示批准的无数据范围，页面开始按该范围重新查询数据",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174592,
+                                          "step":  "等待页面加载完成，观察分类、产品、设备、设备消息以及上行和下行消息指标与图表",
+                                          "desc":  "等待页面加载完成，观察分类、产品、设备、设备消息以及上行和下行消息指标与图表",
+                                          "expect":  "结果区域、指标卡和图表均完成刷新，展示内容对应批准的无数据范围",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174593,
+                                          "step":  "分别核对各指标和图表的无数据展示状态",
+                                          "desc":  "分别核对各指标和图表的无数据展示状态",
+                                          "expect":  "分类、产品、设备、设备消息以及上行和下行消息无数据时按页面规则显示0或空状态",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52055,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52055",
+                                             "text":  "无数据时显示零值或空状态",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174590,
+                                                                  "text":  "点击首页日期范围选择控件，打开日期范围面板",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52055",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174590",
+                                                                                       "text":  "日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174590,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174591,
+                                                                  "text":  "在日期范围面板中设置并确认批准的无数据范围",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52055",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174591",
+                                                                                       "text":  "日期控件显示批准的无数据范围，页面开始按该范围重新查询数据",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174591,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174592,
+                                                                  "text":  "等待页面加载完成，观察分类、产品、设备、设备消息以及上行和下行消息指标与图表",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52055",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174592",
+                                                                                       "text":  "结果区域、指标卡和图表均完成刷新，展示内容对应批准的无数据范围",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174592,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174593,
+                                                                  "text":  "分别核对各指标和图表的无数据展示状态",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52055",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174593",
+                                                                                       "text":  "分类、产品、设备、设备消息以及上行和下行消息无数据时按页面规则显示0或空状态",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174593,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52056,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "日期筛选变化后结果区域更新",
+                        "precondition":  "前置准备：\n1、已准备两个可区分的批准日期范围，且两个范围均有可观察的结果基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-23 14:16:02",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:08:54",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:31:04",
+                        "lastRunResult":  "fail",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174580,
+                                          "step":  "点击首页日期范围选择控件，打开日期范围面板",
+                                          "desc":  "点击首页日期范围选择控件，打开日期范围面板",
+                                          "expect":  "日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174581,
+                                          "step":  "在日期范围面板中选择第二个批准日期范围，完成日期选择并关闭面板",
+                                          "desc":  "在日期范围面板中选择第二个批准日期范围，完成日期选择并关闭面板",
+                                          "expect":  "日期控件显示第二个范围，页面开始按新范围重新加载数据",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174582,
+                                          "step":  "等待页面加载完成，记录结果区域、指标卡和图表的显示内容",
+                                          "desc":  "等待页面加载完成，记录结果区域、指标卡和图表的显示内容",
+                                          "expect":  "结果区域、指标卡和图表均完成刷新，展示内容与第二个日期范围一致；若未完成刷新则记录加载状态或异常提示",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52056,
+                        "needconfirm":  false,
+                        "caseFails":  1,
+                        "mindMapSteps":  {
+                                             "id":  "case_52056",
+                                             "text":  "日期筛选变化后结果区域更新",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174580,
+                                                                  "text":  "点击首页日期范围选择控件，打开日期范围面板",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52056",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174580",
+                                                                                       "text":  "日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174580,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174581,
+                                                                  "text":  "在日期范围面板中选择第二个批准日期范围，完成日期选择并关闭面板",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52056",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174581",
+                                                                                       "text":  "日期控件显示第二个范围，页面开始按新范围重新加载数据",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174581,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174582,
+                                                                  "text":  "等待页面加载完成，记录结果区域、指标卡和图表的显示内容",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52056",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174582",
+                                                                                       "text":  "结果区域、指标卡和图表均完成刷新，展示内容与第二个日期范围一致；若未完成刷新则记录加载状态或异常提示",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174582,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52125,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "分类数量及今日新增统计",
+                        "precondition":  "前置准备：\n1、已准备产品分类页面总数及创建日期为今天的批准基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 16:06:44",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:04:55",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:22:53",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174576,
+                                          "step":  "打开产品分类页面，记录页面显示的分类总数",
+                                          "desc":  "打开产品分类页面，记录页面显示的分类总数",
+                                          "expect":  "成功进入产品分类页面，并获得产品分类页面显示的分类总数",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174577,
+                                          "step":  "在产品分类页面记录创建日期为今天的分类数量",
+                                          "desc":  "在产品分类页面记录创建日期为今天的分类数量",
+                                          "expect":  "获得创建日期为今天的产品分类数量，并按分类唯一编号去重",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174578,
+                                          "step":  "返回首页，核对首页分类数量与产品分类页面分类总数",
+                                          "desc":  "返回首页，核对首页分类数量与产品分类页面分类总数",
+                                          "expect":  "首页分类数量等于产品分类页面显示的分类总数",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174579,
+                                          "step":  "核对首页分类今日新增与产品分类页面今日创建分类数量",
+                                          "desc":  "核对首页分类今日新增与产品分类页面今日创建分类数量",
+                                          "expect":  "首页分类今日新增等于产品分类页面创建日期为今天的分类数量",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52125,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52125",
+                                             "text":  "分类数量及今日新增统计",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174576,
+                                                                  "text":  "打开产品分类页面，记录页面显示的分类总数",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52125",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174576",
+                                                                                       "text":  "成功进入产品分类页面，并获得产品分类页面显示的分类总数",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174576,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174577,
+                                                                  "text":  "在产品分类页面记录创建日期为今天的分类数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52125",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174577",
+                                                                                       "text":  "获得创建日期为今天的产品分类数量，并按分类唯一编号去重",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174577,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174578,
+                                                                  "text":  "返回首页，核对首页分类数量与产品分类页面分类总数",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52125",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174578",
+                                                                                       "text":  "首页分类数量等于产品分类页面显示的分类总数",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174578,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174579,
+                                                                  "text":  "核对首页分类今日新增与产品分类页面今日创建分类数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52125",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174579",
+                                                                                       "text":  "首页分类今日新增等于产品分类页面创建日期为今天的分类数量",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174579,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52126,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "首页产品数量和今日新增",
+                        "precondition":  "前置准备：\n1、已准备产品管理页面总数及创建日期为今天的批准基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 16:06:46",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:26:06",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:35:59",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174597,
+                                          "step":  "打开产品管理页面，记录页面显示的产品总数",
+                                          "desc":  "打开产品管理页面，记录页面显示的产品总数",
+                                          "expect":  "成功进入产品管理页面，并获得页面显示的产品总数",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174598,
+                                          "step":  "在产品管理页面记录创建日期为今天的产品数量",
+                                          "desc":  "在产品管理页面记录创建日期为今天的产品数量",
+                                          "expect":  "获得创建日期为今天的产品数量，并按产品唯一编号去重",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174599,
+                                          "step":  "返回首页，核对首页产品数量与产品管理页面产品总数",
+                                          "desc":  "返回首页，核对首页产品数量与产品管理页面产品总数",
+                                          "expect":  "首页产品数量等于产品管理页面显示的产品总数",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174600,
+                                          "step":  "核对首页产品今日新增与产品管理页面今日创建产品数量",
+                                          "desc":  "核对首页产品今日新增与产品管理页面今日创建产品数量",
+                                          "expect":  "首页产品今日新增等于产品管理页面创建日期为今天的产品数量",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52126,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52126",
+                                             "text":  "首页产品数量和今日新增",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174597,
+                                                                  "text":  "打开产品管理页面，记录页面显示的产品总数",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52126",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174597",
+                                                                                       "text":  "成功进入产品管理页面，并获得页面显示的产品总数",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174597,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174598,
+                                                                  "text":  "在产品管理页面记录创建日期为今天的产品数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52126",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174598",
+                                                                                       "text":  "获得创建日期为今天的产品数量，并按产品唯一编号去重",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174598,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174599,
+                                                                  "text":  "返回首页，核对首页产品数量与产品管理页面产品总数",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52126",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174599",
+                                                                                       "text":  "首页产品数量等于产品管理页面显示的产品总数",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174599,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174600,
+                                                                  "text":  "核对首页产品今日新增与产品管理页面今日创建产品数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52126",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174600",
+                                                                                       "text":  "首页产品今日新增等于产品管理页面创建日期为今天的产品数量",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174600,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52127,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "首页设备数量和今日新增",
+                        "precondition":  "前置准备：\n1、已准备设备管理页面总数及创建日期为今天的批准基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 16:06:47",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:28:13",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:36:24",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174601,
+                                          "step":  "打开设备管理页面，记录页面显示的设备总数",
+                                          "desc":  "打开设备管理页面，记录页面显示的设备总数",
+                                          "expect":  "成功进入设备管理页面，并获得页面显示的设备总数",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174602,
+                                          "step":  "在设备管理页面记录创建日期为今天的设备数量",
+                                          "desc":  "在设备管理页面记录创建日期为今天的设备数量",
+                                          "expect":  "获得创建日期为今天的设备数量，并按设备唯一编号去重",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174603,
+                                          "step":  "返回首页，核对首页设备数量与设备管理页面设备总数",
+                                          "desc":  "返回首页，核对首页设备数量与设备管理页面设备总数",
+                                          "expect":  "首页设备数量等于设备管理页面显示的设备总数",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174604,
+                                          "step":  "核对首页设备今日新增与设备管理页面今日创建设备数量",
+                                          "desc":  "核对首页设备今日新增与设备管理页面今日创建设备数量",
+                                          "expect":  "首页设备今日新增等于设备管理页面创建日期为今天的设备数量",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52127,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52127",
+                                             "text":  "首页设备数量和今日新增",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174601,
+                                                                  "text":  "打开设备管理页面，记录页面显示的设备总数",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52127",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174601",
+                                                                                       "text":  "成功进入设备管理页面，并获得页面显示的设备总数",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174601,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174602,
+                                                                  "text":  "在设备管理页面记录创建日期为今天的设备数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52127",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174602",
+                                                                                       "text":  "获得创建日期为今天的设备数量，并按设备唯一编号去重",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174602,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174603,
+                                                                  "text":  "返回首页，核对首页设备数量与设备管理页面设备总数",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52127",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174603",
+                                                                                       "text":  "首页设备数量等于设备管理页面显示的设备总数",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174603,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174604,
+                                                                  "text":  "核对首页设备今日新增与设备管理页面今日创建设备数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52127",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174604",
+                                                                                       "text":  "首页设备今日新增等于设备管理页面创建日期为今天的设备数量",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174604,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52128,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "首页设备消息数和今日新增",
+                        "precondition":  "前置准备：\n1、已准备所有设备消息页总数及创建时间为今天的批准基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 16:06:49",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:29:45",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:36:29",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174605,
+                                          "step":  "在设备管理页面逐个打开设备的设备消息弹窗",
+                                          "desc":  "在设备管理页面逐个打开设备的设备消息弹窗",
+                                          "expect":  "每个设备的设备消息页面都能正常打开，并显示该设备的消息列表",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174606,
+                                          "step":  "记录每个设备消息页面的消息总数，并按消息唯一编号去重后汇总",
+                                          "desc":  "记录每个设备消息页面的消息总数，并按消息唯一编号去重后汇总",
+                                          "expect":  "得到所有设备消息的汇总总数，重复消息只计算一次",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174607,
+                                          "step":  "在每个设备消息页面记录创建时间为今天的消息数量，并按消息唯一编号去重后汇总",
+                                          "desc":  "在每个设备消息页面记录创建时间为今天的消息数量，并按消息唯一编号去重后汇总",
+                                          "expect":  "得到所有设备今天新增消息的汇总数量",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174608,
+                                          "step":  "返回首页，核对首页设备消息数与设备消息页面汇总总数",
+                                          "desc":  "返回首页，核对首页设备消息数与设备消息页面汇总总数",
+                                          "expect":  "首页设备消息数等于所有设备消息页面汇总的消息总数",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "5",
+                                          "id":  174609,
+                                          "step":  "核对首页设备消息今日新增与设备消息页面今日新增汇总",
+                                          "desc":  "核对首页设备消息今日新增与设备消息页面今日新增汇总",
+                                          "expect":  "首页设备消息今日新增等于所有设备消息页面创建时间为今天的消息汇总数量",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52128,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52128",
+                                             "text":  "首页设备消息数和今日新增",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174605,
+                                                                  "text":  "在设备管理页面逐个打开设备的设备消息弹窗",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52128",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174605",
+                                                                                       "text":  "每个设备的设备消息页面都能正常打开，并显示该设备的消息列表",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174605,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174606,
+                                                                  "text":  "记录每个设备消息页面的消息总数，并按消息唯一编号去重后汇总",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52128",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174606",
+                                                                                       "text":  "得到所有设备消息的汇总总数，重复消息只计算一次",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174606,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174607,
+                                                                  "text":  "在每个设备消息页面记录创建时间为今天的消息数量，并按消息唯一编号去重后汇总",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52128",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174607",
+                                                                                       "text":  "得到所有设备今天新增消息的汇总数量",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174607,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174608,
+                                                                  "text":  "返回首页，核对首页设备消息数与设备消息页面汇总总数",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52128",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174608",
+                                                                                       "text":  "首页设备消息数等于所有设备消息页面汇总的消息总数",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174608,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174609,
+                                                                  "text":  "核对首页设备消息今日新增与设备消息页面今日新增汇总",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52128",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174609",
+                                                                                       "text":  "首页设备消息今日新增等于所有设备消息页面创建时间为今天的消息汇总数量",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174609,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52129,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "设备数量分类环状图统计",
+                        "precondition":  "前置准备：\n1、已准备产品分类与绑定设备数量批准基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 16:06:50",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 11:00:33",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 10:38:43",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174617,
+                                          "step":  "观察设备数量统计环状图",
+                                          "desc":  "观察设备数量统计环状图",
+                                          "expect":  "页面显示设备数量统计环状图，图例或环状图分区按产品分类展示，分类名称清晰可辨。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174618,
+                                          "step":  "按产品分类逐一将鼠标悬停在环状图对应分区",
+                                          "desc":  "按产品分类逐一将鼠标悬停在环状图对应分区",
+                                          "expect":  "每次悬停均显示当前产品分类的提示信息，并明确展示该分类的绑定设备数量。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174619,
+                                          "step":  "逐一记录各产品分类悬停提示中的绑定设备数量",
+                                          "desc":  "逐一记录各产品分类悬停提示中的绑定设备数量",
+                                          "expect":  "各产品分类的提示数量均可读取，且每个分类只对应一个数量，不出现分类名称缺失或数量无法显示。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174620,
+                                          "step":  "将各产品分类数量与批准基线逐项核对",
+                                          "desc":  "将各产品分类数量与批准基线逐项核对",
+                                          "expect":  "每个产品分类的绑定设备数量均与批准基线一致，环状图展示的分类集合无遗漏或多余分类。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52129,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52129",
+                                             "text":  "设备数量分类环状图统计",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174617,
+                                                                  "text":  "观察设备数量统计环状图",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52129",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174617",
+                                                                                       "text":  "页面显示设备数量统计环状图，图例或环状图分区按产品分类展示，分类名称清晰可辨。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174617,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174618,
+                                                                  "text":  "按产品分类逐一将鼠标悬停在环状图对应分区",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52129",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174618",
+                                                                                       "text":  "每次悬停均显示当前产品分类的提示信息，并明确展示该分类的绑定设备数量。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174618,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174619,
+                                                                  "text":  "逐一记录各产品分类悬停提示中的绑定设备数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52129",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174619",
+                                                                                       "text":  "各产品分类的提示数量均可读取，且每个分类只对应一个数量，不出现分类名称缺失或数量无法显示。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174619,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174620,
+                                                                  "text":  "将各产品分类数量与批准基线逐项核对",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52129",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174620",
+                                                                                       "text":  "每个产品分类的绑定设备数量均与批准基线一致，环状图展示的分类集合无遗漏或多余分类。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174620,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52130,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "设备状态统计",
+                        "precondition":  "前置准备：\n1、已准备设备管理页面在线、离线和未激活状态数量基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 16:06:52",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:57:23",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 11:06:23",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174613,
+                                          "step":  "打开设备管理页面，分别记录在线、离线和未激活设备数量",
+                                          "desc":  "打开设备管理页面，分别记录在线、离线和未激活设备数量",
+                                          "expect":  "成功进入设备管理页面，并获得在线、离线和未激活三种状态的设备数量",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174614,
+                                          "step":  "返回首页，查看设备状态统计中的在线数量",
+                                          "desc":  "返回首页，查看设备状态统计中的在线数量",
+                                          "expect":  "首页在线设备数量等于设备管理页面记录的在线设备数量，按设备唯一编号去重",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174615,
+                                          "step":  "核对首页设备状态统计中的离线数量",
+                                          "desc":  "核对首页设备状态统计中的离线数量",
+                                          "expect":  "首页离线设备数量等于设备管理页面记录的离线设备数量，按设备唯一编号去重",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174616,
+                                          "step":  "核对首页设备状态统计中的未激活数量",
+                                          "desc":  "核对首页设备状态统计中的未激活数量",
+                                          "expect":  "首页未激活设备数量等于设备管理页面记录的未激活设备数量，按设备唯一编号去重",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52130,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52130",
+                                             "text":  "设备状态统计",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174613,
+                                                                  "text":  "打开设备管理页面，分别记录在线、离线和未激活设备数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52130",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174613",
+                                                                                       "text":  "成功进入设备管理页面，并获得在线、离线和未激活三种状态的设备数量",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174613,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174614,
+                                                                  "text":  "返回首页，查看设备状态统计中的在线数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52130",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174614",
+                                                                                       "text":  "首页在线设备数量等于设备管理页面记录的在线设备数量，按设备唯一编号去重",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174614,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174615,
+                                                                  "text":  "核对首页设备状态统计中的离线数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52130",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174615",
+                                                                                       "text":  "首页离线设备数量等于设备管理页面记录的离线设备数量，按设备唯一编号去重",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174615,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174616,
+                                                                  "text":  "核对首页设备状态统计中的未激活数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52130",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174616",
+                                                                                       "text":  "首页未激活设备数量等于设备管理页面记录的未激活设备数量，按设备唯一编号去重",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174616,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52131,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "上行和下行消息量统计",
+                        "precondition":  "前置准备：\n1、已准备包含上行、下行标签和可区分时间范围的消息基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 16:06:53",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 11:01:32",
+                        "version":  2,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 11:06:33",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  2,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174621,
+                                          "step":  "打开首页的消息量统计区域",
+                                          "desc":  "打开首页的消息量统计区域",
+                                          "expect":  "成功进入首页并看到上行消息量、下行消息量统计指标",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174622,
+                                          "step":  "在时间范围筛选器中设置开始时间和结束时间，点击确定并等待统计结果刷新",
+                                          "desc":  "在时间范围筛选器中设置开始时间和结束时间，点击确定并等待统计结果刷新",
+                                          "expect":  "筛选器显示所选开始时间和结束时间，页面完成刷新且统计结果对应所选时间范围",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174623,
+                                          "step":  "记录页面显示的上行消息量和下行消息量",
+                                          "desc":  "记录页面显示的上行消息量和下行消息量",
+                                          "expect":  "上行消息量和下行消息量均可读取并分别记录，不将两个指标合并为单一结果",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  174624,
+                                          "step":  "按消息唯一编号整理所选时间范围内的基线消息，并分别统计上行和下行标签数量",
+                                          "desc":  "按消息唯一编号整理所选时间范围内的基线消息，并分别统计上行和下行标签数量",
+                                          "expect":  "基线统计仅纳入所选时间范围内的消息，每个消息唯一编号只计数一次，并分别得到上行基线数量和下行基线数量",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "5",
+                                          "id":  174625,
+                                          "step":  "将页面上行消息量与上行基线数量进行核对",
+                                          "desc":  "将页面上行消息量与上行基线数量进行核对",
+                                          "expect":  "页面上行消息量等于上行基线数量，范围外消息和重复唯一编号不计入",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "6",
+                                          "id":  174626,
+                                          "step":  "将页面下行消息量与下行基线数量进行核对",
+                                          "desc":  "将页面下行消息量与下行基线数量进行核对",
+                                          "expect":  "页面下行消息量等于下行基线数量，范围外消息和重复唯一编号不计入",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52131,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52131",
+                                             "text":  "上行和下行消息量统计",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174621,
+                                                                  "text":  "打开首页的消息量统计区域",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52131",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174621",
+                                                                                       "text":  "成功进入首页并看到上行消息量、下行消息量统计指标",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174621,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174622,
+                                                                  "text":  "在时间范围筛选器中设置开始时间和结束时间，点击确定并等待统计结果刷新",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52131",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174622",
+                                                                                       "text":  "筛选器显示所选开始时间和结束时间，页面完成刷新且统计结果对应所选时间范围",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174622,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174623,
+                                                                  "text":  "记录页面显示的上行消息量和下行消息量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52131",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174623",
+                                                                                       "text":  "上行消息量和下行消息量均可读取并分别记录，不将两个指标合并为单一结果",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174623,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174624,
+                                                                  "text":  "按消息唯一编号整理所选时间范围内的基线消息，并分别统计上行和下行标签数量",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52131",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174624",
+                                                                                       "text":  "基线统计仅纳入所选时间范围内的消息，每个消息唯一编号只计数一次，并分别得到上行基线数量和下行基线数量",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174624,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174625,
+                                                                  "text":  "将页面上行消息量与上行基线数量进行核对",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52131",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174625",
+                                                                                       "text":  "页面上行消息量等于上行基线数量，范围外消息和重复唯一编号不计入",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174625,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174626,
+                                                                  "text":  "将页面下行消息量与下行基线数量进行核对",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52131",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174626",
+                                                                                       "text":  "页面下行消息量等于下行基线数量，范围外消息和重复唯一编号不计入",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174626,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52133,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  750,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "日期筛选后消息方向统计更新",
+                        "precondition":  "前置准备：\n1、已准备两个可区分的批准日期范围\n2、第二个日期范围内存在可按上行、下行消息标签区分的消息统计基线\n\n前置步骤：\n1、使用授权只读账号登录数据采集监控平台。；登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。\n2、展开首页入口并进入首页目标页面。；到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-29 10:08:33",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-10-29 10:08:55",
+                        "version":  1,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  1,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  174583,
+                                          "step":  "点击首页日期范围选择控件，打开日期范围面板",
+                                          "desc":  "点击首页日期范围选择控件，打开日期范围面板",
+                                          "expect":  "日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  174584,
+                                          "step":  "选择第二个批准日期范围并确认日期选择",
+                                          "desc":  "选择第二个批准日期范围并确认日期选择",
+                                          "expect":  "日期控件显示第二个范围，页面按该范围重新查询并刷新消息统计区域",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  174585,
+                                          "step":  "在消息统计区域分别读取上行消息数量和下行消息数量，并与第二个范围的批准基线逐项核对",
+                                          "desc":  "在消息统计区域分别读取上行消息数量和下行消息数量，并与第二个范围的批准基线逐项核对",
+                                          "expect":  "上行消息数量和下行消息数量分别展示，且各自仅统计第二个日期范围内对应标签的消息；不应将两类消息合并或统计范围外消息",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52133,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52133",
+                                             "text":  "日期筛选后消息方向统计更新",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  174583,
+                                                                  "text":  "点击首页日期范围选择控件，打开日期范围面板",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52133",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174583",
+                                                                                       "text":  "日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174583,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174584,
+                                                                  "text":  "选择第二个批准日期范围并确认日期选择",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52133",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174584",
+                                                                                       "text":  "日期控件显示第二个范围，页面按该范围重新查询并刷新消息统计区域",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174584,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  174585,
+                                                                  "text":  "在消息统计区域分别读取上行消息数量和下行消息数量，并与第二个范围的批准基线逐项核对",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52133",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_174585",
+                                                                                       "text":  "上行消息数量和下行消息数量分别展示，且各自仅统计第二个日期范围内对应标签的消息；不应将两类消息合并或统计范围外消息",
+                                                                                       "type":  "node",
+                                                                                       "parent":  174585,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    }
+                ]
+}

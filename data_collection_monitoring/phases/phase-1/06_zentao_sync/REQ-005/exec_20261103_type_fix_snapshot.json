@@ -1,0 +1,1437 @@
+﻿{
+    "created_at":  "2026-11-03T10:53:46.7853796+08:00",
+    "targets":  [
+                    {
+                        "id":  51687,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "打开设备管理页面，检查设备列表和操作区域",
+                        "precondition":  "前置准备：\n1、已具备设备管理页面授权访问和脱敏只读设备数据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  3,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:57:45",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:47:58",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "",
+                        "lastRunDate":  "",
+                        "lastRunResult":  "",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  175971,
+                                          "step":  "查看默认设备列表。",
+                                          "desc":  "查看默认设备列表。",
+                                          "expect":  "列表显示当前账号和租户授权范围内的设备记录；无记录时显示空结果状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  175972,
+                                          "step":  "查看设备筛选、分页和操作区域。",
+                                          "desc":  "查看设备筛选、分页和操作区域。",
+                                          "expect":  "筛选控件、分页控件和页面提供的设备操作入口均可定位，控件文字与业务用途对应。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51687,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51687",
+                                             "text":  "打开设备管理页面，检查设备列表和操作区域",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  175971,
+                                                                  "text":  "查看默认设备列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51687",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_175971",
+                                                                                       "text":  "列表显示当前账号和租户授权范围内的设备记录；无记录时显示空结果状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  175971,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  175972,
+                                                                  "text":  "查看设备筛选、分页和操作区域。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51687",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_175972",
+                                                                                       "text":  "筛选控件、分页控件和页面提供的设备操作入口均可定位，控件文字与业务用途对应。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  175972,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  52123,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "编辑设备名称，检查重复校验",
+                        "precondition":  "前置准备：\n1、已获得同一产品下的既有设备、相同设备名称样本，以及不同产品下可使用相同名称的批准脱敏样本和校验授权。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-28 10:38:33",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:07",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-29 11:33:40",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  175980,
+                                          "step":  "打开目标设备编辑表单，将名称改为同一产品下已有名称并点击“保存”。",
+                                          "desc":  "打开目标设备编辑表单，将名称改为同一产品下已有名称并点击“保存”。",
+                                          "expect":  "名称字段显示重复提示，表单保持打开，原设备名称和其他字段未改变。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  175981,
+                                          "step":  "将名称改为同一产品下未使用的名称并点击“保存”。",
+                                          "desc":  "将名称改为同一产品下未使用的名称并点击“保存”。",
+                                          "expect":  "显示保存成功提示，编辑表单关闭或进入完成状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  175982,
+                                          "step":  "重新打开目标设备详情。",
+                                          "desc":  "重新打开目标设备详情。",
+                                          "expect":  "设备名称显示新名称，产品、序列号和其他未修改字段保持原值。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  52123,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_52123",
+                                             "text":  "编辑设备名称，检查重复校验",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  175980,
+                                                                  "text":  "打开目标设备编辑表单，将名称改为同一产品下已有名称并点击“保存”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52123",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_175980",
+                                                                                       "text":  "名称字段显示重复提示，表单保持打开，原设备名称和其他字段未改变。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  175980,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  175981,
+                                                                  "text":  "将名称改为同一产品下未使用的名称并点击“保存”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52123",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_175981",
+                                                                                       "text":  "显示保存成功提示，编辑表单关闭或进入完成状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  175981,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  175982,
+                                                                  "text":  "重新打开目标设备详情。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_52123",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_175982",
+                                                                                       "text":  "设备名称显示新名称，产品、序列号和其他未修改字段保持原值。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  175982,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51698,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "新增设备，检查产品和设备类型",
+                        "precondition":  "前置准备：\n1、已获得可用于只读观察的可用产品及其设备类型信息。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:01",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:23",
+                        "version":  6,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-27 09:26:49",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  6,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176000,
+                                          "step":  "点击“新增根设备”或页面定义的新增设备入口，打开表单。",
+                                          "desc":  "点击“新增根设备”或页面定义的新增设备入口，打开表单。",
+                                          "expect":  "新增表单打开，并显示产品选择控件和设备类型字段。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176001,
+                                          "step":  "打开产品选择器并选择目标产品。",
+                                          "desc":  "打开产品选择器并选择目标产品。",
+                                          "expect":  "产品字段显示所选产品，产品字段被标记为必填或具有明确选择状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176002,
+                                          "step":  "查看设备类型字段。",
+                                          "desc":  "查看设备类型字段。",
+                                          "expect":  "设备类型显示与所选产品属性一致的值；若产品契约允许编辑，控件处于可编辑状态，否则处于只读或禁用状态。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "4",
+                                          "id":  176003,
+                                          "step":  "点击“取消”。",
+                                          "desc":  "点击“取消”。",
+                                          "expect":  "表单关闭，未新增设备。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51698,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51698",
+                                             "text":  "新增设备，检查产品和设备类型",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176000,
+                                                                  "text":  "点击“新增根设备”或页面定义的新增设备入口，打开表单。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51698",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176000",
+                                                                                       "text":  "新增表单打开，并显示产品选择控件和设备类型字段。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176000,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176001,
+                                                                  "text":  "打开产品选择器并选择目标产品。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51698",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176001",
+                                                                                       "text":  "产品字段显示所选产品，产品字段被标记为必填或具有明确选择状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176001,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176002,
+                                                                  "text":  "查看设备类型字段。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51698",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176002",
+                                                                                       "text":  "设备类型显示与所选产品属性一致的值；若产品契约允许编辑，控件处于可编辑状态，否则处于只读或禁用状态。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176002,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176003,
+                                                                  "text":  "点击“取消”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51698",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176003",
+                                                                                       "text":  "表单关闭，未新增设备。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176003,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51699,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "编辑已绑定设备，检查产品是否只读",
+                        "precondition":  "前置准备：\n1、已准备经授权可读且已有产品绑定的设备记录。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "interface",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:02",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:26",
+                        "version":  5,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 10:34:44",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  5,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176004,
+                                          "step":  "打开已绑定设备的编辑表单。",
+                                          "desc":  "打开已绑定设备的编辑表单。",
+                                          "expect":  "产品字段显示当前绑定产品。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176005,
+                                          "step":  "点击产品选择控件并尝试选择其他产品。",
+                                          "desc":  "点击产品选择控件并尝试选择其他产品。",
+                                          "expect":  "产品字段处于只读或禁用状态，不能将设备更换到其他产品。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176006,
+                                          "step":  "点击“取消”。",
+                                          "desc":  "点击“取消”。",
+                                          "expect":  "表单关闭，设备原产品绑定保持不变。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51699,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51699",
+                                             "text":  "编辑已绑定设备，检查产品是否只读",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176004,
+                                                                  "text":  "打开已绑定设备的编辑表单。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51699",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176004",
+                                                                                       "text":  "产品字段显示当前绑定产品。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176004,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176005,
+                                                                  "text":  "点击产品选择控件并尝试选择其他产品。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51699",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176005",
+                                                                                       "text":  "产品字段处于只读或禁用状态，不能将设备更换到其他产品。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176005,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176006,
+                                                                  "text":  "点击“取消”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51699",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176006",
+                                                                                       "text":  "表单关闭，设备原产品绑定保持不变。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176006,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51701,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "查看未激活设备，检查设备状态",
+                        "precondition":  "前置准备：\n1、已获得未完成激活设备的批准只读状态证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:05",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:30",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-27 09:37:56",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176011,
+                                          "step":  "定位一条未完成激活的设备记录。",
+                                          "desc":  "定位一条未完成激活的设备记录。",
+                                          "expect":  "设备存在且激活条件未完成。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176012,
+                                          "step":  "查看该设备状态字段。",
+                                          "desc":  "查看该设备状态字段。",
+                                          "expect":  "状态明确显示“未激活”，不显示为“在线”或“离线”。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51701,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51701",
+                                             "text":  "查看未激活设备，检查设备状态",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176011,
+                                                                  "text":  "定位一条未完成激活的设备记录。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51701",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176011",
+                                                                                       "text":  "设备存在且激活条件未完成。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176011,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176012,
+                                                                  "text":  "查看该设备状态字段。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51701",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176012",
+                                                                                       "text":  "状态明确显示“未激活”，不显示为“在线”或“离线”。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176012,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51702,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "查看已连接设备，检查在线状态",
+                        "precondition":  "前置准备：\n1、已获得已建立连接设备的批准只读状态证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:07",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:32",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-27 09:46:52",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176013,
+                                          "step":  "定位一条已激活且已建立连接的设备。",
+                                          "desc":  "定位一条已激活且已建立连接的设备。",
+                                          "expect":  "设备连接条件满足，设备记录可查询。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176014,
+                                          "step":  "查看设备状态字段。",
+                                          "desc":  "查看设备状态字段。",
+                                          "expect":  "状态显示“在线”。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51702,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51702",
+                                             "text":  "查看已连接设备，检查在线状态",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176013,
+                                                                  "text":  "定位一条已激活且已建立连接的设备。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51702",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176013",
+                                                                                       "text":  "设备连接条件满足，设备记录可查询。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176013,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176014,
+                                                                  "text":  "查看设备状态字段。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51702",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176014",
+                                                                                       "text":  "状态显示“在线”。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176014,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51703,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "查看已断开设备，检查离线状态",
+                        "precondition":  "前置准备：\n1、已获得连接已断开设备的批准只读状态证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "feature",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:08",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:35",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-27 09:47:07",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176015,
+                                          "step":  "定位一条已激活但连接已断开的设备。",
+                                          "desc":  "定位一条已激活但连接已断开的设备。",
+                                          "expect":  "设备记录可查询，连接状态为断开。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176016,
+                                          "step":  "查看设备状态字段。",
+                                          "desc":  "查看设备状态字段。",
+                                          "expect":  "状态显示“离线”。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51703,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51703",
+                                             "text":  "查看已断开设备，检查离线状态",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176015,
+                                                                  "text":  "定位一条已激活但连接已断开的设备。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51703",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176015",
+                                                                                       "text":  "设备记录可查询，连接状态为断开。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176015,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176016,
+                                                                  "text":  "查看设备状态字段。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51703",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176016",
+                                                                                       "text":  "状态显示“离线”。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176016,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51707,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "查看设备上线时间，检查时间含义",
+                        "precondition":  "前置准备：\n1、已获得同一设备上线、重新上线和离线后的批准脱敏时间回读证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "other",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:16",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:44",
+                        "version":  3,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 10:35:39",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  3,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176025,
+                                          "step":  "定位一条已重新上线的设备并记录当前上线时间。",
+                                          "desc":  "定位一条已重新上线的设备并记录当前上线时间。",
+                                          "expect":  "上线时间字段显示一个完整的日期和时间值。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176026,
+                                          "step":  "使该设备断开连接并刷新列表。",
+                                          "desc":  "使该设备断开连接并刷新列表。",
+                                          "expect":  "设备状态更新为“离线”，上线时间保留最近一次上线时间。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176027,
+                                          "step":  "恢复设备连接并刷新列表。",
+                                          "desc":  "恢复设备连接并刷新列表。",
+                                          "expect":  "设备状态更新为“在线”，上线时间更新为本次最近上线时间，且晚于断开前记录的上线时间。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51707,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51707",
+                                             "text":  "查看设备上线时间，检查时间含义",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176025,
+                                                                  "text":  "定位一条已重新上线的设备并记录当前上线时间。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51707",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176025",
+                                                                                       "text":  "上线时间字段显示一个完整的日期和时间值。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176025,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176026,
+                                                                  "text":  "使该设备断开连接并刷新列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51707",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176026",
+                                                                                       "text":  "设备状态更新为“离线”，上线时间保留最近一次上线时间。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176026,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176027,
+                                                                  "text":  "恢复设备连接并刷新列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51707",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176027",
+                                                                                       "text":  "设备状态更新为“在线”，上线时间更新为本次最近上线时间，且晚于断开前记录的上线时间。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176027,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51711,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "删除有子设备的父设备，检查删除限制",
+                        "precondition":  "前置准备：\n1、已获得存在子设备的父设备批准只读关系证据。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  1,
+                        "type":  "interface",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:22",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:48:53",
+                        "version":  7,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-27 11:04:44",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  7,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176036,
+                                          "step":  "定位包含至少一条子设备的父设备。",
+                                          "desc":  "定位包含至少一条子设备的父设备。",
+                                          "expect":  "父设备和子设备关系可在列表中读取。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176037,
+                                          "step":  "查看父设备操作列并点击“删除”（入口可用时）。",
+                                          "desc":  "查看父设备操作列并点击“删除”（入口可用时）。",
+                                          "expect":  "删除按钮隐藏或禁用；若入口可点击，页面显示不能删除有子设备父设备的明确提示，不进入有效删除确认层。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176038,
+                                          "step":  "刷新列表并展开父设备。",
+                                          "desc":  "刷新列表并展开父设备。",
+                                          "expect":  "父设备仍存在，子设备仍归属于原父设备。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51711,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51711",
+                                             "text":  "删除有子设备的父设备，检查删除限制",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176036,
+                                                                  "text":  "定位包含至少一条子设备的父设备。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51711",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176036",
+                                                                                       "text":  "父设备和子设备关系可在列表中读取。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176036,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176037,
+                                                                  "text":  "查看父设备操作列并点击“删除”（入口可用时）。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51711",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176037",
+                                                                                       "text":  "删除按钮隐藏或禁用；若入口可点击，页面显示不能删除有子设备父设备的明确提示，不进入有效删除确认层。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176037,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176038,
+                                                                  "text":  "刷新列表并展开父设备。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51711",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176038",
+                                                                                       "text":  "父设备仍存在，子设备仍归属于原父设备。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176038,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    },
+                    {
+                        "id":  51725,
+                        "project":  46,
+                        "product":  8,
+                        "execution":  53,
+                        "branch":  0,
+                        "lib":  0,
+                        "module":  734,
+                        "path":  0,
+                        "story":  0,
+                        "storyVersion":  1,
+                        "title":  "不选择产品保存，检查必选提示",
+                        "precondition":  "前置准备：\n1、已获得可用于只读观察的可用产品及其设备类型信息。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开“设备接入”菜单并点击“设备管理”菜单。；设备管理页面成功加载，浏览器地址包含“/biopark-iot/iot/device/device”，确认已进入设备管理页面。",
+                        "keywords":  "",
+                        "pri":  2,
+                        "type":  "interface",
+                        "auto":  "no",
+                        "frame":  "",
+                        "stage":  "",
+                        "howRun":  "",
+                        "script":  "",
+                        "scriptedBy":  "",
+                        "scriptedDate":  "",
+                        "scriptStatus":  "",
+                        "scriptLocation":  "",
+                        "status":  "normal",
+                        "subStatus":  "",
+                        "color":  "",
+                        "frequency":  1,
+                        "order":  0,
+                        "openedBy":  "AI",
+                        "openedDate":  "2026-10-22 15:58:44",
+                        "reviewedBy":  "",
+                        "reviewedDate":  "",
+                        "lastEditedBy":  "AI",
+                        "lastEditedDate":  "2026-11-02 16:49:11",
+                        "version":  4,
+                        "linkCase":  "",
+                        "fromBug":  0,
+                        "fromCaseID":  0,
+                        "fromCaseVersion":  1,
+                        "lastRunner":  "zhumingyue",
+                        "lastRunDate":  "2026-10-28 10:50:39",
+                        "lastRunResult":  "pass",
+                        "scene":  0,
+                        "sort":  0,
+                        "deleted":  0,
+                        "toBugs":  [
+
+                                   ],
+                        "fromBugData":  [
+
+                                        ],
+                        "linkCaseTitles":  [
+
+                                           ],
+                        "currentVersion":  4,
+                        "files":  [
+
+                                  ],
+                        "steps":  [
+                                      {
+                                          "name":  "1",
+                                          "id":  176062,
+                                          "step":  "点击“新增设备”，保持产品选择框为空并填写其他必要字段。",
+                                          "desc":  "点击“新增设备”，保持产品选择框为空并填写其他必要字段。",
+                                          "expect":  "产品字段为空，其他必要字段显示有效值。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "2",
+                                          "id":  176063,
+                                          "step":  "点击“保存”。",
+                                          "desc":  "点击“保存”。",
+                                          "expect":  "产品字段显示明确必选提示，表单保持打开且设备未保存成功。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      },
+                                      {
+                                          "name":  "3",
+                                          "id":  176064,
+                                          "step":  "查询设备列表。",
+                                          "desc":  "查询设备列表。",
+                                          "expect":  "列表不出现未绑定产品的新设备记录。",
+                                          "type":  "step",
+                                          "parent":  0,
+                                          "grade":  1
+                                      }
+                                  ],
+                        "caseID":  51725,
+                        "needconfirm":  false,
+                        "caseFails":  0,
+                        "mindMapSteps":  {
+                                             "id":  "case_51725",
+                                             "text":  "不选择产品保存，检查必选提示",
+                                             "type":  "root",
+                                             "children":  [
+                                                              {
+                                                                  "id":  176062,
+                                                                  "text":  "点击“新增设备”，保持产品选择框为空并填写其他必要字段。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51725",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176062",
+                                                                                       "text":  "产品字段为空，其他必要字段显示有效值。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176062,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176063,
+                                                                  "text":  "点击“保存”。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51725",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176063",
+                                                                                       "text":  "产品字段显示明确必选提示，表单保持打开且设备未保存成功。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176063,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              },
+                                                              {
+                                                                  "id":  176064,
+                                                                  "text":  "查询设备列表。",
+                                                                  "type":  "sub",
+                                                                  "parent":  "case_51725",
+                                                                  "subSide":  "right",
+                                                                  "children":  [
+                                                                                   {
+                                                                                       "id":  "desc_176064",
+                                                                                       "text":  "列表不出现未绑定产品的新设备记录。",
+                                                                                       "type":  "node",
+                                                                                       "parent":  176064,
+                                                                                       "subSide":  "right"
+                                                                                   }
+                                                                               ]
+                                                              }
+                                                          ]
+                                         }
+                    }
+                ]
+}

@@ -1,0 +1,131 @@
+{
+  "status": "validated",
+  "target": "project",
+  "product_id": 8,
+  "project_id": 46,
+  "module_id": 750,
+  "remote_case_id": 52054,
+  "local_case_id": "TC-REQ-001-009",
+  "operation": "delete",
+  "readback": {
+    "operation": "delete",
+    "remote_case_id": 52054,
+    "command": [
+      "D:\\tools\\nodejs\\node.exe",
+      "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+      "--format=json",
+      "--machine-readable",
+      "testcase",
+      "delete",
+      "--id",
+      "52054"
+    ],
+    "readback_before": {
+      "id": 52054,
+      "project": 46,
+      "product": 8,
+      "execution": 53,
+      "branch": 0,
+      "lib": 0,
+      "module": 750,
+      "path": 0,
+      "story": 0,
+      "storyVersion": 1,
+      "title": "����ָ�갴��ǰ�⻧Ψһ���ȥ��",
+      "precondition": "ǰ��׼����\n1����׼����ǰ�⻧�������ݺ�Ψһ��Ż���\n\nǰ�ò��裺\n1��ʹ����Ȩֻ���˺ŵ�¼���ݲɼ����ƽ̨������¼̬��Ч��ƽ̨�˵�����ɹ۲죻ƾ�ݽ�����ʱ��ȡ����д����\n2��չ����ҳ��ڲ�������ҳĿ��ҳ�档������ /biopark-iot/iot/home ��Ӧ��ҳ��ҳ����ںͼ���״̬�ɹ۲죻����ڻ�·�ɲ������¼���첢ֹͣ��",
+      "keywords": "",
+      "pri": 1,
+      "type": "feature",
+      "auto": "no",
+      "frame": "",
+      "stage": "",
+      "howRun": "",
+      "script": "",
+      "scriptedBy": "",
+      "scriptedDate": "",
+      "scriptStatus": "",
+      "scriptLocation": "",
+      "status": "normal",
+      "subStatus": "",
+      "color": "",
+      "frequency": 1,
+      "order": 0,
+      "openedBy": "AI",
+      "openedDate": "2026-10-23 14:15:59",
+      "reviewedBy": "",
+      "reviewedDate": "",
+      "lastEditedBy": "AI",
+      "lastEditedDate": "2026-10-29 09:44:29",
+      "version": 4,
+      "linkCase": "",
+      "fromBug": 0,
+      "fromCaseID": 0,
+      "fromCaseVersion": 1,
+      "lastRunner": "",
+      "lastRunDate": "",
+      "lastRunResult": "",
+      "scene": 0,
+      "sort": 0,
+      "deleted": 0,
+      "toBugs": [],
+      "fromBugData": [],
+      "linkCaseTitles": [],
+      "currentVersion": 4,
+      "files": [],
+      "steps": [
+        {
+          "name": "1",
+          "id": 174573,
+          "step": "�۲�����ָ�겢����׼����ֻ���˶�",
+          "desc": "�۲�����ָ�겢����׼����ֻ���˶�",
+          "expect": "�����������Բ�Ʒ����ҳ�桢��Ʒ�������Բ�Ʒ����ҳ�桢�豸���������豸����ҳ�棬�豸��Ϣ�����Ը��豸�鿴�������豸��Ϣҳ�������ǰ�⻧��Ψһ���ȥ�أ����ֱ�˶Դ�������/����ʱ��Ϊ����Ľ�������",
+          "type": "step",
+          "parent": 0,
+          "grade": 1
+        }
+      ],
+      "caseID": 52054,
+      "needconfirm": false,
+      "caseFails": 0,
+      "mindMapSteps": {
+        "id": "case_52054",
+        "text": "����ָ�갴��ǰ�⻧Ψһ���ȥ��",
+        "type": "root",
+        "children": [
+          {
+            "id": 174573,
+            "text": "�۲�����ָ�겢����׼����ֻ���˶�",
+            "type": "sub",
+            "parent": "case_52054",
+            "subSide": "right",
+            "children": [
+              {
+                "id": "desc_174573",
+                "text": "�����������Բ�Ʒ����ҳ�桢��Ʒ�������Բ�Ʒ����ҳ�桢�豸���������豸����ҳ�棬�豸��Ϣ�����Ը��豸�鿴�������豸��Ϣҳ�������ǰ�⻧��Ψһ���ȥ�أ����ֱ�˶Դ�������/����ʱ��Ϊ����Ľ�������",
+                "type": "node",
+                "parent": 174573,
+                "subSide": "right"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "delete_response": {
+      "status": "success",
+      "data": {
+        "status": "success"
+      }
+    },
+    "readback_after": {
+      "status": "confirmed_not_found",
+      "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"��������˷��ش���Url����Status��������鿴��ϸ������Ϣ��Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+    },
+    "registry": {
+      "req_id": "",
+      "case_id": "",
+      "action": "no_registered_mapping"
+    },
+    "status": "validated"
+  }
+}

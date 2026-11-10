@@ -1,0 +1,3718 @@
+req_id: REQ-PC-042
+module: 发货单发货执行
+trace:
+  req: REQ-PC-042
+  tp: TEST_PLAN-REQ-PC-042
+  project: 种禽孵化管理系统
+  version: 2
+  status: ready_for_review
+  source_review: REV_CASE_REQ-PC-042
+common_preconditions:
+- id: delivery_execution_base
+  name: 发货执行基础页面访问前置
+  conditions: []
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 系统登录成功并进入应用门户
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 成功进入种禽孵化管理系统主框架并显示系统标识
+- id: delivery_execution_page
+  name: 发货单发货执行页面访问前置
+  conditions: []
+  steps:
+  - action: 使用当前用例已准备好的测试账号登录系统
+    expected: 系统登录成功并进入应用门户
+  - action: 从应用门户进入「种禽孵化管理系统」
+    expected: 成功进入种禽孵化管理系统主框架并显示系统标识
+  - action: 在左侧菜单中展开「计划管理」，然后点击「雏苗发货」菜单项进入雏苗发货列表页
+    expected: 页面显示雏苗发货列表及可定位的目标发货单
+  - action: 定位目标发货单并点击行内「发货」入口
+    expected: 进入目标发货单的发货执行页，页面显示发货单汇总区域和上孵计划列表
+cases:
+- id: TC-PC-042-001
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-01
+  atomic_purpose_ids:
+  - AP-042-01
+  title: 进入发货执行页展示主要页面板块
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 页面板块
+  preconditions:
+  - 已登录并具备页面访问权限；目标发货单和关联计划数据待确认
+  steps:
+  - action: 点击目标发货单行的「发货」按钮
+    expected: 到达发货执行页，页面标题、发货单信息、上孵计划、栋舍分布和发货记录区域可见
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-002
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-01
+  atomic_purpose_ids:
+  - AP-042-02
+  title: 发货单主信息字段可见并可回读
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 主信息
+  preconditions:
+  - 具备目标发货单和页面访问条件；授权脱敏主信息数据可供回读，具体数据待确认
+  steps:
+  - action: 查看发货单信息区域
+    expected: 基础信息、实际可发数、进度、状态字段可见且与授权数据一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-003
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-02
+  atomic_purpose_ids:
+  - AP-042-03
+  title: 按计划进度筛选上孵计划
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 筛选
+  preconditions:
+  - 不同计划进度的授权脱敏数据可供筛选，具体数据待确认
+  steps:
+  - action: 选择任一计划进度
+    expected: 选择完成后立即执行查询，列表仅显示对应计划进度的有效计划，计划进度筛选框保留当前选项
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 计划进度筛选框展开后的选项集合
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-004
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-03
+  atomic_purpose_ids:
+  - AP-042-04
+  title: 按发货状态筛选上孵计划
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 筛选
+  preconditions:
+  - 不同发货状态的授权脱敏数据可供筛选，具体数据待确认
+  steps:
+  - action: 在发货状态筛选框选择“已发货”
+    expected: 选择完成后立即执行查询，结果仅包含已发货计划，结果行显示计划号和状态
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-005
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-04
+  atomic_purpose_ids:
+  - AP-042-05
+  title: 按计划号关键字查询
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 查询
+  preconditions:
+  - 唯一授权脱敏计划号可供筛选，具体计划号待确认
+  steps:
+  - action: 在计划号关键字搜索框输入目标计划号并按Enter
+    expected: 上孵计划列表仅显示计划号匹配的计划，输入的计划号关键字保持显示
+  - action: 点击计划号关键字搜索框右侧的内部查询按钮
+    expected: 按当前搜索框关键字执行查询，结果仍仅显示计划号匹配的计划
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-007
+  coverage_ids:
+  - FR-042-03
+  plan_item_ids:
+  - PI-042-05
+  atomic_purpose_ids:
+  - AP-042-07
+  title: 待发货且已出雏时显示发货入口
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 入口
+  preconditions:
+  - 计划已出雏且待发货数大于零
+  steps:
+  - action: 按计划号查看发货入口
+    expected: 该计划的“发货”入口可见且可点击
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-008
+  coverage_ids:
+  - FR-042-03
+  - FR-042-13
+  plan_item_ids:
+  - PI-042-06
+  - PI-042-31
+  atomic_purpose_ids:
+  - AP-042-08
+  title: 待发货数为零时不可进入发货模式
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 入口
+  preconditions:
+  - 计划已出雏且待发货数为零
+  steps:
+  - action: 查看该计划发货入口
+    expected: 该计划发货入口不可用，不能进入发货模式
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-009
+  coverage_ids:
+  - FR-042-03
+  plan_item_ids:
+  - PI-042-07
+  atomic_purpose_ids:
+  - AP-042-09
+  title: 终止计划不在发货执行列表展示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 入口
+  preconditions:
+  - 计划进度为终止
+  steps:
+  - action: 查看发货执行列表
+    expected: 终止计划不出现在列表中；若全部计划均已终止，页面显示“暂无数据”
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-010
+  coverage_ids:
+  - FR-042-04
+  plan_item_ids:
+  - PI-042-08
+  atomic_purpose_ids:
+  - AP-042-10
+  title: 发货模式锁定当前计划并禁用其他计划入口
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态互斥
+  preconditions:
+  - 存在两个已出雏且待发货数大于零的计划 A、B，可按计划号定位；用户具备发货执行权限
+  steps:
+  - action: 点击计划 A 的“发货”入口进入发货模式
+    expected: 计划 A 进入发货编辑状态
+  - action: 查看并尝试点击计划 B 的“发货”入口
+    expected: 计划 B 入口不可用，不能进入发货模式，计划 A 仍保持当前编辑状态
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: current_plan=A；other_plan=B；两计划均已出雏且待发货数大于零
+- id: TC-PC-042-011
+  coverage_ids:
+  - FR-042-07
+  plan_item_ids:
+  - PI-042-09
+  atomic_purpose_ids:
+  - AP-042-11
+  title: 点击栋舍位置录入有效数量和备注
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置录入
+  preconditions:
+  - 计划满足进入发货模式条件；位置按栋舍/列/层定位；剩余数大于零
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标计划的发货模式中的具体栋舍/列/层位置格
+    expected: 打开位置录入弹窗，显示位置、发货数量输入框和备注输入框，并提供“完成”按钮
+  - action: 在“发货数量”输入框输入正整数，在“备注”输入框输入备注后点击“完成”
+    expected: 形成同一位置的数量和备注暂存
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-013
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-10
+  atomic_purpose_ids:
+  - AP-042-13
+  title: 数量为零失焦后自动校正为1
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 数量校验
+  preconditions:
+  - 具备可执行计划和位置录入条件；剩余数大于零
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 在“发货数量”输入框输入 0 后移开焦点
+    expected: 输入框自动将数量校正为 1
+  - action: 点击“完成”
+    expected: 按校正后的数量 1 保存位置暂存，累计数量增加 1，剩余数减少 1
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-014
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-10
+  atomic_purpose_ids:
+  - AP-042-14
+  title: 负数数量失焦后自动校正为1
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 数量校验
+  preconditions:
+  - 具备可执行计划和位置录入条件；剩余数大于零
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 在“发货数量”输入框输入负数后移开焦点
+    expected: 输入框自动将数量校正为 1
+  - action: 点击“完成”
+    expected: 按校正后的数量 1 保存位置暂存，累计数量增加 1，剩余数减少 1
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-015
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-10
+  atomic_purpose_ids:
+  - AP-042-15
+  title: 小数数量失焦后四舍五入为整数
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 数量校验
+  preconditions:
+  - 具备可执行计划和位置录入条件；剩余数大于零；准备小数输入 1.5
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 在“发货数量”输入框输入 1.5 后移开焦点
+    expected: 输入框自动四舍五入为 2
+  - action: 点击“完成”
+    expected: 按校正后的数量 2 保存位置暂存，累计数量增加 2，剩余数减少 2
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    decimal_input: 1.5
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-016
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-11
+  atomic_purpose_ids:
+  - AP-042-16
+  title: 数量为一时形成最小有效暂存
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 数量边界
+  preconditions:
+  - 剩余数至少为 1
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 输入 1 并确认
+    expected: 暂存增加 1，剩余数减少 1
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-017
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-12
+  - PI-042-14
+  atomic_purpose_ids:
+  - AP-042-17
+  title: 数量等于剩余数时允许暂存
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 数量边界
+  preconditions:
+  - 当前剩余待发货数为 R，R 大于零；数量输入符合页面允许的正整数范围
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 输入 R 并确认
+    expected: 形成数量为 R 的位置暂存，累计数量增加 R，剩余数为 0
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-018
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-13
+  - PI-042-15
+  atomic_purpose_ids:
+  - AP-042-18
+  title: 超过剩余数失焦后自动校正为剩余数
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 数量边界
+  preconditions:
+  - 当前剩余待发货数为 R，R 大于零；测试输入 R+1，具体运行时数量待确认
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 在“发货数量”输入框输入 R+1 后移开焦点
+    expected: 输入框自动将数量校正为当前剩余数 R
+  - action: 点击“完成”
+    expected: 按校正后的数量 R 保存位置暂存，累计数量增加 R，剩余数变为 0
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-019
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-15
+  atomic_purpose_ids:
+  - AP-042-20
+  title: 有效数量暂存后位置数量可回读
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 数量回读
+  preconditions:
+  - 具备可执行计划和位置录入条件；剩余数至少为 1；准备唯一位置键
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 进入发货模式，点击具体栋舍/列/层位置格，输入发货数量 1 和备注“首次录入”，点击“完成”后再次点击同一位置格
+    expected: 位置录入弹窗重新打开，发货数量输入框回显 1，备注输入框回显“首次录入”，位置与页面累计数量一致，尚未形成提交结果
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    location_key: building-column-level
+    quantity: 1
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-020
+  coverage_ids:
+  - FR-042-07
+  plan_item_ids:
+  - PI-042-16
+  atomic_purpose_ids:
+  - AP-042-21
+  title: 同一位置回显后可修改数量和备注
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置累计
+  preconditions:
+  - 同一位置可按栋舍/列/层定位；剩余数足够
+  steps:
+  - action: 进入目标计划发货模式并打开已有位置记录
+    expected: 已存在位置记录时数量和备注均回显旧值
+  - action: 将发货数量修改为 B、备注修改为“修改后备注”，点击“完成”
+    expected: 同一位置保存为数量 B 和修改后的备注，以新值覆盖旧值
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    location_key: building-column-level
+    first_quantity: A
+    second_quantity: B
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-021
+  coverage_ids:
+  - FR-042-08
+  plan_item_ids:
+  - PI-042-17
+  atomic_purpose_ids:
+  - AP-042-22
+  title: 无草稿退出发货模式
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 退出发货
+  preconditions:
+  - 计划满足进入发货模式条件且没有暂存
+  steps:
+  - action: 点击退出发货
+    expected: 直接返回查看状态，不显示草稿确认弹窗
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-022
+  coverage_ids:
+  - FR-042-08
+  plan_item_ids:
+  - PI-042-18
+  atomic_purpose_ids:
+  - AP-042-23
+  title: 有草稿退出并确认放弃
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 退出发货
+  preconditions:
+  - 已有位置暂存；退出后的草稿清理结果可由授权数据回读确认
+  steps:
+  - action: 点击发货模式的「退出发货」
+    expected: 出现退出/放弃草稿确认弹窗
+  - action: 在确认弹窗中选择「继续退出」
+    expected: 返回查看状态；重新进入发货执行页时未完成草稿不保留
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    cleanup: 核对退出后重新进入不保留未完成草稿
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-023
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-19
+  atomic_purpose_ids:
+  - AP-042-24
+  title: 剩余数为零时展示确认提交弹窗
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 提交确认
+  preconditions:
+  - 暂存量使剩余数为零
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 点击提交
+    expected: 显示“确认提交”弹窗，文案为“当前仍有0未发货，是否确认提交本次发货”，并显示“继续发货”“确认提交”按钮；不直接提交或退出
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-024
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-19
+  atomic_purpose_ids:
+  - AP-042-25
+  title: 剩余数大于零时展示确认提交弹窗
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 提交确认
+  preconditions:
+  - 仍有未发货数
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 点击提交
+    expected: 显示“确认提交”弹窗，文案为“当前仍有xxx未发货，是否确认提交本次发货”，并显示“继续发货”“确认提交”按钮；不直接提交或退出
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-025
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-20
+  atomic_purpose_ids:
+  - AP-042-26
+  title: 继续发货不提交暂存结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 提交确认
+  preconditions:
+  - 可发货计划存在有效位置暂存，且初始状态可进入发货模式
+  steps:
+  - action: 点击目标计划的“发货”入口进入发货模式，再点击“提交”
+    expected: “确认提交”弹窗出现，显示动态未发货数量及“继续发货”“确认提交”按钮
+  - action: 在“确认提交”弹窗中点击“继续发货”
+    expected: 弹窗关闭，不产生发货记录、不更新发货数量，保持发货模式，位置暂存仍可见
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-027
+  coverage_ids:
+  - FR-042-14
+  plan_item_ids:
+  - PI-042-22
+  atomic_purpose_ids:
+  - AP-042-28
+  title: 两秒内重复点击确认提交时后一次失败
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 重复提交
+  preconditions:
+  - 可回收提交数据可用；允许在 2 秒内连续点击两次确认提交弹窗的“确认提交”按钮，具体数据待确认
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 点击提交，在首次点击“确认提交”后 2 秒内再次点击“确认提交”
+    expected: 首次提交至多形成一条业务记录；第二次点击不形成第二条业务记录，页面不显示第二次成功结果
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    submit_window_seconds: 2
+    cleanup: 回收提交数据并核对业务记录数量
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-028
+  coverage_ids:
+  - FR-042-14
+  plan_item_ids:
+  - PI-042-23
+  atomic_purpose_ids:
+  - AP-042-29
+  title: 并发提交合计不超最新剩余数成功处理
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 并发校验
+  preconditions:
+  - 已准备两个可并发操作的测试会话、账号和授权脱敏测试数据
+  - 同一发货计划存在可发货余量 R
+  steps:
+  - action: 在页面 A 与页面 B 进入同一发货计划的发货模式并按测试数据形成位置暂存
+    expected: 两个页面均进入同一发货计划发货模式，位置暂存可见
+  - action: 在页面 A 与页面 B 按测试数据录入各自位置数量，并在各自“确认提交”弹窗点击“确认提交”
+    expected: 两个页面均完成同一发货计划的提交动作
+  - action: 回读同一发货计划的最新剩余数和发货记录
+    expected: 两个合法并发提交的合计不超过最新剩余数 R 时均成功，最终剩余数与成功提交数量守恒
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 页面 A 与页面 B 的合计提交量不超过最新剩余数 R
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 页面 A 与页面 B 的合计提交量不超过最新剩余数 R
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-030
+  coverage_ids:
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-17
+  atomic_purpose_ids:
+  - AP-042-31
+  title: 已发货计划不开放编辑入口
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态矩阵
+  preconditions:
+  - 准备唯一已发货计划
+  steps:
+  - action: 查看该计划操作区域
+    expected: 发货编辑入口 不可用
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-031
+  coverage_ids:
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-18
+  atomic_purpose_ids:
+  - AP-042-32
+  title: 已签收计划不开放编辑入口
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态矩阵
+  preconditions:
+  - 准备唯一已签收计划
+  steps:
+  - action: 查看该计划操作区域
+    expected: 发货编辑入口 不可用
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-032
+  coverage_ids:
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-25
+  atomic_purpose_ids:
+  - AP-042-33
+  title: 实际可发数为零时进度显示零
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 计算
+  preconditions:
+  - 准备实际可发数为零的关联计划
+  steps:
+  - action: 查看发货单信息和关联计划
+    expected: 实际可发数和进度显示零，无除零错误或异常数值
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-034
+  coverage_ids:
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-27
+  atomic_purpose_ids:
+  - AP-042-35
+  title: 计划号无匹配时显示暂无数据
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 空态
+  preconditions:
+  - 存在至少一条有效关联计划；准备一个不存在的计划号关键字
+  steps:
+  - action: 输入不存在的计划号并按 Enter，或点击查询按钮
+    expected: 表格显示“暂无数据”，不显示其他计划记录，发货单基础信息保持可见
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: query_trigger={Enter,查询按钮}；unmatched_plan_no=不存在的计划号
+- id: TC-PC-042-038
+  coverage_ids:
+  - FR-042-14
+  plan_item_ids:
+  - PI-042-23
+  atomic_purpose_ids:
+  - AP-042-40
+  title: 并发提交超最新剩余数被拒绝
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 并发校验
+  preconditions: []
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 在两个页面进入同一业务计划的发货模式，按测试数据录入合计为最新剩余数 R+1 的数量，并分别提交
+    expected: 两个页面均完成超量提交触发动作
+  - action: 回读同一业务计划的服务端提交结果和发货记录
+    expected: 服务端拒绝超出最新剩余数 R 的数量，剩余数不出现负数，且不新增超量发货记录
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 页面 A 与页面 B 的合计提交量为最新剩余数 R 加 1
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 页面 A 与页面 B 的合计提交量为最新剩余数 R 加 1
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-039
+  coverage_ids:
+  - FR-042-14
+  plan_item_ids:
+  - PI-042-24
+  atomic_purpose_ids:
+  - AP-042-41
+  title: 超量输入显示数量校验状态
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 错误文案
+  preconditions:
+  - 剩余数 R 大于零且输入值为 R+1，具体运行时数量待确认
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标栋舍/列/层位置格，打开位置录入弹窗
+    expected: 位置录入弹窗显示发货数量输入框和“完成”按钮
+  - action: 在“发货数量”输入框输入 R+1 后移开焦点
+    expected: 输入框自动将数量校正为当前剩余数 R
+  - action: 点击“完成”
+    expected: 按校正后的数量 R 保存位置暂存，累计数量增加 R，剩余数变为 0
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    remaining_quantity: R
+    input_quantity: R+1
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-040
+  coverage_ids:
+  - FR-042-05
+  plan_item_ids:
+  - PI-042-29
+  atomic_purpose_ids:
+  - AP-042-42
+  title: 按累计数量计算剩余待发货数
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计算
+  preconditions:
+  - 读取实际可发数和已完成位置累计数量
+  steps:
+  - action: 查看发货单和计划数量信息
+    expected: 剩余待发货数等于实际可发数减去所有位置累计数量，页面显示值与该计算结果一致。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-043
+  coverage_ids:
+  - FR-042-16
+  plan_item_ids:
+  - PI-042-33
+  atomic_purpose_ids:
+  - AP-042-46
+  title: 通过页面入口进入发货执行页
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 页面路由
+  preconditions:
+  - 具备目标发货单标识和页面访问条件
+  steps:
+  - action: 通过页面入口打开 /biopark-breeding/breeding/delivery/execute/{id}
+    expected: 页面进入发货执行页并展示发货单主信息区域。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_base
+- id: TC-PC-042-045
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-48
+  atomic_purpose_ids:
+  - AP-042-48
+  title: 上孵计划表格字段顺序、来源和显示值一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 计划字段契约
+  preconditions:
+  - 已准备包含至少两条上孵计划的授权测试发货单，并可回读发货列表来源数据
+  steps:
+  - action: 在发货执行页“上孵计划列表区域”的表格主体中，按表头从左到右核对列顺序、字段值和最右侧操作列
+    expected: “上孵计划列表区域”的列依次为序号、上孵计划号、计划进度、发货状态、发货进度、待发货数、平均苗重、养殖场、养殖批次、周龄、平均蛋重、蛋重类型、产蛋日期、出雏日期、备注、操作；目标计划行字段值分别与发货列表、上孵计划和实际出雏结果来源对应，最右侧“操作”列仅核对该计划行的发货/查看入口，发货进度按已发货数/实际可发数展示
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    source_fields:
+    - 发货列表
+    - 上孵计划
+    - 实际出雏结果
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-046
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  plan_item_ids:
+  - PI-042-49
+  atomic_purpose_ids:
+  - AP-042-49
+  title: 计划进度与发货状态卡展示可回读
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态展示
+  preconditions: []
+  steps:
+  - action: 查看目标发货单的上孵计划进度和发货状态区域
+    expected: 状态卡可见，计划进度与授权计划状态一致，页面显示计划号、计划进度和发货状态字段
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 同一发货单内已出雏且存在待发货计划
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-047
+  coverage_ids:
+  - FR-042-10
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-49-1
+  atomic_purpose_ids:
+  - AP-042-49-1
+  title: 发货数量公式按授权数据计算待发货数
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量计算
+  preconditions: []
+  steps:
+  - action: 查看目标计划的实际可发数、已发货数和待发货数
+    expected: 实际可发数、已发货数和待发货数字段可见，待发货数等于实际可发数减已发货数，页面值与授权数据一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 实际可发数A大于0，已发货数B介于0和A之间
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-049
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-50-1
+  atomic_purpose_ids:
+  - AP-042-50-1
+  title: 发货单主信息字段展示与回读
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 主信息
+  preconditions:
+  - 准备可回读的发货单主信息
+  steps:
+  - action: 打开执行页并回读主信息
+    expected: 发货单编号、计划等主信息字段与授权数据一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    formula: 待发货数=实际可发数-(已完成数量+当前暂存数量)
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 主信息字段回读
+- id: TC-PC-042-050
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-51
+  atomic_purpose_ids:
+  - AP-042-51
+  title: 栋舍总览按全部计划汇总位置数量
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 栋舍分布
+  preconditions: []
+  steps:
+  - action: 查看「栋舍总览」中的位置和统计区域
+    expected: 「栋舍总览」可见，每个位置数量等于发货单内全部计划在该位置的发货数量之和，计划数量按去重计划统计
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 发货单包含两个计划且均向同一栋舍不同位置发货
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-051
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-51-1
+  atomic_purpose_ids:
+  - AP-042-51-1
+  title: 计划分布按当前计划展示位置数量
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 计划分布
+  preconditions: []
+  steps:
+  - action: 切换到「计划分布」并查看当前计划的位置明细
+    expected: 「计划分布」显示当前计划号及其位置数量，不纳入其他计划的位置数量
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 当前计划向两个位置发货且存在其他计划记录
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-053
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-52
+  atomic_purpose_ids:
+  - AP-042-52
+  title: 有记录栋舍位置悬浮显示计划明细
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置明细
+  preconditions: []
+  steps:
+  - action: 在发货执行页的栋舍分布区域，点击视图切换控件并选择「栋舍总览」
+    expected: 栋舍分布区域已切换为「栋舍总览」视图
+  - action: 悬浮在有记录的栋舍位置
+    expected: 悬浮明细显示列、层、计划号和该位置累计发货数量，字段值与授权记录一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标位置存在一个计划的发货记录
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-054
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-52-1
+  atomic_purpose_ids:
+  - AP-042-52-1
+  title: 点击有记录栋舍位置筛选记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置筛选
+  preconditions: []
+  steps:
+  - action: 在栋舍总览中点击存在发货记录的目标栋舍位置，查看发货记录区域的筛选结果
+    expected: 发货记录仅显示目标栋舍位置的数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标栋舍位置存在发货记录
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 目标栋舍位置存在发货记录
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-055
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-52-2
+  atomic_purpose_ids:
+  - AP-042-52-2
+  title: 清空位置筛选恢复当前视图记录
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选恢复
+  preconditions: []
+  steps:
+  - action: 在发货记录区域的标题处查看当前筛选位置，并点击标题处的「清空筛选」
+    expected: 发货记录区域标题处显示当前筛选位置和「清空筛选」按钮；点击后按当前视图恢复计划号或全部记录，筛选标签消失
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 页面已按位置建立筛选
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-058
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-54-1
+  atomic_purpose_ids:
+  - AP-042-54-1
+  title: 发货模式展示单个位置本次数量
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货统计
+  preconditions: []
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 在栋舍分布区域对应位置录入本次发货数量 X 和备注后点击“完成”
+    expected: “本次位置”显示 X；“已发货数”位于该位置统计指标中，仅表示当前上孵计划已完成发货的数量，不包含本次发货模式下尚未提交的本次累计或暂存数据；“未发货”按已完成发货数从计划应发数中扣减；“本次累计”显示本次发货模式下各位置已录入但尚未提交的数据合计
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标位置本次录入数量 X
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 目标位置本次录入数量 X
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-060
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-56
+  atomic_purpose_ids:
+  - AP-042-56
+  title: 发货记录卡片字段和位置明细展示
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录展示
+  preconditions:
+  - 存在至少一条包含多个位置的发货记录
+  steps:
+  - action: 查看发货记录卡片及位置明细
+    expected: 时间、计划号、本次发货、剩余发货、位置、操作人和备注字段完整，位置明细逐行展示
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    record_states:
+    - 未发完
+    - 已完成
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 记录卡片字段与多位置明细
+- id: TC-PC-042-063
+  coverage_ids:
+  - FR-042-01
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-59
+  atomic_purpose_ids:
+  - AP-042-59
+  title: 发货执行页出雏时间字段一致性校验
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 时间字段
+  preconditions:
+  - 准备目标发货单、目标计划及实际出雏结果数据
+  steps:
+  - action: 在左侧菜单中展开「计划管理」，然后点击「上孵计划」菜单项，核对目标计划出雏时间，再回到发货执行页核对目标计划行
+    expected: 来源页面与执行页的出雏时间值一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 出雏时间有值及为空的目标计划数据
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-065
+  coverage_ids:
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-60-1
+  atomic_purpose_ids:
+  - AP-042-60-1
+  title: 外部成功确认回传更新发货记录
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 外部确认
+  preconditions: []
+  steps:
+  - action: 对目标发货业务回传一次成功确认结果，重新查看发货记录、数量及页面状态
+    expected: 成功回传只更新一次记录和数量，页面状态与成功结果一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 外部确认结果为成功
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 外部确认结果为成功
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-066
+  coverage_ids:
+  - FR-042-01
+  - FR-042-05
+  - FR-042-06
+  - FR-042-07
+  - FR-042-08
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-61
+  atomic_purpose_ids:
+  - AP-042-61
+  title: 发货列表、上孵计划和执行页三方一致
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 跨页一致性
+  preconditions:
+  - 准备唯一发货单号、计划号和栋舍业务键及三页数据
+  steps:
+  - action: 在发货列表、上孵计划和发货执行页核对同一成功提交场景的核心状态
+    expected: 三个页面在同一成功提交场景下的核心发货状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    keys:
+    - 发货单号
+    - 计划号
+    - 栋舍
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-070
+  coverage_ids:
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-63-2
+  atomic_purpose_ids:
+  - AP-042-63-2
+  title: 无已发货数据时显示暂无数据
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 记录空态
+  preconditions: []
+  steps:
+  - action: 查看发货记录区域
+    expected: 发货记录区域显示“暂无数据”，不显示虚假记录
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划存在但没有已发货记录
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-071
+  coverage_ids:
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-63-3
+  atomic_purpose_ids:
+  - AP-042-63-3
+  title: 未提交发货时记录区域保持空态
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 暂存空态
+  preconditions: []
+  steps:
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 在未提交发货前查看发货记录区域
+    expected: 发货记录区域不显示本次暂存数据，并显示“暂无数据”
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划有可发货数量但尚未提交本次发货
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-075
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-67
+  atomic_purpose_ids:
+  - AP-042-67
+  title: 发货备注条件和位置明细展示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录展示
+  preconditions:
+  - 准备有备注和无备注两种已提交发货记录数据
+  steps:
+  - action: 按发货备注条件筛选并查看位置明细
+    expected: 按发货备注条件筛选后位置明细正确展示
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    variants:
+    - 有备注
+    - 无备注
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-076
+  coverage_ids:
+  - FR-042-14
+  plan_item_ids:
+  - PI-042-68
+  atomic_purpose_ids:
+  - AP-042-68
+  title: 重复提交只生成一次发货结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 提交幂等
+  preconditions: []
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 使用同一业务键在 2 秒内连续提交两次发货请求，查看生成的业务记录、进度和数量变化
+    expected: 最多生成一条业务记录，进度和数量只扣减一次
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 同一业务键在 2 秒内重复提交
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 同一业务键在 2 秒内重复提交
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-084
+  coverage_ids:
+  - FR-042-17
+  plan_item_ids:
+  - PI-042-70-2
+  atomic_purpose_ids:
+  - AP-042-70-2
+  title: 可发货权限允许执行入口并提交
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货权限
+  preconditions: []
+  steps:
+  - action: 使用具备可发货权限的账号查看发货入口
+    expected: 具备可发货权限时发货入口可用
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 测试账号具备发货执行和提交权限，目标计划可发货
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-085
+  coverage_ids:
+  - FR-042-13
+  plan_item_ids:
+  - PI-042-71
+  atomic_purpose_ids:
+  - AP-042-71
+  title: 有草稿退出时显示放弃确认
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 草稿退出
+  preconditions: []
+  steps:
+  - action: 点击发货模式的「退出发货」
+    expected: 页面显示退出或放弃草稿确认
+  - action: 在确认弹窗中选择「继续发货」或取消
+    expected: 返回发货模式，当前未提交草稿仍保留
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 发货模式已录入数量但尚未提交，存在页面草稿
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-086
+  coverage_ids:
+  - FR-042-14
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-71-1
+  atomic_purpose_ids:
+  - AP-042-71-1
+  title: 确认提交后剩余量为零的计划不显示发货按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 完成确认
+  preconditions: []
+  steps:
+  - action: 点击提交，在“确认提交”弹窗中点击“确认提交”
+    expected: 点击“确认提交”后提交成功并退出发货模式，剩余量为零的计划不再显示发货按钮
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 发货模式已录入合法数量并点击「完成发货」，剩余量为零
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-087
+  coverage_ids:
+  - FR-042-14
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-72
+  atomic_purpose_ids:
+  - AP-042-72
+  title: 刷新恢复初始态且不残留未提交结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 刷新清理
+  preconditions:
+  - 页面存在筛选、位置草稿和已提交历史记录
+  steps:
+  - action: 刷新页面并查询主信息、计划列表、栋舍分布和发货记录
+    expected: 恢复页面列表初始结构；未提交筛选/弹窗/草稿按确认规则清理，不新增记录；已提交历史不被刷新删除
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    reset_scope: 页面态与持久化分开验证
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-090
+  coverage_ids:
+  - FR-042-04
+  - FR-042-05
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-74
+  atomic_purpose_ids:
+  - AP-042-74
+  title: 不同页面待发货数公式及统计时点
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 页面统计口径
+  preconditions:
+  - 实际可发数A、已提交已发货数B、当前本次暂存数C均已准备且A大于B+C
+  steps:
+  - action: 记录跨页面提交前后的待发货数
+    expected: 跨页面统计时点差异符合确认口径
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    variables:
+      actual: A
+      submitted: B
+      draft: C
+    page_formulas:
+      plan_table: A-B
+      view_mode: A-B
+      delivery_mode: 已发货不含C_未发货含C
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-092
+  coverage_ids:
+  - FR-042-05
+  - FR-042-08
+  - FR-042-17
+  plan_item_ids:
+  - PI-042-76
+  atomic_purpose_ids:
+  - AP-042-76
+  title: 发货记录时间格式和历史剩余值快照
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 发货记录
+  preconditions:
+  - 同一上孵计划分两次提交发货，第一次提交时待发货数大于本次发货数
+  steps:
+  - action: 完成第二次发货后回看第一次记录
+    expected: 历史剩余值保持第一次提交时的快照
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    time_format: YYYY-MM-DD HH:MM
+    deliveries:
+    - first
+    - second
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-094
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  plan_item_ids:
+  - PI-042-78
+  atomic_purpose_ids:
+  - AP-042-78
+  title: 计划列表展示待出雏状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态列表
+  preconditions: []
+  steps:
+  - action: 查询目标计划，查看计划列表行的计划状态和发货状态，并与授权测试数据核对
+    expected: 计划行的计划状态显示待出雏，发货状态与该条授权数据一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划处于待出雏状态
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 目标计划处于待出雏状态
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-099
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  plan_item_ids:
+  - PI-042-81
+  atomic_purpose_ids:
+  - AP-042-81
+  title: 允许的发货提交更新计划列表状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态迁移
+  preconditions: []
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 对待发货数为0的目标计划完成一次发货提交并查看计划列表状态
+    expected: 发货提交成功后，计划列表中的目标计划发货状态变为“已发货”
+  - action: 对待发货数大于0的目标计划完成一次发货提交并查看计划列表状态
+    expected: 发货提交成功后，计划列表中的目标计划发货状态为“发货中”
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 分别准备提交前待发货数为0和大于0的两个目标计划，完成允许的发货提交
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 目标计划满足一次允许的发货提交
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-102
+  coverage_ids:
+  - FR-042-04
+  - FR-042-05
+  plan_item_ids:
+  - PI-042-82-1
+  atomic_purpose_ids:
+  - AP-042-82-1
+  title: 数量等于剩余值时允许进入完成确认
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 整型边界
+  preconditions: []
+  steps:
+  - action: 点击目标栋舍/列/层位置格，录入本次发货数量并填写备注后点击“完成”
+    expected: 位置录入弹窗关闭，目标位置显示数量和备注，形成有效位置暂存，累计数量及剩余数同步更新
+  - action: 在发货模式录入等于当前待发货数的正整数并点击完成确认
+    expected: 输入值被接受且不超过剩余量，完成确认流程可打开，页面显示待确认状态并保留数量一致性
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 实际可发数A大于0，已发货数B小于A，录入C=A-B
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-103
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-83
+  atomic_purpose_ids:
+  - AP-042-83
+  title: 单位置录入保持数量守恒
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 单位置录入
+  preconditions: []
+  steps:
+  - action: 在一个栋舍位置录入正整数 N 并查看统计
+    expected: 单位置录入后位置数量、累计数量与剩余数量满足守恒
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划仅向一个位置录入正整数N
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-105
+  coverage_ids:
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-84
+  atomic_purpose_ids:
+  - AP-042-84
+  title: 业务无数据时显示暂无数据
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 空态文案
+  preconditions: []
+  steps:
+  - action: 进入目标页面并查看无数据区域
+    expected: 页面业务无数据区域显示“暂无数据”，不显示加载失败提示，不残留上一次查询数据
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标查询或计划没有可展示的业务数据
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-108
+  coverage_ids:
+  - FR-042-14
+  - FR-042-16
+  plan_item_ids:
+  - PI-042-86
+  atomic_purpose_ids:
+  - AP-042-86
+  title: 提交中重复点击和返回操作锁定
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 提交状态
+  preconditions:
+  - 存在可回收的合法发货草稿；提交等待时长和清理责任待确认
+  steps:
+  - action: 点击提交并在请求完成前重复点击“确定”、返回和切换计划
+    expected: 请求进行中时重复点击、返回和计划切换被锁定或禁止，页面上下文不被错误切换
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    actions_during_submit:
+    - repeat_confirm
+    - back
+    - refresh
+    - switch_plan
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-113
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-52-1
+  atomic_purpose_ids:
+  - AP-042-113
+  title: 点击无记录栋舍位置显示暂无数据
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 位置筛选
+  preconditions: []
+  steps:
+  - action: 选择无发货记录的目标位置，查看记录区域并核对列表内容
+    expected: 记录区域显示“暂无数据”，其他位置记录不被带入
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标栋舍位置无发货记录
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 目标栋舍位置无发货记录
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-114
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-54-1
+  atomic_purpose_ids:
+  - AP-042-114
+  title: 发货模式展示累计数量公式
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货统计
+  preconditions: []
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍分布和发货操作区域
+  - action: 在已有已确认历史数量的情况下录入本次数量，查看页面显示的累计数量并与业务公式核对
+    expected: 累计数量按已确认历史数量与本次数量的业务公式展示，暂存量不重复计入
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标位置已有历史发货数量 H，本次录入数量 X
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 目标位置已有历史发货数量 H，本次录入数量 X
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-115
+  coverage_ids:
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-60-1
+  atomic_purpose_ids:
+  - AP-042-115
+  title: 外部失败确认不更新完成结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 外部确认
+  preconditions: []
+  steps:
+  - action: 对目标发货业务回传失败确认结果，查看发货记录、数量和业务状态
+    expected: 发货记录不显示完成结果，数量不重复扣减并保留失败状态
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 外部确认结果为失败
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 外部确认结果为失败
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-117
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-02-1
+  atomic_purpose_ids:
+  - AP-042-117-1
+  title: 清空计划进度筛选后恢复全部有效计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态筛选
+  preconditions:
+  - 存在多个不同计划进度的授权计划；已选择一个非“全部”的计划进度并完成查询
+  steps:
+  - action: 点击计划进度筛选区域“×”并执行查询
+    expected: 列表恢复全部有效计划，每条计划进度与计划管理—上孵计划菜单对应状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度筛选和清空筛选后的全部有效计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: selected_progress=任一具体进度；clear_result=全部有效计划
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-122
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-29
+  atomic_purpose_ids:
+  - AP-042-122
+  title: 上孵计划平均苗重来源及两位小数展示
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 平均苗重来源精度
+  preconditions:
+  - 目标计划实际可发数大于零；准备种蛋出雏填写的上孵计划平均苗重
+  steps:
+  - action: 查看上孵计划平均苗重
+    expected: 取自种蛋出雏填写值，保留两位小数
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    source: 种蛋出雏填写的上孵计划平均苗重
+    precision: 上孵计划两位小数；发货单整体一位小数
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: source=种蛋出雏填写值；precision=2
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-123
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-02-2
+  atomic_purpose_ids:
+  - AP-042-03-2
+  title: 选择单一计划进度查询上孵计划
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选
+  preconditions:
+  - 不同计划进度的授权脱敏数据可供筛选，具体数据待确认
+  steps:
+  - action: 在上孵计划区域打开计划进度筛选控件（el-filter-progress）
+    expected: 计划进度筛选控件（el-filter-progress）正常打开，并显示可选的计划进度。
+  - action: 在计划进度筛选控件（el-filter-progress）中选择“已完成”
+    expected: 计划进度筛选控件（el-filter-progress）回显“已完成”，并保留当前选择。
+  - action: 查看选择“已完成”后的上孵计划列表查询结果
+    expected: 系统自动触发查询，上孵计划列表仅显示计划进度为“已完成”的计划；若无匹配数据，显示无数据提示。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 已完成计划进度筛选结果，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 在计划进度筛选控件（el-filter-progress）中选择“已完成”并查询
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-124
+  coverage_ids:
+  - FR-042-06
+  - FR-042-07
+  plan_item_ids:
+  - PI-042-80-2
+  atomic_purpose_ids:
+  - AP-042-80-2
+  title: 提交失败后保留发货模式状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 失败回滚
+  preconditions: []
+  steps:
+  - action: 提交有效发货数据并注入提交失败
+    expected: 页面显示失败结果；发货模式仍保持当前模式，未错误退出或重置
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 发货模式已录入有效位置和数量，提交时服务返回失败；失败注入方式待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 提交失败后的发货模式保留
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-127
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-117-11
+  atomic_purpose_ids:
+  - AP-042-117-11
+  title: 待孵期计划进度筛选结果与上孵计划状态一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态筛选
+  preconditions:
+  - 已准备计划进度为“待孵期”的授权脱敏上孵计划，具体数据待确认
+  steps:
+  - action: 选择“待孵期”
+    expected: 选择完成后立即执行查询，上孵计划列表仅展示计划进度为“待孵期”的计划；列表状态与计划管理-上孵计划菜单中对应计划状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度为“待孵期”的授权脱敏上孵计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 单一计划进度“待孵期”筛选
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-128
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-117-12
+  atomic_purpose_ids:
+  - AP-042-117-12
+  title: 待上孵计划进度筛选结果与上孵计划状态一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态筛选
+  preconditions:
+  - 已准备计划进度为“待上孵”的授权脱敏上孵计划，具体数据待确认
+  steps:
+  - action: 选择“待上孵”
+    expected: 选择完成后立即执行查询，上孵计划列表仅展示计划进度为“待上孵”的计划；列表状态与计划管理-上孵计划菜单中对应计划状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度为“待上孵”的授权脱敏上孵计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 单一计划进度“待上孵”筛选
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-129
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-117-13
+  atomic_purpose_ids:
+  - AP-042-117-13
+  title: 孵化器中计划进度筛选结果与上孵计划状态一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态筛选
+  preconditions:
+  - 已准备计划进度为“孵化器中”的授权脱敏上孵计划，具体数据待确认
+  steps:
+  - action: 选择“孵化器中”
+    expected: 上孵计划列表仅展示计划进度为“孵化器中”的计划；列表状态与计划管理-上孵计划菜单中对应计划状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度为“孵化器中”的授权脱敏上孵计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 单一计划进度“孵化器中”筛选
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-130
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-117-14
+  atomic_purpose_ids:
+  - AP-042-117-14
+  title: 待照蛋计划进度筛选结果与上孵计划状态一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态筛选
+  preconditions:
+  - 已准备计划进度为“待照蛋”的授权脱敏上孵计划，具体数据待确认
+  steps:
+  - action: 选择“待照蛋”
+    expected: 上孵计划列表仅展示计划进度为“待照蛋”的计划；列表状态与计划管理-上孵计划菜单中对应计划状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度为“待照蛋”的授权脱敏上孵计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 单一计划进度“待照蛋”筛选
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-131
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-117-15
+  atomic_purpose_ids:
+  - AP-042-117-15
+  title: 出雏器中计划进度筛选结果与上孵计划状态一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态筛选
+  preconditions:
+  - 已准备计划进度为“出雏器中”的授权脱敏上孵计划，具体数据待确认
+  steps:
+  - action: 选择“出雏器中”
+    expected: 上孵计划列表仅展示计划进度为“出雏器中”的计划；列表状态与计划管理-上孵计划菜单中对应计划状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度为“出雏器中”的授权脱敏上孵计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 单一计划进度“出雏器中”筛选
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-132
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-117-16
+  atomic_purpose_ids:
+  - AP-042-117-16
+  title: 待出雏计划进度筛选结果与上孵计划状态一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态筛选
+  preconditions:
+  - 已准备计划进度为“待出雏”的授权脱敏上孵计划，具体数据待确认
+  steps:
+  - action: 选择“待出雏”
+    expected: 上孵计划列表仅展示计划进度为“待出雏”的计划；列表状态与计划管理-上孵计划菜单中对应计划状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度为“待出雏”的授权脱敏上孵计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 单一计划进度“待出雏”筛选
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-133
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-117-17
+  atomic_purpose_ids:
+  - AP-042-117-17
+  title: 已出雏计划进度筛选结果与上孵计划状态一致
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 状态筛选
+  preconditions:
+  - 已准备计划进度为“已出雏”的授权脱敏上孵计划，具体数据待确认
+  steps:
+  - action: 选择“已出雏”
+    expected: 选择完成后立即执行查询，上孵计划列表仅展示计划进度为“已出雏”的计划；列表状态与计划管理-上孵计划菜单中对应计划状态一致
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度为“已出雏”的授权脱敏上孵计划，具体数据待确认
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 单一计划进度“已出雏”筛选
+  common_preconditions_ref: delivery_execution_page
+
+- id: TC-PC-042-139
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-139
+  atomic_purpose_ids:
+  - AP-042-139
+  title: 点击位置筛选清空控件后恢复位置筛选状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置筛选
+  preconditions:
+  - 位置筛选和计划筛选均已有有效结果
+  steps:
+  - action: 在发货执行页找到已生效的位置筛选标签，点击该标签上的“×”清空控件
+    expected: 位置筛选标签被移除，位置筛选清空控件同步消失或变为不可用；计划筛选标签仍保留。
+  - action: 查看位置筛选清空后的上孵计划列表结果
+    expected: 上孵计划列表按仍保留的计划筛选条件刷新，只显示符合计划条件的数据，不再使用已清除的位置条件。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 位置和计划双筛选已生效
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 已生效位置和计划筛选；点击位置筛选标签“×”清空控件
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-140
+  coverage_ids:
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-27-1
+  atomic_purpose_ids:
+  - AP-042-35-1
+  title: 清空计划号关键字后恢复有效计划
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 筛选恢复
+  preconditions: &id001
+  - 存在目标发货单和关联计划；正式环境账号、数据、权限和定位器已确认
+  steps:
+  - action: 在无匹配空态下点击关键字“×”清空
+    expected: 恢复全部有效计划，并默认选中第一条有效计划
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: unmatched_result → clear_keyword
+- id: TC-PC-042-142
+  coverage_ids:
+  - FR-042-05
+  plan_item_ids:
+  - PI-042-50-2
+  atomic_purpose_ids:
+  - AP-042-50-2
+  title: 待发货数按公式计算
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量公式
+  preconditions: *id001
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮进入发货模式
+    expected: 目标上孵计划进入发货模式，显示栋舍分布和发货操作区域；当前计划的发货模式状态已建立，可读取本次暂存数量。
+  - action: 查看发货执行页发货进度主信息板块的“实际可发数”和“已发货数”，并查看发货模式下栋舍分布区域各位置的“已发货”“未发货”“本次位置”/“本次累计”数据
+    expected: “实际可发数”取自当前发货单下计划进度为“已完成”的上孵计划实际可发数之和；“已发货数”取自这些计划已完成发货数量之和；栋舍分布区域“已发货”取当前上孵计划已完成发货数量，不包括本次暂存数据；“未发货”取当前上孵计划尚未完成发货数量，不包括本次暂存数据；“本次累计”取当前计划在发货模式下各位置已录入但尚未提交的数量之和。
+  - action: 根据发货进度主信息板块和栋舍分布区域读取的数值，核对“待发货数”展示值
+    expected: “待发货数”=发货进度主信息板块“实际可发数”-发货进度主信息板块“已发货数”；栋舍分布区域“已发货”和“未发货”均不包括本次暂存数据；计算结果与页面“待发货数”一致。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    data_scope: 发货执行页发货进度主信息板块、当前计划栋舍分布区域
+    formula: 待发货数=实际可发数-已发货数；栋舍分布已发货和未发货均不包括本次暂存数量
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 公式正常值
+- id: TC-PC-042-143
+  coverage_ids:
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-50-3
+  atomic_purpose_ids:
+  - AP-042-50-3
+  title: 待发货数为零时进度正确展示
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 数量边界
+  preconditions: *id001
+  steps:
+  - action: 准备待发货数为零的计划并查看进度
+    expected: 进度显示零，不出现负数或错误状态
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    formula: 待发货数=实际可发数-(已完成数量+当前暂存数量)
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 待发货数=0
+- id: TC-PC-042-144
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-56-2
+  atomic_purpose_ids:
+  - AP-042-56-2
+  title: 发货记录剩余未发数等于上孵计划剩余未发数量
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录剩余数
+  preconditions: *id001
+  steps:
+  - action: 查看目标上孵计划的剩余未发数量，并定位对应发货记录的剩余未发数
+    expected: 发货记录的剩余未发数等于对应上孵计划当前的剩余未发数量，数值一致且未混入其他计划数量。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    data_scope: 对应上孵计划及其发货记录
+    formula: 发货记录剩余未发数=对应上孵计划剩余未发数量
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 记录剩余未发数=对应上孵计划剩余未发数量
+- id: TC-PC-042-202
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-56-3
+  atomic_purpose_ids:
+  - AP-042-56-3
+  title: 发货记录剩余数对应完成状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录状态
+  preconditions: *id001
+  steps:
+  - action: 查看剩余数大于零的发货记录
+    expected: 该发货记录状态显示“未发完”。
+  - action: 查看剩余数等于零的发货记录
+    expected: 该发货记录状态显示“已完成”。
+  - action: 在后续发货后回读已生成的历史发货记录
+    expected: 历史记录状态和历史剩余值保持记录产生时的结果，不因后续发货改变。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    record_states:
+    - 剩余数大于零：未发完
+    - 剩余数等于零：已完成
+    boundary_values:
+    - remaining_gt_zero
+    - remaining_eq_zero
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: remaining_gt_zero→未发完；remaining_eq_zero→已完成
+- id: TC-PC-042-148
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-29-2
+  atomic_purpose_ids:
+  - AP-042-122-2
+  title: 发货单整体平均苗重按一位小数展示
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 平均苗重整体精度
+  preconditions: *id001
+  steps:
+  - action: 查看发货单整体平均苗重
+    expected: 取发货单整体值并按一位小数展示
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    source: 种蛋出雏填写的上孵计划平均苗重
+    precision: 上孵计划两位小数；发货单整体一位小数
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: source=发货单整体值；precision=1
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-150
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-87
+  atomic_purpose_ids:
+  - AP-042-SPLIT-150
+  title: 未完成计划进度均不显示操作入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态入口
+  preconditions: []
+  steps:
+  - action: 查看六种计划进度：待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏
+    expected: 六种计划进度均不显示“查看”和“发货”入口，不验证不存在的“确认”按钮。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度样本为待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏、已完成；已完成计划分别准备待发货、发货中、已发货、已签收四种发货状态样本
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：未完成计划进度均不显示操作入口
+- id: TC-PC-042-151
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-87
+  atomic_purpose_ids:
+  - AP-042-SPLIT-151
+  title: 已完成且待发货计划显示发货入口
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态入口
+  preconditions: []
+  steps:
+  - action: 查看计划进度为“已完成”、发货状态为“待发货”的计划行
+    expected: 计划行只显示“发货”入口，点击“发货”可进入发货操作页面。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度样本为待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏、已完成；已完成计划分别准备待发货、发货中、已发货、已签收四种发货状态样本
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：已完成且待发货计划显示发货入口
+- id: TC-PC-042-152
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-87
+  atomic_purpose_ids:
+  - AP-042-SPLIT-152
+  title: 已完成且发货中计划允许继续发货
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态入口
+  preconditions: []
+  steps:
+  - action: 查看计划进度为“已完成”、发货状态为“发货中”的计划行
+    expected: 计划行显示“查看”和“发货”入口，入口名称为“发货”，允许进入发货操作页面。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度样本为待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏、已完成；已完成计划分别准备待发货、发货中、已发货、已签收四种发货状态样本
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：已完成且发货中计划允许继续发货
+- id: TC-PC-042-153
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-87
+  atomic_purpose_ids:
+  - AP-042-SPLIT-153
+  title: 已完成且已发货计划仅允许查看
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态入口
+  preconditions: []
+  steps:
+  - action: 查看计划进度为“已完成”、发货状态为“已发货”的计划行
+    expected: 计划行仅显示“查看”，不显示“发货”，且查看不进入只读发货模式。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度样本为待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏、已完成；已完成计划分别准备待发货、发货中、已发货、已签收四种发货状态样本
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：已完成且已发货计划仅允许查看
+- id: TC-PC-042-154
+  coverage_ids:
+  - FR-042-02
+  - FR-042-03
+  - FR-042-10
+  plan_item_ids:
+  - PI-042-87
+  atomic_purpose_ids:
+  - AP-042-SPLIT-154
+  title: 已完成且已签收计划禁止编辑操作
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 状态入口
+  preconditions: []
+  steps:
+  - action: 查看计划进度为“已完成”、发货状态为“已签收”的计划行及查看页面
+    expected: 计划行仅显示“查看”，查看页面不可编辑、不可发货、不可提交。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划进度样本为待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏、已完成；已完成计划分别准备待发货、发货中、已发货、已签收四种发货状态样本
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：已完成且已签收计划禁止编辑操作
+- id: TC-PC-042-163
+  coverage_ids:
+  - FR-042-02
+  plan_item_ids:
+  - PI-042-04
+  atomic_purpose_ids:
+  - AP-042-SPLIT-163
+  title: 清空发货状态筛选后恢复结果
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 重置
+  preconditions:
+  - 已设置计划号、进度和状态筛选
+  steps:
+  - action: 设置发货状态筛选并点击该筛选的清空控件
+    expected: 发货状态筛选被清空并立即查询，页面恢复全部有效计划并默认选中第一条。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：清空发货状态筛选后恢复结果
+- id: TC-PC-042-167
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-51-2
+  atomic_purpose_ids:
+  - AP-042-SPLIT-167
+  title: 栋舍总览与计划分布统计口径隔离
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 视图切换
+  preconditions: []
+  steps:
+  - action: 在“栋舍总览”和“计划分布”之间切换并对比同一统计项
+    expected: 两个视图使用各自统计口径，切换不会串用或残留另一视图的数据。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 同一发货单同时存在当前计划和其他计划记录
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：栋舍总览与计划分布统计口径隔离
+- id: TC-PC-042-168
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-53
+  atomic_purpose_ids:
+  - AP-042-SPLIT-168
+  title: 全景视图与列表视图可切换
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 视图切换与列表字段
+  preconditions:
+  - 已准备有发货位置数据并具备查看权限
+  steps:
+  - action: 在栋舍分布区域切换全景视图和列表视图
+    expected: 两种视图均可正常切换，切换后展示对应视图。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划分布列表模式字段契约
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 职责拆分：全景视图与列表视图可切换
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-169
+  coverage_ids:
+  - FR-042-01
+  plan_item_ids:
+  - PI-042-53
+  atomic_purpose_ids:
+  - AP-042-SPLIT-169
+  title: 列表视图字段契约正确
+  type: feature
+  auto: auto
+  priority: P4
+  feature: 视图切换与列表字段
+  preconditions:
+  - 已准备有发货位置数据并具备查看权限
+  steps:
+  - action: 在发货执行页栋舍分布区域切换到“计划分布”，再切换到列表模式
+    expected: 栋舍分布区域成功进入“计划分布”的列表模式，并在标题下显示当前上孵计划号。
+  - action: 查看计划分布列表表头
+    expected: 表头按“序号、列、层、数量、上孵计划号、录入时间、操作”顺序显示，字段名称和顺序符合页面契约。
+  - action: 查看计划分布列表中的目标位置行及其操作列
+    expected: 目标行的“数量”显示当前计划在该位置的已发货数量，“上孵计划号”显示当前上孵计划号，“录入时间”显示该位置记录时间；“操作”列显示“明细”按钮。
+  - action: 点击目标位置行“操作”列的“明细”按钮
+    expected: 下方发货记录列表仅显示当前上孵计划在该位置的发货记录；点击位置明细后的筛选标签显示当前筛选位置，并提供“清空筛选”按钮。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 计划分布列表模式字段契约
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 职责拆分：列表视图字段契约正确
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-171
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-55
+  atomic_purpose_ids:
+  - AP-042-SPLIT-171
+  title: 查看计划联动计划分布
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 查看联动
+  preconditions:
+  - 上孵计划列表存在目标计划，且该计划有多个位置的发货记录
+  steps:
+  - action: 选择目标计划后查看计划分布区域
+    expected: 计划分布区域仅展示或统计当前目标计划的数据。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：查看计划联动计划分布
+- id: TC-PC-042-172
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-55
+  atomic_purpose_ids:
+  - AP-042-SPLIT-172
+  title: 查看计划联动发货记录筛选
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 查看联动
+  preconditions:
+  - 上孵计划列表存在目标计划，且该计划有多个位置的发货记录
+  steps:
+  - action: 选择目标计划后查看发货记录区域
+    expected: 发货记录区域按当前目标计划筛选，记录与目标计划匹配。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：查看计划联动发货记录筛选
+- id: TC-PC-042-173
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-65
+  atomic_purpose_ids:
+  - AP-042-SPLIT-173
+  title: 位置筛选返回匹配位置
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选联动
+  preconditions:
+  - 准备同一计划多个位置、多个计划记录和无记录位置
+  steps:
+  - action: 选择一个有效位置筛选条件
+    expected: 分布区域和列表区域仅展示符合该位置条件的位置数据。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    filters:
+    - 位置
+    - 计划分布
+    - 栋舍总览
+    - 网格
+    - 列表
+    - 无记录位置
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：位置筛选返回匹配位置
+- id: TC-PC-042-174
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-65
+  atomic_purpose_ids:
+  - AP-042-SPLIT-174
+  title: 位置筛选视图切换保持
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选联动
+  preconditions:
+  - 准备同一计划多个位置、多个计划记录和无记录位置
+  steps:
+  - action: 设置位置筛选后在分布视图与列表视图间切换
+    expected: 视图切换成功，位置筛选条件仍保持。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    filters:
+    - 位置
+    - 计划分布
+    - 栋舍总览
+    - 网格
+    - 列表
+    - 无记录位置
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：位置筛选视图切换保持
+- id: TC-PC-042-175
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-65
+  atomic_purpose_ids:
+  - AP-042-SPLIT-175
+  title: 切换视图后位置筛选结果正确
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选联动
+  preconditions:
+  - 准备同一计划多个位置、多个计划记录和无记录位置
+  steps:
+  - action: 设置位置筛选并切换视图后回读结果
+    expected: 切换前后的筛选结果一致，清空筛选后恢复全部有效位置。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    filters:
+    - 位置
+    - 计划分布
+    - 栋舍总览
+    - 网格
+    - 列表
+    - 无记录位置
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：切换视图后位置筛选结果正确
+- id: TC-PC-042-181
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-10
+  atomic_purpose_ids:
+  - AP-042-SPLIT-181
+  title: 发货数量为空不可保存
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 数量校验
+  preconditions:
+  - 具备可执行计划和位置录入条件；剩余数大于零
+  steps:
+  - action: 进入发货模式并保持发货数量为空后点击“完成”
+    expected: 数量为空时不能完成保存，页面提示或校验状态明确。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：发货数量为空不可保存
+- id: TC-PC-042-182
+  coverage_ids:
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-10
+  atomic_purpose_ids:
+  - AP-042-SPLIT-182
+  title: 发货数量非数字字符不可输入
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 数量校验
+  preconditions:
+  - 具备可执行计划和位置录入条件；剩余数大于零
+  steps:
+  - action: 尝试在发货数量输入框输入或粘贴汉字、字母等非数字字符
+    expected: 输入框不接受非数字内容，业务数量不被保存。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：发货数量非数字字符不可输入
+- id: TC-PC-042-183
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-21
+  atomic_purpose_ids:
+  - AP-042-SPLIT-183
+  title: 确认提交成功生成发货结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 完成提交
+  preconditions:
+  - 授权可回收数据；页面存在已确认的有效位置暂存；提交接口可正常返回成功
+  steps:
+  - action: 在“确认提交”弹窗中点击“确认提交”
+    expected: 提交成功并生成对应发货结果，上孵计划和发货单业务数据更新。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：确认提交成功生成发货结果
+- id: TC-PC-042-184
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-21
+  atomic_purpose_ids:
+  - AP-042-SPLIT-184
+  title: 提交成功后退出发货模式
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 完成提交
+  preconditions:
+  - 授权可回收数据；页面存在已确认的有效位置暂存；提交接口可正常返回成功
+  steps:
+  - action: 完成一次成功提交后查看当前页面模式
+    expected: 提交成功后退出发货模式，页面恢复非编辑状态。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：提交成功后退出发货模式
+- id: TC-PC-042-185
+  coverage_ids:
+  - FR-042-04
+  plan_item_ids:
+  - PI-042-54
+  atomic_purpose_ids:
+  - AP-042-SPLIT-185
+  title: 当前计划可进入发货模式
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货模式
+  preconditions: []
+  steps:
+  - action: 点击目标计划的“发货”入口
+    expected: 仅目标计划进入发货模式并显示可编辑的发货区域。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划已出雏且待发货数大于0
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：当前计划可进入发货模式
+- id: TC-PC-042-186
+  coverage_ids:
+  - FR-042-04
+  plan_item_ids:
+  - PI-042-54
+  atomic_purpose_ids:
+  - AP-042-SPLIT-186
+  title: 其他计划入口在发货模式锁定
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货模式
+  preconditions: []
+  steps:
+  - action: 进入目标计划发货模式后查看其他计划操作入口
+    expected: 其他计划的“发货”和“查看”入口不可操作。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划已出雏且待发货数大于0
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：其他计划入口在发货模式锁定
+- id: TC-PC-042-187
+  coverage_ids:
+  - FR-042-04
+  plan_item_ids:
+  - PI-042-54
+  atomic_purpose_ids:
+  - AP-042-SPLIT-187
+  title: 发货模式锁定栋舍和列表控件
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货模式
+  preconditions: []
+  steps:
+  - action: 进入目标计划发货模式后操作栋舍切换和列表模式控件
+    expected: 栋舍切换、列表模式等非当前计划控件被锁定或操作被拒绝。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划已出雏且待发货数大于0
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：发货模式锁定栋舍和列表控件
+- id: TC-PC-042-189
+  coverage_ids:
+  - FR-042-09
+  plan_item_ids:
+  - PI-042-57
+  atomic_purpose_ids:
+  - AP-042-SPLIT-189
+  title: 提交成功后发货记录刷新
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 完成联动
+  preconditions: []
+  steps:
+  - action: 完成目标计划成功提交后查看发货记录区域
+    expected: 发货记录刷新并展示本次提交结果，数量和记录可回读。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 确认提交分支
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  scenario_branch: 职责拆分：提交成功后发货记录刷新
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-190
+  coverage_ids:
+  - FR-042-04
+  - FR-042-05
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-62
+  atomic_purpose_ids:
+  - AP-042-SPLIT-190
+  title: 已提交数量只统计成功提交数据
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 统计口径
+  preconditions:
+  - 准备实际可发A、已提交B、当前草稿C且A大于B+C
+  steps:
+  - action: 在提交前后分别查看已提交数量
+    expected: 已提交数量仅包含已经成功提交的数据。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    variables:
+      actual: A
+      submitted: B
+      draft: C
+    formula: 表格及查看模式=A-B；发货模式区分历史已发货、本次暂存和本次累计
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：已提交数量只统计成功提交数据
+- id: TC-PC-042-191
+  coverage_ids:
+  - FR-042-04
+  - FR-042-05
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-62
+  atomic_purpose_ids:
+  - AP-042-SPLIT-191
+  title: 页面暂存数量单独统计
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 统计口径
+  preconditions:
+  - 准备实际可发A、已提交B、当前草稿C且A大于B+C
+  steps:
+  - action: 录入位置数量但不提交并查看页面统计
+    expected: 页面暂存数量展示未提交的本次录入合计，不进入已提交数量。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    variables:
+      actual: A
+      submitted: B
+      draft: C
+    formula: 表格及查看模式=A-B；发货模式区分历史已发货、本次暂存和本次累计
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：页面暂存数量单独统计
+- id: TC-PC-042-192
+  coverage_ids:
+  - FR-042-04
+  - FR-042-05
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-62
+  atomic_purpose_ids:
+  - AP-042-SPLIT-192
+  title: 提交前后统计时点正确
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 统计口径
+  preconditions:
+  - 准备实际可发A、已提交B、当前草稿C且A大于B+C
+  steps:
+  - action: 记录录入、提交前和提交后的统计值
+    expected: 提交前暂存不进入已提交统计，提交成功后才纳入已提交统计。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    variables:
+      actual: A
+      submitted: B
+      draft: C
+    formula: 表格及查看模式=A-B；发货模式区分历史已发货、本次暂存和本次累计
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：提交前后统计时点正确
+- id: TC-PC-042-193
+  coverage_ids:
+  - FR-042-05
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-82
+  atomic_purpose_ids:
+  - AP-042-SPLIT-193
+  title: 实际可发数为零时进度正确
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 零值边界
+  preconditions: []
+  steps:
+  - action: 查看实际可发数为零的目标计划统计字段
+    expected: 待发货数不小于零，进度显示0%，页面不出现负数或除零错误。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 实际可发数A=0或已发货数B=A，暂存数量C=0
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：实际可发数为零时进度正确
+- id: TC-PC-042-194
+  coverage_ids:
+  - FR-042-05
+  - FR-042-11
+  plan_item_ids:
+  - PI-042-82
+  atomic_purpose_ids:
+  - AP-042-SPLIT-194
+  title: 已发数量等于实际可发数时无剩余
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 零值边界
+  preconditions: []
+  steps:
+  - action: 查看已发数量等于实际可发数的目标计划
+    expected: 待发货数为零，发货状态为“已发货”，只显示【查看】按钮
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 实际可发数A=0或已发货数B=A，暂存数量C=0
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：已发数量等于实际可发数时无剩余
+- id: TC-PC-042-196
+  coverage_ids:
+  - FR-042-14
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-83-1
+  atomic_purpose_ids:
+  - AP-042-SPLIT-196
+  title: 多位置录入后累计数量正确
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 多位置守恒
+  preconditions: []
+  steps:
+  - action: 点击目标上孵计划的“发货”按钮
+    expected: 进入目标上孵计划发货模式，显示栋舍工作区和发货操作区域
+  - action: 在栋舍工作区选择两个或多个位置格，分别录入有效发货数量 N1、N2 并点击“完成”
+    expected: 各目标位置显示各自录入的有效数量，形成本次发货模式下尚未提交的位置录入
+  - action: 查看栋舍工作区标题下的“本次累计”
+    expected: “本次累计”等于各位置有效数量之和 N1+N2
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标上孵计划待发货数大于 N1+N2；两个或多个目标位置分别录入数量 N1、N2
+    read_field: 栋舍工作区标题下的“本次累计”
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：多位置录入后累计数量正确
+- id: TC-PC-042-197
+  coverage_ids:
+  - FR-042-14
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-83-1
+  atomic_purpose_ids:
+  - AP-042-SPLIT-197
+  title: 修改位置后累计数量重新计算
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 多位置守恒
+  preconditions: []
+  steps:
+  - action: 修改其中一个位置的数量并重新查看累计
+    expected: 累计数量按修改后的明细重新计算，不保留旧值。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划向两个位置录入N1和N2后修改其中一个位置
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：修改位置后累计数量重新计算
+- id: TC-PC-042-198
+  coverage_ids:
+  - FR-042-14
+  - FR-042-06
+  plan_item_ids:
+  - PI-042-83-1
+  atomic_purpose_ids:
+  - AP-042-SPLIT-198
+  title: 位置明细与累计数量守恒
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 多位置守恒
+  preconditions: []
+  steps:
+  - action: 查看多位置明细、累计数量和发货记录
+    expected: 位置明细数量之和与累计数量、对应记录数量一致。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    case_data: 目标计划向两个位置录入N1和N2后修改其中一个位置
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：位置明细与累计数量守恒
+- id: TC-PC-042-200
+  coverage_ids:
+  - FR-042-05
+  - FR-042-09
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-88
+  atomic_purpose_ids:
+  - AP-042-SPLIT-200
+  title: 当前统计按最新提交数据刷新
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 数据一致性
+  preconditions:
+  - 存在至少两次已提交发货记录和当前计划统计；授权数据和时间格式待确认
+  steps:
+  - action: 完成提交后刷新并查看当前计划统计
+    expected: 当前统计按最新已提交数据重新计算。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    history_records: 2
+    refresh_and_switch: true
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：当前统计按最新提交数据刷新
+- id: TC-PC-042-201
+  coverage_ids:
+  - FR-042-05
+  - FR-042-09
+  - FR-042-15
+  plan_item_ids:
+  - PI-042-88
+  atomic_purpose_ids:
+  - AP-042-SPLIT-201
+  title: 视图切换保持统计口径
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 数据一致性
+  preconditions:
+  - 存在至少两次已提交发货记录和当前计划统计；授权数据和时间格式待确认
+  steps:
+  - action: 在计划分布和栋舍总览之间切换并查看统计
+    expected: 视图切换不混用历史记录与当前统计口径。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+    history_records: 2
+    refresh_and_switch: true
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化管理系统
+    version: 2
+    status: ready_for_review
+  tp_id: TEST_PLAN-REQ-PC-042
+  common_preconditions_ref: delivery_execution_page
+  scenario_branch: 职责拆分：视图切换保持统计口径
+- id: TC-PC-042-300
+  coverage_ids:
+  - FR-042-SHIPMENT-COMPLETION
+  plan_item_ids:
+  - PI-042-SHIPMENT-COMPLETION
+  atomic_purpose_ids:
+  - AP-042-SHIPMENT-PARTIAL-NO-STOCK-EFFECT
+  title: 部分发货时不生成出库记录且库存不减少
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货完成联动
+  preconditions:
+  - 已准备待发货数 R 大于本次发货数量 q 的上孵计划
+  - 已记录发货前库存和出入库记录基线
+  steps:
+  - action: 提交本次有效发货 q，使剩余待发货数仍大于零
+    expected: 发货执行成功，剩余待发货数正确减少；不生成本次完成联动的出库记录，库存不减少。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化系统
+    version: 2
+    status: blocked_contract
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-301
+  coverage_ids:
+  - FR-042-SHIPMENT-COMPLETION
+  plan_item_ids:
+  - PI-042-SHIPMENT-COMPLETION
+  atomic_purpose_ids:
+  - AP-042-SHIPMENT-COMPLETE-STOCK-EFFECT
+  title: 最后一次发货完成时生成出库记录并扣减库存
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货完成联动
+  preconditions:
+  - 已准备最后一次有效发货使待发货数归零的上孵计划
+  - 已记录发货前库存和出入库记录基线
+  steps:
+  - action: 提交最后一次有效发货，使剩余待发货数归零
+    expected: 发货执行成功，生成对应出库记录并扣减库存。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化系统
+    version: 2
+    status: blocked_contract
+  common_preconditions_ref: delivery_execution_page
+- id: TC-PC-042-302
+  coverage_ids:
+  - FR-042-SHIPMENT-COMPLETION
+  plan_item_ids:
+  - PI-042-SHIPMENT-COMPLETION
+  atomic_purpose_ids:
+  - AP-042-SHIPMENT-CUMULATIVE-STOCK-EFFECT
+  title: 多次发货完成后出库数量及库存变动数量等于累计发货数
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货完成联动
+  preconditions:
+  - 已准备经过多次有效发货后待发货数归零的上孵计划
+  - 已记录实际可发数、各次发货数量及发货前库存基线
+  steps:
+  - action: 完成第一次有效发货并回读发货结果
+    expected: 第一次发货成功，记录本次发货数量；未达到全部发完条件时不产生完成后的联动结果。
+  - action: 继续完成后续有效发货直至待发货数归零
+    expected: 所有发货均成功，累计发货数量等于各次有效发货数量之和。
+  - action: 回读全部发货完成后的出库记录和库存变动
+    expected: 仅在全部发完后产生联动，出库数量及库存变动数量等于累计发货数。
+  - action: 将累计发货数与上孵计划实际可发数进行核对
+    expected: 累计发货数等于上孵计划实际可发数。
+  test_data:
+    page_url: /biopark-breeding/breeding/delivery/execute/ID
+  trace:
+    story: null
+    req: REQ-PC-042
+    tp: TEST_PLAN-REQ-PC-042
+    project: 种禽孵化系统
+    version: 2
+    status: blocked_contract
+  common_preconditions_ref: delivery_execution_page
+summary:
+  type_counts:
+    auto: 0
+    feature: 119
+    interface: 0
+  auto_counts:
+    auto: 119
+    'no': 0
+  priority_counts:
+    P1: 47
+    P2: 40
+    P3: 8
+    P4: 24

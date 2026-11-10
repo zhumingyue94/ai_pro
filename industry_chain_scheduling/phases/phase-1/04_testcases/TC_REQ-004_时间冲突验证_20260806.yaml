@@ -1,0 +1,471 @@
+req_id: REQ-004
+module: 制定排程
+zentao_module_id: 671
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-004
+  tp: TP_REQ-004_时间冲突验证_20260806
+  project: 产业链生产排程系统
+  version: 1
+  status: draft
+  source_review: 04_testpoint_review/REV_时间冲突验证_人工评审_20260806.md
+cases:
+- id: TC-004-C01
+  tp_id: TP-004-C01
+  title: 候选补栏日=上一计划A补栏日(2027-02-03)时B1标记时间冲突且三段全重叠
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在上一计划A（栋舍B1，补栏日2027-02-03，段1养殖 2/3–2/16(14天)、段1消杀2/17~2/18（2天）、 段2养殖2/17–3/3(15天)、段2消杀3/4~3/4(1天)、 段3养殖 3/4–3/17(14天)、段3养消杀3/18~3/19(2天)）
+  steps:
+  - action: 在日计划设置页将候选日计划补栏日设为 2027-02-03（与上一计划A相同），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签与说明文字
+    expected: B1卡片显示「时间冲突」与「不可分配」标签，说明含与上一计划的重叠段位（执行时据实记录具体段位文案）
+  - action: 尝试勾选或点击栋舍B1
+    expected: 全周期校验不显示“选择B1栋”按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C01
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48866
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48866 --format=json
+  zentao_status: normal
+- id: TC-004-C02
+  tp_id: TP-004-C02
+  title: 候选补栏日落后A两日(2027-02-05)时仍三段全重叠
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在上一计划A（栋舍B1，补栏日2027-02-03，段1养殖 2/3–2/16(14天)、段1消杀2/17~2/18（2天）、 段2养殖2/17–3/3(15天)、段2消杀3/4~3/4(1天)、 段3养殖 3/4–3/17(14天)、段3养消杀3/18~3/19(2天)）
+  steps:
+  - action: 将候选日计划补栏日设为 2027-02-05（落后A两日），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签与说明文字
+    expected: B1卡片显示「时间冲突」与「不可分配」标签，说明含与上一计划的重叠段位（执行时据实记录具体段位文案）
+  - action: 尝试勾选或点击栋舍B1
+    expected: 全周期校验不显示“选择B1栋”按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C02
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48867
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48867 --format=json
+  zentao_status: normal
+- id: TC-004-C03
+  tp_id: TP-004-C03
+  title: 候选补栏日==上一计划1段结束日(2027-02-16)边界冲突
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在上一计划A（栋舍B1，补栏日2027-02-03，段1养殖 2/3–2/16(14天)、段1消杀2/17~2/18（2天）、 段2养殖2/17–3/3(15天)、段2消杀3/4~3/4(1天)、 段3养殖 3/4–3/17(14天)、段3养消杀3/18~3/19(2天)）
+  steps:
+  - action: 将候选日计划补栏日设为 2027-02-16（=A段1结束日，inclusive），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签与说明文字
+    expected: B1卡片显示「时间冲突」与「不可分配」标签，说明含与上一计划的重叠段位（边界态各段仍有重叠，空栏计入冲突窗使重叠天数增大，执行时据实记录具体段位文案）
+  - action: 尝试勾选或点击栋舍B1
+    expected: 全周期校验不显示“选择B1栋”按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C03
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48868
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48868 --format=json
+  zentao_status: normal
+- id: TC-004-C04
+  tp_id: TP-004-C04
+  title: 候选补栏日=A段1结束次日(2027-02-17)空栏计入冲突窗仍冲突
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在上一计划A（栋舍B1，补栏日2027-02-03，段1养殖 2/3–2/16(14天)、段1消杀2/17~2/18（2天）、 段2养殖2/17–3/3(15天)、段2消杀3/4~3/4(1天)、 段3养殖 3/4–3/17(14天)、段3养消杀3/18~3/19(2天)），计划号是：JH-20270317-01
+  steps:
+  - action: 将候选日计划补栏日设为 2027-02-17（A段1养殖结束次日；空栏计入冲突窗，A段1整窗占用至2/18），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签与说明文字
+    expected: 空栏计入冲突窗：A段1整窗占用至2/18，候选N段1整窗[2/17–3/4]与A段1整窗[2/3–2/18]在[2/17–2/18]重叠，B1卡片显示「时间冲突」与「不可分配」标签，说明含与上一计划的重叠段位（执行时据实记录具体段位文案）
+  - action: 候选栋舍中点击栋舍B1卡片，查看右侧的全周期校验区域
+    expected: 全周期校验不显示“选择B1栋”按钮
+  - action: 候选栋舍中点击B1卡片，查看右侧的分段校验明细
+    expected: 1段、2段、3段的冲突计划显示计划A的计划号
+  - action: 查看分段校验明细-第1段的重叠占用
+    expected: 第1段-重叠占用：2027-02-17 至 2027-02-18
+  - action: 查看分段校验明细-第2段的重叠占用
+    expected: 第2段-重叠占用：2027-03-02 至 2027-03-04
+  - action: 查看分段校验明细-第3段的重叠占用
+    expected: 第3段-重叠占用：2027-03-17 至 2027-03-19
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C04
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48869
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48869 --format=json
+  zentao_status: normal
+- id: TC-004-C05
+  tp_id: TP-004-C05
+  title: 候选与A异段重叠(2027-02-23)时不冲突
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在上一计划A（栋舍B1，补栏日2027-02-03，段1养殖 2/3–2/16(14天)、段1消杀2/17~2/18（2天）、 段2养殖2/17–3/3(15天)、段2消杀3/4~3/4(1天)、 段3养殖 3/4–3/17(14天)、段3养消杀3/18~3/19(2天)）
+  steps:
+  - action: 将候选日计划补栏日设为 2027-02-23（日历落在A全周期2/3–3/19内，但与A为异段重叠），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签
+    expected: B1显示「可分配」或「最优推荐」标签，且不出现「时间冲突」标签
+  - action: 尝试勾选或点击栋舍B1
+    expected: 全周期校验显示“选择B1栋”按钮，可点击
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C05
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48870
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48870 --format=json
+  zentao_status: normal
+- id: TC-004-C06
+  tp_id: TP-004-C06
+  title: 候选补栏日=下一计划C补栏日(2027-03-25)时三段全重叠
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在下一计划C（栋舍B1，补栏日2027-03-25，段1养殖3/25–4/7（14天）、段1消杀4/8~4/8(1天)、 段2养殖4/8–4/21（14天）、段2消杀4/22~4/22(1天)、 段3养殖4/22–5/5（14天）、段2消杀5/6~5/6(1天)
+  steps:
+  - action: 将候选日计划补栏日设为 2027-03-25（=下一计划C补栏日），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签与说明文字
+    expected: B1卡片显示「时间冲突」与「不可分配」标签，说明含与下一计划的重叠段位（执行时据实记录具体段位文案）
+  - action: 尝试勾选或点击栋舍B1
+    expected: 全周期校验不显示“选择B1栋”按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C06
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48871
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48871 --format=json
+  zentao_status: normal
+- id: TC-004-C07
+  tp_id: TP-004-C07
+  title: 候选段1结束日==下一计划补栏日(2027-03-12)边界冲突
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在下一计划C（栋舍B1，补栏日2027-03-25，段1养殖3/25–4/7（14天）、段1消杀4/8~4/8(1天)、 段2养殖4/8–4/21（14天）、段2消杀4/22~4/22(1天)、 段3养殖4/22–5/5（14天）、段2消杀5/6~5/6(1天)
+  steps:
+  - action: 将候选日计划补栏日设为 2027-03-12（段1结束3/25=C补栏日，inclusive），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签与说明文字
+    expected: B1卡片显示「时间冲突」与「不可分配」标签，说明含与下一计划的重叠段位（边界态各段仍有重叠，空栏计入冲突窗使重叠天数增大，执行时据实记录具体段位文案）
+  - action: 尝试勾选或点击栋舍B1
+    expected: 全周期校验不显示“选择B1栋”按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C07
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48872
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48872 --format=json
+  zentao_status: normal
+- id: TC-004-C08
+  tp_id: TP-004-C08
+  title: 候选处于A/C双计划安全空窗末端(2027-03-05)不冲突（空栏计入后整段无重叠）
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在下一计划C（栋舍B1，补栏日2027-03-25，段1养殖3/25–4/7（14天）、段1消杀4/8~4/8(1天)、 段2养殖4/8–4/21（14天）、段2消杀4/22~4/22(1天)、 段3养殖4/22–5/5（14天）、段2消杀5/6~5/6(1天)
+  steps:
+  - action: 将候选日计划补栏日设为 2027-03-05（落在A整窗[2/3–2/18]之后、C整窗[3/25–4/8]之前的安全空窗末端，空栏计入后无同段重叠），点击「智能分配」打开智能分配弹窗
+    expected: 智能分配弹窗打开，候选栋舍列表加载，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签
+    expected: B1显示「可分配」或「最优推荐」标签，且不出现「时间冲突」标签
+  - action: 尝试勾选或点击栋舍B1
+    expected: 全周期校验显示“选择B1栋”按钮，并且可以点击
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C08
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48873
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48873 --format=json
+  zentao_status: normal
+- id: TC-004-C09
+  tp_id: TP-004-C09
+  title: 同日多宰杀线同栋占用均标时间冲突
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在上一计划A（栋舍B1，补栏日2027-02-03，段1养殖 2/3–2/16(14天)、段1消杀2/17~2/18（2天）、 段2养殖2/17–3/3(15天)、段2消杀3/4~3/4(1天)、 段3养殖 3/4–3/17(14天)、段3养消杀3/18~3/19(2天)）
+  - 日计划中包含一号宰杀线与二号线两条宰杀线，两者均引用栋舍B1且补栏日相同（取与上一计划A冲突的日期，如2027-02-03）
+  steps:
+  - action: 打开该日计划的「智能分配」弹窗
+    expected: 智能分配弹窗打开，栋舍B1出现在候选列表中
+  - action: 查看候选栋舍B1卡片的标签与说明文字
+    expected: B1卡片显示「时间冲突」与「不可分配」标签（同日多宰杀线同栋占用）
+  - action: 切换查看另一条宰杀线对应的B1候选卡片
+    expected: 另一条宰杀线对应的B1卡片同样显示「时间冲突」与「不可分配」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C09
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48874
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48874 --format=json
+  zentao_status: normal
+- id: TC-004-C10
+  tp_id: TP-004-C10
+  title: 智能推荐统计「存在冲突 N」与实际冲突栋数一致
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在多个冲突栋舍（如栋舍B1与上一计划A冲突、栋舍B3与下一计划C冲突，各补栏日均命中对应冲突区间）
+  steps:
+  - action: 打开「智能分配」弹窗
+    expected: 智能分配弹窗打开，多个栋舍候选卡片加载
+  - action: 查看智能分配弹窗顶部的统计摘要
+    expected: 摘要显示「存在冲突 N 需调整时间节点」，记录其中的 N 值
+  - action: 统计弹窗中实际标记「时间冲突」的栋舍卡片数量
+    expected: 实际冲突卡片数量等于摘要中的 N 值
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C10
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48875
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48875 --format=json
+  zentao_status: deprecated
+- id: TC-004-C11
+  tp_id: TP-004-C11
+  title: 点「查看冲突段位 →」展开对应段位标红/失败
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 栋舍智能分配
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 已点击「制定排程」进入制定排程设置页
+  - 已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态
+  - 已存在上一计划A（栋舍B1，补栏日2027-02-03，段1 2/3–2/
+  - 段2 2/17–3/
+  - 段3 3/3–3/16）
+  steps:
+  - action: 将候选日计划补栏日设为 2027-02-05（与上一计划A三段重叠），点击「智能分配」打开智能分配弹窗，定位到栋舍B1的「查看冲突段位 →」入口
+    expected: 弹窗打开，B1卡片显示「时间冲突」，并含「查看冲突段位 →」入口
+  - action: 点击栋舍B1卡片的「查看冲突段位 →」
+    expected: 展开冲突段位明细区域
+  - action: 查看展开的段位明细内容
+    expected: 明细中明确标出冲突的段位（如1段/2段/3段）并标红或失败态，与分段校验冲突段一致（执行时据实记录具体段位）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    settings_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-004
+    tp: TP-004-C11
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48876
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: auto
+    status: synced_by_type_raw_auto_mismatch
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48876 --format=json
+  zentao_status: deprecated
+summary:
+  type_counts:
+    feature: 11
+  auto_counts:
+    auto: 11
+  registry_counts:
+    registered: 11

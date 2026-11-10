@@ -1,0 +1,67 @@
+{
+  "status": "validated",
+  "case_id": "TC-REQ-004-046",
+  "remote_case_id": 52117,
+  "operation": "update",
+  "changed_field": "steps[3].expected",
+  "removed_text": "；清理测试数据",
+  "remote_context": {
+    "project": 46,
+    "product": 8,
+    "module": 733
+  },
+  "remote_steps": [
+    {
+      "name": "1",
+      "id": 174356,
+      "step": "打开新增/编辑表单，填写并保存一条隔离测试数据，记录分组名称、描述及关联字段。",
+      "desc": "打开新增/编辑表单，填写并保存一条隔离测试数据，记录分组名称、描述及关联字段。",
+      "expect": "数据创建成功，列表或详情回读的字段值与提交内容一致。",
+      "type": "step",
+      "parent": 0,
+      "grade": 1
+    },
+    {
+      "name": "2",
+      "id": 174357,
+      "step": "删除刚创建的数据并确认删除成功，刷新或查询列表。",
+      "desc": "删除刚创建的数据并确认删除成功，刷新或查询列表。",
+      "expect": "删除成功反馈可见，目标数据不再出现在列表或详情中。",
+      "type": "step",
+      "parent": 0,
+      "grade": 1
+    },
+    {
+      "name": "3",
+      "id": 174358,
+      "step": "再次打开新增表单，使用删除前记录的相同表单内容重新提交。",
+      "desc": "再次打开新增表单，使用删除前记录的相同表单内容重新提交。",
+      "expect": "表单提交成功，不提示重复或残留数据冲突。",
+      "type": "step",
+      "parent": 0,
+      "grade": 1
+    },
+    {
+      "name": "4",
+      "id": 174359,
+      "step": "刷新或查询列表并打开重新创建的数据。",
+      "desc": "刷新或查询列表并打开重新创建的数据。",
+      "expect": "新数据创建成功且分组名称、描述及关联字段与删除前记录完全一致。",
+      "type": "step",
+      "parent": 0,
+      "grade": 1
+    }
+  ],
+  "defects": [],
+  "source_hashes_after": {
+    "04_testcases\\TC_REQ-004.yaml": "b4c139f291ef78cf8a0cb0241e677c21e58cd42c6ad09729c24dda21f7f25d38",
+    "04_testcases\\TC_REQ-004.md": "a319748856add715d3ba98b433ed87ae79394e062380ebe4c656d67e8ac75c98",
+    "05_case_review\\REV_CASE_REQ-004.yaml": "38d3786b6189706945a2f07227e82e8848e2c96d97022df04212aea8377302c9",
+    "05_case_review\\REV_CASE_REQ-004.md": "0368f5e686e1e71028ce58b5d5886ec1eb81f7df41335cf1a04d87a062b3cb67",
+    "05_case_review\\HANDOFF\\REQ-004_HANDOFF.md": "c58bae63e84078804a85f3202641fe8b0efbeb633836eab79365f18401f9ef0c",
+    "04_testcases\\HANDOFF\\REQ-004_HANDOFF.md": "4853adcfc3d126767633908bd7d7bd652161bd9636afecbfb5856ec0b30c6061",
+    "06_zentao_sync\\REQ-004\\HANDOFF\\REQ-004_HANDOFF.md": "b0595bdbcacb7dd70fcdd0ae0e1582e15af7b8d256556873b2d976001863ab81",
+    "module_case_map.json": "bddce87366183d1eae09c2029befbdf6d5f001df90cd4e7e8045e196011ca74c",
+    "06_zentao_sync\\REQ-004\\raw_readback_52117_utf8.json": "7c6704f82b2a3f861a79d128065a6865253edc2e245ef9542d01f20df901a507"
+  }
+}

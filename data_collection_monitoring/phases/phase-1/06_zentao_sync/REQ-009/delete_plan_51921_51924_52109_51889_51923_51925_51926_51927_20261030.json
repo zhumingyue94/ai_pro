@@ -1,0 +1,13 @@
+{
+  "status": "validated",
+  "req_id": "REQ-009",
+  "product_id": 8,
+  "project_id": 46,
+  "module_id": 747,
+  "operation": "delete",
+  "remote_case_ids": [51921, 51924, 52109, 51889, 51923, 51925, 51926, 51927],
+  "local_case_ids": ["TC-REQ-009-043", "TC-REQ-009-046", "TC-REQ-009-052", "TC-REQ-009-009", "TC-REQ-009-045", "TC-REQ-009-047", "TC-REQ-009-048", "TC-REQ-009-049"],
+  "execution_mode": "real",
+  "readback_policy": "每条删除后立即回读，确认目标不存在后才移除注册表映射。",
+  "failure_policy": "任一删除或回读失败立即停止，不删除重建，不创建替代用例。"
+}

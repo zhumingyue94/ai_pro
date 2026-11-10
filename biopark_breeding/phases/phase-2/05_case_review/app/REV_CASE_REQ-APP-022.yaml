@@ -1,0 +1,509 @@
+review:
+  review_id: REV_CASE_REQ-APP-022
+  req_id: REQ-APP-022
+  module_id: REQ-APP-022
+  deletion_change_51064:
+    date: '2026-10-09'
+    deleted_zentao_case_ids: [51064]
+    deleted_source_case_ids: [TC-APP-022-051]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/delete_response_51064_20261009.json
+      - 06_zentao_sync/app/readback_delete_51064_20261009.json
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-08'
+  deletion_change_51171_51178_51193_51194_51266_51273_51293:
+    date: '2026-10-09'
+    deleted_zentao_case_ids: [51171, 51178, 51193, 51194, 51266, 51273, 51293]
+    deleted_source_case_ids: [TC-APP-022-138, TC-APP-022-145, TC-APP-022-165, TC-APP-022-166, TC-APP-022-186, TC-APP-022-194, TC-APP-022-260]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/execution_log_delete_51171_51178_51193_51194_51266_51273_51293_20261009.json
+  deletion_change_51120_51122_51121:
+    date: '2026-10-09'
+    deleted_zentao_case_ids: [51120, 51122, 51121]
+    deleted_source_case_ids: [TC-APP-022-088, TC-APP-022-246, TC-APP-022-245]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/delete_response_51120_20261009.json
+      - 06_zentao_sync/app/readback_delete_51120_20261009.json
+      - 06_zentao_sync/app/delete_response_51122_20261009.json
+      - 06_zentao_sync/app/readback_delete_51122_20261009.json
+      - 06_zentao_sync/app/delete_response_51121_20261009.json
+      - 06_zentao_sync/app/readback_delete_51121_20261009.json
+  deletion_change_51291_51295_51300_51298_51285_51290_51292_51305_51312:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51291, 51295, 51300, 51298, 51285, 51290, 51292, 51305, 51312]
+    deleted_source_case_ids: [TC-APP-022-253, TC-APP-022-262, TC-APP-022-271, TC-APP-022-267, TC-APP-022-210, TC-APP-022-252, TC-APP-022-254, TC-APP-022-276, TC-APP-022-285]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/delete_response_51291_20261008.json
+      - 06_zentao_sync/app/readback_delete_51291_20261008.json
+      - 06_zentao_sync/app/delete_response_51295_20261008.json
+      - 06_zentao_sync/app/readback_delete_51295_20261008.json
+      - 06_zentao_sync/app/delete_response_51300_20261008.json
+      - 06_zentao_sync/app/readback_delete_51300_20261008.json
+      - 06_zentao_sync/app/delete_response_51298_20261008.json
+      - 06_zentao_sync/app/readback_delete_51298_20261008.json
+      - 06_zentao_sync/app/delete_response_51285_20261008.json
+      - 06_zentao_sync/app/readback_delete_51285_20261008.json
+      - 06_zentao_sync/app/delete_response_51290_20261008.json
+      - 06_zentao_sync/app/readback_delete_51290_20261008.json
+      - 06_zentao_sync/app/delete_response_51292_20261008.json
+      - 06_zentao_sync/app/readback_delete_51292_20261008.json
+      - 06_zentao_sync/app/delete_response_51305_20261008.json
+      - 06_zentao_sync/app/readback_delete_51305_20261008.json
+      - 06_zentao_sync/app/delete_response_51312_20261008.json
+      - 06_zentao_sync/app/readback_delete_51312_20261008.json
+  update_change_51025_steps:
+    date: '2026-10-08'
+    case_id: TC-APP-022-011
+    zentao_case_id: 51025
+    change: 删除步骤3（打开并发确认弹窗）及原步骤6（第三并发场景），仅保留两个并发场景；本地和禅道均更新为4个步骤。
+    review_result: updated
+    remote_sync: validated
+    evidence:
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_51025_steps_20261008.json
+      - 06_zentao_sync/app/readback_REQ-APP-022_51025_steps_20261008.json
+  deletion_change_51314_51078_51026:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51314, 51078, 51026]
+    deleted_source_case_ids: [TC-APP-022-287, TC-APP-022-067, TC-APP-022-012]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/delete_response_51314_20261008.json
+      - 06_zentao_sync/app/readback_delete_51314_20261008.json
+      - 06_zentao_sync/app/delete_response_51078_20261008.json
+      - 06_zentao_sync/app/readback_delete_51078_20261008.json
+      - 06_zentao_sync/app/delete_response_51026_20261008.json
+      - 06_zentao_sync/app/readback_delete_51026_20261008.json
+  sync_change_51025:
+    date: '2026-10-08'
+    case_id: TC-APP-022-011
+    zentao_case_id: 51025
+    change: 按本地 YAML 重新同步禅道用例，校验产品、项目、模块、标题、类型、前置条件、6个步骤及预期结果。
+    review_result: validated
+    remote_sync: completed
+    evidence:
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_51025_20261008.json
+      - 06_zentao_sync/app/readback_REQ-APP-022_51025_20261008.json
+  title_clarity_change_51274_51275:
+    date: '2026-10-08'
+    case_ids: [TC-APP-022-195, TC-APP-022-196]
+    zentao_case_ids: [51274, 51275]
+    change: 将标题明确为“未出雏的上孵计划发货按钮隐藏”和“未出雏的上孵计划记录按钮隐藏”，突出状态条件与测试目的；步骤、预期、数量、优先级和统计不变。
+    review_result: accepted
+    remote_sync: blocked
+    evidence:
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_title_51274_51275_20261008.json
+      - 06_zentao_sync/app/readback_failed_51274_20261008.json
+  deletion_change_51195_51255:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51195, 51196, 51197, 51198, 51199, 51200, 51201, 51202, 51203, 51204, 51205, 51206, 51207, 51208, 51209, 51210, 51211, 51212, 51213, 51214, 51215, 51216, 51217, 51218, 51219, 51220, 51221, 51222, 51223, 51224, 51225, 51226, 51227, 51228, 51229, 51230, 51231, 51232, 51233, 51234, 51235, 51236, 51237, 51238, 51239, 51240, 51241, 51242, 51243, 51244, 51245, 51246, 51247, 51248, 51249, 51250, 51251, 51252, 51253, 51254, 51255]
+    deleted_source_case_ids: [TC-APP-022-167, TC-APP-022-168, TC-APP-022-169, TC-APP-022-170, TC-APP-022-171, TC-APP-022-172, TC-APP-022-173, TC-APP-022-175]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/execution_log_delete_51195_51255_20261008.json
+      - 06_zentao_sync/app/readback_delete_51195_51255_20261008.json
+  merge_change_51078:
+    date: '2026-10-08'
+    retained_zentao_case_id: 51078
+    merged_zentao_case_ids: [51121, 51284]
+    retained_source_case_id: TC-APP-022-067
+    merged_source_case_ids: [TC-APP-022-245, TC-APP-022-209]
+    deleted_source_case_ids: [TC-APP-022-209]
+    merged_step_count: 3
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_merge_51078_20261008.json
+      - 06_zentao_sync/app/readback_REQ-APP-022_merge_51078_20261008.json
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_delete_51284_20261008.json
+      - 06_zentao_sync/app/readback_REQ-APP-022_delete_51284_20261008.json
+  update_change_51030:
+    date: '2026-10-08'
+    source_case_id: TC-APP-022-015
+    zentao_case_id: 51030
+    change: 更新确认发货弹窗预期，改为只校验右上角关闭按钮「×」；将取消按钮步骤改为填写有效列、层、发货数量后点击「×」按钮。
+    local_yaml_markdown_sync: completed
+    remote_sync: validated
+    evidence:
+      - 06_zentao_sync/execution_log_REQ-APP-022_51030_20261008.json
+      - 06_zentao_sync/readback_REQ-APP-022_51030_20261008.json
+      - 06_zentao_sync/source_hashes_REQ-APP-022_51030_20261008.json
+  deletion_change_13_cases:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51105, 51106, 51182, 51184, 51180, 51181, 51185, 51186, 51183, 51187, 51188, 51189, 51191]
+    deleted_source_case_ids: [TC-APP-022-081, TC-APP-022-236, TC-APP-022-151, TC-APP-022-153, TC-APP-022-149, TC-APP-022-150, TC-APP-022-155, TC-APP-022-156, TC-APP-022-152, TC-APP-022-157, TC-APP-022-158, TC-APP-022-159, TC-APP-022-161]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+  deletion_change_18_cases:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51155, 51306, 51322, 51156, 51264, 51308, 51175, 51166, 51168, 51169, 51170, 51174, 51294, 51317, 51318, 51319, 51320, 51167]
+    deleted_source_case_ids: [TC-APP-022-119, TC-APP-022-277, TC-APP-022-296, TC-APP-022-120, TC-APP-022-184, TC-APP-022-279, TC-APP-022-142, TC-APP-022-133, TC-APP-022-135, TC-APP-022-136, TC-APP-022-137, TC-APP-022-141, TC-APP-022-261, TC-APP-022-291, TC-APP-022-292, TC-APP-022-293, TC-APP-022-294, TC-APP-022-134]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+  merge_change:
+    date: '2026-10-08'
+    retained_zentao_case_id: 51161
+    merged_zentao_case_ids: [51162, 51163]
+    retained_source_case_id: TC-APP-022-125
+    merged_source_case_ids: [TC-APP-022-126, TC-APP-022-127]
+    merged_step_count: 7
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_merge_51161_20261008.json
+      - 06_zentao_sync/app/readback_REQ-APP-022_merge_51161_20261008.json
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_delete_51162_51163_20261008.json
+      - 06_zentao_sync/app/readback_REQ-APP-022_delete_51162_51163_20261008.json
+  previous_merge_change:
+    date: '2026-10-08'
+    retained_zentao_case_id: 51030
+    merged_zentao_case_ids: [51149, 51150, 51151]
+    retained_source_case_id: TC-APP-022-015
+    merged_source_case_ids: [TC-APP-022-113, TC-APP-022-114, TC-APP-022-115]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated
+  latest_change_51252:
+    date: '2026-10-08'
+    source_case_id: TC-APP-022-172
+    zentao_case_id: 51252
+    change: 明确点击已签收状态上孵计划发货按钮后触发失败提示及不产生副作用
+    remote_sync: validated
+  merge_change:
+    date: '2026-10-08'
+    retained_zentao_case_id: 51030
+    retained_source_case_id: TC-APP-022-015
+    merged_zentao_case_ids: [51149, 51150, 51151]
+    merged_source_case_ids: [TC-APP-022-113, TC-APP-022-114, TC-APP-022-115]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated
+  deletion_change:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51117, 51052, 51047, 51299]
+    deleted_source_case_ids: [TC-APP-022-086, TC-APP-022-042, TC-APP-022-017B, TC-APP-022-268]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+  previous_deletion_change:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51313, 51112, 51111, 51110, 51315, 51304]
+    deleted_source_case_ids: [TC-APP-022-083, TC-APP-022-239, TC-APP-022-240, TC-APP-022-275, TC-APP-022-286, TC-APP-022-288]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+  status: design_failed
+  gate_passed: false
+  gate_reasons:
+    - DESIGN_EXPECTATION_NOT_OBSERVABLE
+    - DESIGN_ACTION_TEMPLATE_OBJECT
+    - DESIGN_COMPOSITE_ASSERTION
+    - PRIORITY_RISK_MISALIGNMENT
+  design_gate_reasons:
+    - DESIGN_EXPECTATION_NOT_OBSERVABLE
+    - DESIGN_ACTION_TEMPLATE_OBJECT
+    - DESIGN_COMPOSITE_ASSERTION
+    - PRIORITY_RISK_MISALIGNMENT
+  design_gate_passed: false
+  design_gate_reasons:
+    - DESIGN_EXPECTATION_NOT_OBSERVABLE
+    - DESIGN_ACTION_TEMPLATE_OBJECT
+    - DESIGN_COMPOSITE_ASSERTION
+    - PRIORITY_RISK_MISALIGNMENT
+  state_transition_split_51165:
+    date: '2026-10-09'
+    source_case_id: TC-APP-022-132
+    retained_zentao_case_id: 51165
+    new_source_case_ids: [TC-APP-022-289, TC-APP-022-290]
+    change: 将51165对应模糊状态预期拆分为待发货→发货中、待发货→已发货、发货中→已发货三个独立状态转换场景；本地YAML与Markdown已同步，新增禅道用例待逐条真实创建并回读校验。
+    review_result: pending_re_review
+    remote_sync: validated
+    evidence:
+      - 06_zentao_sync/app/sync_plan_REQ-APP-022_51165_split_20261009.json
+      - 06_zentao_sync/app/execution_log_REQ-APP-022_51165_split_20261009.json
+      - 06_zentao_sync/app/readback_REQ-APP-022_51165_split_20261009.json
+      - 06_zentao_sync/app/source_hashes_REQ-APP-022_51165_split_20261009.json
+  execution_status: not_executed
+  execution_gate_passed: false
+  overall_status: design_failed
+  review_scope:
+    design_review: in_scope
+    execution_review: not_in_scope
+    ui_execution: not_in_scope
+    automation_execution: not_in_scope
+    pairwise_execution: not_in_scope
+    remote_sync: not_in_scope
+  execution_review:
+    status: not_in_scope
+    reason: 本轮仅做 report_only 设计评审；未执行 UI、Playwright、有头浏览器、PICT，也未写入远程禅道。
+  rules_applied:
+    - test-design-techniques
+    - pict-test-designer
+    - qa-playwright-py-writer
+    - webapp-testing
+    - casely
+    - shared-project-contract
+  skills_applied:
+    - test-design-techniques
+    - pict-test-designer
+    - qa-playwright-py-writer
+    - webapp-testing
+    - casely
+  review_scope_detail:
+    source_testcase_yaml: 04_testcases/app/TC_REQ-APP-022.yaml
+    source_testcase_markdown: 04_testcases/app/TC_REQ-APP-022.md
+    page_inventory: 02_analysis/app/page_inventory/page.json
+    supporting_analysis:
+      - 02_analysis/app/REQ-APP-022.yaml
+      - 02_analysis/app/REQ-APP-022.md
+    supporting_test_plan:
+      - 03_test_plan/app/TEST_PLAN_REQ-APP-022.yaml
+      - 03_test_plan/app/TEST_PLAN_REQ-APP-022.md
+    casely_reference:
+      - reference/casely/test_style_guide.md
+      - reference/casely/examples.md
+      - ../../../../.agents/references/testcase-yaml.template.yaml
+      - reference/testcase-markdown.template.md
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+    ui_execution: false
+    playwright_execution: false
+    headed_browser_execution: false
+    pict_execution: false
+    remote_zentao_write: true
+    zentao_sync_status: partial_blocked
+    zentao_sync_summary: 已对可达目标执行更新并回读校验；TC-APP-022-017B 因禅道请求超时阻塞，未宣称全量同步成功。
+    module_id_missing: false
+    source_hashes:
+      testcase_yaml: 00f4ff43fccdb7ed2e96f98d8fec2dd2c99ce50cd0033d6b2b12310b98ac665c
+      testcase_markdown: a617c5c53048fd6fd82f569448b30cbcf814ed58f12093595cfd9db44542eb33
+    latest_change:
+      date: '2026-10-08'
+      scope:
+        - 13个唯一禅道用例
+      change: 删除13条本地用例及对应禅道用例，全部删除后回读确认 Case does not exist
+      yaml_markdown_sync: updated_from_yaml
+      remote_sync: validated_deleted
+      evidence:
+        - 06_zentao_sync/execution_log_REQ-APP-022_delete_13_cases_20261008.json
+        - 06_zentao_sync/readback_REQ-APP-022_delete_13_cases_20261008.json
+  deletion_change_51195_51255:
+    date: '2026-10-08'
+    deleted_zentao_case_ids: [51195, 51196, 51197, 51198, 51199, 51200, 51201, 51202, 51203, 51204, 51205, 51206, 51207, 51208, 51209, 51210, 51211, 51212, 51213, 51214, 51215, 51216, 51217, 51218, 51219, 51220, 51221, 51222, 51223, 51224, 51225, 51226, 51227, 51228, 51229, 51230, 51231, 51232, 51233, 51234, 51235, 51236, 51237, 51238, 51239, 51240, 51241, 51242, 51243, 51244, 51245, 51246, 51247, 51248, 51249, 51250, 51251, 51252, 51253, 51254, 51255]
+    local_yaml_markdown_sync: completed
+    remote_sync: validated_deleted
+    evidence:
+      - 06_zentao_sync/app/execution_log_delete_51195_51255_20261008.json
+      - 06_zentao_sync/app/readback_delete_51195_51255_20261008.json
+  scope:
+    case_count: 100
+    ids_unique: true
+    required_fields: pass
+    type_counts:
+      feature: 88
+      interface: 12
+    auto_counts:
+      auto: 100
+    priority_counts:
+      P1: 35
+      P2: 59
+      P3: 5
+      P4: 1
+    markdown_case_count: 100
+    markdown_ids_unique: true
+    yaml_markdown_id_difference:
+      yaml_only: []
+      markdown_only: []
+    step_count_distribution:
+      1: 78
+      2: 14
+      3: 3
+      4: 4
+      5: 1
+    automation_evaluation:
+      decision_auto: 100
+      status_blocked: 100
+  review_items:
+    - code: DESIGN_EXPECTATION_NOT_OBSERVABLE
+      category: design_violation
+      result: failed
+      gate_reason: true
+      reason: 扫描发现预期仍包含“条件成立”“按规则”“结果展示”“数据展示”“识别”“正确/正常”“保持不变”及待确认等不可直接裁决表达；代表 TC-APP-022-003、TC-APP-022-007、TC-APP-022-010、TC-APP-022-016、TC-APP-022-174、TC-APP-022-250、TC-APP-022-253、TC-APP-022-296。
+      remediation: 将预期改写为具体页面区域、字段、文案、控件状态、数据值或记录数量；对规则未确认项明确阻塞对象，不把“待确认/blocked”作为通过标准。
+    - code: DESIGN_ACTION_TEMPLATE_OBJECT
+      category: design_violation
+      result: failed
+      gate_reason: true
+      reason: 多条步骤使用“目标业务数据”“当前用例指定页面区域”“使用前置条件中已准备的数据”等模板化对象，执行人无法仅凭用例唯一定位对象；代表 TC-APP-022-229、TC-APP-022-250、TC-APP-022-251。
+      remediation: 绑定页面清单中的页面/区域/element_id 或明确业务键、计划号、发货单号和数据基线；TC-APP-022-073、TC-APP-022-074 已改为直接指向目标执行单执行页及页面顶部状态，其他用例无法确认时标记为待补充，不使用泛化模板。
+    - code: DESIGN_COMPOSITE_ASSERTION
+      category: design_violation
+      result: failed
+      gate_reason: true
+      reason: TC-APP-022-003、TC-APP-022-011、TC-APP-022-016、TC-APP-022-023 等将多个互斥输入、并发结果、状态转换、统计回读和跨服务记录放在一个判定链中；部分用例单步包含多个独立分支。
+      remediation: 按等价类、状态转换和业务结果拆为连续步骤或独立用例；每一步只保留同一数据基线下的一个可判定结果。
+    - code: SYSTEMATIC_COVERAGE
+      category: design_violation
+      result: warning
+      gate_reason: false
+      reason: 等价类和边界值覆盖较完整，数量包含空/0/负数/小数/1/等于待发/超过待发/并发后超发，备注包含 15 字边界；但列层空值、无效列层、网络超时、权限撤销和自动出库失败仍存在契约未确认或 blocked 状态。
+      remediation: 补齐每个边界的具体输入、错误文案、按钮状态、请求结果和业务数据回读；将服务端契约未确认项列为阻塞，不计入通过覆盖。
+    - code: PAIRWISE_REVIEW
+      category: evidence_risk
+      result: warning
+      gate_reason: false
+      reason: 按测试计划识别计划状态、列、层、数量类别、备注长度、权限和网络结果等参数；当前仅完成模型级 Pairwise 覆盖审查，未运行 PICT。用例中存在状态/权限/网络与数量组合的覆盖意图，但无可核对的组合矩阵和约束证据。
+      remediation: 形成不落盘的 PICT 参数模型并核对每一对组合；至少明确无效列层、权限撤销、并发最新数量与库存不足之间的约束，随后把缺失组合映射到原子用例。
+    - code: AUTOMATION_EXECUTION_BLOCKED
+      category: execution_blocker
+      result: failed
+      gate_reason: false
+      reason: 当前保留的100条用例均标记 auto，但自动化评估状态为 blocked；测试数据、权限、正式环境、并发窗口、清理责任及部分服务端契约未就绪。
+      remediation: 补充稳定 locator、数据夹具、账号权限、网络/并发模拟和清理方案；将未采集或契约未确认的对象保持 blocked。
+    - code: HEADED_PAGE_REVIEW
+      category: evidence_risk
+      result: warning
+      gate_reason: false
+      reason: page.json 记录了执行页、计划卡片、发货弹窗、列/层、数量、备注和确认控件；同时记录列层校验缺失、部分原型路由/契约风险。由于本轮禁止启动有头页面，无法确认当前页面实际可达性、控件可操作性或文案稳定性。
+      remediation: 经授权后使用 headed 浏览器按 page.json 做侦察，记录可达路径、可见文案、控件状态和缺陷证据；不得把静态 page.json 当作执行结果。
+    - code: CASELY_STYLE_AND_DELIVERY
+      category: traceability_failure
+      result: warning
+      gate_reason: false
+      reason: YAML/Markdown 编号和数量一致，核心字段完整，风格参考已读取；但用例检查记录显示标题、步骤引号、预期元句和非测试范围声明仍有大量风格问题。模板级交付结构可用，不等于内容质量通过。
+      remediation: 按 Casely 风格逐条清理标题、动作对象、预期可观察性和范围声明，YAML 作为事实源重新渲染 Markdown 并复核哈希。
+    - code: PRIORITY_RISK_MISALIGNMENT
+      category: design_violation
+      result: failed
+      gate_reason: true
+      reason: 测试计划将数量校验、确认主链路、状态刷新、防重复和不超发列为 P0 风险；需求规则也将服务端最新数量、并发、防重复和不允许负库存列为核心约束，但现有分配中 P3/P4 仍包含核心边界或主链路，例如 TC-APP-022-007 为 P3、TC-APP-022-013 为 P4，且 TC-APP-022-010 重复提交为 P3。优先级存在与业务风险不一致的候选项。
+      remediation: 建议至少将 TC-APP-022-007 调整为 P1/P2、TC-APP-022-010 调整为 P1、TC-APP-022-013 调整为 P2；对并发、超发、库存不足、状态刷新和权限门禁逐条按影响、发生概率和可替代路径复核，未确认前不直接改源 YAML。
+  priority_review:
+    rule_ref: TEST_PLAN-REQ-APP-022 risk priority baseline
+    scope: REQ-APP-022 当前保留的 100 条用例
+    case_count: 100
+    reviewed_case_count: 5
+    unreviewed_case_ids: []
+    baseline: 测试计划风险优先级为 P0 数量校验/确认主链路/状态刷新/防重复/不超发，P1 列层/备注/库存联动，P2 兼容性和体验；用例 YAML 使用 P1-P4。
+    distribution:
+      P1: 35
+      P2: 59
+      P3: 5
+      P4: 1
+    change_summary:
+      changed_case_count: 0
+      unchanged_case_count: 0
+    distribution_observations:
+      - code: priority_distribution_observation
+        severity: warning
+        gate_reason: false
+        reason: 核心风险优先级已按整改结果记录，但仍需独立复评确认。
+    items:
+      - case_id: TC-APP-022-007
+        current_priority: P1
+        source_priority: P3
+        reviewed_priority: P1
+        recommended_priority: P1
+        result: updated
+        impact_area: 数量上限与不超发
+        blocks_core_flow: true
+        causes_key_data_error: true
+        has_workaround: false
+        user_frequency: high
+        reason: 等于待分配数量是核心数量上限边界。
+        gate_reason: false
+      - case_id: TC-APP-022-010
+        current_priority: P1
+        source_priority: P3
+        reviewed_priority: P1
+        recommended_priority: P1
+        result: updated
+        impact_area: 幂等与重复扣减
+        blocks_core_flow: true
+        causes_key_data_error: true
+        has_workaround: false
+        user_frequency: medium
+        reason: 重复提交可能造成重复发货、重复扣减和重复出库。
+        gate_reason: false
+      - case_id: TC-APP-022-013
+        current_priority: P2
+        source_priority: P4
+        reviewed_priority: P2
+        recommended_priority: P2
+        result: updated
+        impact_area: 备注长度边界
+        blocks_core_flow: false
+        causes_key_data_error: false
+        has_workaround: true
+        user_frequency: medium
+        reason: 备注长度是明确边界，不应列为最低优先级。
+        gate_reason: false
+      - case_id: TC-APP-022-011
+        current_priority: P1
+        source_priority: P1
+        reviewed_priority: P1
+        recommended_priority: P1
+        result: retained
+        impact_area: 并发不超发
+        blocks_core_flow: true
+        causes_key_data_error: true
+        has_workaround: false
+        user_frequency: medium
+        reason: 并发提交最多一次成功且不超发。
+        gate_reason: false
+      - case_id: TC-APP-022-008
+        current_priority: P1
+        source_priority: P1
+        reviewed_priority: P1
+        recommended_priority: P1
+        result: retained
+        impact_area: 超待分配数量
+        blocks_core_flow: true
+        causes_key_data_error: true
+        has_workaround: false
+        user_frequency: high
+        reason: 超过待分配数量直接触发不超发门禁。
+        gate_reason: false
+    mismatches: []
+    unconfirmed_items:
+      - 并发窗口、幂等键和服务端最新数量契约待确认
+    gate_reasons: []
+    conclusion: 待重新评审
+  systematic_review:
+    equivalence_partitioning: partial_pass
+    boundary_value_analysis: partial_pass
+    decision_table: partial_pass
+    state_transition: partial_pass
+    pairwise: model_review_only
+    atomicity: failed
+    notes: 数量、备注和状态维度已识别，但部分用例仍将多个等价类或状态结果合并，且服务端契约未确认项没有统一阻塞表达。
+  automation_review:
+    action_observable: partial
+    locator_strategy: partial
+    assertion_observable: failed
+    test_data_controllable: failed
+    state_controllable: failed
+    atomic_purpose: partial
+    conclusion: blocked
+  delivery_review:
+    yaml_structure: pass
+    markdown_structure: pass
+    yaml_markdown_consistency: pass
+    ids_unique: pass
+    count_consistency: pass
+    priority_statistics: pass
+    casely_style: failed
+    conclusion: 结构交付通过，内容风格与可执行性不通过。
+  open_items:
+    - 复核并调整核心数量、重复提交、备注边界的优先级。
+    - 明确列层空值后端契约、错误文案及 page.json 已记录的原型冲突处理方式。
+    - 明确幂等键、重复提交错误码、并发冲突反馈和刷新失败重查协议。
+    - 准备授权账号、脱敏数据、并发窗口、网络模拟和业务数据清理责任。
+    - 对所有 auto=auto 且 blocked 的用例补充可执行性证据后再进入自动化实现。
+  final_conclusion: 设计评审仍待重新评审；当前 YAML/Markdown 结构和统计一致，禅道同步部分完成但 TC-APP-022-017B blocked；预期可观察性、步骤对象明确性、原子性及自动化前置条件仍有未决问题。

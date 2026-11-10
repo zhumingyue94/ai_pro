@@ -1,0 +1,38 @@
+id: REQ-APP-024
+title: APP上孵计划发货记录
+source_mapping:
+  module_split: REQ-APP-024
+  requirements_spec: REQ-008
+  priority: P1
+scope:
+  in_scope: [上孵计划详情, 实际可发/累计/待分配/进度, 计划状态, 历史发货记录, 多列层明细, 未找到状态]
+  out_of_scope: [发货单列表筛选, 发货确认提交, 存发苗间库存维护]
+actors: [现场发货填报人, 发货组长, 场长, 授权查询角色]
+rules:
+  - 状态和数量以服务端查询结果为准。
+  - 计划状态按实际可发、累计可发和累计已发映射；外部系统未明确签收不得显示已签收。
+  - 历史记录按提交时间倒序，一条记录可有多个列层位置。
+  - 默认折叠3条，展开全部后展示全部有效或历史记录。
+  - 无效或不存在计划号显示未找到状态。
+page_contract:
+  page_id: app-plan-shipment-records
+  route: /m/orders/{发货单号}/plan-shipments/{上孵计划内部ID}
+  states: [app024-empty-notfound, app024-pending-hp021, app024-shipping-hp022, app024-shipped-hp071, app024-shipped-hp072, app024-shipping-record-expanded, app024-hp011-not-found]
+  element_ids: [notfound-page, notfound-text, pending-page, pending-back, pending-plan-no, pending-status, pending-progress, pending-empty, shipping-page, shipping-status, shipping-progress, shipping-records, record1-status, record1-pos1, shipped-page, shipped-status, shipped-progress, shipped-record, record-complete, position-detail, hp072-page, hp072-status, hp072-records, hp072-record1-complete, hp072-record2-incomplete, hp072-position-accum, shipping-record-no-collapse-btn, hp011-notfound-page]
+interface_contract:
+  request_fields: [发货单标识, 上孵计划内部ID]
+  response_fields: [计划号, 状态, 实际可发, 累计发货, 待分配, 进度, 发货记录, 位置明细, 签收结果]
+  assumptions: [状态查询以服务端为准, 记录排序和展开数据范围由接口契约确认]
+boundaries:
+  status: [未找到, 待发货, 发货中, 已发货, 已签收但需外部明确确认]
+  records: [空, 1-3条, 超过3条, 多位置, 已完成和未完成混合]
+risks:
+  - 原型没有折叠/展开控件且默认全部展开，与需求变动冲突。
+  - 计划状态、累计口径和签收来源不一致。
+  - 页面与发货单记录页面共享结构，归属可能误判。
+dependencies: [上孵计划服务, 发货记录服务, 外部签收系统, 列层基础数据, 发货单服务]
+environment_data:
+  prerequisites: [授权查询角色, 有效/无效计划号, 各状态和多记录数据]
+  mutation_boundary: 本模块只读；联调数据由测试数据负责人管理并记录清理状态。
+security: 不记录账号、密码、Token、Cookie 或未经授权业务数据。
+evidence: page_inventory/page.json; page_inventory/lanhu_page_mapping/REQ-APP-024_lanhu_page_mapping.json

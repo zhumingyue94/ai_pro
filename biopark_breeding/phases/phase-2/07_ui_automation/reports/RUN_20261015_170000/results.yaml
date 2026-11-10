@@ -1,0 +1,22 @@
+run_id: RUN_20261015_170000
+summary:
+  total: 1
+  passed: 0
+  blocked: 1
+  product_defect: 0
+  test_script_error: 0
+  test_case_error: 0
+  excluded: 0
+cases:
+  - case_id: TC-PC-043-002
+    status: blocked
+    classification: test_data_or_locator_block
+    failure_stage: delivery_date_calendar
+    recording_requested: true
+    date_range_verified: false
+    product_defect: false
+    remote_bug_created: false
+    reason: 已录屏进入业务页面，日期控件点击后未发现可见日历面板
+    evidence:
+      - logs/pytest_execution.log
+      - logs/sha256.yaml

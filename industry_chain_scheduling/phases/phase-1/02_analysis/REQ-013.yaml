@@ -1,0 +1,350 @@
+id: REQ-013
+title: 饲料管理
+parent_req: REQ-000
+zentao_module_id: null
+page_url: /apm/bases/forage
+module_complexity: simple_config
+testpoint_template: 简单配置
+summary: '基础数据-饲料管理：维护本系统饲料主数据。支持按编号/名称/状态查询；手工新增与编辑； 行级停用与批量启用/停用；批量删除（启用态不可删）。无审核流、无独立查看、当前
+  UI 无「同步数据」入口。 编号前缀观察似 SL…（与宰杀线编码前缀撞型，规则待确认）。
+
+  '
+in_scope:
+- 饲料列表查询与重置
+- 新增/编辑饲料（弹窗确定/取消）
+- 行级停用确认；批量启用/停用
+- 批量删除及启用态拦截提示
+- 列表列展示、分页、刷新、表头设置
+out_scope:
+- 数据中台同步（本菜单无入口；是否规划待确认，见 open_questions）
+- 品种/宰杀线/栋舍其它基础数据（REQ-012/014/015）
+- 分段养殖模版日龄采食计划中饲料占比配置的业务细节（下游引用，本页仅主数据）
+business_rules:
+- 状态枚举：启用 / 停用
+- 新增时饲料编号系统预填（可改），饲料名称必填；空提交提示「饲料名称不能为空」
+- 饲料编号本表唯一：改为库中已存在编号须唯一性拦截（文案待确认）
+- 饲料名称本表唯一：填已存在名称须唯一性拦截（是否强制及文案待确认）
+- 新增状态默认值：侦察未再次核对，疑似同品种默认启用（待确认）
+- 编辑时饲料编号只读；名称/状态/备注可改
+- 行状态=启用时操作：编辑、停用；停用确认「确定要停用该饲料吗？」
+- 未勾选行时批量「删除/启用/停用」disabled；勾选后可点
+- 批量删除：所选均为启用 → toast「选择的数据均为启用状态，无法删除」（无确认框）；停用后删除路径待确认
+- 无「同步数据」按钮（与品种/栋舍不同）
+roles:
+- 管理员账户（本次侦察唯一角色；其它角色矩阵未测）
+interfaces:
+- 页面 /apm/bases/forage
+- 潜在下游：分段养殖模版日龄采食计划、饲料日需求等（页面未提示引用规则）
+risks:
+- 停用饲料后下游模版/排程是否仍可选用：页面无提示
+- 编号与宰杀线同为 SL… 前缀，易混淆或规则冲突
+- 查询区是否含「备注」未定，测点易多写或漏写
+open_questions:
+- 查询区是否包含「备注」条件？（DOM 曾出现「请输入备注」，可能为弹窗残留）
+- 新增状态默认值是否恒为启用？
+- 饲料是否规划「从数据中台同步」？当前仅手工新增是否最终形态？
+- 停用后删除确认文案与是否物理删除？
+- 饲料名称唯一性是否强制及前后端文案？
+- 多角色权限差异？
+- 停用饲料在分段养殖模版选料中是否仍可选？
+test_scope_suggestion:
+- P1：新增保存成功；编辑编号只读；停用确认；启用态删除拦截
+- P2：查询组合（编号/名称/状态）与重置；批量启停
+- P3：分页、刷新、表头设置、备注展示
+- 禁止：虚构同步数据弹窗、审核流、查看页；勿套用品种「源编码」列
+prototype_verification:
+  page_chrome:
+    menu_path: 基础数据 / 饲料管理
+    doc_title: 产业链生产排程系统 - 饲料管理
+    tags:
+    - 首页
+    - 饲料管理
+    toolbar_buttons:
+    - 查询
+    - 重置
+    - 删除
+    - 启用
+    - 停用
+    - 刷新
+    - 表头设置
+    - 新增
+    view_tabs: N/A
+    calendar: N/A
+    notes: 无「同步数据」按钮（对比品种/栋舍）
+  query_fields:
+  - 饲料编号
+  - 饲料名称
+  - 状态
+  query_field_specs:
+  - name: 饲料编号
+    control: input
+    editable: true
+    placeholder: 请输入饲料编号
+  - name: 饲料名称
+    control: input
+    editable: true
+    placeholder: 请输入饲料名称
+  - name: 状态
+    control: select
+    editable: true
+    options_source: 枚举启用/停用
+    placeholder: 请选择状态
+    notes: 默认空（请选择）
+  - name: 备注
+    control: input
+    editable: true
+    required: false
+    notes: 侦察 DOM 曾见「请输入备注」；是否正式查询条件待确认。未确认前 TestPoint 勿当作已定字段强写，可标 open_question
+  table_columns:
+  - 勾选
+  - 饲料编号
+  - 饲料名称
+  - 状态
+  - 备注
+  - 创建时间
+  - 更新时间
+  - 创建人
+  - 更新人
+  - 操作
+  table_column_specs:
+  - name: 饲料编号
+    notes: 文本；前缀观察似 SL…
+  - name: 饲料名称
+    notes: 文本
+  - name: 状态
+    notes: 启用/停用
+  - name: 操作
+    notes: 启用行见编辑、停用
+  - name: 源编码类列
+    notes: 无（对比品种「源品种编码」）
+  form_fields:
+  - 饲料编号
+  - 饲料名称
+  - 状态
+  - 备注
+  form_field_specs:
+  - name: 饲料编号
+    control: input
+    editable: true
+    required: true
+    scope: 新增弹窗
+    source: 系统自动生成（可改）
+    notes: 前缀观察似 SL…
+  - name: 饲料编号
+    control: input
+    editable: false
+    required: true
+    scope: 编辑弹窗
+    source: 已有档案
+    notes: 编辑只读
+  - name: 饲料名称
+    control: input
+    editable: true
+    required: true
+    scope: 新增/编辑弹窗
+    validation: 不能为空（空提交提示「饲料名称不能为空」）
+  - name: 状态
+    control: select
+    editable: true
+    required: true
+    scope: 新增/编辑弹窗
+    options_source: 启用/停用
+    notes: 新增默认值待确认（疑似启用）
+  - name: 备注
+    control: textarea
+    editable: true
+    required: false
+    scope: 新增/编辑弹窗
+    placeholder: 请输入备注
+  buttons:
+  - 查询
+  - 重置
+  - 新增
+  - 编辑
+  - 停用
+  - 启用
+  - 删除
+  - 刷新
+  - 表头设置
+  button_semantics:
+    新增:
+      action: open_dialog
+      summary: 打开新增表单；编号预填；确定保存/取消关闭
+    编辑:
+      action: open_dialog
+      summary: 打开编辑表单；饲料编号只读
+    停用:
+      action: confirm
+      scope: 行操作（启用态）
+      summary: 确认文案「确定要停用该饲料吗？」→ 取消/确定
+    启用:
+      action: batch_or_row_status
+      summary: 批量条有勾选时可点；行级启用在停用态预期出现（未实察停用行）
+    删除:
+      action: batch_delete
+      summary: 需勾选；启用态全部选中时 toast「选择的数据均为启用状态，无法删除」，无确认框
+    查询:
+      action: filter_list
+      summary: 按编号/名称/状态过滤列表
+    重置:
+      action: clear_query
+      summary: 清空查询条件并恢复列表（细节未逐字段点验）
+  dialogs:
+    新增/编辑:
+    - 取消
+    - 确定
+  nested_dialogs: skip
+  nested_dialogs_reason: 本菜单无二级选择弹窗、无同步数据弹窗
+  save_validations:
+  - trigger: 新增空表点确定
+    message: 饲料名称不能为空
+  - trigger: 新增饲料编号与库中已有重复
+    message: 唯一性拦截（具体文案待确认）
+  - trigger: 新增饲料名称与库中已有重复
+    message: 唯一性拦截（是否强制、文案待确认）
+  - trigger: 批量删除启用数据
+    message: 选择的数据均为启用状态，无法删除
+  - trigger: 行停用
+    message: 确定要停用该饲料吗？
+  ui_components:
+  - 查询表单
+  - 数据表格（多选）
+  - 分页
+  - 新增/编辑弹窗
+  - MessageBox 确认
+  - Message toast
+  cross_module_refs:
+  - from: 饲料管理
+    to: 分段养殖模版/饲料需求等
+    via: 下游选料（页面未展示）
+    notes: 仅线索；引用规则与启停影响待确认，勿虚构弹窗列
+  concurrency_checks: skip
+  concurrency_checks_reason: 页面侦察未观察多人协作冲突
+  role_coverage: skip
+  role_coverage_reason: 仅管理员账户；禁止生成「各角色可查看」灌水测点
+  calendar_actions: N/A
+  calendar_ui_specs: N/A
+  detail_table_specs: N/A
+trace:
+  story: null
+  project: 产业链生产排程系统
+  version: 1
+  status: draft
+  req: REQ-013
+  tp: null
+  source: 01_requirements/REQ-基础数据_page_recon.md
+design_artifacts:
+  state_transitions:
+  - name: 饲料启用状态
+    states:
+    - 启用
+    - 停用
+    legal:
+    - from: 启用
+      to: 停用
+      trigger: 行停用确认确定 / 批量停用
+    - from: 停用
+      to: 启用
+      trigger: 批量启用（及预期行启用，待实察）
+    illegal:
+    - from: 启用
+      action: 批量删除
+      expected: toast 拦截，不可删
+  decision_tables:
+  - name: 列表查询
+    conditions:
+    - 饲料编号
+    - 饲料名称
+    - 状态
+    rules:
+    - when: 仅编号
+      then: 按编号过滤
+    - when: 仅名称
+      then: 按名称过滤
+    - when: 仅状态
+      then: 按状态过滤
+    - when: 多条件
+      then: AND 组合过滤（以实现为准）
+    - when: 重置
+      then: 条件清空，列表恢复默认查询结果
+  - name: 删除可否
+    conditions:
+    - 所选行状态集合
+    rules:
+    - when: 全为启用
+      then: toast「选择的数据均为启用状态，无法删除」
+    - when: 含停用
+      then: 删除确认或成功路径（未观察，待测）
+  - name: 工具栏批量按钮
+    conditions:
+    - 勾选条数
+    rules:
+    - when: 已选 0 条
+      then: 删除/启用/停用 disabled
+    - when: 已选 ≥1 条
+      then: 删除/启用/停用可点
+  bva_fields:
+  - field: 饲料名称
+    type: string
+    notes: 空串触发必填校验
+    boundaries:
+    - 空
+    - 1字符
+    - 常规长度
+    - 超长
+  - field: 饲料编号
+    type: string
+    notes: 新增预填可改；编辑只读；唯一性边界待确认
+    boundaries:
+    - 系统预填值
+    - 手工修改值
+    - 空（若允许清空时的校验，待测）
+  - field: 备注
+    type: string
+    notes: 非必填
+    boundaries:
+    - 空
+    - 常规
+    - 超长
+  combinatorial_blocks:
+  - name: 列表查询三条件
+    pict_eligible: false
+    notes: 仅 3 个查询参数，未达 pict 阈值 4；TestPoint 用决策表/等价类即可
+    parameters:
+      饲料编号:
+      - 有匹配
+      - 无匹配
+      - 空
+      饲料名称:
+      - 有匹配
+      - 无匹配
+      - 空
+      状态:
+      - 启用
+      - 停用
+      - 空
+  - name: 启停删操作组合
+    pict_eligible: false
+    notes: 参数未满 4 或强依赖状态前置；用决策表覆盖
+    parameters:
+      行状态:
+      - 启用
+      - 停用
+      操作:
+      - 编辑
+      - 停用确认
+      - 批量启用
+      - 批量删除
+permission_scope:
+  owner: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-013
+  testpoints_ref: 03_testpoints/TP_REQ-000.yaml
+  actions:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  note: 权限测点统一见 REQ-000（TP-000-17 起）

@@ -1,0 +1,294 @@
+id: REQ-004
+title: 死淘巡检
+parent_req: null
+zentao_module_id: 653
+page_url: /biopark-poultry/production/death-inspection
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: 饲养人员巡棚时对死淘（死亡+淘汰）鸡只进行剔除并记录；PC 端以「养殖日期-栋舍-段区」树形结构展示，父行（日期+栋舍） 汇总各段区死淘数据，可展开查看各段区子行明细；点击「巡检记录」可查看该栋舍当日按列/层维度的详细巡检数据（只读）。
+  主填报路径为移动端；PC 端另提供「新增巡检」补录（含可编辑死淘明细子表）与「导出」。
+in_scope:
+- 巡检日期范围查询（默认最近7天）
+- 树形汇总列表（养殖日期/栋舍/段区/栋舍养殖批次/日龄/死亡数量/淘汰数量/死淘数量/巡检次数）
+- PC「新增巡检」补录弹窗（头区+死淘明细子表+确认新增）
+- 巡检记录明细弹窗（只读；列数/层数/死亡量/淘汰量/死淘量/备注说明/巡检人员/巡检时间；可切换段区）
+- 工具栏「新增巡检」「巡检记录」「导出」入口、行内「巡检记录」入口
+- 导出
+out_scope:
+- 移动端填报交互本体（本分析覆盖 PC 端展示、补录与联动校验）
+- 死淘统计（REQ-010）、周内死淘（REQ-011）等生产报表模块
+- 死淘异常告警规则（需求未展开）
+business_rules:
+- 自补栏计划补栏日期当天起可新增巡检；待发货状态允许新增；不依赖已发货
+- 死淘数量 = 死亡数量 + 淘汰数量（父行汇总层与巡检记录明细行均适用）
+- 累计死淘 = 累计死亡 + 累计淘汰；存栏只数 = 上苗数量 - 累计死淘（需求第4章公式，供死淘巡检衍生数据校验参考）
+- 日死淘率(%) = (当日死亡+当日淘汰) / 当日存栏 × 100%（需求第4章公式，死淘巡检页面未直接展示该字段，供跨模块交叉校验）
+- 列表按「养殖日期+栋舍」分组为父行，自动汇总各段区子行死淘数据，支持展开/折叠；父行「段区」列为空
+- 同日同栋舍养殖批次多次填报（含 PC 补录与移动端）时，列表死亡/淘汰/死淘数量累加
+- 栋舍养殖批次命名规则 PC-yyyy-栋舍编号-xx，由 REQ-003 生成补栏确认时分配；本模块不生成批次，仅引用展示（待发货阶段亦可有批次）
+- 巡检记录弹窗为只读查看；PC「新增巡检」为可编辑补录写路径（双通道），确认新增后写入巡检记录明细并回写列表汇总
+- 巡检日期查询条件默认最近7天
+roles:
+- 饲养人员（移动端巡检填报、PC端查看与补录）
+- 养殖场长/养殖主管（死淘异常处理）
+interfaces:
+- 依赖 REQ-003 补栏确认：栋舍养殖批次在生成补栏确认时分配并回填
+- 数据被 REQ-010 死淘统计、REQ-011 周内死淘 消费（生产报表侧，未在本批分析范围）
+- 与 REQ-005 饲养日志「日死亡数量/日淘汰数量」字段的取数关系需求未说明是否为同一份数据（见 open_questions）
+risks:
+- 早期爬虫未打开「新增巡检」弹窗（trigger「新增」not_found）；字段规格已按人工调整版 XMind 补全，若产品改版需再核
+- 电脑端与移动端填报数据时延/一致性未在需求中说明（提交后 PC 端多久可见、是否需手动刷新）
+- 「巡检次数」字段计算口径需求未写明，测试断言依据不足
+open_questions:
+- 死淘巡检明细数据与饲养日志「日死亡数量/日淘汰数量」是否共用同一份录入数据或存在独立校验，需求未说明
+- 「巡检次数」计算口径（按笼位巡检累加次数，还是按栋舍当日巡检批次数）需产品澄清
+test_scope_suggestion:
+- P1：树形列表父子行汇总正确性（死淘数量=死亡+淘汰，父行=各段区子行之和）；同日同批次累加
+- P1：巡检日期范围查询（默认7天、自定义范围、跨月、无数据）
+- P1：新增巡检确认新增成功（含死淘明细子表）并回写列表/巡检记录
+- P2：巡检记录弹窗（行内为主；段区切换；段区级勾稽）明细字段与只读性
+- P2：跨模块——待发货/已生成补栏确认时批次列展示；补栏日期当天与待发货可新增巡检
+- P3：导出（含筛选条件、空列表）、分页、单元格省略悬浮
+prototype_verification:
+  query_field_specs:
+  - name: 巡检日期
+    control: input
+    editable: true
+    required: false
+    source: 手工选择
+    validation: 日期范围选择；默认最近7天
+    notes: 原型 query_fields 记录为单一 date 类型控件，需求3.4.2写明为「日期范围选择」
+  table_column_specs:
+  - name: 养殖日期
+    order: 1
+    notes: 即巡检日期
+  - name: 栋舍
+    order: 2
+  - name: 段区
+    order: 3
+    notes: 1段/2段/3段，父行下的子行维度
+  - name: 栋舍养殖批次
+    order: 4
+    notes: 来源 REQ-003 生成补栏确认时分配的 PC-yyyy-栋舍-xx；待发货亦可有值
+  - name: 日龄
+    order: 5
+    notes: 当前养殖天数，计算字段，具体公式需求未给出（补栏日期起算，需人工核实是否0日龄起算）
+  - name: 死亡数量
+    order: 6
+  - name: 淘汰数量
+    order: 7
+  - name: 死淘数量
+    order: 8
+    notes: compute = 死亡数量+淘汰数量
+  - name: 巡检次数
+    order: 9
+    notes: 计算口径需求未写明，见 open_questions
+  - name: 操作
+    order: 10
+    notes: 行内「巡检记录」
+  buttons:
+  - 导出
+  - 新增巡检
+  - 巡检记录
+  button_semantics:
+    新增巡检:
+      action: open_nested_dialog
+      dialog: 新增巡检
+      summary: PC端补录巡检入口；打开「新增巡检」弹窗，录入头区（养殖日期/栋舍/段区）与死淘明细子表后点「确认新增」落库
+    确认新增:
+      action: submit_nested_dialog
+      dialog: 新增巡检
+      summary: 校验头区必填与死淘明细非空/行列层必填后落库，回写列表汇总并写入巡检记录明细
+    巡检记录:
+      action: open_nested_dialog
+      dialog: 巡检记录
+      summary: 工具栏入口打开巡检记录弹窗，展示当日列/层维度明细（只读）；主验收以行内入口为主
+      scope: 工具栏
+    行内-巡检记录:
+      action: open_nested_dialog
+      dialog: 巡检记录
+      summary: 点击列表行「巡检记录」直接展示该行（养殖日期+栋舍）当日巡检明细，可切换段区查看
+      scope: 行内
+    导出:
+      action: export
+      summary: 导出当前查询条件下的树形列表数据（父行+子行）
+  dialogs:
+    新增巡检:
+    - 取消
+    - 确认新增
+    巡检记录: []
+  nested_dialogs:
+  - id: 新增巡检
+    type: input
+    trigger: 列表工具栏「新增巡检」
+    title: 新增巡检
+    prototype_capture_status: captured
+    buttons:
+    - 取消
+    - 确认新增
+    help_texts:
+    - trigger: 饲养人员管理说明
+      content: 园区规划是一个栋舍配备3名饲养人员，每人管理一段。但这个方案目前不是最终方案，需配备饲养人员较多。不排除后续需要一名饲养人员管理多栋舍或多段区情况。所以添加饲养人员时需要绑定饲养人员管理的栋舍(可多个)和段区(可多个)，所以移动端到时需要根据饲养人员管理权限进行控制显示栋舍、段区，只显示自己管理的栋舍、段区进行巡棚。电脑端此版本暂可以不考虑。
+    field_specs:
+    - name: 养殖日期
+      control: date
+      editable: false
+      required: true
+      source: 默认今天
+      notes: 默认选择今天且不允许编辑；规格来源人工调整版 XMind
+    - name: 栋舍
+      control: select
+      editable: true
+      required: true
+      source: 当前场区可用栋舍
+      notes: 未填点「确认新增」拦截
+    - name: 段区
+      control: select
+      editable: true
+      required: true
+      source: 所选栋舍可用段区
+      notes: 未填点「确认新增」拦截
+    on_confirm: 写入巡检记录明细并回写列表死亡/淘汰/死淘/巡检次数汇总；同日同批次多次填报累加
+    on_cancel: 关闭弹窗，不落库
+    notes: PC 补录写路径（与只读「巡检记录」双通道）；可编辑子表见 sub_tables「死淘明细」。 早期爬虫 trigger「新增」not_found，规格已按 output/TP_REQ-004_死淘巡检_调整.xmind
+      人工核实补全。
+  - id: 巡检记录
+    type: view
+    trigger: 列表行内「巡检记录」（主入口）/ 工具栏「巡检记录」
+    title: 巡检记录
+    buttons: []
+    notes: 只读展示，明细见 sub_tables「巡检记录明细」；可切换段区查看1/2/3段； 勾稽按段区子行（非父行整行合计）；无 on_confirm 落库
+  sub_tables:
+  - id: 死淘明细
+    parent: 新增巡检
+    columns:
+    - 序号
+    - 列
+    - 层
+    - 死亡数量
+    - 淘汰数量
+    - 备注说明
+    - 操作
+    row_ops:
+    - 添加行
+    - 删除
+    topology_rules:
+    - 列、层为选择框；列选项来自基础数据-园区信息中栋舍笼具总列数；层选项来自养殖层数
+    - 列+层必填；同列层可重复，不做唯一性校验
+    - 死亡数量、淘汰数量为整数且 ≥0；未填视为 0
+    - 空表明细点「确认新增」拦截
+  - id: 巡检记录明细
+    parent: 巡检记录
+    columns:
+    - 列数
+    - 层数
+    - 死亡量
+    - 淘汰量
+    - 死淘量
+    - 备注说明
+    - 巡检人员
+    - 巡检时间
+    row_ops: []
+    topology_rules:
+    - 死淘量 = 死亡量 + 淘汰量（逐行计算）
+    - PC端只读，无新增/删除入口；行数据来源填报（移动端或 PC 补录）
+    - 段区的明细死亡/淘汰/死淘合计 = 列表同一父行下对应段区子行数量
+    - 多条明细按巡检时间倒序展示
+  computed_fields:
+  - name: 日龄
+    formula: 从补栏日期起算的当前养殖天数
+    editable: false
+    validation: 列表只读展示，不可手改
+  - name: 死淘数量
+    formula: 死亡数量+淘汰数量
+    editable: false
+  - name: 死淘量(巡检记录明细)
+    formula: 死亡量+淘汰量
+    editable: false
+  save_validations:
+  - rule: 新增巡检栋舍必填
+    when:
+    - 确认新增
+    message: 栋舍未填不允许提交
+  - rule: 新增巡检段区必填
+    when:
+    - 确认新增
+    message: 段区未填不允许提交
+  - rule: 死淘明细非空
+    when:
+    - 确认新增
+    message: 死淘明细表格为空不允许提交
+  - rule: 死淘明细行列层必填
+    when:
+    - 确认新增
+    message: 每一行列、层必填
+  ui_components:
+  - pagination
+  - cell_ellipsis_tooltip
+  - export
+  role_coverage: skip
+  cross_module_refs:
+  - field: 栋舍养殖批次
+    source_module: REQ-003
+    dialog: 无独立选择弹窗，列表按栋舍当前批次自动关联展示（非用户主动选择）
+    columns: []
+    filters:
+    - 仅展示已生成批次；未确认栋舍展示为空
+    search_fields: []
+    external_data: []
+trace:
+  story: null
+  req: REQ-004
+  tp: TP_REQ-004
+  project: 商品禽养殖
+  version: 3
+  status: draft
+  sync_note: 需求变动：补栏日期起/待发货可新增巡检；批次在生成确认时分配
+design_artifacts:
+  bva_fields:
+  - field: 死亡数量(死淘明细)
+    type: integer
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 1
+    notes: 未填视为0；仅整数≥0
+  - field: 淘汰数量(死淘明细)
+    type: integer
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 1
+    notes: 未填视为0；仅整数≥0
+  - field: 死亡量(巡检记录明细)
+    type: integer
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 1
+  - field: 淘汰量(巡检记录明细)
+    type: integer
+    min: 0
+    boundaries:
+    - -1
+    - 0
+    - 1
+  - field: 巡检日期范围
+    type: date_range
+    default: 最近7天
+    boundaries:
+    - 范围内首日
+    - 范围内末日
+    - 超出7天默认范围的自定义查询
+source_inputs:
+- 01_requirements/需求变动.md（死淘巡检：补栏日期当天可新增；待发货也可新增）
+permission_scope:
+  owner_req: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-004
+requirements_delta:
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  summary: 权限测点归 REQ-000；本模块 role_coverage=skip，不写菜单/接口权限灌水测点

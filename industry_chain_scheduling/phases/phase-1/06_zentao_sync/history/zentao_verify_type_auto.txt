@@ -1,0 +1,24 @@
+# verify type/auto project=38 product=6
+# base=http://43.143.148.114:28081
+
+## Sample cases
+48202: type='feature' auto='auto' keywords='TP-015-53,可自动化'
+48203: type='feature' auto='auto' keywords='TP-015-54,可自动化'
+47483: type='feature' auto='no' keywords='TP-002-02'
+
+## auto field distribution
+project38 auto: {"auto": 702, "no": 20}
+product6 auto: {"auto": 702, "no": 20}
+
+## YAML automation counts
+{"auto": 687, "no": 25}
+
+## YAML case_type counts
+{"feature": 712}
+
+## Expectation
+project38 auto['auto'] should be >= 687
+
+## Mapping sanity
+zentao_fields_from_harness('auto','feature')={'type': 'feature', 'auto': 'auto'}
+zentao_fields_from_harness('no','interface')={'type': 'interface', 'auto': 'no'}

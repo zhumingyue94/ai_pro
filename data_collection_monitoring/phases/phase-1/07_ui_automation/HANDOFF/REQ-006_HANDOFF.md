@@ -1,0 +1,2 @@
+# REQ-006 UI 自动化交接\n\n- module_id：`744`\n- 模块：`插件管理`\n- 执行范围：`TC-REQ-006-003, TC-REQ-006-004, TC-REQ-006-005, TC-REQ-006-017, TC-REQ-006-027, TC-REQ-006-032, TC-REQ-006-040, TC-REQ-006-041, TC-REQ-006-044, TC-REQ-006-047, TC-REQ-006-048, TC-REQ-006-049, TC-REQ-006-050, TC-REQ-006-053, TC-REQ-006-055, TC-REQ-006-057, TC-REQ-006-058, TC-REQ-006-060`\n- RUN：`07_ui_automation/reports/RUN_20261110T120000Z/`\n- 统计：`total: 18; passed: 13; excluded: 3; blocked: 2`\n- 缺陷数量：`0`\n- 远程 Bug：未创建\n- Allure 原始证据：`allure-results/`\n- 不在 RUN 目录生成 Handoff.md。\n\n## 缺陷结论
+未确认产品行为缺陷。\n

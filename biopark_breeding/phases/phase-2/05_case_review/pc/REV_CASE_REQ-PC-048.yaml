@@ -1,0 +1,223 @@
+review:
+  review_id: REV_CASE_REQ-PC-048
+  req_id: REQ-PC-048
+  module_id: REQ-PC-048
+  agent: case-review-agent
+  mode: report_only
+  reviewed_at: '2026-10-09'
+  status: completed_with_observations
+  gate_passed: true
+  gate_reasons: []
+  rules_applied:
+  - test-design-enrichment-rule.md
+  - page-block-coverage-rule.md
+  - automation-judgment-rule.md
+  skills_applied:
+  - test-design-techniques
+  - pict-test-designer
+  - qa-playwright-py-writer
+  - webapp-testing
+  - casely
+  review_scope:
+    source_testcase_yaml: 04_testcases/pc/TC_REQ-PC-048.yaml
+    source_testcase_markdown: 04_testcases/pc/TC_REQ-PC-048.md
+    common_precondition_ref: incubation_plan_page_access
+    normal_direct_entry_case_count: 15
+    independent_entry_case_ids: [TC-PC-048-018]
+    page_inventory: 02_analysis/pc/page_inventory/page.json
+    supporting_analysis: 02_analysis/pc/REQ-PC-048.yaml
+    supporting_test_plan: 03_test_plan/pc/TEST_PLAN_REQ-PC-048.yaml
+    historical_review_used: false
+    historical_review_deleted_before_review: true
+  scope:
+    case_count: 16
+    ids_unique: true
+    ids_continuous: false
+    id_range: 当前 YAML 保留的 TC-PC-048 用例 ID 集合
+    required_fields: pass
+    type_counts: {feature: 16, interface: 0}
+    auto_counts: {auto: 16, 'no': 0}
+    automation_status_counts: {blocked: 16}
+    priority_counts_from_case_detail: {P1: 2, P2: 8, P3: 6, P4: 0}
+    priority_counts_in_source_summary: {P1: 16, P2: 8, P3: 5, P4: 0}
+    priority_percent_from_case_detail: {P1: 12.5, P2: 50.0, P3: 37.5, P4: 0.0}
+  alignment:
+    status: pass_with_observations
+    validator: scripts/validate_testcase_template.py
+    checked_fields: [case_count, case_id, title, priority, auto, type, atomic_purpose_ids, trace, step_count, step_action, step_expected]
+    yaml_case_count: 16
+    markdown_case_count: 16
+    yaml_markdown_case_ids_aligned: true
+    differences:
+    - field: summary.priority_counts
+      source_yaml: {P1: 16, P2: 8, P3: 5, P4: 0}
+      case_detail: {P1: 2, P2: 16, P3: 11, P4: 0}
+      severity: warning
+      gate_reason: false
+      reason: YAML summary 与用例明细不一致；本轮以明细为事实源，未修改输入用例文件。
+  structural_review:
+    status: pass_with_observations
+    checks:
+      required_fields: pass
+      unique_case_id: pass
+      continuous_case_id: pass
+      atomic_purpose_ids_present: pass
+      automation_evaluation_present: pass
+      markdown_yaml_case_alignment: pass
+      summary_consistency: warning
+      casely_style: pass_with_observations
+    findings:
+    - 当前 YAML 与 Markdown 均包含 29 条用例，ID 连续唯一。
+    - 29 条均为 feature、auto=auto，并带有 automation_evaluation；状态均为 blocked。
+    - YAML summary priority_counts 与 case detail/Markdown 总览冲突，需在同步前修正事实源。
+    - 少数标题包含同一数据基线下的复合断言，当前仍可定位到对应原子目的；正式执行前应确认数据准备可复现。
+  traceability_review:
+    status: pass_with_observations
+    requirement_coverage: {FR-048-01: covered, FR-048-02: covered, FR-048-03: covered, FR-048-04: covered}
+    plan_coverage:
+      status: covered_with_observations
+      plan_item_range: PI-048-01..PI-048-024
+      orphan_plan_items: []
+      orphan_cases: []
+      observations:
+      - 测试计划覆盖字段、筛选、关联计划、跳转回填和权限边界。
+      - 计划明确排除分页、默认排序、接口契约和 REQ-PC-047 弹窗内部规则，本轮不将其计为缺失。
+    page_reference_review:
+      status: evidence_available_reference_only
+      page_id: pc-req-048-hatching-plan
+      route: /biopark-breeding/breeding/hatchingplans/hatching-plan
+      states: [st-req-048-reference-initial]
+      target_page_capture_status: not_executed
+      inventory_match: reference_only
+      dependency_evidence: REQ-PC-047 source-page jump evidence exists
+      conclusion: 目标页 page.json 为一期结构参考，不能作为二期正式 UI 执行证据。
+  systematic_design_review:
+    status: pass_with_observations
+    techniques: [equivalence_partitioning, boundary_value_analysis, decision_table, state_transition]
+    observations:
+    - 已覆盖空值、精确/模糊命中、无匹配、单字符、空白、特殊格式、重复需求号及任意长度候选。
+    - 已覆盖无计划、单计划、多计划、状态组合、查询/重置/刷新和来源行跳转。
+    - 已覆盖自动回填、自动查询、清除其他条件、历史值隔离、菜单/查询/查看/直接访问权限。
+    - 200 字以上的明确对照边界、空白 trim 契约、错误文案和正式状态可观察性仍待确认。
+  pairwise_review:
+    status: covered_with_observations_static_pict_model
+    parameters: [EntryContext, DemandNoState, RelatedPlanCount, PermissionState, FilterAction, JumpRefillState, FailureMode]
+    constraints_checked:
+    - 来源需求行跳转必须回填当前行需求号，不能使用首行或历史值
+    - 无匹配应对应零个关联计划
+    - 无菜单权限不得进入目标页
+    - 无查询权限应显示权限提示而非伪装成无数据
+    - 重置后不得保留已提交需求号
+    - 直接进入目标页不得携带历史需求号
+    execution: not_run
+    observations:
+    - 参数和约束覆盖关键合法组合；未运行外部 PICT，不能宣称已生成组合结果。
+  playwright_review:
+    status: candidate_but_blocked
+    mode: headed_planning_only
+    auto_candidate_count: 16
+    normal_direct_entry_case_count: 15
+    independent_entry_case_count: 1
+    automation_executable_count: 0
+    locator_strategy: 优先 role/label/test_id/语义作用域；目标页正式 DOM 未采集前不得固化 locator
+    suitable_boundaries: [目标页入口, 需求号列与空值展示, 模糊筛选, 无匹配, 查询重置刷新, 单/多计划, 来源行跳转, 自动回填查询, 权限拒绝]
+    blockers:
+    - 目标页为 reference-only/not_executed，正式 locator 未确认
+    - 需求号关联计划、空值、重复、多计划和状态组合数据未准备
+    - 菜单/查询/查看/直接访问权限矩阵未确认
+    - 查询失败和跳转失败注入方式及错误契约未确认
+    - 跨页唯一业务键、回滚和清理责任未确认
+    - 未执行 Playwright，未生成脚本或执行通过结果
+  headed_page_review:
+    status: static_review_only
+    evidence: page.json target-page reference registration and REQ-PC-047 dependency jump evidence; no browser started in this review
+    confirmed: [目标路由登记、一期参考元素、来源页查看计划跳转依赖边界]
+    unconfirmed: [目标页正式列表、需求号控件、列顺序、空值、筛选、权限、失败态、稳定 locator]
+  casely_review:
+    status: pass_with_observations
+    checks: [case_id_unique_continuous, required_fields_present, traceability_present, automation_evaluation_present, markdown_yaml_case_ids_aligned, atomic_steps_style]
+    observations:
+    - YAML/Markdown 当前均为 29 条，case detail 优先级分布为 P1/P2/P3/P4=2/16/11/0。
+    - 输入 YAML summary 的 16/8/5 与明细冲突，属于交付前必须修复的统计风险。
+    - 空态、无匹配、权限和失败场景已保留可观察结果或 blocked 边界，未伪造执行结果。
+  priority_review:
+    rule_ref: .agents/rules/test-design-enrichment-rule.md#优先级划分
+    scope: 全部 29 条 REQ-PC-048 用例明细
+    case_count: 16
+    reviewed_case_count: 16
+    unreviewed_case_ids: []
+    distribution:
+      source: {P1: 2, P2: 8, P3: 6, P4: 0}
+      source_summary: {P1: 16, P2: 8, P3: 5, P4: 0}
+      case_detail: {P1: 2, P2: 8, P3: 6, P4: 0}
+      common_precondition_ref: incubation_plan_page_access
+      normal_direct_entry_case_count: 20
+      independent_entry_case_ids: [TC-PC-048-017, TC-PC-048-018, TC-PC-048-019, TC-PC-048-022, TC-PC-048-023, TC-PC-048-024, TC-PC-048-026, TC-PC-048-027, TC-PC-048-029]
+    change_summary: {changed_case_count: 0, unchanged_case_count: 16}
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 输入 YAML summary 与用例明细优先级不一致；本轮不改写输入源，评审统计采用明细分布。
+    items:
+    - {case_id: TC-PC-048-001, current_priority: P1, source_priority: P1, reviewed_priority: P1, result: retained, impact_area: 目标页入口与需求号列, blocks_core_flow: true, causes_key_data_error: true, has_workaround: false, user_frequency: high, reason: 目标页和关键关联列不可用会阻断核心查询链路。, gate_reason: false}
+    - {case_id: TC-PC-048-002, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 空值展示, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 空值误展示会影响需求追溯，但可人工核对来源数据。, gate_reason: false}
+    - {case_id: TC-PC-048-003, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 需求号筛选, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: high, reason: 筛选结果错误会造成关联计划定位偏差，但可用其他字段复核。, gate_reason: false}
+    - {case_id: TC-PC-048-004, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 无匹配状态, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 无匹配展示异常影响判断但可更换条件或重试。, gate_reason: false}
+    - {case_id: TC-PC-048-005, current_priority: P1, source_priority: P1, reviewed_priority: P1, result: retained, impact_area: 来源需求承接, blocks_core_flow: true, causes_key_data_error: true, has_workaround: false, user_frequency: high, reason: 来源需求与上孵计划无法承接会造成跨模块核心链路断裂。, gate_reason: false}
+    - {case_id: TC-PC-048-006, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 精确/模糊匹配, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: high, reason: 匹配口径错误会造成结果集偏差，可人工用其他条件核验。, gate_reason: false}
+    - {case_id: TC-PC-048-007, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 单字符边界, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 最小有效输入口径错误会影响查找结果，可调整输入复核。, gate_reason: false}
+    - {case_id: TC-PC-048-008, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 长度边界, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 长度限制错误会截断或误拒绝需求号，需人工修正输入。, gate_reason: false}
+    - {case_id: TC-PC-048-009, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 特殊格式, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 特殊需求号被错误过滤会影响追溯，可使用精确数据复核。, gate_reason: false}
+    - {case_id: TC-PC-048-010, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 空白输入, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 空白处理口径不明会影响结果，但可清空后重新查询。, gate_reason: false}
+    - {case_id: TC-PC-048-011, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 重复需求号, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: low, reason: 重复需求号结果错误影响追溯，但可结合计划字段核对。, gate_reason: false}
+    - {case_id: TC-PC-048-012, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 查询重置刷新, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: high, reason: 条件残留或刷新不一致会污染查询判断，可手工清除和重试。, gate_reason: false}
+    - {case_id: TC-PC-048-013, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 无计划状态, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 无计划与异常数据混淆会影响业务判断，可人工核对来源。, gate_reason: false}
+    - {case_id: TC-PC-048-014, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 单计划承接, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: high, reason: 单计划关联错误会导致需求处理对象错误，可人工复核计划。, gate_reason: false}
+    - {case_id: TC-PC-048-015, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 多计划承接, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 多计划漏显或串联会造成计划处理不完整，可人工比对。, gate_reason: false}
+    - {case_id: TC-PC-048-016, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 计划状态组合, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 状态组合筛选错误会造成处理口径偏差，可人工复核状态。, gate_reason: false}
+    - {case_id: TC-PC-048-017, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 来源行跳转, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: high, reason: 跳转到错误需求会造成错误业务上下文，可返回来源页重试。, gate_reason: false}
+    - {case_id: TC-PC-048-018, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 需求号回填, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: high, reason: 回填错误会导致目标页查询结果错误，可人工重新输入核对。, gate_reason: false}
+    - {case_id: TC-PC-048-019, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 自动查询, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: high, reason: 自动查询未触发会造成用户误判无数据，可手工点击查询。, gate_reason: false}
+    - {case_id: TC-PC-048-020, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 清除其他条件, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 旧筛选条件残留会污染跳转结果，可手工清空条件。, gate_reason: false}
+    - {case_id: TC-PC-048-021, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 新增/导入入口保留, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: low, reason: 入口可见性属于版本兼容观察项，异常时可人工确认版本口径。, gate_reason: false}
+    - {case_id: TC-PC-048-022, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 直接进入目标页, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 历史需求号残留会污染默认结果，可重新打开或清空页面状态。, gate_reason: false}
+    - {case_id: TC-PC-048-023, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 查询失败, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: low, reason: 失败态契约影响排障，可重试或联系支持。, gate_reason: false}
+    - {case_id: TC-PC-048-024, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 跳转失败, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: low, reason: 失败态影响跨页操作，可返回来源页或重试。, gate_reason: false}
+    - {case_id: TC-PC-048-025, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 菜单权限, blocks_core_flow: true, causes_key_data_error: false, has_workaround: false, user_frequency: high, reason: 菜单权限错误会造成越权访问或核心功能不可用。, gate_reason: false}
+    - {case_id: TC-PC-048-026, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 查询权限, blocks_core_flow: true, causes_key_data_error: true, has_workaround: false, user_frequency: medium, reason: 查询权限错误会造成未授权数据访问或功能不可用。, gate_reason: false}
+    - {case_id: TC-PC-048-027, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 查看权限, blocks_core_flow: false, causes_key_data_error: false, has_workaround: true, user_frequency: medium, reason: 查看权限需区分拒绝与无数据，可通过授权账号复核。, gate_reason: false}
+    - {case_id: TC-PC-048-028, current_priority: P3, source_priority: P3, reviewed_priority: P3, result: retained, impact_area: 空白/异常输入, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 输入规则未确认，异常结果需人工核对并保留为阻塞候选。, gate_reason: false}
+    - {case_id: TC-PC-048-029, current_priority: P2, source_priority: P2, reviewed_priority: P2, result: retained, impact_area: 历史值隔离与回填, blocks_core_flow: false, causes_key_data_error: true, has_workaround: true, user_frequency: medium, reason: 跨页历史值污染会导致结果错误，可手工清空并重新输入。, gate_reason: false}
+    mismatches:
+    - {case_id: ALL, field: source_summary.priority_counts, source: 'P1=16,P2=8,P3=5', detail: 'P1=2,P2=16,P3=11'}
+    unconfirmed_items: [正式目标页面采集, 正式 locator, 权限矩阵, 空白 trim 规则, 失败提示契约, 跨页参数协议, 200 字以上技术边界]
+    gate_reasons: []
+  design_violations: []
+  traceability_failures: []
+  evidence_risks: [SOURCE_PRIORITY_SUMMARY_MISMATCH, FORMAL_TARGET_PAGE_CAPTURE_PENDING, FORMAL_LOCATOR_CONFIRMATION_PENDING, PERMISSION_BEHAVIOR_UNCONFIRMED, FAILURE_CONTRACT_PENDING, JUMP_STATE_FIXTURE_PENDING]
+  execution_blockers: [FORMAL_ENVIRONMENT_PERMISSION_DATA_NOT_READY, DATA_FIXTURE_PENDING, AUTHORIZED_DATA_ROLLBACK_CLEANUP_NOT_READY, CONTROLLED_FAILURE_INJECTION_NOT_READY, PLAYWRIGHT_AND_HEADED_EXECUTION_NOT_PERFORMED]
+  review_items:
+  - {code: PAGE_EVIDENCE_REFERENCE_ONLY, category: evidence_risk, result: blocked, gate_reason: false, reason: 目标页 page.json 为一期参考登记且 not_executed，不能替代二期正式页面证据, case_ids: [TC-PC-048-001, TC-PC-048-003, TC-PC-048-017, TC-PC-048-018]}
+  - {code: SOURCE_SUMMARY_MISMATCH, category: design_violation, result: observation, gate_reason: false, reason: 输入 YAML summary 与明细优先级统计不一致，本轮未修改输入文件, case_ids: []}
+  - {code: FAILURE_CONTRACT_PENDING, category: evidence_risk, result: blocked, gate_reason: false, reason: 查询失败、跳转失败、权限拒绝和无数据的正式区分契约未确认, case_ids: [TC-PC-048-004, TC-PC-048-023, TC-PC-048-024, TC-PC-048-026]}
+  - {code: EXECUTION_READINESS_PENDING, category: execution_blocker, result: blocked, gate_reason: false, reason: 16 条候选用例均未执行 UI、浏览器或 Playwright, case_ids: []}
+  review_dimensions: {systematic_coverage: pass_with_observations, pairwise: covered_with_observations_static_pict_model, automation_executability: candidate_but_blocked, headed_page_executability: static_review_only, structure_fields_style: pass_with_observations, delivery_format: pass}
+  coverage_summary: {case_count: 16, automation_candidate_count: 16, automation_executable_count: 0, yaml_markdown_aligned: true, requirement_traceability_present: true, formal_ui_execution_performed: false, formal_business_data_changed: false, page_inventory_capture_status: partial, page_inventory_evidence_status: reference_only, source_summary_matches_case_detail: false}
+  source_hashes:
+  - {path: 04_testcases/pc/TC_REQ-PC-048.yaml, sha256: edb9a5c7a078865d39fbf4d5d3cb97360c4c6616d84bad2195959547aa21fa8b}
+  - {path: 04_testcases/pc/TC_REQ-PC-048.md, sha256: 4cf0a994389c1fcc00a51259dacaaa1057cde215c12c611319e5637eb628f461}
+  - {path: 02_analysis/pc/REQ-PC-048.yaml, sha256: a85fa36a843b8d7415e0fe8cbba05ca4d43c0e00846f436d1af8df0d972ccbd0}
+  - {path: 02_analysis/pc/page_inventory/page.json, sha256: 2d1ee96de735f18ec1d4073f47e818179201051059da6a22ed41ccef7b830c7d}
+  - {path: 03_test_plan/pc/TEST_PLAN_REQ-PC-048.yaml, sha256: c47a2625e2be183c719d5ca9e1aa4affedc95faddf2df9d61eb56dbf6ce39ef3}
+  sync_candidates: {case_count: 29, status: pending_authorized_sync, note: 仅输出本地 report_only 评审，未写入远程禅道、CSV 或测试执行系统}
+  execution_statement: 仅完成静态结构、覆盖、Pairwise 模型、Playwright 可执行性和页面证据边界评审；未执行 UI、浏览器、Playwright、CSV、远程禅道或测试点/XMind。
+  prohibited_actions_confirmed: {ui_execution: false, csv_generation: false, remote_zentao_write: false, test_point_or_xmind_generation: false}
+  last_sync_update:
+    date: '2026-10-13'
+    case_id: TC-PC-048-019, TC-PC-048-022~024, TC-PC-048-026~029
+    zentao_case_id: 49928, 49931, 49932, 49933, 49935, 49936, 49937, 49938
+    change: 删除指定的8条禅道用例及对应本地来源用例
+    status: validated
+    readback_steps: 8
+  handoff: {path: 05_case_review/pc/HANDOFF/REQ-PC-048_HANDOFF.md, module_id: REQ-PC-048}

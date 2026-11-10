@@ -1,0 +1,153 @@
+schema_version: "1.1"
+analysis_id: "REQ-011"
+module_id: "REQ-011"
+module_name: "告警记录"
+project: "数据采集监控平台"
+status: "blocked_scoped_readonly_ui_verification"
+source:
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+  latest_changes: "01_requirements/需求变动.md"
+  latest_change_range: "REQ-011-001..REQ-011-017"
+  scope_baseline: "01_requirements/模块拆分清单.md"
+  page_inventory: "02_analysis/page_inventory/page.json"
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录值"
+identity:
+  zentao_module_path: "iot平台/告警中心/告警记录"
+  zentao_module_id: 749
+  parent_module_id: 729
+  priority: 11
+  priority_band: "P1"
+  route: "/iot/alert/record"
+  runtime_route: "/biopark-iot/iot/alert/record"
+  title: "数据采集 - 告警记录"
+  menu_path: ["数据采集", "告警中心", "告警记录"]
+  dependency_modules: ["告警配置", "数据采集", "数据监听", "产品管理", "设备管理", "用户/权限管理"]
+scope:
+  in_scope:
+    - "告警记录列表查询、配置/级别/产品筛选、设备/是否处理/日期高级筛选。"
+    - "查询、重置、展开、刷新、表头设置、分页、默认创建时间倒序和最新记录展示。"
+    - "告警记录编号、事件标识、触发/创建/来源时间、历史告警配置快照和处置状态契约。"
+    - "查看与处理入口；补充处理成功‘否→是’状态回读、失败保持‘否’、操作人、操作时间和备注的处理结果契约。"
+    - "有权限归档后的列表/留存回读，以及删除后的列表不可见和不可恢复边界回读；实际副作用操作仍禁止。"
+    - "产品/设备级联筛选、失效或无权限对象不可选择、历史记录保留原对象信息。"
+    - "角色、租户、脱敏、异步反馈、留存/归档/删除责任边界。"
+  out_of_scope:
+    - "告警配置规则维护、告警对象/条件/阈值/触发策略配置。"
+    - "确认、关闭、重开、转派、批量操作、导出、恢复和其他处置状态。"
+    - "详情中的阈值、实际值、单位、时间序列、位置、质量码、原始消息、通知状态和处理备注详情展示。"
+    - "通知发送、自动回复、数据监听实现、接口 endpoint/状态码/载荷、性能 SLA 和外部通道。"
+    - "真实环境处理提交、归档、删除、跨租户访问及不可恢复操作。"
+  acceptance_boundary:
+    - "需求变动.md 的 REQ-011 最新回答是业务基准。"
+    - "page.json 页面、状态、元素 ID 和脱敏 evidence 是页面事实基准。"
+    - "列表或处理入口可见不等于详情完整、权限正确、处理持久化、审计、留存或跨租户隔离已验收。"
+page_contract:
+  page_id: "alert_record"
+  route: "/biopark-iot/iot/alert/record"
+  title: "数据采集 - 告警记录"
+  menu_path: ["数据采集", "告警中心", "告警记录"]
+  target: {element_id: "alarm_record_state", strategy: "css", value: "body", evidence_note: "page.json 记录该目标；页面主体状态证据以 alert_record_state 规则处理"}
+  page_ready: ["URL contains /biopark-iot/iot/alert/record", "title contains 告警记录", "body visible", "no loading/error failure"]
+  states:
+    alert_record_default:
+      expected: "告警配置、告警级别、产品筛选，查询、重置、展开、刷新、表头设置、查看、处理和分页可见；业务数据脱敏。"
+      elements: ["alert_record_config", "alert_record_level", "alert_record_product", "alert_record_query", "alert_record_reset", "alert_record_expand", "alert_record_refresh", "alert_record_columns", "alert_record_view", "alert_record_handle", "alert_record_page_size", "alert_record_prev", "alert_record_next", "alert_record_jump"]
+      table_id: "alert_record_table"
+      table_element_id: "alert_record_table_element"
+      columns: ["编号", "告警名称", "告警级别", "产品名称", "设备名称", "触发消息", "是否处理", "处理人", "处理时间", "处理结果", "创建时间", "操作"]
+      row_actions: ["alert_record_view", "alert_record_handle"]
+      observed_page_size: "10条/页"
+    alert_record_filter_expanded:
+      parent_state_id: "alert_record_default"
+      expected: "展开高级筛选显示设备、是否处理、开始日期和结束日期；不提交筛选。"
+      elements: ["alert_record_device", "alert_record_handled", "alert_record_start", "alert_record_end"]
+    alert_record_dialogs_partial:
+      parent_state_id: "alert_record_default"
+      expected: "查看/处理入口可见；详情、处理表单和反馈定位器不完整，按 partial 记录，不推断未确认字段。"
+      elements: ["alert_record_dialog"]
+      locator_status: "missing"
+      evidence_status: "partial"
+  filter_form:
+    form_id: "alert_record_filter_form"
+    field_element_ids: ["alert_record_config", "alert_record_level", "alert_record_product"]
+    submit_element_ids: ["alert_record_query"]
+    cancel_element_ids: ["alert_record_reset"]
+  pagination: ["alert_record_page_size", "alert_record_prev", "alert_record_next", "alert_record_jump"]
+  evidence:
+    screenshots: ["02_analysis/page_inventory/screenshots/req011-default.png", "02_analysis/page_inventory/screenshots/req011-filter-expanded.png"]
+    logs: []
+    trace_paths: []
+    dom_snapshot: "主体 DOM 未保存；通过脱敏可视快照确认组件"
+    sanitized: true
+    captured_at: "2026-10-21T12:00:00Z"
+  gaps: ["详情字段和稳定定位器", "处理表单字段/提交/取消/反馈/异步状态", "归档删除入口与确认层", "权限提示和角色租户矩阵", "稳定脱敏行数据", "接口与并发幂等契约", "正式 PDF 逐条页码追溯"]
+business_rules:
+  confirmed:
+    REQ-011-001: "记录编号由系统自动生成、唯一、不可修改；查询和排序使用该编号。"
+    REQ-011-002: "告警事件由系统生成唯一事件标识；重复事件关联同一事件；记录绑定触发时生效的规则版本。"
+    REQ-011-003: "触发时间为监听条件满足并触发告警的时间；创建时间为系统生成记录时间；数据来源时间为设备消息时间；按当前用户时区显示。"
+    REQ-011-004: "历史记录保存触发时告警配置快照；配置后续停用、删除或修改不影响历史记录。"
+    REQ-011-005: "是否处理仅‘是/否’；新记录为‘否’，处理完成为‘是’；不采用处理中、确认、关闭、恢复等状态。"
+    REQ-011-006: "仅记录‘否→是’状态变化、操作人、操作时间和备注；不涉及确认、关闭、重开、转派和批量操作，也不扩展为全局审计。"
+    REQ-011-007: "当前页面不纳入阈值、实际值、单位、时间序列、位置、质量码、原始消息、通知状态和处理备注详情展示。"
+    REQ-011-008: "产品和设备支持级联筛选；失效、删除或无权限对象不可作为筛选条件；历史记录保留原对象信息。"
+    REQ-011-009: "按当前用户时区筛选；最新告警在前；重复记录按事件标识关联；刷新后保持排序且不重复。"
+    REQ-011-010: "告警记录、处理记录、历史快照和处理信息默认长期保存；有权限用户可手动归档、删除；删除后不可恢复。"
+    REQ-011-011: "按权限展示详情；设备标识、位置、测量值按业务需要展示；联系人、通知内容和触发消息中的敏感信息脱敏。"
+    REQ-011-012: "列表默认创建时间倒序；筛选、分页和刷新后保持。"
+    REQ-011-013: "详情字段、弹窗和权限控制按实际页面记录，定位沿用 PUB-015；alarm_record_state 按真实 DOM 证据记录。"
+    REQ-011-014: "处理表单字段、提交/取消、成功/失败、权限和异步状态按实际页面记录，定位沿用 PUB-015。"
+    REQ-011-015: "归档、删除入口、确认层、权限、不可恢复提示和结果按实际页面记录，定位沿用 PUB-015。"
+    REQ-011-016: "按角色和租户验证查看、详情、处理、归档、删除及跨租户访问限制；接口细节不纳入测试。"
+    REQ-011-017: "只验证页面按钮、确认框和结果提示；不实际执行不可恢复操作，不确认数据留存和清理。"
+  public_confirmed: ["无权限提示没有操作权限", "默认每页10条", "筛选回第一页", "无结果显示暂无数据", "查询失败/超时/网络异常/权限不足显示失败提示且无重试入口", "重复提交只生效一次", "处理中禁止重复操作", "不缓存，刷新重新加载最新数据", "取消关闭无需二次确认", "校验失败字段旁提示并保留输入", "保存失败保留输入", "被引用阻止相关操作", "不要求审计记录"]
+  pending: ["详情和处理表单字段及稳定定位器", "处理提交反馈与异步状态", "归档删除权限/确认层/不可恢复提示", "角色租户矩阵", "事件标识和三类时间字段的接口契约", "并发幂等和错误码", "长期留存归档实现与清理责任", "正式 PDF REQ-011 页码追溯"]
+roles:
+  - {role: "告警记录查看者", responsibility: "查看授权范围内告警记录和脱敏详情"}
+  - {role: "告警处理者", responsibility: "对授权记录执行否到是的处理并填写备注"}
+  - {role: "告警记录管理员", responsibility: "按权限归档或删除记录；删除不可恢复"}
+  - {role: "只读用户", responsibility: "查询和查看，不执行处理/归档/删除"}
+permission_status: "partial_blocked"
+rule: "不得从按钮可见推断写权限，不得绕过角色、租户或不可恢复操作保护。"
+dependencies:
+  upstream: ["REQ-007 数据监听", "REQ-009 数据采集", "REQ-010 告警配置", "REQ-003 产品管理", "REQ-005 设备管理", "用户/权限/租户管理"]
+  downstream: ["通知渠道与运维处置流程"]
+  note: "依赖表示数据和责任边界，不代表接口、事件生成或留存已验证。"
+risks:
+  - {id: "R-011-01", level: "high", description: "处理、归档或删除改变告警记录，删除不可恢复", control: "只打开并取消弹窗，不提交副作用操作"}
+  - {id: "R-011-02", level: "high", description: "真实告警、触发消息、联系人或通知内容泄露", control: "使用隔离/脱敏证据，不保存业务值"}
+  - {id: "R-011-03", level: "high", description: "跨租户或无权限对象可见", control: "权限矩阵缺失则阻塞，不绕过权限验证"}
+  - {id: "R-011-04", level: "medium", description: "重复事件、时区和历史快照语义无法由页面证明", control: "记录为接口/契约待确认，不从 UI 推断"}
+  - {id: "R-011-05", level: "medium", description: "详情与处理反馈定位器不稳定导致自动化误操作", control: "仅使用稳定 locator，缺失时不执行写操作"}
+test_design:
+  equivalence_partitions: ["有记录/无记录", "已处理/未处理", "配置/级别/产品/设备有效或无权限", "日期空/同日/跨日/非法范围", "默认/展开筛选", "查看/处理/归档/删除", "完整权限/只读/拒绝/跨租户", "重复事件/不同事件", "当前时区/跨时区", "查询成功/失败/超时"]
+  boundary_candidates: ["时间范围空、同一时刻、同日、开始晚于结束、跨日跨月跨年、时区边界", "分页空、1条、10条、末页、无结果", "记录状态否→是及重复提交", "处理备注空、最小、最大和非法字符（具体限制待确认）"]
+  decision_tables:
+    - {id: "DT-011-01", conditions: ["权限", "动作"], expected: "查看/处理/归档/删除按角色租户允许或提示没有操作权限"}
+    - {id: "DT-011-02", conditions: ["是否处理", "处理提交"], expected: "否可进入处理；成功后变为是；处理中禁止重复；不产生其他处置状态"}
+    - {id: "DT-011-03", conditions: ["事件标识", "刷新"], expected: "重复事件关联同一事件，刷新不重复且排序保持"}
+    - {id: "DT-011-04", conditions: ["对象状态/权限", "筛选"], expected: "失效或无权限对象不可选择，历史记录保留原对象信息"}
+    - {id: "DT-011-05", conditions: ["删除权限", "记录状态"], expected: "仅有权限用户可删除；删除不可恢复；本阶段不执行"}
+  state_transitions: ["未认证->登录->门户->告警记录默认态", "默认态->展开筛选->查询/重置", "未处理->处理表单->处理成功为已处理或失败保留未处理", "查看/处理弹窗->取消关闭", "记录->归档/删除（仅契约观察，不执行）"]
+  pict_model:
+    parameters: ["Permission", "Tenant", "RecordState", "EventIdentity", "Timezone", "ObjectAccess", "FilterMode", "Action", "Result"]
+    values: {Permission: [viewer, handler, administrator, denied], Tenant: [same, other, missing], RecordState: [unhandled, handled], EventIdentity: [new_event, duplicate_event], Timezone: [user_zone, daylight_boundary, cross_zone], ObjectAccess: [valid, disabled, deleted, unauthorized], FilterMode: [default, expanded], Action: [query, reset, view, handle, archive, delete, refresh], Result: [visible, filtered, no_data, permission_error, validation_error, saved, blocked, no_duplicate]}
+    constraints: ["IF [Tenant] = other OR [Permission] = denied THEN protected action results in permission_error;", "IF [Action] = handle AND [RecordState] = handled THEN Result IN {visible, blocked};", "IF [EventIdentity] = duplicate_event THEN Result = no_duplicate;", "IF [ObjectAccess] IN {disabled, deleted, unauthorized} THEN protected filter selection is blocked;", "IF [Action] = delete THEN [Permission] = administrator;", "IF [FilterMode] = expanded THEN advanced filter elements are visible;"]
+automation_plan:
+  framework: "Playwright Python sync API / pytest-playwright"
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+  allowed: ["复用登录态", "进入数据采集→告警中心→告警记录", "只读检查路由/筛选/排序/分页/脱敏列", "打开查看或处理弹窗后取消", "打开归档/删除确认层后取消（若入口稳定且无副作用）"]
+  forbidden: ["提交处理", "确认归档", "确认删除", "制造或触发告警", "跨租户访问", "捕获 endpoint/认证/载荷", "读取联系人/触发消息原文", "绕过权限"]
+  locator_priority: ["confirmed alert_record_* IDs", "get_by_role/name", "get_by_test_id", "get_by_label", "get_by_text", "stable attributes", "CSS fallback"]
+  page_ready: ["runtime URL is /biopark-iot/iot/alert/record", "title contains 告警记录", "alert_record_default available", "body visible", "no failure prompt"]
+data_preconditions:
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 或运行时配置读取，不记录具体值。"
+  - "只使用已授权页面数据；不造事件、不提交处理、不归档、不删除、不跨租户访问。"
+  - "账号、密码、Token、Cookie、设备标识、位置、测量值、联系人、触发消息、通知内容和未经授权业务数据不得写入 page.json、截图、日志、DOM、报告或下载文件。"
+  - "本阶段无数据变更；清理状态：not_applicable。未来若获批隔离事件或副作用操作，需由测试负责人、告警记录负责人、数据监听负责人及权限/租户负责人确认停止条件、回滚/不可恢复确认和清理结果。"
+readiness:
+  status: "blocked"
+  reason: "详情/处理/归档/删除页面契约、权限租户矩阵、接口时间/事件/幂等契约和留存方案不完整；处理及删除具有真实副作用，当前仅允许限定范围只读观察。"
+handoff:
+  path: "02_analysis/HANDOFF/REQ-011_HANDOFF.md"
+  status: "blocked"

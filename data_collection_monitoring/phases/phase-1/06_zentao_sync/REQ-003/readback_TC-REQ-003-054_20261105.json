@@ -1,0 +1,169 @@
+﻿{
+    "id": 52139,
+    "project": 46,
+    "product": 8,
+    "execution": 0,
+    "branch": 0,
+    "lib": 0,
+    "module": 732,
+    "path": 0,
+    "story": 0,
+    "storyVersion": 1,
+    "title": "复制产品ProductKey并校验粘贴内容",
+    "precondition": "前置准备：\n1、已准备经授权可读的产品记录，且可通过“查看”或“物模型”按钮打开产品详情弹窗。\n2、已准备页面内临时可编辑的粘贴目标，不保存或提交粘贴的 ProductKey。\n\n前置步骤：\n1、完成应用门户登录，或复用已有的有效登录态。；登录成功或已有登录态有效，可以正常访问应用门户。\n2、在应用门户选择“数据采集监控平台”。；成功进入数据采集监控平台，并显示对应的平台菜单区域。\n3、展开平台菜单并点击“产品管理”菜单。；点击后浏览器地址包含“/biopark-iot/iot/device/product”，确认已进入产品管理页面。",
+    "keywords": "",
+    "pri": 2,
+    "type": "other",
+    "auto": "no",
+    "frame": "",
+    "stage": "",
+    "howRun": "",
+    "script": "",
+    "scriptedBy": "",
+    "scriptedDate": "",
+    "scriptStatus": "",
+    "scriptLocation": "",
+    "status": "normal",
+    "subStatus": "",
+    "color": "",
+    "frequency": 1,
+    "order": 0,
+    "openedBy": "AI",
+    "openedDate": "2026-11-05 09:55:25",
+    "reviewedBy": "",
+    "reviewedDate": "",
+    "lastEditedBy": "",
+    "lastEditedDate": "",
+    "version": 1,
+    "linkCase": "",
+    "fromBug": 0,
+    "fromCaseID": 0,
+    "fromCaseVersion": 1,
+    "lastRunner": "",
+    "lastRunDate": "",
+    "lastRunResult": "",
+    "scene": 0,
+    "sort": 0,
+    "deleted": 0,
+    "toBugs": [],
+    "fromBugData": [],
+    "linkCaseTitles": [],
+    "currentVersion": 1,
+    "files": [],
+    "steps": [
+        {
+            "name": "1",
+            "id": 176671,
+            "step": "在产品列表中点击目标产品的“查看”或“物模型”按钮，打开详情或物模型弹窗。",
+            "desc": "在产品列表中点击目标产品的“查看”或“物模型”按钮，打开详情或物模型弹窗。",
+            "expect": "详情或物模型弹窗成功打开，ProductKey 字段显示非空值，并显示对应的复制按钮。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "2",
+            "id": 176672,
+            "step": "记录弹窗中显示的 ProductKey，点击 ProductKey 对应的复制按钮。",
+            "desc": "记录弹窗中显示的 ProductKey，点击 ProductKey 对应的复制按钮。",
+            "expect": "页面显示“复制成功”提示，复制操作完成。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "3",
+            "id": 176673,
+            "step": "将已复制的内容粘贴到临时可编辑位置。",
+            "desc": "将已复制的内容粘贴到临时可编辑位置。",
+            "expect": "临时位置成功粘贴内容，粘贴值与弹窗中记录的 ProductKey 完全一致。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        },
+        {
+            "name": "4",
+            "id": 176674,
+            "step": "关闭弹窗并清理临时粘贴内容。",
+            "desc": "关闭弹窗并清理临时粘贴内容。",
+            "expect": "弹窗正常关闭，临时位置不保留本次测试的 ProductKey，产品数据未被修改。",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+        }
+    ],
+    "caseID": 52139,
+    "needconfirm": false,
+    "caseFails": 0,
+    "mindMapSteps": {
+        "id": "case_52139",
+        "text": "复制产品ProductKey并校验粘贴内容",
+        "type": "root",
+        "children": [
+            {
+                "id": 176671,
+                "text": "在产品列表中点击目标产品的“查看”或“物模型”按钮，打开详情或物模型弹窗。",
+                "type": "sub",
+                "parent": "case_52139",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176671",
+                        "text": "详情或物模型弹窗成功打开，ProductKey 字段显示非空值，并显示对应的复制按钮。",
+                        "type": "node",
+                        "parent": 176671,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176672,
+                "text": "记录弹窗中显示的 ProductKey，点击 ProductKey 对应的复制按钮。",
+                "type": "sub",
+                "parent": "case_52139",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176672",
+                        "text": "页面显示“复制成功”提示，复制操作完成。",
+                        "type": "node",
+                        "parent": 176672,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176673,
+                "text": "将已复制的内容粘贴到临时可编辑位置。",
+                "type": "sub",
+                "parent": "case_52139",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176673",
+                        "text": "临时位置成功粘贴内容，粘贴值与弹窗中记录的 ProductKey 完全一致。",
+                        "type": "node",
+                        "parent": 176673,
+                        "subSide": "right"
+                    }
+                ]
+            },
+            {
+                "id": 176674,
+                "text": "关闭弹窗并清理临时粘贴内容。",
+                "type": "sub",
+                "parent": "case_52139",
+                "subSide": "right",
+                "children": [
+                    {
+                        "id": "desc_176674",
+                        "text": "弹窗正常关闭，临时位置不保留本次测试的 ProductKey，产品数据未被修改。",
+                        "type": "node",
+                        "parent": 176674,
+                        "subSide": "right"
+                    }
+                ]
+            }
+        ]
+    }
+}

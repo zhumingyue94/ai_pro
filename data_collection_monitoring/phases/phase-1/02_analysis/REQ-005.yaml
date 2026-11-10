@@ -1,0 +1,282 @@
+schema_version: "1.1"
+
+analysis_id: "REQ-005"
+
+module_id: "REQ-005"
+
+module_name: "设备管理"
+
+project: "数据采集监控平台"
+
+status: "blocked_pending_req005_page_contract"
+
+source:
+
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+
+  latest_changes: "01_requirements/需求变动.md"
+
+  latest_change_items: ["REQ-005-001", "REQ-005-002", "REQ-005-003", "REQ-005-004", "REQ-005-005", "REQ-005-006", "REQ-005-007", "REQ-005-008", "REQ-005-009", "REQ-005-010", "REQ-005-011", "REQ-005-012", "REQ-005-013", "REQ-005-014", "REQ-005-015", "REQ-005-016", "REQ-005-017", "REQ-005-018", "REQ-005-019", "REQ-005-020", "REQ-005-021"]
+
+  public_rules: ["PUB-001", "PUB-002", "PUB-003", "PUB-004", "PUB-005", "PUB-006", "PUB-007", "PUB-008", "PUB-009", "PUB-010", "PUB-011", "PUB-012", "PUB-013", "PUB-014", "PUB-015"]
+
+  scope_baseline: "01_requirements/模块拆分清单.md"
+
+  page_inventory: "02_analysis/page_inventory/page.json"
+
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录具体值"
+
+identity:
+
+  zentao_module_path: "iot平台/设备接入/设备管理"
+
+  zentao_module_id: 734
+
+  parent_module_id: 727
+
+  priority: 5
+
+  priority_band: "P1"
+
+  route_baseline: "/iot/device/device"
+
+  runtime_route_candidate: "/biopark-iot/iot/device/device"
+
+  title: "数据采集 - 设备管理"
+
+  menu_path: ["数据采集", "设备接入", "设备管理"]
+
+  dependencies: ["产品管理", "设备分组", "插件管理"]
+
+scope:
+
+  confirmed:
+
+    - "名称必填，同租户或业务范围内唯一；编辑允许改名并重新校验唯一性；长度、空白和特殊字符按系统默认规则。"
+
+    - "备注非必填，可为空，支持换行、空白和常见特殊字符；长度按系统默认限制。"
+
+    - "页面无设备标识字段；序列号由用户录入且可修改，相关字符、长度、唯一性和重复处理按系统默认规则。"
+
+    - "设备类型属于产品属性；新建设备选择产品后自动带入，设备侧不可单独修改。"
+
+    - "创建设备必须选择产品；绑定后不可更换；产品停用或删除不影响已有绑定，但不得新增关联。"
+
+    - "状态仅为未激活、在线、离线；连接建立即在线，断开立即离线，未激活保持未激活，激活后可通过连接恢复在线。"
+
+    - "新增/编辑支持同级排序，列表按排序字段升序；上线时间语义另有最新确认，需与排序字段分开核对。"
+
+    - "支持父子设备和多级层级；父子产品类型可不同；支持绑定、解绑、移动；父设备有子设备时不能直接删除。"
+
+    - "设备可加入多个分组，支持批量加入；重复关系不重复；冲突保留失败明细；加入/移出后数量和可见范围立即更新。"
+
+    - "存在产品、插件、采集任务或其他业务引用时仅禁止删除，仍允许编辑和停用；解除全部引用后才允许删除。"
+
+    - "批量删除或批量分组任一失败则整体回滚，展示失败明细；用户修正后整体重试，不保留部分结果或残留关系。"
+
+    - "当前页面无设备凭据字段，本项不适用。"
+
+    - "父子关系禁止循环，不设固定最大层级；允许跨产品类型移动但不得形成循环。"
+
+    - "最近一次上线时间在重新上线时更新，离线后保留；具体来源、时区和展示格式需按页面记录。"
+
+  public_rules_confirmed:
+
+    - "沿用公共权限、列表匹配、分页、空结果、失败提示、异步处理、删除/停用、字段空值、排序、表头设置和定位器规则。"
+
+    - "本阶段仅进行页面级 UI/行为验证，不进行接口测试；不将页面可见性推断为权限结论。"
+
+    - "账号、租户和测试数据按 .env 运行时读取；敏感信息及未经授权业务数据不得进入页面清单、截图、日志、DOM、报告或下载文件。"
+
+  in_scope: ["设备列表与筛选", "新增/编辑/停用/激活/删除边界", "产品绑定", "状态展示", "父子层级", "分组关系", "引用删除限制", "批量事务规则", "租户和角色边界", "页面定位和只读自动化规划"]
+
+  out_of_scope: ["设备凭据", "接口状态码、请求响应和性能 SLA 验收", "真实业务写入", "导入导出", "审计记录验收", "复用其他模块页面证据"]
+
+acceptance_boundary:
+
+  - "需求变动.md 中 REQ-005-001 至 REQ-005-021 的最新确认回答优先于旧分析表述。"
+
+  - "page.json 仅作为页面事实基准；当前未发现 REQ-005 专属 page/state/element/table 对象。"
+
+  - "模块清单的路由和标题是导航基线，不等于已完成页面功能验收。"
+
+  - "未形成 REQ-005 页面证据前，不冻结元素定位器，不执行写操作。"
+
+page_contract:
+
+  page_inventory_status: "missing_req005_page_object"
+
+  page_id: "module_id_missing"
+
+  route_candidates: ["/iot/device/device", "/biopark-iot/iot/device/device"]
+
+  title: "数据采集 - 设备管理"
+
+  menu_path: ["数据采集", "设备接入", "设备管理"]
+
+  default_state: "page_inventory_missing_req005_object"
+
+  check_target: "module_id_missing"
+
+  confirmed_from_page_inventory: false
+
+  evidence: {page_level: [], states: [], elements: [], forms: [], tables: [], screenshots: [], logs: [], dom_snapshots: []}
+
+  missing_contract: ["page_id", "state", "state_parent", "check_target", "ready_condition", "elements", "forms", "tables", "filters", "row_actions", "batch_actions", "pagination", "feedback", "page_evidence"]
+
+  forbidden_reuse: ["device_group_*", "product_*", "plugin_*", "REQ-004 page/state/element/table/interaction evidence"]
+
+  required_future_contract: ["设备名称", "备注", "序列号", "所属产品", "上级设备", "同级排序", "状态", "上线时间", "产品/分组/父子筛选", "新增/编辑/停用/激活/删除", "批量选择/删除/分组", "分页", "空状态", "失败明细", "整体回滚提示", "整体重试"]
+
+requirements:
+
+  confirmed:
+
+    REQ-005-001: "名称必填、同作用域唯一、编辑改名重新校验；其他边界按默认规则。"
+
+    REQ-005-002: "备注可空，支持换行/空白/常见特殊字符；长度按默认限制。"
+
+    REQ-005-003: "无设备标识字段；序列号用户录入且可修改；其他边界按默认规则。"
+
+    REQ-005-004: "类型由产品属性决定，设备侧不可独立修改。"
+
+    REQ-005-005: "新建必须选产品，绑定后不可换；停用/删除产品不影响已有绑定且阻止新增关联。"
+
+    REQ-005-006: "状态为未激活/在线/离线，连接和断开按确认规则转换。"
+
+    REQ-005-007: "同级排序可设置，列表按排序升序。"
+
+    REQ-005-008: "支持多级父子、不同产品类型、绑定/解绑/移动，父有子时不能直接删除。"
+
+    REQ-005-009: "支持多分组和批量加入，重复关系幂等，冲突保留失败明细，关系变更后数量/范围立即更新。"
+
+    REQ-005-010: "任一业务引用禁止删除，但允许编辑/停用；全部解除后允许删除。"
+
+    REQ-005-011: "批量删除/分组任一失败整体回滚，失败后整体手动重试。"
+
+    REQ-005-012: "当前页面无设备凭据字段。"
+
+    REQ-005-016: "名称和序列号必填唯一，不限长度但限制非法字符；备注可空且不限长度；错误定位到字段。"
+
+    REQ-005-017: "设备管理状态应与插件管理设备数弹窗中的对应设备状态一致。"
+
+    REQ-005-018: "上线时间为最近一次上线时间，重上线更新，离线保留。"
+
+    REQ-005-019: "禁止父子循环；不设固定最大深度；允许移动和跨产品类型；父有子时先处理子设备。"
+
+    REQ-005-020: "批量任一失败整体回滚，显示失败明细，用户整体重试；残留关系检查不纳入本阶段功能测试。"
+
+    REQ-005-021: "产品停用不影响已有绑定；存在绑定的产品不得删除；具体阻止提示按实际页面记录。"
+
+  pending: ["PDF REQ-005 章节逐条追溯", "运行时最终路由和标题", "REQ-005 专属 page/state/element/table 证据", "默认排序并列值和上线时间时区/格式/来源", "状态事件来源和插件弹窗一致性页面证据", "产品停用/删除后的新增关联页面反馈", "父子移动失败提示和跨租户边界", "批量失败明细、回滚和整体重试页面证据", "角色/租户矩阵和页面反馈稳定定位器"]
+
+roles:
+
+  - {name: "设备查看人员", responsibility: "在授权租户/业务范围内查看设备及关系"}
+
+  - {name: "设备管理员", responsibility: "按权限维护设备生命周期和父子关系"}
+
+  - {name: "分组管理员", responsibility: "按权限维护分组关系和批量分组"}
+
+  - {name: "产品管理员", responsibility: "维护产品状态和可绑定范围"}
+
+permission_status: "partial_pending_matrix"
+
+dependencies:
+
+  upstream: ["产品管理", "设备分组", "插件管理"]
+
+  downstream: ["首页统计", "数据采集", "数据监听", "数据推送", "告警", "其他业务引用"]
+
+  note: "依赖仅为范围拆分线索，未作为接口事实。"
+
+risks:
+
+  - {id: "R-005-01", level: "critical", description: "名称/序列号唯一性或租户范围错误", control: "确认作用域和页面校验，不记录真实值"}
+
+  - {id: "R-005-02", level: "critical", description: "父子设备或业务引用删除造成孤儿关系", control: "覆盖删除阻止矩阵，本阶段不删除"}
+
+  - {id: "R-005-03", level: "critical", description: "批量操作部分成功", control: "确认整体回滚、失败明细和整体重试，本阶段不写入"}
+
+  - {id: "R-005-04", level: "high", description: "状态、上线时间与排序语义不一致", control: "分离字段语义并以页面证据核对"}
+
+  - {id: "R-005-05", level: "high", description: "误用其他模块定位器", control: "保持 page_id_missing，不复用 page.json 其他模块对象"}
+
+test_design:
+
+  equivalence_partitions:
+
+    name: [unique, empty, duplicate_same_scope, invalid_default_rule]
+
+    serial: [unique, empty, duplicate, invalid_default_rule]
+
+    remark: [empty, whitespace, multiline, special_chars]
+
+    product: [active_available, inactive_existing_binding, deleted_existing_binding, unavailable_new, missing]
+
+    status: [unactivated, online, offline, reconnect]
+
+    hierarchy: [root, child, multi_level, different_product_type, cycle_attempt, parent_with_children]
+
+    group: [single, multiple, batch, duplicate_relation, conflict]
+
+    reference: [none, product, plugin, collection_task, other, all_cleared]
+
+    batch: [all_success, one_failure, rollback, failure_detail, whole_retry]
+
+    permission: [authorized, unauthorized, cross_tenant]
+
+  boundary_candidates: ["名称/序列号空、重复、非法字符和默认边界", "备注空白/换行/特殊字符", "产品绑定后换绑及停用/删除产品", "未激活/连接/断开/重连", "根/多级/跨产品/循环尝试", "重复分组/批量冲突", "任一引用/全部解除", "批量单项失败整体回滚", "排序相等值/升序与上线时间分离", "未授权/跨租户"]
+
+  decision_table: ["名称空或重复拒绝，唯一允许；编辑重新校验", "已有产品绑定保留，停用/删除产品不得新增关联", "未激活保持未激活，连接在线，断开离线，重连在线", "父有子删除拒绝，移动不得循环", "有引用仅删除拒绝，编辑/停用允许", "批量任一失败整体回滚并整体重试", "分组重复不新增关系，冲突有失败明细"]
+
+  state_transitions: ["未激活->在线->离线->在线", "根->子->多级->解绑/移动", "设备->多分组->移出", "无引用->有引用->删除拒绝->解除->删除允许", "批量->失败->回滚->整体重试"]
+
+  pict_model:
+
+    parameters: ["Name", "Serial", "Product", "Status", "Hierarchy", "Group", "Reference", "BatchResult", "Permission"]
+
+    constraints: ["IF [Name] = empty THEN [Permission] = authorized;", "IF [Hierarchy] = cycle_attempt THEN [BatchResult] = rollback;", "IF [Reference] IN {product, plugin, collection_task, other} THEN [BatchResult] <> success;", "IF [BatchResult] = one_failure THEN [BatchResult] = rollback;", "IF [Permission] IN {unauthorized, cross_tenant} THEN [BatchResult] <> success;"]
+
+    note: "仅为候选参数和约束，不生成或执行真实写操作。"
+
+automation_plan:
+
+  framework: "Playwright Python sync API / pytest-playwright"
+
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+
+  status: "blocked_pending_req005_page_contract"
+
+  allowed: ["复用登录态", "进入设备管理导航", "确认运行时路由/标题", "只读观察默认页和已存在数据", "记录脱敏页面事实"]
+
+  forbidden: ["新增", "编辑保存", "删除确认", "停用/激活写入", "父子修改", "分组变更", "批量删除/分组", "导入/导出", "写API", "绕过权限/安全"]
+
+  locator_priority: ["get_by_role", "get_by_test_id", "get_by_label", "get_by_placeholder", "get_by_text", "稳定属性", "CSS last"]
+
+  stop_conditions: ["配置缺失", "登录失败", "人工安全验证", "路由/主机不符", "权限失败", "页面契约缺失", "写操作提示", "未授权数据暴露"]
+
+data_preconditions:
+
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 或运行时配置读取。"
+
+  - "只读使用既有数据，不造设备、产品、分组、任务、引用或关系数据。"
+
+  - "不得在分析产物、page.json、截图、日志、DOM、报告或下载文件中写入敏感信息和未经授权业务数据。"
+
+  - "本次数据变更：无；清理状态：not_applicable。"
+
+readiness:
+
+  status: "blocked_pending_req005_page_contract"
+
+  reason: "最新 REQ-005-001 至 REQ-005-021 已结构化，但 page.json 未提供设备管理专属页面对象，无法冻结稳定页面自动化和 UI 验收契约。"
+
+handoff:
+
+  path: "02_analysis/HANDOFF/REQ-005_HANDOFF.md"
+
+  status: "blocked_pending_req005_page_contract"
+
+  next_inputs: ["REQ-005 页面采集", "路由/标题确认", "设备列表与表单定位器", "状态和插件联动证据", "上线时间/排序契约", "父子循环和移动反馈", "批量事务页面证据", "权限/租户矩阵"]
+

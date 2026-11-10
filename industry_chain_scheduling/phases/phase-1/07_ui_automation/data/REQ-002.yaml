@@ -1,0 +1,216 @@
+req_id: REQ-002
+module: 目标制定
+module_id: 669
+source: 04_testcases/TC_REQ-002.yaml
+fixture_policy: existing_system_data
+cases:
+  - case_id: TC-002-01
+    zentao_case_id: 47482
+    fixture_type: existing_system_data
+    natural_unique_key: target_goal_query_form
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_target_goal_query_form
+    execute: inspect_query_fields
+    assertions:
+      - query_form_has_year_field
+      - query_form_has_status_field
+  - case_id: TC-002-04
+    zentao_case_id: 47485
+    fixture_type: existing_system_data
+    natural_unique_key: target_goal_existing_year
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: choose_existing_target_year
+    execute: query_by_year
+    assertions:
+      - query_result_rows_match_selected_year
+  - case_id: TC-002-05
+    zentao_case_id: 47486
+    fixture_type: existing_system_data
+    natural_unique_key: target_goal_existing_status
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: choose_existing_target_status
+    execute: query_by_status
+    assertions:
+      - query_result_rows_match_selected_status
+  - case_id: TC-002-06
+    zentao_case_id: 47487
+    fixture_type: existing_system_data
+    natural_unique_key: target_goal_existing_year_status
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: choose_existing_year_and_status
+    execute: query_by_year_and_status
+    assertions:
+      - query_result_rows_match_selected_year_and_status
+  - case_id: TC-002-08
+    zentao_case_id: 47489
+    fixture_type: existing_system_data
+    natural_unique_key: target_goal_query_reset
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: choose_existing_query_values
+    execute: reset_query_conditions
+    assertions:
+      - query_values_restore_defaults
+  - case_id: TC-002-20
+    zentao_case_id: 47501
+    fixture_type: self_created
+    natural_unique_key: target_goal_year_annual_quantity
+    data_key_template: AUTO测试_勿用_{run_id}_year_2034
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_target_draft
+    execute: distribute_annual_quantity_by_month
+    assertions:
+      - twelve_month_values_are_equal
+      - twelve_month_total_equals_annual_quantity
+  - case_id: TC-002-27
+    zentao_case_id: 47508
+    fixture_type: self_created
+    natural_unique_key: target_goal_unused_year_draft
+    data_key_template: AUTO测试_勿用_{run_id}_year_{selected_year}
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_target_draft
+    execute: save_target_as_draft
+    assertions:
+      - target_status_is_draft
+      - target_is_not_submitted
+  - case_id: TC-002-28
+    zentao_case_id: 47509
+    fixture_type: self_created
+    natural_unique_key: target_goal_unused_year_pending_review
+    data_key_template: AUTO测试_勿用_{run_id}_year_{selected_year}
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_target_draft
+    execute: save_and_submit_target
+    assertions:
+      - target_status_is_pending_review
+  - case_id: TC-002-75
+    zentao_case_id: 47556
+    fixture_type: self_created
+    natural_unique_key: target_goal_submit_confirmation
+    data_key_template: AUTO测试_勿用_{run_id}_submit_confirmation
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_draft_target
+    execute: open_submit_confirmation_and_cancel
+    assertions:
+      - submit_confirmation_is_visible
+      - cancel_keeps_target_unchanged
+  - case_id: TC-002-77
+    zentao_case_id: 47558
+    fixture_type: existing_system_data
+    natural_unique_key: target_goal_pending_review_status
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: locate_existing_pending_review_target
+    execute: inspect_pending_review_status
+    assertions:
+      - target_status_is_pending_review
+  - case_id: TC-002-84
+    zentao_case_id: 47565
+    fixture_type: self_created
+    natural_unique_key: target_goal_year_2037_rejection
+    data_key_template: AUTO测试_勿用_{run_id}_year_2037
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_pending_review_target
+    execute: reject_target_with_reason
+    assertions:
+      - target_status_is_rejected
+  - case_id: TC-002-85
+    zentao_case_id: 47566
+    fixture_type: self_created
+    natural_unique_key: target_goal_year_2038_rejection_reason
+    data_key_template: AUTO测试_勿用_{run_id}_year_2038
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_pending_review_target
+    execute: validate_rejection_reason_required
+    assertions:
+      - empty_rejection_reason_is_blocked
+      - valid_rejection_reason_is_saved
+  - case_id: TC-002-86
+    zentao_case_id: 47567
+    fixture_type: self_created
+    natural_unique_key: target_goal_year_2039_approval
+    data_key_template: AUTO测试_勿用_{run_id}_year_2039
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_pending_review_target
+    execute: approve_target
+    assertions:
+      - target_status_is_approved
+      - no_second_confirmation_is_required
+  - case_id: TC-002-87
+    zentao_case_id: 47568
+    fixture_type: self_created
+    natural_unique_key: target_goal_year_2040_audit_metadata
+    data_key_template: AUTO测试_勿用_{run_id}_year_2040
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_pending_review_target
+    execute: approve_target_and_read_audit_metadata
+    assertions:
+      - audit_user_is_displayed
+      - audit_time_is_displayed
+  - case_id: TC-002-88
+    zentao_case_id: 47569
+    fixture_type: self_created
+    natural_unique_key: target_goal_delete_confirmation
+    data_key_template: AUTO测试_勿用_{run_id}_delete_confirmation
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_draft_target
+    execute: open_delete_confirmation_and_cancel
+    assertions:
+      - delete_confirmation_is_visible
+      - cancel_keeps_target_unchanged
+  - case_id: TC-002-90
+    zentao_case_id: 47571
+    fixture_type: self_created
+    natural_unique_key: target_goal_year_2041_delete
+    data_key_template: AUTO测试_勿用_{run_id}_year_2041
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_run_owned_draft_target
+    execute: delete_run_owned_target
+    assertions:
+      - target_is_removed_from_list

@@ -1,0 +1,247 @@
+req_id: REQ-004
+module: 制定排程
+module_id: 671
+source: 04_testcases/TC_REQ-004.yaml
+fixture_policy: existing_system_data_for_query_self_created_for_mutation
+cases:
+  # ===== 查询类（5 条 P1，只读，复用列表现有数据）=====
+  - case_id: TC-004-04
+    zentao_case_id: 47721
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_query_by_month
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_make_plan_list
+    execute: query_by_plan_month
+    assertions:
+      - query_result_rows_match_selected_month
+  - case_id: TC-004-05
+    zentao_case_id: 47722
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_query_by_status
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_make_plan_list
+    execute: query_by_plan_status
+    assertions:
+      - query_result_rows_match_selected_status
+  - case_id: TC-004-06
+    zentao_case_id: 47723
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_query_by_line
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_make_plan_list
+    execute: query_by_slaughter_line
+    assertions:
+      - query_result_rows_match_selected_line
+  - case_id: TC-004-07
+    zentao_case_id: 47724
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_query_combined
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_make_plan_list
+    execute: query_by_combined_conditions
+    assertions:
+      - query_result_rows_match_all_conditions
+  - case_id: TC-004-09
+    zentao_case_id: 47726
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_query_reset
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_make_plan_list
+    execute: reset_query_after_filter
+    assertions:
+      - query_form_restored_to_default
+      - list_refreshed
+  # ===== 制定排程计算/保存类（6 条 P1，自造数据，尝试自动清理）=====
+  - case_id: TC-004-51
+    zentao_case_id: 47768
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_template_autofill
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_pick_pending_day
+    execute: select_template_verify_autofill
+    assertions:
+      - survival_rate_matches_template
+      - segment_standards_match_template
+  - case_id: TC-004-55
+    zentao_case_id: 47772
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_restock_amount_calc
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required
+    execute: verify_restock_amount_formula
+    assertions:
+      - restock_amount_equals_slaughter_over_survival
+  - case_id: TC-004-57
+    zentao_case_id: 47774
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_restock_date_calc
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required
+    execute: verify_restock_date_formula
+    assertions:
+      - restock_date_equals_slaughter_date_minus_total_days_plus_one
+  - case_id: TC-004-69
+    zentao_case_id: 47786
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_hatch_amount_calc
+    creates_data: false
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required
+    execute: verify_hatch_amount_formula
+    assertions:
+      - hatch_amount_equals_restock_over_hatch_rate_over_chick_rate
+  - case_id: TC-004-77
+    zentao_case_id: 47794
+    fixture_type: self_created
+    natural_unique_key: make_plan_save_generates_code
+    data_key_template: AUTO测试_勿用_{RUN_ID}_TC-004-77
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required
+    execute: save_day_plan_verify_code_format
+    assertions:
+      - plan_code_matches_JH_YYYYMMDD_seq
+  - case_id: TC-004-81
+    zentao_case_id: 47798
+    fixture_type: self_created
+    natural_unique_key: make_plan_save_draft_status
+    data_key_template: AUTO测试_勿用_{RUN_ID}_TC-004-81
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required
+    execute: save_day_plan_verify_draft_status
+    assertions:
+      - saved_plan_status_is_draft
+  # ===== 编辑/提交/删除类（5 条 P1，自造数据驱动）=====
+  - case_id: TC-004-144
+    zentao_case_id: 47861
+    fixture_type: self_created
+    natural_unique_key: make_plan_edit_save_and_submit
+    data_key_template: AUTO测试_勿用_{RUN_ID}_TC-004-144
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_plan_then_open_edit
+    execute: save_and_submit_verify_pending_review
+    assertions:
+      - plan_status_becomes_pending_review
+  - case_id: TC-004-148
+    zentao_case_id: 47865
+    fixture_type: self_created
+    natural_unique_key: make_plan_submit_month_confirm_box
+    data_key_template: AUTO测试_勿用_{RUN_ID}_TC-004-148
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_plan_in_month
+    execute: click_submit_month_review_verify_dialog_then_cancel
+    assertions:
+      - submit_month_review_dialog_appears
+  - case_id: TC-004-150
+    zentao_case_id: 47867
+    fixture_type: self_created
+    natural_unique_key: make_plan_submit_month_status_change
+    data_key_template: AUTO测试_勿用_{RUN_ID}_TC-004-150
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_plan_in_exclusive_month
+    execute: submit_month_review_confirm_verify_status
+    assertions:
+      - draft_status_becomes_pending_review
+  - case_id: TC-004-160
+    zentao_case_id: 47877
+    fixture_type: self_created
+    natural_unique_key: make_plan_delete_confirm_box
+    data_key_template: AUTO测试_勿用_{RUN_ID}_TC-004-160
+    creates_data: true
+    cleanup_status: pending_user_confirmation
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_plan_then_query
+    execute: click_delete_verify_confirm_box_then_cancel
+    assertions:
+      - delete_confirm_box_appears
+  - case_id: TC-004-162
+    zentao_case_id: 47879
+    fixture_type: self_created
+    natural_unique_key: make_plan_delete_removed_from_list
+    data_key_template: AUTO测试_勿用_{RUN_ID}_TC-004-162
+    creates_data: true
+    cleanup_status: not_required
+    required_roles:
+      - 智控中心测试账号
+    prepare: create_draft_plan_then_query
+    execute: click_delete_confirm_verify_removed
+    assertions:
+      - record_removed_from_list
+  # ===== 智能推荐类（3 条 P1，页面只读核对，不保存）=====
+  - case_id: TC-004-175
+    zentao_case_id: 48827
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_recommend_backfill
+    creates_data: false
+    cleanup_status: not_created_read_only
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required
+    execute: select_candidate_verify_house_backfill
+    assertions:
+      - house_backfilled_after_candidate_confirm
+  - case_id: TC-004-176
+    zentao_case_id: 48861
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_recommend_score_order_first
+    creates_data: false
+    cleanup_status: not_created_read_only
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required_open_drawer
+    execute: verify_scores_under_order_first
+    assertions:
+      - scores_match_100_minus_distance_times_5
+  - case_id: TC-004-223
+    zentao_case_id: 48864
+    fixture_type: existing_system_data
+    natural_unique_key: make_plan_recommend_score_min_idle_first
+    creates_data: false
+    cleanup_status: not_created_read_only
+    required_roles:
+      - 智控中心测试账号
+    prepare: open_create_editor_fill_required_open_drawer
+    execute: verify_scores_under_min_idle_first
+    assertions:
+      - scores_match_idle_weighted_formula

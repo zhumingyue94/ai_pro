@@ -1,0 +1,66 @@
+req_id: REQ-006
+gate_passed: true
+exec_check:
+  command: python scripts/check_testcase_executability.py --project D:\01workspace\AItestcase\本仓库\projects\商品禽养殖 --req
+    REQ-006
+  errors: 0
+  warnings: 13
+  exit_code: 0
+checks:
+- id: CG1
+  name: exec_check_errors
+  passed: true
+- id: CG5
+  name: tp_coverage
+  passed: true
+issues: []
+csv_path: 05_case_review/006_出栏结算_测试用例.csv
+human:
+  rewrite_approved: false
+rewrite:
+  round: 0
+  max_rounds: 3
+  status: done
+  history: []
+trace:
+  source_tc: 04_testcases/TC_REQ-006.yaml
+  project: 商品禽养殖
+  status: approved
+next_agent: 06_zentao_sync
+csv_note: 评审通过后的现有 CSV 产物；远程同步需由 06_zentao_sync 取得明确授权
+delta_review:
+  date: '2026-07-21'
+  source: 01_requirements/需求变动.md 2026-7-21更新
+  scope: incremental
+  case_ids:
+  - TC-006-14
+  - TC-006-19
+  - TC-006-22
+  - TC-006-23
+  - TC-006-27
+  cases_reviewed: 5
+  delta_passed: true
+  results:
+  - case_id: TC-006-14
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-006-19
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-006-22
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-006-23
+    verdict: pass
+    errors: 0
+    warnings: 0
+  - case_id: TC-006-27
+    verdict: pass
+    errors: 0
+    warnings: 0
+  issues: []
+  warnings: []
+delta_review_note: 2026-07-21 增量用例评审 5 条；delta_passed=True；模块 gate 保持 True（未全量复评）

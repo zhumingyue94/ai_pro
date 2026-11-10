@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "req_id": "REQ-APP-024",
+  "req_name": "APP 上孵计划发货记录",
+  "description": "REQ-APP-024 原型页面状态与指定蓝湖设计图的映射关系。原型页面清单中对应页面为 app-plan-shipment-records，状态共 7 个；本文件保留 page.json 中的原始 state_id，不修改输入文件。",
+  "prototype_source": {
+    "source_file": "02_analysis/app/page_inventory/page.json",
+    "page_id": "app-plan-shipment-records",
+    "page_title": "上孵计划发货记录 - React 原型",
+    "route": "http://43.143.148.114:18885/biopark-breeding/m/orders/{发货单号}/plan-shipments/{上孵计划内部ID}",
+    "menu_path": ["首页", "雏苗发货", "发货执行", "上孵计划发货记录"],
+    "source_req_id_in_page_json": "REQ-APP-024",
+    "states": [
+      {"state_id":"app024-empty-notfound","state_name":"未找到上孵计划发货记录","description":"计划不存在或使用错误计划号直达时显示未找到提示"},
+      {"state_id":"app024-pending-hp021","state_name":"待发货且无发货记录","description":"待发货、0%进度、暂无发货记录"},
+      {"state_id":"app024-shipping-hp022","state_name":"发货中且存在多条记录","description":"发货中、67%进度、多条历史记录及列层明细"},
+      {"state_id":"app024-shipped-hp071","state_name":"已签收且已完成发货","description":"已签收、100%进度、已发完记录及列层明细"},
+      {"state_id":"app024-shipped-hp072","state_name":"已发货且存在多条记录","description":"已发货、100%进度、已发完与未发完记录并展示跨记录累计"},
+      {"state_id":"app024-shipping-record-expanded","state_name":"发货记录默认展开态","description":"原型验证为记录默认全部展开，无展开全部或折叠按钮"},
+      {"state_id":"app024-hp011-not-found","state_name":"指定计划未找到记录","description":"HP-011 直接访问显示未找到上孵计划发货记录"}
+    ]
+  },
+  "lanhu_design_source": {
+    "source_dir": "02_analysis/app/page_inventory/lanhu",
+    "designs": [
+      {"design_id":"a9d2b601-a477-41ff-a3e5-7110f8e2c9fb","design_name":"上孵计划发货记录","source_file":"02_analysis/app/page_inventory/lanhu/上孵计划发货记录_design.json","page_id":"lanhu-a9d2b601-a477-41ff-a3e5-7110f8e2c9fb","node_count":266,"max_depth":10,"size":"375px wide"}
+    ]
+  },
+  "mappings": [
+    {"prototype_state_id":"app024-empty-notfound","prototype_state_name":"未找到上孵计划发货记录","req_id":"REQ-APP-024","lanhu_design_id":null,"lanhu_design_name":null,"match_status":"unmatched","match_confidence":null,"match_basis":"原型为未找到错误状态；指定蓝湖设计图未发现明确的未找到提示页面。"},
+    {"prototype_state_id":"app024-pending-hp021","prototype_state_name":"待发货且无发货记录","req_id":"REQ-APP-024","lanhu_design_id":"a9d2b601-a477-41ff-a3e5-7110f8e2c9fb","lanhu_design_name":"上孵计划发货记录","match_status":"partial_matched","match_confidence":"low","match_basis":"设计图属于同一上孵计划发货记录页面，但节点内容主要呈现有记录页面，未确认包含“暂无发货记录”空状态。"},
+    {"prototype_state_id":"app024-shipping-hp022","prototype_state_name":"发货中且存在多条记录","req_id":"REQ-APP-024","lanhu_design_id":"a9d2b601-a477-41ff-a3e5-7110f8e2c9fb","lanhu_design_name":"上孵计划发货记录","match_status":"matched","match_confidence":"high","match_basis":"设计图包含上孵计划发货记录标题、发货单号、已发货状态、发货记录、多组累计字段及列层明细，覆盖有记录页面结构。"},
+    {"prototype_state_id":"app024-shipped-hp071","prototype_state_name":"已签收且已完成发货","req_id":"REQ-APP-024","lanhu_design_id":"a9d2b601-a477-41ff-a3e5-7110f8e2c9fb","lanhu_design_name":"上孵计划发货记录","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图可覆盖完成发货记录和列层明细结构，但设计图明确文本为“已发货”，无法仅凭设计图确认原型的“已签收”状态。"},
+    {"prototype_state_id":"app024-shipped-hp072","prototype_state_name":"已发货且存在多条记录","req_id":"REQ-APP-024","lanhu_design_id":"a9d2b601-a477-41ff-a3e5-7110f8e2c9fb","lanhu_design_name":"上孵计划发货记录","match_status":"matched","match_confidence":"high","match_basis":"设计图明确包含“已发货”、多组发货记录和累计数量字段，对应已发货有记录状态。"},
+    {"prototype_state_id":"app024-shipping-record-expanded","prototype_state_name":"发货记录默认展开态","req_id":"REQ-APP-024","lanhu_design_id":"a9d2b601-a477-41ff-a3e5-7110f8e2c9fb","lanhu_design_name":"上孵计划发货记录","match_status":"partial_matched","match_confidence":"medium","match_basis":"设计图包含完整发货记录内容，可覆盖展开后的记录展示；是否默认展开及是否存在折叠控件以原型验证为准。"},
+    {"prototype_state_id":"app024-hp011-not-found","prototype_state_name":"指定计划未找到记录","req_id":"REQ-APP-024","lanhu_design_id":null,"lanhu_design_name":null,"match_status":"unmatched","match_confidence":null,"match_basis":"该状态为 HP-011 直接访问的未找到页面，指定蓝湖设计图未呈现对应错误状态。"}
+  ],
+  "unmatched": {
+    "prototype_states":[
+      {"state_id":"app024-empty-notfound","state_name":"未找到上孵计划发货记录","reason":"未找到错误状态没有对应蓝湖设计图"},
+      {"state_id":"app024-hp011-not-found","state_name":"指定计划未找到记录","reason":"未找到 HP-011 对应设计图"}
+    ],
+    "lanhu_designs":[]
+  },
+  "summary": {"prototype_state_count":7,"lanhu_design_count":1,"mapping_count":7,"matched_count":2,"partial_matched_count":3,"unmatched_prototype_state_count":2,"unmatched_lanhu_design_count":0,"coverage_rate":"71%"},
+  "self_check": {"prototype_input_modified":false,"design_inputs_modified":false,"all_prototype_states_recorded":true,"all_designs_recorded":true,"matched_and_unmatched_recorded":true,"output_directory":"02_analysis/app/page_inventory/lanhu_page_mapping","output_file":"REQ-APP-024_lanhu_page_mapping.json"}
+}

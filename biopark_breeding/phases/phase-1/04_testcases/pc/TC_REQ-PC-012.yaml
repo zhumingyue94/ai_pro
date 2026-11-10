@@ -1,0 +1,1404 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-012
+title: 出入库记录
+module: 出入库记录
+zentao_module_id: 534
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-012
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-37859
+  title: 导出功能-导出数据正确性
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 导出文件中的各个字段数据与页面显示一致，数据正确
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出文件查看数据
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37859
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37859
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37860
+  title: 导出功能-表头字段与页面一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 导出文件的表头字段和页面表格一致
+  - action: 点击导出按钮
+    expected: ''
+  - action: 打开导出文件查看表头
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37860
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37860
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37861
+  title: 导出功能-筛选后导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、已设置筛选条件
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 导出文件中只包含筛选后的出入库记录信息
+  - action: 设置筛选条件并点击搜索
+    expected: ''
+  - action: 不勾选记录
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37861
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37861
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37862
+  title: 导出功能-未勾选默认全选导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 导出文件中包含全部出入库记录信息
+  - action: 不勾选任何记录
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37862
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37862
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37863
+  title: 导出功能-勾选记录导出
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、表格中有可勾选的记录
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 导出文件中只包含勾选的出入库记录信息
+  - action: 勾选一条或多条记录
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37863
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37863
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37864
+  title: 表格数据显示-上孵计划号显示规则正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 执行上孵任务产生的出入库记录显示上孵计划号，其他原因的记录没有上孵计划号
+  - action: 查看表格中上孵计划号列的数据
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37864
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37864
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37865
+  title: 表格数据显示-原因符合实际情况
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 原因显示符合实际情况：入库-手动显示&#039;种蛋挑选&#039;或&#039;其他&#039;，入库-自动显示&#039;盘点&#039;，出库-手动显示&#039;种蛋上孵&#039;、&#039;销售&#039;、&#039;更换仓库&#039;或&#039;其他&#039;，出库-自动显示&#039;种蛋上孵&#039;或&#039;盘点&#039;
+  - action: 查看表格中原因列的数据
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37865
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37865
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37866
+  title: 表格数据显示-方式显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 手动方式显示为&#039;手动&#039;，自动方式显示为&#039;自动&#039;
+  - action: 查看表格中方式列的数据
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37866
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37866
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37867
+  title: 表格数据显示-混装库位标记正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在混装库位的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 同一个库位号同时混装了多种蛋产生的虚拟库位记录，库位号标记&#039;混&#039;
+  - action: 查看表格中库位号列的数据
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37867
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37867
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37868
+  title: 表格表头-字段完整性验证
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表头包含：出/入库、仓库、仓库类型、库位号、养殖场、养殖批次、品种、产蛋日期、蛋重类型、平均蛋重、周龄、种蛋类型、数量、方式、原因、时间、上孵计划号、备注
+  - action: 查看表格表头
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37868
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37868
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37869
+  title: 操作人筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在包含关键字的操作人数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示操作人包含搜索内容的记录数据
+  - action: 在操作人输入框中输入关键字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37869
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37869
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37870
+  title: 仓库类型筛选-选择二级蛋蛋库
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示仓库类型为二级蛋蛋库的记录数据
+  - action: 在仓库类型下拉选择框中选择&#039;二级蛋蛋库&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37870
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37870
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37871
+  title: 种蛋类型筛选-选择二级蛋
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在二级蛋的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示种蛋类型为二级蛋的记录数据
+  - action: 在种蛋类型下拉选择框中选择&#039;二级蛋&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37871
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37871
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37872
+  title: 产蛋日期筛选-正常区间选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在指定日期范围内的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示指定日期范围内的记录数据
+  - action: 在产蛋日期时间区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37872
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37872
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37873
+  title: 蛋重类型筛选-正常单选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在多个蛋重类型的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示选中蛋重类型对应的记录数据
+  - action: 在蛋重类型下拉选择框中选择一个蛋重类型
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37873
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37873
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37874
+  title: 平均蛋重筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在指定平均蛋重的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示符合该平均蛋重的记录数据
+  - action: 在平均蛋重输入框中输入数字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37874
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37874
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37875
+  title: 周龄筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在指定周龄的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示符合该周龄的记录数据
+  - action: 在周龄输入框中输入数字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37875
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37875
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37876
+  title: 品种筛选-正常单选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在多个品种的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示选中品种对应的记录数据
+  - action: 在品种下拉选择框中选择一个品种
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37876
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37876
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37877
+  title: 养殖批次筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在包含关键字的养殖批次数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示养殖批次包含搜索内容的记录数据
+  - action: 在养殖批次输入框中输入关键字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37877
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37877
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37878
+  title: 养殖场筛选-正常单选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在多个养殖场的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示选中养殖场对应的记录数据
+  - action: 在养殖场下拉选择框中选择一个养殖场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37878
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37878
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37879
+  title: 计划号筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在包含关键字的计划号数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示计划号包含搜索内容的记录数据
+  - action: 在计划号输入框中输入关键字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37879
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37879
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37880
+  title: 原因筛选-选择其他
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在其他原因的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示原因为其他的记录数据
+  - action: 在原因下拉选择框中选择&#039;其他&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37880
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37880
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37881
+  title: 原因筛选-选择盘点
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在盘点原因的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示原因为盘点的记录数据
+  - action: 在原因下拉选择框中选择&#039;盘点&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37881
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37881
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37882
+  title: 原因筛选-选择更换仓库
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在更换仓库原因的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示原因为更换仓库的记录数据
+  - action: 在原因下拉选择框中选择&#039;更换仓库&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37882
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37882
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37883
+  title: 原因筛选-选择销售
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在销售原因的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示原因为销售的记录数据
+  - action: 在原因下拉选择框中选择&#039;销售&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37883
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37883
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37884
+  title: 原因筛选-选择种蛋上孵
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在种蛋上孵原因的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示原因为种蛋上孵的记录数据
+  - action: 在原因下拉选择框中选择&#039;种蛋上孵&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37884
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37884
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37885
+  title: 原因筛选-选择种蛋挑选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在种蛋挑选原因的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示原因为种蛋挑选的记录数据
+  - action: 在原因下拉选择框中选择&#039;种蛋挑选&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37885
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37885
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37886
+  title: 方式筛选-选择自动
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在自动方式的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示方式为自动的记录数据
+  - action: 在方式下拉选择框中选择&#039;自动&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37886
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37886
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37887
+  title: 方式筛选-选择手动
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在手动方式的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示方式为手动的记录数据
+  - action: 在方式下拉选择框中选择&#039;手动&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37887
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37887
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37888
+  title: 出/入库筛选-选择出库
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在出库类型的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示出/入库类型为出库的记录数据
+  - action: 在出/入库下拉选择框中选择&#039;出库&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37888
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37888
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37889
+  title: 出/入库筛选-选择入库
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在入库类型的记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示出/入库类型为入库的记录数据
+  - action: 在出/入库下拉选择框中选择&#039;入库&#039;
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37889
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37889
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37890
+  title: 出入库日期筛选-正常区间选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在指定日期范围内的出入库记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示指定日期范围内的出入库记录数据
+  - action: 在出入库日期时间区间选择器中选择开始和结束时间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37890
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37890
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37891
+  title: 库位号筛选-正常输入
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在包含关键字的库位号数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示库位号包含搜索内容的出入库记录数据
+  - action: 在库位号输入框中输入关键字
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37891
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37891
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37892
+  title: 仓库筛选-正常多选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在多个二级蛋库的出入库记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示选中二级蛋库对应的出入库记录数据
+  - action: 在仓库下拉选择框中选择多个二级蛋库
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37892
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37892
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-37893
+  title: 孵化场筛选-正常多选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出入库记录
+  preconditions:
+  - 1、用户登录成功并且有二级蛋库出入库记录菜单权限
+  - 2、系统中存在多个孵化场的出入库记录数据
+  steps:
+  - action: 登录后进入库存管理-二级蛋库-出入库记录
+    expected: 表格中只显示选中孵化场对应的出入库记录数据
+  - action: 在孵化场下拉选择框中选择多个孵化场
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出入库记录
+    zentao_module_id: 534
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-012
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 37893
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 37893
+    raw_module: /一期/pc/库存管理/二级蛋库(#527)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

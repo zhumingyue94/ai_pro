@@ -1,0 +1,340 @@
+id: AUTO_CASE_REQ-006
+req_id: REQ-006
+module: 出栏结算
+upstream_gate_passed: true
+trace:
+  req: REQ-006
+  source_tc: 04_testcases/TC_REQ-006.yaml
+  source_case_review: 05_case_review/REV_CASE_REQ-006.yaml
+  project: 商品禽养殖
+summary:
+  total: 43
+  auto: 38
+  manual: 5
+items:
+- case_id: TC-006-01
+  tp_id: TP-006-01
+  automation: manual
+  matched:
+  - 闭环
+  reason: 控件存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-006-02
+  tp_id: TP-006-02
+  automation: manual
+  matched:
+  - 闭环
+  reason: 按钮存在性壳层，非高频/核心/稳定业务断言
+- case_id: TC-006-03
+  tp_id: TP-006-03
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 下拉占位与选项来源可脚本抽样对账
+- case_id: TC-006-04
+  tp_id: TP-006-04
+  automation: manual
+  matched:
+  - 闭环
+  reason: 月份控件形态壳层，非核心业务断言
+- case_id: TC-006-05
+  tp_id: TP-006-05
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 查询不自动刷新/点查询后刷新主路径
+- case_id: TC-006-06
+  tp_id: TP-006-06
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 按批次查询过滤主路径
+- case_id: TC-006-07
+  tp_id: TP-006-07
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 按出栏月份查询过滤主路径
+- case_id: TC-006-08
+  tp_id: TP-006-08
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 批次+月份 AND 查询主路径
+- case_id: TC-006-09
+  tp_id: TP-006-09
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 无匹配空态可脚本断言
+- case_id: TC-006-10
+  tp_id: TP-006-10
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 重置条件并刷新主路径
+- case_id: TC-006-11
+  tp_id: TP-006-11
+  automation: manual
+  matched:
+  - 闭环
+  reason: 列表标题文案壳层
+- case_id: TC-006-12
+  tp_id: TP-006-12
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 表头列顺序可脚本断言
+- case_id: TC-006-13
+  tp_id: TP-006-13
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出/详情入口可见且无新增编辑可脚本断言
+- case_id: TC-006-14
+  tp_id: TP-006-14
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 结算日期与计划出栏日对账主规则
+- case_id: TC-006-15
+  tp_id: TP-006-15
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 结算只数不对账日志存栏可脚本断言
+- case_id: TC-006-16
+  tp_id: TP-006-16
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 只数>上苗仍展示/成活率可>100%可脚本断言
+- case_id: TC-006-17
+  tp_id: TP-006-17
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 结算重量不对账日志转运体重可脚本断言
+- case_id: TC-006-18
+  tp_id: TP-006-18
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 上苗数量跨模块对账主规则
+- case_id: TC-006-19
+  tp_id: TP-006-19
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 总料量区间累计对账主规则
+- case_id: TC-006-20
+  tp_id: TP-006-20
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 空总料量时料肉比/欧指为空可脚本断言
+- case_id: TC-006-21
+  tp_id: TP-006-21
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 均重公式主规则
+- case_id: TC-006-22
+  tp_id: TP-006-22
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 饲养天数公式主规则
+- case_id: TC-006-23
+  tp_id: TP-006-23
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  reason: 出栏日龄=饲养天数及结算日=出栏日主规则
+- case_id: TC-006-24
+  tp_id: TP-006-24
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 日增重公式可脚本断言
+- case_id: TC-006-25
+  tp_id: TP-006-25
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 成活率公式可脚本断言
+- case_id: TC-006-26
+  tp_id: TP-006-26
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 料肉比公式可脚本断言
+- case_id: TC-006-27
+  tp_id: TP-006-27
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 欧指公式主规则
+- case_id: TC-006-28
+  tp_id: TP-006-28
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 分页总条数/每页条数可脚本断言
+- case_id: TC-006-29
+  tp_id: TP-006-29
+  automation: manual
+  matched:
+  - 闭环
+  reason: 省略与悬停全文偏视觉判定，暂不入选
+- case_id: TC-006-30
+  tp_id: TP-006-30
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 打开结算详情只读弹窗主路径
+- case_id: TC-006-31
+  tp_id: TP-006-31
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 详情头区只读字段可脚本断言
+- case_id: TC-006-32
+  tp_id: TP-006-32
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 详情与列表字段一致可脚本断言
+- case_id: TC-006-33
+  tp_id: TP-006-33
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 料肉比说明悬浮文案可脚本断言
+- case_id: TC-006-34
+  tp_id: TP-006-34
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 欧指说明悬浮文案可脚本断言
+- case_id: TC-006-35
+  tp_id: TP-006-35
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 成品入库明细列清单可脚本断言
+- case_id: TC-006-36
+  tp_id: TP-006-36
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 子表无增删且不可编辑可脚本断言
+- case_id: TC-006-37
+  tp_id: TP-006-37
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 有/无同步数据子表展示与空态可脚本断言
+- case_id: TC-006-38
+  tp_id: TP-006-38
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 关闭详情后列表不变可脚本断言
+- case_id: TC-006-39
+  tp_id: TP-006-39
+  automation: auto
+  matched:
+  - 闭环
+  - 高频
+  - 核心
+  reason: 导出按查询条件下载主路径
+- case_id: TC-006-40
+  tp_id: TP-006-40
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出列覆盖列表业务列可脚本断言
+- case_id: TC-006-41
+  tp_id: TP-006-41
+  automation: auto
+  matched:
+  - 闭环
+  - 稳定
+  reason: 空结果导出不崩溃可脚本断言
+- case_id: TC-006-42
+  tp_id: TP-006-42
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 导出不改变查询与列表可脚本断言
+- case_id: TC-006-43
+  tp_id: TP-006-43
+  automation: auto
+  matched:
+  - 闭环
+  - 核心
+  - 稳定
+  reason: 变更查询后导出范围联动可脚本断言
+actions:
+  yaml_updated: true
+  csv_path: 05_case_review/006_出栏结算_测试用例.csv

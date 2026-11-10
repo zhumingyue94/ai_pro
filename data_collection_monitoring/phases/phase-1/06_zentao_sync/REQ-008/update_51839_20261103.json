@@ -1,0 +1,18 @@
+{
+  "status": "validated",
+  "operation": "update",
+  "case_id": "TC-REQ-008-017",
+  "zentao_case_id": 51839,
+  "target": {"import_target": "project", "project_id": 46, "product_id": 8, "module_id": 746},
+  "remote_version": 7,
+  "remote_step_count": 5,
+  "validation": {
+    "readback": "validated",
+    "stable_id_update": true,
+    "delete_recreate": false,
+    "type_and_status_non_clearable_merged_into_expectation_3": true,
+    "required_field_validation_in_step_4": true,
+    "save_blocked_when_required_fields_empty": true
+  },
+  "definition": "将目标类型和目标状态不可清空合并到期望3；步骤4保持目标名称、请求地址和请求方法为空并点击确定，校验必填提示和表单不可保存。"
+}

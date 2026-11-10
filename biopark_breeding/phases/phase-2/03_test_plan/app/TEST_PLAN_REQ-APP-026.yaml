@@ -1,0 +1,83 @@
+plan_id: TEST_PLAN-REQ-APP-026
+title: APP测试计划 - 存发苗间库存查询
+status: draft
+source_inputs:
+- 01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx
+- 01_requirements/需求变动.md
+- 02_analysis/app/REQ-APP-026.yaml
+- 02_analysis/app/page_inventory/page.json
+- .env
+- ../../../../.agents/references/test-plan.schema.json
+trace:
+  story: 存发苗间库存查询
+  req: REQ-APP-026
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+objective: 在二期未提供专属 APP 页面证据的前提下，规划库存查询与自动出库联动、追溯、一致性、风险和契约补充边界；不虚构页面、字段、接口或定位器。
+scope:
+  in_scope:
+  - 存发苗间库存查询范围、批次/上孵计划/发货出库记录追溯。
+  - 自动出库后的库存扣减、库存不足不负库存和并发查询一致性规划。
+  - 一期功能复用、二期页面/权限/查询契约的待确认和阻塞管理。
+  out_scope:
+  - page.json 未出现的库存页面、路由、状态、字段、按钮、菜单、定位器和错误码。
+  - 手工库存调整、未授权库存数据和自动化脚本。
+strategy:
+- 使用等价类/边界值覆盖库存为零、正数、充足/不足、批次存在/不存在、关联存在/缺失和发货前后查询时点。
+- 使用判定表评估自动出库是否完成、库存是否足够、关联排列顺序、查询权限和并发读一致性。
+- 使用状态转换规划发货前库存、出库后库存、失败/重试和数据恢复；具体状态待契约确认。
+- 使用 Pairwise/2-way 评估库存状态、批次、关联、查询时点、权限和服务响应组合；缺失值标记待确认。
+- Web/Playwright 仅规划已采集 app022 发货入口及跨服务回读证据，禁止编造库存页面定位器或脚本。
+- 证据规划为脱敏库存摘要、出库回读、关联键和清理状态；查询本身只读，发货联动变更需授权。
+environment:
+  client: APP移动端Web/移动端模拟
+  os: win32；正式执行记录实际客户端版本
+  browser: Chromium headed；仅规划已采集 APP 入口证据
+  base_url: ${UI_TEST_URL}
+  page_path: 二期未提供专属 APP 页面路由，当前阻塞
+  portal_entry: 种禽孵化管理系统 / APP / 存发苗间库存查询
+  login: 原型和 page.json 未提供本模块专属登录/页面证据；正式环境凭据仅从 .env 或运行时环境读取，不写入计划、日志或证据
+data:
+  required:
+  - 存发苗间库存零值、正数、充足/不足和多批次样本。
+  - 上孵计划关联、发货出库记录、发货前后库存和并发查询样本。
+  - 授权查询角色、可回读的脱敏库存摘要和清理责任。
+  preparation: 库存/发货服务和测试数据负责人准备一期复用契约、脱敏数据、权限、查询一致性口径和清理状态；二期专属页面和字段补齐前保持 blocked。
+roles:
+- 测试：规划查询、联动、追溯和阻塞证据。
+- 库存服务负责人：确认库存扣减、并发读和不负库存。
+- 发货服务负责人：确认自动出库来源和回读关联。
+- 业务负责人：确认批次、存发苗间和查询口径。
+- 平台权限/实施：准备查询角色和数据隔离。
+dependencies:
+- 存发苗间库存服务
+- APP-022 发货执行和自动出库
+- 上孵计划与园区基础数据
+- 发货出库记录
+priority: P1：库存扣减、查询追溯和不负库存；P2：并发一致性、权限、性能和兼容性
+risks:
+- page.json input_missing 且未发现 APP-026 二期专属页面，页面、环境、证据和自动化规划均受阻。
+- 发货成功但库存未扣减或查询读到旧数据。
+- 一期复用范围、查询字段、权限和错误状态未确认。
+open_questions:
+- 一期库存页面/接口现行契约及二期是否仅复用。
+- 查询条件、字段、分页、排序、权限码和错误状态。
+- 发货后库存查询的一致性时点和并发读协议。
+entry_criteria:
+- 需求、变动、REQ-APP-026.yaml、page.json、.env 和 Schema 可读取。
+- 缺失页面证据、一期复用和接口契约风险已登记为阻塞/待确认。
+- 脱敏数据、授权查询角色、证据目录和清理责任准备完成。
+exit_criteria:
+- 查询、联动、追溯、风险、依赖、数据、证据和阻塞项完整。
+- 三类套件仅表达计划范围，不生成测试点/用例/脚本。
+- YAML 通过 Schema，缺失页面和契约项已交接。
+evidence:
+- 02_analysis/app/page_inventory/page.json：未发现 APP-026 二期专属页面、状态或元素 ID；仅可引用已采集的发货执行入口作为跨模块依赖。
+- 需求分析：02_analysis/app/REQ-APP-026.yaml 的 required_data、dependencies 和 mutation_boundary。
+- 正式补充后保存脱敏库存摘要、出库回读、关联键、环境版本和清理状态；不得保存凭据、Cookie 或未授权业务数据。
+suites:
+  Smoke: 仅规划库存查询入口/一期复用契约确认、发货前后库存回读可达性；当前因缺少专属页面证据保持 blocked。
+  Targeted: 规划零值/正数/不足、批次和关联追溯、自动出库扣减、不负库存、并发读、权限和错误契约。
+  Full: 规划完整查询维度、状态转换、判定表、Pairwise、跨服务一致性、性能、兼容性和与自动出库边界回归；未确认项保持 blocked。
+next_stage: testcase-generation-agent

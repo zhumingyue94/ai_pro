@@ -1,0 +1,124 @@
+plan_id: TEST_PLAN-REQ-003
+title: 数据采集监控平台产品管理测试计划
+status: draft
+source_inputs:
+  - 01_requirements/数据监控平台使用文档.pdf
+  - 01_requirements/需求变动.md
+  - 01_requirements/模块拆分清单.md
+  - 02_analysis/REQ-003.yaml
+  - 02_analysis/REQ-003.md
+  - 02_analysis/page_inventory/page.json
+  - 02_analysis/page_inventory/logs/req003-exploration.txt
+  - .env
+  - config.yaml
+  - ../../../.agents/references/test-plan.schema.json
+trace:
+  story: 产品管理页面与产品关联规则只读验证规划
+  req: REQ-003
+  project: 数据采集监控平台
+  version: 1
+  status: draft
+objective: 基于 REQ-003 分析、需求变动、正式需求来源和 page.json 已采集的 product_management 页面事实，规划页面身份、默认列表、产品名称/ProductKey筛选、查询、重置、刷新、表头设置、分页、排序和导出控件，以及产品字段、分类、设备类型、媒体、状态、物模型入口和关联限制的限定范围只读验证；采用等价类、边界值、判定表、状态转换和 Pairwise/2-way 策略，保留 collection_status=partial、弹窗/状态/导出/上传/权限定位缺失、停用与产品数量规则差异和跨模块契约待确认风险；本阶段只输出测试计划，不执行业务写操作。
+scope:
+  in_scope:
+    - 运行时确认产品管理页面路由、标题、菜单路径和可达性；以 page.json product_management 页面事实为参考，最终以运行时身份为准。
+    - 只读观察 product_management_default 状态中的产品名称、ProductKey筛选、查询、重置、刷新、表头设置、导出、新增、查看、编辑、物模型、删除、九列表格和分页元素。
+    - 规划筛选、查询、重置、刷新、空结果、分页首末页/页大小/跳转、默认创建时间倒序和表头设置展示；导出仅规划控件与契约边界观察，不下载业务数据。
+    - 规划编辑页只读打开、ProductKey/重新生成、产品名称、分类、三种设备类型、联网方式、地址配置、ALink、更多配置、描述、确认/取消控件和更多配置展开；仅取消，不提交更新。
+    - 规划新增/查看/物模型/删除入口的可见性与安全取消边界；page.json 已明确 product_management_dialogs_partial，缺少稳定弹窗定位器时不扩展为完整 CRUD 事实。
+    - 规划产品名称必填与同租户唯一、ProductKey自动生成/可修改/唯一、启用分类选择、分类停用/改名/删除关联、设备类型建立后不可修改、图片/图标空值/常见格式/替换和上传失败规则的只读证据准备。
+    - 规划未发布/已发布/撤回/停用/再发布、状态与版本、物模型编辑/新版本/兼容/发布失败回滚、在线设备保护、设备/采集任务/推送/告警关联删除阻断，以及编辑/改分类/发布/撤回允许边界的批准数据回读；本阶段不发布、不撤回、不停用、不删除、不上传、不修改物模型。
+    - 规划租户隔离、查看/维护/物模型/管理员角色、权限失败、加载/异步状态、异常提示、接口契约和数据安全责任；不以按钮可见性推断权限。
+  out_scope:
+    - 真实新增、编辑、发布、撤回、停用、删除、图片上传、物模型修改/发布、导出下载、接口写入和造数。
+    - 分类模块、设备运行时协议、采集任务/推送/告警内部实现、数据库实现、接口测试、错误码、审计实现、性能 SLA、压力、缓存和文件传输实现。
+    - 表头设置持久化、跨页面/重新登录恢复及未授权的临时文件验证；仅观察已采集表头设置展示。
+    - 具体未确认的长度、字符、并发、性能、图片文件数量/大小/尺寸、导出上限和错误码规则，不将默认规则写成已确认事实。
+    - page.json 未出现的按钮、字段、菜单、弹窗、状态、错误码、定位器或数据；不将 partial 采集补成完整原型事实。
+    - 测试点、测试用例、CSV、禅道数据、注册表和 UI 自动化脚本。
+strategy:
+  - 采用黑盒、只读、风险优先策略；以 REQ-003-001 至 REQ-003-015、REQ-003.yaml、REQ-003.md 和 page.json product_management 页面为基线。partial 或缺少证据时记录待确认/无法验证/blocked，不据此判失败。
+  - 使用等价类覆盖 Auth、Permission、Name、ProductKey、Category、DeviceType、Media、State、Model、Association、Export、Action、Result；名称/ProductKey覆盖合法、空、空白、同租户重复、其他租户同名/重复、特殊字符和系统默认边界，分类覆盖启用/停用/缺失/改名/被引用，媒体覆盖无/合法/非法/替换。
+  - 使用边界值覆盖名称/ProductKey空值、空白、默认长度/字符边界待确认、三种设备类型建立前选择与建立后不可编辑、媒体空值/格式/替换、状态迁移节点、物模型兼容/不兼容、关联资源有无、分页首末页/空列表、筛选刷新后的创建时间倒序和导出敏感字段/上限待确认。
+  - 使用判定表评估名称/ProductKey校验、停用分类不可选且已有产品保留、设备类型不可修改、有关联删除阻止但其他允许、物模型不兼容/发布失败阻止或回滚、筛选导出字段一致且不含隐藏敏感信息、筛选/分页/刷新保持倒序、无权限/会话过期停止业务验证；只读阶段仅观察已采集页面状态和批准回读证据。
+  - 使用状态转换覆盖未认证->登录页->门户->product_management_default、无筛选->筛选->分页/刷新、编辑打开->更多配置->取消、产品草稿->校验/取消、未发布->已发布->撤回/停用/再发布、物模型草稿->发布新版本->兼容/失败回滚、无关联->有关联->删除阻止、导出准备->成功/失败提示待确认；不把未采集状态写成事实。
+  - Pairwise/2-way 评估 Auth、Permission、Name、ProductKey、Category、DeviceType、Media、State、Model、Association、Action、Result。约束包括只读权限仅允许 query/view/reset/refresh；新增/编辑且名称为空为校验失败；删除且存在关联为 blocked_by_reference；物模型不兼容为 incompatible/rollback；非完整权限导出为 permission_error；编辑时已建立设备类型保持不可修改。模型用于计划设计，不生成或执行测试数据。
+  - Playwright Python/pytest-playwright 仅规划自动化范围：复用 login_page.py 和 portal_navigation.py，优先 role/name、accessible label、确认的 data-testid、page.json element mapping、表格行上下文和可见文本；CSS 只使用 page.json 已确认的最后手段。仅自动化进入页面、筛选/分页/表格/表头/编辑页只读与取消；新增/查看/物模型/删除/状态/导出/上传区域因证据不完整保持人工或 blocked。
+  - Web 执行采用导航后等待可观察状态、操作前后页面比对、脱敏截图/DOM/日志证据；禁止固定等待、未确认定位器、提交保存发布撤回停用删除、上传、下载业务数据、接口写入和绕过权限/安全验证。
+environment:
+  client: PC Web
+  os: win32；正式执行前记录实际客户端版本
+  browser: Chromium；Playwright Python 规划可视模式 headless=False
+  base_url: ${UI_TEST_URL}
+  page_path: /biopark-iot/iot/device/product
+  portal_entry: 数据采集监控平台 / 数据采集 / 设备接入 / 产品管理；page.json 已登记菜单路径，正式执行以运行时确认结果为准
+  login: 使用测试账号登录；凭据仅从 UI_TEST_USERNAME、UI_TEST_PASSWORD、UI_TEST_TENANT 运行时读取，不写入计划、日志或证据；需确认正式页面权限、租户和访问范围
+data:
+  required:
+    - 已批准的只读产品管理访问账号、产品查看/维护/物模型维护/管理员角色和当前租户上下文；不将账号、密码、租户值写入产物。
+    - 已存在且经授权可读的未发布、已发布、撤回、停用或状态边界产品，包含无关联及有关联设备/采集任务/推送配置/告警规则的样本；本计划不造数。
+    - 可观察的启用/停用分类、分类改名/被引用、三种设备类型、ProductKey唯一性、媒体空值/合法/非法、分页多页/空结果、创建时间和加载/失败反馈条件；无数据时记录无法验证。
+    - 可回读设备、采集任务、推送、告警和物模型页面中产品唯一编号、关联删除阻断、状态/版本、兼容性及在线设备保护的批准脱敏证据；跨模块未准备时保持待确认。
+    - 可观察 product_management_default、product_management_columns_expanded、product_management_edit、product_management_more_expanded 状态；product_management_dialogs_partial 的新增/查看/物模型/删除弹窗定位器、状态转换、导出、上传和失败提示需执行前确认。
+  preparation: 由测试、业务/产品、平台权限、研发及设备/数据配置/关联模块负责人准备脱敏只读数据、租户/权限确认、正式路由和定位器复核、跨模块证据目录；本计划不修改业务数据，清理状态为 not_applicable。
+roles:
+  - 测试：执行限定范围只读页面、筛选、分页、表头、编辑取消和证据观察，不执行写操作。
+  - 产品/业务负责人：确认名称/ProductKey、分类、设备类型、媒体、状态、物模型、关联删除、导出和排序口径。
+  - 平台权限负责人：准备查看/维护/物模型/管理员角色、租户隔离和访问范围样本。
+  - 研发：确认正式路由、字段来源、状态/版本/失败反馈、唯一编号和稳定定位器。
+  - 设备/数据配置/关联模块负责人：提供产品与设备、采集、推送、告警、物模型的批准跨模块只读回读证据。
+  - 测试设计：在计划通过后消费范围和策略生成下游测试设计产物。
+dependencies:
+  - REQ-001 首页、REQ-002 产品分类：提供入口、分类选项、分类状态/改名/关联上下文；不代表依赖模块实现已验收。
+  - REQ-005 设备管理、REQ-007 数据监听、REQ-008 数据推送、REQ-009 数据采集、REQ-010 告警配置及设备/任务/推送/告警关联：提供批准的只读回读证据。
+  - 登录、权限、租户上下文：控制页面可达性、角色范围和数据隔离。
+  - page.json product_management 页面、日志、脱敏 DOM/截图证据；collection_status=partial。
+  - 公共页面对象 07_ui_automation/pages/common/login_page.py、07_ui_automation/pages/common/portal_navigation.py。
+  - 运行时配置键 UI_TEST_URL、UI_TEST_USERNAME、UI_TEST_PASSWORD、UI_TEST_TENANT；只引用键名，不复制值。
+priority: P0：页面身份和可达性、默认列表、名称/ProductKey筛选、查询/重置/刷新、九列表格、分页、编辑页只读/取消、设备类型不可修改边界；P1：分类、媒体、状态/版本、物模型、关联删除阻断、排序、权限租户和跨模块回读；P2：表头展示、导出、上传、弹窗、异常/并发/回滚契约、兼容性和性能目标待确认
+risks:
+  - page.json collection_status=partial；product_management_dialogs_partial 的弹窗定位状态为 missing，新增/查看/物模型/删除字段、确认按钮和反馈不完整；影响 critical；运行时补采，未确认前保持人工/blocked。
+  - 状态/版本/物模型发布、兼容性、失败回滚、在线设备保护和“停用”能力证据不足；影响 critical；本阶段仅批准数据回读，不执行状态写操作。
+  - 关联产品误删可能影响设备、采集、推送或告警链路；影响 critical；只读核验删除阻止和页面提示，写操作需隔离数据与授权。
+  - 产品名称/ProductKey租户内唯一性、自动生成、编辑和并发冲突规则待确认；影响 high；准备既有数据和需求责任人确认，不写入真实数据。
+  - 分类启停/改名/删除与产品关联处理可能导致分类失联；影响 high；核验启用选择、已有产品保留、删除阻止和改名同步的批准回读。
+  - 导出字段、敏感信息过滤、筛选结果、数据上限、失败提示和临时清理契约待确认；影响 high；本计划不下载业务文件，仅规划证据。
+  - 产品数量/版本兼容字段和页面显示边界可能与需求表述不一致；影响 medium；以 page.json 已登记九列和 REQ-003-014 约束为页面基准，差异转待确认。
+  - .env 和配置可能包含敏感值；影响 high；产物只引用键名，禁止保存地址、账号、密码、租户、Token、Cookie、ProductKey、产品名称或未授权业务数据。
+open_questions:
+  - 正式 PDF 中 REQ-003 章节与 REQ-003-001 至 REQ-003-015 的逐条追溯关系是否完成？
+  - 正式环境最终路由、标题、菜单路径是否与 page.json 的 product_management 事实一致？
+  - 新增/查看/物模型/删除弹窗的实际字段、确认按钮、状态反馈和稳定定位器是什么？
+  - 当前页面是否具备停用能力；若无，REQ-003-006 的状态规则如何与 REQ-003-015 对齐？
+  - 产品状态、版本、物模型发布、兼容性、失败回滚和在线设备保护如何通过批准的只读证据确认？
+  - 产品名称/ProductKey长度、字符、唯一性、自动生成、并发冲突和租户范围的正式规则是什么？
+  - 启用/停用分类、改名/删除关联、产品选择和跨模块刷新如何提供可复核回读证据？
+  - 图片/图标常见格式、数量/大小/尺寸、上传失败提示和替换行为的正式契约是什么？
+  - 导出字段、筛选、隐藏敏感信息、上限、失败提示和临时文件清理如何验证，且是否允许下载隔离数据？
+  - 查看/维护/物模型/管理员角色、租户隔离、审计和数据权限矩阵是什么？
+entry_criteria:
+  - REQ-003.yaml、REQ-003.md、需求变动.md、page.json、.env/config.yaml 和 ../../../.agents/references/test-plan.schema.json 可读取，REQ-ID、模块、页面和路由身份一致。
+  - page.json 已检查并登记 collection_status=partial、product_management 路由/标题/菜单、product_management_default、product_management_columns_expanded、product_management_edit、product_management_more_expanded、部分弹窗状态，以及默认列表元素、九列和分页元素；未确认事实已明确为待确认。
+  - 只读账号/权限、租户、脱敏产品/关联数据、跨模块回读责任、正式路由和证据目录已准备或转为 report_only 风险。
+  - 需求追溯、范围责任、系统性设计、Pairwise 约束、自动化边界和停止条件已评审。
+exit_criteria:
+  - YAML 通过 test-plan.schema.json，未新增字段且不含 tp/tp_id；Markdown 与 YAML 的范围、策略、风险、准入/准出、证据和套件建议一致。
+  - 冒烟、定向、全量三个计划层级已定义；未生成测试点、测试用例、CSV、禅道数据或 UI 脚本。
+  - page.json partial、弹窗/状态/导出/上传/权限定位缺失、停用规则差异、关联删除、导出安全、唯一性和跨模块契约风险均已记录并交接。
+  - 范围内页面行为均有可观察结果和证据方案；缺数据、缺权限、缺定位器或未确认契约时记录待确认/无法验证/blocked，不伪造通过或失败。
+  - 只读验证无业务数据变更；若出现意外写入、未授权数据暴露、主机不匹配、登录/权限失败或关键内容缺失，按停止条件中止并留证。
+evidence:
+  - 页面事实：page_id=product_management，route=/biopark-iot/iot/device/product，title=数据采集 - 产品管理，menu_path=数据采集/设备接入/产品管理，default_state=product_management_default，collection_status=partial。
+  - 状态证据：product_management_default、product_management_columns_expanded、product_management_edit、product_management_more_expanded；product_management_dialogs_partial 明确新增/查看/物模型/删除弹窗 locator_status=missing、evidence_status=partial。
+  - DOM：02_analysis/page_inventory/dom/req003-default.html、req003-columns.html、req003-edit-page.html；截图：02_analysis/page_inventory/screenshots/req003-default.png、req003-default-expanded.png、req003-columns.png、req003-edit-page.png、req003-more-config.png、req003-edit-more-current.png；日志：02_analysis/page_inventory/logs/req003-exploration.txt。
+  - 已登记元素和候选仅按 page.json 引用：产品名称、ProductKey、查询、重置、刷新、表头设置、导出、新增、查看、编辑、物模型、删除、每页条数、上一页、页码、下一页；编辑页字段包括 ProductKey/重新生成、产品名称、分类、直连/网关子设备/网关设备、联网方式、IP/上报/手动位置、ALink、更多配置、确认/取消和描述。
+  - 表格已登记九列：ProductKey、产品名称、产品分类、设备类型、产品图标、产品图片、状态、创建时间、操作；当前不扩展未登记的产品数量、版本或兼容性列。
+  - 执行阶段保存运行时 URL、标题、菜单路径、状态标识、脱敏截图、DOM/可访问性快照、客户端/浏览器版本、时间和必要日志；正式证据与 page.json 既有证据分开存放。
+  - 对筛选、重置、刷新、分页、表头、编辑页展开/取消和默认排序保存操作前后页面状态及数据不变证据；不保存凭据、Cookie、Token、ProductKey、产品名称、租户值或未经授权数据。
+  - 对关联删除、状态/物模型、分类、媒体、导出和跨模块回读仅保存批准的脱敏页面或日志证据；缺少批准数据时记录无法验证，不用脚本通过替代事实。
+  - 自动化规划记录定位器确认结果：优先 role/name、accessible label、page.json locator_candidates、表格行上下文和可见文本；CSS 仅使用 page.json 已明确的表格映射，不能扩展为弹窗/上传/导出定位器。
+suites:
+  Smoke: 规划使用可视 Chromium 登录并进入 product_management 页面，确认运行时路由/标题/菜单、产品名称/ProductKey筛选、查询/重置/刷新、九列表格和分页可见，打开表头设置与编辑页后取消并确认无业务数据变更；partial、权限或路由未确认时标记 blocked。
+  Targeted: 规划筛选/重置/刷新、空结果、分页边界、创建时间倒序、表头展示、编辑页字段与更多配置取消、设备类型不可修改、分类/媒体/状态/物模型/关联/权限租户和批准跨模块回读；新增/查看/物模型/删除弹窗、失败/并发/导出/上传契约缺证据时转人工或无法验证。
+  Full: 规划 REQ-003-001 至 REQ-003-015 的完整范围、字段与状态等价类、边界值、判定表、状态转换、Pairwise/2-way 组合、九列表格契约、分类/设备/采集/推送/告警关联、物模型兼容/回滚、导出安全、权限和责任需求回归；真实写入、接口、数据库、性能 SLA 和未确认页面事实不纳入。
+next_stage: testcase-generation-agent

@@ -1,0 +1,1252 @@
+req_id: REQ-006
+module: 宰杀日看板
+zentao_module_id: 673
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-006
+  tp: TP_REQ-006
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-006.yaml
+cases:
+- id: TC-006-01
+  tp_id: TP-006-01
+  title: 显示图标和「宰杀计划排程」标题
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 页面标题
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 查看页面顶部标题区域与旁侧图标
+    expected: 显示图标，并且标题文案为「宰杀计划排程」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47969
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-02
+  tp_id: TP-006-02
+  title: 标题下显示说明文字「以日历视图和列表视图展示宰杀计划，支持节假日标注和计划查看」
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 页面标题
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 查看页面顶部标题下方的说明文字区域
+    expected: 标题下方显示文字「以日历视图和列表视图展示宰杀计划，支持节假日标注和计划查看」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47970
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-03
+  tp_id: TP-006-03
+  title: 可以切换不同视图查看排程：日历视图、列表视图
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 页面标题
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 查看页面视图切换入口
+    expected: 存在「日历视图」与「列表视图」两个可切换入口
+  - action: 点击「日历视图」后再点击「列表视图」
+    expected: 可在日历视图与列表视图之间成功切换，两侧布局均能打开
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47971
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-04
+  tp_id: TP-006-04
+  title: 切换至「日历视图」，按日汇总展示宰杀任务
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 页面标题
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 系统中存在已下推的宰杀计划数据
+  steps:
+  - action: 点击切换到「日历视图」
+    expected: 页面切换为日历视图布局
+  - action: 查看日历格子中的宰杀任务展示方式
+    expected: 按日汇总展示宰杀任务（有计划的日期可见汇总信息）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47972
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-05
+  tp_id: TP-006-05
+  title: 切换至「列表视图」，展示宰杀计划明细表
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 页面标题
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 系统中存在已下推的宰杀计划数据
+  steps:
+  - action: 点击切换到「列表视图」
+    expected: 页面展示宰杀计划明细表
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47973
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-06
+  tp_id: TP-006-06
+  title: 点击按钮可以切换月份，点「>」进入下一个月份
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 切换到「日历视图」，记录当前展示的月份
+    expected: 日历展示当前月份格子
+  - action: 点击月份切换按钮「&gt;」
+    expected: 日历进入下一个月份，月份标题与格子日期同步变化
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47974
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-07
+  tp_id: TP-006-07
+  title: 切换查询月份后「日历视图」格子与当月数据同步刷新
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 至少两个月份分别存在或不存在宰杀计划，便于对比
+  steps:
+  - action: 切换到「日历视图」，在查询区选择目标月份或通过月份切换到达非默认月后点击「查询」（若需）
+    expected: 查询条件指向该月
+  - action: 查看「日历视图」各日期格子
+    expected: 格子内容与该月宰杀计划数据同步刷新，不残留上一查询月的计划摘要
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47975
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-08
+  tp_id: TP-006-08
+  title: 日历中只展示审核通过的计划，暂存、审核中、驳回的计划不展示
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 排程侧已分别准备：已下推（审核通过后下推）的宰杀计划，以及暂存/审核中/驳回状态、未下推到看板的计划
+  steps:
+  - action: 切换到「日历视图」，查询覆盖上述计划所在日期范围
+    expected: 日历打开
+  - action: 核对应出现的已下推计划日期与不应出现的计划
+    expected: 日历中只展示已下推（审核通过后下推）的宰杀计划；暂存、审核中、驳回且未下推的计划不在日历中展示
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47976
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-09
+  tp_id: TP-006-09
+  title: 有宰杀计划的日期在日历上展示计划摘要信息
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已下推宰杀计划的日期
+  steps:
+  - action: 切换到「日历视图」，定位有宰杀计划的日期格子
+    expected: 该日期格子展示计划摘要信息（如品种、数量等摘要字段）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47977
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-10
+  tp_id: TP-006-10
+  title: 宰杀量的单位是「万只」，出栏体重的单位是「kg」，数据与提交的排程数据一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已下推宰杀计划，且能对照排程/审批侧原提交数据
+  steps:
+  - action: 切换到「日历视图」，打开有计划的日期摘要或明细
+    expected: 可见宰杀量与出栏体重
+  - action: 核对宰杀量、出栏体重的单位及数值
+    expected: 宰杀量单位为「万只」，出栏体重单位为「kg」，数值与提交的排程数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47978
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-11
+  tp_id: TP-006-11
+  title: 无宰杀计划的日期在日历上展示为「暂无计划」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 当前查询月份存在无任何已下推宰杀计划的日期
+  steps:
+  - action: 切换到「日历视图」，定位无宰杀计划的日期格子
+    expected: 该日期展示为「暂无计划」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47979
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-12
+  tp_id: TP-006-12
+  title: 同一日期存在多条宰杀线计划时，同一日期下分条展示多个宰杀线；默认展示一条宰杀线，点击「更多」和「收起」可对其余宰杀线展开/收起
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 同一宰杀日期下存在多条不同宰杀线的已下推计划
+  steps:
+  - action: 切换到「日历视图」，打开该日期的计划展示
+    expected: 同一日期下分条展示多个宰杀线；默认先展示一条宰杀线
+  - action: 点击「更多」展开其余宰杀线，再点击「收起」
+    expected: 点击「更多」可展开其余宰杀线，点击「收起」可收起
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47980
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-13
+  tp_id: TP-006-13
+  title: 「日历视图」为只读，不可新增或编辑宰杀计划
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 「日历视图」中存在已下推宰杀计划
+  steps:
+  - action: 切换到「日历视图」，尝试在页面寻找「新增」「编辑」等维护入口并尝试改计划字段
+    expected: 「日历视图」为只读：无新增/编辑宰杀计划入口，或操作后字段不可被保存修改
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47981
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-14
+  tp_id: TP-006-14
+  title: 宰杀线的状态包含：待执行、执行中、已完成，判断依据来自商品禽养殖系统
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已下推宰杀计划，且商品禽养殖侧可区分待执行/执行中/已完成回写状态
+  steps:
+  - action: 切换到「日历视图」，打开有计划日期查看各宰杀线状态
+    expected: 宰杀线状态取值包含「待执行」「执行中」「已完成」，状态判断依据来自商品禽养殖系统回写
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47982
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-15
+  tp_id: TP-006-15
+  title: 如果对应的养殖批次还没有出栏，宰杀线的状态显示：待执行
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已下推宰杀计划，且对应养殖批次还没有出栏（商品禽侧未出栏）
+  steps:
+  - action: 切换到「日历视图」，打开该计划所在日期并查看对应宰杀线状态
+    expected: 该宰杀线状态显示：待执行
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47983
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-16
+  tp_id: TP-006-16
+  title: 如果对应的养殖批次已经出栏但还未宰杀，宰杀线的状态显示：执行中
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已下推宰杀计划，且对应养殖批次已经出栏但还未宰杀
+  steps:
+  - action: 切换到「日历视图」，打开该计划所在日期并查看对应宰杀线状态
+    expected: 该宰杀线状态显示：执行中
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47984
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-17
+  tp_id: TP-006-17
+  title: 如果出栏结算单据已经同步到栋舍出栏结算单数据，宰杀线的状态显示：已完成
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已下推宰杀计划，且出栏结算单据已经同步到栋舍出栏结算单数据
+  steps:
+  - action: 切换到「日历视图」，打开该计划所在日期并查看对应宰杀线状态
+    expected: 该宰杀线状态显示：已完成
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47985
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-17
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-18
+  tp_id: TP-006-18
+  title: 日历下方显示「今天」「周末」「节假日」「已排计划」的颜色标注
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 切换到「日历视图」，查看日历下方图例/颜色标注区域
+    expected: 日历下方显示「今天」「周末」「节假日」「已排计划」的颜色标注说明
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47986
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-18
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-19
+  tp_id: TP-006-19
+  title: 暂无计划的日期，背景色白色，边框灰色
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 当前月存在展示为暂无计划的日期
+  steps:
+  - action: 切换到「日历视图」，查看「暂无计划」日期卡片的背景色与边框
+    expected: 暂无计划的日期背景色为白色，边框为灰色
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47987
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-19
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-20
+  tp_id: TP-006-20
+  title: 已排计划的背景色和边框变为绿色
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已排（已下推）宰杀计划的日期
+  steps:
+  - action: 切换到「日历视图」，查看已排计划日期卡片的背景色与边框
+    expected: 该日期卡片背景色为绿色，边框为绿色（已排计划样式）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47988
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-20
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-21
+  tp_id: TP-006-21
+  title: 法定假日用标签标注，并且背景色、边框和日期数字都显示红色；例如日期右上角显示红色标签「劳动节」
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 当前查询范围覆盖法定假日（如劳动节）
+  steps:
+  - action: 切换到「日历视图」，定位法定假日日期卡片
+    expected: 法定假日有标签标注；背景色、边框和日期数字显示红色；例如日期右上角可显示红色标签「劳动节」
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47989
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-21
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-22
+  tp_id: TP-006-22
+  title: 周六周日背景色为红色，边框颜色不变
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 切换到「日历视图」，定位周六或周日日期卡片（非叠加热点样式冲突日亦可）
+    expected: 周六周日背景色为红色，边框颜色不因周末单独变为其他强调色（相对非周末默认边框规则保持）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47990
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-22
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-23
+  tp_id: TP-006-23
+  title: 今天的日期卡片，边框显示蓝色，显示「今天」标签，数字图标变为蓝底白字
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 切换到「日历视图」，定位「今天」对应的日期卡片
+    expected: 今天的日期卡片边框显示蓝色，显示「今天」标签，日期数字图标为蓝底白字
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47991
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-23
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-24
+  tp_id: TP-006-24
+  title: 如果某一天同时是「已排计划+周末+法定假日+今天」，则卡片样式显示：背景色红色（周末），边框绿色（已排计划），显示法定节日标签（法定假日），显示「今天」标签并且数字图标显示蓝底白字（今天）
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 日历视图
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 构造或找到同时满足：已排计划、周末、法定假日、且为今天 的日期（若短期内不可得，按规则勾选最接近的叠加组合并在步骤中写明实际叠层）
+  steps:
+  - action: 切换到「日历视图」，打开同时具备「已排计划+周末+法定假日+今天」的日期卡片
+    expected: 卡片样式为：背景色红色（周末），边框绿色（已排计划），显示法定节日标签，显示「今天」标签且数字图标为蓝底白字
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47992
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-24
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-25
+  tp_id: TP-006-25
+  title: 查询区展示查询条件并提供「查询」「重置」「导出」按钮
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 查看页面查询区域中的条件与「查询」「重置」「导出」按钮
+    expected: 查询区展示日期等查询条件，并同时提供「查询」「重置」「导出」三个按钮
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47993
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-25
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-26
+  tp_id: TP-006-26
+  title: 选择单月日期范围后点击「查询」，日历/列表仅展示该月宰杀计划
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 至少两个月份存在已下推宰杀计划
+  steps:
+  - action: 在查询区选择单月日期范围后点击「查询」
+    expected: 查询条件生效
+  - action: 可选切换「日历视图」与「列表视图」查看结果
+    expected: 日历/列表仅展示该月范围内的宰杀计划，不含所选月外的计划
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47994
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-26
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-27
+  tp_id: TP-006-27
+  title: 选择跨月日期范围后点击「查询」，展示跨月范围内宰杀计划
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 跨两个自然月均存在已下推宰杀计划
+  steps:
+  - action: 在查询区选择跨月日期范围后点击「查询」
+    expected: 查询条件覆盖跨月区间
+  - action: 在「日历视图」或「列表视图」查看结果
+    expected: 展示跨月范围内的宰杀计划，起止月数据均可见（在范围内）
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47995
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-27
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-28
+  tp_id: TP-006-28
+  title: 查询无数据月 → 看板展示空状态且无报错
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 准备一个确定无任何已下推宰杀计划的月份
+  steps:
+  - action: 查询区选择该无数据月并点击「查询」
+    expected: 条件指向无数据月
+  - action: 查看看板（日历或列表）
+    expected: 看板展示空状态，页面无报错
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47996
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-28
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-29
+  tp_id: TP-006-29
+  title: 点击「查询」按钮才触发刷新
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 看板已有当前查询结果
+  steps:
+  - action: 修改查询区日期范围但不点击「查询」
+    expected: 看板数据不随输入自动变成新条件结果
+  - action: 点击「查询」按钮
+    expected: 看板按新条件刷新结果
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47997
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-29
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-30
+  tp_id: TP-006-30
+  title: 点击「重置」，查询条件恢复默认并刷新看板
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 已设置非默认查询条件并查询出过滤结果
+  steps:
+  - action: 点击「重置」按钮
+    expected: 查询条件恢复默认，看板按默认条件刷新
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47998
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-30
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-31
+  tp_id: TP-006-31
+  title: 查询结果仅展示排程审批已下推的宰杀计划
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 同一查询范围内：存在排程审批已下推的宰杀计划，以及暂存/审核中/驳回未下推计划
+  steps:
+  - action: 设置覆盖上述数据的查询条件并点击「查询」
+    expected: 查询完成
+  - action: 在「列表视图」与「日历视图」核对结果集合
+    expected: 查询结果仅展示排程审批已下推的宰杀计划，不含未下推数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 47999
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-31
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-32
+  tp_id: TP-006-32
+  title: 同一查询条件下「日历视图」与「列表视图」数据一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-查询
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 同一查询日期范围内存在多条已下推宰杀计划
+  steps:
+  - action: 在查询区选择同一时间区间并点击「查询」
+    expected: 查询条件已固定
+  - action: 切换查看「日历视图」与「列表视图」，对照计划号/日期/宰杀线等关键字段
+    expected: 同一时间条件下「日历视图」与「列表视图」数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48000
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-32
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-33
+  tp_id: TP-006-33
+  title: 列表字段依次为：序号、宰杀日期、宰杀计划号、宰杀线、宰杀量(万只)、出栏体重(kg)、计划状态、排程编号
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 列表中存在至少一条已下推宰杀计划
+  steps:
+  - action: 切换到「列表视图」
+    expected: 页面展示宰杀计划明细表
+  - action: 查看列表表头列名及顺序
+    expected: 表头列名依次为：序号、宰杀日期、宰杀计划号、宰杀线、宰杀量(万只)、出栏体重(kg)、计划状态、排程编号
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48001
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-33
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-34
+  tp_id: TP-006-34
+  title: 「列表」核心字段与排程审批数据一致
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在可对照的排程审批已下推记录
+  steps:
+  - action: 切换到「列表视图」，定位该计划行
+    expected: 列表行可见
+  - action: 对照排程审批侧同计划号/关键字段
+    expected: 列表核心字段（如宰杀日期、宰杀线、宰杀量、出栏体重、排程编号等）与排程审批数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48002
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-34
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-35
+  tp_id: TP-006-35
+  title: 「宰杀量(万只)」展示值与审批数据一致且只读
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在可对照审批侧宰杀量的已下推计划
+  steps:
+  - action: 切换到「列表视图」，查看该行「宰杀量(万只)」列
+    expected: 「宰杀量(万只)」展示值与审批数据一致
+  - action: 尝试在列表直接编辑「宰杀量(万只)」
+    expected: 字段只读，无法在列表中改值保存
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48003
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-35
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-36
+  tp_id: TP-006-36
+  title: 列表「计划状态」展示已下推宰杀计划对应状态，与日历视图中的状态一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 存在已下推宰杀计划，日历与列表均可查看其计划状态
+  steps:
+  - action: 切换到「列表视图」，记录目标行「计划状态」
+    expected: 列表「计划状态」展示该已下推宰杀计划对应状态
+  - action: 切换到「日历视图」查看同一计划的状态展示
+    expected: 列表中的计划状态与日历视图中的状态一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48004
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-36
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-37
+  tp_id: TP-006-37
+  title: 列表无新增、编辑操作入口，整表只读
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 切换到「列表视图」，检查操作列及工具栏
+    expected: 列表无「新增」「编辑」操作入口，整表只读
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48005
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-37
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-38
+  tp_id: TP-006-38
+  title: 查询无匹配时「列表」展示空状态，页面无报错
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 切换到「列表视图」
+    expected: 展示查询区域与宰杀计划明细表区域
+  - action: 查询条件填入列表中不存在的宰杀日期区间后点击「查询」
+    expected: 宰杀计划明细表展示空状态，页面无报错
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48006
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-38
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-39
+  tp_id: TP-006-39
+  title: 列表中宰杀日期合并单元格样式正确；同一日期有多个宰杀线时显示多行数据，宰杀日期合并单元格
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 同一宰杀日期下存在多条宰杀线的已下推计划
+  steps:
+  - action: 切换到「列表视图」，筛选或定位该宰杀日期
+    expected: 同一日期有多个宰杀线时显示多行数据
+  - action: 查看「宰杀日期」列单元格合并效果
+    expected: 同一日期的多行「宰杀日期」合并单元格样式正确
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48007
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-39
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-40
+  tp_id: TP-006-40
+  title: 列表分页默认展示第1页数据，每页条数与系统默认一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 列表查询结果超过一页，或可调小每页条数使分页出现
+  steps:
+  - action: 切换到「列表视图」，查看分页区初始页码与每页条数
+    expected: 默认停留在第1页，每页条数与系统默认分页设置一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48008
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-40
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-41
+  tp_id: TP-006-41
+  title: 点击分页「下一页」「上一页」，列表按页切换
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 列表查询结果超过一页
+  steps:
+  - action: 切换到「列表视图」，在第1页点击分页「下一页」
+    expected: 列表切换到第2页数据
+  - action: 再点击分页「上一页」
+    expected: 列表回到第1页数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48009
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-41
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-42
+  tp_id: TP-006-42
+  title: 分页区总条数、当前页码与查询结果一致
+  type: auto
+  auto: auto
+  priority: P3
+  feature: 列表视图-表格
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 列表已按某条件查询出已知总条数的结果
+  steps:
+  - action: 切换到「列表视图」，查看分页区总条数、当前页码，并清点当前页行数
+    expected: 分页区总条数、当前页码与本次查询结果一致，当前页行数不超过每页条数
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48010
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-42
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-43
+  tp_id: TP-006-43
+  title: 点击「导出」，下载文件且字段与当前列表一致
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 列表视图-导出
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 「列表视图」查询后有数据
+  steps:
+  - action: 切换到「列表视图」并确认当前列表有数据
+    expected: 列表有行数据
+  - action: 点击「导出」按钮并打开下载文件
+    expected: 成功下载文件，文件字段与当前列表一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48011
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-43
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-44
+  tp_id: TP-006-44
+  title: 无数据时点击「导出」，提示或无文件且页面无报错
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-导出
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 查询结果为空（无匹配已下推计划）
+  steps:
+  - action: 切换到「列表视图」，确认列表为空后点击「导出」
+    expected: 提示无数据或未生成有效业务文件，且页面无报错
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48012
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-44
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-45
+  tp_id: TP-006-45
+  title: 导出数据按当前查询条件过滤，与列表展示一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-导出
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 可构造能过滤出部分计划、其余被滤掉的查询条件
+  steps:
+  - action: 在查询区设置筛选项并点击「查询」
+    expected: 列表结果与所设条件一致
+  - action: 点击「导出」按钮并打开导出文件
+    expected: 导出文件的数据与查询后的列表结果一致
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48013
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-45
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-006-46
+  tp_id: TP-006-46
+  title: 导出数据仅含已下推宰杀计划，不含未下推数据
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 列表视图-导出
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 同一导出范围内既有已下推宰杀计划，也有未下推（暂存/审核中/驳回）排程数据
+  steps:
+  - action: 设置覆盖上述范围的查询条件并点击「查询」，再点击「导出」
+    expected: 导出完成
+  - action: 打开导出文件核对计划集合
+    expected: 文件中只有已下推宰杀计划记录，不会出现未下推（暂存/审核中/驳回）数据
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48014
+  trace:
+    story: null
+    req: REQ-006
+    tp: TP-006-46
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+summary:
+  type_counts:
+    auto: 46
+  auto_counts:
+    auto: 46
+  registry_counts:
+    registered: 46

@@ -1,0 +1,195 @@
+schema_version: "1.0"
+artifact_type: requirement_analysis
+req_id: REQ-APP-015
+module_name: "存发苗间 / 库存查询"
+zentao_module_id: 577
+platform: app
+analysis_date: "2026-08-25"
+source:
+  docx: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+  baseline: "01_requirements/app/模块拆分清单.md"
+  axure_map: "01_requirements/app/axure_map.md"
+  axure_run: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511"
+  source_pages: [P086, P087, P088, P089, P090]
+  evidence_paths:
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-086.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-086.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-086.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-087.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-087.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-087.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-088.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-088.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-088.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-089.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-089.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-089.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-090.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-090.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-090.txt"
+  evidence_levels:
+    observed: "DOCX 页面表、已保存 DOM/正文及本次可视浏览器 networkidle 后的渲染页面事实"
+    static: "axure_map.md 页面树/链接候选"
+    inferred: "根据页面对象、分组和控件归纳的关系"
+    open_question: "原型未明确，需产品/研发确认"
+scope:
+  baseline_statement: "存发苗间 / 库存查询（577）；P086–P090：苗间列表、鸡苗详情、搜索、筛选、结果存在；页面需按“存发苗间”对象解释“苗间列表”。"
+  included: "存发苗间对象下的鸡苗库存列表、详情、搜索、筛选、筛选结果及只读入口。"
+  excluded: "出库、入库、盘点、批量操作、任务执行、接口实现、权限和持久化实现。"
+  safety_boundary: "只读观察；未点击出库/盘点/入库或任务执行。"
+pages:
+  - id: P086
+    name: "苗间列表"
+    page_file: "苗间列表.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-086.png,dom/page-086.html,page_text/page-086.txt}"
+    entry_and_return:
+      entry: "observed/static：首页、存发苗间入口。"
+      return: "static：首页、鸡苗搜索、鸡苗筛选、鸡苗详情、确认出库/盘点和批量操作候选。"
+    contract:
+      query_area: "observed：搜索、筛选；存发苗间一号/二号/三号上下文。"
+      list_or_cards: "observed：鸡苗卡片含数量、平均苗重、出苗日期、养殖场-批次-品种；可见出库、盘点、右滑记录入口。"
+      form: "未观察到库存录入表单。"
+      dialogs: "未观察到独立弹窗；出库/盘点为另行页面候选。"
+      buttons_actions: "observed：搜索、筛选、存发苗间切换、卡片、出库、盘点、记录；本次未点击写操作。"
+      state: "observed：页面显示鸡苗库存数量和库位/苗间上下文；未观察到正式库存状态转换。"
+  - id: P087
+    name: "鸡苗详情"
+    page_file: "鸡苗详情.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-087.png,dom/page-087.html,page_text/page-087.txt}"
+    entry_and_return:
+      entry: "observed/static：从苗间列表或搜索结果鸡苗卡片进入。"
+      return: "static：苗间列表、确认出库-单库位、确认盘点-单库位。"
+    contract:
+      query_area: "不适用；详情页未观察到查询区。"
+      list_or_cards: "observed：鸡苗信息含养殖场、养殖批次、品种、出苗日期、平均苗重、当前库存；关联计划区；鸡苗类型健雏；仓库信息含孵化场/存发苗间。"
+      form: "未观察到编辑表单。"
+      dialogs: "未观察到独立弹窗；关联计划默认收缩，展开语义来自页面注释。"
+      buttons_actions: "observed：出库、盘点入口、关联计划展开/收缩、计划号复制；未执行写操作。"
+      state: "observed：鸡苗类型健雏、当前库存和存发苗间位置；未观察到状态转换。"
+  - id: P088
+    name: "鸡苗搜索"
+    page_file: "鸡苗搜索.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-088.png,dom/page-088.html,page_text/page-088.txt}"
+    entry_and_return:
+      entry: "observed/static：从苗间列表进入。"
+      return: "static：苗间列表、鸡苗详情、确认出库/盘点候选。"
+    contract:
+      query_area: "observed：搜索输入/按钮；字段提示为计划号、平均苗重、养殖场、批次、品种；有代孵历史候选。"
+      list_or_cards: "observed：鸡苗库存卡片，含数量、平均苗重、出苗日期、养殖场-批次-品种、出库/盘点/记录入口；页面显示鸡苗数量汇总。"
+      form: "observed：关键字输入；未观察到校验或复杂组合表单。"
+      dialogs: "未观察到独立弹窗；空结果文案为没有找到相关的库存。"
+      buttons_actions: "observed：搜索、历史项、结果卡片、出库/盘点/记录入口；自动查询为注释建议。"
+      state: "observed：搜索有结果/无结果、历史最多三行说明；未观察到库存状态转换。"
+  - id: P089
+    name: "鸡苗筛选"
+    page_file: "鸡苗筛选.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-089.png,dom/page-089.html,page_text/page-089.txt}"
+    entry_and_return:
+      entry: "observed/static：从苗间列表或鸡苗搜索进入。"
+      return: "static：鸡苗搜索、上孵/出雏任务页、苗间列表、筛选结果、鸡苗筛选。"
+    contract:
+      query_area: "observed：页面展示全部/空位/满容/超容/停用/待上孵/已超期/待孵期/待排期等标签；可见出苗日期、养殖场、品种、时间快捷项、确认、重置；同时出现合格蛋仓库候选和种蛋信息词汇。"
+      list_or_cards: "observed：页面预览卡片混合鸡苗数量/平均苗重/出苗日期与库位式状态文案。"
+      form: "observed：选择类筛选项、日期范围/快捷项；字段对象、必填、单多选未确认。"
+      dialogs: "未观察到独立弹窗。"
+      buttons_actions: "observed：确认、重置、筛选项选择；确认后进入 P090。"
+      state: "observed：原型同时显示库存状态样式和鸡苗信息；正式状态含义未确认。"
+  - id: P090
+    name: "筛选结果"
+    page_file: "筛选结果_9.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-090.png,dom/page-090.html,page_text/page-090.txt}"
+    entry_and_return:
+      entry: "observed/static：由鸡苗筛选确认进入；上下文显示存发苗间一号。"
+      return: "static：证据链接摘要复用蛋库/种蛋任务页面，真实返回应绑定存发苗间待确认。"
+    contract:
+      query_area: "observed：顶部搜索、筛选、存发苗间上下文；未观察到新增查询字段。"
+      list_or_cards: "observed：鸡苗库存卡片含数量、平均苗重、出苗日期、养殖场-批次-品种、出库/盘点/记录入口。"
+      form: "未观察到独立表单。"
+      dialogs: "未观察到独立弹窗；无结果文案显隐条件未确认。"
+      buttons_actions: "observed/static：搜索、筛选、结果卡片、出库/盘点/记录入口；未执行写动作。"
+      state: "observed：结果上下文为存发苗间，库存卡片存在；未观察到转换。"
+interfaces:
+  - id: IF-015-UI-NAV
+    type: navigation
+    name: "存发苗间库存查询导航"
+    evidence_level: observed
+    endpoint_or_api: "未观察到具体接口路径"
+    input: "页面入口、搜索、筛选、鸡苗卡片点击"
+    output: "鸡苗库存结果或详情页面"
+    note: "页面树链接为候选导航。"
+  - id: IF-015-INVENTORY-QUERY
+    type: data_query
+    name: "存发苗间鸡苗库存查询"
+    evidence_level: open_question
+    endpoint_or_api: "未观察到"
+    input: "计划号、平均苗重、养殖场、批次、品种及筛选条件"
+    output: "鸡苗库存卡片/详情结构未确认"
+    note: "不编造 API、参数、分页、排序、错误码或权限。"
+  - id: IF-015-READONLY-ACTION-ENTRY
+    type: navigation
+    name: "出库/盘点入口"
+    evidence_level: observed
+    endpoint_or_api: "未观察到；本次未进入或提交"
+    input: "鸡苗卡片上的出库、盘点、记录"
+    output: "确认出库/盘点或记录页面候选"
+    note: "这些是跨模块写操作入口，仅保留边界，不在本 REQ 实施。"
+cross_module_refs:
+  - ref: "首页"
+    relation: "entry"
+    evidence_level: static
+    note: "基线列为入口。"
+  - ref: "种蛋出雏"
+    relation: "upstream_context"
+    evidence_level: static
+    note: "鸡苗库存可能与出雏结果相关，但原型未确认数据联动。"
+  - ref: "存发苗间 / 出入库记录"
+    relation: "adjacent_module"
+    evidence_level: static
+    note: "库存结果页有记录入口；本 REQ 不分析记录详情。"
+  - ref: "确认出库-单库位、确认盘点-单库位"
+    relation: "write_entry_boundary"
+    evidence_level: static
+    note: "页面可达候选不表示已授权执行。"
+business_rules:
+  - id: BR-015-01
+    statement: "苗间列表应按存发苗间对象解释，卡片主体为鸡苗库存，不应直接当作蛋库或设备库位列表。"
+    evidence_level: inferred
+    source: "模块拆分清单 REQ-APP-015、P086-P090"
+  - id: BR-015-02
+    statement: "鸡苗详情展示鸡苗信息、当前库存、关联计划、鸡苗类型和存发苗间仓库信息；关联计划默认收缩。"
+    evidence_level: observed
+    source: "P087 页面注释与 live DOM"
+  - id: BR-015-03
+    statement: "列表/搜索/结果卡片可出现出库、盘点、记录入口；本次只记录导航，不执行库存变化。"
+    evidence_level: observed
+    source: "P086/P088/P090"
+  - id: BR-015-04
+    statement: "搜索历史最多三行和输入后自动查询属于注释建议，是否作为正式规则需确认。"
+    evidence_level: inferred
+    source: "P088 页面注释"
+  - id: BR-015-05
+    statement: "P089 的筛选控件同时出现鸡苗字段和蛋库/种蛋/库位式状态，不能据此推断正式筛选模型。"
+    evidence_level: observed
+    source: "P089 DOCX、axure_map 和 live DOM"
+open_questions:
+  - id: OQ-015-01
+    question: "P089 的满容/空位/种蛋信息/合格蛋仓库等控件是否为原型复用残留，鸡苗筛选的正式字段和状态是什么？"
+    evidence_level: open_question
+    impact: "影响筛选契约、对象隔离和测试范围。"
+  - id: OQ-015-02
+    question: "P090 static 链接混有蛋库/种蛋任务页面，筛选结果真实返回路径是否应固定为存发苗间？"
+    evidence_level: open_question
+    impact: "影响路由和模块边界。"
+  - id: OQ-015-03
+    question: "鸡苗库存字段、数量口径、刷新/分页/排序和异常处理是什么？"
+    evidence_level: open_question
+    impact: "影响库存查询接口和一致性验收。"
+  - id: OQ-015-04
+    question: "鸡苗类型除健雏外是否有其他枚举，关联计划与出雏任务如何关联？"
+    evidence_level: open_question
+    impact: "影响详情字段和跨模块追溯。"
+handoff:
+  next_stage: "03_testpoints"
+  status: "analysis_complete_candidate"
+  review_gate: "先确认存发苗间对象、鸡苗筛选字段和跨模块写入口边界，再进入测点设计。"
+  prohibited_next_actions: "未经授权不得出库、入库、盘点、批量操作、执行任务或远程写入。"

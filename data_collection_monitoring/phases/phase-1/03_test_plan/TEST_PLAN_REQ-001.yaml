@@ -1,0 +1,109 @@
+plan_id: TEST_PLAN-REQ-001
+title: 数据采集监控平台首页测试计划
+status: draft
+source_inputs:
+  - 01_requirements/数据监控平台使用文档.pdf
+  - 01_requirements/需求变动.md
+  - 01_requirements/模块拆分清单.md
+  - 02_analysis/REQ-001.yaml
+  - 02_analysis/page_inventory/page.json
+  - .env
+  - ../../../.agents/references/test-plan.schema.json
+trace:
+  story: 首页指标与时间筛选只读验证
+  req: REQ-001
+  project: 数据采集监控平台
+  version: 1
+  status: draft
+objective: 基于 REQ-001 分析、正式需求来源和 page.json 已采集的 home 页面事实，规划首页可达性、日期范围、时间间隔、指标与筛选结果的限定范围只读验证；采用系统性边界、等价类、判定表、状态转换和 Pairwise 策略，保留 page.json collection_status=partial、统计区域定位器缺失、正式需求章节追溯和数据/权限契约待确认风险；本阶段只输出测试计划。
+scope:
+  in_scope:
+    - 运行时确认首页路由、标题、菜单路径及可达性；以 page.json 的 home 页面记录为参考，不把历史标题或旧路由作为最终事实。
+    - 只读检查已采集的 home_default、home_date_range、home_menu_expanded 状态，以及开始日期、结束日期、时间间隔和已采集日期快捷项。
+    - 规划默认范围、起止时间包含、同日/跨日/跨月/跨年/未来范围、无最大跨度和用户时区边界的只读验证。
+    - 规划天、周、月、季度、年时间桶及缺失、空数据、异常排除、唯一编号去重和消息编号去重的结果核对；实际指标区域仅在运行时发现可观察证据后验证。
+    - 规划当前租户与筛选范围、首次进入、筛选变化和手动刷新后的只读结果观察；快速重复刷新、自动刷新和失败分支仅作为待确认的计划范围，不执行接口测试。
+    - 规划指标卡片与图表仅汇总展示、不钻取、不业务跳转、不导出的边界观察；统计区域、图表、刷新、提示、筛选结果和加载状态不得使用 page.json 未登记的虚构定位器。
+    - 规划当前账号实际首页访问范围、数据安全和跨需求来源链路的验证准备，不新增权限规则或写操作。
+  out_scope:
+    - 设备状态实时性、刷新失败清空、权限提示路径和接口契约的实际验收；这些内容保留为待确认或后续责任边界。
+    - 新增、编辑、删除、保存、提交、导入、导出、下载、造数、接口写入、业务钻取和业务跳转。
+    - 性能 SLA、压力、接口性能、缓存实现和未批准的数据修改验证。
+    - page.json 未出现的按钮、字段、菜单、弹窗、状态、定位器、错误码或 CSS/data-testid；正式运行时未确认的事实不得写成原型事实。
+    - 测试点、测试用例、CSV、禅道数据、注册表和 UI 自动化脚本。
+strategy:
+  - 采用黑盒、只读、风险优先策略；以 REQ-001-001 至 REQ-001-017、REQ-001.yaml 和 page.json 的已采集路由/状态/元素为基线，page.json partial 状态下将不可观察内容记录为待确认或无法验证，不据此判失败。
+  - 使用等价类划分覆盖当前租户/跨租户/缺失租户、默认七个完整自然日/同日/跨日/跨月/跨年/未来/非法范围、正常/空/部分缺失/异常/重复编号、唯一/重复/延迟/缺失消息和首次进入/筛选变化/手动刷新/快速重复/无自动刷新。
+  - 使用边界值分析覆盖前一天起点、七个完整自然日、起始 00:00:00、结束 23:59:59、周一/周日、月末、季度末、年度末、未来时间和重复刷新边界；数据不足时只形成执行前数据准备项。
+  - 使用判定表评估租户与筛选范围、起止包含、时间桶、缺失/异常归零、唯一编号去重、消息到达时间、筛选/刷新取最新数据以及卡片/图表无钻取跳转导出的组合。
+  - 使用状态转换覆盖未认证到门户再到 home_default、home_default 到 home_date_range/home_menu_expanded、筛选或刷新到更新/失败待确认；只引用 page.json 已采集状态，不虚构未采集状态。
+  - Pairwise/2-way 仅作为测试设计评估，参数为 Tenant、Range、Boundary、Interval、Data、Message、Action、Result；约束为跨租户或缺失租户需确认权限结果，重复 ID 应只计一次，空/缺失/异常数据应按需求归零或排除，无自动刷新不应产生自动变化。生成下游用例前需确认参数值、约束和实际数据可观察性。
+  - Playwright Python/pytest-playwright 仅规划自动化范围：复用公共登录和门户导航，优先 role/name、accessible label、已确认 data-testid 或 page.json element mapping；当前仅开始日期、结束日期、时间间隔可使用已采集候选，统计区域等需运行时确认后才能自动化。
+  - Web 执行采用导航后等待可观察状态、操作前后状态比对和截图/日志证据；不使用未确认定位器，不固定等待，不执行写操作，不保存凭据、Token、Cookie 或真实敏感业务值。
+environment:
+  client: PC Web
+  os: win32；正式执行前记录实际客户端版本
+  browser: Chromium；Playwright Python 规划可视模式 headless=False
+  base_url: ${UI_TEST_URL}
+  page_path: /biopark-iot/iot/home
+  portal_entry: 数据采集监控平台 / 首页；菜单路径以运行时确认和 page.json 的 home 记录为准
+  login: 使用测试账号登录；凭据仅从 UI_TEST_USERNAME、UI_TEST_PASSWORD、UI_TEST_TENANT 运行时读取，不写入计划、日志或证据；正式路由、标题和访问权限需执行前确认
+data:
+  required:
+    - 已批准的只读首页访问账号及当前租户上下文；不得将账号、密码、租户值写入产物。
+    - 已存在且经授权可读的正常、空、部分缺失、异常、重复编号、延迟消息和跨时间边界数据；本计划不造数。
+    - 可确认用户时区、实体唯一编号、消息编号、消息到达时间、来源关联字段和筛选/刷新结果的业务数据或回读证据。
+    - 可观察的默认日期、五种时间间隔、统计区域、图表、筛选结果、加载/提示状态；缺失项转为无法验证。
+  preparation: 由测试、业务/产品、平台权限和研发责任人准备脱敏只读数据、租户/时区和权限确认、页面运行时采集及证据目录；本阶段不修改数据、不清理业务数据，清理状态为 not_applicable。
+roles:
+  - 测试：执行限定范围只读验证，记录页面、数据和安全证据，不执行写操作。
+  - 产品/业务负责人：确认指标口径、日期边界、时间桶、缺失/异常和去重规则。
+  - 平台权限负责人：确认当前账号、租户隔离和首页访问范围。
+  - 研发：确认正式路由、可观察 DOM、来源关联、请求/刷新契约和稳定定位器。
+  - 测试设计：在本计划通过后消费范围和策略生成下游测试设计产物。
+dependencies:
+  - REQ-001 正式需求 PDF 章节逐条追溯和需求变动确认。
+  - page.json 的 home 页面采集，当前 collection_status=partial；已采集 home_default、home_date_range、home_menu_expanded 及已登记元素可作为页面事实参考。
+  - 公共登录和门户导航页面对象：07_ui_automation/pages/common/login_page.py、07_ui_automation/pages/common/portal_navigation.py。
+  - 产品分类、产品管理、设备管理、消息/采集等数据来源模块；这些来源链路不代表本需求已验证跨模块实现。
+  - 运行时配置键 UI_TEST_URL、UI_TEST_USERNAME、UI_TEST_PASSWORD、UI_TEST_TENANT；只引用键名，不复制值。
+priority: P0：首页可达性、页面身份、日期控件和默认范围、当前租户边界；P1：五种时间桶、起止包含、跨时间边界、缺失/异常/去重和筛选联动；P2：刷新并发、缓存绕过、图表汇总边界、兼容性和性能目标待确认
+risks:
+  - page.json collection_status=partial，统计卡片、图表、刷新、提示、筛选结果和加载状态没有稳定独立定位器；影响 high；执行前重新采集运行时 DOM，未确认前不得自动化或写成页面事实。
+  - 正式 PDF 的 REQ-001 章节尚未完成逐条追溯；影响 high；由产品/分析负责人补齐追溯，计划以 REQ-001.yaml 已确认规则为当前基线并保留差异。
+  - 用户时区、租户上下文、唯一编号、消息到达时间和来源关联字段尚无运行时证据；影响 critical；执行前准备批准数据和责任人回读，缺失则记录无法验证。
+  - 日期、起止包含、未来范围或五种时间桶实现偏差可能导致指标错误；影响 critical；使用边界值、判定表和时间桶覆盖并保存脱敏证据。
+  - 快速重复刷新、旧响应覆盖、缓存和错误处理契约未确认；影响 high；本计划仅规划只读观察和请求契约待确认，不扩展为接口测试。
+  - .env 含运行时敏感配置；影响 high；产物只引用环境变量键名，禁止保存地址、账号、密码、租户、Token、Cookie 和真实业务值。
+  - 历史标题/旧路由与 page.json 可能存在差异；影响 medium；以运行时路由、标题和菜单路径为最终准则并记录差异。
+open_questions:
+  - 正式 PDF 中 REQ-001 章节与 REQ-001-001 至 REQ-001-017 的逐条追溯是否完成？
+  - 运行时首页的最终路由、标题、菜单路径是否与 page.json 的 /biopark-iot/iot/home、首页、首页一致？
+  - 统计卡片、图表、刷新、提示、筛选结果和加载状态的实际可观察节点及稳定定位器是什么？
+  - 用户时区、租户上下文、实体唯一编号、消息编号、到达时间和关联字段如何由批准数据或回读证据确认？
+  - 五种时间间隔的正式选项、请求字段和结果证据是否可观察？
+  - 刷新/筛选请求的幂等、快速重复、并发响应、缓存绕过、失败处理和权限矩阵由哪个责任方确认？
+  - 当前账号是否仅能访问授权租户和授权首页数据范围？
+entry_criteria:
+  - REQ-001.yaml、需求来源、page.json、.env 和 ../../../.agents/references/test-plan.schema.json 可读取，REQ-ID、模块和页面对象一致。
+  - page.json 已检查并登记 home 路由、标题、菜单路径、partial 状态、home_default/home_date_range/home_menu_expanded 及已采集元素；未登记页面事实已明确为待确认。
+  - 测试环境键名、登录责任、只读账号/权限、脱敏数据、时区/租户和证据目录已准备或转为 report_only 风险。
+  - 需求追溯、范围责任、设计方法、自动化边界和停止条件已评审。
+exit_criteria:
+  - YAML 通过 test-plan.schema.json，未新增字段且不含 tp/tp_id；Markdown 与 YAML 的范围、策略、风险、准入/准出、证据和套件建议一致。
+  - 冒烟、定向、全量三个计划层级已定义；未生成测试点、测试用例、CSV、禅道数据或 UI 脚本。
+  - page.json partial、统计区域定位器缺失、需求追溯、数据/权限/时区/去重契约和正式运行时身份风险均已交接。
+  - 范围内行为均有可观察证据方案；无法观察或数据不足的项记录为无法验证/待确认，不伪造通过或失败。
+  - 只读执行无业务数据变更；若出现意外写入、未授权数据暴露、主机不匹配、登录/权限失败或关键内容缺失，按停止条件中止并留证。
+evidence:
+  - page.json 既有证据：home_default 截图 02_analysis/page_inventory/screenshots/req001-default.png，home_date_range 截图 02_analysis/page_inventory/screenshots/req001-start-date.png，home_menu_expanded 截图 02_analysis/page_inventory/screenshots/req001-menu-expanded.png，探索日志 02_analysis/page_inventory/logs/req001-exploration.txt。
+  - 执行阶段保存运行时 URL、标题、菜单路径、状态标识、客户端/浏览器版本、时间、脱敏截图和必要的 DOM/可访问性快照；正式运行时证据与 page.json 既有证据分开存放。
+  - 对日期、时间间隔、筛选和指标结果保存操作前后页面状态、可见名称/值摘要、时间范围、租户/时区确认结果和数据不变证据；不保存真实敏感值。
+  - 对统计卡片、图表、刷新、提示、加载和筛选结果仅在运行时确认可观察节点后记录证据；缺失定位器记录阻塞，不虚构选择器。
+  - 必要时保留脱敏浏览器控制台、网络观察或 Playwright trace 作为请求/状态辅助证据，但本计划不执行接口测试且不保存凭据、Cookie 或 Token。
+  - 自动化规划记录定位器确认结果；已采集 label=开始日期、label=结束日期、label=时间间隔可作为候选，时间间隔按钮“天”稳定性低，其他区域待确认。
+suites:
+  Smoke: 规划使用可视 Chromium 登录并进入运行时首页，确认路由/标题/菜单、开始日期/结束日期/时间间隔可见且只读观察默认状态；当前因 page.json partial 和统计区域证据缺失，正式执行相关项可保持 blocked。
+  Targeted: 规划默认七个完整自然日、起止包含、同日/跨日/月/年/未来范围、天/周/月/季度/年切换、空/缺失/异常/重复数据、租户与筛选范围、首次进入/筛选变化/手动刷新和卡片图表只读边界；无法提供批准数据或稳定定位器的项转人工/无法验证。
+  Full: 规划 REQ-001-001 至 REQ-001-017 的完整只读范围、等价类/边界值、判定表、状态转换、Pairwise 组合、来源关联、时区/租户/去重、刷新契约观察、权限边界、兼容性和责任需求回归；接口、性能 SLA、写操作和未确认页面事实不纳入。
+next_stage: testcase-generation-agent

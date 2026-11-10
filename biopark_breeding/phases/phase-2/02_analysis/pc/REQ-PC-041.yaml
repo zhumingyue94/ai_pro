@@ -1,0 +1,1113 @@
+analysis:
+  schema_version: "1.0"
+  analysis_id: "REQ-PC-041"
+  case_generation_status: "not_generated_in_analysis_stage"
+  traceability_boundary: "分析阶段仅维护 coverage_id、planned_item_id、atomic_purpose_id；测试用例 ID 由下游阶段生成并建立映射"
+  modification_boundary:
+    allowed:
+      - "仅调整本 REQ-PC-041 YAML/Markdown 的分析事实、规则、追溯和阻塞表达"
+      - "仅新增或调整本需求的覆盖目标、原子目的、字段来源和待验证说明"
+    prohibited:
+      - "不得修改 page.json、DOM、截图或其他页面采集证据"
+      - "不得修改其他 REQ 分析产物或待解决事情.md"
+      - "不得把历史原型元素改写成当前需求能力"
+      - "不得新增接口契约、接口测试或基于原型 mock 数据的业务结论"
+      - "不得在分析阶段生成测试计划、测试用例或执行数据变更"
+  title: "雏苗发货列表与筛选"
+  stage: "02_analysis"
+  business_partition: "pc"
+  analyzed_at: "2026-09-03T11:30:00+08:00"
+  source_traceability:
+    requirement_document:
+      path: "01_requirements/种禽孵化管理系统二期_需求说明书_合并版.docx"
+      requirement_id: "REQ-001"
+      mapped_requirement_id: "REQ-PC-041"
+      sections:
+        - "1.1.3 业务概述"
+        - "1.2.1 REQ-001 雏苗发货列表与筛选"
+        - "术语定义：发货单、上孵计划、实际可发、待分配数、发货进度"
+    module_split:
+      path: "01_requirements/pc/模块拆分清单.md"
+      requirement_id: "REQ-PC-041"
+      module: "雏苗发货列表与筛选"
+      zentao_alignment: "二期 / pc / 计划管理 / 雏苗发货 / 雏苗发货列表与筛选，模块 ID=736"
+    change_log:
+      path: "01_requirements/需求变动.md"
+      applicable_items:
+        - "PC 独有需求中未新增 REQ-PC-041 专属变更"
+        - "APP 专属列表规则不套用到 PC"
+        - "PC 发货执行、明细、导出边界分别由 REQ-PC-042、REQ-PC-043、REQ-PC-044 承接"
+    page_inventory:
+      path: "02_analysis/pc/page_inventory/page.json"
+      page_id: "pc-chick-shipping"
+      capture_id: "PAGE-PC-REQ041-REQ042-20260903"
+      captured_at: "2026-09-03T10:55:00+08:00"
+  prototype_observation:
+    url: "http://43.143.148.114:18885/biopark-breeding/"
+    collection_status: "captured"
+    browser: "chromium"
+    headless: false
+    environment_id: "prototype-biopark-breeding-pc-req041-req042"
+    menu_path:
+      - "计划管理"
+      - "雏苗发货"
+    evidence:
+      page_inventory: "02_analysis/pc/page_inventory/page.json"
+      screenshots:
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-041-list-default.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-041-stat-pending.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-041-filter-keyword.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-041-pagination-page2.png"
+        - "02_analysis/pc/page_inventory/screenshots/req-pc-041-export-dialog.png"
+      dom_snapshots:
+        - "02_analysis/pc/page_inventory/dom/req-pc-041-list-default.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-041-stat-pending.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-041-filter-keyword.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-041-pagination-page2.md"
+        - "02_analysis/pc/page_inventory/dom/req-pc-041-export-dialog.md"
+    data_safety:
+      authentication: "原型无需登录；不保存账号、密码、Token 或 Cookie"
+      interaction_scope: "只读探索"
+      business_submission_executed: false
+      export_confirmation_executed: false
+      data_change_responsibility: "未发生业务数据变更；如需真实环境变更，须由授权测试责任人确认并负责清理"
+      cleanup_status: "not_applicable"
+      sanitization: "沿用 page.json 已完成的敏感字段脱敏和输入值 redacted 记录"
+  workflow_gate:
+    policy: "analysis_gates_required"
+    gate_passed: false
+    gate_reasons:
+      - "结构化阻塞项 OI-041-01 至 OI-041-06 尚未解除"
+      - "真实功能测试所需的授权测试数据和页面权限配置前提未提供"
+      - "下游仅可消费分析设计 ID，不得在本阶段视为已有测试用例"
+    continuation: "downstream_design_allowed_but_execution_blocked"
+    pipeline_summary: "analysis_complete_with_execution_blockers"
+
+scope:
+  in_scope:
+    - "计划管理 / 雏苗发货列表页入口和页面状态"
+    - "计划发货日期开始/结束条件"
+    - "栋舍、品种和发货单号/孵化计划号关键字组合筛选"
+    - "状态卡切换"
+    - "全部、待发货、发货中、已发货、已签收状态统计"
+    - "列表字段、发货进度、待发货数、分页和查询结果展示"
+    - "查询、重置、状态卡切换、分页后的筛选状态保持规则"
+    - "满足条件时的发货入口、明细入口和导出配置入口"
+  out_of_scope:
+    - "发货执行、栋舍位置录入、草稿、完成发货和提交防重复"
+    - "发货单明细页的只读追溯和上孵计划联动"
+    - "Excel 文件实际生成、下载、失败/超时和权限实现"
+    - "库存查询、出入库记录和发货确认后的库存联动"
+    - "孵化排程计划、生产报表等当前原型禁用页面"
+    - "APP 雏苗发货列表和移动端专属交互"
+    - "接口测试、接口断言、接口路径/字段契约验证和接口注入场景"
+
+requirements_facts:
+  - id: "FR-041-01"
+    statement: "页面展示由排程计划下发形成的雏苗发货单，并提供组合筛选、状态统计、结果列表、分页以及发货/明细入口。"
+    source: "requirement"
+    source_ref: "REQ-001 1.2.1.1"
+  - id: "FR-041-02"
+    statement: "计划发货日期默认当天；结束日期不得早于开始日期。"
+    source: "requirement"
+    source_ref: "REQ-001 1.2.1.2"
+  - id: "FR-041-03"
+    statement: "最新需求仅保留全部、待发货、发货中、已发货、已签收状态卡切换，不再提供状态下拉筛选；栋舍和品种提供全部及基础数据选项；关键字同时匹配发货单号和孵化计划号，支持模糊匹配。"
+    source: "supplemented_requirement"
+    source_ref: "REQ-001 1.2.1.2；用户补充答案 5"
+  - id: "FR-041-04"
+    statement: "状态统计数量按当前日期、栋舍、品种和关键字条件计算，不重复叠加当前状态卡；数量为零时仍展示对应状态卡。"
+    source: "requirement"
+    source_ref: "REQ-001 1.2.1.3"
+  - id: "FR-041-05"
+    statement: "列表展示发货单号、计划发货日期、栋舍、品种、状态、计划上苗数、发货进度、待发货数、计划苗重、创建时间、最后更新时间、孵化计划号和孵化场。"
+    source: "requirement"
+    source_ref: "REQ-001 1.2.1.4"
+  - id: "FR-041-06"
+    statement: "实际可发数为关联上孵计划实际出雏总数，未达到已出雏的计划按零处理；已发货数为发货记录数量总和；待发货数为实际可发数减已发货数；实际可发数为零时进度显示为零。"
+    source: "requirement"
+    source_ref: "REQ-001 术语定义、字段计算规则"
+  - id: "FR-041-07"
+    statement: "点击查询后使用本次提交条件刷新状态统计、列表和分页，并回到第一页；点击重置后恢复当天、全部状态、全部栋舍、全部品种和空关键字，并回到第一页。"
+    source: "requirement"
+    source_ref: "REQ-001 1.2.1.5"
+  - id: "FR-041-08"
+    statement: "列表按计划发货日期升序排序；日期相同时按发货单号升序排序，状态不参与排序。"
+    source: "requirement"
+    source_ref: "REQ-001 1.2.1.5"
+  - id: "FR-041-09"
+    statement: "查询、状态卡切换和分页不得修改原始发货单数据。"
+    source: "requirement"
+    source_ref: "REQ-001 1.2.1.5"
+  - id: "FR-041-10"
+    statement: "待发货或发货中且已到计划发货日期时显示发货入口；已发货、已签收或未到计划日期时不允许提前发货，明细入口按页面规则保留。"
+    source: "requirement"
+    source_ref: "REQ-001 表格：状态/条件与操作"
+  - id: "FR-041-11"
+    statement: "计划发货日期按 YYYY-MM-DD 格式展示和交互，例如 2026-03-13；关键字长度不设业务上限，输入不超过 200 字时不得报错。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 3"
+  - id: "FR-041-12"
+    statement: "无结果、接口超时、基础数据加载失败和权限不足时页面不展示数据；权限不足提示“暂无操作权限”。非法日期前端无可输入方式，接口传入非法日期时由后台校验不通过。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 3-4"
+  - id: "FR-041-13"
+    statement: "平台通过菜单权限-接口权限权限树为角色配置权限，不在需求中写死角色。导出依赖导出接口权限；无导出权限时点击导出提示“没有操作权限”。发货和明细按钮无独立权限要求，进入后无数据权限时提示“暂无操作权限”并展示暂无数据。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 1、6、7"
+  - id: "FR-041-14"
+    statement: "导出对象为当前筛选结果，导出权限沿用平台导出接口权限。"
+    source: "supplemented_requirement"
+    source_ref: "用户补充答案 7"
+
+prototype_facts:
+  page_id: "pc-chick-shipping"
+  current_requirement_override:
+    status_filter: "最新需求已去掉状态下拉筛选，仅保留状态卡切换"
+    historical_prototype_elements:
+      - "el-filter-status"
+      - "st-stat-pending"
+    handling: "以上元素和状态保留为 page.json 的历史原型事实，不作为当前 REQ-PC-041 必需能力"
+  route: "http://43.143.148.114:18885/biopark-breeding/"
+  states:
+    - state_id: "st-default"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-041-list-default.md"
+      page_json_elements:
+        - "el-page"
+        - "el-nav"
+        - "el-filter"
+        - "el-filter-date-start"
+        - "el-filter-date-end"
+        - "el-filter-status"
+        - "el-filter-house"
+        - "el-filter-breed"
+        - "el-filter-keyword"
+        - "el-btn-query"
+        - "el-btn-reset"
+        - "el-stats-all"
+        - "el-stats-pending"
+        - "el-stats-shipping"
+        - "el-stats-shipped"
+        - "el-stats-signed"
+        - "el-heading-list"
+        - "el-btn-export"
+        - "el-table"
+        - "el-btn-row-ship"
+        - "el-btn-row-detail"
+        - "el-pagination"
+    - state_id: "st-stat-pending"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-041-stat-pending.md"
+      evidence_only: true
+      current_requirement: false
+      page_json_elements:
+        - "el-filter-status"
+        - "el-stats-pending"
+        - "el-table"
+        - "el-pagination"
+    - state_id: "st-filter-keyword"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-041-filter-keyword.md"
+      page_json_elements:
+        - "el-filter-keyword"
+        - "el-stats-all"
+        - "el-stats-pending"
+        - "el-stats-shipping"
+        - "el-stats-shipped"
+        - "el-stats-signed"
+        - "el-table"
+        - "el-btn-reset"
+    - state_id: "st-pagination-page2"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-041-pagination-page2.md"
+      page_json_elements:
+        - "el-table"
+        - "el-pagination"
+    - state_id: "st-export-dialog"
+      evidence: "02_analysis/pc/page_inventory/dom/req-pc-041-export-dialog.md"
+      page_json_elements:
+        - "el-dialog-export"
+        - "el-dlg-close"
+        - "el-dlg-data-scope"
+        - "el-dlg-field-scheme"
+        - "el-dlg-cancel"
+        - "el-dlg-confirm"
+      observation_boundary: "仅打开配置弹窗；未点击确认导出"
+
+roles:
+  - role: "孵化场发货填报人"
+    capability: "查询发货单并进入满足条件的发货执行入口，查看本次发货结果。"
+    source_ref: "需求说明书角色定义"
+    permission_status: "由平台菜单权限-接口权限树配置；不在需求中绑定具体角色"
+  - role: "发货组长"
+    capability: "复核发货任务、执行或追溯发货结果。"
+    source_ref: "需求说明书角色定义"
+    permission_status: "由平台菜单权限-接口权限树配置；不在需求中绑定具体角色"
+  - role: "场长"
+    capability: "查看发货进度、明细和历史记录。"
+    source_ref: "需求说明书角色定义"
+    permission_status: "发货/明细无独立权限要求；无数据权限时进入后提示暂无操作权限并展示暂无数据；导出受接口权限控制"
+  - role: "产品/研发/测试/实施/业务培训人员"
+    capability: "评审、承接和验证页面规则。"
+    source_ref: "需求说明书角色定义"
+    permission_status: "由平台菜单权限-接口权限树配置；不在需求中绑定具体角色"
+
+data_contract:
+  open_issues:
+    - id: OI-041-01
+      source_ref: "待解决事情.md#REQ-PC-041"
+      issue: "孵化计划号的正式格式与校验口径待在真实系统确认"
+      impacts: [CV-041-03]
+      blocker_reason: "当前只有问题记录，未提供真实字段规则或可核验数据"
+      responsible_party: "产品/业务负责人"
+      required_data: ["真实孵化计划号样本", "格式规则确认"]
+      release_condition: "确认格式、合法性校验和异常展示口径"
+      verification_method: "真实系统字段值与规则逐条核对"
+      downstream_action: "可设计等价类与边界目标；不得生成已验证结论"
+      status: blocked
+    - id: OI-041-02
+      source_ref: "待解决事情.md#REQ-PC-041"
+      issue: "创建时间和最后更新时间的来源及更新时间点待确认"
+      impacts: [CV-041-04]
+      blocker_reason: "页面字段存在，但源系统字段和状态变更时间未提供"
+      responsible_party: "产品/排程及发货业务负责人"
+      required_data: ["下发时间样本", "完成发货时间样本", "状态变更记录"]
+      release_condition: "明确两个页面字段的源字段、触发事件和时区"
+      verification_method: "同一发货单关联源记录和页面值比对"
+      downstream_action: "保留字段来源设计；不得将页面展示当作来源正确"
+      status: blocked
+    - id: OI-041-03
+      source_ref: "待解决事情.md#REQ-PC-041"
+      issue: "当前租户默认孵化场和跨租户隔离口径待确认"
+      impacts: [CV-041-05]
+      blocker_reason: "缺少授权测试租户、孵化场映射和隔离数据"
+      responsible_party: "平台权限/业务负责人"
+      required_data: ["当前租户", "跨租户样本", "孵化场映射"]
+      release_condition: "提供授权租户及可核验隔离数据"
+      verification_method: "租户切换/授权范围下核对页面字段和结果集"
+      downstream_action: "可设计隔离验证目标；执行前不得创建或修改业务数据"
+      status: blocked
+    - id: OI-041-04
+      source_ref: "待解决事情.md#REQ-PC-041"
+      issue: "发货单号与商品禽养殖系统补栏计划号的对应关系待确认"
+      impacts: [CV-041-06]
+      blocker_reason: "缺少跨系统关联字段、样本和访问权限"
+      responsible_party: "商品禽养殖系统/业务负责人"
+      required_data: ["同一业务键两端记录", "关联字段说明"]
+      release_condition: "明确关联关系并提供脱敏可核对样本"
+      verification_method: "按业务键逐条跨系统比对"
+      downstream_action: "保留跨系统一致性设计；不新增接口契约验证"
+      status: blocked
+    - id: OI-041-05
+      source_ref: "待解决事情.md#REQ-PC-041"
+      issue: "实际可发数、已发货数、待发货数和进度的异常边界展示口径待确认"
+      impacts: [CV-041-07, AP-16-01, AP-16-02]
+      blocker_reason: "基础公式已知，但零值、空值、超发和重复记录的处理未确认"
+      responsible_party: "产品/业务负责人"
+      required_data: ["实际可发为零样本", "超发样本", "空值或未同步样本", "重复记录样本"]
+      release_condition: "确认异常数据的计算、展示和入口可用性规则"
+      verification_method: "边界数据下核对列表值、状态和发货入口"
+      downstream_action: "独立保留边界设计；不得合并为正常值验证"
+      status: blocked
+    - id: OI-041-06
+      source_ref: "待解决事情.md#REQ-PC-041"
+      issue: "不同状态标签的正式颜色和样式映射待确认"
+      impacts: [CV-041-09]
+      blocker_reason: "历史页面证据不能替代当前需求视觉规范"
+      responsible_party: "产品/设计负责人"
+      required_data: ["当前状态视觉规范", "五类状态样式样本"]
+      release_condition: "确认文字、颜色、样式与状态的映射"
+      verification_method: "页面视觉状态矩阵逐项核对"
+      downstream_action: "可保留视觉差异目标；不得从历史原型推断当前实现"
+      status: blocked
+  source_entities:
+    - entity: "雏苗发货单"
+      responsibility: "排程计划下发形成并由 PC 端承接列表查询"
+      fields: ["发货单号", "计划发货日期", "栋舍", "品种", "状态", "计划上苗数", "计划苗重", "创建时间", "最后更新时间", "孵化计划号", "孵化场"]
+    - entity: "上孵计划"
+      responsibility: "提供关联计划的实际出雏及可发依据"
+      fields: ["实际出雏结果", "计划状态", "计划发货日期", "关联栋舍", "品种"]
+    - entity: "发货记录"
+      responsibility: "提供已发货数和历史状态聚合依据"
+      fields: ["本次发货数量", "记录状态"]
+    - entity: "栋舍基础数据"
+      responsibility: "提供栋舍筛选选项"
+    - entity: "品种基础数据"
+      responsibility: "提供品种筛选选项"
+    - entity: "商品禽养殖端签收结果"
+      responsibility: "参与已签收状态判断"
+  field_sources:
+    计划发货日期:
+      page_field: "雏苗发货单.计划发货日期"
+      source_system: "产业链生产排程系统"
+      source_entity: "排程计划"
+      source_field: "计划发货日期"
+      relationship: "排程计划下发时映射到雏苗发货单"
+      verification_method: "字段值与同一业务键的源数据逐条比对"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    栋舍:
+      page_field: "雏苗发货单.栋舍"
+      source_system: "基础数据系统"
+      source_entity: "栋舍基础数据"
+      source_field: "栋舍名称/业务键"
+      relationship: "发货单关联栋舍"
+      verification_method: "核对全量有效选项及行字段"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    品种:
+      page_field: "雏苗发货单.品种"
+      source_system: "基础数据系统"
+      source_entity: "品种基础数据"
+      source_field: "品种名称/业务键"
+      relationship: "发货单关联品种"
+      verification_method: "核对全量有效选项及行字段"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    计划上苗数:
+      page_field: "雏苗发货单.计划上苗数"
+      source_system: "产业链生产排程系统"
+      source_entity: "排程计划"
+      source_field: "计划上苗数"
+      relationship: "排程计划下发时映射"
+      verification_method: "按发货单号/孵化计划号比对"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    计划苗重:
+      page_field: "雏苗发货单.计划苗重"
+      source_system: "产业链生产排程系统"
+      source_entity: "排程计划"
+      source_field: "计划苗重"
+      relationship: "排程计划下发时映射"
+      verification_method: "按发货单号/孵化计划号比对"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    创建时间:
+      page_field: "雏苗发货单.创建时间"
+      source_system: "产业链生产排程系统"
+      source_entity: "排程计划下发记录"
+      source_field: "下发时间"
+      relationship: "发货单创建时记录"
+      verification_method: "核对源记录时间与页面展示"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    最后更新时间:
+      page_field: "雏苗发货单.最后更新时间"
+      source_system: "商品禽养殖系统/发货业务系统"
+      source_entity: "发货状态变更记录"
+      source_field: "完成发货时间"
+      relationship: "发货业务状态变更时更新"
+      verification_method: "核对状态变更记录与页面展示"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    孵化计划号:
+      page_field: "雏苗发货单.孵化计划号"
+      source_system: "产业链生产排程系统"
+      source_entity: "上孵计划"
+      source_field: "孵化计划号"
+      relationship: "发货单关联上孵计划"
+      verification_method: "格式等价类及业务键逐条比对"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+    发货单号/补栏计划号:
+      page_field: "发货单号与关联补栏计划号"
+      source_system: "商品禽养殖系统"
+      source_entity: "补栏计划"
+      source_field: "补栏计划号"
+      relationship: "发货单与补栏计划关联"
+      verification_method: "同一业务键跨系统逐条比对"
+      verification_status: "blocked"
+      source_ref: "待解决事情.md#REQ-PC-041"
+  derived_fields:
+    actual_available: "关联上孵计划实际出雏总数；未达到已出雏的计划按 0"
+    shipped_quantity: "当前发货单下已提交发货记录数量总和"
+    pending_quantity: "actual_available - shipped_quantity；负值、空值和同步失败的展示口径待确认"
+    shipping_progress: "shipped_quantity / actual_available；actual_available=0 时为 0%；超过 100% 的展示口径待确认"
+    order_status: "按发货结果和商品禽养殖端签收结果聚合判断"
+    calculation_boundaries:
+      - "actual_available 为空、未同步或为负数时的展示与阻断口径待确认"
+      - "shipped_quantity > actual_available 时待发货数和进度是否截断、阻断或保留实际值待确认"
+      - "重复发货记录和记录状态的计入规则待确认"
+  query_fields:
+    - "计划发货日期开始/结束"
+    - "栋舍"
+    - "品种"
+    - "发货单号/孵化计划号关键字"
+
+page_contract:
+  page:
+    page_id: "pc-chick-shipping"
+    menu_path: ["计划管理", "雏苗发货"]
+    prototype_route: "http://43.143.148.114:18885/biopark-breeding/"
+    real_route: "/biopark-breeding/breeding/hatchingplans/delivery"
+    route_status: "真实路由已确认，页面开发中，本次不探索；原型入口可进入"
+  forms:
+    - form_id: "form-shipping-filter"
+      element_id: "el-filter"
+      fields:
+        - "el-filter-date-start"
+        - "el-filter-date-end"
+        - "el-filter-house"
+        - "el-filter-breed"
+        - "el-filter-keyword"
+      submit_elements: ["el-btn-query"]
+      reset_elements: ["el-btn-reset"]
+  statistics:
+    element_ids:
+      - "el-stats-all"
+      - "el-stats-pending"
+      - "el-stats-shipping"
+      - "el-stats-shipped"
+      - "el-stats-signed"
+    rule: "按当前已应用的日期、栋舍、品种和关键字条件统计；当前交互仅支持状态卡切换，状态卡本身不作为统计条件叠加"
+  table:
+    table_id: "table-shipping-orders"
+    element_id: "el-table"
+    columns:
+      - header: "发货单号"
+      - header: "计划发货日期"
+      - header: "栋舍"
+      - header: "品种"
+      - header: "状态"
+      - header: "计划上苗数"
+      - header: "发货进度（已发货数/实际可发数）"
+      - header: "待发货数"
+      - header: "计划苗重"
+      - header: "创建时间"
+      - header: "最后更新时间"
+      - header: "孵化计划号"
+      - header: "孵化场"
+      - header: "操作"
+    pagination_element_id: "el-pagination"
+    sorting: "计划发货日期升序；日期相同按发货单号升序；状态不参与排序"
+  action_contract:
+    ship_entry: "待发货或发货中且达到计划发货日期时可进入；其他状态或未来日期不得提前发货"
+    detail_entry: "已发货、已签收及不满足发货条件的记录保留按页面规则查看明细的入口"
+    export_entry: "打开导出配置弹窗并按当前已应用筛选结果导出；实际导出实现属于 REQ-PC-044"
+  transitions:
+    - from_state: "st-default"
+      action: "查询"
+      target: "结果列表状态"
+      observation: "状态统计、列表和分页按提交条件刷新并回到第一页"
+    - from_state: "st-default"
+      action: "重置"
+      target: "st-default"
+      observation: "恢复当天、全状态、全栋舍、全品种、空关键字并回到第一页"
+    - from_state: "st-default"
+      action: "状态卡切换"
+      target: "对应状态结果"
+      observation: "按状态卡切换结果列表；不提供状态下拉筛选，统计口径不重复叠加该状态"
+    - from_state: "st-default"
+      action: "分页"
+      target: "st-pagination-page2"
+      observation: "切换页码并保留当前已应用筛选条件"
+    - from_state: "st-default"
+      action: "导出"
+      target: "st-export-dialog"
+      observation: "展示当前筛选摘要和导出配置；本次分析未确认导出"
+
+interface_contract:
+  scope: "out_of_scope"
+  execution_status: "not_executed"
+  reason: "本次主要功能测试，不考虑接口测试"
+  retained_page_visible_behaviors:
+    - "无结果、接口超时、基础数据加载失败和权限不足时不展示数据；权限不足提示“暂无操作权限”"
+    - "导出按当前筛选结果导出；无导出权限时提示“没有操作权限”"
+    - "发货和明细按钮无独立权限要求，进入后无数据权限时展示暂无数据并提示“暂无操作权限”"
+  excluded_analysis:
+    - "查询、统计和分页接口路径、方法、请求参数、响应结构和分页契约"
+    - "服务端字段命名、精度和计算接口契约"
+    - "平台接口权限标识"
+    - "导出接口响应字段和文件生成契约"
+    - "接口断言、接口注入和接口独立测试"
+  to_be_confirmed: []
+  evidence_status: "not_collected"
+  prohibition: "不得在本阶段新增接口测试或依据原型 mock 数据补写接口契约"
+
+systematic_boundary_analysis:
+  equivalence_partitions:
+    date_range:
+      - "默认当天"
+      - "有效单日"
+      - "有效跨日范围"
+      - "结束日期早于开始日期"
+      - "无匹配日期"
+    status: ["全部", "待发货", "发货中", "已发货", "已签收"]
+    house_and_breed:
+      - "全部"
+      - "基础数据中的有效选项"
+      - "无匹配组合"
+    keyword:
+      - "空关键字"
+      - "发货单号完整匹配"
+      - "孵化计划号完整匹配"
+      - "关键字部分匹配"
+      - "无匹配关键字"
+    result_set:
+      - "有结果且一页内"
+      - "跨多页"
+      - "空结果"
+  boundary_values:
+    - "结束日期 = 开始日期"
+    - "非法日期接口注入：本次功能测试不执行"
+    - "第一页、最后一页和越界页码"
+    - "关键字为空、单字符、完整编号、200 字以内和超过 200 字"
+    - "actual_available = 0、shipped_quantity = 0、pending_quantity = 0"
+    - "状态统计数量 = 0 时状态卡仍应展示"
+  decision_table_dimensions:
+    - "计划日期是否达到"
+    - "发货单状态"
+    - "实际可发数是否大于零"
+    - "是否存在已发货记录"
+    - "是否已收到签收结果"
+    - "是否存在匹配的筛选结果"
+  state_transition_dimensions:
+    - "默认列表 → 查询结果"
+    - "查询结果 → 重置后的默认条件"
+    - "默认/结果列表 → 状态卡结果"
+    - "列表第 1 页 ↔ 后续页"
+    - "列表 → 导出配置弹窗 → 关闭/取消"
+  design_boundary_status: "analysis_candidate_only"
+
+supplemented_test_content:
+  source: "测试用例问题.md#REQ-PC-041/测试点缺失"
+  purpose: "将9项缺失测试点作为下游测试计划和用例生成的必检输入"
+  rules:
+    independent_design_required: true
+    observable_expectation_required: true
+    blocked_must_not_become_verified: true
+  items:
+    - supplement_id: SUP-041-01
+      content: "状态由发货结果和签收结果共同判定"
+      verification_scope: "覆盖无发货、部分发货、已发货及有/无签收结果；状态卡和行标签按五类状态正确显示"
+      data_preconditions: ["发货记录样本", "商品禽签收结果样本", "状态转换样本"]
+      blocker: "缺少真实跨系统样本和授权访问"
+      status: blocked
+      coverage_ids: [CV-041-01]
+      planned_item_ids: [PI-041-01, PI-041-02]
+      atomic_purpose_ids: [AP-01, AP-02, AP-03]
+    - supplement_id: SUP-041-02
+      content: "计划发货日期、栋舍、品种、计划上苗数、计划苗重与排程下推数据一致"
+      verification_scope: "按同一业务键逐项比对页面列表值与产业链生产排程系统下推值"
+      data_preconditions: ["排程源记录", "发货单关联键", "源系统访问权限"]
+      blocker: "排程源数据和授权访问未提供"
+      status: blocked
+      coverage_ids: [CV-041-02]
+      planned_item_ids: [PI-041-03]
+      atomic_purpose_ids: [AP-04]
+    - supplement_id: SUP-041-03
+      content: "孵化计划号符合 FH-YYYYMMDD-xx 格式"
+      verification_scope: "核对日期、两位序号及非法格式边界"
+      data_preconditions: ["真实孵化计划号样本", "正式格式规则"]
+      blocker: "格式规则和可核验样本待业务确认"
+      status: blocked
+      coverage_ids: [CV-041-03]
+      planned_item_ids: [PI-041-04]
+      atomic_purpose_ids: [AP-05]
+    - supplement_id: SUP-041-04
+      content: "创建时间来自排程下发时间，最后更新时间来自完成发货时间"
+      verification_scope: "逐项比对页面字段与源记录时间及触发时点"
+      data_preconditions: ["排程下发记录", "完成发货记录", "状态变更时间"]
+      blocker: "源字段、时间点和样本未提供"
+      status: blocked
+      coverage_ids: [CV-041-04]
+      planned_item_ids: [PI-041-05]
+      atomic_purpose_ids: [AP-06]
+    - supplement_id: SUP-041-05
+      content: "孵化场默认当前租户并隔离其他租户数据"
+      verification_scope: "当前租户默认展示本租户孵化场；跨租户对比不得出现越权记录"
+      data_preconditions: ["两个租户", "孵化场映射", "数据权限配置"]
+      blocker: "租户样本、映射和权限配置未提供"
+      status: blocked
+      coverage_ids: [CV-041-05]
+      planned_item_ids: [PI-041-06]
+      atomic_purpose_ids: [AP-07]
+    - supplement_id: SUP-041-06
+      content: "发货单号与商品禽养殖系统补栏计划号一致"
+      verification_scope: "按同一业务键跨系统逐条比对且不得串单"
+      data_preconditions: ["商品禽系统访问权限", "关联字段说明", "脱敏业务样本"]
+      blocker: "跨系统访问、关联字段和样本未提供"
+      status: blocked
+      coverage_ids: [CV-041-06]
+      planned_item_ids: [PI-041-07]
+      atomic_purpose_ids: [AP-08]
+    - supplement_id: SUP-041-07
+      content: "实际可发数、已发货数、待发货数和发货进度计算正确"
+      verification_scope: "核对实际出雏累计、已发货累计、待发货差值和进度；实际可发数为零时为0%"
+      data_preconditions: ["上孵计划样本", "发货记录样本", "零值/超发/重复记录边界样本"]
+      blocker: "异常数据展示及入口口径待确认"
+      status: blocked
+      coverage_ids: [CV-041-07]
+      planned_item_ids: [PI-041-08]
+      atomic_purpose_ids: [AP-09, AP-10]
+    - supplement_id: SUP-041-08
+      content: "栋舍和品种筛选项来自基础数据全部有效选项"
+      verification_scope: "逐项比对基础数据全量清单与下拉选项，并验证选中后的过滤结果"
+      data_preconditions: ["栋舍基础数据全量清单", "品种基础数据全量清单", "页面权限"]
+      blocker: "基础数据清单和页面权限未提供"
+      status: blocked
+      coverage_ids: [CV-041-08]
+      planned_item_ids: [PI-041-09]
+      atomic_purpose_ids: [AP-11]
+    - supplement_id: SUP-041-09
+      content: "不同状态标签具有可观察的样式差异"
+      verification_scope: "逐项核对五类状态标签文字、颜色、样式及其状态对应关系"
+      data_preconditions: ["当前视觉规范", "五类状态样本"]
+      blocker: "历史原型不能替代当前视觉规范"
+      status: blocked
+      coverage_ids: [CV-041-09]
+      planned_item_ids: [PI-041-10]
+      atomic_purpose_ids: [AP-12]
+
+coverage_ledger:
+  version: "1.1"
+  comparison_rule: "分析阶段仅校验 coverage_id、planned_item_id 与 atomic_purpose_id 的设计集合；测试计划阶段再建立 coverage_id 到测试用例 ID 的映射。"
+  analysis_stage_rule: "分析产物的覆盖对象和分支不得包含测试用例 ID；阻塞项仍需保留可消费的设计目标，不以历史或孤立用例字符串证明设计存在。"
+  layer_rule: "每个目标分别检查 L1 页面/板块出现、L2 字段展示、L3 字段值/计算/跨系统正确性，不得用较低层级替代高层级。"
+  items:
+    - id: CV-041-01
+      category: "status_rule"
+      target: "状态由发货结果和商品禽养殖端签收结果共同判定，覆盖待发货、发货中、已发货、已签收及全部统计。"
+      layer_targets: [L1, L2, L3]
+      method: "decision_table/state_transition"
+      source_refs: ["requirements_facts.FR-041-04", "requirements_facts.FR-041-10", "data_contract.derived_fields.order_status"]
+      evidence_status: "partial"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-01, PI-041-02]
+      atomic_purpose_ids: [AP-01, AP-02, AP-03, AP-16-01, AP-16-02, AP-16-03, AP-16-04, AP-16-05]
+      status: "blocked"
+    - id: CV-041-02
+      category: "field_source"
+      target: "计划发货日期、栋舍、品种、计划上苗数、计划苗重与产业链生产排程系统下推数据一致。"
+      layer_targets: [L1, L2, L3]
+      method: "field_source_cross_check"
+      source_refs: ["data_contract.field_sources.计划发货日期", "data_contract.field_sources.栋舍", "data_contract.field_sources.品种", "data_contract.field_sources.计划上苗数", "data_contract.field_sources.计划苗重"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-03]
+      atomic_purpose_ids: [AP-04]
+      status: "blocked"
+    - id: CV-041-03
+      category: "format"
+      target: "孵化计划号符合 FH-YYYYMMDD-xx 格式。"
+      layer_targets: [L2, L3]
+      method: "equivalence_boundary"
+      source_refs: ["open_issues.OI-041-01"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-04]
+      atomic_purpose_ids: [AP-05]
+      status: "blocked"
+    - id: CV-041-04
+      category: "field_source"
+      target: "创建时间来自排程系统下推时间，最后更新时间来自发货页面完成发货时间。"
+      layer_targets: [L2, L3]
+      method: "field_source_cross_check"
+      source_refs: ["open_issues.OI-041-02"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-05]
+      atomic_purpose_ids: [AP-06]
+      status: "blocked"
+    - id: CV-041-05
+      category: "tenant_default"
+      target: "孵化场默认显示当前租户下的孵化场，不串租户。"
+      layer_targets: [L2, L3]
+      method: "permission_data_isolation"
+      source_refs: ["open_issues.OI-041-03"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-06]
+      atomic_purpose_ids: [AP-07]
+      status: "blocked"
+    - id: CV-041-06
+      category: "cross_system"
+      target: "发货单号与商品禽养殖系统中的补栏计划号一致。"
+      layer_targets: [L2, L3]
+      method: "cross_system_consistency"
+      source_refs: ["open_issues.OI-041-04"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-07]
+      atomic_purpose_ids: [AP-08]
+      status: "blocked"
+    - id: CV-041-07
+      category: "calculation"
+      target: "实际可发数、已发货数、待发货数和发货进度按数据契约计算，实际可发数为零时进度为 0%；异常边界按待确认口径处理。"
+      layer_targets: [L2, L3]
+      method: "boundary_decision_table"
+      source_refs: ["requirements_facts.FR-041-06", "data_contract.derived_fields", "open_issues.OI-041-05"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-08]
+      atomic_purpose_ids: [AP-09, AP-10]
+      status: "blocked"
+    - id: CV-041-08
+      category: "filter_source"
+      target: "栋舍选项来自基础数据-栋舍管理全部栋舍，品种选项来自基础数据-品种管理全部品种。"
+      layer_targets: [L1, L2, L3]
+      method: "field_source_equivalence"
+      source_refs: ["data_contract.field_sources.栋舍", "data_contract.field_sources.品种"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-09]
+      atomic_purpose_ids: [AP-11]
+      status: "blocked"
+    - id: CV-041-09
+      category: "visual"
+      target: "不同状态标签的文字、颜色和样式有可观察差异，且与状态含义对应。"
+      layer_targets: [L2, L3]
+      method: "visual_state_matrix"
+      source_refs: ["open_issues.OI-041-06"]
+      evidence_status: "blocked"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-10]
+      atomic_purpose_ids: [AP-12]
+      status: "blocked"
+    - id: CV-041-10
+      category: "scope_boundary"
+      target: "REQ-PC-041 仅覆盖导出入口、当前筛选上下文和配置弹窗边界；实际生成、下载和文件校验由 REQ-PC-044 承接。"
+      layer_targets: [L1, L2]
+      method: "scope_traceability"
+      source_refs: ["scope.out_of_scope", "dependencies.REQ-PC-044"]
+      evidence_status: "partial"
+      owner_req_id: "REQ-PC-041"
+      planned_item_ids: [PI-041-11]
+      atomic_purpose_ids: [AP-13]
+      status: "covered"
+    - id: CV-044-01
+      category: "scope_boundary"
+      target: "导出确认、文件生成、下载和文件校验由 REQ-PC-044 承接。"
+      layer_targets: [L1, L2, L3]
+      method: "scope_traceability"
+      source_refs: ["dependencies.REQ-PC-044"]
+      evidence_status: "not_applicable"
+      owner_req_id: "REQ-PC-044"
+      planned_item_ids: []
+      atomic_purpose_ids: []
+      status: "out_of_scope_with_owner"
+      owner: "REQ-PC-044"
+  coverage_traceability:
+    - coverage_id: CV-041-01
+      layer_targets: [L1, L2, L3]
+      planned_item_ids: [PI-041-01, PI-041-02]
+      atomic_purpose_ids: [AP-01, AP-02, AP-03, AP-16-01, AP-16-02, AP-16-03, AP-16-04, AP-16-05]
+      evidence_status: partial
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-02
+      layer_targets: [L1, L2, L3]
+      planned_item_ids: [PI-041-03]
+      atomic_purpose_ids: [AP-04]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-03
+      layer_targets: [L2, L3]
+      planned_item_ids: [PI-041-04]
+      atomic_purpose_ids: [AP-05]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-04
+      layer_targets: [L2, L3]
+      planned_item_ids: [PI-041-05]
+      atomic_purpose_ids: [AP-06]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-05
+      layer_targets: [L2, L3]
+      planned_item_ids: [PI-041-06]
+      atomic_purpose_ids: [AP-07]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-06
+      layer_targets: [L2, L3]
+      planned_item_ids: [PI-041-07]
+      atomic_purpose_ids: [AP-08]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-07
+      layer_targets: [L2, L3]
+      planned_item_ids: [PI-041-08]
+      atomic_purpose_ids: [AP-09, AP-10]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-08
+      layer_targets: [L1, L2, L3]
+      planned_item_ids: [PI-041-09]
+      atomic_purpose_ids: [AP-11]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-09
+      layer_targets: [L2, L3]
+      planned_item_ids: [PI-041-10]
+      atomic_purpose_ids: [AP-12]
+      evidence_status: blocked
+      owner_req_id: REQ-PC-041
+    - coverage_id: CV-041-10
+      layer_targets: [L1, L2]
+      planned_item_ids: [PI-041-11]
+      atomic_purpose_ids: [AP-13]
+      evidence_status: partial
+      owner_req_id: REQ-PC-041
+      status: covered
+    - coverage_id: CV-044-01
+      layer_targets: [L1, L2, L3]
+      planned_item_ids: []
+      atomic_purpose_ids: []
+      evidence_status: not_applicable
+      owner_req_id: REQ-PC-044
+      status: out_of_scope_with_owner
+  atomic_branch_matrix:
+    purpose: "同一行级发货入口的不同状态/日期条件必须分别判定，不能合并为一个复合预期。"
+    branches:
+      - id: AP-16-01
+        condition: "计划发货日期已到且状态为待发货"
+        expected: "目标行显示可用的发货入口；实际可发数为零时按待确认口径处理"
+        coverage_ids: [CV-041-01]
+        planned_item_ids: [PI-041-01]
+        data_requirements: ["计划日期已到", "状态=待发货", "存在可查询发货单"]
+        verification: "按目标行业务键检查入口可见且可用，不执行发货提交"
+        status: blocked
+      - id: AP-16-02
+        condition: "计划发货日期已到且状态为发货中"
+        expected: "目标行显示可用的发货入口；实际可发数为零时按待确认口径处理"
+        coverage_ids: [CV-041-01]
+        planned_item_ids: [PI-041-01]
+        data_requirements: ["计划日期已到", "状态=发货中", "存在可查询发货单"]
+        verification: "按目标行业务键检查入口可见且可用，不执行发货提交"
+        status: blocked
+      - id: AP-16-03
+        condition: "发货单状态为已发货"
+        expected: "目标行不显示可用的发货入口；明细入口按页面规则保留"
+        coverage_ids: [CV-041-01]
+        planned_item_ids: [PI-041-02]
+        data_requirements: ["状态=已发货", "存在可查询发货单"]
+        verification: "按目标行业务键检查发货入口不可用"
+        status: blocked
+      - id: AP-16-04
+        condition: "发货单状态为已签收"
+        expected: "目标行不显示可用的发货入口；明细入口按页面规则保留"
+        coverage_ids: [CV-041-01]
+        planned_item_ids: [PI-041-02]
+        data_requirements: ["状态=已签收", "存在签收结果"]
+        verification: "按目标行业务键检查发货入口不可用"
+        status: blocked
+      - id: AP-16-05
+        condition: "计划发货日期晚于当前业务日期"
+        expected: "目标行不显示可用的发货入口，不得提前发货"
+        coverage_ids: [CV-041-01]
+        planned_item_ids: [PI-041-02]
+        data_requirements: ["计划日期未来", "存在可查询发货单"]
+        verification: "按目标行业务键检查发货入口不可用"
+        status: blocked
+    split_rule: "共享页面入口、数据准备方式或定位器不构成合并理由；每个分支必须有独立标题、数据条件、预期和追溯。"
+    analysis_stage_case_rule: "分支仅维护分析设计标识和验证目标，不维护 case_ids；测试计划阶段负责生成用例并建立反向映射。"
+  design_methods:
+    required: ["等价类", "边界值分析", "判定表", "状态转换", "Pairwise/2-way"]
+    pairwise_parameters: ["计划日期", "栋舍", "品种", "关键字类型", "状态卡", "结果集", "权限", "浏览器"]
+    pairwise_constraints: ["结束日期不得早于开始日期", "实际可发数为零时进度为0%", "未来日期不得展示可执行发货入口", "状态统计不重复叠加状态卡"]
+  analysis_completion_gates:
+    rule_testability:
+      required: true
+      pass_condition: "每条业务规则都有业务化描述、可观察预期、来源引用和验证方法；内部字段名只能作为技术映射"
+    data_preconditions:
+      required: true
+      pass_condition: "每个 L3 或 blocked 目标都有数据要求、准备责任、清理责任、解除条件和验证方式"
+    atomic_branch_split:
+      required: true
+      pass_condition: "发货入口按待发货、发货中、已发货、已签收、未来日期独立建模；每个分支有独立条件、预期和分析设计 ID"
+    scope_priority:
+      required: true
+      pass_condition: "当前需求、用户补充、页面证据、历史原型和相邻需求按 source_priority 处理，REQ-PC-044 目标不回填到本需求"
+    historical_reference_residue:
+      required: true
+      pass_condition: "本分析 YAML/Markdown 不包含 TC-PC-041-*、case_ids 或测试用例阶段字段"
+    handoff_blocking:
+      status: "blocked_until_gates_pass"
+      reasons: ["结构化阻塞项 OI-041-01 至 OI-041-06 尚未解除", "真实测试数据和权限前提尚未提供"]
+
+traceability_contract:
+  rule_version: "coverage-ledger-v2"
+  source_priority:
+    - source: "当前需求说明书及用户补充答案"
+      priority: 1
+      handling: "作为业务规则和范围边界的最高优先级来源"
+    - source: "当前页面采集批次 PAGE-PC-REQ041-REQ042-20260903"
+      priority: 2
+      handling: "仅证明页面板块、字段和可观察交互，不覆盖未执行的业务正确性"
+    - source: "page.json、DOM 和截图"
+      priority: 3
+      handling: "作为页面证据；历史原型事实不得覆盖当前需求"
+    - source: "相邻需求"
+      priority: 4
+      handling: "仅按 dependencies 中 owner 承接，不回填本需求结论"
+  page_block_specs:
+    - block_id: PB-041-01
+      name: "筛选区"
+      state_ids: [st-default, st-filter-keyword]
+      level_targets: [L1, L2, L3]
+      elements: [el-filter-date-start, el-filter-date-end, el-filter-house, el-filter-breed, el-filter-keyword, el-btn-query, el-btn-reset]
+      coverage_ids: [CV-041-08]
+    - block_id: PB-041-02
+      name: "状态统计区"
+      state_ids: [st-default, st-stat-pending, st-filter-keyword]
+      level_targets: [L1, L2, L3]
+      elements: [el-stats-all, el-stats-pending, el-stats-shipping, el-stats-shipped, el-stats-signed]
+      coverage_ids: [CV-041-01, CV-041-07, CV-041-09]
+    - block_id: PB-041-03
+      name: "发货单列表"
+      state_ids: [st-default, st-filter-keyword, st-pagination-page2]
+      level_targets: [L1, L2, L3]
+      elements: [el-table, el-pagination]
+      coverage_ids: [CV-041-02, CV-041-03, CV-041-04, CV-041-05, CV-041-06, CV-041-07, CV-041-09]
+    - block_id: PB-041-04
+      name: "导出配置弹窗"
+      state_ids: [st-export-dialog]
+      level_targets: [L1, L2]
+      elements: [el-dialog-export, el-dlg-data-scope, el-dlg-field-scheme, el-dlg-cancel, el-dlg-confirm]
+      coverage_ids: [CV-041-10]
+  coverage_level_requirements:
+    L1: "证明页面或板块出现"
+    L2: "点名字段、列、指标或状态标签实际展示"
+    L3: "验证字段来源、格式、值、计算、跨系统一致性或视觉差异"
+  coverage_item_contract:
+    required_fields: [id, category, target, layer_targets, method, source_refs, evidence_status, owner_req_id, planned_item_ids, atomic_purpose_ids, status]
+    prohibited_fields_in_analysis: ["test_case_mapping_fields", "generated_test_case_fields", "planned_test_case_fields"]
+    allowed_statuses: [covered, blocked, missing_design, out_of_scope_with_owner]
+    evidence_status_values: [not_collected, partial, blocked, verified, not_applicable]
+    blocked_rule: "blocked 表示设计目标已形成但当前因数据、权限、环境或证据不足无法验证；必须有 planned_item_ids 或 atomic_purpose_ids，不要求也不得引用测试用例 ID。"
+    missing_design_rule: "缺少 planned_item_ids、atomic_purpose_ids、独立条件或可验证预期时标记 missing_design，并阻断交接；不得用 blocked 替代分析设计缺失。"
+    out_of_scope_rule: "out_of_scope_with_owner 必须有 owner_req_id、owner，且不承担本需求的必测目标。"
+    downstream_mapping_rule: "测试计划阶段以 coverage_id、planned_item_id、atomic_purpose_id 消费本产物，再生成测试用例并建立 case_ids 映射。"
+  downstream_requirements:
+    - req_id: REQ-PC-042
+      handoff: "发货执行及提交行为"
+    - req_id: REQ-PC-043
+      handoff: "明细与结果追溯"
+    - req_id: REQ-PC-044
+      handoff: "导出确认、文件生成和下载"
+
+pict_candidate_analysis:
+  status: "candidate_only_no_test_cases_generated"
+  parameters:
+    PlanDate: ["Today", "Earlier", "Later", "ValidMultiDay", "InvalidEndBeforeStart", "NoMatch"]
+    Status: ["All", "Pending", "Shipping", "Shipped", "Signed"]
+    House: ["All", "ValidBaseData", "NoMatch"]
+    Breed: ["All", "ValidBaseData", "NoMatch"]
+    Keyword: ["Empty", "ShipmentOrderMatch", "HatchPlanMatch", "PartialMatch", "NoMatch", "Within200Chars", "Over200Chars"]
+    ResultSet: ["SinglePage", "MultiplePages", "Empty"]
+    AvailableData: ["ActualAvailableZero", "ActualAvailablePositive", "ShippedZero", "PendingZero"]
+  constraints:
+    - "IF [ResultSet] = MultiplePages THEN pagination must preserve all applied filters"
+    - "IF [Keyword] = Empty THEN keyword filtering must not reduce the result set"
+    - "IF [Keyword] = Within200Chars THEN the input must not produce a validation error"
+    - "IF [AvailableData] = ActualAvailableZero THEN progress must be 0% and no positive pending quantity may be derived"
+    - "Status statistics use the applied date/house/breed/keyword conditions and do not add the selected status as a second aggregation condition"
+    - "A future PlanDate must not expose an executable shipping action"
+
+automation_boundary_plan:
+  locator_priority:
+    - "get_by_role"
+    - "get_by_placeholder"
+    - "get_by_label"
+    - "get_by_text for unique headings or menu labels"
+    - "scoped CSS only when semantic locators are unavailable"
+  stable_locator_candidates:
+    - element_id: "el-filter-keyword"
+      preferred: "get_by_placeholder('请输入发货单号或孵化计划号')"
+    - element_id: "el-btn-query"
+      preferred: "get_by_role('button', name='查询')"
+    - element_id: "el-btn-reset"
+      preferred: "get_by_role('button', name='重置')"
+    - element_id: "el-stats-all"
+      preferred: "get_by_role('button', name matching /^全部/)"
+    - element_id: "el-stats-pending"
+      preferred: "get_by_role('button', name matching /^待发货/)"
+    - element_id: "el-stats-shipping"
+      preferred: "get_by_role('button', name matching /^发货中/)"
+    - element_id: "el-stats-shipped"
+      preferred: "get_by_role('button', name matching /^已发货/)"
+    - element_id: "el-stats-signed"
+      preferred: "get_by_role('button', name matching /^已签收/)"
+    - element_id: "el-btn-export"
+      preferred: "get_by_role('button', name matching /导出/)"
+    - element_id: "el-dialog-export"
+      preferred: "get_by_role('dialog', name='导出发货单数据')"
+    - element_id: "el-pagination"
+      preferred: "get_by_role('list') scoped to pagination; exact implementation to confirm"
+  unstable_or_ambiguous:
+    - element_id: "el-filter-date-start"
+      reason: "antd segmented date input；日期格式已确认 YYYY-MM-DD，优先使用控件交互"
+    - element_id: "el-filter-date-end"
+      reason: "antd segmented date input；日期格式已确认 YYYY-MM-DD，优先使用控件交互"
+    - element_id: "el-filter-house"
+      reason: "通用 antd select，需按筛选区域作用域定位"
+    - element_id: "el-filter-breed"
+      reason: "通用 antd select，需按筛选区域作用域定位"
+    - element_id: "el-btn-row-ship"
+      reason: "每行重复按钮；必须按行唯一业务键、表格行文本或正式 data-testid 作用域定位"
+    - element_id: "el-btn-row-detail"
+      reason: "每行重复按钮；必须按行唯一业务键、表格行文本或正式 data-testid 作用域定位"
+  execution_constraints:
+    - "自动化规划使用可视浏览器 headless=False"
+    - "使用 networkidle 或显式可观察状态等待，不使用固定 sleep 作为稳定性策略"
+    - "不得在自动化脚本中写入硬编码账号、密码、Token、Cookie 或业务数据"
+
+dependencies:
+  - dependency: "排程计划"
+    impact: "形成雏苗发货单及计划发货日期"
+    status: "prototype_menu_disabled_real_contract_unknown"
+  - dependency: "上孵计划"
+    impact: "提供实际出雏、实际可发和关联计划信息"
+    status: "prototype_menu_disabled_real_contract_unknown"
+  - dependency: "栋舍、品种基础数据"
+    impact: "提供筛选选项和列表业务维度"
+    status: "required_contract_not_provided"
+  - dependency: "商品禽养殖端签收结果"
+    impact: "参与已签收状态判断"
+    status: "required_contract_not_provided"
+  - dependency: "REQ-PC-044 导出"
+    impact: "承接列表筛选条件和导出配置的正式实现"
+    status: "downstream_requirement"
+
+environment_and_data:
+  prototype:
+    status: "available"
+    browser: "Chromium visible mode"
+    data_character: "原型公开 mock 数据"
+    login: "not_required"
+  real_test_environment:
+    url_source: "config.yaml:testcase.environment.url"
+    credentials_source: "运行时环境变量；不写入分析产物"
+    authorization: "使用平台菜单权限-接口权限树配置；具体测试角色和授权数据由执行前准备"
+  data_preconditions:
+    - "需有可查询的发货单、上孵计划、栋舍、品种及签收状态数据"
+    - "需覆盖无结果、分页、实际可发为零和多种订单状态的安全测试数据"
+    - "真实业务数据创建、修改和清理由授权测试责任人负责；本次分析未创建或修改数据"
+
+risks:
+  - id: "R-041-01"
+    risk: "原型使用 mock 数据，不能证明真实接口分页、统计一致性和数据持久化行为"
+    mitigation: "在测试计划阶段补充页面功能测试数据和权限配置；本阶段不扩展为接口验证"
+  - id: "R-041-02"
+    risk: "重复的行级发货/明细按钮缺乏稳定唯一定位器"
+    mitigation: "要求按行唯一键作用域定位，或补充正式 data-testid"
+  - id: "R-041-03"
+    risk: "状态统计、列表筛选和状态聚合可能存在口径不一致"
+    mitigation: "以同一应用筛选条件和服务端聚合口径建立后续验证边界"
+  - id: "R-041-04"
+    risk: "真实功能测试所需的授权测试数据和页面权限配置尚未准备"
+    mitigation: "在测试计划阶段明确页面测试账号、数据前提和平台菜单权限配置；不扩展为接口测试"
+  - id: "R-041-05"
+    risk: "日期控件为分段输入，直接填值可能破坏控件状态"
+    mitigation: "按 YYYY-MM-DD 通过控件交互和稳定等待，不直接拼接输入值"
+
+open_questions:
+  - "确认 OI-041-01 至 OI-041-06 的责任方、数据样本和解除条件后再进入执行验证"
+
+handoff:
+  output_paths:
+    yaml: "02_analysis/pc/REQ-PC-041.yaml"
+    markdown: "02_analysis/pc/REQ-PC-041_雏苗发货列表与筛选.md"
+    partition_handoff: "02_analysis/pc/HANDOFF.md"
+  next_agent: "stage-test-plan-agent"
+  input_contract:
+    accepted_ids: [coverage_id, planned_item_id, atomic_purpose_id]
+    prohibited_assumptions: ["不得把历史原型证据当作当前能力", "不得把 blocked 当作已执行或已有测试用例", "不得将 REQ-PC-044 导出实现回填到 REQ-PC-041"]
+    prerequisite: "analysis_completion_gates 全部通过后，方可进入执行验证；测试计划可提前消费设计 ID 但必须保留阻塞状态"

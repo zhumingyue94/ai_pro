@@ -1,0 +1,446 @@
+﻿req_id: REQ-001
+module: 首页
+trace:
+  req: REQ-001
+  version: '1'
+  status: partial_ready_for_test_planning
+  source_review: REV_CASE_REQ-001-20261023-R2；原子场景、入口步骤和计划覆盖已补充
+  tp: TEST_PLAN-REQ-001
+  project: 数据采集监控平台
+  page_url: /biopark-iot/iot/home
+common_preconditions:
+- id: CP-REQ-001-READONLY
+  name: 首页只读执行前置
+  conditions: []
+  steps:
+  - action: 使用授权只读账号登录数据采集监控平台。
+    expected: 登录态有效且平台菜单区域可观察；凭据仅运行时读取，不写入产物。
+  - action: 展开首页入口并进入首页目标页面。
+    expected: 到达 /biopark-iot/iot/home 对应首页，页面入口和加载状态可观察；若入口或路由不符则记录差异并停止。
+cases:
+- id: TC-REQ-001-003
+  coverage_ids:
+  - REQ-001-002
+  plan_item_ids:
+  - REQ-001-002
+  atomic_purpose_ids:
+  - AP-001-003
+  title: 默认日期范围符合七个完整自然日规则
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 默认日期范围
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已确认执行账号用户时区
+  steps:
+  - action: 读取开始日期和结束日期运行时值
+    expected: 结束日期为用户时区前一天，开始日期为其向前七个完整自然日的起点
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-004
+  coverage_ids:
+  - REQ-001-002
+  - REQ-001-013
+  plan_item_ids:
+  - REQ-001-002
+  - REQ-001-013
+  atomic_purpose_ids:
+  - AP-001-004
+  title: 最近七天快捷项设置包含边界的七天范围
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 日期快捷筛选
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 日期范围面板可操作
+  steps:
+  - action: 点击时间范围选择框，打开日期范围弹窗；点击已登记的最近七天按钮
+    expected: 结束日期为今天，开始日期为包括今天往前数7天，起止均包含
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-005
+  coverage_ids:
+  - REQ-001-002
+  - REQ-001-013
+  plan_item_ids:
+  - REQ-001-002
+  - REQ-001-013
+  atomic_purpose_ids:
+  - AP-001-005
+  title: 跨月日期范围包含起止日期
+  type: feature
+  auto: 'auto'
+  priority: P2
+  feature: 日期边界
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备脱敏跨月只读数据
+  steps:
+  - action: 点击时间范围选择框，打开日期范围弹窗；设置跨越月末的开始和结束日期
+    expected: 命中范围的月末前后数据均被纳入
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-006
+  coverage_ids:
+  - REQ-001-003
+  - REQ-001-013
+  plan_item_ids:
+  - REQ-001-003
+  - REQ-001-013
+  atomic_purpose_ids:
+  - AP-001-006
+  title: 时间间隔天按自然日形成时间桶
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 时间间隔
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备跨日脱敏数据
+  steps:
+  - action: 通过时间间隔标签选择天并观察结果
+    expected: 按自然日形成时间桶，缺失日按需求归零
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-007
+  coverage_ids:
+  - REQ-001-003
+  - REQ-001-013
+  plan_item_ids:
+  - REQ-001-003
+  - REQ-001-013
+  atomic_purpose_ids:
+  - AP-001-007
+  title: 时间间隔周按周一至周日形成时间桶
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 时间间隔
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备周边界脱敏数据
+  steps:
+  - action: 通过时间间隔标签选择周并观察结果
+    expected: 按周一至周日形成时间桶，缺失周按需求归零
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-008
+  coverage_ids:
+  - REQ-001-003
+  - REQ-001-013
+  plan_item_ids:
+  - REQ-001-003
+  - REQ-001-013
+  atomic_purpose_ids:
+  - AP-001-008
+  title: 月季度和年按自然周期汇总
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 时间间隔
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备自然周期脱敏数据
+  steps:
+  - action: 点击首页时间间隔控件，打开时间间隔选项
+    expected: 时间间隔选项展开，并显示月、季度和年三个可选择的自然周期
+  - action: 选择“月”选项，等待结果区域完成刷新
+    expected: 结果区域按自然月划分时间桶并汇总当前筛选范围内的数据，页面显示与月周期对应的统计结果
+  - action: 重新打开时间间隔控件，选择“季度”选项，等待结果区域完成刷新
+    expected: 结果区域按自然季度划分时间桶并汇总当前筛选范围内的数据，页面显示与季度周期对应的统计结果
+  - action: 重新打开时间间隔控件，选择“年”选项，等待结果区域完成刷新
+    expected: 结果区域按自然年划分时间桶并汇总当前筛选范围内的数据，页面显示与年周期对应的统计结果
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-010
+  coverage_ids:
+  - REQ-001-007
+  plan_item_ids:
+  - REQ-001-007
+  atomic_purpose_ids:
+  - AP-001-010
+  title: 无数据时显示零值或空状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 空数据
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已取得批准的无数据范围或回读证据
+  steps:
+  - action: 点击首页日期范围选择控件，打开日期范围面板
+    expected: 日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期
+  - action: 在日期范围面板中设置并确认批准的无数据范围
+    expected: 日期控件显示批准的无数据范围，页面开始按该范围重新查询数据
+  - action: 等待页面加载完成，观察分类、产品、设备、设备消息以及上行和下行消息指标与图表
+    expected: 结果区域、指标卡和图表均完成刷新，展示内容对应批准的无数据范围
+  - action: 分别核对各指标和图表的无数据展示状态
+    expected: 分类、产品、设备、设备消息以及上行和下行消息无数据时按页面规则显示0或空状态
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-011
+  coverage_ids:
+  - REQ-001-006
+  plan_item_ids:
+  - REQ-001-006
+  atomic_purpose_ids:
+  - AP-001-011
+  title: 日期筛选变化后结果区域更新
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选联动
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备两个可区分的批准日期范围，且两个范围均有可观察的结果基线
+  steps:
+  - action: 点击首页日期范围选择控件，打开日期范围面板
+    expected: 日期范围面板展开，并显示当前已选范围及可编辑的开始日期、结束日期
+  - action: 在日期范围面板中选择第二个批准日期范围，完成日期选择并关闭面板
+    expected: 日期控件显示第二个范围，页面开始按新范围重新加载数据
+  - action: 等待页面加载完成，记录结果区域、指标卡和图表的显示内容
+    expected: 结果区域、指标卡和图表均完成刷新，展示内容与第二个日期范围一致；若未完成刷新则记录加载状态或异常提示
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-026
+  coverage_ids:
+  - REQ-001-013
+  plan_item_ids:
+  - REQ-001-013
+  atomic_purpose_ids:
+  - AP-001-026
+  title: 日期筛选后消息方向统计更新
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 筛选联动
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备一个与默认日期范围不同的日期范围；默认日期范围为包含今天在内往前7天
+  steps:
+  - action: 查看首页日期范围控件的默认值
+    expected: 默认日期范围为包含今天在内往前7天
+  - action: 点击首页日期范围选择控件，打开日期范围面板
+    expected: 日期范围面板展开，并显示当前默认范围及可编辑的开始日期、结束日期
+  - action: 选择一个与默认日期范围不同的已准备日期范围并确认日期选择
+    expected: 日期控件显示新选择的日期范围，页面按该范围重新查询并刷新消息统计区域
+  - action: 在消息统计区域分别读取上行消息数量和下行消息数量
+    expected: 上行消息数量和下行消息数量均按新选择的日期范围刷新展示，不应继续使用默认的包含今天往前7天范围
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-013
+  coverage_ids:
+  - REQ-001-016
+  plan_item_ids:
+  - REQ-001-016
+  atomic_purpose_ids:
+  - AP-001-013
+  title: 只显示当前账号有权限的数据
+  type: security
+  auto: 'no'
+  priority: P1
+  feature: 租户权限边界
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已取得权限负责人确认的当前租户和只读范围
+  steps:
+  - action: 登录平台，打开首页并查看当前账号显示的租户和数据范围
+    expected: 页面显示当前账号所属的租户和数据范围
+  - action: 查看首页上的分类、产品、设备、消息和图表数据
+    expected: 页面只显示当前账号有权限查看的数据，不显示其他租户的数据
+  - action: 核对页面上的各项统计是否包含未授权租户的数据
+    expected: 分类、产品、设备、消息和图表统计均不包含未授权租户的数据
+  tp_id: TEST_PLAN-REQ-001
+  test_data:
+    page_url: /biopark-iot/iot/home
+    data_prefix: REQ-001-脱敏数据；具体值待确认
+- id: TC-REQ-001-018
+  coverage_ids:
+  - REQ-001-001
+  atomic_purpose_ids:
+  - AP-001-018
+  title: 分类数量及今日新增统计
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 分类统计
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备产品分类页面总数及创建日期为今天的批准基线
+  steps:
+  - action: 打开产品分类页面，记录页面显示的分类总数
+    expected: 成功进入产品分类页面，并获得产品分类页面显示的分类总数
+  - action: 在产品分类页面记录创建日期为今天的分类数量
+    expected: 获得创建日期为今天的产品分类数量，并按分类唯一编号去重
+  - action: 返回首页，核对首页分类数量与产品分类页面分类总数
+    expected: 首页分类数量等于产品分类页面显示的分类总数
+  - action: 核对首页分类今日新增与产品分类页面今日创建分类数量
+    expected: 首页分类今日新增等于产品分类页面创建日期为今天的分类数量
+  tp_id: TEST_PLAN-REQ-001
+- id: TC-REQ-001-019
+  coverage_ids:
+  - REQ-001-001
+  atomic_purpose_ids:
+  - AP-001-019
+  title: 首页产品数量和今日新增
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 产品统计
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备产品管理页面总数及创建日期为今天的批准基线
+  steps:
+  - action: 打开产品管理页面，记录页面显示的产品总数
+    expected: 成功进入产品管理页面，并获得页面显示的产品总数
+  - action: 在产品管理页面记录创建日期为今天的产品数量
+    expected: 获得创建日期为今天的产品数量，并按产品唯一编号去重
+  - action: 返回首页，核对首页产品数量与产品管理页面产品总数
+    expected: 首页产品数量等于产品管理页面显示的产品总数
+  - action: 核对首页产品今日新增与产品管理页面今日创建产品数量
+    expected: 首页产品今日新增等于产品管理页面创建日期为今天的产品数量
+  tp_id: TEST_PLAN-REQ-001
+- id: TC-REQ-001-020
+  coverage_ids:
+  - REQ-001-001
+  atomic_purpose_ids:
+  - AP-001-020
+  title: 首页设备数量和今日新增
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 设备统计
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备设备管理页面总数及创建日期为今天的批准基线
+  steps:
+  - action: 打开设备管理页面，记录页面显示的设备总数
+    expected: 成功进入设备管理页面，并获得页面显示的设备总数
+  - action: 在设备管理页面记录创建日期为今天的设备数量
+    expected: 获得创建日期为今天的设备数量，并按设备唯一编号去重
+  - action: 返回首页，核对首页设备数量与设备管理页面设备总数
+    expected: 首页设备数量等于设备管理页面显示的设备总数
+  - action: 核对首页设备今日新增与设备管理页面今日创建设备数量
+    expected: 首页设备今日新增等于设备管理页面创建日期为今天的设备数量
+  tp_id: TEST_PLAN-REQ-001
+- id: TC-REQ-001-021
+  coverage_ids:
+  - REQ-001-001
+  - REQ-001-005
+  atomic_purpose_ids:
+  - AP-001-021
+  title: 首页设备消息数和今日新增
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 设备消息统计
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备所有设备消息页总数及创建时间为今天的批准基线
+  steps:
+  - action: 在设备管理页面逐个打开设备的设备消息弹窗
+    expected: 每个设备的设备消息页面都能正常打开，并显示该设备的消息列表
+  - action: 记录每个设备消息页面的消息总数，并按消息唯一编号去重后汇总
+    expected: 得到所有设备消息的汇总总数，重复消息只计算一次
+  - action: 在每个设备消息页面记录创建时间为今天的消息数量，并按消息唯一编号去重后汇总
+    expected: 得到所有设备今天新增消息的汇总数量
+  - action: 返回首页，核对首页设备消息数与设备消息页面汇总总数
+    expected: 首页设备消息数等于所有设备消息页面汇总的消息总数
+  - action: 核对首页设备消息今日新增与设备消息页面今日新增汇总
+    expected: 首页设备消息今日新增等于所有设备消息页面创建时间为今天的消息汇总数量
+  tp_id: TEST_PLAN-REQ-001
+- id: TC-REQ-001-022
+  coverage_ids:
+  - REQ-001-003
+  - REQ-001-008
+  atomic_purpose_ids:
+  - AP-001-022
+  title: 设备数量分类环状图统计
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 设备数量图表
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备产品分类与绑定设备数量批准基线
+  steps:
+  - action: 观察设备数量统计环状图
+    expected: 页面显示设备数量统计环状图，图例或环状图分区按产品分类展示，分类名称清晰可辨。
+  - action: 按产品分类逐一将鼠标悬停在环状图对应分区
+    expected: 每次悬停均显示当前产品分类的提示信息，并明确展示该分类的绑定设备数量。
+  - action: 逐一记录各产品分类悬停提示中的绑定设备数量
+    expected: 各产品分类的提示数量均可读取，且每个分类只对应一个数量，不出现分类名称缺失或数量无法显示。
+  - action: 将各产品分类数量与批准基线逐项核对
+    expected: 每个产品分类的绑定设备数量均与批准基线一致，环状图展示的分类集合无遗漏或多余分类。
+  tp_id: TEST_PLAN-REQ-001
+- id: TC-REQ-001-023
+  coverage_ids:
+  - REQ-001-004
+  atomic_purpose_ids:
+  - AP-001-023
+  title: 设备状态统计
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 设备状态
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备设备管理页面在线、离线和未激活状态数量基线
+  steps:
+  - action: 打开设备管理页面，分别记录在线、离线和未激活设备数量
+    expected: 成功进入设备管理页面，并获得在线、离线和未激活三种状态的设备数量
+  - action: 返回首页，查看设备状态统计中的在线数量
+    expected: 首页在线设备数量等于设备管理页面记录的在线设备数量，按设备唯一编号去重
+  - action: 核对首页设备状态统计中的离线数量
+    expected: 首页离线设备数量等于设备管理页面记录的离线设备数量，按设备唯一编号去重
+  - action: 核对首页设备状态统计中的未激活数量
+    expected: 首页未激活设备数量等于设备管理页面记录的未激活设备数量，按设备唯一编号去重
+  tp_id: TEST_PLAN-REQ-001
+- id: TC-REQ-001-024
+  coverage_ids:
+  - REQ-001-006
+  - REQ-001-013
+  atomic_purpose_ids:
+  - AP-001-024
+  title: 上行和下行消息量统计
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 消息方向统计
+  common_preconditions_ref: CP-REQ-001-READONLY
+  preconditions:
+  - 已准备包含上行、下行标签和可区分时间范围的消息基线
+  steps:
+  - action: 打开首页的消息量统计区域
+    expected: 成功进入首页并看到上行消息量、下行消息量统计指标
+  - action: 在时间范围筛选器中设置开始时间和结束时间，点击确定并等待统计结果刷新
+    expected: 筛选器显示所选开始时间和结束时间，页面完成刷新且统计结果对应所选时间范围
+  - action: 记录页面显示的上行消息量和下行消息量
+    expected: 上行消息量和下行消息量均可读取并分别记录，不将两个指标合并为单一结果
+  - action: 按消息唯一编号整理所选时间范围内的基线消息，并分别统计上行和下行标签数量
+    expected: 基线统计仅纳入所选时间范围内的消息，每个消息唯一编号只计数一次，并分别得到上行基线数量和下行基线数量
+  - action: 将页面上行消息量与上行基线数量进行核对
+    expected: 页面上行消息量等于上行基线数量，范围外消息和重复唯一编号不计入
+  - action: 将页面下行消息量与下行基线数量进行核对
+    expected: 页面下行消息量等于下行基线数量，范围外消息和重复唯一编号不计入
+  tp_id: TEST_PLAN-REQ-001

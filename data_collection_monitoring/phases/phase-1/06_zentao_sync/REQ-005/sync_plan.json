@@ -1,0 +1,27 @@
+{
+  "status": "validated",
+  "req_id": "REQ-005",
+  "target": "project",
+  "product_id": 8,
+  "project_id": 46,
+  "module_id": 734,
+  "source_case_count": 41,
+  "create_case_ids": [
+    "TC-REQ-005-043"
+  ],
+  "stable_remote_case_ids": {},
+  "operations": {
+    "create": [
+      52118
+    ],
+    "update": [],
+    "delete": [],
+    "delete_recreate": []
+  },
+  "change": "新增删除数据后使用完全相同表单内容重新创建成功场景。",
+  "readback": "validated",
+  "entrypoint": "../../../../scripts/zentao_create_testcase.py",
+  "remote_write": "validated",
+  "failure_policy": "任何创建或回读失败立即停止后续远程写入，不删除重建、不创建替代用例",
+  "remote_case_id": 52118
+}

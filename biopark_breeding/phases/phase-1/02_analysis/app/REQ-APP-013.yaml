@@ -1,0 +1,191 @@
+schema_version: "1.0"
+artifact_type: requirement_analysis
+req_id: REQ-APP-013
+module_name: "出雏器 / 库存查询"
+zentao_module_id: 575
+platform: app
+analysis_date: "2026-08-25"
+source:
+  docx: "01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx"
+  baseline: "01_requirements/app/模块拆分清单.md"
+  axure_map: "01_requirements/app/axure_map.md"
+  axure_run: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511"
+  source_pages: [P062, P063, P064, P065, P066]
+  evidence_paths:
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-062.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-062.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-062.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-063.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-063.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-063.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-064.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-064.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-064.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-065.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-065.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-065.txt"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-066.png"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-066.html"
+    - "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-066.txt"
+  evidence_levels:
+    observed: "DOCX 页面表、已保存 DOM/正文及本次可视浏览器 networkidle 后的渲染页面事实"
+    static: "axure_map.md 页面树/链接候选"
+    inferred: "根据页面对象、分组和控件归纳的关系，不作为正式业务规则"
+    open_question: "原型未明确，需产品/研发确认"
+scope:
+  baseline_statement: "出雏器 / 库存查询（575）；P062–P066：出雏器列表、库位详情、搜索、筛选、结果存在；验收需区分出雏器库位与其他设备库位。"
+  included: "出雏器库位库存列表、详情、搜索、筛选、筛选结果和只读导航。"
+  excluded: "新增、编辑、删除、入库、出库、出雏任务执行、接口实现、权限和持久化实现。"
+  safety_boundary: "仅读取原型页面；未点击或提交业务写操作。"
+pages:
+  - id: P062
+    name: "出雏器列表"
+    page_file: "出雏器列表.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-062.png,dom/page-062.html,page_text/page-062.txt}"
+    entry_and_return:
+      entry: "observed/static：首页、种蛋出雏/相关任务页可进入；具体权限未确认。"
+      return: "static：首页、出雏器搜索、出雏器筛选、出雏器库位详情、上孵任务详情-待执行。"
+    contract:
+      query_area: "observed：搜索、筛选、全景入口；摘要含全部（66）、空位（5）、占用（53）、停用（2）。"
+      list_or_cards: "observed：按出雏器/库位展示种蛋卡片，含周龄、平均蛋重及类型、产蛋日期、养殖场-批次-品种、库位号、占用/空位/停用、孵化中/待出雏/已超期等语义。"
+      form: "未观察到独立录入表单。"
+      dialogs: "未观察到独立弹窗；详情为独立页面。"
+      buttons_actions: "observed：搜索、筛选、全景、状态切换、库位卡片；未执行出雏或出库动作。"
+      state: "observed：库位状态为空位、占用、停用；任务/种蛋语义含孵化中、待出雏、已超期；未观察到状态转换。"
+  - id: P063
+    name: "出雏器库位详情"
+    page_file: "出雏器库位详情.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-063.png,dom/page-063.html,page_text/page-063.txt}"
+    entry_and_return:
+      entry: "observed/static：从出雏器列表或搜索结果库位项进入。"
+      return: "static：出雏器列表。"
+    contract:
+      query_area: "不适用；未观察到查询区。"
+      list_or_cards: "observed：库位信息、库位状态、出雏器、库位、孵化场；种蛋信息含养殖场、批次、品种、种蛋类型、周龄、蛋重类型、平均蛋重、产蛋日期、种蛋状态、关联计划；原型注释要求实际待出雏数量。"
+      form: "未观察到录入表单。"
+      dialogs: "未观察到独立弹窗；信息区默认收缩语义来自注释。"
+      buttons_actions: "observed：详情展开/收缩、关联计划复制；复制反馈未观察到。"
+      state: "observed：库位状态占用、空位、停用；种蛋状态待出雏；计划区可显示任务号/出雏数量的说明。未观察到状态转换。"
+  - id: P064
+    name: "出雏器搜索"
+    page_file: "出雏器搜索.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-064.png,dom/page-064.html,page_text/page-064.txt}"
+    entry_and_return:
+      entry: "observed/static：从出雏器列表进入。"
+      return: "static：出雏器列表、出雏器库位详情、上孵任务详情和执行候选。"
+    contract:
+      query_area: "observed：搜索输入/按钮；字段提示为计划号、库位号、养殖场、批次、品种；有代孵历史候选。"
+      list_or_cards: "observed：结果复用出雏器库位卡片，含占用/空位/停用及待出雏语义。"
+      form: "observed：关键字输入；未观察到校验或复杂组合表单。"
+      dialogs: "未观察到独立弹窗；有无结果为页面文案。"
+      buttons_actions: "observed：搜索、历史项、结果卡片；自动查询仅为页面注释建议。"
+      state: "observed：有结果/无结果、历史搜索等页面状态；未观察到库存状态转换。"
+  - id: P065
+    name: "出雏器筛选"
+    page_file: "出雏器筛选.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-065.png,dom/page-065.html,page_text/page-065.txt}"
+    entry_and_return:
+      entry: "observed/static：从出雏器列表或搜索进入。"
+      return: "static：出雏器搜索、任务筛选/详情、出雏任务列表、出雏器列表、出雏器筛选和结果。"
+    contract:
+      query_area: "observed：全部、空位、满容、超容、停用、待上孵、已超期、待孵期、待排期；照蛋日期/出雏日期、养殖场、品种、蛋重类型、种蛋状态、种蛋类型、周龄、平均蛋重、仓库候选。"
+      list_or_cards: "observed：筛选页显示出雏器库位卡片预览。"
+      form: "observed：选择类筛选项、日期快捷项/范围和数值候选；必填、单多选未确认。"
+      dialogs: "未观察到独立弹窗。"
+      buttons_actions: "observed：确认、重置、选择筛选项；确认后进入 P066。"
+      state: "observed：库位和种蛋/任务状态并列展示；未观察到业务状态转换。"
+  - id: P066
+    name: "筛选结果"
+    page_file: "筛选结果_5.html"
+    evidence_path: "01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/{screenshots/page-066.png,dom/page-066.html,page_text/page-066.txt}"
+    entry_and_return:
+      entry: "observed/static：由出雏器筛选确认进入。"
+      return: "static：证据链接摘要复用蛋库/种蛋任务页面，真实返回对象需确认。"
+    contract:
+      query_area: "observed：顶部搜索、筛选、全景、出雏器上下文；未观察到新查询字段。"
+      list_or_cards: "observed：展示出雏器库位筛选结果，含种蛋信息、库位和占用/空位/停用。"
+      form: "未观察到独立表单。"
+      dialogs: "未观察到独立弹窗；无结果文案显隐条件未确认。"
+      buttons_actions: "observed/static：搜索、筛选、全景、结果卡片/记录入口。"
+      state: "observed：占用、空位、停用及孵化中/待出雏/已超期；未观察到转换。"
+interfaces:
+  - id: IF-013-UI-NAV
+    type: navigation
+    name: "出雏器库存查询导航"
+    evidence_level: observed
+    endpoint_or_api: "未观察到具体接口路径"
+    input: "页面入口、搜索、筛选、卡片点击"
+    output: "目标页面/库位详情"
+    note: "页面树链接是候选关系。"
+  - id: IF-013-INVENTORY-QUERY
+    type: data_query
+    name: "出雏器库位库存查询"
+    evidence_level: open_question
+    endpoint_or_api: "未观察到"
+    input: "计划号、库位号、养殖场、批次、品种及筛选条件"
+    output: "出雏器库位结果；字段结构、分页、排序未确认"
+    note: "不编造接口路径、参数和错误码。"
+  - id: IF-013-COPY-PLAN
+    type: client_action
+    name: "关联计划复制"
+    evidence_level: observed
+    endpoint_or_api: "未观察到"
+    input: "详情页关联计划"
+    output: "复制反馈未观察到"
+    note: "仅记录控件存在。"
+cross_module_refs:
+  - ref: "首页"
+    relation: "entry"
+    evidence_level: static
+    note: "基线列为入口。"
+  - ref: "种蛋出雏"
+    relation: "related_task_context"
+    evidence_level: static
+    note: "页面出现待出雏/实际待出雏语义，但任务联动未确认。"
+  - ref: "出雏器 / 出入库记录"
+    relation: "record_boundary"
+    evidence_level: static
+    note: "记录动作由相邻 REQ-APP-014 分析，本 REQ 不执行。"
+  - ref: "孵化器 / 库存查询、其他设备库位"
+    relation: "boundary_comparison"
+    evidence_level: inferred
+    note: "用于区分出雏器库位与其他设备库位。"
+business_rules:
+  - id: BR-013-01
+    statement: "出雏器库存必须按出雏器库位解释，不能直接复用其他设备或蛋库对象。"
+    evidence_level: inferred
+    source: "模块拆分清单 D-02/D-04、P062/P063"
+  - id: BR-013-02
+    statement: "同一出雏器中不同上孵计划可展示为不同子库位；页面注释要求详情关联计划保持区分。"
+    evidence_level: observed
+    source: "P062/P063 页面注释"
+  - id: BR-013-03
+    statement: "出雏器详情默认收缩；任务已下发时计划区可能展示任务号和出雏数量，并需展示实际待出雏数量。"
+    evidence_level: observed
+    source: "P063 页面注释"
+  - id: BR-013-04
+    statement: "搜索历史和自动查询行为是原型注释建议；是否正式实现及持久化待确认。"
+    evidence_level: inferred
+    source: "P064 页面注释"
+  - id: BR-013-05
+    statement: "占用、空位、停用与待出雏等标签是展示状态，不构成已确认状态机。"
+    evidence_level: observed
+    source: "P062/P065/P066 live DOM"
+open_questions:
+  - id: OQ-013-01
+    question: "P066 static 链接复用蛋库/种蛋任务页面，筛选结果的对象绑定和返回路径是否正确？"
+    evidence_level: open_question
+    impact: "影响路由和模块隔离。"
+  - id: OQ-013-02
+    question: "出雏器库位的正式字段、实际待出雏数量来源、刷新时机和接口错误规则是什么？"
+    evidence_level: open_question
+    impact: "影响库存契约和数据一致性验证。"
+  - id: OQ-013-03
+    question: "库位/种蛋/任务状态之间是否有正式转换及权限？"
+    evidence_level: open_question
+    impact: "当前只能验证静态展示。"
+handoff:
+  next_stage: "03_testpoints"
+  status: "analysis_complete_candidate"
+  review_gate: "产品确认出雏器对象、待出雏字段和结果返回路径后再进入测点设计。"
+  prohibited_next_actions: "未经授权不得执行出雏、出库、入库、盘点、任务提交或远程写入。"

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "req_id": "REQ-PC-043",
+  "req_name": "PC 发货单明细与结果追溯",
+  "description": "对齐 REQ-PC-043 发货单明细只读页面及其栋舍、来源明细、状态筛选和不同发货单状态展示，与指定蓝湖设计页面建立映射。",
+  "prototype_source": {
+    "source_file": "02_analysis/pc/page_inventory/page.json",
+    "page_id": "pc-chick-shipping-detail",
+    "page_title": "发货单明细 - React 原型",
+    "route": "http://43.143.148.114:18885/biopark-breeding/",
+    "menu_path": ["计划管理", "雏苗发货", "发货单明细"],
+    "source_req_id_in_page_json": "REQ-PC-043",
+    "states": [
+      {"state_id": "st-default", "state_name": "只读详情与结果追溯默认态", "ship_doc": "BL-20260630-02", "ship_doc_status": "发货中"},
+      {"state_id": "st-house-overview", "state_name": "栋舍总览视图", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-house-current", "state_name": "当前上孵计划视图", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-house-list", "state_name": "栋舍总览列表查看方式", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-source-detail", "state_name": "来源明细位置筛选与发货记录联动", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-filter-dropdown", "state_name": "发货状态下拉展开", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-filter-shipped", "state_name": "已发货筛选结果", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-filter-empty", "state_name": "筛选无数据", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-filter-reset", "state_name": "清空筛选恢复全部上孵计划", "ship_doc": "BL-20260630-02"},
+      {"state_id": "st-doc-01", "state_name": "BL-20260630-01 待发货明细", "ship_doc": "BL-20260630-01", "ship_doc_status": "待发货"},
+      {"state_id": "st-doc-03", "state_name": "BL-20260630-03 已发货明细", "ship_doc": "BL-20260630-03", "ship_doc_status": "已发货"},
+      {"state_id": "st-doc-04", "state_name": "BL-20260630-04 已签收明细", "ship_doc": "BL-20260630-04", "ship_doc_status": "已签收"},
+      {"state_id": "st-doc-05", "state_name": "BL-20260630-05 待发货明细", "ship_doc": "BL-20260630-05", "ship_doc_status": "待发货"},
+      {"state_id": "st-doc-06", "state_name": "BL-20260630-06 发货中明细", "ship_doc": "BL-20260630-06", "ship_doc_status": "发货中"},
+      {"state_id": "st-doc-07", "state_name": "BL-20260630-07 已发货明细", "ship_doc": "BL-20260630-07", "ship_doc_status": "已发货"},
+      {"state_id": "st-doc-08", "state_name": "BL-20260630-08 已签收明细", "ship_doc": "BL-20260630-08", "ship_doc_status": "已签收"}
+    ]
+  },
+  "lanhu_design_source": {
+    "source_dir": "02_analysis/pc/page_inventory/lanhu",
+    "designs": [
+      {"design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "design_name": "发货执行-明细", "source_file": "02_analysis/pc/page_inventory/lanhu/发货执行-明细_design.json", "page_id": "lanhu-1dd0ae6b-bb3d-439a-bb71-084e29252c71", "node_count": 1005, "max_depth": 10}
+    ]
+  },
+  "mappings": [
+    {"prototype_state_id": "st-default", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "蓝湖页面与原型均为发货执行明细只读页，覆盖顶部发货单信息、上孵计划、栋舍分布和发货记录。"},
+    {"prototype_state_id": "st-house-overview", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "设计包含栋舍总览、位置分布及关联发货记录结构。"},
+    {"prototype_state_id": "st-house-current", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "同一明细页的当前上孵计划口径，静态设计未明确单独呈现切换后的数据范围。"},
+    {"prototype_state_id": "st-house-list", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "设计包含栋舍位置列表及位置、数量、关联计划等信息。"},
+    {"prototype_state_id": "st-source-detail", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "matched", "confidence": "high", "reason": "设计包含位置明细与发货记录区域，可对应位置筛选和记录联动。"},
+    {"prototype_state_id": "st-filter-dropdown", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "设计包含发货状态筛选控件，但未单独呈现下拉展开瞬时态。"},
+    {"prototype_state_id": "st-filter-shipped", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "设计包含已发货数据和联动区域，但未明确对应筛选后单行及默认选中行为。"},
+    {"prototype_state_id": "st-filter-empty", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "low", "reason": "设计可覆盖空列表/空位置表现，但未确认原型中筛选无数据时发货记录仍保留的差异行为。"},
+    {"prototype_state_id": "st-filter-reset", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "设计包含恢复全部计划和记录的页面结构，但未明确原型重置后默认选中第三行的行为。"},
+    {"prototype_state_id": "st-doc-01", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "待发货单据的只读明细结构匹配，单据编号和数据内容为原型实例差异。"},
+    {"prototype_state_id": "st-doc-03", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "已发货单据的只读明细结构匹配，状态数据和行数为原型实例差异。"},
+    {"prototype_state_id": "st-doc-04", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "已签收单据的只读明细结构匹配，状态数据和栋舍记录为原型实例差异。"},
+    {"prototype_state_id": "st-doc-05", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "待发货单据的只读明细结构匹配，单据编号和数据内容为原型实例差异。"},
+    {"prototype_state_id": "st-doc-06", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "发货中单据的只读明细结构匹配，单据编号和进度数据为原型实例差异。"},
+    {"prototype_state_id": "st-doc-07", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "已发货单据的只读明细结构匹配，单据编号和数据内容为原型实例差异。"},
+    {"prototype_state_id": "st-doc-08", "req_id": "REQ-PC-043", "lanhu_design_id": "1dd0ae6b-bb3d-439a-bb71-084e29252c71", "lanhu_design_name": "发货执行-明细", "page_name_match_status": "matched", "mapping_status": "partial_matched", "confidence": "medium", "reason": "已签收单据的只读明细结构匹配，单据编号和数据内容为原型实例差异。"}
+  ],
+  "unmatched": {"prototype_pages": [], "prototype_states": [], "lanhu_designs": []},
+  "summary": {
+    "prototype_page_count": 1,
+    "prototype_state_count": 16,
+    "lanhu_design_count": 1,
+    "mapping_count": 16,
+    "matched_count": 4,
+    "partial_matched_count": 12,
+    "unmatched_prototype_state_count": 0,
+    "unmatched_lanhu_design_count": 0,
+    "coverage_rate": "100%"
+  },
+  "self_check": {
+    "prototype_input_modified": false,
+    "design_inputs_modified": false,
+    "all_prototype_states_recorded": true,
+    "all_designs_recorded": true,
+    "matched_and_unmatched_recorded": true,
+    "output_directory": "02_analysis/pc/page_inventory/lanhu_page_mapping",
+    "output_file": "REQ-PC-043_lanhu_page_mapping.json"
+  }
+}

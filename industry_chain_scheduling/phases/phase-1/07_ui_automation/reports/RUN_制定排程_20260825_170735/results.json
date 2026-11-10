@@ -1,0 +1,1316 @@
+{
+  "run_id": "RUN_制定排程_20260825_170735",
+  "module": "制定排程",
+  "req_id": "REQ-004",
+  "zentao_module_id": 671,
+  "environment": {
+    "base_host": "192.168.6.163:66",
+    "headless": "true"
+  },
+  "generated_at": "2026-08-25T17:35:00",
+  "source": "04_testcases/TC_REQ-004.yaml",
+  "cases": [
+    {
+      "case_id": "TC-004-04",
+      "zentao_case_id": 47721,
+      "title": "仅选计划月份后点击「查询」，列表按月份过滤",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-04",
+      "assertion_scope": "make_plan.query.month_filter",
+      "expected": "计划月份条件已选中\n列表中仅出现满足「所选月份的排程记录」条件的行，其余行不出现",
+      "actual": {
+        "row_count": 20,
+        "sample_dates": [
+          "2026-08-01",
+          "2026-08-04",
+          "2026-08-05",
+          "2026-08-05",
+          "2026-08-05"
+        ]
+      },
+      "detail": "查询8月后 20 行宰杀日期均为 2026-08",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "列表中已存在不同计划月份的日计划数据（便于对照）"
+      ],
+      "steps": [
+        {
+          "action": "在查询区仅选择一个「计划月份」，其他条件留空",
+          "expected": "计划月份条件已选中"
+        },
+        {
+          "action": "点击「查询」按钮",
+          "expected": "列表中仅出现满足「所选月份的排程记录」条件的行，其余行不出现"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-04_TP-004-04_month_filter_scope.png",
+          "sha256": "912ed210481063fbb3e8594cf70ea5f1c22957b843be832008e1e89a2aea7df8"
+        },
+        {
+          "path": "screenshots/TC-004-04_TP-004-04_month_filter_full.png",
+          "sha256": "b00d3020ce4945342d39987099881630be7854885f49d00d686035eb8112f69c"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-04_TP-004-04_month_filter_scope.png",
+      "started_at": "2026-08-25T17:07:36",
+      "finished_at": "2026-08-25T17:07:48",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_query_by_month",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_make_plan_list",
+        "execute": "query_by_plan_month",
+        "assertions": [
+          "query_result_rows_match_selected_month"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-05",
+      "zentao_case_id": 47722,
+      "title": "仅选计划状态后点击「查询」，列表按状态过滤",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-05",
+      "assertion_scope": "make_plan.query.status_filter",
+      "expected": "计划状态条件已选中\n列表中仅出现满足「所选状态的排程记录」条件的行，其余行不出现",
+      "actual": {
+        "row_count": 20,
+        "sample_codes": [
+          "JH-20260801-01",
+          "JH-20260804-01",
+          "JH-20260805-01",
+          "JH-20260805-02",
+          "JH-20260805-03"
+        ]
+      },
+      "detail": "查询状态 审核通过 后 20 行状态均为 审核通过",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "列表中已存在不同计划状态的日计划数据"
+      ],
+      "steps": [
+        {
+          "action": "在查询区仅选择一个「计划状态」，其他条件留空",
+          "expected": "计划状态条件已选中"
+        },
+        {
+          "action": "点击「查询」按钮",
+          "expected": "列表中仅出现满足「所选状态的排程记录」条件的行，其余行不出现"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-05_TP-004-05_status_filter_scope.png",
+          "sha256": "2d1f0e3b447c6f7d914b786c1f01ee7d105db0e310671535d34a85ad0bda204d"
+        },
+        {
+          "path": "screenshots/TC-004-05_TP-004-05_status_filter_full.png",
+          "sha256": "945db6867e2726fbbd48b2ce7f0cb6975fc90f530623fc0d0f7e437eeec7d6d7"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-05_TP-004-05_status_filter_scope.png",
+      "started_at": "2026-08-25T17:07:48",
+      "finished_at": "2026-08-25T17:07:59",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_query_by_status",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_make_plan_list",
+        "execute": "query_by_plan_status",
+        "assertions": [
+          "query_result_rows_match_selected_status"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-06",
+      "zentao_case_id": 47723,
+      "title": "仅选宰杀线后点击「查询」，列表按宰杀线过滤",
+      "type": "auto",
+      "auto": "auto",
+      "status": "failed",
+      "classification": "product_defect",
+      "check_id": "TP-004-06",
+      "assertion_scope": "make_plan.query.line_filter",
+      "expected": "宰杀线条件已选中\n列表区域：列表仅展示所选宰杀线的排程记录",
+      "actual": {
+        "filtered_total": 26,
+        "control_samples": [
+          {
+            "code": "JH-20260801-01",
+            "date": "2026-08-01",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260804-01",
+            "date": "2026-08-04",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260805-01",
+            "date": "2026-08-05",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260806-01",
+            "date": "2026-08-06",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260807-01",
+            "date": "2026-08-07",
+            "status": "审核通过"
+          }
+        ]
+      },
+      "detail": "宰杀线 一号宰杀线 过滤后 0 条，但默认列表存在 11 条该宰杀线记录",
+      "failure_origin": "product_defect",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "列表中已存在不同宰杀线的日计划数据"
+      ],
+      "steps": [
+        {
+          "action": "在查询区仅选择一个「宰杀线」，其他条件留空",
+          "expected": "宰杀线条件已选中"
+        },
+        {
+          "action": "点击「查询」按钮",
+          "expected": "列表区域：列表仅展示所选宰杀线的排程记录"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-06_TP-004-06_line_filter_scope.png",
+          "sha256": "405f8e4a385fc72e10c82f63928ba59fac872f7d57280a76a496708e9ae93462"
+        },
+        {
+          "path": "screenshots/TC-004-06_TP-004-06_line_filter_full.png",
+          "sha256": "f75a70b99aae305e9e9a6d00c76ae46242c98bf0251e62ea79c0e5168195c043"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-06_TP-004-06_line_filter_scope.png",
+      "started_at": "2026-08-25T17:07:59",
+      "finished_at": "2026-08-25T17:08:13",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_query_by_line",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_make_plan_list",
+        "execute": "query_by_slaughter_line",
+        "assertions": [
+          "query_result_rows_match_selected_line"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-07",
+      "zentao_case_id": 47724,
+      "title": "选择多条件后点击「查询」，列表按组合条件过滤",
+      "type": "auto",
+      "auto": "auto",
+      "status": "failed",
+      "classification": "product_defect",
+      "check_id": "TP-004-07",
+      "assertion_scope": "make_plan.query.combined_filter",
+      "expected": "三个查询条件均已设置\n列表区域：列表按计划月份/状态/宰杀线组合条件正确过滤",
+      "actual": {
+        "filtered_total": 25,
+        "control_samples": [
+          {
+            "code": "JH-20260801-01",
+            "date": "2026-08-01",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260804-01",
+            "date": "2026-08-04",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260805-01",
+            "date": "2026-08-05",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260806-01",
+            "date": "2026-08-06",
+            "status": "审核通过"
+          },
+          {
+            "code": "JH-20260807-01",
+            "date": "2026-08-07",
+            "status": "审核通过"
+          }
+        ]
+      },
+      "detail": "组合条件过滤后 0 条，但 8月/审核通过 下存在 11 条 一号宰杀线 记录",
+      "failure_origin": "product_defect",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "列表中已存在可组合过滤的排程数据"
+      ],
+      "steps": [
+        {
+          "action": "在查询区同时选择「计划月份」「计划状态」「宰杀线」",
+          "expected": "三个查询条件均已设置"
+        },
+        {
+          "action": "点击「查询」按钮",
+          "expected": "列表区域：列表按计划月份/状态/宰杀线组合条件正确过滤"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-07_TP-004-07_combined_filter_scope.png",
+          "sha256": "405f8e4a385fc72e10c82f63928ba59fac872f7d57280a76a496708e9ae93462"
+        },
+        {
+          "path": "screenshots/TC-004-07_TP-004-07_combined_filter_full.png",
+          "sha256": "f951c2e890d1b87930bb3bf84a155c8a1d0c3c61f41d16dc1d1eee547be60f03"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-07_TP-004-07_combined_filter_scope.png",
+      "started_at": "2026-08-25T17:08:13",
+      "finished_at": "2026-08-25T17:08:35",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_query_combined",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_make_plan_list",
+        "execute": "query_by_combined_conditions",
+        "assertions": [
+          "query_result_rows_match_all_conditions"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-09",
+      "zentao_case_id": 47726,
+      "title": "点击「重置」，查询条件恢复默认并刷新列表",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-09",
+      "assertion_scope": "make_plan.query.reset",
+      "expected": "列表已按条件过滤展示\n列表区域：各查询条件恢复默认，列表重新加载",
+      "actual": {
+        "default": {
+          "month": "2026-08",
+          "status": "请选择状态",
+          "line": "请选择宰杀线"
+        },
+        "after_reset": {
+          "month": "2026-08",
+          "status": "请选择状态",
+          "line": "请选择宰杀线"
+        },
+        "default_rows": 20,
+        "restored_rows": 20
+      },
+      "detail": "重置后查询条件恢复默认（默认行数 20，重置后行数 20）",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）"
+      ],
+      "steps": [
+        {
+          "action": "在查询区设置计划月份、计划状态、宰杀线后点击「查询」",
+          "expected": "列表已按条件过滤展示"
+        },
+        {
+          "action": "点击查询区「重置」按钮",
+          "expected": "列表区域：各查询条件恢复默认，列表重新加载"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-09_TP-004-09_reset_scope.png",
+          "sha256": "912ed210481063fbb3e8594cf70ea5f1c22957b843be832008e1e89a2aea7df8"
+        },
+        {
+          "path": "screenshots/TC-004-09_TP-004-09_reset_full.png",
+          "sha256": "abd16d31b96380866f5900ea38975c848d06ae588123c9c66c24b119b9377138"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-09_TP-004-09_reset_scope.png",
+      "started_at": "2026-08-25T17:08:35",
+      "finished_at": "2026-08-25T17:08:50",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_query_reset",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_make_plan_list",
+        "execute": "reset_query_after_filter",
+        "assertions": [
+          "query_form_restored_to_default",
+          "list_refreshed"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-51",
+      "zentao_case_id": 47768,
+      "title": "选择品种并引用对应「分段养殖模版」后自动带出养殖天数/空栏天数/三段标准",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-51",
+      "assertion_scope": "make_plan.create.template_autofill",
+      "expected": "待排日期下有一条未保存的默认宰杀排程\n打开选择养殖模版弹窗\n带出的成活率/空栏天数/三段标准与养殖模板数据一致",
+      "actual": {
+        "template": "五黑-11月",
+        "survival": {
+          "expected": "92.20",
+          "actual": "92.20"
+        },
+        "segments": {
+          "expected": [
+            {
+              "days": "14",
+              "empty": "3"
+            },
+            {
+              "days": "15",
+              "empty": "2"
+            },
+            {
+              "days": "14",
+              "empty": "3"
+            }
+          ],
+          "actual": [
+            {
+              "days": "14",
+              "empty": "3"
+            },
+            {
+              "days": "15",
+              "empty": "2"
+            },
+            {
+              "days": "14",
+              "empty": "3"
+            }
+          ]
+        }
+      },
+      "detail": "模版 五黑-11月 带出成活率 92.20 与三段标准 [{'days': '14', 'empty': '3'}, {'days': '15', 'empty': '2'}, {'days': '14', 'empty': '3'}] 一致",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/create）"
+      ],
+      "steps": [
+        {
+          "action": "点击“制定月度排程”按钮进入页面，选择一个待排日期。",
+          "expected": "待排日期下有一条未保存的默认宰杀排程"
+        },
+        {
+          "action": "点击日计划编辑-上苗信息-养殖品种模版的输入框区域",
+          "expected": "打开选择养殖模版弹窗"
+        },
+        {
+          "action": "弹窗中选择一个模版，点击确定",
+          "expected": "带出的成活率/空栏天数/三段标准与养殖模板数据一致"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-51_TP-004-51_template_autofill_full.png",
+          "sha256": "f05654225deb2cddaa5c7fd7207794584a679426f41eb8f5fd7d4a57222020fc"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-51_TP-004-51_template_autofill_full.png",
+      "started_at": "2026-08-25T17:08:50",
+      "finished_at": "2026-08-25T17:09:07",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_template_autofill",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_pick_pending_day",
+        "execute": "select_template_verify_autofill",
+        "assertions": [
+          "survival_rate_matches_template",
+          "segment_standards_match_template"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-55",
+      "zentao_case_id": 47772,
+      "title": "「补栏量(万羽)」=宰杀量/成活率，精确到只",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-55",
+      "assertion_scope": "make_plan.create.restock_amount_calc",
+      "expected": "数值已记录\n页面展示：补栏量按宰杀量/成活率计算且精确到只",
+      "actual": {
+        "slaughter": 2.0,
+        "survival": 92.2,
+        "expected_restock": 2.1692,
+        "actual_restock": "2.1692"
+      },
+      "detail": "补栏量 2.1692 = 宰杀量 2.0 / 成活率 92.2%",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写"
+      ],
+      "steps": [
+        {
+          "action": "记录宰杀量与成活率数值",
+          "expected": "数值已记录"
+        },
+        {
+          "action": "查看「补栏量(万羽)」计算结果",
+          "expected": "页面展示：补栏量按宰杀量/成活率计算且精确到只"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-55_TP-004-55_restock_calc_full.png",
+          "sha256": "5c1134e6acb32a3d2343b6e58a81d2357547eedeae902d96cc58ba64a8dbd79a"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-55_TP-004-55_restock_calc_full.png",
+      "started_at": "2026-08-25T17:09:07",
+      "finished_at": "2026-08-25T17:09:27",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_restock_amount_calc",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required",
+        "execute": "verify_restock_amount_formula",
+        "assertions": [
+          "restock_amount_equals_slaughter_over_survival"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-57",
+      "zentao_case_id": 47774,
+      "title": "「补栏日期」=宰杀日期-总养殖天数+1",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-57",
+      "assertion_scope": "make_plan.create.restock_date_calc",
+      "expected": "数值已记录\n页面展示：补栏日期=宰杀日期-总养殖总天数+1",
+      "actual": {
+        "slaughter_date": "2026-08-02",
+        "total_days": 43,
+        "expected_restock_date": "2026-06-21",
+        "actual_restock_date": "2026-06-21"
+      },
+      "detail": "补栏日期 2026-06-21 = 宰杀日期 2026-08-02 - 总养殖天数 43 + 1",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写"
+      ],
+      "steps": [
+        {
+          "action": "记录宰杀日期与模版养殖总天数",
+          "expected": "数值已记录"
+        },
+        {
+          "action": "查看「补栏日期」计算结果",
+          "expected": "页面展示：补栏日期=宰杀日期-总养殖总天数+1"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-57_TP-004-57_restock_date_full.png",
+          "sha256": "ef42e21abb69c810e6af5f0f24f7d0b8db714855705317dac80435b1b2ad621e"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-57_TP-004-57_restock_date_full.png",
+      "started_at": "2026-08-25T17:09:28",
+      "finished_at": "2026-08-25T17:09:48",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_restock_date_calc",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required",
+        "execute": "verify_restock_date_formula",
+        "assertions": [
+          "restock_date_equals_slaughter_date_minus_total_days_plus_one"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-69",
+      "zentao_case_id": 47786,
+      "title": "「上孵数量(万枚)」=补栏量/孵化率/健雏率，精确到只",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-69",
+      "assertion_scope": "make_plan.create.hatch_amount_calc",
+      "expected": "数值已记录\n页面展示：上孵数量按补栏量/孵化率/健雏率计算且精确到只",
+      "actual": {
+        "restock": 2.1692,
+        "hatch_rate": 95.0,
+        "chick_rate": 98.0,
+        "expected_hatch": 2.33,
+        "actual_hatch": "2.3300"
+      },
+      "detail": "上孵数量 2.3300 = 补栏量 2.1692 / 孵化率 95.0% / 健雏率 98.0%",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写"
+      ],
+      "steps": [
+        {
+          "action": "记录补栏量、孵化率、健雏率",
+          "expected": "数值已记录"
+        },
+        {
+          "action": "查看「上孵数量(万枚)」计算结果",
+          "expected": "页面展示：上孵数量按补栏量/孵化率/健雏率计算且精确到只"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-69_TP-004-69_hatch_calc_full.png",
+          "sha256": "9d3a16944b0ddc08e06a206636acf6014eef32ac7b13ef4ab0b4d203e6fc9e6b"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-69_TP-004-69_hatch_calc_full.png",
+      "started_at": "2026-08-25T17:09:48",
+      "finished_at": "2026-08-25T17:10:10",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_hatch_amount_calc",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required",
+        "execute": "verify_hatch_amount_formula",
+        "assertions": [
+          "hatch_amount_equals_restock_over_hatch_rate_over_chick_rate"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-77",
+      "zentao_case_id": 47794,
+      "title": "保存时按宰杀线生成排程编号 JH-YYYYMMDD-流水(01~99)",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-77",
+      "assertion_scope": "make_plan.create.plan_code_format",
+      "expected": "各宰杀线生成排程编号\n操作完成后：保存时按宰杀线生成排程编号 JH-YYYYMMDD-流水(01~99)",
+      "actual": {
+        "code": "JH-20261203-01",
+        "date": "2026-12-03",
+        "line": "六号宰杀线",
+        "expected_prefix": "JH-20261203-"
+      },
+      "detail": "保存生成排程编号 JH-20261203-01，符合 JH-YYYYMMDD-流水(01~99)",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写"
+      ],
+      "steps": [
+        {
+          "action": "点击「保存当日计划」",
+          "expected": "各宰杀线生成排程编号"
+        },
+        {
+          "action": "查看生成的排程编号格式",
+          "expected": "操作完成后：保存时按宰杀线生成排程编号 JH-YYYYMMDD-流水(01~99)"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-77_TP-004-77_code_format_scope.png",
+          "sha256": "530c6174bf6ee6617d851ecc523114d6fd7239a3293c5bfb61364d62ade6c298"
+        },
+        {
+          "path": "screenshots/TC-004-77_TP-004-77_code_format_full.png",
+          "sha256": "aee67d443744e56a13e8f87df676fc24bad5fd9857f54a1df2cbee40e71231ed"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-77_TP-004-77_code_format_scope.png",
+      "started_at": "2026-08-25T17:10:10",
+      "finished_at": "2026-08-25T17:12:45",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "make_plan_save_generates_code",
+        "data_key_template": "AUTO测试_勿用_{RUN_ID}_TC-004-77",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required",
+        "execute": "save_day_plan_verify_code_format",
+        "assertions": [
+          "plan_code_matches_JH_YYYYMMDD_seq"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-81",
+      "zentao_case_id": 47798,
+      "title": "点击「保存当日计划」，当日排程状态=暂存",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-81",
+      "assertion_scope": "make_plan.create.save_draft_status",
+      "expected": "操作完成后：保存当日后记录状态=暂存",
+      "actual": {
+        "code": "JH-20261203-01",
+        "date": "2026-12-03",
+        "line": "六号宰杀线",
+        "status": "暂存"
+      },
+      "detail": "保存当日计划后 JH-20261203-01 状态=暂存",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，必填项已填写"
+      ],
+      "steps": [
+        {
+          "action": "点击「保存当日计划」",
+          "expected": "操作完成后：保存当日后记录状态=暂存"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-81_TP-004-81_draft_status_scope.png",
+          "sha256": "530c6174bf6ee6617d851ecc523114d6fd7239a3293c5bfb61364d62ade6c298"
+        },
+        {
+          "path": "screenshots/TC-004-81_TP-004-81_draft_status_full.png",
+          "sha256": "d0e688e85e7267d695232311b5eb3410260baf2c31ab2bbc0d1f224f890bc4b7"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-81_TP-004-81_draft_status_scope.png",
+      "started_at": "2026-08-25T17:12:50",
+      "finished_at": "2026-08-25T17:15:24",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "make_plan_save_draft_status",
+        "data_key_template": "AUTO测试_勿用_{RUN_ID}_TC-004-81",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required",
+        "execute": "save_day_plan_verify_draft_status",
+        "assertions": [
+          "saved_plan_status_is_draft"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-144",
+      "zentao_case_id": 47861,
+      "title": "编辑页点击「保存并提交」，日计划提交成功，进入审核，日计划状态变成「待审核」",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-144",
+      "assertion_scope": "make_plan.edit.save_and_submit_status",
+      "expected": "操作完成后：保存并提交后日计划状态变待审核",
+      "actual": {
+        "code": "JH-20261203-01",
+        "status": "待审核"
+      },
+      "detail": "保存并提交后 JH-20261203-01 状态=待审核",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已从列表点击「编辑」进入编辑页（暂存或驳回记录）"
+      ],
+      "steps": [
+        {
+          "action": "修改后点击「保存并提交」并在确认框确认",
+          "expected": "操作完成后：保存并提交后日计划状态变待审核"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-144_TP-004-144_submit_status_scope.png",
+          "sha256": "af3b9b1fb0c80b9e82fdc096267dee4c77c231d3dc591ddaa5cc0407bb7e9d77"
+        },
+        {
+          "path": "screenshots/TC-004-144_TP-004-144_submit_status_full.png",
+          "sha256": "3543a1fa20ee86bead86c8366a406f088659da8beeccb544048e533dadd45e51"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-144_TP-004-144_submit_status_scope.png",
+      "started_at": "2026-08-25T17:15:29",
+      "finished_at": "2026-08-25T17:18:20",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "make_plan_edit_save_and_submit",
+        "data_key_template": "AUTO测试_勿用_{RUN_ID}_TC-004-144",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_draft_plan_then_open_edit",
+        "execute": "save_and_submit_verify_pending_review",
+        "assertions": [
+          "plan_status_becomes_pending_review"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-148",
+      "zentao_case_id": 47865,
+      "title": "制定页点击「提交月度审核」弹出确认框",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-148",
+      "assertion_scope": "make_plan.submit_month.confirm_dialog",
+      "expected": "弹出提交确认框（含确定/取消）",
+      "actual": {
+        "dialog_text": "提交审核  2026年12月 共有 8 个草稿和已驳回计划，确认后全部提交审核？  取 消 确认提交",
+        "buttons": [
+          "取消",
+          "确认提交"
+        ]
+      },
+      "detail": "点击提交月度审核弹出提交审核确认框（含确定/取消）",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已进入制定排程设置页，当月存在可提交的暂存计划"
+      ],
+      "steps": [
+        {
+          "action": "在制定页点击「提交月度审核」按钮",
+          "expected": "弹出提交确认框（含确定/取消）"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-148_TP-004-148_submit_dialog_full.png",
+          "sha256": "44e599e2e0b8115c886a0e7c9fd6e9be6680b929f3adef75f86b05f2e2395412"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-148_TP-004-148_submit_dialog_full.png",
+      "started_at": "2026-08-25T17:18:20",
+      "finished_at": "2026-08-25T17:20:56",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "make_plan_submit_month_confirm_box",
+        "data_key_template": "AUTO测试_勿用_{RUN_ID}_TC-004-148",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_draft_plan_in_month",
+        "execute": "click_submit_month_review_verify_dialog_then_cancel",
+        "assertions": [
+          "submit_month_review_dialog_appears"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-150",
+      "zentao_case_id": 47867,
+      "title": "提交月度审核确认后当月的暂存计划状态变待审核",
+      "type": "auto",
+      "auto": "auto",
+      "status": "blocked",
+      "classification": "blocked",
+      "check_id": "TP-004-150",
+      "assertion_scope": "make_plan.submit_month.status_pending_review",
+      "expected": "操作完成后：确认后当月暂存记录变待审核",
+      "actual": "页面或测试数据未就绪",
+      "detail": "各候选月份待排日期均无可分配栋舍，无法满足制定排程前置",
+      "failure_origin": "blocked",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已进入制定排程设置页，当月存在暂存日计划"
+      ],
+      "steps": [
+        {
+          "action": "点击「提交月度审核」并在确认框点击「确定」",
+          "expected": "操作完成后：确认后当月暂存记录变待审核"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-150_TP-004-150_blocked_full.png",
+          "sha256": "dbbe752aa7a3cf946330b44792c0cab80a8903954566d54b1c68d683ebab87bc"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-150_TP-004-150_blocked_full.png",
+      "started_at": "2026-08-25T17:21:08",
+      "finished_at": "2026-08-25T17:22:37",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "make_plan_submit_month_status_change",
+        "data_key_template": "AUTO测试_勿用_{RUN_ID}_TC-004-150",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_draft_plan_in_exclusive_month",
+        "execute": "submit_month_review_confirm_verify_status",
+        "assertions": [
+          "draft_status_becomes_pending_review"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-160",
+      "zentao_case_id": 47877,
+      "title": "点击「删除」弹出确认框",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-160",
+      "assertion_scope": "make_plan.delete.confirm_box",
+      "expected": "弹出删除确认框（含确定/取消）",
+      "actual": {
+        "code": "JH-20261204-01",
+        "box_text": "系统提示  确定删除计划 [JH-20261204-01] 吗？  取消 确定"
+      },
+      "detail": "点击删除弹出确认框：系统提示  确定删除计划 [JH-20261204-01] 吗？  取消 确定",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "列表中已存在状态为「暂存」的日计划"
+      ],
+      "steps": [
+        {
+          "action": "在制定排程列表表格中点击某一暂存计划操作列的「删除」按钮",
+          "expected": "弹出删除确认框（含确定/取消）"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-160_TP-004-160_delete_box_scope.png",
+          "sha256": "4773173a3ad08790afa1fb92ff391399be2c63589101d3732863645ff2e2a3c9"
+        },
+        {
+          "path": "screenshots/TC-004-160_TP-004-160_delete_box_full.png",
+          "sha256": "eefdc9ce77b53b1ca79f74aee92fb16e47945ed1123e695eb99dfd8a92ea0542"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-160_TP-004-160_delete_box_scope.png",
+      "started_at": "2026-08-25T17:22:37",
+      "finished_at": "2026-08-25T17:25:12",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "make_plan_delete_confirm_box",
+        "data_key_template": "AUTO测试_勿用_{RUN_ID}_TC-004-160",
+        "creates_data": true,
+        "cleanup_status": "pending_user_confirmation",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_draft_plan_then_query",
+        "execute": "click_delete_verify_confirm_box_then_cancel",
+        "assertions": [
+          "delete_confirm_box_appears"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-162",
+      "zentao_case_id": 47879,
+      "title": "删除确认框点击确定，该宰杀线排程从列表消失",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-162",
+      "assertion_scope": "make_plan.delete.removed_from_list",
+      "expected": "列表区域：确定后该宰杀线记录从列表删除",
+      "actual": {
+        "code": "JH-20261204-01",
+        "still_exists": false
+      },
+      "detail": "删除确认后 JH-20261204-01 从列表消失",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已对暂存日计划点击「删除」并弹出确认框"
+      ],
+      "steps": [
+        {
+          "action": "在删除确认框中点击「确定」",
+          "expected": "列表区域：确定后该宰杀线记录从列表删除"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-162_TP-004-162_delete_done_scope.png",
+          "sha256": "59666abf361b92a056dd56f4e7f4a53f805eba7d22e070df98bb633bcf17bacd"
+        },
+        {
+          "path": "screenshots/TC-004-162_TP-004-162_delete_done_full.png",
+          "sha256": "684afbd60d29d2ef966526ec283823edc635c7144480b2b26cd0f653bfec4508"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-162_TP-004-162_delete_done_scope.png",
+      "started_at": "2026-08-25T17:25:17",
+      "finished_at": "2026-08-25T17:27:56",
+      "data_preparation": {
+        "fixture_type": "self_created",
+        "natural_unique_key": "make_plan_delete_removed_from_list",
+        "data_key_template": "AUTO测试_勿用_{RUN_ID}_TC-004-162",
+        "creates_data": true,
+        "cleanup_status": "not_required",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "create_draft_plan_then_query",
+        "execute": "click_delete_confirm_verify_removed",
+        "assertions": [
+          "record_removed_from_list"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-175",
+      "zentao_case_id": 48827,
+      "title": "智能推荐-选择候选或「选择 X 栋」后养殖栋舍回填",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-175",
+      "assertion_scope": "make_plan.recommend.house_backfill",
+      "expected": "打开「智能推荐栋舍」弹窗\n列表出现选中态，【全周期校验】预览栋号与所选一致\n弹窗关闭，「养殖栋舍」回填所选栋号",
+      "actual": {
+        "selected_house": "7栋",
+        "confirm_action": "点击候选卡片",
+        "drawer_closed": true,
+        "house_value": "7栋"
+      },
+      "detail": "选择候选（点击候选卡片）后养殖栋舍回填 7栋",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态"
+      ],
+      "steps": [
+        {
+          "action": "月度看板选择待排日期，日计划编辑区点击养殖品种，选择一个模板，点击[智能推荐]",
+          "expected": "打开「智能推荐栋舍」弹窗"
+        },
+        {
+          "action": "选择可分配栋舍",
+          "expected": "列表出现选中态，【全周期校验】预览栋号与所选一致"
+        },
+        {
+          "action": "点击「选择 X 栋」或等效确认",
+          "expected": "弹窗关闭，「养殖栋舍」回填所选栋号"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-175_TP-004-175_backfill_full.png",
+          "sha256": "fabe331635476871d6e8e5158660307ba706e9354657bb0860b72dc194eefc5a"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-175_TP-004-175_backfill_full.png",
+      "started_at": "2026-08-25T17:27:56",
+      "finished_at": "2026-08-25T17:30:40",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_recommend_backfill",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_created_read_only",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required",
+        "execute": "select_candidate_verify_house_backfill",
+        "assertions": [
+          "house_backfilled_after_candidate_confirm"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-176",
+      "zentao_case_id": 48861,
+      "title": "智能推荐-栋舍顺序优先下匹配度分数正确",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-004-176",
+      "assertion_scope": "make_plan.recommend.score_order_first",
+      "expected": "展示各候选「匹配度 XX 分」\n各候选匹配度得分：100-d*5 （d = b - bmin ： 候选栋舍距离最小可用栋号的顺序距离) 示例：候选栋舍是2栋、6栋、11栋，则bmin=2， 2栋的匹配度= 100-(2-2)*5=100 11栋的匹配度=100-(11-2)*5=55分",
+      "actual": {
+        "checks": [
+          {
+            "house": "7栋",
+            "actual_score": 100,
+            "expected_score": 100
+          },
+          {
+            "house": "9栋",
+            "actual_score": 90,
+            "expected_score": 90
+          },
+          {
+            "house": "10栋",
+            "actual_score": 85,
+            "expected_score": 85
+          },
+          {
+            "house": "11栋",
+            "actual_score": 80,
+            "expected_score": 80
+          }
+        ]
+      },
+      "detail": "栋舍顺序优先下 4 个候选匹配度均符合 100-d*5",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态"
+      ],
+      "steps": [
+        {
+          "action": "点击养殖栋舍的输入框打开「智能推荐栋舍」弹窗，策略为「栋舍顺序优先」",
+          "expected": "展示各候选「匹配度 XX 分」"
+        },
+        {
+          "action": "核对最优推荐与各候选分数",
+          "expected": "各候选匹配度得分：100-d*5 （d = b - bmin ： 候选栋舍距离最小可用栋号的顺序距离) 示例：候选栋舍是2栋、6栋、11栋，则bmin=2， 2栋的匹配度= 100-(2-2)*5=100 11栋的匹配度=100-(11-2)*5=55分"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-176_TP-004-176_score_order_full.png",
+          "sha256": "10148edb6967f6ed2ca226f36bb013d5d0406fff2bd16f21240d40278b8e5946"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-176_TP-004-176_score_order_full.png",
+      "started_at": "2026-08-25T17:30:40",
+      "finished_at": "2026-08-25T17:33:24",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_recommend_score_order_first",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_created_read_only",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required_open_drawer",
+        "execute": "verify_scores_under_order_first",
+        "assertions": [
+          "scores_match_100_minus_distance_times_5"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    },
+    {
+      "case_id": "TC-004-223",
+      "zentao_case_id": 48864,
+      "title": "智能推荐-最小空闲优先下匹配度分数正确",
+      "type": "auto",
+      "auto": "auto",
+      "status": "ignored",
+      "classification": "test_script_error",
+      "check_id": "TP-004-223",
+      "assertion_scope": "make_plan.recommend.score_min_idle_first",
+      "expected": "展示各候选「匹配度 XX 分」\n记录候选栋舍的最小空闲天数MinGap 示例：候选栋舍是2栋（最小空闲2天）、6栋（最小空闲3天）、11栋（最小空闲2天）\n栋舍顺序得分SeqScore ：100-d*5（d = b - bmin ： 候选栋舍距离最小可用栋号的顺序距离) 示例： 2栋的匹配度= 100-(2-2)*5=100分 6栋的匹配度= 100-(6-2)*5=80分 11栋的匹配度=100-(11-2)*5=55分\n计算最小空闲天数匹配度得分score： (100-MinGap*5) * 80% + SeqScore * 20% 示例： 2栋的匹配度= (100-2*5) * 80% + 100* 20%=92分 6栋的匹配度= (100-3*5) * 80% + 80* 20%=84分 11栋的匹配度= (100-2*5) * 80% + 55 * 20%=82\n页面栋舍的匹配度得分和上一步计算得到的score一致",
+      "actual": "脚本未完成断言",
+      "detail": "脚本异常：Error('Page.reload: net::ERR_NETWORK_IO_SUSPENDED\\nCall log:\\n  - waiting for navigation until \"domcontentloaded\"\\n')",
+      "failure_origin": "test_script_error",
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）",
+        "已点击「制定排程」进入制定排程设置页",
+        "已选择宰杀线、养殖品种并引用分段养殖模版，日计划处于可编辑暂存状态"
+      ],
+      "steps": [
+        {
+          "action": "点击养殖栋舍的输入框打开「智能推荐栋舍」弹窗，策略为「最小空闲优先」",
+          "expected": "展示各候选「匹配度 XX 分」"
+        },
+        {
+          "action": "记录最佳推荐与各个可分配栋舍的最小空闲天数",
+          "expected": "记录候选栋舍的最小空闲天数MinGap 示例：候选栋舍是2栋（最小空闲2天）、6栋（最小空闲3天）、11栋（最小空闲2天）"
+        },
+        {
+          "action": "计算栋舍顺序得分",
+          "expected": "栋舍顺序得分SeqScore ：100-d*5（d = b - bmin ： 候选栋舍距离最小可用栋号的顺序距离) 示例： 2栋的匹配度= 100-(2-2)*5=100分 6栋的匹配度= 100-(6-2)*5=80分 11栋的匹配度=100-(11-2)*5=55分"
+        },
+        {
+          "action": "计算最优推荐与各候选分数",
+          "expected": "计算最小空闲天数匹配度得分score： (100-MinGap*5) * 80% + SeqScore * 20% 示例： 2栋的匹配度= (100-2*5) * 80% + 100* 20%=92分 6栋的匹配度= (100-3*5) * 80% + 80* 20%=84分 11栋的匹配度= (100-2*5) * 80% + 55 * 20%=82"
+        },
+        {
+          "action": "核对页面的匹配度分数",
+          "expected": "页面栋舍的匹配度得分和上一步计算得到的score一致"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-004-223_TP-004-223_script_error_full.png",
+          "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401"
+        }
+      ],
+      "screenshot": "screenshots/TC-004-223_TP-004-223_script_error_full.png",
+      "started_at": "2026-08-25T17:33:24",
+      "finished_at": "2026-08-25T17:35:00",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "natural_unique_key": "make_plan_recommend_score_min_idle_first",
+        "data_key_template": null,
+        "creates_data": false,
+        "cleanup_status": "not_created_read_only",
+        "required_roles": [
+          "智控中心测试账号"
+        ],
+        "prepare": "open_create_editor_fill_required_open_drawer",
+        "execute": "verify_scores_under_min_idle_first",
+        "assertions": [
+          "scores_match_idle_weighted_formula"
+        ],
+        "contract": "08_ui_automation/data/REQ-004.yaml"
+      },
+      "excluded": false
+    }
+  ]
+}

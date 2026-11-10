@@ -1,0 +1,516 @@
+﻿req_id: REQ-009
+module: 数据采集
+trace:
+  req: REQ-009
+  version: '1'
+  status: blocked_scoped_readonly_ui_verification
+  source_review: REQ-009 analysis and TEST_PLAN-REQ-009; latest REQ-009-001..014
+common_preconditions:
+- id: CP-REQ-009-001
+  name: 登录并进入数据采集页面
+  conditions:
+  - 已准备可登录的测试账号和数据采集页面访问权限。
+  steps:
+  - action: 使用测试账号登录应用门户；如果已有登录态，先确认登录态仍然有效。
+    expected: 登录成功，或已有登录态可以继续访问应用门户。
+  - action: 在应用门户点击“数据采集监控平台”。
+    expected: 进入数据采集监控平台，并看到平台菜单。
+  - action: 展开“数据中心”菜单。
+    expected: “数据采集”菜单项显示出来。
+  - action: 点击“数据采集”菜单。
+    expected: 数据采集页面加载完成，浏览器地址包含“/biopark-iot/iot/data/crawl”。
+cases:
+- id: TC-REQ-009-025
+  coverage_ids:
+  - REQ-009-001
+  - COV-009-L1-page
+  plan_item_ids:
+  - REQ-009-001
+  - PLAN-009-page-entry
+  scenario_branch: 数据采集页面列表区布局
+  atomic_purpose_ids:
+  - AP-009-025
+  title: 打开数据采集页面，检查任务列表
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 页面布局
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限和任务列表区只读观察权限。
+  steps:
+  - action: 查看任务列表区域
+    expected: 页面显示任务列表，列表有数据时至少显示一条任务记录，无数据时显示明确空状态。
+  - action: 查看列表表头
+    expected: 表头显示任务名称、插件 ID、状态、状态描述、创建时间和操作列。
+- id: TC-REQ-009-002
+  coverage_ids:
+  - REQ-009-001
+  - COV-009-L2-filter-name
+  plan_item_ids:
+  - REQ-009-001
+  - PLAN-009-filter-name
+  scenario_branch: 任务名称精确筛选
+  atomic_purpose_ids:
+  - AP-009-002
+  title: 按任务名称查询，检查匹配结果
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 任务名称筛选
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限和已授权的脱敏任务列表数据。
+  steps:
+  - action: 在任务名称输入框输入已授权的任务名称或名称片段并点击“查询”
+    expected: 输入框保留查询值，列表完成刷新。
+  - action: 查看查询结果
+    expected: 每条结果的任务名称符合页面定义的名称匹配规则，不匹配的任务不显示；无结果时显示明确空状态。
+- id: TC-REQ-009-003
+  coverage_ids:
+  - REQ-009-007
+  - COV-009-L2-filter-status
+  plan_item_ids:
+  - REQ-009-007
+  - PLAN-009-filter-status
+  scenario_branch: 已创建状态筛选
+  atomic_purpose_ids:
+  - AP-009-003
+  title: 按“已创建”筛选，检查任务状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态筛选
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限和已授权的已创建任务数据。
+  steps:
+  - action: 在任务状态下拉框选择“已创建”并点击“查询”
+    expected: 状态控件回显“已创建”，列表完成刷新。
+  - action: 查看结果的状态列
+    expected: 每条显示记录的状态均为“已创建”。
+- id: TC-REQ-009-004
+  coverage_ids:
+  - REQ-009-007
+  - COV-009-L2-filter-status
+  plan_item_ids:
+  - REQ-009-007
+  - PLAN-009-filter-status
+  scenario_branch: 运行中状态筛选
+  atomic_purpose_ids:
+  - AP-009-004
+  title: 按“运行中”筛选，检查任务状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态筛选
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限和已授权的运行中任务数据。
+  steps:
+  - action: 在任务状态下拉框选择“运行中”并点击“查询”
+    expected: 状态控件回显“运行中”，列表完成刷新。
+  - action: 查看结果的状态列
+    expected: 每条显示记录的状态均为“运行中”。
+- id: TC-REQ-009-005
+  coverage_ids:
+  - REQ-009-007
+  - COV-009-L2-filter-status
+  plan_item_ids:
+  - REQ-009-007
+  - PLAN-009-filter-status
+  scenario_branch: 已停止状态筛选
+  atomic_purpose_ids:
+  - AP-009-005
+  title: 按“已停止”筛选，检查任务状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 状态筛选
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限和已授权的已停止任务数据。
+  steps:
+  - action: 在任务状态下拉框选择“已停止”并点击“查询”
+    expected: 状态控件回显“已停止”，列表完成刷新。
+  - action: 查看结果的状态列
+    expected: 每条显示记录的状态均为“已停止”。
+- id: TC-REQ-009-007
+  coverage_ids:
+  - REQ-009-001
+  - COV-009-L2-query-reset
+  plan_item_ids:
+  - REQ-009-001
+  - PLAN-009-query-reset
+  scenario_branch: 重置筛选回第一页
+  atomic_purpose_ids:
+  - AP-009-007
+  title: 点击重置，检查筛选条件和页码
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 重置
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限、至少两页脱敏任务数据，且当前已应用筛选并位于非第一页。
+  steps:
+  - action: 设置任务名称、任务状态并跳转到非第一页
+    expected: 输入框和状态控件显示设置值，分页控件显示目标页码。
+  - action: 点击“重置”
+    expected: 任务名称恢复为空，任务状态恢复默认值，当前页回到第一页。
+  - action: 查看任务列表
+    expected: 列表按未筛选条件显示，之前筛选条件下的旧结果不再作为当前结果保留。
+- id: TC-REQ-009-013
+  coverage_ids:
+  - REQ-009-001
+  - COV-009-L2-empty
+  plan_item_ids:
+  - REQ-009-001
+  - PLAN-009-empty
+  scenario_branch: 无结果空态
+  atomic_purpose_ids:
+  - AP-009-013
+  title: 查询无匹配条件，检查空结果页面
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 空结果
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限和不会暴露业务数据的无匹配筛选条件。
+  steps:
+  - action: 在任务名称输入框输入确认无匹配的值并点击“查询”
+    expected: 输入框保留查询值，列表完成查询。
+  - action: 查看列表区域
+    expected: 列表显示“暂无数据”或页面定义的等价空状态。
+  - action: 查看旧任务记录
+    expected: 当前页面不显示与查询条件不匹配的旧任务。
+- id: TC-REQ-009-015
+  coverage_ids:
+  - REQ-009-012
+  - COV-009-L2-edit-fields
+  plan_item_ids:
+  - REQ-009-012
+  - PLAN-009-edit-fields
+  scenario_branch: 编辑表单字段展示
+  atomic_purpose_ids:
+  - AP-009-015
+  title: 打开编辑表单，检查任务字段
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 编辑表单
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备数据采集页面访问权限和获批的脱敏任务编辑只读观察权限。
+  steps:
+  - action: 定位目标任务行并点击该行“编辑”
+    expected: 编辑弹窗打开，任务标识、调度和脚本等页面已有字段回填当前值。
+  - action: 查看任务标识、调度和脚本字段
+    expected: 每个字段均有明确标签和可读取值，敏感内容按脱敏规则显示。
+  - action: 点击“取消”
+    expected: 编辑弹窗关闭，目标任务字段和列表数据不发生变化。
+- id: TC-REQ-009-016
+  coverage_ids:
+  - REQ-009-012
+  - COV-009-L2-edit-readonly
+  plan_item_ids:
+  - REQ-009-012
+  - PLAN-009-edit-readonly
+  scenario_branch: 任务标识只读
+  atomic_purpose_ids:
+  - AP-009-016
+  title: 打开编辑表单，检查任务标识只读状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 只读字段
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备已授权任务编辑表单的只读观察权限。
+  steps:
+  - action: 定位目标任务并打开编辑表单
+    expected: 编辑表单打开，任务标识显示原值。
+  - action: 尝试在任务标识字段输入一个不同值
+    expected: 字段拒绝输入或保持原值，任务标识没有被修改。
+  - action: 关闭编辑表单
+    expected: 表单关闭，列表中的任务标识仍为原值。
+- id: TC-REQ-009-018
+  coverage_ids:
+  - REQ-009-003
+  - REQ-009-012
+  - COV-009-L2-validation
+  plan_item_ids:
+  - REQ-009-003
+  - REQ-009-012
+  - PLAN-009-validation
+  scenario_branch: 任务字段校验
+  atomic_purpose_ids:
+  - AP-009-018
+  title: 只验证非法任务名称，查看校验提示
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 任务名称校验
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备获批的脱敏表单校验观察证据，表单处于未保存状态。
+  steps:
+  - action: 打开新建采集任务表单，在“任务名称”字段输入“任务@#$%”
+    expected: 任务名称输入框显示“任务@#$%”，页面暂不创建任务。
+  - action: 点击“确定”提交表单，查看“任务名称”字段的校验提示，然后点击“取消”
+    expected: “任务名称”字段显示清楚的非法字符错误提示，表单保持打开且不能创建采集任务；点击“取消”后表单关闭，任务列表不出现本次非法数据。
+- id: TC-REQ-009-019
+  coverage_ids:
+  - REQ-009-007
+  - REQ-009-013
+  - COV-009-L3-state
+  plan_item_ids:
+  - REQ-009-007
+  - REQ-009-013
+  - PLAN-009-state
+  scenario_branch: 已创建任务状态与入口
+  atomic_purpose_ids:
+  - AP-009-019
+  title: 查看已创建任务，检查状态和操作按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 任务状态
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备已授权的脱敏已创建任务状态快照和控制入口只读观察权限。
+  steps:
+  - action: 定位一条状态为“已创建”的任务
+    expected: 目标行状态列显示“已创建”。
+  - action: 查看该行操作列
+    expected: 操作列显示“启动”“编辑”“删除”按钮，按钮文本与实际页面一致。
+- id: TC-REQ-009-027
+  coverage_ids:
+  - REQ-009-007
+  - REQ-009-013
+  - COV-009-L3-state
+  plan_item_ids:
+  - REQ-009-007
+  - REQ-009-013
+  - PLAN-009-state
+  scenario_branch: 运行中任务状态与入口
+  atomic_purpose_ids:
+  - AP-009-027
+  title: 查看运行中任务，检查状态和操作按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 任务状态
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备已授权的脱敏运行中任务状态快照和控制入口只读观察权限。
+  steps:
+  - action: 定位一条状态为“运行中”的任务
+    expected: 目标行状态列显示“运行中”。
+  - action: 查看该行操作列
+    expected: 操作列显示“停止”和“编辑”按钮，不显示仅适用于已创建或已停止任务的启动、删除按钮。
+- id: TC-REQ-009-028
+  coverage_ids:
+  - REQ-009-007
+  - REQ-009-013
+  - COV-009-L3-state
+  plan_item_ids:
+  - REQ-009-007
+  - REQ-009-013
+  - PLAN-009-state
+  scenario_branch: 已停止任务状态与入口
+  atomic_purpose_ids:
+  - AP-009-028
+  title: 查看已停止任务，检查状态和操作按钮
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 任务状态
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备已授权的脱敏已停止任务状态快照和控制入口只读观察权限。
+  steps:
+  - action: 定位一条状态为“已停止”的任务
+    expected: 目标行状态列显示“已停止”。
+  - action: 查看该行操作列
+    expected: 操作列显示“启动”“编辑”“删除”按钮，按钮文本与实际页面一致。
+- id: TC-REQ-009-024
+  coverage_ids:
+  - REQ-009-014
+  - COV-009-L3-permission
+  plan_item_ids:
+  - REQ-009-014
+  - PLAN-009-permission
+  scenario_branch: 只读用户权限边界
+  atomic_purpose_ids:
+  - AP-009-024
+  title: 使用只读账号查看页面，检查操作权限
+  type: security
+  auto: 'no'
+  priority: P3
+  feature: 权限
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备只读用户、数据采集管理员和租户范围的正式权限矩阵。
+  steps:
+  - action: 使用已准备的只读账号进入数据采集页面
+    expected: 账号只能查看权限范围内的任务数据。
+  - action: 定位目标任务并查看操作列
+    expected: 启动、编辑、删除入口分别呈现页面实际权限状态，并逐项记录显示、隐藏或禁用结果。
+  - action: 对可见的受保护入口执行一次点击
+    expected: 页面显示与权限矩阵一致的权限提示，未产生任务新增、修改、启动、停止或删除。
+  - action: 关闭权限提示或弹窗
+    expected: 页面回到任务列表，目标任务数据与操作前一致。
+- id: TC-REQ-009-036
+  coverage_ids:
+  - COV-009-L3-review-gap-036
+  plan_item_ids:
+  - REVIEW-REQ-009-036
+  scenario_branch: 取消行为待确认
+  atomic_purpose_ids:
+  - AP-009-036
+  title: 取消新建任务，检查未保存数据
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 新建流程
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备经批准的脱敏页面资料、权限和测试数据；具体条件待确认。
+  steps:
+  - action: 点击“新建采集任务”，填写批准的脱敏任务标识和其他合法测试值
+    expected: 表单控件回显对应输入值。
+  - action: 点击“取消”
+    expected: 新建弹窗关闭。
+  - action: 刷新任务列表并按测试任务标识查找
+    expected: 列表中不存在本次取消操作填写的任务。
+- id: TC-REQ-009-037
+  coverage_ids:
+  - COV-009-L3-review-gap-037
+  plan_item_ids:
+  - REVIEW-REQ-009-037
+  scenario_branch: 保存成功结果待确认
+  atomic_purpose_ids:
+  - AP-009-037
+  title: 新建任务后，检查保存结果和初始状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 新建流程
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备经批准的脱敏页面资料、权限和测试数据；具体条件待确认。
+  steps:
+  - action: 点击“新建采集任务”，填写批准的任务标识、Cron、脚本和其他合法字段
+    expected: 各字段回显输入值，表单允许提交。
+  - action: 点击“确定”并等待保存结果
+    expected: 显示明确的保存成功提示，弹窗关闭或进入页面定义的完成状态。
+  - action: 刷新任务列表并定位新任务
+    expected: 列表显示本次新建任务，任务标识与提交值一致。
+  - action: 查看新任务状态
+    expected: 新任务初始状态为“已创建”。
+- id: TC-REQ-009-039
+  coverage_ids:
+  - COV-009-L3-review-gap-039
+  plan_item_ids:
+  - REVIEW-REQ-009-039
+  scenario_branch: 启动控制反馈待确认
+  atomic_purpose_ids:
+  - AP-009-039
+  title: 启动任务，检查提示和运行状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 任务控制
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备经批准的脱敏页面资料、权限和测试数据；具体条件待确认。
+  steps:
+  - action: 定位状态为“已创建”的测试任务并点击“启动”
+    expected: 页面显示启动处理反馈；若页面设置确认层，则确认层显示目标任务标识和确认按钮。
+  - action: 在页面完成启动操作后查看结果
+    expected: 显示“启动成功”或页面定义的等价成功提示，目标任务状态更新为“运行中”。
+- id: TC-REQ-009-040
+  coverage_ids:
+  - COV-009-L3-review-gap-040
+  plan_item_ids:
+  - REVIEW-REQ-009-040
+  scenario_branch: 停止控制反馈待确认
+  atomic_purpose_ids:
+  - AP-009-040
+  title: 停止运行中任务，检查提示和停止状态
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 任务控制
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备经批准的脱敏页面资料、权限和测试数据；具体条件待确认。
+  steps:
+  - action: 定位状态为“运行中”的测试任务并点击“停止”
+    expected: 停止确认层显示目标任务标识以及“确定”“取消”按钮。
+  - action: 点击“取消”
+    expected: 确认层关闭，目标任务仍为“运行中”。
+  - action: 再次点击“停止”并在确认层点击“确定”
+    expected: 确认层关闭，页面显示停止处理反馈。
+  - action: 查看目标任务状态
+    expected: 显示“停止成功”或页面定义的等价成功提示，目标任务状态更新为“已停止”。
+- id: TC-REQ-009-041
+  coverage_ids:
+  - COV-009-L3-review-gap-041
+  plan_item_ids:
+  - REVIEW-REQ-009-041
+  scenario_branch: 删除控制反馈待确认
+  atomic_purpose_ids:
+  - AP-009-041
+  title: 删除已停止任务，检查确认层和列表结果
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 任务控制
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备经批准的脱敏页面资料、权限和测试数据；具体条件待确认。
+  steps:
+  - action: 定位状态为“已停止”的测试任务并点击“删除”
+    expected: 删除确认层显示目标任务标识以及“确定”“取消”按钮。
+  - action: 点击“取消”
+    expected: 确认层关闭，目标任务仍显示在列表中。
+  - action: 再次点击“删除”并在确认层点击“确定”
+    expected: 确认层关闭，显示明确删除成功提示。
+  - action: 刷新任务列表并按任务标识查找
+    expected: 目标任务不再出现在列表中。
+- id: TC-REQ-009-050
+  coverage_ids:
+  - REQ-009-013
+  - COV-009-L3-edit-save-success
+  plan_item_ids:
+  - REQ-009-013
+  - PLAN-009-edit-save
+  scenario_branch: 编辑任务保存成功并回读配置
+  atomic_purpose_ids:
+  - AP-009-050
+  title: 编辑任务后，检查保存结果和配置回显
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 任务编辑
+  common_preconditions_ref: CP-REQ-009-001
+  preconditions:
+  - 具备已创建且可编辑的脱敏采集任务，任务标识保持不变。
+  - 已准备合法的 Cron、脚本、重启策略和内存配置，且具备任务编辑权限。
+  steps:
+  - action: 定位可编辑测试任务并打开编辑表单
+    expected: 表单打开，任务标识、状态及可编辑配置字段回填当前值。
+  - action: 修改一个允许编辑的配置字段并点击“确定”
+    expected: 修改值回显后进入提交处理中状态。
+  - action: 等待保存结果
+    expected: 显示明确保存成功提示，编辑表单关闭或进入页面定义的完成状态。
+  - action: 刷新任务列表并重新打开编辑表单
+    expected: 目标任务仍在列表中，编辑表单重新打开。
+  - action: 回读修改后的字段
+    expected: 修改字段保存为新值，任务标识、状态和其他未修改字段保持操作前值。
+  test_data:
+    page_url: /biopark-iot/iot/data/crawl
+    data_prefix: REQ009_EDIT_SUCCESS_

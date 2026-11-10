@@ -1,0 +1,51 @@
+{
+  "status": "validated",
+  "req_id": "REQ-007",
+  "target": "project",
+  "product_id": 8,
+  "project_id": 46,
+  "module": {
+    "name": "数据监听",
+    "id": 745,
+    "path": "iot平台/数据中心/数据监听"
+  },
+  "source_case_count": 10,
+  "changed_case_count": 10,
+  "case_ids": [
+    "TC-REQ-007-011",
+    "TC-REQ-007-012",
+    "TC-REQ-007-013",
+    "TC-REQ-007-014",
+    "TC-REQ-007-015",
+    "TC-REQ-007-016",
+    "TC-REQ-007-017",
+    "TC-REQ-007-018",
+    "TC-REQ-007-019",
+    "TC-REQ-007-022"
+  ],
+  "remote_case_ids": [
+    51738,
+    51739,
+    51740,
+    51741,
+    51742,
+    51743,
+    51744,
+    51745,
+    51746,
+    51749
+  ],
+  "operations": {
+    "create": [],
+    "update": 10,
+    "delete": []
+  },
+  "readback": {
+    "attempted": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "failure_policy": "任一更新或回读失败立即停止，不删除重建，不创建替代用例",
+  "entrypoint": "../../../../scripts/zentao_create_testcase.py",
+  "blocker": null
+}

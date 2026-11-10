@@ -1,0 +1,14 @@
+{
+  "req_id": "REQ-008",
+  "status": "blocked",
+  "updates_executed": 0,
+  "failed_case_id": "TC-REQ-008-017",
+  "failed_zentao_case_id": 51839,
+  "expected_before_type": "feature",
+  "observed_after_type": "feature",
+  "reason": "CLI returned success for the attempted partial data update, but immediate readback showed type remained feature. The update was not accepted as a type change, so fail-fast policy stopped all subsequent writes.",
+  "scope": {"product_id": 8, "project_id": 46, "module_id": 746},
+  "target_type": "other",
+  "attempted_command_mode": "zentao testcase update --id 51839 --data",
+  "follow_up": "zentao testcase update help was read; no further write attempts were made."
+}

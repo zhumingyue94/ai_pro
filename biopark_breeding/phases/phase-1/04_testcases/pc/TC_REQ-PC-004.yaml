@@ -1,0 +1,991 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-004
+title: 种蛋照蛋
+module: 种蛋照蛋
+zentao_module_id: 524
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-004
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-38575
+  title: 导出功能-不勾选导出全部
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在种蛋照蛋任务数据
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 如果有筛选条件，导出筛选后的数据
+  - action: 不勾选任何数据
+    expected: 如果没有筛选条件，导出全部数据
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38575
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38575
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38576
+  title: 导出功能-勾选导出勾选项
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在种蛋照蛋任务数据
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 导出的文件只包含勾选的任务数据
+  - action: 勾选几条任务数据
+    expected: ''
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38576
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38576
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38577
+  title: 详情页面-执行任务按钮页内跳转
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 页面刷新，本页页内跳转至执行任务页面
+  - action: 点击待执行任务的详情按钮
+    expected: 可进行执行任务确认提交操作
+  - action: 点击执行任务按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38577
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38577
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38578
+  title: 详情页面-待执行状态有执行任务按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 待执行状态任务详情页有执行任务按钮
+  - action: 点击待执行任务的详情按钮
+    expected: ''
+  - action: 查看页面底部按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38578
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38578
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38579
+  title: 详情页面-页面标题正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在种蛋照蛋任务数据
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 打开详情页面，页面标题为&#039;种蛋照蛋任务详情&#039;
+  - action: 点击任意任务的详情按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38579
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38579
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38580
+  title: 确认执行-出雏车数与孵化车数可不同
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 出雏车数<孵化车数，可执行成功
+  - action: 点击待执行任务的执行按钮
+    expected: 出雏车数>孵化车数，可执行成功
+  - action: 调整的出雏车数小于或大于孵化车数
+    expected: ''
+  - action: 点击确认执行按钮并确认
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38580
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38580
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38581
+  title: 确认执行-出雏器超容可执行
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 无需判断该出雏器库位当前情况，出雏器库存超容也可以执行成功
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 填写的减去损失后的照蛋数超出出雏器库容量
+    expected: ''
+  - action: 点击确认执行按钮并确认
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38581
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38581
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38582
+  title: 确认执行-数量不等提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 弹框提示实际上孵数不等于受精蛋+无精蛋+死胚+臭蛋，无法提交成功
+  - action: 点击待执行任务的执行按钮
+    expected: 确认关闭弹框时，页面刷新，展示最新孵化器数据
+  - action: 填写的受精蛋+无精蛋+死胚+臭蛋不等于实际上孵数
+    expected: ''
+  - action: 点击确认执行按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38582
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38582
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38583
+  title: 确认执行-任务已被别人执行提示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  - 3、该任务已被其他用户执行
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 弹框提示本照蛋任务已被执行，无法提交成功
+  - action: 点击待执行任务的执行按钮
+    expected: 确认关闭弹框时，页面刷新，展示详情页
+  - action: 填写照蛋结果和出雏器信息
+    expected: ''
+  - action: 点击确认执行按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38583
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38583
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38584
+  title: 照蛋结果-臭蛋率自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 臭蛋率自动计算，公式：臭蛋率=臭蛋÷照蛋数
+  - action: 点击待执行任务的执行按钮
+    expected: 显示百分比格式
+  - action: 在臭蛋输入框中输入数值
+    expected: 初始值为0%
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38584
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38584
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38585
+  title: 照蛋结果-死胚率自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 死胚率自动计算，公式：死胚率=死胚蛋÷照蛋数
+  - action: 点击待执行任务的执行按钮
+    expected: 显示百分比格式
+  - action: 在死胚蛋输入框中输入数值
+    expected: 初始值为0%
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38585
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38585
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38586
+  title: 照蛋结果-臭蛋必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 系统提示臭蛋为必填项，无法提交
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 不填写臭蛋，直接点击确认执行
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38586
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38586
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38587
+  title: 照蛋结果-次品库只显示关联孵化场
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 只能显示任务关联孵化场下的次品库
+  - action: 点击待执行任务的执行按钮
+    expected: 其他孵化场的次品库不展示在选项中
+  - action: 点击次品库下拉框
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38587
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38587
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38588
+  title: 照蛋结果-次品库必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 系统提示次品库为必填项，无法提交
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 不选择次品库，直接点击确认执行
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38588
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38588
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38589
+  title: 照蛋结果-死胚蛋必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 系统提示死胚蛋为必填项，无法提交
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 不填写死胚蛋，直接点击确认执行
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38589
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38589
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38590
+  title: 照蛋结果-无精蛋必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 系统提示无精蛋为必填项，无法提交
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 不填写无精蛋，直接点击确认执行
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38590
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38590
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38591
+  title: 照蛋结果-受精率自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 受精率自动计算，公式：受精率=受精蛋÷照蛋数
+  - action: 点击待执行任务的执行按钮
+    expected: 显示百分比格式
+  - action: 在无精蛋、死胚蛋、臭蛋输入框中输入数值
+    expected: 初始值为0%
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38591
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38591
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38592
+  title: 照蛋结果-受精蛋自动计算
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 受精蛋自动计算，公式：受精蛋=照蛋数-无精蛋-死胚蛋-臭蛋
+  - action: 点击待执行任务的执行按钮
+    expected: 初始值为0
+  - action: 在无精蛋、死胚蛋、臭蛋输入框中输入数值
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38592
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38592
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38593
+  title: 执行页面-计划信息只读字段正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 上孵计划号、组织、孵化场、计划上孵数、上孵日期、照蛋日期、出雏日期均为只读字段
+  - action: 点击待执行任务的执行按钮
+    expected: 数据显示与任务对应的计划一致
+  - action: 查看计划信息区域
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38593
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38593
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38594
+  title: 执行页面-种蛋信息只读字段正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 养殖场、养殖批次、品种、周龄、种蛋类型、蛋重类型、平均蛋重、产蛋日期均为只读字段
+  - action: 点击待执行任务的执行按钮
+    expected: 数据显示与任务对应的计划一致
+  - action: 查看种蛋信息区域
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38594
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38594
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38595
+  title: 执行页面-任务状态只读显示待执行
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 任务状态字段为只读，显示&#039;待执行&#039;
+  - action: 点击待执行任务的执行按钮
+    expected: ''
+  - action: 查看任务状态字段
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38595
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38595
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38596
+  title: 执行页面-页面标题正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 打开执行页面，页面标题为&#039;种蛋照蛋任务执行&#039;
+  - action: 找到一条待执行状态的任务
+    expected: ''
+  - action: 点击执行按钮
+    expected: ''
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38596
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38596
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38597
+  title: 确认执行-出库入库操作
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限<br />
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 本计划关联的蛋从孵化器对应库位出库并生成出库记录
+  - action: 点击待执行任务的执行按钮
+    expected: 被分配的受精蛋入库出雏器对应库位，并生成入库记录
+  - action: 填写完整的照蛋结果和出雏器信息
+    expected: 无精蛋、死胚蛋入库次品库，并生成入库记录
+  - action: 点击确认执行按钮并确认
+    expected: 臭蛋不入次品库
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38597
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38597
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38598
+  title: 确认执行-成功后任务状态变为已完成
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 种蛋照蛋
+  preconditions:
+  - 1、用户登录成功并且有种蛋照蛋菜单权限
+  - 2、系统中存在待执行状态的任务
+  steps:
+  - action: 登录后进入孵化管理-种蛋照蛋
+    expected: 任务详情页刷新
+  - action: 点击待执行任务的执行按钮
+    expected: 任务状态变为已完成
+  - action: 填写完整的照蛋结果和出雏器信息
+    expected: 顶部的任务执行信息中展示执行人、操作时间、备注
+  - action: 点击确认执行按钮并确认
+    expected: 照蛋结果、出雏器功能区域根据提交结果展示相关信息，不可修改
+  test_data:
+    module: 种蛋照蛋
+    zentao_module_id: 524
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-004
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38598
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38598
+    raw_module: /一期/pc/孵化管理/种蛋照蛋(#524)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

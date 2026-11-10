@@ -1,0 +1,1376 @@
+id: REQ-PC-001
+title: 计划管理 / 上孵计划
+module_path: 计划管理 / 上孵计划（列表、新建）
+trace:
+  story: null
+  req: REQ-PC-001
+  tp: null
+  project: 种禽孵化管理系统
+  version: 1
+  status: draft
+module_complexity: compound_form
+testpoint_template: 复合表单CRUD审核
+summary: 上孵计划列表与新建计划明细构成的复合表单模块，覆盖查询、列表、状态操作、计划明细子表、日期计算、草稿和任务关联。
+in_scope:
+- 当前模块实际页面的查询区、列表、表单、弹窗、按钮、状态和页面板块
+- interfaces、cross_module_refs、business_rules、open_questions
+out_scope:
+- 种蛋上孵/照蛋/出雏任务的执行契约，分别由 REQ-PC-003~REQ-PC-005 分析
+- 真实接口、数据库和权限服务实现
+- 测试点、测试用例、CSV 和 UI 脚本
+business_rules:
+- id: BR-001
+  rule: 一、修改： 1、计划状态为正常的计划有修改操作，终止状态无修改操作； 2、正常状态下的计划，根据计划进度区分是否有修改操作，待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏有修改操作，已完成无修改操作； 3、“待孵期”、“待上孵”进度计划可以修改所有信息；
+    4、其他部分进度，只能根据所处计划进度，对应修改计划照蛋时间、出雏时间： ①孵化器中、待照蛋：照蛋时间；②出雏器中、待出雏：出雏时间； 5、已完成：无修改操作； 二、终止： 1、计划状态为正常的计划，可以终止操作，终止状态下无终止操作；
+    2、计划进度为待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏，有终止操作；已完成进度，无终止操作，不可终止； 3、终止的计划，不可恢复启用； 三、删除： 1、终止状态的计划，有删除操作，逻辑删除，其他状态无删除操作； 2、删除计划，同步删除任务；
+    四、关联任务： 根据该上孵计划已下发任务展现任务选项，没有下发的任务不展示，点击跳转至该对应任务详情页。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-002
+  rule: 新建计划，未填数据为空，后续计划执行过程中回填数据，对应展示； 产蛋日期： ~ 计划状态： 全部状态 正常 终止 智孵管家管理平台 计划管理 上孵计划 孵化管理 种蛋上孵 种蛋照蛋 种蛋出雏 库存管理 品种管理 蛋重类型管理 合格蛋蛋库
+    次品库 生产报表 仓库管理 存发苗间管理 孵化器管理 出雏器管理 孵化周期管理 养殖场管理 孵化场管理 组织管理 用户管理 存发苗间 孵化器管理 库存查询 出入库记录 孵化器全景 出雏器管理 库存查询 出入库记录 出雏器全景 基础数据
+    受健率标准管理 二级蛋蛋库 首页/一级菜单/二级菜单/三级菜单…
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-003
+  rule: 计划进度： 1、待孵期；已创建上孵计划，上孵任务未进入待执行状态； 2、待上孵：上孵任务待执行状态； 3、孵化器中：上孵任务已完成状态，照蛋任务未进入待执行状态； 4、待照蛋：照蛋任务待执行状态； 5、出雏器中：照蛋任务已完成状态，种蛋出雏任务还未进入待执行状态；
+    6、待出雏：种蛋出雏任务待执行状态； 7、已完成：种蛋出雏任务已完成状态。 创建人： 新建 导出 模版下载 导入 终止 删除 草稿 下发任务
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-004
+  rule: 关于种蛋类型、鸡苗类型及对应出入库的划分说明： （一）种蛋： 1、种蛋类型：合格蛋（入）、二级蛋（脏蛋）（入）、次品蛋（入）、臭蛋（不入）； 2、次品蛋（入）：无精蛋、死胚蛋、大蛋、小蛋、毛蛋、破损蛋； 3、出入库划分： ①合格蛋：合格蛋蛋库；
+    ②二级蛋（脏蛋）：二级蛋蛋库； ③次品蛋：次品库； ④臭蛋：不入库，直接淘汰，无害化处理； （二）鸡苗： 1、健雏（入）、弱雏（入）、淘汰雏（殘雏）（不入）； 2、出入库划分： ①健雏：鸡苗库； ②弱雏：次品库； ③淘汰雏（殘雏）：不入库，直接淘汰，无害化处理；
+    （三）次品： 次品蛋、弱雏。 平均蛋重： 养殖批次： 周龄： ~ ~ ~
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-005
+  rule: 关于批量操作按钮的说明： 1、新建： 为新建计划操作按钮，无需勾选计划进行操作； 2、导出： 导出计划列表，如果勾选导出勾选项，如果不勾选，默认导出全部； 3、导入： 根据模版导入计划表格，进行批量新建计划，无需勾选可以操作；
+    4、模版下载： 点击下载批量导入模版计划表格，无需勾选可以操作； 5、终止、删除： 勾选后，批量操作终止、删除操作；批量操作时，需做判断，选中项存在不符合状态的计划时，弹框提示并不可操作； 6、草稿： 只保存最近一次草稿，且点击后打开最近一次保存的草稿，无需勾选可操作；
+    7、下发任务： 点击进行手动触发跑计划数据，达到任务时间的计划，下发任务，无需勾选可操作。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-006
+  rule: 关于计划区分、新建、导入： 1、决定是否为独立的一个计划，取决于新建/导入时的计划行数，每一行为一个新计划，生成一个上孵计划号，根据上孵计划号区分计划； 2、新建：新建时没新增一行录入项为一个独立计划； 3、导入：导入只执行新建计划操作，不做历史检索及修改功能，导入表格中，每一行为一个新的独立计划；
+    4、如果要做批量修改或者删除操作，需要在系统计划表中进行删除和修改操作。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-007
+  rule: 计划状态： 1、正常：上孵计划正常进行状态； 2、终止：上孵计划被终止状态。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-008
+  rule: 1、计划上孵数量：新建计划时录入的上孵数量，数值固定不变； 2、实际上孵数量：计划进度为，孵化器中，才有此数据，执行上孵任务时回填的数值； 3、孵化器：新建计划时维非必填项，执行上孵任务时回填结果，计划进度为，孵化器中，才有此数据，系统上可能会有多个孵化器，均展示，超出部分….，鼠标移上去展示全部；
+    4、修改人、修改时间：仅取最近一次修改人和修改时间展示。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-009
+  rule: 关于筛选条件的说明： 1、孵化场、仓库可多选（待研发情况定）； 2、孵化场、养殖场为树形结构选择； 3、养殖批次为关键字查询，输入过程中查询现有关键字匹配养殖批次，下拉推荐选择项，可快速选择； 4、种蛋类型：默认只有合格蛋、二级蛋；
+    种蛋类型： 全部种蛋类型 合格蛋
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-010
+  rule: 每天凌晨零点，跑计划数据，匹配当日任务时间的计划，生成并下发当日节点任务。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-011
+  rule: 照蛋日期、出雏日期： 1、根据上孵日期选择，根据“孵化周期管理”中的天数配置，自动计算生成； 2、支持修改，只有修改上孵日期时，照蛋日期与出雏日期联动修改，修改照蛋日期、出雏日期不会使其他两个日期联动修改；
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-012
+  rule: 计划建到单一孵化场，默认选择该账号权限所属孵化场第一个，切换孵化场不会清空下方已填数据。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-013
+  rule: 点击“+”，新增一行 空白计划，待编辑。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-014
+  rule: 养殖场选择，此处为养殖场组织结构树，单选。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-015
+  rule: 最小为1
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-016
+  rule: 复制，点击根据该行复制并新增一行，可编辑
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-017
+  rule: 养殖场、品种、孵化器可选项，取自基础数据配置信息
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-018
+  rule: 保存，保存后的计划，点击草稿即可打开。
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-019
+  rule: 蛋重类型根据平均蛋重数值自动匹配
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-020
+  rule: 孵化器：为非必填项。 请选择种蛋类型 合格蛋 二级蛋
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-021
+  rule: 种蛋类型：只有合格蛋、二级蛋选择
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+- id: BR-022
+  rule: 确定一个种蛋的关键字段包括： 养殖场、养殖批次、种蛋类型、品种、周龄、平均蛋重、蛋重类型、产蛋日期； 新建计划时，每条计划只能创建一种蛋，不会出现一条计划中有多种蛋要上孵。 计划号： 孵化场： 全部孵化场 孵化一场 孵化二场 养殖场：
+    全部养殖场 益兴一场 益兴二场 品种： 全部品种 AA 利丰 蛋重类型： 全部蛋重类型 大 中 小 特小 计划进度： 全部计划进度 待上孵 上孵中 待照蛋 出雏中 待选苗 已选苗 计划状态： 全部状态 正常 终止 创建人：
+  source: live prototype annotation / related requirement page
+  applies_to:
+  - 上孵计划列表
+  - 新建上孵计划
+roles:
+- name: 未明确
+  evidence: 需求/原型未提供完整角色矩阵
+  coverage: skip
+interfaces:
+- name: 品种引用
+  type: reference_data
+  source_module: REQ-PC-029
+  contract: P001查询/P002录入
+- name: 蛋重类型匹配
+  type: derived_reference
+  source_module: REQ-PC-030
+  contract: 平均蛋重匹配
+- name: 孵化器引用
+  type: reference_data
+  source_module: REQ-PC-033
+  contract: P001展示/P002可选
+- name: 孵化周期配置
+  type: reference_data
+  source_module: TBD-孵化周期管理
+  contract: 日期计算
+- name: 任务回写
+  type: downstream_navigation
+  source_module: REQ-PC-003/004/005
+  contract: 计划进度/关联任务
+risks:
+- 原型为静态 Axure 服务，未提供真实接口回读。
+- 未在原型注释中明确的角色、权限、异常和字段校验不能直接作为实现结论。
+open_questions:
+- id: OQ-001
+  question: 孵化周期管理页面已存在于 PC 原型但未在范围基线分配 REQ-ID，是否补充独立需求？
+  impact: 影响照蛋/出雏日期计算依赖追踪
+  owner: 产品/项目经理
+  blocking: true
+- id: OQ-002
+  question: 孵化场、仓库是否支持多选；原型注释写待研发情况定，最终交互是什么？
+  impact: 影响查询控件和接口参数
+  owner: 产品/研发
+  blocking: true
+- id: OQ-003
+  question: P001与P002中计划进度枚举文案是否统一为同一状态字典？
+  impact: 影响状态过滤和按钮显隐
+  owner: 产品
+  blocking: true
+- id: OQ-004
+  question: 导入模板字段、错误回显、部分成功和幂等策略是什么？
+  impact: 影响导入操作契约
+  owner: 产品/研发
+  blocking: true
+test_scope_suggestion:
+- 按当前页面板块覆盖页面壳层、查询、列表、表单、弹窗、按钮和状态。
+- 分析契约确认后再进入 TestPoint 阶段；本文件不包含测试点。
+prototype_verification:
+  verification_context:
+    requested_service: http://127.0.0.1:5500/
+    service_used_for_pc_observation: http://127.0.0.1:5500/
+    endpoint_mismatch: false
+    page_tree_count: 57
+    source_status: observed
+    observed_page_count: 2
+    unmapped_pages:
+    - 孵化周期管理
+    interaction_boundary: 只点击页面树进入P001/P002并观察DOM，未执行保存、导入、终止、删除或下发任务
+  page_chrome:
+  - page: 上孵计划列表
+    title: 上孵计划列表
+    url: http://127.0.0.1:5500/%E4%B8%8A%E5%AD%B5%E8%AE%A1%E5%88%92%E5%88%97%E8%A1%A8.html
+    notes: 计划管理列表页
+  - page: 新建上孵计划
+    title: 新建上孵计划
+    url: http://127.0.0.1:5500/%E6%96%B0%E5%BB%BA%E4%B8%8A%E5%AD%B5%E8%AE%A1%E5%88%92.html
+    notes: 计划明细录入页
+  page_block_specs:
+  - page: 上孵计划列表
+    blocks:
+    - id: chrome
+      name: 页面壳层
+      fields:
+      - 页面标题
+      - 计划管理导航
+      data_source: live DOM
+      coverage:
+      - l1
+      - l2
+    - id: query
+      name: 查询区
+      fields:
+      - 计划号
+      - 孵化场
+      - 养殖场
+      - 养殖批次
+      - 种蛋类型
+      - 品种
+      - 蛋重类型
+      - 计划进度
+      - 计划状态
+      - 创建日期
+      - 上孵日期
+      - 出雏日期
+      - 平均蛋重
+      - 周龄
+      data_source: 需求章节 + live DOM
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: toolbar
+      name: 批量操作工具栏
+      fields:
+      - 新建
+      - 导出
+      - 模版下载
+      - 导入
+      - 终止
+      - 删除
+      - 草稿
+      - 下发任务
+      data_source: 需求注释 + live DOM
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: table
+      name: 计划列表
+      fields:
+      - 孵化场
+      - 养殖场
+      - 养殖批次
+      - 种蛋类型
+      - 品种
+      - 上孵日期
+      - 周龄
+      - 平均蛋重
+      - 蛋重类型
+      - 产蛋日期
+      - 计划上孵数
+      - 实际上孵数
+      - 孵化器
+      - 出雏日期
+      - 计划进度
+      - 计划状态
+      - 计划号
+      - 创建人
+      - 创建时间
+      - 修改人
+      - 修改时间
+      - 操作
+      data_source: 上孵计划查询结果
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: row_ops
+      name: 行操作
+      fields:
+      - 修改
+      - 终止
+      - 删除
+      - 关联任务
+      data_source: 计划状态/进度/已下发任务
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: dialogs
+      name: 状态弹窗
+      fields:
+      - 编辑上孵计划弹框
+      - 终止上孵计划
+      - 删除上孵计划
+      data_source: live DOM hidden widgets + requirements
+      coverage:
+      - l1
+      - l2
+      - l3
+  - page: 新建上孵计划
+    blocks:
+    - id: chrome
+      name: 页面壳层
+      fields:
+      - 页面标题
+      - 计划管理导航
+      data_source: live DOM
+      coverage:
+      - l1
+      - l2
+    - id: form
+      name: 计划明细表单
+      fields:
+      - 上孵日期
+      - 孵化场
+      - 计划上孵数量
+      - 养殖场
+      - 养殖批次
+      - 种蛋类型
+      - 品种
+      - 周龄
+      - 平均蛋重
+      - 蛋重类型
+      - 产蛋日期
+      - 孵化器
+      - 照蛋日期
+      - 出雏日期
+      - 实际上孵数量
+      - 上孵计划单号
+      - 计划进度
+      - 计划状态
+      - 审计字段
+      data_source: live DOM + requirements
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: subtable
+      name: 计划明细子表
+      fields:
+      - 序号
+      - 明细字段列
+      - +
+      - 复制
+      - 删除
+      - 行独立计划约束
+      data_source: 需求注释 + live DOM
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: actions
+      name: 计划明细操作
+      fields:
+      - 确认
+      - 取消
+      - 保存
+      - 删除
+      - 复制
+      data_source: live DOM
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: dialogs
+      name: 草稿/删除弹窗
+      fields:
+      - 删除创建中计划弹框
+      - 保存草稿
+      data_source: live DOM hidden widgets
+      coverage:
+      - l1
+      - l2
+      - l3
+  query_field_specs:
+  - name: 计划号
+    control: input
+    editable: true
+    options_source: null
+    notes: 计划号查询，匹配方式待确认
+  - name: 孵化场
+    control: tree_multiselect
+    editable: true
+    options_source: 孵化场组织树
+    notes: 是否多选待确认
+  - name: 养殖场
+    control: tree_select
+    editable: true
+    options_source: 养殖场组织树
+    notes: 树形单选
+  - name: 养殖批次
+    control: keyword_autocomplete
+    editable: true
+    options_source: 养殖批次数据
+    notes: 输入匹配推荐
+  - name: 种蛋类型
+    control: select
+    editable: true
+    options_source: 合格蛋、二级蛋
+    notes: 业务枚举
+  - name: 品种
+    control: select
+    editable: true
+    options_source: REQ-PC-029
+    notes: 基础数据引用
+  - name: 蛋重类型
+    control: select
+    editable: true
+    options_source: REQ-PC-030
+    notes: 大、中、小、特小
+  - name: 计划进度
+    control: select
+    editable: true
+    options_source: 计划进度字典
+    notes: P001/P002文案需统一
+  - name: 计划状态
+    control: select
+    editable: true
+    options_source: 正常、终止
+    notes: 状态枚举
+  - name: 创建日期
+    control: date_range
+    editable: true
+    options_source: null
+    notes: 日期范围
+  - name: 上孵日期
+    control: date_range
+    editable: true
+    options_source: null
+    notes: 日期范围
+  - name: 出雏日期
+    control: date_range
+    editable: true
+    options_source: null
+    notes: 日期范围
+  - name: 平均蛋重
+    control: number_range
+    editable: true
+    options_source: null
+    notes: 单位和边界待确认
+  - name: 周龄
+    control: number_range
+    editable: true
+    options_source: null
+    notes: 边界待确认
+  form_field_specs:
+  - name: 上孵日期
+    control: date
+    editable: true
+    required: true
+    scope: 计划明细子表
+    source: 手工输入
+    validation: 日期
+  - name: 孵化场
+    control: select/tree_select
+    editable: true
+    required: true
+    scope: 计划明细子表
+    source: 账号权限所属孵化场
+    validation: 单一孵化场
+  - name: 计划上孵数量
+    control: number
+    editable: true
+    required: true
+    scope: 计划明细子表
+    source: 手工输入
+    validation: 整数，最小为1
+  - name: 养殖场
+    control: reference_select
+    editable: true
+    required: true
+    scope: 计划明细子表
+    source: REQ-PC-036/组织树
+    validation: 单选
+  - name: 养殖批次
+    control: reference_select/input
+    editable: true
+    required: true
+    scope: 计划明细子表
+    source: 养殖批次数据
+    validation: 关键字段
+  - name: 种蛋类型
+    control: select
+    editable: true
+    required: true
+    scope: 计划明细子表
+    source: 固定业务枚举
+    validation: 仅合格蛋、二级蛋；每行一种
+  - name: 品种
+    control: select
+    editable: true
+    required: true
+    scope: 计划明细子表
+    source: REQ-PC-029
+    validation: 有效基础数据
+  - name: 周龄
+    control: number
+    editable: true
+    required: null
+    scope: 计划明细子表
+    source: 手工输入
+    validation: 范围待确认
+  - name: 平均蛋重
+    control: number
+    editable: true
+    required: null
+    scope: 计划明细子表
+    source: 手工输入
+    validation: 单位/范围待确认
+  - name: 蛋重类型
+    control: computed/select
+    editable: false
+    required: null
+    scope: 计划明细子表
+    source: REQ-PC-030
+    compute_rule: 平均蛋重匹配蛋重类型
+  - name: 产蛋日期
+    control: date
+    editable: true
+    required: null
+    scope: 计划明细子表
+    source: 手工输入
+    validation: 日期
+  - name: 孵化器
+    control: select
+    editable: true
+    required: false
+    scope: 计划明细子表
+    source: REQ-PC-033
+    validation: 非必填
+  - name: 照蛋日期
+    control: computed/date
+    editable: true
+    required: null
+    scope: 计划明细子表
+    source: 上孵日期 + 孵化周期
+    compute_rule: 上孵日期变化时联动
+  - name: 出雏日期
+    control: computed/date
+    editable: true
+    required: null
+    scope: 计划明细子表
+    source: 上孵日期 + 孵化周期
+    compute_rule: 上孵日期变化时联动
+  - name: 实际上孵数量
+    control: readonly
+    editable: false
+    required: false
+    scope: 列表/结果
+    source: 执行上孵任务回填
+  - name: 上孵计划单号
+    control: readonly
+    editable: false
+    required: false
+    scope: 列表/结果
+    source: 系统生成
+  - name: 计划进度
+    control: readonly
+    editable: false
+    required: false
+    scope: 列表/结果
+    source: 任务节点回写
+  - name: 计划状态
+    control: readonly
+    editable: false
+    required: false
+    scope: 列表/结果
+    source: 计划状态流转
+  - name: 创建人/创建时间/修改人/修改时间
+    control: readonly
+    editable: false
+    required: false
+    scope: 列表/结果
+    source: 系统审计
+  nested_dialogs:
+  - id: 编辑上孵计划弹框
+    type: input
+    trigger: P001 修改
+    title: 编辑上孵计划弹框
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - name: 计划明细字段
+      control: subtable
+      editable: true
+      required: null
+    - name: 照蛋日期/出雏日期
+      control: date
+      editable: true
+      required: null
+    buttons:
+    - 确认
+    - 取消
+  - id: 终止上孵计划
+    type: confirm
+    trigger: P001 终止
+    title: 终止上孵计划
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - name: 不可恢复提示
+      control: readonly
+      editable: false
+    buttons:
+    - 确认
+    - 取消
+  - id: 删除上孵计划
+    type: confirm
+    trigger: P001 删除
+    title: 删除上孵计划
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - name: 不可恢复提示
+      control: readonly
+      editable: false
+    buttons:
+    - 确认
+    - 取消
+  - id: 删除创建中计划弹框
+    type: confirm
+    trigger: P002 删除
+    title: 删除计划
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - name: 删除提示
+      control: readonly
+      editable: false
+    buttons:
+    - 确认
+    - 取消
+  - id: 保存草稿
+    type: confirm
+    trigger: P002 保存
+    title: 保存草稿
+    prototype_capture_status: observed_hidden_widget
+    field_specs:
+    - name: 草稿提示
+      control: readonly
+      editable: false
+    buttons:
+    - 确认
+    - 取消
+  sub_tables:
+  - id: 计划明细
+    parent: 新建上孵计划
+    columns:
+    - 序号
+    - 上孵日期
+    - 孵化场
+    - 计划上孵数量
+    - 养殖场
+    - 养殖批次
+    - 种蛋类型
+    - 品种
+    - 周龄
+    - 平均蛋重
+    - 蛋重类型
+    - 产蛋日期
+    - 孵化器
+    - 照蛋日期
+    - 出雏日期
+    - 操作
+    row_ops:
+    - +
+    - 复制
+    - 删除
+    topology_rules:
+    - 每行独立生成一个计划号
+    - 每条计划只能一种种蛋类型
+    data_source: P002 live DOM + requirements
+  table_column_specs:
+  - name: 孵化场
+    order: 1
+    data_source: P001 live DOM/list requirement
+  - name: 养殖场
+    order: 2
+    data_source: P001 live DOM/list requirement
+  - name: 养殖批次
+    order: 3
+    data_source: P001 live DOM/list requirement
+  - name: 种蛋类型
+    order: 4
+    data_source: P001 live DOM/list requirement
+  - name: 品种
+    order: 5
+    data_source: P001 live DOM/list requirement
+  - name: 上孵日期
+    order: 6
+    data_source: P001 live DOM/list requirement
+  - name: 周龄
+    order: 7
+    data_source: P001 live DOM/list requirement
+  - name: 平均蛋重
+    order: 8
+    data_source: P001 live DOM/list requirement
+  - name: 蛋重类型
+    order: 9
+    data_source: P001 live DOM/list requirement
+  - name: 产蛋日期
+    order: 10
+    data_source: P001 live DOM/list requirement
+  - name: 计划上孵数
+    order: 11
+    data_source: P001 live DOM/list requirement
+  - name: 实际上孵数
+    order: 12
+    data_source: P001 live DOM/list requirement
+  - name: 孵化器
+    order: 13
+    data_source: P001 live DOM/list requirement
+  - name: 出雏日期
+    order: 14
+    data_source: P001 live DOM/list requirement
+  - name: 计划进度
+    order: 15
+    data_source: P001 live DOM/list requirement
+  - name: 计划状态
+    order: 16
+    data_source: P001 live DOM/list requirement
+  - name: 计划号
+    order: 17
+    data_source: P001 live DOM/list requirement
+  - name: 创建人
+    order: 18
+    data_source: P001 live DOM/list requirement
+  - name: 创建时间
+    order: 19
+    data_source: P001 live DOM/list requirement
+  - name: 修改人
+    order: 20
+    data_source: P001 live DOM/list requirement
+  - name: 修改时间
+    order: 21
+    data_source: P001 live DOM/list requirement
+  - name: 操作
+    order: 22
+    data_source: P001 live DOM/list requirement
+  computed_fields:
+  - name: 照蛋日期
+    formula: 上孵日期 + 孵化周期配置照蛋节点天数
+    editable: true
+  - name: 出雏日期
+    formula: 上孵日期 + 孵化周期配置出雏节点天数
+    editable: true
+  - name: 蛋重类型
+    formula: 平均蛋重匹配蛋重类型标准
+    editable: false
+  - name: 计划进度
+    formula: 任务节点状态回写
+    editable: false
+  - name: 实际上孵数量
+    formula: 执行上孵任务结果回填
+    editable: false
+  save_validations:
+  - rule: 计划上孵数量 >= 1
+    when:
+    - 确认
+    - 保存
+    - 导入
+    message: 最小为1
+  - rule: 必填字段完整
+    when:
+    - 确认
+    - 保存
+    - 导入
+    message: 缺失时阻止保存
+  - rule: 每行一种种蛋类型
+    when:
+    - 确认
+    - 保存
+    - 导入
+    message: 不允许混合种蛋
+  - rule: 批量终止/删除状态合法
+    when:
+    - 终止
+    - 删除
+    message: 非法选中项阻止操作
+  - rule: 日期计算与联动
+    when:
+    - 保存
+    - 确认
+    message: 日期结果符合孵化周期配置
+  - rule: 终止逻辑删除同步任务
+    when:
+    - 删除
+    message: 按任务联动规则执行
+  button_semantics:
+    新建:
+      action: create_or_add
+      summary: 打开新建上孵计划页面，无需勾选
+    导出:
+      action: export_selected_or_all
+      summary: 勾选时导出选中计划，未勾选导出全部
+    模版下载:
+      action: download_import_template
+      summary: 下载计划导入模板
+    导入:
+      action: batch_create_only
+      summary: 按模板批量新建计划，不做历史修改
+    终止:
+      action: terminate_with_state_validation
+      summary: 按计划状态/进度终止，非法选择阻止
+    删除:
+      action: logical_delete_with_state_validation
+      summary: 仅终止计划可逻辑删除并同步任务
+    草稿:
+      action: open_latest_draft
+      summary: 打开最近一次草稿
+    下发任务:
+      action: manual_dispatch_due_tasks
+      summary: 手动下发达到节点时间的任务
+    修改:
+      action: state_progress_dependent_edit
+      summary: 按状态/进度开放字段
+    关联任务:
+      action: open_related_task_detail
+      summary: 仅展示已下发任务并打开对应详情
+    +:
+      action: add_subtable_row
+      summary: 新增空白计划行
+    复制:
+      action: duplicate_subtable_row
+      summary: 复制当前计划行
+    保存:
+      action: save_latest_draft
+      summary: 保存最近一次草稿
+    确认:
+      action: confirm_create_or_edit
+      summary: 确认当前表单/弹窗动作
+    取消:
+      action: cancel_without_writeback
+      summary: 关闭且不回写未确认数据
+  ui_components:
+  - table
+  - date_range_picker
+  - tree_select
+  - select
+  - number_input
+  - modal_confirm
+  - file_import
+  - file_export
+  - pagination
+  role_coverage: skip
+  cross_module_refs:
+  - field: 品种
+    source_module: REQ-PC-029
+    dialog: P002 品种选择
+    columns:
+    - 品种名称
+    - 状态
+    filters:
+    - 有效项待确认
+    search_fields:
+    - 品种名称
+    external_data:
+    - 品种基础数据
+  - field: 蛋重类型
+    source_module: REQ-PC-030
+    dialog: 蛋重类型匹配
+    columns:
+    - 类型
+    - 重量范围
+    filters: []
+    search_fields: []
+    external_data:
+    - 平均蛋重
+  - field: 孵化器
+    source_module: REQ-PC-033
+    dialog: P002 孵化器选择
+    columns:
+    - 名称
+    - 状态
+    filters:
+    - 可用项待确认
+    search_fields:
+    - 名称
+    external_data:
+    - 设备主数据
+  - field: 孵化周期
+    source_module: TBD-孵化周期管理
+    dialog: 无用户选择弹窗
+    columns:
+    - 照蛋天数
+    - 出雏天数
+    filters: []
+    search_fields: []
+    external_data:
+    - 周期配置
+  - field: 已下发任务
+    source_module: REQ-PC-003/004/005
+    dialog: 关联任务选项
+    columns:
+    - 任务类型
+    - 任务状态
+    filters:
+    - 仅已下发
+    search_fields: []
+    external_data:
+    - 任务模块
+  concurrency_checks:
+  - action: 修改/终止/删除
+    check: 提交前重新读取计划状态/进度
+    concurrent_event: 他人改变状态或删除计划
+    result: 拒绝过期动作并刷新
+  - action: 下发任务
+    check: 节点是否已下发
+    concurrent_event: 定时任务或他人已下发
+    result: 不重复下发
+  detail_table_specs: []
+  observed_pages:
+  - page: 上孵计划列表
+    nodeurl: 上孵计划列表.html
+    title: 上孵计划列表
+    frame_url: http://127.0.0.1:5500/%E4%B8%8A%E5%AD%B5%E8%AE%A1%E5%88%92%E5%88%97%E8%A1%A8.html
+    body_line_count: 489
+    controls:
+    - id: u334_input
+      tag: INPUT
+      type: checkbox
+      text: ''
+      value: checkbox
+      disabled: false
+      visible: true
+    - id: u335_input
+      tag: INPUT
+      type: checkbox
+      text: ''
+      value: checkbox
+      disabled: false
+      visible: true
+    - id: u336_input
+      tag: INPUT
+      type: checkbox
+      text: ''
+      value: checkbox
+      disabled: false
+      visible: true
+    - id: u386_input
+      tag: SELECT
+      type: select-one
+      text: 全部孵化场 孵化一场 孵化二场
+      value: 全部孵化场
+      disabled: false
+      visible: true
+    - id: u388_input
+      tag: SELECT
+      type: select-one
+      text: 全部养殖场 益兴一场 益兴二场
+      value: 全部养殖场
+      disabled: false
+      visible: true
+    - id: u390_input
+      tag: SELECT
+      type: select-one
+      text: 全部品种 AA 利丰
+      value: 全部品种
+      disabled: false
+      visible: true
+    - id: u392_input
+      tag: SELECT
+      type: select-one
+      text: 全部蛋重类型 大 中 小 特小
+      value: 全部蛋重类型
+      disabled: false
+      visible: true
+    - id: u394_input
+      tag: SELECT
+      type: select-one
+      text: 全部计划进度 待孵期 待上孵 孵化箱中 待照蛋 出雏箱中 待出雏 已完成
+      value: 全部计划进度
+      disabled: false
+      visible: true
+    - id: u474_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u477_input
+      tag: SELECT
+      type: select-one
+      text: 全部状态 正常 终止
+      value: 全部状态
+      disabled: false
+      visible: true
+    - id: u562_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入创建人
+      disabled: false
+      visible: true
+    - id: u572_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入上孵计划单号
+      disabled: false
+      visible: true
+    - id: u573_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u576_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入平均蛋重
+      disabled: false
+      visible: true
+    - id: u579_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入周龄
+      disabled: false
+      visible: true
+    - id: u580_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入养殖批次
+      disabled: false
+      visible: true
+    - id: u581_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u582_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u584_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u585_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u587_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u588_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u596_input
+      tag: SELECT
+      type: select-one
+      text: 全部种蛋类型 合格蛋
+      value: 全部种蛋类型
+      disabled: false
+      visible: true
+    body_excerpt: 孵化场 养殖场 养殖批次 种蛋类型 品种 上孵日期 周龄 平均蛋重 蛋重类型 产蛋日期 计划上孵数 实际上孵数 孵化器 出雏日期 计划进度 计划状态 计划号 创建人 创建时间 修改人 修改时间 孵化二场 益兴一场
+      001p 合格蛋 利丰 2025-12-10 45 50 中 2025-12-7~2025-12-8 120960 10000 南22 2026-1-1 待上孵 正常 SFJH738426253 周韬睿 2025-12-19 15:02:00
+      赵猛 2025-12-20 17:22:00 孵化二场 益兴二场 002p 二级蛋 AA 2025-12-10 55 55 大 2025-12-7~2025-12-8 120960 98754 北11 2026-1-1 孵化器中 正常
+      SFJH738424854 周韬睿 2025-12-19 15:02:00 待照蛋 终止 出雏器中 待出雏 已完成 操作 关联任务 修改 终止 删除 终止 关联任务 关联任务 修改 计划号： 孵化场： 全部孵化场 孵化一场 孵化二场
+      养殖场： 全部养殖场 益兴一场 益兴二场 品种： 全部品种 AA 利丰 蛋重类型： 全部蛋重类型 大 中 小 特小 计划进度： 全部计划进度 待孵期 待上孵 孵化箱中 待照蛋 出雏箱中 待出雏 已完成 创建日期： 上孵日期： 出雏日期：
+      搜索 重置 注释： 一、修改： 1、计划状态为正常的计划有修改操作，终止状态无修改操作； 2、正常状态下的计划，根据计划进度区分是否有修改操作，待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏有修改操作，已完成无修改操作； 3、“待孵期”、“待上孵”进度计划可以修改所有信息；
+      4、其他部分进度，只能根据所处计划进度，对应修改计划照蛋时间、出雏时间： ①孵化器中、待照蛋：照蛋时间；②出雏器中、待出雏：出雏时间； 5、已完成：无修改操作； 二、终止： 1、计划状态为正常的计划，可以终止操作，终止状态下无终止操作；
+      2、计划进度为待孵期、待上孵、孵化器中、待照蛋、出雏器中、待出雏，有终止操作；已完成进度，无终止操作，不可终止； 3、终止的计划，不可恢复启用； 三、删除： 1、终止状态的计划，有删除操作，逻辑删除，其他状态无删除操作； 2、删除计划，同步删除任务；
+      四、关联任务： 根据该上孵计划已下发任务展现任务选项，没有下发的任务不展示，点击跳转至该对应任务详情页。 注释： 新建计划，未填数据为空，后续计划执行过程中回填数据，对应展示； 产蛋日期： ~ 计划状态： 全部状态 正常 终止 智孵管家管理平台
+      计划管理 上孵计划 孵化管理 种蛋上孵 种蛋照蛋 种蛋出雏 库存管理 品种管理 蛋重类型管理 合格蛋蛋库 次品库 生产报表 仓库管理 存发苗间管理 孵化器管理 出雏器管理 孵化周期管理 养殖场管理 孵化场管理 组织管理 用户管理 存发苗间
+      孵化器管理 库存查询 出入库记录 孵化器全景 出雏器管理 库存查询 出入库记录 出雏器全景 基础数据 受健率标准管理 二级蛋蛋库 首页/一级菜单/二级菜单/三级菜单… 注释： 计划进度： 1、待孵期；已创建上孵计划，上孵任务未进入待执行状态；
+      2、待上孵：上孵任务待执行状态； 3、孵化器中：上孵任务已完成状态，照蛋任务未进入待执行状态； 4、待照蛋：照蛋任务待执行状态； 5、出雏器中：照蛋任务已完成状态，种蛋出雏任务还未进入待执行状态； 6、待出雏：种蛋出雏任务待执行状态；
+      7、已完成：种蛋出雏任务已完成状态。 创建人： 新建 导出 模版下载 导入 终止 删除 草稿 下发任务 注释： 关于种蛋类型、鸡苗类型及对应出入库的划分说明： （一）种蛋： 1、种蛋类型：合格蛋（入）、二级蛋（脏蛋）（入）、次品蛋（入）、臭蛋（不入）；
+      2、次品蛋（入）：无精蛋、死胚蛋、大蛋、小蛋、毛蛋、破损蛋； 3、出入库划分： ①合格蛋：合格蛋蛋库； ②二级蛋（脏蛋）：二级蛋蛋库； ③次品蛋：次品库； ④臭蛋：不入库，直接淘汰，无害化处理； （二）鸡苗： 1、健雏（入）、弱雏（入）、淘汰雏（殘雏）（不入）；
+      2、出入库划分： ①健雏：鸡苗库； ②弱雏：次品库； ③淘汰雏（殘雏）：不入库，直接淘汰，无害化处理； （三）次品： 次品蛋、弱雏。 平均蛋重： 养殖批次： 周龄： ~ ~ ~ 注
+  - page: 新建上孵计划
+    nodeurl: 新建上孵计划.html
+    title: 新建上孵计划
+    frame_url: http://127.0.0.1:5500/%E6%96%B0%E5%BB%BA%E4%B8%8A%E5%AD%B5%E8%AE%A1%E5%88%92.html
+    body_line_count: 378
+    controls:
+    - id: u599_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u601_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u603_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u607_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u608_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1088_input
+      tag: INPUT
+      type: checkbox
+      text: ''
+      value: checkbox
+      disabled: false
+      visible: true
+    - id: u1089_input
+      tag: INPUT
+      type: checkbox
+      text: ''
+      value: checkbox
+      disabled: false
+      visible: true
+    - id: u1090_input
+      tag: INPUT
+      type: checkbox
+      text: ''
+      value: checkbox
+      disabled: false
+      visible: true
+    - id: u1142_input
+      tag: SELECT
+      type: select-one
+      text: 孵化一场 孵化二场 XXXX孵化场
+      value: 孵化一场
+      disabled: false
+      visible: true
+    - id: u1143_input
+      tag: SELECT
+      type: select-one
+      text: 请选择养殖场 益兴二场 益兴一场
+      value: 请选择养殖场
+      disabled: false
+      visible: true
+    - id: u1144_input
+      tag: SELECT
+      type: select-one
+      text: 请选择品种 AA 利丰
+      value: 请选择品种
+      disabled: false
+      visible: true
+    - id: u1145_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1147_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1148_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1156_input
+      tag: INPUT
+      type: number
+      text: ''
+      value: '0'
+      disabled: false
+      visible: true
+    - id: u1157_input
+      tag: SELECT
+      type: select-one
+      text: 请选择孵化器 北1号 南2号 东3号
+      value: 请选择孵化器
+      disabled: false
+      visible: true
+    - id: u1158_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1159_input
+      tag: INPUT
+      type: date
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1168_input
+      tag: INPUT
+      type: number
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1170_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入养殖批次
+      disabled: false
+      visible: true
+    - id: u1171_input
+      tag: INPUT
+      type: number
+      text: ''
+      value: ''
+      disabled: false
+      visible: true
+    - id: u1189_input
+      tag: SELECT
+      type: select-one
+      text: 请选择种蛋类型 合格蛋 二级蛋
+      value: 合格蛋
+      disabled: false
+      visible: true
+    - id: u1193_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入上孵计划单号
+      disabled: false
+      visible: true
+    - id: u1195_input
+      tag: SELECT
+      type: select-one
+      text: 全部孵化场 孵化一场 孵化二场
+      value: 全部孵化场
+      disabled: false
+      visible: true
+    - id: u1197_input
+      tag: SELECT
+      type: select-one
+      text: 全部养殖场 益兴一场 益兴二场
+      value: 全部养殖场
+      disabled: false
+      visible: true
+    - id: u1199_input
+      tag: SELECT
+      type: select-one
+      text: 全部品种 AA 利丰
+      value: 全部品种
+      disabled: false
+      visible: true
+    - id: u1201_input
+      tag: SELECT
+      type: select-one
+      text: 全部蛋重类型 大 中 小 特小
+      value: 全部蛋重类型
+      disabled: false
+      visible: true
+    - id: u1203_input
+      tag: SELECT
+      type: select-one
+      text: 全部计划进度 待上孵 上孵中 待照蛋 出雏中 待选苗 已选苗
+      value: 全部计划进度
+      disabled: false
+      visible: true
+    - id: u1205_input
+      tag: SELECT
+      type: select-one
+      text: 全部状态 正常 终止
+      value: 全部状态
+      disabled: false
+      visible: true
+    - id: u1207_input
+      tag: INPUT
+      type: text
+      text: ''
+      value: 请输入创建人
+      disabled: false
+      visible: true
+    body_excerpt: 创建日期： 上孵日期： 出雏日期： 搜索 重置 产蛋日期： ~ 智孵管家管理平台 计划管理 上孵计划 孵化管理 种蛋上孵 种蛋照蛋 种蛋出雏 库存管理 品种管理 蛋重类型管理 合格蛋蛋库 次品库 生产报表 仓库管理
+      存发苗间管理 孵化器管理 出雏器管理 孵化周期管理 养殖场管理 孵化场管理 组织管理 用户管理 存发苗间 孵化器管理 库存查询 出入库记录 孵化器全景 出雏器管理 库存查询 出入库记录 出雏器全景 基础数据 受健率标准管理 二级蛋蛋库
+      首页/一级菜单/二级菜单/三级菜单… 新建 导出 模版下载 上传 终止 删除 操作 修改 终止 删除 终止 关联任务 关联任务 关联任务 草稿 上孵日期 孵化场 计划上孵数量 养殖场 品种 蛋重类型 产蛋日期 孵化器 照蛋日期 出雏日期
+      实际上孵数量 上孵计划单号 计划进度 计划状态 创建人 创建时间 修改人 修改时间 2025-12-10 孵化二场 120960 宜兴二场 利丰 中 2025-12-7~2025-12-8 南22 2025-12-10 2026-1-1
+      10000 SFJH738426253 待上孵 正常 周韬睿 2025-12-19 15:02:00 赵猛 2025-12-20 17:22:00 2025-12-10 孵化二场 120960 宜兴二场 AA 大 2025-12-7~2025-12-8
+      北11 2025-12-10 2026-1-1 98754 SFJH738424854 待出雏 终止 周韬睿 2025-12-19 15:02:00 已出雏 新建上孵计划 孵化场： 序号 *上孵日期 *照蛋日期 *出雏日期 *养殖场
+      *养殖批次 *种蛋类型 *品种 *周龄 *平均蛋重 *蛋重类型 *产蛋日期 *上孵数量 孵化器 操作 1 大蛋 + 孵化一场 孵化二场 XXXX孵化场 请选择养殖场 益兴二场 益兴一场 请选择品种 AA 利丰 ~ 确认 取消 复制
+      删除 保存 请选择孵化器 北1号 南2号 东3号 注释：照蛋日期、出雏日期： 1、根据上孵日期选择，根据“孵化周期管理”中的天数配置，自动计算生成； 2、支持修改，只有修改上孵日期时，照蛋日期与出雏日期联动修改，修改照蛋日期、出雏日期不会使其他两个日期联动修改；
+      注释：计划建到单一孵化场，默认选择该账号权限所属孵化场第一个，切换孵化场不会清空下方已填数据。 注释：点击“+”，新增一行 空白计划，待编辑。 注释：养殖场选择，此处为养殖场组织结构树，单选。 注释：最小为1 注释：复制，点击根据该行复制并新增一行，可编辑
+      注释：养殖场、品种、孵化器可选项，取自基础数据配置信息 注释：保存，保存后的计划，点击草稿即可打开。 注释：最小为1 注释：蛋重类型根据平均蛋重数值自动匹配 注释：孵化器：为非必填项。 请选择种蛋类型 合格蛋 二级蛋 注释：种蛋类型：只有合格蛋、二级蛋选择
+      注释：确定一个种蛋的关键字段包括： 养殖场、养殖批次、种蛋类型、品种、周龄、平均蛋重、蛋重类型、产蛋日期； 新建计划时，每条计划只能创建一种蛋，不会出现一条计划中有多种蛋要上孵。 计划号： 孵化场： 全部孵化场 孵化一场 孵化二场
+      养殖场： 全部养殖场 益兴一场 益兴二场 品种： 全部品种 AA 利丰 蛋重类型： 全部蛋重类型 大 中 小 特小 计划进度： 全部计划进度 待上孵 上孵中 待照蛋 出雏中 待选苗 已选苗 计划状态： 全部状态 正常 终止 创建人：
+design_artifacts:
+  state_transitions: []
+  decision_tables: []
+  bva_fields: []
+  combinatorial_blocks: []
+handoff:
+  agent: analyze-agent
+  project: 种禽孵化管理系统
+  req_id: REQ-PC-001
+  outputs:
+  - 02_analysis/pc/REQ-PC-001.yaml
+  - 02_analysis/pc/REQ-PC-001_上孵计划（列表、新建）.md
+  gate: passed
+  next_agent: testpoint-agent
+  blockers: []

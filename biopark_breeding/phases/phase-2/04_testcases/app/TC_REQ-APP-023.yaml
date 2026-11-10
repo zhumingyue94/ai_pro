@@ -1,0 +1,615 @@
+req_id: REQ-APP-023
+module: APP发货单发货记录
+trace:
+  req: REQ-APP-023
+  project: 种禽孵化管理系统
+  version: 3
+  status: redesigned_after_rev_case
+  tp: TEST_PLAN-REQ-APP-023
+  source_review: REV_CASE_REQ-APP-023
+common_preconditions:
+- id: app_shipment_records_access
+  name: APP发货记录页面访问前置
+  steps:
+  - action: 打开小程序并登录，切换到正确孵化场
+    expected: 登录成功并进入小程序首页，当前孵化场切换正确
+  - action: 点击「雏苗发货」入口
+    expected: 进入「雏苗发货」列表
+  - action: 在目标发货单卡片点击「记录」
+    expected: 进入发货记录页面，页面标题显示「发货记录」，并显示当前发货单上下文
+cases:
+- id: TC-APP-023-002
+  title: 无记录时展示空状态
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录空状态
+  coverage_ids:
+  - COV-APP023-EMPTY
+  plan_item_ids:
+  - PLAN-APP023-EMPTY
+  atomic_purpose_ids:
+  - AP-APP023-EMPTY-STATE
+  preconditions:
+  - 授权查询角色可用
+  - 已准备无发货记录的发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在发货记录页面查看记录区域
+    expected: 记录区域显示“暂无发货记录”
+    state_id: app023-records-empty
+    target_element_id: records-empty-text
+    locator_ref:
+      element_id: records-empty-text
+      strategy: text
+      value: 暂无发货记录
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-003
+  title: 发货记录页展示发货单号、累计发货和记录数量
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货单摘要
+  coverage_ids:
+  - COV-APP023-FIELDS
+  plan_item_ids:
+  - PLAN-APP023-FIELDS
+  atomic_purpose_ids:
+  - AP-APP023-HEADER-FIELDS
+  preconditions:
+  - 授权查询角色可用
+  - 已准备有发货记录的发货单
+  - 已准备可切换的目标孵化场
+  - 已准备累计发货数量可核对的发货单
+  - 已准备记录数量可核对的发货单
+  steps:
+  - action: 在发货记录页面查看发货单摘要中的发货单号
+    expected: 摘要区域展示当前发货单号，且与进入页面时选择的发货单一致
+    state_id: app023-records-populated
+    target_element_id: shipping-records
+    locator_ref: &id001
+      element_id: shipping-records
+      strategy: css
+      value: .shipment-record-list
+  - action: 在发货记录页面查看发货单摘要中的累计发货数量
+    expected: 页面展示累计发货数量，且数值与当前发货记录的累计数量一致
+    state_id: app023-records-populated
+    target_element_id: shipping-records
+    locator_ref:
+      element_id: shipping-records
+      strategy: css
+      value: .shipment-record-list
+  - action: 在发货记录页面查看列表标题右侧的记录数量标签
+    expected: 列表标题行右侧显示固定文案“共 n 条”，其中 n 等于当前发货单全部有效历史发货记录数；文案位于列表标题右侧，且不因当前可见记录数变化或列表折叠而改变
+    state_id: app023-records-populated
+    target_element_id: shipping-records
+    locator_ref:
+      element_id: shipping-records
+      strategy: css
+      value: .shipment-record-list
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-004
+  title: 单条记录展示计划号、本次数量、剩余未发和位置明细
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录明细
+  coverage_ids:
+  - COV-APP023-FIELDS
+  - COV-APP023-MULTI-POSITION
+  plan_item_ids:
+  - PLAN-APP023-FIELDS
+  - PLAN-APP023-MULTI-POSITION
+  atomic_purpose_ids:
+  - AP-APP023-RECORD-FIELDS
+  preconditions:
+  - 授权查询角色可用
+  - 已准备包含上孵计划号的发货记录
+  - 已准备可切换的目标孵化场
+  - 已准备包含本次发货数量的发货记录
+  - 已准备存在剩余未发数量的发货记录
+  - 已准备包含多个列层位置的发货记录
+  - 已准备包含多个列层位置及数量的发货记录
+  steps:
+  - action: 在发货记录列表查看目标记录及其位置明细
+    expected: 目标记录展示对应的上孵计划号、本次发货数量、剩余未发数量，以及各列层位置明细和各位置数量
+    state_id: app023-records-populated
+    target_element_id: shipping-records
+    locator_ref: *id001
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-005
+  title: 位置数量合计与本次数量一致
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置明细
+  coverage_ids:
+  - COV-APP023-MULTI-POSITION
+  plan_item_ids:
+  - PLAN-APP023-MULTI-POSITION
+  atomic_purpose_ids:
+  - AP-APP023-POSITION-SUM
+  preconditions:
+  - 授权查询角色可用
+  - 已准备可计算位置数量合计的发货记录
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在目标记录中汇总各列层位置的本次数量并与本次数量对照
+    expected: 各列层位置本次数量合计等于该记录本次数量
+    state_id: app024-shipped-hp071
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: text
+      value: 列层位置明细
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-006
+  title: 发货记录按提交时间倒序
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货记录排序
+  coverage_ids:
+  - COV-APP023-TIME-DESC
+  plan_item_ids:
+  - PLAN-APP023-TIME-DESC
+  atomic_purpose_ids:
+  - AP-APP023-TIME-DESC
+  preconditions:
+  - 授权查询角色可用
+  - 已准备提交时间不同的多条历史记录
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在发货记录列表对照各记录提交时间
+    expected: 记录按提交时间从新到旧排列，第一条为最新提交记录
+    state_id: app024-shipping-hp022
+    target_element_id: shipping-records
+    locator_ref:
+      element_id: shipping-records
+      strategy: css
+      value: .shipment-record-list
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-013
+  title: 大数据量两秒内加载完成且可继续查看
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货记录加载
+  coverage_ids:
+  - COV-APP023-LOAD
+  plan_item_ids:
+  - PLAN-APP023-LOAD
+  atomic_purpose_ids:
+  - AP-APP023-LOAD-2S
+  preconditions:
+  - 授权查询角色可用
+  - 已准备大数据量历史发货记录
+  - 已确定同一客户端和网络观测条件
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 观察记录区域加载完成时间并在加载完成后查看记录
+    expected: 记录区域在两秒内完成加载，加载完成后可以继续查看发货记录
+    state_id: app024-shipping-hp022
+    target_element_id: shipping-records
+    locator_ref: *id001
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-014
+  title: 返回列表保留日期条件
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 返回列表
+  coverage_ids:
+  - COV-APP023-BACK-CONTEXT
+  plan_item_ids:
+  - PLAN-APP023-BACK-CONTEXT
+  atomic_purpose_ids:
+  - AP-APP023-BACK-DATE
+  preconditions:
+  - 授权查询角色可用
+  - 列表进入记录页前已选择指定日期条件
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在记录页面点击“返回发货单列表”
+    expected: 返回列表后日期条件保持进入记录页前的选择
+    state_id: app021-default
+    target_element_id: records-back
+    locator_ref:
+      element_id: records-back
+      strategy: label
+      value: 返回发货单列表
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-015
+  title: 返回列表保留栋舍条件
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 返回列表
+  coverage_ids:
+  - COV-APP023-BACK-CONTEXT
+  plan_item_ids:
+  - PLAN-APP023-BACK-CONTEXT
+  atomic_purpose_ids:
+  - AP-APP023-BACK-HOUSE
+  preconditions:
+  - 授权查询角色可用
+  - 列表进入记录页前已选择指定栋舍条件
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在记录页面点击“返回发货单列表”
+    expected: 返回列表后栋舍条件保持进入记录页前的选择
+    state_id: app021-default
+    target_element_id: records-back
+    locator_ref:
+      element_id: records-back
+      strategy: label
+      value: 返回发货单列表
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-016
+  title: 返回列表保留状态页签
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 返回列表
+  coverage_ids:
+  - COV-APP023-BACK-CONTEXT
+  plan_item_ids:
+  - PLAN-APP023-BACK-CONTEXT
+  atomic_purpose_ids:
+  - AP-APP023-BACK-STATUS
+  preconditions:
+  - 授权查询角色可用
+  - 列表进入记录页前已选择指定状态页签
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在记录页面点击“返回发货单列表”
+    expected: 返回列表后状态页签保持进入记录页前的选择
+    state_id: app021-default
+    target_element_id: records-back
+    locator_ref:
+      element_id: records-back
+      strategy: label
+      value: 返回发货单列表
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-017
+  title: 返回列表保留搜索关键字
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 返回列表
+  coverage_ids:
+  - COV-APP023-BACK-CONTEXT
+  plan_item_ids:
+  - PLAN-APP023-BACK-CONTEXT
+  atomic_purpose_ids:
+  - AP-APP023-BACK-KEYWORD
+  preconditions:
+  - 授权查询角色可用
+  - 列表进入记录页前已通过搜索输入关键字得到目标发货单
+  - 已准备可切换的目标孵化场
+  steps:
+  - action: 在记录页面点击“返回发货单列表”
+    expected: 返回列表后搜索关键字保持进入记录页前的内容
+    state_id: app021-default
+    target_element_id: records-back
+    locator_ref:
+      element_id: records-back
+      strategy: label
+      value: 返回发货单列表
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 2
+    status: open_evidence
+  common_preconditions_ref: app_shipment_records_access
+
+- id: TC-APP-023-021
+  title: 页面顶部按发货日期、栋舍和品种顺序拼接标题
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录页面标题
+  coverage_ids:
+  - COV-APP023-PAGE-ENTRY
+  plan_item_ids:
+  - PLAN-APP023-PAGE-ENTRY
+  atomic_purpose_ids:
+  - AP-APP023-TITLE-FORMAT
+  preconditions:
+  - 已准备可核对标题字段的有效发货单
+  steps:
+  - action: 对照发货单基准数据查看页面顶部主标题
+    expected: 顶部标题严格按“发货日期-栋舍-品种”顺序显示，三个字段值正确，连接符和日期格式正确
+    state_id: app023-records-populated
+    target_element_id: pending-page
+    locator_ref:
+      element_id: pending-page
+      strategy: text
+      value: 发货日期-栋舍-品种
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-023
+  title: 发货时间按年月日时分秒格式显示
+  type: feature
+  auto: auto
+  priority: P3
+  feature: 发货记录字段
+  coverage_ids:
+  - COV-APP023-FIELDS
+  atomic_purpose_ids:
+  - AP-APP023-TIME-FORMAT
+  preconditions:
+  - 已准备包含可核对提交时间的发货记录
+  steps:
+  - action: 按记录提交时间基准逐项检查时间文本
+    expected: 发货时间严格符合“YYYY-MM-DD HH:SS”格式
+    state_id: app023-records-populated
+    target_element_id: shipping-records
+    locator_ref:
+      element_id: shipping-records
+      strategy: css
+      value: .shipment-record-list
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-024
+  title: 剩余未发大于零时状态显示未发完
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录状态
+  coverage_ids:
+  - COV-APP023-FIELDS
+  atomic_purpose_ids:
+  - AP-APP023-STATUS-UNFINISHED
+  preconditions:
+  - 已准备剩余未发数量大于零的发货记录
+  steps:
+  - action: 查看目标记录的发货状态
+    expected: 当剩余未发大于零时，发货状态显示“未发完”，且与剩余发货数量一致
+    state_id: app023-records-populated
+    target_element_id: record1-status
+    locator_ref:
+      element_id: record1-status
+      strategy: text
+      value: 未发完
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-025
+  title: 剩余未发等于零时状态显示已发完
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 发货记录状态
+  coverage_ids:
+  - COV-APP023-FIELDS
+  atomic_purpose_ids:
+  - AP-APP023-STATUS-FINISHED
+  preconditions:
+  - 已准备剩余未发数量等于零的发货记录
+  steps:
+  - action: 查看目标记录的发货状态
+    expected: 当剩余未发等于零时，发货状态显示“已发完”，且不显示为“未发完”
+    state_id: app023-records-populated
+    target_element_id: record-complete
+    locator_ref:
+      element_id: record-complete
+      strategy: text
+      value: 已发完
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-026
+  title: 历史记录剩余发货保持提交时快照
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货记录历史快照
+  coverage_ids:
+  - COV-APP023-FIELDS
+  atomic_purpose_ids:
+  - AP-APP023-REMAINING-SNAPSHOT
+  preconditions:
+  - 已准备同一上孵计划的连续两次发货记录及提交时待发货基准
+  steps:
+  - action: 查看第一次发货记录的剩余发货数量并记录其提交时基准值
+    expected: 第一次记录展示提交当时待发货数减去第一次本次发货数的结果
+  - action: 在同一上孵计划产生或加载第二次发货记录后重新查看第一次记录
+    expected: 第一次记录的剩余发货仍保持第一次提交时的快照，不被第二次发货的数量改写
+    state_id: app023-records-populated
+    target_element_id: shipping-records
+    locator_ref:
+      element_id: shipping-records
+      strategy: css
+      value: .shipment-record-list
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-027
+  title: 发货位置数量显示为实际位置数处
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 发货位置汇总
+  coverage_ids:
+  - COV-APP023-MULTI-POSITION
+  atomic_purpose_ids:
+  - AP-APP023-POSITION-COUNT
+  preconditions:
+  - 已准备恰好三个位置录入本次发货数量的发货记录
+  steps:
+  - action: 查看目标记录的发货位置汇总
+    expected: 发货位置显示“3处”，位置数量等于本次发货数量大于零的实际位置数
+    state_id: app023-records-populated
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: text
+      value: 3处
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-028
+  title: 操作人与位置明细字段计算格式正确
+  type: feature
+  auto: auto
+  priority: P1
+  feature: 位置明细
+  coverage_ids:
+  - COV-APP023-FIELDS
+  - COV-APP023-MULTI-POSITION
+  atomic_purpose_ids:
+  - AP-APP023-POSITION-FIELDS
+  preconditions:
+  - 已准备包含历史累计、本次新增、操作人和多个列层位置的发货记录
+  steps:
+  - action: 查看目标发货记录的操作人和位置明细
+    expected: 显示完成本次发货的操作人；每个位置按“m列n层”显示层列
+  - action: 对每个位置核对位置累计、新增与测试数据基准
+    expected: 位置累计等于历史累计加本次新增，新增等于当前位置本次发货数量，且各位置字段对应正确
+    state_id: app023-records-populated
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: text
+      value: 列层位置明细
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-029
+  title: 有备注时在位置行下方展示备注行
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置备注
+  coverage_ids:
+  - COV-APP023-MULTI-POSITION
+  atomic_purpose_ids:
+  - AP-APP023-POSITION-REMARK-YES
+  preconditions:
+  - 已准备至少一个位置带本次发货备注的记录
+  steps:
+  - action: 查看该位置行下方的备注区域
+    expected: 在对应位置行下方插入备注行，且备注内容与本次发货录入的备注一致
+    state_id: app023-records-populated
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: text
+      value: 备注
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+- id: TC-APP-023-030
+  title: 无备注时不展示备注行
+  type: feature
+  auto: auto
+  priority: P2
+  feature: 位置备注
+  coverage_ids:
+  - COV-APP023-MULTI-POSITION
+  atomic_purpose_ids:
+  - AP-APP023-POSITION-REMARK-NO
+  preconditions:
+  - 已准备至少一个位置无本次发货备注的记录
+  steps:
+  - action: 查看该位置行下方的区域
+    expected: 无备注时不显示备注行，不出现空备注占位内容
+    state_id: app023-records-populated
+    target_element_id: position-detail
+    locator_ref:
+      element_id: position-detail
+      strategy: text
+      value: 列层位置明细
+  trace:
+    req: REQ-APP-023
+    project: 种禽孵化管理系统
+    version: 3
+    status: designed_with_evidence_boundary
+  common_preconditions_ref: app_shipment_records_access
+summary:
+  case_count: 20
+  blocked: 20
+  open_evidence: 6
+  coverage_complete: true
+  type_counts:
+    feature: 20
+    interface: 0
+  auto_counts:
+    auto: 20
+  priority_counts:
+    P1: 4
+    P2: 10
+    P3: 6
+    P4: 0

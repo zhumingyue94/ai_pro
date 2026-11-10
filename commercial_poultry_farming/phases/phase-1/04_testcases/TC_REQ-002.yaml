@@ -1,0 +1,1117 @@
+req_id: REQ-002
+module: 补栏计划
+zentao_module_id: 651
+zentao_product_id: 5
+zentao_project_id: 20
+page_url: /biopark-poultry/production/plan
+trace:
+  req: REQ-002
+  tp: TP_REQ-002
+  project: 商品禽养殖
+  version: 1
+  status: draft
+  source_review: 04_testpoint_review/REV_REQ-002.yaml
+  gate_note: 测点评审已通过；本阶段未跑用例自检/未写 CSV；对齐需求变动后测点
+  tp_version: 3
+summary:
+  case_count: 38
+  priority_counts:
+    P1: 4
+    P2: 23
+    P3: 11
+  feature_counts:
+    查询: 10
+    表格: 19
+    饲喂计划: 7
+  type_counts:
+    feature: 36
+    auto: 2
+  auto_counts:
+    auto: 35
+    'no': 3
+cases:
+- id: TC-002-01
+  tp_id: TP-002-01
+  title: 选择年份后点击「查询」→ 列表仅展示该年补栏计划
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条记录补栏日期所属年份等于所选年份；无匹配时列表为空态；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-01
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48238
+  auto: auto
+- id: TC-002-02
+  tp_id: TP-002-02
+  title: 选择年份+月份后点击「查询」→ 列表按年月组合过滤
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：结果同时满足所选年份与月份；AND 组合过滤正确；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-02
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48239
+  auto: auto
+- id: TC-002-03
+  tp_id: TP-002-03
+  title: 选择年份+月份+计划状态后点击「查询」→ AND 组合过滤结果正确
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：结果同时满足年份、月份与计划状态；无匹配时空态；须可见：「查询」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-03
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48240
+  auto: auto
+- id: TC-002-04
+  tp_id: TP-002-04
+  title: 点击「重置」→ 年份/月份/计划状态恢复默认并刷新列表
+  type: feature
+  priority: P1
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  steps:
+  - action: 将查询条件改为非默认值
+    expected: 条件已变更
+  - action: 点击「重置」
+    expected: 年份恢复当年、月份恢复当月、计划状态恢复全部（或等价默认），列表按默认条件刷新；须覆盖标题断言：「重置」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-04
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48241
+  auto: auto
+- id: TC-002-05
+  tp_id: TP-002-05
+  title: 仅变更查询条件不点「查询」→ 列表不按新条件刷新
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区按本条场景填写条件
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：变更下拉后列表仍为点击查询前的数据集，直至点击「查询」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-05
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48242
+  auto: auto
+- id: TC-002-06
+  tp_id: TP-002-06
+  title: 计划状态下拉选项含「待执行」「执行中」「已完成」
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  steps:
+  - action: 点击「计划状态」下拉
+    expected: 选项含「待执行」「执行中」「已完成」（及全部/空选项若有）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-06
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48243
+  auto: auto
+- id: TC-002-07
+  tp_id: TP-002-07
+  title: 进入「补栏计划」页 → 年份默认当年
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  steps:
+  - action: 查看查询区对应控件
+    expected: 年份控件默认值为当前年；须覆盖标题断言：「补栏计划」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-07
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48244
+  auto: auto
+- id: TC-002-08
+  tp_id: TP-002-08
+  title: 进入「补栏计划」页 → 月份默认当月
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  steps:
+  - action: 查看查询区对应控件
+    expected: 月份控件默认值为当前月（1-12）；须覆盖标题断言：「补栏计划」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-08
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48245
+  auto: auto
+- id: TC-002-09
+  tp_id: TP-002-09
+  title: 进入「补栏计划」页 → 计划状态默认全部
+  type: feature
+  priority: P3
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  steps:
+  - action: 查看查询区对应控件
+    expected: 计划状态默认全部或不限定单一状态；须覆盖标题断言：「补栏计划」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-09
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48246
+  auto: auto
+- id: TC-002-10
+  tp_id: TP-002-10
+  title: 查询条件无匹配数据 → 列表展示空态
+  type: feature
+  priority: P2
+  feature: 查询
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 页面展示满足：列表无数据行并展示空态提示（或等价无数据呈现）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-10
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48247
+  auto: auto
+- id: TC-002-11
+  tp_id: TP-002-11
+  title: 列表展示计划编号/计划状态/补栏日期/栋舍/养殖品种/补栏数量/苗重等主表字段
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 列表至少包含：序号、计划编号、计划状态、补栏日期、补栏时间、栋舍、养殖品种、补栏数量、苗重(g)、养殖天数、出栏日期、出栏体重(kg)、宰杀线、排程编号、1/2/3段养殖计划、操作
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-11
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48248
+  auto: auto
+- id: TC-002-12
+  tp_id: TP-002-12
+  title: 列表中的补栏信息的相关字段来自排程系统，检查两边数据一致性
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 抽样核对列表补栏日期/栋舍/品种/补栏数量/苗重等与产业链排程系统下推数据一致
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-12
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48249
+  auto: auto
+- id: TC-002-13
+  tp_id: TP-002-13
+  title: 计划编号由排程计划推送数据的时候自动生成，格式是：BL-补栏日期（8位）-流水号（2位）
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 计划编号符合 BL-YYYYMMDD-NN（日期8位+流水号2位），由排程下推生成
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-13
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48250
+  auto: auto
+- id: TC-002-14
+  tp_id: TP-002-14
+  title: 计划编号中的流水号，每个补栏日期从01开始编号，按在本系统的创建顺序依次递增
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 同一补栏日期下流水号从01起按本系统创建顺序递增，无跳号/重复（抽样）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-14
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48251
+  auto: auto
+- id: TC-002-15
+  tp_id: TP-002-15
+  title: 计划状态为待执行/执行中/已完成时列表标签样式区分展示
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中分别存在计划状态为「待执行」「执行中」「已完成」的记录（可造数）
+  steps:
+  - action: 在列表中分别定位「待执行」「执行中」「已完成」状态的计划行
+    expected: 三种状态行均可见；各行标签样式可区分（信息/警告/成功或等价），文案分别为「待执行」「执行中」「已完成」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-15
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48252
+  auto: 'no'
+- id: TC-002-16
+  tp_id: TP-002-16
+  title: 补栏日期晚于今天 → 计划状态显示「待执行」（与补栏确认无关）
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 存在补栏日期晚于今天的计划（可含已补栏确认对照）
+  steps:
+  - action: 查询并定位补栏日期晚于今天的计划行
+    expected: 目标行可见
+  - action: 查看「计划状态」
+    expected: 计划状态显示「待执行」；即使已完成补栏确认仍为待执行
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-16
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48253
+  auto: auto
+- id: TC-002-17
+  tp_id: TP-002-17
+  title: 补栏日期≤今天且未收到出栏结算单 → 计划状态显示「执行中」（与补栏确认无关）
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 存在补栏日期≤今天且未收到出栏结算单的计划（可含未确认对照）
+  steps:
+  - action: 查询并定位补栏日期≤今天且未结算的计划行
+    expected: 目标行可见
+  - action: 查看「计划状态」
+    expected: 计划状态显示「执行中」；即使未完成补栏确认仍为执行中
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-17
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48254
+  auto: auto
+- id: TC-002-18
+  tp_id: TP-002-18
+  title: 已经收到出栏结算单的计划，状态显示“已完成”
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 存在已收到出栏结算单的计划
+  steps:
+  - action: 定位已收到出栏结算单的计划行
+    expected: 目标行可见
+  - action: 查看「计划状态」
+    expected: 计划状态显示「已完成」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-18
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48255
+  auto: auto
+- id: TC-002-35
+  tp_id: TP-002-35
+  title: 已补栏确认但补栏日期未到 → 计划状态仍为「待执行」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 存在已完成补栏确认且补栏日期晚于今天的计划
+  steps:
+  - action: 定位已补栏确认但补栏日期未到的计划
+    expected: 目标行可见
+  - action: 查看「计划状态」
+    expected: 计划状态仍为「待执行」（证明与确认无关）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-35
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48256
+  auto: auto
+- id: TC-002-36
+  tp_id: TP-002-36
+  title: 未补栏确认但补栏日期已到且未结算 → 计划状态为「执行中」
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 存在未完成补栏确认、补栏日期≤今天且未结算的计划
+  steps:
+  - action: 定位未确认但补栏日期已到且未结算的计划
+    expected: 目标行可见
+  - action: 查看「计划状态」
+    expected: 计划状态为「执行中」（证明与确认无关）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-36
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48257
+  auto: auto
+- id: TC-002-19
+  tp_id: TP-002-19
+  title: 列表「出栏日期」= 补栏日期 + 养殖天数，和排程系统的宰杀日期一致
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 出栏日期=补栏日期+养殖天数，且与排程系统宰杀日期一致（抽样）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-19
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48258
+  auto: auto
+- id: TC-002-20
+  tp_id: TP-002-20
+  title: 1/2/3段养殖计划列展示养殖天数、空栏天数、体重(g)、料比，数据来源于排程系统对应排程的三段养殖标准
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 三段列可辨识展示养殖天数/空栏天数/体重(g)/料比，且与排程系统对应排程三段养殖标准一致
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-20
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48259
+  auto: auto
+- id: TC-002-21
+  tp_id: TP-002-21
+  title: 排程编号列展示产业链生产排程系统下推带来的排程编号
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 排程编号非空且与产业链生产排程系统下推的排程编号一致（抽样）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-21
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48260
+  auto: auto
+- id: TC-002-22
+  tp_id: TP-002-22
+  title: 补栏计划页无「新增」「编辑」「删除」入口（只可查看）
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 工具栏与行操作均不可新增/编辑/删除计划主数据；操作列仅「饲喂计划」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-22
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48261
+  auto: auto
+- id: TC-002-23
+  tp_id: TP-002-23
+  title: 操作列仅提供「饲喂计划」行内按钮
+  type: feature
+  priority: P2
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 行操作按钮集合仅为饲喂计划（或文案等价）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-23
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48262
+  auto: auto
+- id: TC-002-24
+  tp_id: TP-002-24
+  title: 补栏时间列仅显示小时数字
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 补栏时间展示形态为小时数字口径（与需求「仅显示小时数字」一致）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-24
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48263
+  auto: auto
+- id: TC-002-25
+  tp_id: TP-002-25
+  title: 列表分页可用且翻页后数据切换
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 数据量足以触发分页
+  steps:
+  - action: 操作分页控件
+    expected: 当数据超过一页时分页控件可用，翻页后行集合变化
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-25
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48264
+  auto: 'no'
+- id: TC-002-26
+  tp_id: TP-002-26
+  title: 超长单元格省略展示且悬停可见完整内容
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  - 存在超长单元格
+  steps:
+  - action: 定位超长单元格并悬浮查看
+    expected: 超长文本以省略号截断，悬停或 tooltip 可查看全文
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-26
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48265
+  auto: 'no'
+- id: TC-002-27
+  tp_id: TP-002-27
+  title: 只读列表展示补栏数量边界值（如 0、0.01）不报错
+  type: feature
+  priority: P3
+  feature: 表格
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可核对的业务数据（按标题准备数据态）
+  steps:
+  - action: 在列表中定位目标行/列并核对
+    expected: 若存在边界数量下推数据，列表正常展示且无前端异常（非可编辑校验）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-27
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48266
+  auto: auto
+- id: TC-002-28
+  tp_id: TP-002-28
+  title: 点击行内「饲喂计划」→ 打开饲喂计划弹窗
+  type: feature
+  priority: P2
+  feature: 饲喂计划
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可点「饲喂计划」的计划行
+  steps:
+  - action: 点击行内「饲喂计划」
+    expected: 点击行内饲喂计划后打开饲喂明细弹窗
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-28
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48267
+  auto: auto
+- id: TC-002-29
+  tp_id: TP-002-29
+  title: 饲喂计划弹窗标题为「饲喂明细」
+  type: feature
+  priority: P3
+  feature: 饲喂计划
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可点「饲喂计划」的计划行
+  steps:
+  - action: 打开饲喂计划弹窗并核对内容
+    expected: 弹窗标题文案精确为饲喂明细
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-29
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48268
+  auto: auto
+- id: TC-002-30
+  tp_id: TP-002-30
+  title: 饲喂计划弹窗正确展示计划编号、栋舍、品种信息
+  type: feature
+  priority: P3
+  feature: 饲喂计划
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可点「饲喂计划」的计划行
+  steps:
+  - action: 打开饲喂计划弹窗并核对内容
+    expected: 饲喂明细弹窗头部（或等价区域）正确展示对应行的计划编号、栋舍、品种
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-30
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48269
+  auto: auto
+- id: TC-002-31
+  tp_id: TP-002-31
+  title: 饲喂计划明细表展示「段区」列
+  type: feature
+  priority: P2
+  feature: 饲喂计划
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可点「饲喂计划」的计划行
+  steps:
+  - action: 打开饲喂计划弹窗并核对内容
+    expected: 明细表头/数据含段区列
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-31
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48270
+  auto: auto
+- id: TC-002-32
+  tp_id: TP-002-32
+  title: 饲喂计划明细各个段区的数据与产业链排程系统下推的数据一致
+  type: feature
+  priority: P2
+  feature: 饲喂计划
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可点「饲喂计划」的计划行
+  steps:
+  - action: 打开饲喂计划弹窗并核对内容
+    expected: 明细各段区行数据与产业链排程系统下推的日龄采食/饲喂计划一致（抽样核对）
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-32
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48271
+  auto: auto
+- id: TC-002-33
+  tp_id: TP-002-33
+  title: 饲喂计划明细为只读展示 → 不可编辑保存
+  type: feature
+  priority: P2
+  feature: 饲喂计划
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可点「饲喂计划」的计划行
+  steps:
+  - action: 打开饲喂计划弹窗，尝试编辑明细
+    expected: 弹窗内无可用编辑/保存控件；字段不可手改落库
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-33
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48272
+  auto: auto
+- id: TC-002-34
+  tp_id: TP-002-34
+  title: 点击「取消」→ 关闭饲喂计划弹窗且不回填列表
+  type: feature
+  priority: P2
+  feature: 饲喂计划
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可点「饲喂计划」的计划行
+  steps:
+  - action: 打开饲喂计划弹窗后点击「取消」
+    expected: 弹窗关闭；列表主数据不变；无选中回填发生；须覆盖标题断言：「取消」
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  trace:
+    story: null
+    req: REQ-002
+    tp: TP-002-34
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source_review: 04_testpoint_review/REV_REQ-002.yaml
+  zentao_case_id: 48273
+  auto: auto
+- id: TC-002-37
+  tp_id: null
+  feature: null
+  title: 查询区包含「年份」「月份」「栋舍」「计划状态」条件控件
+  type: auto
+  priority: P3
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/chick-sign）
+  steps:
+  - action: 查看查询区控件与默认值/选项
+    expected: 查询区可见「年份」「月份」「栋舍」「计划状态」条件控件
+  trace:
+    story: null
+    req: REQ-002
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48810
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  auto: auto
+  zentao_case_id: 48810
+- id: TC-002-38
+  tp_id: null
+  feature: null
+  title: 选择栋舍后点击「查询」→ 列表仅展示该栋舍补栏计划
+  type: auto
+  priority: P2
+  preconditions:
+  - 使用测试账号登录系统
+  - 进入「补栏计划」页面（/biopark-poultry/production/plan）
+  - 列表中存在可区分过滤结果的对照数据
+  steps:
+  - action: 在查询区的栋舍选择某栋
+    expected: 条件控件显示已填入的值
+  - action: 点击「查询」按钮
+    expected: 页面展示满足：列表每条记录的栋舍等于所选栋舍；无匹配时列表为空态；须可见：「查询」
+  trace:
+    story: null
+    req: REQ-002
+    tp: null
+    project: 商品禽养殖
+    version: 1
+    status: draft
+    source:
+      source_file: reference/禅道项目20_测试用例.md
+      zentao_case_id: 48811
+  test_data:
+    page_url: /biopark-poultry/production/plan
+    data_prefix: AUTO测试_勿用_
+    module: 补栏计划
+    zentao_module_id: 651
+  auto: auto
+  zentao_case_id: 48811

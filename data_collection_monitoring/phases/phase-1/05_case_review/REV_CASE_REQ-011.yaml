@@ -1,0 +1,688 @@
+review:
+  review_id: REV-CASE-REQ-011-20261102-R5
+  req_id: REQ-011
+  module_id: REQ-011
+  review_items:
+  - code: ZENTAO_CASE_011_TARGETS_DELETED
+    category: remote_sync
+    result: pending
+    gate_reason: false
+    reason: 已从本地 YAML、Markdown 和唯一注册表移除 TC-REQ-011-039；待按稳定禅道 ID 52031 逐条真实删除并立即回读确认。
+  design_gate_passed: true
+  execution_status: validated
+  execution_gate_passed: true
+  gate_reasons: []
+  design_gate_reasons: []
+  review_scope:
+    design_review: in_scope
+    execution_review: excluded
+    ui_execution: excluded
+    automation_execution: excluded
+    pairwise_execution: excluded
+    remote_sync: completed_for_changed_cases
+  execution_review:
+    status: completed
+    reason: 已按稳定 ID 完成删除及52022原位更新，并逐条回读确认。
+  auto_field_correction_20261102:
+    baseline: current_42_cases
+    source_analysis: auto修正/REQ-011_auto判定分析.md
+    source_case_count: 42
+    auto_count: 37
+    no_count: 5
+    changed_case_ids: []
+    excluded_historical_case_ids:
+    - TC-REQ-011-056
+    - TC-REQ-011-057
+    status: validated
+  execution_summary:
+    remote_sync: completed_for_changed_cases
+    remote_sync_count: 24
+    create: 0
+    update: 21
+    delete: 3
+    source_case_count: 42
+    removed_case_ids:
+    - TC-REQ-011-031
+    - TC-REQ-011-041
+    - TC-REQ-011-051
+    - TC-REQ-011-053
+    - TC-REQ-011-056
+    - TC-REQ-011-042
+    - TC-REQ-011-052
+    - TC-REQ-011-057
+    removed_zentao_case_ids:
+    - 52023
+    - 52033
+    - 52043
+    - 52045
+    - 52113
+    - 52034
+    - 52044
+    - 52114
+    common_precondition_restored: true
+    common_precondition_id: CP-REQ-011-001
+    common_precondition_step_count: 3
+  source_hashes:
+    04_testcases/TC_REQ-011.yaml: 2fa5f0414d258f96e54fb7bda3ac0da2e1f7d606b787ec96fe77903a9c218756
+    04_testcases/TC_REQ-011.md: 753976419275cfc4e24abad6ec33eeb9483bc05feed349afc9189acaafb3a5ec
+    module_case_map.json: 562da484fe0dd0c97ad0564270d7fc2ad2a40b66727707f49b470b0fe4adf462
+  review_items:
+  - code: TESTCASE_ATOMICITY_MERGED_SCENARIO
+    category: design_violation
+    result: resolved
+    gate_reason: false
+    reason: 已拆分多动作步骤；当前 YAML 共 42 条用例，每个步骤包含独立操作和预期。
+  - code: CASE_MARKDOWN_METADATA_INCONSISTENT
+    category: design_violation
+    result: resolved
+    gate_reason: false
+    reason: Markdown 从 YAML 重新生成，编号、数量、优先级统计、标题、前置条件、步骤和预期一致。
+  - code: REMOTE_ZENTAO_SYNC
+    category: execution
+    result: resolved
+    gate_reason: false
+    reason: 模块 749 下本次20条类型差异用例按稳定 zentao_case_id 原位更新并逐条回读通过；当前源集合为42条。
+  coverage_review:
+    methods:
+    - equivalence_partitioning
+    - boundary_value
+    - decision_table
+    - state_transition
+    - pairwise_static
+    conclusion: 已覆盖页面、筛选、权限和处理入口，并补充详情、处理校验/反馈、重复处理、归档删除保护和留存责任边界；新增 054-057 补齐处理成功/失败、归档成功和删除成功回读；当前共 55 条，运行时证据和副作用行为仍未执行。
+    gaps:
+    - 正式 PDF 逐条追溯待确认
+    - 详情/处理/归档/删除稳定定位器和反馈证据不足
+    - 角色租户矩阵及事件、时间、快照、留存契约待确认
+    - Pairwise 完整矩阵和用例映射待补
+    findings:
+    - 本次指定禅道用例均已删除并回读 confirmed_not_found；对应本地用例和注册表映射已移除。
+  pairwise_review:
+    status: static_review_only
+    model_parameters:
+    - Permission
+    - Tenant
+    - RecordState
+    - EventIdentity
+    - Timezone
+    - ObjectAccess
+    - FilterMode
+    - Action
+    - Result
+    constraints:
+    - 其他租户或拒绝权限的受保护操作对应权限错误
+    - 已处理再次处理仅允许可见或阻止
+    - 重复事件对应不重复
+    - 失效/删除/无权限对象筛选被阻止
+    - 删除仅管理员
+    - 展开筛选显示高级字段
+    conclusion: 分析和测试计划提供了参数、值域候选和约束，但缺少可执行矩阵及用例映射；无法证明完整 2-way 覆盖，本轮不执行 PICT。
+    gaps:
+    - 缺少组合矩阵
+    - 缺少用例到组合行映射
+    - 页面契约和权限矩阵不完整
+    gate_reason: false
+  automation_review:
+    status: blocked
+    conclusion: 当前仅规划补齐 alert_record 页面契约后的登录态复用、路由/标题/默认态、筛选、分页、排序、脱敏列和打开查看/处理/归档删除确认层后取消等只读检查。
+    candidates:
+    - alert_record_config
+    - alert_record_level
+    - alert_record_product
+    - alert_record_query
+    - alert_record_reset
+    - alert_record_expand
+    - alert_record_refresh
+    - alert_record_columns
+    - alert_record_table
+    - alert_record_view
+    - alert_record_handle
+    - alert_record_page_size
+    - alert_record_prev
+    - alert_record_next
+    - alert_record_jump
+    blockers:
+    - dialog_locator_missing
+    - permission_tenant_matrix_missing
+    - stable_row_data_missing
+    - archive_delete_contract_missing
+    - all_cases_execution_not_authorized
+    locator_priority:
+    - confirmed alert_record_* IDs
+    - get_by_role/name
+    - get_by_test_id
+    - get_by_label
+    - stable attributes
+    - CSS last
+    gate_reason: false
+  headed_page_review:
+    status: static_evidence_only
+    evidence:
+    - page_inventory_alert_record_default
+    - page_inventory_alert_record_filter_expanded
+    - page_inventory_alert_record_dialogs_partial
+    conclusion: 页面库存存在 alert_record，但页面整体为 partial，详情/处理/归档/删除契约不完整；本轮 report_only、禁止 UI 执行，不能启动有头浏览器或宣称执行通过。
+    gate_reason: false
+  alignment:
+    yaml_path: 04_testcases/TC_REQ-011.yaml
+    markdown_path: 04_testcases/TC_REQ-011.md
+    validator: D:/02test_pro/ui_test/scripts/validate_testcase_markdown.py
+    status: passed
+    yaml_case_count: 51
+    markdown_case_count: 51
+    id_set_match: true
+    statistics_match: true
+    validator_result: PASS
+    findings:
+    - YAML/Markdown 数量、编号和统计均为 51 条并已同步。
+    - 当前剩余 51 条用例的运行时证据、权限、反馈和正式需求页码仍待确认。
+  casely_review:
+    status: passed_with_warnings
+    structure: passed
+    fields: passed
+    style: passed_with_risk
+    delivery_format: passed_with_risk
+    findings:
+    - YAML/Markdown 数量与 ID 集合为 51 条，已通过离线校验；剩余用例的页面动作以当前 YAML 为准。
+    - 所有用例的自动化执行状态仍为 blocked；页面、权限、反馈和副作用契约缺失继续阻塞执行交付。
+    - 新增用例保持单一 atomic_purpose_id，未知内容标记为待确认或 blocked。
+    reference_scope: D:/02test_pro/ui_test/references/casely/
+  priority_review:
+    rule_ref: test-design-enrichment-rule.md
+    scope: 全量51条用例，以 YAML priority 为事实源。
+    case_count: 51
+    reviewed_case_count: 51
+    unreviewed_case_ids: []
+    distribution:
+      P1: 6
+      P2: 29
+      P3: 16
+      P4: 0
+    change_summary:
+      changed_case_count: 53
+      unchanged_case_count: 4
+    distribution_observations:
+    - code: priority_distribution_observation
+      severity: warning
+      gate_reason: false
+      reason: 当前YAML分布为 P1=6、P2=29、P3=16、P4=0；52037对应的TC-REQ-011-045已删除。
+    items:
+    - case_id: TC-REQ-011-003
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-004
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-005
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-006
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面六个筛选条件任意组合查询
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 根据当前页面筛选字段实际情况，验证告警配置、告警级别、产品、设备、是否处理和创建时间六个条件的任意组合查询。
+      gate_reason: false
+    - case_id: TC-REQ-011-007
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面平铺筛选、设备筛选和查询结果
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 根据当前页面所有筛选框平铺显示的实际情况，将测试目的调整为验证按设备查询。
+      gate_reason: false
+    - case_id: TC-REQ-011-008
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-010
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-012
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-014
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-015
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-018
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-019
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-021
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-023
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 告警记录触发消息悬浮框参数一致性与消失行为
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 参数名称来自产品物模型，验证params参数名称不固定且参数值与设备发送消息一致，并保留悬浮框消失校验。
+      gate_reason: false
+    - case_id: TC-REQ-011-024
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 权限租户、脱敏、处理/归档/删除副作用、历史快照与反馈
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: high
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-025
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 权限租户、脱敏、处理/归档/删除副作用、历史快照与反馈
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: high
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-026
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 告警记录详情中的requestId与设备消息id关联校验
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 补充详情中的requestId必须与设备发送消息id完全一致的接口字段关联校验。
+      gate_reason: false
+    - case_id: TC-REQ-011-027
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 告警记录详情查看入口及时间字段显示
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 明确通过鼠标悬浮“查看”按钮打开记录详情，并校验页面提供的时间字段含义可区分且reportTime显示为时间戳。
+      gate_reason: false
+    - case_id: TC-REQ-011-030
+      current_priority: P3
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 租户范围、查询结果和跨租户数据隔离
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: high
+      reason: 优先级由 P1 调整为 P3；保留进入、查询、结果检查和租户切换步骤。
+      gate_reason: false
+    - case_id: TC-REQ-011-031
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 权限租户、脱敏、处理/归档/删除副作用、历史快照与反馈
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: high
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-032
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      impact_area: 处理结果非必填、提交后返回列表及处理状态更新
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: high
+      reason: 根据本次变更要求，从告警记录列表目标行点击“处理”按钮打开处理表单；处理结果允许为空，提交后自动返回告警记录列表，并按页面规则更新处理状态。
+      gate_reason: false
+    - case_id: TC-REQ-011-034
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-039
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-040
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-041
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-042
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-043
+      current_priority: P3
+      source_priority: P3
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: true
+      causes_key_data_error: false
+      has_workaround: false
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - case_id: TC-REQ-011-044
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: retained
+      impact_area: 告警记录页面筛选、分页、排序、字段、时间边界或状态
+      blocks_core_flow: false
+      causes_key_data_error: false
+      has_workaround: true
+      user_frequency: medium
+      reason: 源用例优先级与风险评审结果一致，当前保留。
+      gate_reason: false
+    - impact_area: 告警记录权限、脱敏、状态、处理反馈与副作用边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响告警记录判断或处理流程，但存在人工核对或替代路径；本次明确处理成功后的“是否处理”、处理时间和处理结果回读，其中处理结果需与处理弹窗填写内容一致。
+      case_id: TC-REQ-011-048
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: adjusted
+      gate_reason: false
+    - impact_area: 告警记录权限、脱敏、状态、处理反馈与副作用边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响告警记录判断或处理流程，但存在人工核对或替代路径；本次仅保留已处理目标记录的“处理”按钮隐藏校验。
+      case_id: TC-REQ-011-049
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      gate_reason: false
+    - impact_area: 告警记录权限、脱敏、状态、处理反馈与副作用边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响告警记录判断或处理流程，但存在人工核对或替代路径。
+      case_id: TC-REQ-011-050
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P1
+      recommended_priority: P1
+      result: retained
+      gate_reason: false
+    - impact_area: 告警记录权限、脱敏、状态、处理反馈与副作用边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响告警记录判断或处理流程，但存在人工核对或替代路径。
+      case_id: TC-REQ-011-051
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      gate_reason: false
+    - impact_area: 告警记录权限、脱敏、状态、处理反馈与副作用边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响告警记录判断或处理流程，但存在人工核对或替代路径。
+      case_id: TC-REQ-011-052
+      current_priority: P1
+      source_priority: P1
+      reviewed_priority: P2
+      recommended_priority: P2
+      result: adjusted
+      gate_reason: false
+    - impact_area: 告警记录权限、脱敏、状态、处理反馈与副作用边界
+      blocks_core_flow: false
+      causes_key_data_error: true
+      has_workaround: true
+      user_frequency: medium
+      reason: 失败会影响告警记录判断或处理流程，但存在人工核对或替代路径。
+      case_id: TC-REQ-011-053
+      current_priority: P2
+      source_priority: P2
+      reviewed_priority: P3
+      recommended_priority: P3
+      result: adjusted
+      gate_reason: false
+    mismatches: []
+    unconfirmed_items: []
+    gate_reasons: []
+  traceability_review:
+    status: partial
+    gaps:
+    - TC-REQ-011-033..044 的正式 PDF 逐条页码和测试计划条目待确认。
+    - alert_record 详情/处理/归档/删除契约未在页面库存中完整登记。
+    gate_reason: false
+  prohibitions:
+    test_points_read: false
+    xmind_read: false
+    ui_executed: false
+    playwright_executed: false
+    pict_executed: false
+    csv_generated: false
+    remote_zentao_written: false
+  current_case_statistics:
+    case_count: 42
+    step_count: 110
+    priority_distribution:
+      P1: 5
+      P2: 29
+      P3: 16
+      P4: 0
+alignment:
+  yaml_case_count: 50
+  markdown_case_count: 50
+  id_set_match: true
+  priority_counts:
+    P1: 5
+    P2: 29
+    P3: 16
+    P4: 0
+source_hashes:
+  04_testcases/TC_REQ-011.yaml: 2fa5f0414d258f96e54fb7bda3ac0da2e1f7d606b787ec96fe77903a9c218756
+  04_testcases/TC_REQ-011.md: 753976419275cfc4e24abad6ec33eeb9483bc05feed349afc9189acaafb3a5ec

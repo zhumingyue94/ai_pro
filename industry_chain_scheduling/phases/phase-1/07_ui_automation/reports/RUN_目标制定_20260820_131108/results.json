@@ -1,0 +1,72 @@
+{
+  "run_id": "RUN_目标制定_20260820_131108",
+  "module": "目标制定",
+  "req_id": "REQ-002",
+  "zentao_module_id": 669,
+  "environment": {
+    "base_host": "192.168.6.163:66",
+    "headless": "false"
+  },
+  "generated_at": "2026-08-20T13:11:17",
+  "source": "04_testcases/TC_REQ-002.yaml",
+  "cases": [
+    {
+      "case_id": "TC-002-01",
+      "zentao_case_id": 47482,
+      "title": "查询条件包含「年度」「状态」字段",
+      "type": "auto",
+      "auto": "auto",
+      "status": "passed",
+      "classification": "passed",
+      "check_id": "TP-002-01",
+      "assertion_scope": "target_goal.query_form",
+      "expected": "页面顶部查询区可见筛选项：年度、状态两个筛选项",
+      "actual": {
+        "labels": [
+          "年度",
+          "状态"
+        ],
+        "field_state": {
+          "year_item_count": 1,
+          "year_input_count": 1,
+          "year_placeholder": "请选择年份",
+          "year_value": "",
+          "status_item_count": 1,
+          "status_select_count": 1,
+          "status_placeholder": "请选择状态"
+        }
+      },
+      "detail": "查询区域包含年度和状态字段",
+      "failure_origin": null,
+      "preconditions": [
+        "使用智控中心测试账号登录系统",
+        "进入「目标制定」页面（/biopark-poultry/schedule/target/create）"
+      ],
+      "steps": [
+        {
+          "action": "查看页面顶部查询区域",
+          "expected": "页面顶部查询区可见筛选项：年度、状态两个筛选项"
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "screenshots/TC-002-01_TP-002-01_assertion_scope.png",
+          "sha256": "d51ab0f3fbf6d40a817e5677eaa4aac7f15982437bb0bf8287c3f54c2e9d2b32"
+        },
+        {
+          "path": "screenshots/TC-002-01_TP-002-01_assertion_full.png",
+          "sha256": "90d4b6735d5db9f0a1bc1775d1a711f5d0dc9235eada6f642668ebe37f6f78cc"
+        }
+      ],
+      "screenshot": "screenshots/TC-002-01_TP-002-01_assertion_scope.png",
+      "started_at": "2026-08-20T13:11:08",
+      "finished_at": "2026-08-20T13:11:16",
+      "data_preparation": {
+        "fixture_type": "existing_system_data",
+        "creates_data": false,
+        "cleanup_status": "not_required"
+      },
+      "excluded": false
+    }
+  ]
+}

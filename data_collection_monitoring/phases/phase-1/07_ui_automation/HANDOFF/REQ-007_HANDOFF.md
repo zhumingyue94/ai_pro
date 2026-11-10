@@ -1,0 +1,2 @@
+# REQ-007 UI 自动化交接\n\n- module_id：`745`\n- 模块：`数据监听`\n- 执行范围：`TC-REQ-007-006, TC-REQ-007-007, TC-REQ-007-008, TC-REQ-007-009, TC-REQ-007-020, TC-REQ-007-029, TC-REQ-007-033, TC-REQ-007-034, TC-REQ-007-035`\n- RUN：`07_ui_automation/reports/RUN_20261110T150000Z/`\n- 统计：`total: 9; passed: 4; blocked: 2; excluded: 3`\n- 缺陷数量：`0`\n- 远程 Bug：未创建\n- Allure 原始证据：`allure-results/`\n- 不在 RUN 目录生成 Handoff.md。\n\n## 缺陷结论
+未确认产品行为缺陷。\n

@@ -1,0 +1,1810 @@
+req_id: REQ-000
+module: 产业链生产排程系统总览
+zentao_module_id: null
+zentao_product_id: 6
+zentao_project_id: 38
+trace:
+  req: REQ-000
+  tp: TP_REQ-000
+  project: 产业链生产排程系统
+  version: 1
+  status: approved
+  source_review: 04_testpoint_review/REV_REQ-000.yaml
+cases:
+- id: TC-000-01
+  tp_id: TP-000-01
+  title: 门户入口可访问产业链生产排程系统
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 门户入口
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 从智控中心门户点击「产业链生产排程系统」入口
+    expected: 进入总览页，浏览器地址含 /biopark-poultry/schedule，页面主内容正常加载无报错
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48015
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-01
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-000-02
+  tp_id: TP-000-02
+  title: 排程管理下四个本期菜单导航可达
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 模块导航
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 依次点击排程管理下本期四个菜单（目标制定、分段养殖模版、制定排程、排程审批）
+    expected: 四个菜单均可打开对应功能页，页面标题/路由与菜单一致，无404
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48016
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-02
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-000-03
+  tp_id: TP-000-03
+  title: 排程看板下六个本期菜单导航可达
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 模块导航
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 依次点击排程看板下本期六个菜单项
+    expected: 六个菜单均可打开对应看板页，页面标题/路由与菜单一致，无404
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48017
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-03
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-000-04
+  tp_id: TP-000-04
+  title: 目标→模版→制定→审批→下推→看板链路数据贯通
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 主流程闭环
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  - 测试账号具备各环节操作权限，并自建贯通数据
+  steps:
+  - action: 在目标制定创建并审核通过一条目标
+    expected: 目标状态为审核通过
+  - action: 据此创建分段养殖模版并审核通过
+    expected: 模版可被制定排程引用
+  - action: 制定排程并提交，在排程审批通过
+    expected: 计划下推成功
+  - action: 打开宰杀日等看板查看展示数据
+    expected: 看板数据与排程源数据关键字段一致
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48018
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-04
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-000-05
+  tp_id: TP-000-05
+  title: 目标审核通过与否不影响模版与排程编制链路
+  type: interface
+  auto: 'no'
+  priority: P2
+  feature: 主流程闭环
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 准备未审核通过的目标，尝试进入依赖该目标的模版/排程编制
+    expected: 可引用该目标继续编制
+  - action: 将目标审核通过后再进入模版/排程编制
+    expected: 可引用该目标继续编制
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48019
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-05
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: interface
+    auto: 'no'
+    status: type_source_conflict
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48019 --format=json
+  zentao_status: investigate
+- id: TC-000-06
+  tp_id: TP-000-06
+  title: 排程审批通过后自动下推四类计划
+  type: auto
+  auto: auto
+  priority: P1
+  feature: 主流程闭环
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  - 存在可审批通过的排程单据
+  steps:
+  - action: 在排程审批将单据审核通过
+    expected: 提示成功，单据进入已下推相关状态
+  - action: 分别打开下推后的四类计划/看板入口核对
+    expected: 四类计划均已生成或可见，关键字段来自排程
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48020
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-06
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-000-07
+  tp_id: TP-000-07
+  title: 排程倒推链路宰杀→补栏→孵化→饲料日需求一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 倒推与业务规则
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  - 存在完整可下推的排程数据
+  steps:
+  - action: 查看排程倒推生成的宰杀/补栏/孵化/饲料日需求关联数据
+    expected: 各环节数量与日期链路一致，无断层
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48021
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-07
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: investigate
+- id: TC-000-08
+  tp_id: TP-000-08
+  title: 排程编号全局符合JH-YYYYMMDD-XX
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 倒推与业务规则
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  - 存在至少一条排程单据
+  steps:
+  - action: 查看排程编号字段格式
+    expected: 编号符合 JH-YYYYMMDD-XX 规则
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48022
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-08
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-000-09
+  tp_id: TP-000-09
+  title: 孵化周期固定鸡21天鸭28天
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 倒推与业务规则
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 在涉及孵化周期的配置或计算结果中分别核对接/鸭
+    expected: 鸡为21天、鸭为28天
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48023
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-09
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-000-10
+  tp_id: TP-000-10
+  title: 品种约束鸡最多2种且鸭固定樱桃谷
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 倒推与业务规则
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 在制定/相关选择处核对接鸭品种约束
+    expected: 鸡最多可选2种；鸭固定为樱桃谷（或界面仅提供该选项）
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48024
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-10
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-000-11
+  tp_id: TP-000-11
+  title: 单栋舍单批与单宰杀线日宰杀默认规模15万只
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 倒推与业务规则
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 查看单栋舍单批与单宰杀线日宰杀默认规模相关展示或默认值
+    expected: 默认规模为15万只或按规则展示
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48025
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-11
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-000-12
+  tp_id: TP-000-12
+  title: 单据状态与日历「待排」标签语义区分正确
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 倒推与业务规则
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 对照单据状态与日历「待排」标签
+    expected: 二者语义区分正确，不混淆
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48026
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-12
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-000-13
+  tp_id: TP-000-13
+  title: 下推后各看板展示与排程源数据一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 跨系统联动
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  - 排程已审批下推
+  steps:
+  - action: 打开各相关看板核对关键字段
+    expected: 看板展示与排程源数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48027
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-13
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-000-14
+  tp_id: TP-000-14
+  title: 补栏上苗下推至商品禽养殖系统字段一致
+  type: auto
+  auto: auto
+  priority: P2
+  feature: 跨系统联动
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  - 存在已下推的补栏上苗数据
+  steps:
+  - action: 在商品禽养殖侧核对接收字段
+    expected: 关键字段与排程下推数据一致
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48028
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-14
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: deprecated
+- id: TC-000-15
+  tp_id: TP-000-15
+  title: 达成看板实际量来自平台其他系统推送
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 跨系统联动
+  preconditions:
+  - 使用智控中心测试账号登录系统
+  - 进入「产业链生产排程系统总览」页面（/biopark-poultry/schedule/introduction）
+  steps:
+  - action: 打开达成看板查看实际量数据来源说明或对账字段
+    expected: 实际量来自平台其他系统推送，非本排程手工录入
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48029
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-15
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_status: normal
+- id: TC-000-16
+  tp_id: TP-000-16
+  title: 权限专项测点索引（菜单+各页面接口逐项，见 TP-000-17~56）
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 查阅 REQ-000 权限契约与 module_permission_matrix
+  - 准备多角色测试账号（菜单/各接口权限组合）
+  steps:
+  - action: 按 TP-000-17~56 逐项执行菜单与各页面接口权限验证
+    expected: 各专项用例预期与平台权限配置一致；详见子用例 TC-000-17~56
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  zentao_case_id: 48030
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-16
+    project: 产业链生产排程系统
+    version: 1
+    status: approved
+  zentao_type_sync:
+    source: zentao-cli
+    type: feature
+    auto: 'no'
+    status: synced_by_zentao_type
+    retrieved_at: '2026-08-13'
+    detail_command: zentao testcase 48030 --format=json
+  zentao_status: deprecated
+- id: TC-000-17
+  tp_id: TP-000-17
+  title: 无菜单权限角色无法进入本期各 in-scope 页面
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备无菜单权限的测试账号（平台配置不含本期 in-scope 菜单）
+  steps:
+  - action: 分别尝试访问本期各 in-scope 页面（目标制定, 分段养殖模版, 制定排程, 排程审批, 宰杀日看板, 品种管理, 饲料管理, 宰杀线管理, 栋舍管理）
+    expected: 菜单不可见或访问被拒绝/跳转无权限页，无法进入页面主内容
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-17
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48744
+  zentao_status: normal
+- id: TC-000-18
+  tp_id: TP-000-18
+  title: 有菜单权限角色可正常进入本期各 in-scope 页面
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限的测试账号（平台配置含本期 in-scope 菜单）
+  steps:
+  - action: 依次进入本期各 in-scope 页面（目标制定, 分段养殖模版, 制定排程, 排程审批, 宰杀日看板, 品种管理, 饲料管理, 宰杀线管理, 栋舍管理）
+    expected: 各页面均可正常打开，主内容加载无报错
+  test_data:
+    page_url: /biopark-poultry/schedule/introduction
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-18
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48745
+  zentao_status: normal
+- id: TC-000-19
+  tp_id: TP-000-19
+  title: 【目标制定】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  steps:
+  - action: 在目标制定页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-19
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48746
+  zentao_status: normal
+- id: TC-000-20
+  tp_id: TP-000-20
+  title: 【目标制定】无「创建」权限时，创建操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「创建」接口权限的测试账号
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 年度筛选已选定有效年度
+  steps:
+  - action: 在目标制定页面点击「新增」或创建入口
+    expected: 创建按钮不可用/隐藏，或创建接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-20
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48747
+  zentao_status: normal
+- id: TC-000-21
+  tp_id: TP-000-21
+  title: 【目标制定】无「删除」权限时，删除操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「删除」接口权限的测试账号
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在可删除的目标记录
+  steps:
+  - action: 在目标制定页面选中一条记录并点击「删除」
+    expected: 删除按钮不可用/隐藏，或删除接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-21
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48783
+  zentao_status: normal
+- id: TC-000-22
+  tp_id: TP-000-22
+  title: 【目标制定】无「更新」权限时，更新操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「更新」接口权限的测试账号
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在可编辑的暂存状态目标记录
+  steps:
+  - action: 在目标制定页面点击「编辑」或修改入口
+    expected: 编辑按钮不可用/隐藏，或更新接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-22
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48748
+  zentao_status: normal
+- id: TC-000-23
+  tp_id: TP-000-23
+  title: 【目标制定】无「提交」权限时，提交操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「提交」接口权限的测试账号
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在暂存状态的目标记录
+  steps:
+  - action: 在目标制定页面在暂存记录行点击「提交」
+    expected: 提交按钮不可用/隐藏，或提交接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-23
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48749
+  zentao_status: normal
+- id: TC-000-24
+  tp_id: TP-000-24
+  title: 【目标制定】无「审核」权限时，审核操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「审核」接口权限的测试账号
+  - 进入「目标制定」页面（/biopark-poultry/schedule/target/create）
+  - 列表中已存在待审核状态的目标记录
+  steps:
+  - action: 在目标制定页面点击「审核」进入审核操作
+    expected: 审核按钮不可用/隐藏，或审核接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/target/create
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-24
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48750
+  zentao_status: normal
+- id: TC-000-25
+  tp_id: TP-000-25
+  title: 【分段养殖模版】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  steps:
+  - action: 在分段养殖模版页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-25
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48751
+  zentao_status: normal
+- id: TC-000-26
+  tp_id: TP-000-26
+  title: 【分段养殖模版】无「创建」权限时，创建操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「创建」接口权限的测试账号
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 存在可用年度目标（已审核通过）
+  steps:
+  - action: 在分段养殖模版页面点击「新增」或创建入口
+    expected: 创建按钮不可用/隐藏，或创建接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-26
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48752
+  zentao_status: normal
+- id: TC-000-27
+  tp_id: TP-000-27
+  title: 【分段养殖模版】无「删除」权限时，删除操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「删除」接口权限的测试账号
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在可删除的模版记录
+  steps:
+  - action: 在分段养殖模版页面选中一条记录并点击「删除」
+    expected: 删除按钮不可用/隐藏，或删除接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-27
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48753
+  zentao_status: normal
+- id: TC-000-28
+  tp_id: TP-000-28
+  title: 【分段养殖模版】无「更新」权限时，更新操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「更新」接口权限的测试账号
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在可编辑的模版记录
+  steps:
+  - action: 在分段养殖模版页面点击「编辑」或修改入口
+    expected: 编辑按钮不可用/隐藏，或更新接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-28
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48754
+  zentao_status: normal
+- id: TC-000-29
+  tp_id: TP-000-29
+  title: 【分段养殖模版】无「提交」权限时，提交操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「提交」接口权限的测试账号
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在暂存状态的模版记录
+  steps:
+  - action: 在分段养殖模版页面在暂存记录行点击「提交」
+    expected: 提交按钮不可用/隐藏，或提交接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-29
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48755
+  zentao_status: normal
+- id: TC-000-30
+  tp_id: TP-000-30
+  title: 【分段养殖模版】无「审核」权限时，审核操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「审核」接口权限的测试账号
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在待审核状态的模版记录
+  steps:
+  - action: 在分段养殖模版页面点击「审核」进入审核操作
+    expected: 审核按钮不可用/隐藏，或审核接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-30
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48756
+  zentao_status: normal
+- id: TC-000-31
+  tp_id: TP-000-31
+  title: 【分段养殖模版】无「复制」权限时，复制操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「复制」接口权限的测试账号
+  - 进入「分段养殖模版」页面（/biopark-poultry/schedule/template/feeding）
+  - 列表中已存在审核通过状态的模版记录
+  steps:
+  - action: 在分段养殖模版页面在审核通过记录行点击「复制」
+    expected: 复制按钮不可用/隐藏，或复制接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/template/feeding
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-31
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48757
+  zentao_status: normal
+- id: TC-000-32
+  tp_id: TP-000-32
+  title: 【制定排程】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  steps:
+  - action: 在制定排程页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-32
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48758
+  zentao_status: normal
+- id: TC-000-33
+  tp_id: TP-000-33
+  title: 【制定排程】无「创建」权限时，创建操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「创建」接口权限的测试账号
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 存在可用年度目标与分段养殖模版
+  steps:
+  - action: 在制定排程页面点击「新增」或创建入口
+    expected: 创建按钮不可用/隐藏，或创建接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-33
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48759
+  zentao_status: normal
+- id: TC-000-34
+  tp_id: TP-000-34
+  title: 【制定排程】无「删除」权限时，删除操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「删除」接口权限的测试账号
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 列表中已存在可删除的排程记录
+  steps:
+  - action: 在制定排程页面选中一条记录并点击「删除」
+    expected: 删除按钮不可用/隐藏，或删除接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-34
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48760
+  zentao_status: normal
+- id: TC-000-35
+  tp_id: TP-000-35
+  title: 【制定排程】无「更新」权限时，更新操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「更新」接口权限的测试账号
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 列表中已存在可编辑的排程记录
+  steps:
+  - action: 在制定排程页面点击「编辑」或修改入口
+    expected: 编辑按钮不可用/隐藏，或更新接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-35
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48761
+  zentao_status: normal
+- id: TC-000-36
+  tp_id: TP-000-36
+  title: 【制定排程】无「提交」权限时，提交操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「提交」接口权限的测试账号
+  - 进入「制定排程」页面（/biopark-poultry/schedule/plan-schedule/make-plan）
+  - 列表中已存在可提交审核的排程记录
+  steps:
+  - action: 在制定排程页面在暂存记录行点击「提交」
+    expected: 提交按钮不可用/隐藏，或提交接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-36
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48762
+  zentao_status: normal
+- id: TC-000-37
+  tp_id: TP-000-37
+  title: 【排程审批】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  steps:
+  - action: 在排程审批页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-37
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48763
+  zentao_status: normal
+- id: TC-000-38
+  tp_id: TP-000-38
+  title: 【排程审批】无「审核」权限时，审核操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「审核」接口权限的测试账号
+  - 进入「排程审批」页面（/biopark-poultry/schedule/plan-schedule/approval）
+  - 列表中已存在待审批的排程计划
+  steps:
+  - action: 在排程审批页面点击「审核」进入审核操作
+    expected: 审核按钮不可用/隐藏，或审核接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/approval
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-38
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48764
+  zentao_status: normal
+- id: TC-000-39
+  tp_id: TP-000-39
+  title: 【宰杀日看板】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  steps:
+  - action: 在宰杀日看板页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-39
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48765
+  zentao_status: normal
+- id: TC-000-40
+  tp_id: TP-000-40
+  title: 【宰杀日看板】无「导出」权限时，导出操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「导出」接口权限的测试账号
+  - 进入「宰杀日看板」页面（/biopark-poultry/schedule/plan-schedule/slaughter-plan）
+  - 看板中已存在可导出的排程数据
+  steps:
+  - action: 在宰杀日看板页面点击「导出」
+    expected: 导出按钮不可用/隐藏，或导出接口返回无权限
+  test_data:
+    page_url: /biopark-poultry/schedule/plan-schedule/slaughter-plan
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-40
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48766
+  zentao_status: normal
+- id: TC-000-41
+  tp_id: TP-000-41
+  title: 【品种管理】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「品种管理」页面（/apm/bases/breed）
+  steps:
+  - action: 在品种管理页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /apm/bases/breed
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-41
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48767
+  zentao_status: normal
+- id: TC-000-42
+  tp_id: TP-000-42
+  title: 【品种管理】无「创建」权限时，创建操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「创建」接口权限的测试账号
+  - 进入「品种管理」页面（/apm/bases/breed）
+  - 基础数据列表可正常展示
+  steps:
+  - action: 在品种管理页面点击「新增」或创建入口
+    expected: 创建按钮不可用/隐藏，或创建接口返回无权限
+  test_data:
+    page_url: /apm/bases/breed
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-42
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48768
+  zentao_status: normal
+- id: TC-000-43
+  tp_id: TP-000-43
+  title: 【品种管理】无「删除」权限时，删除操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「删除」接口权限的测试账号
+  - 进入「品种管理」页面（/apm/bases/breed）
+  - 列表中已存在可删除的品种记录
+  steps:
+  - action: 在品种管理页面选中一条记录并点击「删除」
+    expected: 删除按钮不可用/隐藏，或删除接口返回无权限
+  test_data:
+    page_url: /apm/bases/breed
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-43
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48769
+  zentao_status: normal
+- id: TC-000-44
+  tp_id: TP-000-44
+  title: 【品种管理】无「更新」权限时，更新操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「更新」接口权限的测试账号
+  - 进入「品种管理」页面（/apm/bases/breed）
+  - 列表中已存在可编辑的品种记录
+  steps:
+  - action: 在品种管理页面点击「编辑」或修改入口
+    expected: 编辑按钮不可用/隐藏，或更新接口返回无权限
+  test_data:
+    page_url: /apm/bases/breed
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-44
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48770
+  zentao_status: normal
+- id: TC-000-45
+  tp_id: TP-000-45
+  title: 【饲料管理】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  steps:
+  - action: 在饲料管理页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-45
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48771
+  zentao_status: normal
+- id: TC-000-46
+  tp_id: TP-000-46
+  title: 【饲料管理】无「创建」权限时，创建操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「创建」接口权限的测试账号
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 基础数据列表可正常展示
+  steps:
+  - action: 在饲料管理页面点击「新增」或创建入口
+    expected: 创建按钮不可用/隐藏，或创建接口返回无权限
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-46
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48772
+  zentao_status: normal
+- id: TC-000-47
+  tp_id: TP-000-47
+  title: 【饲料管理】无「删除」权限时，删除操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「删除」接口权限的测试账号
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表中已存在可删除的饲料记录
+  steps:
+  - action: 在饲料管理页面选中一条记录并点击「删除」
+    expected: 删除按钮不可用/隐藏，或删除接口返回无权限
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-47
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48773
+  zentao_status: normal
+- id: TC-000-48
+  tp_id: TP-000-48
+  title: 【饲料管理】无「更新」权限时，更新操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「更新」接口权限的测试账号
+  - 进入「饲料管理」页面（/apm/bases/forage）
+  - 列表中已存在可编辑的饲料记录
+  steps:
+  - action: 在饲料管理页面点击「编辑」或修改入口
+    expected: 编辑按钮不可用/隐藏，或更新接口返回无权限
+  test_data:
+    page_url: /apm/bases/forage
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-48
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48774
+  zentao_status: normal
+- id: TC-000-49
+  tp_id: TP-000-49
+  title: 【宰杀线管理】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  steps:
+  - action: 在宰杀线管理页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-49
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48775
+  zentao_status: normal
+- id: TC-000-50
+  tp_id: TP-000-50
+  title: 【宰杀线管理】无「创建」权限时，创建操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「创建」接口权限的测试账号
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 基础数据列表可正常展示
+  steps:
+  - action: 在宰杀线管理页面点击「新增」或创建入口
+    expected: 创建按钮不可用/隐藏，或创建接口返回无权限
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-50
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48776
+  zentao_status: normal
+- id: TC-000-51
+  tp_id: TP-000-51
+  title: 【宰杀线管理】无「删除」权限时，删除操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「删除」接口权限的测试账号
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表中已存在可删除的宰杀线记录
+  steps:
+  - action: 在宰杀线管理页面选中一条记录并点击「删除」
+    expected: 删除按钮不可用/隐藏，或删除接口返回无权限
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-51
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48777
+  zentao_status: normal
+- id: TC-000-52
+  tp_id: TP-000-52
+  title: 【宰杀线管理】无「更新」权限时，更新操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「更新」接口权限的测试账号
+  - 进入「宰杀线管理」页面（/apm/bases/slaughter-line）
+  - 列表中已存在可编辑的宰杀线记录
+  steps:
+  - action: 在宰杀线管理页面点击「编辑」或修改入口
+    expected: 编辑按钮不可用/隐藏，或更新接口返回无权限
+  test_data:
+    page_url: /apm/bases/slaughter-line
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-52
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48778
+  zentao_status: normal
+- id: TC-000-53
+  tp_id: TP-000-53
+  title: 【栋舍管理】无「查询」权限时，查询操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「查询」接口权限的测试账号
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  steps:
+  - action: 在栋舍管理页面打开页面并触发列表查询（刷新列表）
+    expected: 列表查询不可用、提示无权限，或查询接口返回无权限
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-53
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48779
+  zentao_status: normal
+- id: TC-000-54
+  tp_id: TP-000-54
+  title: 【栋舍管理】无「创建」权限时，创建操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「创建」接口权限的测试账号
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 基础数据列表可正常展示
+  steps:
+  - action: 在栋舍管理页面点击「新增」或创建入口
+    expected: 创建按钮不可用/隐藏，或创建接口返回无权限
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-54
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48780
+  zentao_status: normal
+- id: TC-000-55
+  tp_id: TP-000-55
+  title: 【栋舍管理】无「删除」权限时，删除操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「删除」接口权限的测试账号
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中已存在可删除的栋舍记录
+  steps:
+  - action: 在栋舍管理页面选中一条记录并点击「删除」
+    expected: 删除按钮不可用/隐藏，或删除接口返回无权限
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-55
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48781
+  zentao_status: normal
+- id: TC-000-56
+  tp_id: TP-000-56
+  title: 【栋舍管理】无「更新」权限时，更新操作不可用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 权限
+  preconditions:
+  - 准备有菜单权限、无「更新」接口权限的测试账号
+  - 进入「栋舍管理」页面（/apm/bases/house）
+  - 列表中已存在可编辑的栋舍记录
+  steps:
+  - action: 在栋舍管理页面点击「编辑」或修改入口
+    expected: 编辑按钮不可用/隐藏，或更新接口返回无权限
+  test_data:
+    page_url: /apm/bases/house
+    data_prefix: AUTO测试_勿用_
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-56
+    project: 产业链生产排程系统
+    version: 1
+    status: draft
+  zentao_case_id: 48782
+  zentao_status: normal
+- id: TC-000-57
+  tp_id: TP-000-57
+  title: 删除栋舍后，各模块的数据正常显示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 基础数据-栋舍管理，删除被用过的栋舍
+  steps:
+  - action: 进入制定排程菜单，查看表格、编辑/查看页面
+    expected: 被删除的栋舍正常显示
+  - action: 进入排程审批菜单，查看表格、审批/查看页面
+    expected: 被删除的栋舍正常显示
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48799
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48799
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48799 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-57
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48799
+  registry_status: registered
+  zentao_status: deprecated
+- id: TC-000-58
+  tp_id: TP-000-58
+  title: 删除品种后，各模块的数据正常显示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 基础数据-品种管理，删除被用过的品种
+  steps:
+  - action: 进入分段养殖模板菜单，查看筛选、表格、弹窗页面
+    expected: 被删除的品种正常显示
+  - action: 进入制定排程菜单，查看表格、编辑/查看页面
+    expected: 被删除的品种正常显示
+  - action: 进入排程审批菜单，查看表格、审批/查看页面
+    expected: 被删除的品种正常显示
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48800
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48800
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48800 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-58
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48800
+  registry_status: registered
+  zentao_status: deprecated
+- id: TC-000-59
+  tp_id: TP-000-59
+  title: 删除宰杀线后，各模块的数据正常显示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 基础数据-宰杀线管理，删除被用过的宰杀线
+  steps:
+  - action: 进入制定排程菜单，查看表格、编辑/查看页面
+    expected: 被删除的宰杀线正常显示
+  - action: 进入排程审批菜单，查看表格、审批/查看页面
+    expected: 被删除的宰杀线正常显示
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48801
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48801
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48801 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-59
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48801
+  registry_status: registered
+  zentao_status: deprecated
+- id: TC-000-60
+  tp_id: TP-000-60
+  title: 删除饲料后，各模块的数据正常显示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 基础数据-饲料管理，删除被用过的饲料
+  steps:
+  - action: 进入分段养殖模板菜单，查看表格、弹窗页面
+    expected: 被删除的饲料正常显示
+  - action: 进入制定排程菜单，查看编辑/查看页面
+    expected: 被删除的饲料正常显示
+  - action: 进入排程审批菜单，查看审批/查看页面
+    expected: 被删除的饲料正常显示
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48802
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48802
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48802 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-60
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48802
+  registry_status: registered
+  zentao_status: normal
+- id: TC-000-61
+  tp_id: TP-000-61
+  title: 删除养殖标准后，分段养殖模板的数据正常显示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 商品禽养殖系统删除被引用过的养殖标准
+  steps:
+  - action: 进入分段养殖模板菜单，查看表格、弹窗、复制页面
+    expected: 数据正常显示
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48803
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48803
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48803 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-61
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48803
+  registry_status: registered
+  zentao_status: normal
+- id: TC-000-62
+  tp_id: TP-000-62
+  title: 停用品种后，复制分段养殖模板生成新模板，品种自动置空
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 基础数据-品种管理，停用被用过的品种
+  steps:
+  - action: 进入分段养殖模板菜单，复制模板
+    expected: 新模板中，被停用的品种置空
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48804
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48804
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48804 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-62
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48804
+  registry_status: registered
+  zentao_status: normal
+- id: TC-000-63
+  tp_id: TP-000-63
+  title: 停用饲料后，复制分段养殖模板生成新模板，饲料名称自动置空
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 基础数据-饲料管理，停用被用过的饲料
+  steps:
+  - action: 进入分段养殖模板菜单，复制模板
+    expected: 新模板中，被停用的饲料名称置空
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48805
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48805
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48805 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-63
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48805
+  registry_status: registered
+  zentao_status: normal
+- id: TC-000-64
+  tp_id: TP-000-64
+  title: 删除用户后，各模块的创建人、更新人正常显示
+  type: feature
+  auto: 'no'
+  priority: P3
+  feature: 跨模块数据一致性
+  preconditions:
+  - 系统管理删除用户
+  steps:
+  - action: 进入【目标制定】菜单，查看表格
+    expected: 提交人、修改人显示正常
+  - action: 进入【分段养殖模板】菜单，查看表格
+    expected: 审核人、提交人、修改人显示正常
+  - action: 进入【制定排程】菜单，查看表格
+    expected: 审核人、创建人、更新人显示正常
+  - action: 进入【排程审批】菜单，查看表格
+    expected: 审核人、创建人显示正常
+  test_data:
+    page_url: /biopark-apm/apm/scheduling/feeding-template
+    evidence_paths:
+    data_prefix: AUTO测试_勿用_
+    data_contract:
+      strategy: 管理员预置引用/删除/停用状态；本轮不执行破坏性数据操作
+      natural_unique_key: 管理员预置状态+禅道用例48806
+      cleanup_status: not_performed_read_only
+    execution_readiness: admin_prepared_state
+  zentao_source:
+    case_id: 48806
+    module_id: 679
+    type: feature
+    auto: 'no'
+    detail_command: zentao testcase 48806 --format=json
+    retrieved_at: '2026-08-13'
+  trace:
+    story: null
+    req: REQ-000
+    tp: TP-000-64
+    project: 产业链生产排程系统
+    version: 2
+    status: approved_zentao_delta_20260813
+    source: null # original ZenTao evidence deleted by cleanup
+  zentao_case_id: 48806
+  registry_status: registered
+  zentao_status: normal
+summary:
+  type_counts:
+    auto: 13
+    feature: 50
+    interface: 1
+  auto_counts:
+    auto: 13
+    false: 51
+  registry_counts:
+    registered: 64

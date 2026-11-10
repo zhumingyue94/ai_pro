@@ -1,0 +1,7369 @@
+schema_version: '1.0'
+stage: 04_testcases
+req_id: REQ-PC-034
+title: 出雏器管理
+module: 出雏器管理
+zentao_module_id: 551
+source:
+  csv: reference/种禽孵化管理系统测试用例_pc.csv
+  registry: module_case_map.json
+  encoding: GB18030
+  mapping_key: zentao_case_id
+  csv_sha256: fbb0621cdaf723a8d32c9376c33896c50a532e7396a1f0f3c4aad7b8b33b4ec8
+  registry_sha256: 48f80ed51fc9a887577cde01609904f9491df3d9a3fa13119125b27522c4b2f6
+trace:
+  story: null
+  req: REQ-PC-034
+  project: 种禽孵化管理系统
+  version: 1
+  status: imported
+cases:
+- id: TC-38616
+  title: 表格_批量勾选仅限当前页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、表格中当前有多页数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 翻页操作完成后，第一页之前勾选的选项全部自动失效清空，跨页不会自动保留勾选状态
+  - action: 在第一页勾选几条数据，然后点击下一页按钮跳转到其他页面
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38616
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38616
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38617
+  title: 表格_修改表单数据回显完全正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条已有的完整出雏器测试数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 打开修改弹窗后，表单中所有字段的数据全部正确回显，与原记录完全一致
+  - action: 点击该条测试数据行末尾的修改按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38617
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38617
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38618
+  title: 表格_修改弹窗表单字段与新建一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 修改弹窗成功打开，弹窗标题合适，表单里面的所有字段与新建出雏器弹窗中的表单字段完全一致
+  - action: 点击任意一条出雏器行末尾的修改按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38618
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38618
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38619
+  title: 表格_修改按钮全部状态均可修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中同时存在启用状态和停用状态的出雏器各一条
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 无论是启用状态还是停用状态，所有状态下的出雏器行末尾都可以正常看到并点击修改按钮
+  - action: 查看两条不同状态出雏器行的末尾修改操作按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38619
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38619
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38620
+  title: 表格_库位数自动计算正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 库位数由系统自动根据列、排和是否双排的配置计算得出：库位数 = 排 * 列 *（是则为2，否则为1），结果完全正确
+  - action: 查看表格中库位数字段的数值显示
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38620
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38620
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38621
+  title: 表格_批量勾选仅限当前页
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、表格中当前有多页数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 翻页操作完成后，第一页之前勾选的选项全部自动失效清空，跨页不会自动保留勾选状态
+  - action: 在第一页勾选几条数据，然后点击下一页按钮跳转到其他页面
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38621
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38621
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38622
+  title: 表格_出雏器容量自动计算正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中出雏器容量自动计算得出 = 库位容量 * 库位数，数值完全正确
+  - action: 找到某条已有的完整出雏器数据，计算出雏器容量
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38622
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38622
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38623
+  title: 表格_修改表单数据回显完全正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条已有的完整出雏器测试数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 打开修改弹窗后，表单中所有字段的数据全部正确回显，与原记录完全一致
+  - action: 点击该条测试数据行末尾的修改按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38623
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38623
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38624
+  title: 表格_排列字段系统自动生成格式正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 排列字段内容系统自动生成，格式严格遵循 X排Y列，例如：3排4列，格式规范
+  - action: 查看表格中排列字段的显示内容
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38624
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38624
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38625
+  title: 表格_修改弹窗表单字段与新建一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 修改弹窗成功打开，弹窗标题合适，表单里面的所有字段与新建出雏器弹窗中的表单字段完全一致
+  - action: 点击任意一条出雏器行末尾的修改按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38625
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38625
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38626
+  title: 表格_各列数据显示全部正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中每一列每一行的数据全部正确显示，无错位无错误
+  - action: 逐行查看表格中所有记录的各字段显示内容
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38626
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38626
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38627
+  title: 表格_修改按钮全部状态均可修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中同时存在启用状态和停用状态的出雏器各一条
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 无论是启用状态还是停用状态，所有状态下的出雏器行末尾都可以正常看到并点击修改按钮
+  - action: 查看两条不同状态出雏器行的末尾修改操作按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38627
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38627
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38628
+  title: 表格_表头字段全部显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表头字段正确全部显示：复选框、出雏器编号、出雏器名称、孵化场、排列、是否双排、出雏器容量、库位数、库位容量、托盘数、托盘容量、状态、创建时间、操作
+  - action: 查看页面表格的完整表头
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38628
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38628
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38629
+  title: 表格_库位数自动计算正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 库位数由系统自动根据列、排和是否双排的配置计算得出：库位数 = 排 * 列 *（是则为2，否则为1），结果完全正确
+  - action: 查看表格中库位数字段的数值显示
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38629
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38629
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38630
+  title: 删除_被使用过的出雏器也可正常删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条历史上已被下游业务使用过的停用状态出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 删除操作成功，不会报错，不会影响之前历史业务中已经使用该出雏器的旧数据
+  - action: 勾选上述这条已被下游业务使用过的停用出雏器，执行批量删除并确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38630
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38630
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38631
+  title: 表格_出雏器容量自动计算正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中出雏器容量自动计算得出 = 库位容量 * 库位数，数值完全正确
+  - action: 找到某条已有的完整出雏器数据，计算出雏器容量
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38631
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38631
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38632
+  title: 删除_批量选中启用出雏器自动过滤
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 同时勾选部分启用状态的出雏器和部分停用状态的出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统自动直接过滤掉所有选中的启用状态出雏器，只对选中的停用状态出雏器执行删除，最终成功删除停用数据
+  - action: 批量混合勾选上述状态行后点击批量删除按钮确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38632
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38632
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38633
+  title: 表格_排列字段系统自动生成格式正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 排列字段内容系统自动生成，格式严格遵循 X排Y列，例如：3排4列，格式规范
+  - action: 查看表格中排列字段的显示内容
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38633
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38633
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38634
+  title: 删除_启用状态出雏器不显示删除按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态为启用的出雏器行末尾不显示删除操作按钮，只有停用状态出雏器才显示
+  - action: 查看表格中状态为启用的所有出雏器行的末尾操作按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38634
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38634
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38635
+  title: 表格_各列数据显示全部正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中每一列每一行的数据全部正确显示，无错位无错误
+  - action: 逐行查看表格中所有记录的各字段显示内容
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38635
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38635
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38636
+  title: 删除_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量删除按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38636
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38636
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38637
+  title: 表格_表头字段全部显示正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表头字段正确全部显示：复选框、出雏器编号、出雏器名称、孵化场、排列、是否双排、出雏器容量、库位数、库位容量、托盘数、托盘容量、状态、创建时间、操作
+  - action: 查看页面表格的完整表头
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38637
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38637
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38638
+  title: 停用_后续系统操作不出现在选项中
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、已成功将某条出雏器停用完成
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 该停用状态的出雏器不再出现在新增操作的下拉选项中，但是历史已存在引用该出雏器名称的旧数据不受任何影响
+  - action: 打开下游相关新操作页面的出雏器选择下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38638
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38638
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38639
+  title: 删除_被使用过的出雏器也可正常删除
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条历史上已被下游业务使用过的停用状态出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 删除操作成功，不会报错，不会影响之前历史业务中已经使用该出雏器的旧数据
+  - action: 勾选上述这条已被下游业务使用过的停用出雏器，执行批量删除并确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38639
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38639
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38640
+  title: 停用_含已停用出雏器不影响批量操作
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 勾选的出雏器数据中部分已经是停用状态，部分是启用状态
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 批量操作不报错，已停用的维持停用状态，启用的出雏器正常变为停用，操作结果符合预期
+  - action: 混合勾选上述包含停用和启用状态的行数据，点击批量停用按钮
+    expected: ''
+  - action: 确认后执行
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38640
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38640
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38641
+  title: 删除_批量选中启用出雏器自动过滤
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 同时勾选部分启用状态的出雏器和部分停用状态的出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统自动直接过滤掉所有选中的启用状态出雏器，只对选中的停用状态出雏器执行删除，最终成功删除停用数据
+  - action: 批量混合勾选上述状态行后点击批量删除按钮确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38641
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38641
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38642
+  title: 停用_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量停用按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38642
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38642
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38643
+  title: 删除_启用状态出雏器不显示删除按钮
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态为启用的出雏器行末尾不显示删除操作按钮，只有停用状态出雏器才显示
+  - action: 查看表格中状态为启用的所有出雏器行的末尾操作按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38643
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38643
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38644
+  title: 启用_被使用过的出雏器正常启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条历史上已被下游业务使用过的停用状态出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 启用操作成功，不会影响之前历史已经使用过的业务数据，下游相关页面中该出雏器名称正常显示
+  - action: 勾选上述已被下游使用过的停用状态出雏器，点击批量启用确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38644
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38644
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38645
+  title: 删除_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量删除按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38645
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38645
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38646
+  title: 启用_含已启用出雏器不影响批量操作
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 勾选的出雏器数据中部分已经是启用状态，部分是停用状态
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 批量操作不报错，已启用的维持启用状态，停用的出雏器正常变为启用，操作结果符合预期
+  - action: 混合勾选上述包含启用和停用状态的行数据，点击批量启用按钮
+    expected: ''
+  - action: 确认后执行
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38646
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38646
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38647
+  title: 停用_后续系统操作不出现在选项中
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、已成功将某条出雏器停用完成
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 该停用状态的出雏器不再出现在新增操作的下拉选项中，但是历史已存在引用该出雏器名称的旧数据不受任何影响
+  - action: 打开下游相关新操作页面的出雏器选择下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38647
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38647
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38648
+  title: 启用_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量启用按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38648
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38648
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38649
+  title: 停用_含已停用出雏器不影响批量操作
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 勾选的出雏器数据中部分已经是停用状态，部分是启用状态
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 批量操作不报错，已停用的维持停用状态，启用的出雏器正常变为停用，操作结果符合预期
+  - action: 混合勾选上述包含停用和启用状态的行数据，点击批量停用按钮
+    expected: ''
+  - action: 确认后执行
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38649
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38649
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38650
+  title: 导出_无需勾选直接导出筛选后数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统正常执行导出，不需要先勾选数据，导出当前筛选结果的数据
+  - action: 不勾选表格任何行数据，先输入筛选条件筛选部分数据
+    expected: ''
+  - action: 直接点击导出按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38650
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38650
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38651
+  title: 停用_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量停用按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38651
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38651
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38652
+  title: 导出_表头字段与页面表格一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 导出Excel文件中的所有表头字段，和页面上显示的表格表头字段完全一致
+  - action: 点击导出按钮打开导出文件
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38652
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38652
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38653
+  title: 启用_被使用过的出雏器正常启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条历史上已被下游业务使用过的停用状态出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 启用操作成功，不会影响之前历史已经使用过的业务数据，下游相关页面中该出雏器名称正常显示
+  - action: 勾选上述已被下游使用过的停用状态出雏器，点击批量启用确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38653
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38653
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38654
+  title: 导出_文件Excel格式正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 导出成功，下载的文件是标准Excel格式，后缀是xls或xlsx
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38654
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38654
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38655
+  title: 新建_取消按钮点击数据不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表单数据不被保存，弹窗正常关闭，表格中没有新增这条出雏器数据
+  - action: 点击新建按钮，填写表单部分数据，点击取消按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38655
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38655
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38656
+  title: 启用_含已启用出雏器不影响批量操作
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 勾选的出雏器数据中部分已经是启用状态，部分是停用状态
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 批量操作不报错，已启用的维持启用状态，停用的出雏器正常变为启用，操作结果符合预期
+  - action: 混合勾选上述包含启用和停用状态的行数据，点击批量启用按钮
+    expected: ''
+  - action: 确认后执行
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38656
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38656
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38657
+  title: 新建_确认前弹出二次确认弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统校验全部通过，在执行最终保存之前正确弹出二次确认弹窗，提醒用户确认
+  - action: 点击新建按钮，所有必填项正常填写完成后，点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38657
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38657
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38658
+  title: 启用_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量启用按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38658
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38658
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38659
+  title: 新建_状态停用_下游选项中不展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态为停用的出雏器在下游流程的选项中不显示，无法被用户选择
+  - action: 新建一个状态选择为停用的出雏器
+    expected: ''
+  - action: 打开下游相关业务流程页面，查看出雏器选择下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38659
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38659
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38660
+  title: 导出_无需勾选直接导出筛选后数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统正常执行导出，不需要先勾选数据，导出当前筛选结果的数据
+  - action: 不勾选表格任何行数据，先输入筛选条件筛选部分数据
+    expected: ''
+  - action: 直接点击导出按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38660
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38660
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38661
+  title: 导出_表头字段与页面表格一致
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 导出Excel文件中的所有表头字段，和页面上显示的表格表头字段完全一致
+  - action: 点击导出按钮打开导出文件
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38661
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38661
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38662
+  title: 新建_状态启用_下游选项中展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态为启用的出雏器在下游流程的选项中正常展示，用户可选择
+  - action: 新建一个状态为启用的出雏器
+    expected: ''
+  - action: 打开下游相关业务流程页面，查看出雏器选择下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38662
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38662
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38663
+  title: 导出_文件Excel格式正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 导出成功，下载的文件是标准Excel格式，后缀是xls或xlsx
+  - action: 点击导出按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38663
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38663
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38664
+  title: 新建_状态单选框_默认选择启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态单选框默认自动选中“启用“选项
+  - action: 点击新建按钮打开弹窗查看状态单选框
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38664
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38664
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38665
+  title: 新建_取消按钮点击数据不保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表单数据不被保存，弹窗正常关闭，表格中没有新增这条出雏器数据
+  - action: 点击新建按钮，填写表单部分数据，点击取消按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38665
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38665
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38666
+  title: 新建_库位容量_自动计算正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 库位容量自动计算得出=托盘数*托盘容量 → 5*40=200，显示正确
+  - action: 点击新建按钮，设置托盘数=5，托盘容量=40
+    expected: ''
+  - action: 查看库位容量字段
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38666
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38666
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38667
+  title: 新建_确认前弹出二次确认弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统校验全部通过，在执行最终保存之前正确弹出二次确认弹窗，提醒用户确认
+  - action: 点击新建按钮，所有必填项正常填写完成后，点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38667
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38667
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38668
+  title: 新建_托盘容量_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，托盘容量字段输入非数字字符如“aaa“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38668
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38668
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38669
+  title: 新建_状态停用_下游选项中不展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态为停用的出雏器在下游流程的选项中不显示，无法被用户选择
+  - action: 新建一个状态选择为停用的出雏器
+    expected: ''
+  - action: 打开下游相关业务流程页面，查看出雏器选择下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38669
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38669
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38670
+  title: 新建_托盘容量_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，托盘容量字段输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38670
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38670
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38671
+  title: 新建_状态启用_下游选项中展示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态为启用的出雏器在下游流程的选项中正常展示，用户可选择
+  - action: 新建一个状态为启用的出雏器
+    expected: ''
+  - action: 打开下游相关业务流程页面，查看出雏器选择下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38671
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38671
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38672
+  title: 新建_托盘容量_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，托盘容量字段输入负数“-40“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38672
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38672
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38673
+  title: 新建_状态单选框_默认选择启用
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 状态单选框默认自动选中“启用“选项
+  - action: 点击新建按钮打开弹窗查看状态单选框
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38673
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38673
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38674
+  title: 新建_托盘容量_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量只能填整数数字，输入小数不允许保存
+  - action: 点击新建按钮，托盘容量字段输入小数“38.5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38674
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38674
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38675
+  title: 新建_库位容量_自动计算正确
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 库位容量自动计算得出=托盘数*托盘容量 → 5*40=200，显示正确
+  - action: 点击新建按钮，设置托盘数=5，托盘容量=40
+    expected: ''
+  - action: 查看库位容量字段
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38675
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38675
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38676
+  title: 新建_托盘容量_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 托盘容量字段校验通过，允许保存
+  - action: 点击新建按钮，托盘容量字段输入正整数“40“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38676
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38676
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38677
+  title: 新建_托盘容量_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，托盘容量字段输入非数字字符如“aaa“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38677
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38677
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38678
+  title: 新建_托盘数_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，托盘数字段输入非数字字符如“xyz“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38678
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38678
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38679
+  title: 新建_托盘容量_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，托盘容量字段输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38679
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38679
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38680
+  title: 新建_托盘数_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，托盘数字段输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38680
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38680
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38681
+  title: 新建_托盘容量_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，托盘容量字段输入负数“-40“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38681
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38681
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38682
+  title: 新建_托盘数_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，托盘数字段输入负数“-5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38682
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38682
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38683
+  title: 新建_托盘容量_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量只能填整数数字，输入小数不允许保存
+  - action: 点击新建按钮，托盘容量字段输入小数“38.5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38683
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38683
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38684
+  title: 新建_托盘数_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数只能填整数数字，输入小数不允许保存
+  - action: 点击新建按钮，托盘数字段输入小数“4.2“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38684
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38684
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38685
+  title: 新建_托盘容量_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 托盘容量字段校验通过，允许保存
+  - action: 点击新建按钮，托盘容量字段输入正整数“40“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38685
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38685
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38686
+  title: 新建_托盘数_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 托盘数字段校验通过，允许保存
+  - action: 点击新建按钮，托盘数字段输入正整数“5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38686
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38686
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38687
+  title: 新建_托盘数_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，托盘数字段输入非数字字符如“xyz“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38687
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38687
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38688
+  title: 新建_是否双排_选否计算总库位数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统计算库位数=排*列 → 3*4=12，排列显示为3排4列
+  - action: 点击新建按钮，选择是否双排=“否“，设置列=4，排=3，托盘数=5，托盘容量=40
+    expected: ''
+  - action: 系统自动计算相关数值
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38688
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38688
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38689
+  title: 新建_托盘数_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，托盘数字段输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38689
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38689
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38690
+  title: 新建_是否双排_选是计算总库位数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统计算库位数=排*列*2 → 3*4*2=24，排列显示为3排4列
+  - action: 点击新建按钮，选择是否双排=“是“，设置列=4，排=3，托盘数=5，托盘容量=40
+    expected: ''
+  - action: 系统自动计算相关数值
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38690
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38690
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38691
+  title: 新建_是否双排_默认选择是
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 单选框默认自动选中“是“选项
+  - action: 点击新建按钮打开新建弹窗，查看是否双排单选框
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38691
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38691
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38692
+  title: 新建_托盘数_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，托盘数字段输入负数“-5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38692
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38692
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38693
+  title: 新建_库位排_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，库位排输入非数字字符如“测试“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38693
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38693
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38694
+  title: 新建_托盘数_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数只能填整数数字，输入小数不允许保存
+  - action: 点击新建按钮，托盘数字段输入小数“4.2“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38694
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38694
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38695
+  title: 新建_库位排_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，库位排输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38695
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38695
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38696
+  title: 新建_托盘数_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 托盘数字段校验通过，允许保存
+  - action: 点击新建按钮，托盘数字段输入正整数“5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38696
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38696
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38697
+  title: 新建_库位排_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，库位排输入负数“-3“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38697
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38697
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38698
+  title: 新建_是否双排_选否计算总库位数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统计算库位数=排*列 → 3*4=12，排列显示为3排4列
+  - action: 点击新建按钮，选择是否双排=“否“，设置列=4，排=3，托盘数=5，托盘容量=40
+    expected: ''
+  - action: 系统自动计算相关数值
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38698
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38698
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38699
+  title: 新建_库位排_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段只能填整数数字，输入小数不允许保存，弹窗不关闭
+  - action: 点击新建按钮，库位排输入小数“2.7“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38699
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38699
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38700
+  title: 新建_是否双排_选是计算总库位数
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统计算库位数=排*列*2 → 3*4*2=24，排列显示为3排4列
+  - action: 点击新建按钮，选择是否双排=“是“，设置列=4，排=3，托盘数=5，托盘容量=40
+    expected: ''
+  - action: 系统自动计算相关数值
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38700
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38700
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38701
+  title: 新建_是否双排_默认选择是
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 单选框默认自动选中“是“选项
+  - action: 点击新建按钮打开新建弹窗，查看是否双排单选框
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38701
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38701
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38702
+  title: 新建_库位排_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 排字段校验通过，允许保存
+  - action: 点击新建按钮，库位排输入正整数“3“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38702
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38702
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38703
+  title: 新建_库位排_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，库位排输入非数字字符如“测试“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38703
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38703
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38704
+  title: 新建_库位列_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，库位列输入非数字字符如“abc“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38704
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38704
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38705
+  title: 新建_库位排_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，库位排输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38705
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38705
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38706
+  title: 新建_库位列_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，库位列输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38706
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38706
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38707
+  title: 新建_库位排_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，库位排输入负数“-3“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38707
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38707
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38708
+  title: 新建_库位列_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，库位列输入负数“-4“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38708
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38708
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38709
+  title: 新建_库位排_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段只能填整数数字，输入小数不允许保存，弹窗不关闭
+  - action: 点击新建按钮，库位排输入小数“2.7“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38709
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38709
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38710
+  title: 新建_库位列_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段只能填整数数字，输入小数不允许保存，弹窗不关闭
+  - action: 点击新建按钮，库位列输入小数“3.5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38710
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38710
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38711
+  title: 新建_库位排_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 排字段校验通过，允许保存
+  - action: 点击新建按钮，库位排输入正整数“3“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38711
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38711
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38712
+  title: 新建_库位列_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 列字段校验通过，允许保存
+  - action: 点击新建按钮，库位列输入正整数“4“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38712
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38712
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38713
+  title: 新建_库位列_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，库位列输入非数字字符如“abc“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38713
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38713
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38714
+  title: 新建_出雏器名称_只输入空格不允许保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统校验不通过，提示不允许只输入空格，无法提交保存
+  - action: 点击新建按钮，出雏器名称字段仅输入多个空格字符，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38714
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38714
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38715
+  title: 新建_库位列_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，库位列输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38715
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38715
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38716
+  title: 新建_出雏器名称_前后空格自动过滤
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 保存成功，表格中显示的出雏器名称前后的空格已被自动过滤，仅保留中间有效名称
+  - action: 点击新建按钮，在出雏器名称字段前后各输入多个空格中间填写正常名称
+    expected: ''
+  - action: 其他字段正常填写，点击确认提交
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38716
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38716
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38717
+  title: 新建_库位列_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，库位列输入负数“-4“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38717
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38717
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38718
+  title: 新建_出雏器名称_特殊字符可保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 特殊字符和符号正常保存成功，无报错
+  - action: 点击新建按钮，在出雏器名称字段输入包含各种特殊字符、符号的内容
+    expected: ''
+  - action: 其他字段正常填写，点击确认提交
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38718
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38718
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38719
+  title: 新建_库位列_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段只能填整数数字，输入小数不允许保存，弹窗不关闭
+  - action: 点击新建按钮，库位列输入小数“3.5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38719
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38719
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38720
+  title: 新建_出雏器名称_重复校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中已存在一条出雏器，名称为“一号出雏器“
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示出雏器名称不允许重复，不允许保存
+  - action: 点击新建按钮，填写与已有数据完全相同的出雏器名称“一号出雏器“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38720
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38720
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38721
+  title: 新建_库位列_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 列字段校验通过，允许保存
+  - action: 点击新建按钮，库位列输入正整数“4“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38721
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38721
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38722
+  title: 新建_出雏器名称_必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示出雏器名称为必填项，不允许提交
+  - action: 点击新建按钮，其他字段正常填写，唯独出雏器名称留空不填
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38722
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38722
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38723
+  title: 新建_出雏器名称_只输入空格不允许保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统校验不通过，提示不允许只输入空格，无法提交保存
+  - action: 点击新建按钮，出雏器名称字段仅输入多个空格字符，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38723
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38723
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38724
+  title: 新建_出雏器编号_系统自动生成
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 出雏器编号字段显示系统自动生成的编号，该字段处于不可编辑状态，用户不能手动修改
+  - action: 点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38724
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38724
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38725
+  title: 新建_出雏器名称_前后空格自动过滤
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 保存成功，表格中显示的出雏器名称前后的空格已被自动过滤，仅保留中间有效名称
+  - action: 点击新建按钮，在出雏器名称字段前后各输入多个空格中间填写正常名称
+    expected: ''
+  - action: 其他字段正常填写，点击确认提交
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38725
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38725
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38726
+  title: 新建_孵化场_必填项未填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示孵化场为必填项，不允许提交，弹窗不关闭
+  - action: 点击新建按钮打开弹窗，其他字段全部正常填写，唯独孵化场不选择任何选项
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38726
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38726
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38727
+  title: 新建_孵化场_账号多个孵化场不默认选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、准备一个登录账号，该账号的权限范围内有两个以上孵化场
+  steps:
+  - action: 使用上述账号登录系统，进入基础数据-出雏器管理
+    expected: 孵化场下拉框保持空状态，没有默认选中任何选项，需要用户手动选择
+  - action: 点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38727
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38727
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38728
+  title: 新建_出雏器名称_特殊字符可保存
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 特殊字符和符号正常保存成功，无报错
+  - action: 点击新建按钮，在出雏器名称字段输入包含各种特殊字符、符号的内容
+    expected: ''
+  - action: 其他字段正常填写，点击确认提交
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38728
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38728
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38729
+  title: 新建_孵化场_账号仅一个孵化场自动默认选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、准备一个登录账号，该账号的权限范围内只有一个孵化场
+  steps:
+  - action: 使用上述账号登录系统，进入基础数据-出雏器管理
+    expected: 系统自动默认选中该账号权限下的唯一孵化场，孵化场下拉框已预先填充该选项
+  - action: 点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38729
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38729
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38730
+  title: 新建_出雏器名称_重复校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中已存在一条出雏器，名称为“一号出雏器“
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示出雏器名称不允许重复，不允许保存
+  - action: 点击新建按钮，填写与已有数据完全相同的出雏器名称“一号出雏器“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38730
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38730
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38731
+  title: 新建_孵化场_选项仅启用数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 孵化场下拉选项仅显示孵化场管理页面中状态为启用的数据，不显示停用的孵化场
+  - action: 点击新建按钮打开弹窗，查看孵化场下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38731
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38731
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38732
+  title: 新建_出雏器名称_必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示出雏器名称为必填项，不允许提交
+  - action: 点击新建按钮，其他字段正常填写，唯独出雏器名称留空不填
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38732
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38732
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38733
+  title: 新建_弹窗关闭后清空表单数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 再次打开弹窗时，表单完全清空，不会带入上次输入的任何数据
+  - action: 点击新建按钮，填写部分表单数据，然后点击取消按钮关闭弹窗
+    expected: ''
+  - action: 再次点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38733
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38733
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38734
+  title: 新建_出雏器编号_系统自动生成
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 出雏器编号字段显示系统自动生成的编号，该字段处于不可编辑状态，用户不能手动修改
+  - action: 点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38734
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38734
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38735
+  title: 筛选_重置_点击重置自动执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 重置完成后系统自动执行搜索操作，表格中显示全部数据，不需要再手动点击搜索
+  - action: 在多个筛选框中输入筛选条件
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38735
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38735
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38736
+  title: 新建_孵化场_必填项未填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示孵化场为必填项，不允许提交，弹窗不关闭
+  - action: 点击新建按钮打开弹窗，其他字段全部正常填写，唯独孵化场不选择任何选项
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38736
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38736
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38737
+  title: 新建_孵化场_账号多个孵化场不默认选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、准备一个登录账号，该账号的权限范围内有两个以上孵化场
+  steps:
+  - action: 使用上述账号登录系统，进入基础数据-出雏器管理
+    expected: 孵化场下拉框保持空状态，没有默认选中任何选项，需要用户手动选择
+  - action: 点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38737
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38737
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38738
+  title: 筛选_重置_点击重置所有筛选条件清空
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 所有筛选条件全部回到默认状态：搜索框全部清空，下拉选择框全部清空
+  - action: 在多个筛选框中输入筛选条件
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38738
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38738
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38739
+  title: 新建_孵化场_账号仅一个孵化场自动默认选择
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、准备一个登录账号，该账号的权限范围内只有一个孵化场
+  steps:
+  - action: 使用上述账号登录系统，进入基础数据-出雏器管理
+    expected: 系统自动默认选中该账号权限下的唯一孵化场，孵化场下拉框已预先填充该选项
+  - action: 点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38739
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38739
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38740
+  title: 筛选_创建时间_常规时间区间搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中正确筛选显示该时间区间内创建的所有出雏器数据
+  - action: 在创建时间时间区间选择器选择一个合理的时间区间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38740
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38740
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38741
+  title: 新建_孵化场_选项仅启用数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 孵化场下拉选项仅显示孵化场管理页面中状态为启用的数据，不显示停用的孵化场
+  - action: 点击新建按钮打开弹窗，查看孵化场下拉选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38741
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38741
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38742
+  title: 筛选_状态_清空选择后显示全部数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 清空后搜索，表格中显示状态为启用和停用的全部数据
+  - action: 先选择状态搜索
+    expected: ''
+  - action: 清空状态下拉框的选择
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38742
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38742
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38743
+  title: 新建_弹窗关闭后清空表单数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 再次打开弹窗时，表单完全清空，不会带入上次输入的任何数据
+  - action: 点击新建按钮，填写部分表单数据，然后点击取消按钮关闭弹窗
+    expected: ''
+  - action: 再次点击新建按钮打开新建弹窗
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38743
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38743
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38744
+  title: 筛选_状态_单选停用后执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中只显示状态为停用的所有出雏器数据
+  - action: 在状态下拉选择框选择“停用“选项
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38744
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38744
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38745
+  title: 筛选_重置_点击重置自动执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 重置完成后系统自动执行搜索操作，表格中显示全部数据，不需要再手动点击搜索
+  - action: 在多个筛选框中输入筛选条件
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38745
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38745
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38746
+  title: 筛选_状态_单选启用后执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中只显示状态为启用的所有出雏器数据
+  - action: 在状态下拉选择框选择“启用“选项
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38746
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38746
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38747
+  title: 筛选_重置_点击重置所有筛选条件清空
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 所有筛选条件全部回到默认状态：搜索框全部清空，下拉选择框全部清空
+  - action: 在多个筛选框中输入筛选条件
+    expected: ''
+  - action: 点击重置按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38747
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38747
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38748
+  title: 筛选_出雏器名称_不存在数据搜索不到
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 搜索结果为空，表格中显示无匹配数据
+  - action: 在出雏器名称输入框输入一个系统中不存在的已删除的出雏器名称
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38748
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38748
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38749
+  title: 筛选_创建时间_常规时间区间搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中正确筛选显示该时间区间内创建的所有出雏器数据
+  - action: 在创建时间时间区间选择器选择一个合理的时间区间
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38749
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38749
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38750
+  title: 筛选_出雏器名称_搜索不区分大小写
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 搜索结果不区分大小写，正确匹配所有相关数据
+  - action: 在出雏器名称输入框输入全小写/全大写混合内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38750
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38750
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38751
+  title: 筛选_状态_清空选择后显示全部数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 清空后搜索，表格中显示状态为启用和停用的全部数据
+  - action: 先选择状态搜索
+    expected: ''
+  - action: 清空状态下拉框的选择
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38751
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38751
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38752
+  title: 筛选_出雏器名称_特殊字符符号搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统正确执行搜索操作，正常处理特殊字符
+  - action: 在出雏器名称输入框中输入包含特殊字符、符号的内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38752
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38752
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38753
+  title: 筛选_状态_单选停用后执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中只显示状态为停用的所有出雏器数据
+  - action: 在状态下拉选择框选择“停用“选项
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38753
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38753
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38754
+  title: 筛选_状态_单选启用后执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中只显示状态为启用的所有出雏器数据
+  - action: 在状态下拉选择框选择“启用“选项
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38754
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38754
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38755
+  title: 筛选_出雏器名称_正常输入搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 下方表格显示出雏器名称包含搜索内容的所有数据
+  - action: 在出雏器名称输入框中输入某个具体出雏器名称内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38755
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38755
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38756
+  title: 筛选_出雏器名称_不存在数据搜索不到
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 搜索结果为空，表格中显示无匹配数据
+  - action: 在出雏器名称输入框输入一个系统中不存在的已删除的出雏器名称
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38756
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38756
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38757
+  title: 筛选_出雏器名称_搜索不区分大小写
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 搜索结果不区分大小写，正确匹配所有相关数据
+  - action: 在出雏器名称输入框输入全小写/全大写混合内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38757
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38757
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38758
+  title: 筛选_出雏器名称_特殊字符符号搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统正确执行搜索操作，正常处理特殊字符
+  - action: 在出雏器名称输入框中输入包含特殊字符、符号的内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38758
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38758
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38759
+  title: 筛选_出雏器名称_正常输入搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 下方表格显示出雏器名称包含搜索内容的所有数据
+  - action: 在出雏器名称输入框中输入某个具体出雏器名称内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38759
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38759
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38760
+  title: 筛选_出雏器编号_不存在数据搜索不到
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 搜索结果为空，表格中显示无匹配数据
+  - action: 在出雏器编号输入框输入一个系统中不存在的已删除的出雏器编号
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38760
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38760
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38761
+  title: 筛选_出雏器编号_搜索不区分大小写
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 搜索结果不区分大小写，正确匹配所有相关数据
+  - action: 在出雏器编号输入框输入全小写/全大写混合内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38761
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38761
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38762
+  title: 筛选_出雏器编号_特殊字符符号搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统正确执行搜索操作，正常处理特殊字符
+  - action: 在出雏器编号输入框中输入包含特殊字符、符号的内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38762
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38762
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38763
+  title: 筛选_出雏器编号_正常输入搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 下方表格显示出雏器编号包含搜索内容的所有数据
+  - action: 在出雏器编号输入框中输入某个具体出雏器编号内容
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38763
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38763
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38764
+  title: 筛选_孵化场_清空选择后显示全部数据
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 清空后搜索，表格中显示全部孵化场的所有出雏器数据
+  - action: 先在孵化场下拉选择框选择一个孵化场搜索
+    expected: ''
+  - action: 清空孵化场下拉框的选择
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38764
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38764
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38765
+  title: 筛选_孵化场_单选选择后执行搜索
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 表格中显示对应孵化场的所有出雏器数据
+  - action: 在孵化场下拉选择框选择一个具体孵化场选项
+    expected: ''
+  - action: 点击搜索按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38765
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38765
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38766
+  title: 筛选_孵化场_选项内容正确显示
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 孵化场下拉框中正确显示所有孵化场管理页面中状态为启用的孵化场选项
+  - action: 查看孵化场筛选下拉框选项
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38766
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38766
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38767
+  title: 表格_修改仅影响修改后的新建项
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中某出雏器已被部分下游业务引用使用
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 本次修改操作只会对后续未来的新建业务项产生影响，完全不会影响之前历史中已经使用该出雏器的旧业务数据
+  - action: 修改该条出雏器的某些属性字段，保存修改成功
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38767
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38767
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38768
+  title: 删除_二次确认后删除成功数据消失
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 系统中存在至少一条停用状态的可删除出雏器数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 提示删除成功，该出雏器数据从当前表格中消失，状态逻辑改为停用
+  - action: 勾选该停用状态的出雏器，点击批量删除按钮
+    expected: ''
+  - action: 弹出二次确认弹窗后点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38768
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38768
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38769
+  title: 停用_单行启用状态点击停用操作
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条启用状态的出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 提示停用成功，该行出雏器状态更新为停用
+  - action: 在上述启用出雏器行末尾找到单行停用操作按钮，点击该按钮
+    expected: ''
+  - action: 在弹出确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38769
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38769
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38770
+  title: 停用_二次确认后批量停用成功
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 系统中存在至少两条启用状态的出雏器数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 确认后提示批量停用成功，勾选的所有启用出雏器状态全部更新为停用
+  - action: 勾选至少两条启用状态的出雏器数据，点击批量停用按钮
+    expected: ''
+  - action: 在弹出的二次确认弹窗点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38770
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38770
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38771
+  title: 启用_单行停用状态点击启用操作
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中存在一条停用状态的出雏器
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 提示启用成功，该行出雏器状态更新为启用
+  - action: 在上述停用出雏器行末尾找到单行启用操作按钮，点击该按钮
+    expected: ''
+  - action: 在弹出确认弹窗中点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38771
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38771
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38772
+  title: 启用_二次确认后批量启用成功
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限<br />
+  - 2. 系统中存在至少两条停用状态的出雏器数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 确认后提示批量启用成功，勾选的所有停用出雏器状态全部更新为启用
+  - action: 勾选至少两条停用状态的出雏器数据，点击批量启用按钮
+    expected: ''
+  - action: 在弹出的二次确认弹窗点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38772
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38772
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38773
+  title: 导出_各字段数据内容全部正确
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: Excel中每个字段的数据完全正确，和系统页面中展示的数据一一对应无误
+  - action: 筛选出部分数据后点击导出按钮
+    expected: ''
+  - action: 打开导出Excel逐行核对
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38773
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38773
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38774
+  title: 新建_正常保存完整流程
+  type: feature
+  auto: 'no'
+  priority: P1
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 校验通过，弹出二次确认弹窗
+  - action: 点击新建按钮
+    expected: 点击确认后新建成功，提示保存成功，表格中新增出雏器数据
+  - action: 选择孵化场，填写出雏器名称，设置列=4，排=3，选择是否双排=是，托盘数=5，托盘容量=40，状态选择启用
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38774
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38774
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '1'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38775
+  title: 表格_修改按钮全部状态均可修改
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中同时存在启用状态和停用状态的出雏器各一条
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 无论是启用状态还是停用状态，所有状态下的出雏器行末尾都可以正常看到并点击修改按钮
+  - action: 查看两条不同状态出雏器行的末尾修改操作按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38775
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38775
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38776
+  title: 删除_二次确认后删除成功数据消失
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  - 2. 系统中存在至少一条停用状态的可删除出雏器数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 提示删除成功，该出雏器数据从当前表格中消失，状态逻辑改为停用
+  - action: 勾选该停用状态的出雏器，点击批量删除按钮
+    expected: ''
+  - action: 弹出二次确认弹窗后点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38776
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38776
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38777
+  title: 删除_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量删除按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38777
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38777
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38778
+  title: 停用_二次确认后批量停用成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  - 2. 系统中存在至少两条启用状态的出雏器数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 确认后提示批量停用成功，勾选的所有启用出雏器状态全部更新为停用
+  - action: 勾选至少两条启用状态的出雏器数据，点击批量停用按钮
+    expected: ''
+  - action: 在弹出的二次确认弹窗点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38778
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38778
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38779
+  title: 停用_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量停用按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38779
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38779
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38780
+  title: 启用_二次确认后批量启用成功
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  - 2. 系统中存在至少两条停用状态的出雏器数据
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 确认后提示批量启用成功，勾选的所有停用出雏器状态全部更新为启用
+  - action: 勾选至少两条停用状态的出雏器数据，点击批量启用按钮
+    expected: ''
+  - action: 在弹出的二次确认弹窗点击确认
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38780
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38780
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38781
+  title: 启用_未勾选数据点击提示未勾选
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统立即弹窗友好提示：您还未勾选任何内容，请先勾选数据
+  - action: 不勾选表格中任何出雏器数据，直接点击页面顶部的批量启用按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38781
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38781
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38782
+  title: 新建_确认前弹出二次确认弹窗
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统校验全部通过，在执行最终保存之前正确弹出二次确认弹窗，提醒用户确认
+  - action: 点击新建按钮，所有必填项正常填写完成后，点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38782
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38782
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38783
+  title: 新建_托盘容量_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，托盘容量字段输入非数字字符如“aaa“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38783
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38783
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38784
+  title: 新建_托盘容量_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，托盘容量字段输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38784
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38784
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38785
+  title: 新建_托盘容量_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，托盘容量字段输入负数“-40“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38785
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38785
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38786
+  title: 新建_托盘容量_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘容量只能填整数数字，输入小数不允许保存
+  - action: 点击新建按钮，托盘容量字段输入小数“38.5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38786
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38786
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38787
+  title: 新建_托盘容量_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 托盘容量字段校验通过，允许保存
+  - action: 点击新建按钮，托盘容量字段输入正整数“40“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38787
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38787
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38788
+  title: 新建_托盘数_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，托盘数字段输入非数字字符如“xyz“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38788
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38788
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38789
+  title: 新建_托盘数_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，托盘数字段输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38789
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38789
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38790
+  title: 新建_托盘数_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，托盘数字段输入负数“-5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38790
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38790
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38791
+  title: 新建_托盘数_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示托盘数只能填整数数字，输入小数不允许保存
+  - action: 点击新建按钮，托盘数字段输入小数“4.2“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38791
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38791
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38792
+  title: 新建_托盘数_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 托盘数字段校验通过，允许保存
+  - action: 点击新建按钮，托盘数字段输入正整数“5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38792
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38792
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38793
+  title: 新建_库位排_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，库位排输入非数字字符如“测试“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38793
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38793
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38794
+  title: 新建_库位排_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，库位排输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38794
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38794
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38795
+  title: 新建_库位排_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，库位排输入负数“-3“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38795
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38795
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38796
+  title: 新建_库位排_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示排字段只能填整数数字，输入小数不允许保存，弹窗不关闭
+  - action: 点击新建按钮，库位排输入小数“2.7“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38796
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38796
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38797
+  title: 新建_库位排_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 排字段校验通过，允许保存
+  - action: 点击新建按钮，库位排输入正整数“3“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38797
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38797
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38798
+  title: 新建_库位列_输入非数字字符提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段只能填数字，非数字字符不允许提交保存
+  - action: 点击新建按钮，库位列输入非数字字符如“abc“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38798
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38798
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38799
+  title: 新建_库位列_输入0提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段必须大于0，输入0不允许保存，无法提交
+  - action: 点击新建按钮，库位列输入数字“0“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38799
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38799
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38800
+  title: 新建_库位列_输入负数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段必须是大于0的正整数，输入负数不允许保存
+  - action: 点击新建按钮，库位列输入负数“-4“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38800
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38800
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38801
+  title: 新建_库位列_输入小数提示错误
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示列字段只能填整数数字，输入小数不允许保存，弹窗不关闭
+  - action: 点击新建按钮，库位列输入小数“3.5“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38801
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38801
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38802
+  title: 新建_库位列_输入正整数正常通过
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 列字段校验通过，允许保存
+  - action: 点击新建按钮，库位列输入正整数“4“，其他字段正常填写
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38802
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38802
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38803
+  title: 新建_出雏器名称_重复校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、系统中已存在一条出雏器，名称为“一号出雏器“
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示出雏器名称不允许重复，不允许保存
+  - action: 点击新建按钮，填写与已有数据完全相同的出雏器名称“一号出雏器“
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38803
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38803
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38804
+  title: 新建_出雏器名称_必填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示出雏器名称为必填项，不允许提交
+  - action: 点击新建按钮，其他字段正常填写，唯独出雏器名称留空不填
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38804
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38804
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38805
+  title: 新建_孵化场_必填项未填校验
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 系统提示孵化场为必填项，不允许提交，弹窗不关闭
+  - action: 点击新建按钮打开弹窗，其他字段全部正常填写，唯独孵化场不选择任何选项
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38805
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38805
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节
+- id: TC-38806
+  title: 新建_正常保存完整流程
+  type: feature
+  auto: 'no'
+  priority: P2
+  feature: 出雏器管理
+  preconditions:
+  - 1、用户登录成功并且有出雏器管理菜单权限
+  steps:
+  - action: 登录后进入基础数据-出雏器管理
+    expected: 校验通过，弹出二次确认弹窗
+  - action: 点击新建按钮
+    expected: 点击确认后新建成功，提示保存成功，表格中新增出雏器数据
+  - action: 选择孵化场，填写出雏器名称，设置列=4，排=3，选择是否双排=是，托盘数=5，托盘容量=40，状态选择启用
+    expected: ''
+  - action: 点击确认按钮
+    expected: ''
+  test_data:
+    module: 出雏器管理
+    zentao_module_id: 551
+    execution_readiness: manual_review_required
+  trace:
+    story: null
+    req: REQ-PC-034
+    project: 种禽孵化管理系统
+    version: 1
+    status: imported
+    source:
+      csv: reference/种禽孵化管理系统测试用例_pc.csv
+      registry: module_case_map.json
+  zentao_case_id: 38806
+  zentao_status: 正常
+  registry_status: registered
+  zentao_source:
+    csv_path: reference/种禽孵化管理系统测试用例_pc.csv
+    case_number: 38806
+    raw_module: /一期/pc/基础数据/出雏器管理(#551)
+    raw_type: 功能测试
+    raw_priority: '2'
+    raw_status: 正常
+    applicable_stage: 功能测试环节

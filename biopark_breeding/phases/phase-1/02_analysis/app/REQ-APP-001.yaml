@@ -1,0 +1,95 @@
+id: REQ-APP-001
+title: 首页
+module_path: app / 首页
+zentao_module_id: 556
+status: draft
+summary: APP 首页导航与工作台入口的页面契约，依据 P001 需求页表、实时原型和已留存 Axure 证据整理。
+inputs:
+  requirement_docx: 01_requirements/app/种禽孵化管理系统-APP端原型需求说明书.docx
+  baseline: 01_requirements/app/模块拆分清单.md
+  prototype: http://127.0.0.1:5500/
+  static_map: 01_requirements/app/axure_map.md
+  evidence_run: 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/
+scope:
+  source_pages: [P001]
+  source_page_names: [首页]
+  evidence_levels:
+    observed: 当前原型在 430x932 可视浏览器中完成 networkidle 后检查到首页 DOM、页面文本和场区选择控件。
+    static: DOCX 页面表、axure_map.md、RUN 证据中的 page-001.html/page-001.txt/page-001.png。
+    inferred: 首页菜单入口与底部导航形成的模块入口关系；未据此推导权限或持久化实现。
+    open_question: 原型未明确的接口、权限、异常、持久化和公告数据规则。
+  evidence_paths:
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/screenshots/page-001.png
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/dom/page-001.html
+    - 01_requirements/app/axure_evidence/RUN_20260824_AXURE_APP_172511/page_text/page-001.txt
+pages:
+  - id: P001
+    name: 首页
+    source: observed+static
+    entry: 原型根入口 http://127.0.0.1:5500/；DOCX 页面表 P001。
+    query_area: 当前孵化场/养殖场切换选择器；不是业务查询区，具体绑定关系未明确。
+    list_or_cards: 孵化任务入口（种蛋上孵、种蛋照蛋、种蛋出雏）；合格蛋蛋库、二级蛋蛋库、孵化器、出雏器、存发苗间、次品库入口；库存查询、出入库记录、盘点记录、仓库全景等子入口；可见待执行提示数字 6、3。
+    forms: 场区选择器可见选项为“一号孵化场/二号孵化场/三号孵化场”和“养殖场一号/养殖场二号/养殖场三号”；未观察到登录表单或业务提交表单。
+    popups: 未观察到实际弹窗；图文公告区和常用功能区在原型注释中标记为功能待定/一期可不做。
+    buttons_actions: 孵化任务、库存/设备/苗间菜单跳转；底部“工作台”“我的”固定入口；设置、通讯录、占位入口可见；未执行任何业务动作。
+    states_transitions: 默认展示第一个孵化场的注释为 static；模块展示受账号配置菜单权限的注释为 static；底部入口存在选中效果注释为 static；具体状态转换未观察到。
+    return_path: 从各模块入口返回首页的路径在静态页面链接中存在；返回手势/返回按钮未在 P001 明确观察到。
+interfaces:
+  - id: UI-APP-HOME-NAV
+    type: prototype_navigation
+    evidence: observed+static
+    target: REQ-APP-002/003/004 及 APP 库存、设备、苗间模块
+    contract: 首页提供业务模块入口；真实路由、接口和鉴权未在原型中提供。
+  - id: UI-APP-SITE-SWITCH
+    type: selector_state
+    evidence: observed+static
+    target: 当前孵化场/养殖场上下文
+    contract: 选择器选项和默认值可见；切换后的数据刷新和保存方式未明确。
+cross_module_refs:
+  - ref: REQ-APP-002
+    relation: 首页入口
+    evidence: observed+static
+  - ref: REQ-APP-003
+    relation: 首页入口
+    evidence: observed+static
+  - ref: REQ-APP-004
+    relation: 首页入口
+    evidence: observed+static
+  - ref: app / 合格蛋库、二级蛋库、孵化器、出雏器、存发苗间、次品库
+    relation: 首页菜单入口；未分配本次 REQ
+    evidence: observed+static
+business_rules:
+  - id: BR-APP-001-01
+    evidence: static
+    rule: 首页注释要求必须指定孵化场，默认第一个孵化场；是否缓存上次选择仅为拓展建议，不视为已确认实现。
+  - id: BR-APP-001-02
+    evidence: static
+    rule: 模块菜单根据账号配置菜单权限展示；本分析不把菜单可见性等同于已确认权限模型。
+  - id: BR-APP-001-03
+    evidence: static
+    rule: 待执行任务可有红点/数字提示，仓库入口没有同类任务提示；数字来源和刷新时机未明确。
+open_questions:
+  - id: OQ-APP-001-01
+    evidence: open_question
+    question: 场区切换器的“孵化场”和“养殖场”是否为同一上下文，切换后哪些首页数据和下游列表必须刷新？
+    impact: 影响首页状态、下游接口参数和返回后的上下文保持。
+  - id: OQ-APP-001-02
+    evidence: open_question
+    question: 菜单权限由哪个权限接口提供，隐藏、禁用和无权限提示分别如何表现？
+    impact: 影响入口渲染与权限验收。
+  - id: OQ-APP-001-03
+    evidence: open_question
+    question: 图文公告、常用功能、通讯录、全景图和占位入口一期是否实现，若实现其数据源和空态是什么？
+    impact: 影响首页范围和页面验收。
+  - id: OQ-APP-001-04
+    evidence: open_question
+    question: 首页待执行数字 6、3 的统计口径、刷新时机和离线/接口异常表现是什么？
+    impact: 影响提示一致性和异常规则。
+out_of_scope:
+  - 登录、权限后端实现、公告/通讯录业务、库存和任务内部页面、真实接口、数据库持久化。
+  - 新增、编辑、删除、入库、出库、任务执行及任何远程业务写操作。
+handoff:
+  agent: analyze-agent
+  outputs: [02_analysis/app/REQ-APP-001.yaml, 02_analysis/app/REQ-APP-001_首页.md]
+  next_gate: 先完成人工需求/测点评审，再进入下游测试点阶段。
+  verification_status: 原型观察和静态结构已核对；真实接口、权限和持久化未验证。

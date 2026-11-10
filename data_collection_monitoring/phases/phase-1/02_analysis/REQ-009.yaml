@@ -1,0 +1,227 @@
+schema_version: "1.1"
+analysis_id: "REQ-009"
+module_id: "REQ-009"
+module_name: "数据采集"
+project: "数据采集监控平台"
+status: "blocked_scoped_readonly_ui_verification"
+source:
+  requirements_pdf: "01_requirements/数据监控平台使用文档.pdf"
+  latest_changes: "01_requirements/需求变动.md"
+  latest_change_range: "REQ-009: 190-207"
+  latest_change_items: ["REQ-009-001", "REQ-009-002", "REQ-009-003", "REQ-009-004", "REQ-009-005", "REQ-009-006", "REQ-009-007", "REQ-009-008", "REQ-009-009", "REQ-009-010", "REQ-009-011", "REQ-009-012", "REQ-009-013", "REQ-009-014"]
+  scope_baseline: "01_requirements/模块拆分清单.md"
+  page_inventory: "02_analysis/page_inventory/page.json"
+  runtime_environment: ".env/config.yaml；仅运行时读取，不记录具体值"
+identity:
+  zentao_module_path: "iot平台/数据中心/数据采集"
+  zentao_module_id: 747
+  parent_module_id: 728
+  priority: 9
+  priority_band: "P1"
+  route: "/iot/data/crawl"
+  runtime_route: "/biopark-iot/iot/data/crawl"
+  title: "数据采集 - 数据采集"
+  menu_path: ["数据中心", "数据采集"]
+  dependency_modules: ["插件管理", "设备管理"]
+  discrepancy: "模块清单确认页面存在和路由；业务字段、状态、控制操作、权限、接口及运行结果以最新确认项和 page.json 证据为准。"
+scope:
+  in_scope:
+    - "页面级只读：默认列表、任务名称/状态筛选、查询、重置、刷新、表头设置、表格、分页和排序。"
+    - "新建/编辑任务字段、必填性、只读性、取消/保存边界的契约分析；本阶段不提交。"
+    - "启动、停止、删除、状态和异步处理中页面边界分析；本阶段不执行控制动作。"
+    - "Cron 调度、脚本、重启策略、内存限制、引用变化、脱敏、执行异常和排序规则。"
+    - "任务执行详情、失败结果、权限/错误反馈和稳定行数据的页面契约识别。"
+  out_of_scope:
+    - "采集协议/版本、设备范围、设备选择、字段映射及插件/设备/产品页面内部实现。"
+    - "API endpoint、状态码、请求/响应结构、调度引擎实现、接口幂等和性能 SLA。"
+    - "真实设备数据采集、任务真实执行、启动/停止/删除/重跑、跨模块写入和接口联调。"
+  acceptance_boundary:
+    - "业务基准为需求变动.md 最新 REQ-009 及公共确认项。"
+    - "页面事实以 page.json 的页面、状态、元素、交互和脱敏 evidence 为准。"
+    - "页面可见表单不等于任务已保存；状态展示不等于真实调度执行已验证。"
+    - "当前 page.json 观察到的额外状态不直接升级为业务状态规则。"
+page_contract:
+  page_id: "data_crawl"
+  route: "/biopark-iot/iot/data/crawl"
+  title: "数据采集 - 数据采集"
+  menu_path: ["数据中心", "数据采集"]
+  states:
+    data_crawl_default:
+      expected: "任务名称/任务状态筛选、查询、重置、刷新、表头设置、新建采集任务、表格和分页可观察；不产生业务变更。"
+      evidence:
+        status: "available"
+        screenshots: ["02_analysis/page_inventory/screenshots/req009-default.png"]
+        log: []
+        trace: []
+        sanitized: true
+        dom: "页面主体 DOM 未保存；通过可视快照确认真实组件。"
+        captured_at: "2026-10-21T12:00:00Z"
+        sha256: "68036d70203477aa9464b940aba4cef864b78983a9840cfd6dbeda2722f7e762"
+    data_crawl_status_options:
+      expected: "页面观察状态为已创建、运行中、已暂停、重启中、删除中、已停止、异常；需求业务状态仅确认已创建、运行中、已停止。"
+      evidence:
+        status: "available"
+        screenshots: ["02_analysis/page_inventory/screenshots/req009-status-options.png"]
+        log: []
+        trace: []
+        sanitized: true
+        dom: "页面主体 DOM 未保存；状态选项通过可视快照确认。"
+        captured_at: "2026-10-21T12:00:00Z"
+        sha256: "7cb8b14837cfc7a92f425c6fad0ea34a31460e5b9dbf5c1a872f50dbb76491a3"
+    data_crawl_edit:
+      expected: "编辑表单显示任务标识、Cron、常用、脚本、重启策略、内存限制和确定/取消；任务标识只读；不提交。"
+      evidence:
+        status: "partial"
+        screenshots: []
+        log: []
+        trace: []
+        sanitized: true
+        note: "编辑字段已登记；任务标识、Cron 和脚本值已脱敏。"
+    data_crawl_dialogs_partial:
+      expected: "新建表单曾打开，但稳定弹窗契约不完整；不提交，不保存敏感内容。"
+      evidence:
+        status: "partial"
+        screenshots: []
+        log: []
+        trace: []
+        sanitized: true
+  filters: ["data_crawl_task_name", "data_crawl_status"]
+  actions: ["data_crawl_query", "data_crawl_reset", "data_crawl_refresh", "data_crawl_columns", "data_crawl_add"]
+  row_actions: ["data_crawl_start", "data_crawl_edit", "data_crawl_delete"]
+  pagination: ["data_crawl_page_size", "data_crawl_prev", "data_crawl_next", "data_crawl_jump"]
+  table:
+    id: "data_crawl_table"
+    element_id: "data_crawl_table_element"
+    columns: ["任务名称", "插件 ID", "状态", "状态描述", "创建时间", "操作"]
+    row_action_element_ids: ["data_crawl_start", "data_crawl_edit", "data_crawl_delete"]
+  forms:
+    filter:
+      id: "data_crawl_filter_form"
+      element_id: "data_crawl_filter"
+      fields: ["data_crawl_task_name", "data_crawl_status"]
+      submit: ["data_crawl_query"]
+      cancel: ["data_crawl_reset"]
+    edit:
+      fields: ["data_crawl_edit_task_key", "data_crawl_cron", "data_crawl_common", "data_crawl_script", "data_crawl_restart", "data_crawl_memory"]
+      actions: ["data_crawl_edit_cancel", "data_crawl_edit_confirm"]
+      extra_controls: ["data_crawl_memory_decrease", "data_crawl_memory_increase"]
+  interactions:
+    - {sequence: 1, action: "inspect", target: "data_crawl_table", locator: {strategy: "css", value: ".el-table"}, result_state: "data_crawl_default", side_effect: false}
+    - {sequence: 2, action: "click", target: "data_crawl_add", locator: {strategy: "role", value: "button"}, result_state: "data_crawl_dialogs_partial", side_effect: false}
+    - {sequence: 3, action: "click", target: "data_crawl_status", locator: {strategy: "label", value: "任务状态"}, result_state: "data_crawl_status_options", side_effect: false}
+  missing_or_unverified: ["新建弹窗稳定字段/确定/取消 ID", "启动/停止/删除确认层和异步状态 ID", "任务执行详情和失败结果 ID", "权限/错误提示独立 ID", "稳定任务行数据定位", "暂停/重启中/删除中/异常与业务状态的映射", "正式 PDF 逐条页码追溯"]
+business_rules:
+  confirmed:
+    REQ-009-001: "任务名称由系统自动生成前缀与新增弹窗中的任务标识拼接；自动前缀不可修改；任务标识由用户填写。"
+    REQ-009-002: "数据采集页面没有采集协议字段；不涉及协议、协议版本及其与插件、设备、产品的兼容关系。"
+    REQ-009-003: "仅创建定时任务，不区分轮询、订阅或事件触发；任务标识、Cron 表达式、脚本必填；重启策略和内存限制可选。"
+    REQ-009-004: "新增任务不配置设备范围、设备选择、批量选择或分组选择；任务按脚本和定时规则执行。"
+    REQ-009-005: "页面不配置字段映射；脚本负责采集字段、数据类型、单位、质量码和数据转换；脚本格式错误时任务执行失败。"
+    REQ-009-006: "按 Cron 表达式执行；时区按系统默认；重复触发按重启策略；批量、并发、互斥和错过调度按系统默认。"
+    REQ-009-007: "业务状态为已创建、运行中、已停止；创建后已创建；启动后运行中；停止后已停止；已停止可再次启动或删除；不涉及暂停、恢复和超时。"
+    REQ-009-008: "作为 PUB-006 模块例外：按重启策略处理设备离线、插件异常、脚本错误和部分成功；策略为 no、on-failure、always、unless-stopped。"
+    REQ-009-009: "作为 PUB-007 模块例外：插件、设备或产品变化不影响已有任务配置；引用失效时本次执行失败，并按任务重启策略处理。"
+    REQ-009-010: "采集值和设备标识按业务需要展示；认证信息、外部地址、消息和返回内容敏感信息脱敏，日志不得明文保存。"
+    REQ-009-011: "列表默认按创建时间倒序；筛选、分页、刷新后保持创建时间倒序。"
+    REQ-009-012: "新建弹窗任务标识、Cron、脚本、重启策略、内存限制及确定/取消控件按实际页面记录；定位沿用 PUB-015。"
+    REQ-009-013: "启动、停止、删除确认层、按钮及异步处理中状态按实际页面记录；定位沿用 PUB-015。"
+    REQ-009-014: "任务执行详情、失败结果、权限提示、错误提示和稳定任务行数据按实际页面记录；定位沿用 PUB-015。"
+  public_confirmed:
+    - "无权限时提示没有操作权限；页面和按钮无单独权限。"
+    - "默认每页 10 条；筛选回第一页；无结果显示暂无数据。"
+    - "查询失败、超时、网络异常或权限不足显示失败提示且无页面重试入口。"
+    - "重复提交只生效一次；处理中禁止重复操作；不缓存；刷新/重新加载获取最新数据。"
+    - "取消或关闭表单直接关闭，不需要二次确认；校验失败在字段旁提示并保留输入；保存失败保留输入。"
+    - "删除为软删除且列表不显示；停用仍显示并可恢复；被引用时阻止相关操作；不要求审计记录。"
+  observed_difference:
+    page_status_options: ["已创建", "运行中", "已暂停", "重启中", "删除中", "已停止", "异常"]
+    confirmed_business_status: ["已创建", "运行中", "已停止"]
+    page_size_observed: 200
+    public_default_page_size: 10
+    handling: "页面观察值不直接升级为业务规则；页面每页条数 200 与公共默认 10 的差异需记录并确认。"
+  pending: ["正式 PDF REQ-009 章节逐条页码追溯", "页面额外状态与业务状态映射", "Cron/脚本/内存限制具体边界和默认值", "重试等待、断点续采、人工重跑范围和最终失败页面反馈", "新建弹窗稳定字段和操作 ID", "启动/停止/删除确认层和异步状态 ID", "执行详情、错误/权限提示和稳定行数据 ID"]
+roles:
+  - {role: "数据采集管理员", responsibility: "维护任务字段、调度和状态；本阶段不执行写入或控制动作"}
+  - {role: "插件/设备运维人员", responsibility: "提供已有插件、设备和引用上下文；不进行真实采集联调"}
+  - {role: "平台运维人员", responsibility: "处理权限、调度和运行风险；本阶段不启动任务"}
+  - {role: "只读用户", responsibility: "查看任务和状态，不执行任务变更"}
+permission_status: "partial_blocked"
+rule: "不得从菜单可见、按钮存在或表单可见推断写权限；不得绕过角色、租户或安全控制。"
+interfaces:
+  ui:
+    status: "partial_blocked"
+    stable_locator_priority: ["get_by_role/name", "get_by_test_id", "get_by_label", "get_by_placeholder", "get_by_text", "stable attributes", "CSS fallback"]
+    page_ready: ["runtime URL equals /biopark-iot/iot/data/crawl", "title contains 数据采集", "data_crawl_default available", "page loading complete", "no failure prompt"]
+  api:
+    status: "out_of_scope"
+    contract: "无接口文档；不验收 endpoint、状态码、请求/响应结构、调度引擎、幂等或性能。"
+dependencies:
+  upstream: ["REQ-003 产品管理", "REQ-005 设备管理", "REQ-006 插件管理", "登录/门户/权限/租户上下文"]
+  downstream: ["数据存储/时序库", "消息队列", "REQ-007 数据监听", "REQ-008 数据推送", "REQ-010 告警配置"]
+  note: "依赖仅为范围和业务上下文，不代表接口或数据契约已验证。"
+risks:
+  - {id: "R-009-01", level: "high", description: "脚本或任务引用错误造成错采、执行失败或下游污染", control: "只读观察，不保存任务、不启动任务、不读取真实设备数据"}
+  - {id: "R-009-02", level: "high", description: "启动、停止、删除和重启策略影响设备、插件资源和消息流", control: "不执行控制动作，不绕过权限或安全校验"}
+  - {id: "R-009-03", level: "medium", description: "Cron、时区、重复触发、并发和错过调度造成重复、乱序或数据风暴", control: "仅核对字段和页面契约，真实调度不在本阶段"}
+  - {id: "R-009-04", level: "high", description: "脚本、地址、认证、消息、设备标识或采集值进入测试产物", control: "脱敏；不写入截图、日志、DOM、报告或下载文件"}
+  - {id: "R-009-05", level: "medium", description: "页面观察状态与确认业务状态不一致，可能导致错误验收", control: "标记差异，等待业务/实现负责人确认，不擅自扩展状态"}
+data_preconditions:
+  - "地址、项目、账号、密码和租户仅从 .env/config.yaml 或运行时配置读取，不记录具体值。"
+  - "使用已有授权页面数据，不额外造任务，不启动/停止/删除，不读取真实设备数据。"
+  - "账号、密码、Token、Cookie、证书、密钥、脚本、内部地址、设备标识、采集值、消息载荷、响应内容和未经授权业务数据不得写入页面清单、截图、日志、DOM、报告或下载文件。"
+  - "本阶段无数据变更；清理状态：not_applicable。未来若获批造数或执行任务，需由测试负责人、数据采集管理员、插件/设备运维和平台运维确认隔离设备/模拟源、停止条件、回滚与清理结果。"
+test_design:
+  equivalence_partitions:
+    task_identifier: [valid, empty, whitespace_only, too_long, illegal_chars]
+    schedule: [cron_valid, cron_invalid, timezone_default]
+    script: [valid, malformed, missing]
+    restart_policy: [no, on_failure, always, unless_stopped]
+    memory_limit: [absent, configured, boundary_low, boundary_high, over_limit]
+    task_state: [created, running, stopped, observed_paused, observed_restarting, observed_deleting, observed_error]
+    reference: [unchanged, changed_usable, invalid]
+    execution: [success, partial_success, device_offline, plugin_error, script_error, failed]
+    permission: [full_control, read_only, denied, cross_tenant_limited]
+    query: [result, empty, failed, timeout, network_error]
+  boundaries:
+    - "任务标识、Cron、脚本、内存限制：空、最小、最大、超限；具体上限和默认值待系统确认。"
+    - "状态：创建、启动、停止、再次启动、删除；暂停/恢复/超时按已确认规则不适用，页面额外状态单独核实。"
+    - "分页：空、单条、10 条边界、末页、无结果；记录 page.json 观察的 200 与公共默认 10 差异。"
+  decision_tables:
+    - {id: "DT-009-01", conditions: ["任务标识/Cron/脚本", "提交动作"], expected: "必填项缺失或非法时字段旁校验失败，保留输入，不保存"}
+    - {id: "DT-009-02", conditions: ["任务状态", "控制动作"], expected: "已创建可启动；运行中可停止；已停止可再次启动或删除；具体确认层和异步结果待页面证据"}
+    - {id: "DT-009-03", conditions: ["执行异常", "重启策略"], expected: "设备离线、插件异常、脚本错误、部分成功按 no/on-failure/always/unless-stopped 规则处理；默认等待和最终失败提示待确认"}
+    - {id: "DT-009-04", conditions: ["引用变化", "执行资格"], expected: "配置继续使用原值；引用失效则本次执行失败并按重启策略处理"}
+    - {id: "DT-009-05", conditions: ["列表操作"], expected: "默认、筛选、分页、刷新均创建时间倒序；筛选回第一页；空结果显示暂无数据"}
+  state_transitions:
+    - "未认证->登录->门户->数据采集默认态"
+    - "已创建任务->编辑提交->保存成功->配置回读；保存失败->原配置和状态保持"
+    - "已创建任务->启动->运行中->异步完成->执行结果回读；执行失败->失败反馈和原状态/重启策略"
+  core_flow_gaps_added:
+    - id: REQ-009-013
+      summary: 编辑任务保存成功/失败及配置回读
+      cases: [TC-REQ-009-050, TC-REQ-009-051]
+    - id: REQ-009-014
+      summary: 任务执行异步成功/失败及状态结果回读
+      cases: [TC-REQ-009-052, TC-REQ-009-053]
+    - "默认态->查询中->有结果/暂无数据/失败"
+    - "新建表单->校验失败/保存成功/取消"
+    - "已创建->启动->运行中->停止->已停止"
+    - "已停止->再次启动->运行中；已停止->删除"
+    - "运行中->设备离线/插件异常/脚本错误/部分成功->按重启策略处理"
+    - "引用变化->原配置继续使用；引用失效->本次执行失败->按重启策略处理"
+  pict_model:
+    parameters: [Auth, Permission, TaskIdentifier, Schedule, Script, RestartPolicy, MemoryLimit, TaskState, Reference, Execution, Result]
+    values: {Auth: [valid, expired, invalid, missing], Permission: [full_control, read_only, denied, cross_tenant_limited], TaskIdentifier: [valid, empty, whitespace_only, illegal_chars], Schedule: [cron_valid, cron_invalid, timezone_default], Script: [valid, malformed, missing], RestartPolicy: [no, on_failure, always, unless_stopped], MemoryLimit: [absent, configured, boundary_low, boundary_high, over_limit], TaskState: [created, running, stopped], Reference: [unchanged, changed_usable, invalid], Execution: [success, partial_success, device_offline, plugin_error, script_error, failed], Result: [visible, validation_error, permission_error, processing, succeeded, failed, blocked]}
+    constraints: ["IF [Auth] != valid THEN [Result] = permission_error;", "IF [Permission] IN {read_only, denied, cross_tenant_limited} THEN protected write/control action is permission_error;", "IF [TaskIdentifier] IN {empty, whitespace_only} THEN create/edit result is validation_error;", "IF [Script] IN {missing, malformed} THEN result IN {validation_error, failed};", "IF [Schedule] = cron_invalid THEN result is validation_error;", "IF [Reference] = invalid THEN execution result is failed;", "IF [Execution] IN {device_offline, plugin_error, script_error, partial_success} THEN result IN {failed, processing} according to RestartPolicy;"]
+automation_plan:
+  framework: "Playwright Python sync API / pytest-playwright"
+  shared_pages: ["07_ui_automation/pages/common/login_page.py", "07_ui_automation/pages/common/portal_navigation.py"]
+  allowed: ["复用登录态", "进入数据中心→数据采集", "只读检查筛选、状态选项、表头、列表、分页、排序、脱敏表单标签和权限提示"]
+  forbidden: ["新建提交", "编辑提交", "删除", "启动", "停止", "重跑", "读取真实设备数据", "捕获 endpoint/认证/载荷", "绕过权限"]
+  locator_contract: "优先 data_crawl_* ID；其次 get_by_role/name、get_by_test_id、get_by_label、get_by_placeholder、get_by_text 和稳定属性；CSS 仅兜底；列表先定位目标行再定位行内操作。"
+readiness:
+  status: "blocked"
+  reason: "新建弹窗、控制确认层、执行结果、权限/错误提示、稳定任务行数据契约不完整；页面状态观察值与确认业务状态存在差异；写操作和真实采集未授权。"
+handoff:
+  path: "02_analysis/HANDOFF/REQ-009_HANDOFF.md"
+  status: "blocked"

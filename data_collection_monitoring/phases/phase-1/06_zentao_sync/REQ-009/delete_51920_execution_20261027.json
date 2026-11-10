@@ -1,0 +1,226 @@
+﻿{
+  "status": "validated",
+  "product_id": 8,
+  "project_id": 46,
+  "project_context_id": 46,
+  "module": {
+    "name": "���ݲɼ�",
+    "id": 747,
+    "path": "iotƽ̨/��������/���ݲɼ�"
+  },
+  "source_hashes_before": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-009.yaml": "4701ff018cf04c79d0a162be71d5c731d135f992452210a154d1416ec433ef1a",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-009.yaml": "889d8f1912b5ff4a8f6930f034ede73c40db62c3aaeb97be8e554ed8543d8264",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\ģ�����嵥.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\����ģ��id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  },
+  "records": [
+    {
+      "operation": "delete",
+      "remote_case_id": 51920,
+      "command": [
+        "D:\\tools\\nodejs\\node.exe",
+        "C:\\Users\\zhumi\\AppData\\Local\\Programs\\nodejs\\node_global\\node_modules\\zentao-cli\\bin\\zentao.js",
+        "--format=json",
+        "--machine-readable",
+        "testcase",
+        "delete",
+        "--id",
+        "51920"
+      ],
+      "readback_before": {
+        "id": 51920,
+        "project": 46,
+        "product": 8,
+        "execution": 53,
+        "branch": 0,
+        "lib": 0,
+        "module": 747,
+        "path": 0,
+        "story": 0,
+        "storyVersion": 1,
+        "title": "�鿴ִ������ʱȷ�ϳɹ����ֳɹ�ʧ�ܺʹ����н��",
+        "precondition": "ǰ��׼����\n1���߱�����׼������ҳ�����ϡ�Ȩ�޺Ͳ������ݣ�����������ȷ�ϡ�\n\nǰ�ò��裺\n1��ʹ�ò����˺ŵ�¼Ӧ���Ż���������е�¼̬����ȷ�ϵ�¼̬��Ȼ��Ч������¼�ɹ��������е�¼̬���Լ�������Ӧ���Ż���\n2����Ӧ���Ż���������ݲɼ����ƽ̨�������������ݲɼ����ƽ̨��������ƽ̨�˵���\n3��չ�����������ġ��˵����������ݲɼ����˵�����ʾ������\n4����������ݲɼ����˵��������ݲɼ�ҳ�������ɣ��������ַ������/biopark-iot/iot/data/crawl����",
+        "keywords": "",
+        "pri": 2,
+        "type": "feature",
+        "auto": "no",
+        "frame": "",
+        "stage": "",
+        "howRun": "",
+        "script": "",
+        "scriptedBy": "",
+        "scriptedDate": "",
+        "scriptStatus": "",
+        "scriptLocation": "",
+        "status": "normal",
+        "subStatus": "",
+        "color": "",
+        "frequency": 1,
+        "order": 0,
+        "openedBy": "AI",
+        "openedDate": "2026-10-23 13:46:31",
+        "reviewedBy": "",
+        "reviewedDate": "",
+        "lastEditedBy": "AI",
+        "lastEditedDate": "2026-10-27 15:29:48",
+        "version": 3,
+        "linkCase": "",
+        "fromBug": 0,
+        "fromCaseID": 0,
+        "fromCaseVersion": 1,
+        "lastRunner": "",
+        "lastRunDate": "",
+        "lastRunResult": "",
+        "scene": 0,
+        "sort": 0,
+        "deleted": 0,
+        "toBugs": [],
+        "fromBugData": [],
+        "linkCaseTitles": [],
+        "currentVersion": 3,
+        "files": [],
+        "steps": [
+          {
+            "name": "1",
+            "id": 174206,
+            "step": "������׼��ִ��������ڡ�",
+            "desc": "������׼��ִ��������ڡ�",
+            "expect": "ִ������ҳ��򿪡�",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "2",
+            "id": 174207,
+            "step": "ˢ�»��ѯִ�н����",
+            "desc": "ˢ�»��ѯִ�н����",
+            "expect": "ҳ����ʾ����ִ�н����",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "3",
+            "id": 174208,
+            "step": "�鿴���״̬��",
+            "desc": "�鿴���״̬��",
+            "expect": "�ɹ������ֳɹ���ʧ�ܺʹ����зֱ���Ϊ���������¼��û������֤��ʱ��� blocked��",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          },
+          {
+            "name": "4",
+            "id": 174209,
+            "step": "������رա��򡰷��ء���",
+            "desc": "������رա��򡰷��ء���",
+            "expect": "���ض���������ɡ�",
+            "type": "step",
+            "parent": 0,
+            "grade": 1
+          }
+        ],
+        "caseID": 51920,
+        "needconfirm": false,
+        "caseFails": 0,
+        "mindMapSteps": {
+          "id": "case_51920",
+          "text": "�鿴ִ������ʱȷ�ϳɹ����ֳɹ�ʧ�ܺʹ����н��",
+          "type": "root",
+          "children": [
+            {
+              "id": 174206,
+              "text": "������׼��ִ��������ڡ�",
+              "type": "sub",
+              "parent": "case_51920",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174206",
+                  "text": "ִ������ҳ��򿪡�",
+                  "type": "node",
+                  "parent": 174206,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174207,
+              "text": "ˢ�»��ѯִ�н����",
+              "type": "sub",
+              "parent": "case_51920",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174207",
+                  "text": "ҳ����ʾ����ִ�н����",
+                  "type": "node",
+                  "parent": 174207,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174208,
+              "text": "�鿴���״̬��",
+              "type": "sub",
+              "parent": "case_51920",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174208",
+                  "text": "�ɹ������ֳɹ���ʧ�ܺʹ����зֱ���Ϊ���������¼��û������֤��ʱ��� blocked��",
+                  "type": "node",
+                  "parent": 174208,
+                  "subSide": "right"
+                }
+              ]
+            },
+            {
+              "id": 174209,
+              "text": "������رա��򡰷��ء���",
+              "type": "sub",
+              "parent": "case_51920",
+              "subSide": "right",
+              "children": [
+                {
+                  "id": "desc_174209",
+                  "text": "���ض���������ɡ�",
+                  "type": "node",
+                  "parent": 174209,
+                  "subSide": "right"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "delete_response": {
+        "status": "success",
+        "data": {
+          "status": "success"
+        }
+      },
+      "readback_after": {
+        "status": "confirmed_not_found",
+        "error": "{\n    \"error\": {\n        \"code\": \"2008\",\n        \"message\": \"��������˷��ش���Url����Status��������鿴��ϸ������Ϣ��Case does not exist.\",\n        \"details\": {\n            \"status\": \"fail\",\n            \"message\": \"Case does not exist.\",\n            \"raw\": {\n                \"status\": \"fail\",\n                \"message\": \"Case does not exist.\"\n            }\n        }\n    }\n}"
+      },
+      "registry": {
+        "req_id": "",
+        "case_id": "",
+        "action": "no_registered_mapping"
+      },
+      "status": "validated"
+    }
+  ],
+  "source_hashes_after": {
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\05_case_review\\REV_CASE_REQ-009.yaml": "4701ff018cf04c79d0a162be71d5c731d135f992452210a154d1416ec433ef1a",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\04_testcases\\TC_REQ-009.yaml": "889d8f1912b5ff4a8f6930f034ede73c40db62c3aaeb97be8e554ed8543d8264",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\config.yaml": "93e7aa0486d2fddee15a64429a0ca891ca90fc634bfc156a8057195f9f9e8164",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\ģ�����嵥.md": "ac8f8856f180dcedc0b811d7c7372a001f165a718cab48971f472f4531fce16d",
+    "D:\\02test_pro\\ui_test\\projects\\data_collection_monitoring\\phase-1\\01_requirements\\����ģ��id.md": "849cc59d2c67d9cb043db090e1a0a3c42f611c837e06e58f5997ca1951e4ab92"
+  }
+}

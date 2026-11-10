@@ -1,0 +1,678 @@
+id: REQ-004
+title: 制定排程
+parent_req: REQ-000
+zentao_module_id: null
+page_url: /biopark-poultry/schedule/plan-schedule/make-plan
+summary: 以日为维度制定月度宰杀排程，填写宰杀信息后引用分段养殖模版自动带出补栏/孵化/饲料需求；支持月内逐日保存并以月度形式提交审核。
+in_scope:
+- 月度看板（日期/状态/宰杀线/宰杀量/栋舍/节假日提醒）
+- 新增/编辑/删除（删除以宰杀线维度）
+- 暂存/提交月度审核
+- 排程编号自动生成 JH-YYYYMMDD-XX
+- 栋舍智能分配（双策略配置 / 智能推荐 / 栋舍排程明细；可选手动选栋）
+- 栋舍分配冲突规则（前后计划、同日多宰杀线；在智能分配弹窗验证）
+- 饲料日需求量后台生成（查看/审核页展示）
+- 展示当月目标宰杀量及已分配量（只读）
+- 宰杀量默认15万只（可修改）
+out_scope:
+- 已下推业务计划工单的跨系统删除联动
+- 节假日自动改期（仅提醒，人工决策）
+- 已审核排程变更及跨系统工单删除（线下流程，系统内不实现、不测）
+business_rules:
+- 状态：暂存/待审核/已下推/驳回
+- 暂存/驳回：可编辑、删除；待审核/已下推：可查看
+- 排程编号：JH+日期(YYYYMMDD)+当日流水(01~99)，按宰杀线保存时生成，不可修改
+- 同一日期可多条宰杀线；1宰杀计划→1补栏→1孵化(到栋舍)→多饲料需求
+- 栋舍分配：冲突规则不变（当前补栏日>上一计划1段结束日 且 本计划1段结束日<下一计划1段补栏日）；验证入口为智能分配弹窗
+- 栋舍分配策略：栋舍顺序优先（默认）/ 最小空闲优先；策略配置弹窗保存默认方案
+- 养殖栋舍：待排/暂存/驳回可编辑；待审核/已下推只读；须先选品种并生成补栏日期
+- 智能推荐得分：见栋舍分配最小缓冲与推荐得分逻辑说明.docx
+- 补栏日期=宰杀日期-批次养殖总天数；孵化日期=补栏日期-孵化周期
+- 孵化周期：固定鸡21天/鸭28天（已确认，非读取孵化系统配置）
+- 补栏量=宰杀量/成活率；上孵数量=补栏量/孵化率/健雏率（精确到只）
+- 提交审批后锁定，驳回后可编辑
+- PRD「已审核调整需至少提前2个月走审批并删除已下推工单」为线下流程，系统内不实现
+- 补栏当天为0日龄
+- 制定原则：前后计划不冲突，并兼顾高效实现养殖转运分配
+calendar_ui_rules:
+- 单据状态枚举：暂存/待审核/已下推/驳回（与列表一致）
+- 「待排」：该日期尚无宰杀线排程记录时的日历空位 UI 标签，非数据库单据状态
+- 有暂存/待审核/已下推/驳回记录时，看板显示对应单据状态
+interface_failure_handling:
+- 引用/同步商品禽养殖数据失败时阻断保存或提交，提示错误
+- 不允许静默使用空值、过期缓存或默认值继续计算
+- 具体降级策略以开发为准，测试点标记「待定」
+roles:
+- 智控中心小组成员（制定）
+interfaces:
+- 页面 /biopark-poultry/schedule/plan-schedule/make-plan
+- 分段养殖模版
+- 目标制定
+- 商品禽养殖系统
+- 排程审批（提交入口）
+risks:
+- 日期/饲料计算公式复杂，边界精度（到只）易错
+- 栋舍自动分配与多宰杀线同日冲突
+clarifications:
+- id: Q-003
+  question: 已审核排程「提前2个月调整+删除已下推工单」如何操作？
+  conclusion: 线下处理，不在系统测试范围
+  date: '2026-07-10'
+- id: Q-006
+  question: 商品禽养殖接口异常时的降级策略？
+  conclusion: 失败时按测试建议处理，测试点中标记（待定）
+  date: '2026-07-10'
+- id: Q-007
+  question: 孵化周期读配置还是固定鸡21/鸭28天？
+  conclusion: 孵化周期固定鸡21/鸭28天
+  date: '2026-07-10'
+- id: Q-008
+  question: 月度看板「待排」与列表状态映射？
+  conclusion: 该日期还没有任何宰杀线排程记录，只是日历上的「空位/未排产」展示，不是数据库里的单据状态
+  date: '2026-07-10'
+open_questions:
+- id: Q-SD-001
+  question: 栋舍排程明细「共 N 栋」与明细表空态口径？
+  conclusion: 明细表格当月无数据时显示「共 0 栋」；甘特/热力跨月仍有数据属预期；表格有数据时 N 与行数一致
+  date: '2026-07-31'
+- id: Q-SD-002
+  question: 智能推荐是否存在「中间插入优先」第三策略？
+  conclusion: 终稿仅栋舍顺序优先与最小空闲优先；探索期第三策略为过期界面，不纳入测试
+  date: '2026-07-31'
+test_scope_suggestion:
+- P1：新增排程暂存/提交及编号生成
+- P1：引用模版后补栏/孵化/饲料字段自动计算
+- P1：栋舍自动分配与不冲突规则
+- P2：月度看板日历切换与状态控制（含「待排」空位展示）
+- P2：饲料日需求量生成与展示
+- P3：节假日提醒展示
+- 待定：商品禽接口异常容错
+prototype_verification:
+  query_fields:
+  - 计划月份
+  - 计划状态
+  - 宰杀线
+  table_columns:
+  - 序号
+  - 宰杀日期
+  - 排程编号
+  - 宰杀线
+  - 宰杀量(万只)
+  - 宰杀只重(kg)
+  - 状态
+  - 养殖栋舍
+  - 上苗日期
+  - 养殖品种
+  - 上苗数量(万只)
+  - 苗重(g)
+  - 栋舍1段
+  - 栋舍2段
+  - 栋舍3段
+  - 上孵日期
+  - 上孵蛋(万枚)
+  - 审核人员
+  - 驳回原因
+  - 审核时间
+  - 创建人员
+  - 创建时间
+  - 更新人员
+  - 更新时间
+  - 操作
+  stat_cards:
+  - 总计划数
+  - 暂存
+  - 待审核
+  - 已下推
+  - 驳回
+  buttons:
+  - 查询
+  - 重置
+  - 制定排程
+  - 查看
+  - 编辑
+  - 删除
+  create_form_fields:
+  - 宰杀线
+  - 宰杀量(万只)
+  - 出栏体重(kg)
+  - 宰杀日期
+  - 养殖品种
+  - 苗重(g)
+  - 成活率(%)
+  - 补栏量(万羽)
+  - 补栏日期
+  - 养殖栋舍
+  - 上孵日期
+  - 孵化率(%)
+  - 健雏率(%)
+  - 上孵数量(万枚)
+  - 养殖天数
+  - 空栏天数
+  - 体重(kg)
+  - 料比
+  - 日龄采食计划
+  create_buttons:
+  - 返回列表
+  - 提交月度审核
+  - 新增宰杀线排程
+  - 保存当日计划
+  - 栋舍分配策略配置
+  - 栋舍排程明细
+  - 智能推荐
+  create_url: /biopark-poultry/schedule/plan-schedule/make-plan/create/add
+  page_block_specs:
+  - scope: 智能分配弹窗
+    entry: 日计划编辑-养殖栋舍/智能推荐
+    blocks:
+    - id: A
+      name: 当前计划周期
+      fields:
+      - 品种
+      - 三段标签
+      - 转进日期
+      - 转运日期
+      - 养殖天数
+      - 消杀天数
+      - 消杀释放日
+      - 实时校验
+      data_source: 当日计划 + 分段养殖模版
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: B
+      name: 全周期校验
+      fields:
+      - 预览栋号
+      - 可用于当前计划
+      - 段数通过
+      - 选择X栋按钮
+      data_source: 选中栋三段校验
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: C
+      name: 分段校验明细
+      fields:
+      - 校验说明
+      - 段状态
+      - 日期区间
+      - 通过失败文案
+      data_source: 占用引擎 + 当日计划
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: D
+      name: 推荐策略
+      fields:
+      - 当前策略名
+      - 策略说明
+      - 单选切换
+      - 排序依据
+      - 适用目标
+      data_source: 策略配置 + docx
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: E
+      name: 统计摘要
+      fields:
+      - 最优推荐
+      - 全周期可分配
+      - 存在冲突
+      data_source: 候选列表聚合
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: F
+      name: 候选栋舍列表
+      fields:
+      - 栋号
+      - 标签
+      - 匹配度分数
+      - 说明
+      - 排序
+      - 冲突段位
+      data_source: docx得分 + 冲突引擎
+      coverage:
+      - l1
+      - l2
+      - l3
+  - scope: 栋舍分配策略配置弹窗
+    entry: 日计划编辑-栋舍分配策略配置
+    blocks:
+    - id: H
+      name: 标题栏
+      fields:
+      - 标题
+      - 关闭
+      data_source: UI
+      coverage:
+      - l1
+    - id: I
+      name: 说明
+      fields:
+      - 默认策略作用范围文案
+      data_source: 产品文案
+      coverage:
+      - l1
+      - l2
+    - id: J1
+      name: 栋舍顺序优先
+      fields:
+      - 名称
+      - 说明
+      data_source: docx/需求变动
+      coverage:
+      - l1
+      - l2
+    - id: J2
+      name: 最小空闲优先
+      fields:
+      - 名称
+      - 说明
+      data_source: docx/需求变动
+      coverage:
+      - l1
+      - l2
+    - id: K
+      name: 底部操作
+      fields:
+      - 取消
+      - 保存默认方案
+      - 保存反馈
+      data_source: 持久化 + 跨弹窗联动
+      coverage:
+      - l1
+      - l2
+      - l3
+  - scope: 栋舍排程视图弹窗
+    entry: 日计划编辑-栋舍排程明细
+    blocks:
+    - id: L
+      name: 标题栏
+      fields:
+      - 标题栋舍排程视图
+      - 关闭
+      data_source: UI
+      coverage:
+      - l1
+    - id: L2
+      name: 筛选
+      fields:
+      - 年
+      - 月
+      - 共N栋
+      data_source: 计划月份 + 栋舍档案
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: O
+      name: 图例
+      fields:
+      - 1段
+      - 2段
+      - 3段
+      - 消杀
+      data_source: 段次类型色
+      coverage:
+      - l1
+      - l2
+    - id: N1
+      name: 明细表格Tab
+      fields:
+      - 栋舍
+      - 状态
+      - 各段日期列
+      data_source: 排程占用明细
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: N2
+      name: 甘特视图Tab
+      fields:
+      - 栋舍段行
+      - 时间条
+      - 今日线
+      - 缩放
+      data_source: 转进至释放区间
+      coverage:
+      - l1
+      - l2
+      - l3
+    - id: N3
+      name: 月度热力日历Tab
+      fields:
+      - 月切换
+      - 日格子
+      - tooltip
+      data_source: 日级占用
+      coverage:
+      - l1
+      - l2
+      - l3
+trace:
+  story: null
+  project: 产业链生产排程系统
+  version: 4
+  status: draft
+  req: REQ-004
+  tp: null
+solution_approach:
+  current: 模版方案（引用分段养殖模版，自动带出补栏/孵化/饲料相关数据）
+  deprecated: 日计划编辑旧版（已废弃，不纳入测试范围）
+input_fields:
+- 宰杀线
+- 宰杀量(万只，默认15万可改)
+- 出栏体重(kg)
+- 苗重(g)
+- 养殖品种
+- 孵化率(%)
+- 健雏率(%)
+auto_generated:
+  from_template:
+  - 补栏量
+  - 养殖天数
+  - 3段养殖标准数据
+  calculated:
+  - 补栏日期
+  - 养殖栋舍
+  - 上孵日期
+  - 饲料日需求
+barn_allocation:
+  mode: 双策略智能推荐
+  strategies:
+  - id: barn_order
+    name: 栋舍顺序优先
+    default: true
+    score: max(0, 100 - d×5), d=候选栋号-b_min
+  - id: min_gap
+    name: 最小空闲优先
+    score: max(0, 100 - MinGap×5)×80% + SeqScore×20%
+  entries:
+  - 栋舍分配策略配置
+  - 栋舍排程明细
+  - 智能推荐
+  editable_states:
+  - 待排
+  - 暂存
+  - 驳回
+  readonly_states:
+  - 待审核
+  - 已下推
+  precondition: 须先选择养殖品种并生成补栏日期
+  conflict_rules: 当前补栏日>上一计划1段结束日 且 本计划1段结束日<下一计划1段补栏日；同日多宰杀线栋舍占用不冲突
+  verification_entry: 智能分配弹窗
+  score_doc: 01_requirements/栋舍分配最小缓冲与推荐得分逻辑说明.docx
+  follow_up: 可在智能推荐中手动选择栋舍；保存默认策略作用于后续新增宰杀线
+design_artifacts:
+  state_transitions:
+  - name: 排程单据状态流转
+    states:
+    - 暂存
+    - 待审核
+    - 已下推
+    - 驳回
+    legal:
+    - from: 暂存
+      to: 待审核
+      trigger: 提交月度审核
+    - from: 待审核
+      to: 已下推
+      trigger: 审批通过（排程审批模块，REQ-005）
+    - from: 待审核
+      to: 驳回
+      trigger: 审批驳回（排程审批模块，REQ-005）
+    - from: 驳回
+      to: 暂存
+      trigger: 编辑后再次保存
+    - from: 驳回
+      to: 待审核
+      trigger: 提交月度审核
+    illegal:
+    - from: 已下推
+      action: 编辑
+      expected: 列表/详情不可进入编辑或保存被阻断
+    - from: 已下推
+      action: 删除
+      expected: 删除不可用或操作被阻断
+    - from: 待审核
+      action: 编辑
+      expected: 仅可查看，不可修改字段
+    - from: 待审核
+      action: 删除
+      expected: 删除不可用或操作被阻断
+  - name: 月度看板日历展示
+    states:
+    - 待排
+    - 暂存
+    - 待审核
+    - 已下推
+    - 驳回
+    notes: 「待排」= 该日无任何宰杀线排程记录时的日历空位标签（Q-008），非单据状态
+    legal:
+    - condition: 该日无排程记录
+      display: 待排
+    - condition: 该日有排程记录
+      display: 对应单据状态
+  decision_tables:
+  - name: 列表查询条件组合
+    conditions:
+    - 计划月份
+    - 计划状态
+    - 宰杀线
+    rules:
+    - when: 仅月份有值
+      then: 列表仅展示所选月份排程
+    - when: 仅状态有值
+      then: 列表仅展示所选状态排程
+    - when: 仅宰杀线有值
+      then: 列表仅展示所选宰杀线排程
+    - when: 多条件均有值
+      then: 列表按 AND 组合过滤
+    - when: 全部为空后点查询
+      then: 展示默认范围全部记录（或当月，以实现为准）
+  - name: 列表行操作按钮显隐
+    conditions:
+    - 单据状态
+    rules:
+    - when: 暂存
+      then: 查看、编辑、删除均可用
+    - when: 驳回
+      then: 查看、编辑、删除均可用
+    - when: 待审核
+      then: 仅查看可用
+    - when: 已下推
+      then: 仅查看可用
+  - name: 栋舍自动分配条件
+    conditions:
+    - 上一计划1段结束日
+    - 当前补栏日
+    - 本计划1段结束日
+    - 下一计划1段补栏日
+    rules:
+    - when: 当前补栏日 > 上一计划1段结束日 且 本计划1段结束日 < 下一计划1段补栏日
+      then: 按栋舍顺序自动分配成功
+    - when: 当前补栏日 <= 上一计划1段结束日
+      then: 与上一计划冲突，分配失败或提示调整
+    - when: 本计划1段结束日 >= 下一计划1段补栏日
+      then: 与下一计划冲突，分配失败或提示调整
+  - name: 引用模版后字段带出
+    conditions:
+    - 是否引用分段养殖模版
+    - 品种
+    - 补栏月份
+    rules:
+    - when: 已引用且品种/月份匹配
+      then: 补栏量、养殖天数、3段标准、日龄采食计划等自动带出
+    - when: 未引用模版
+      then: 保存/提交应被阻断或提示必选模版
+    - when: 引用后修改品种或补栏月份
+      then: 模版关联字段重新匹配或清空后重选
+  bva_fields:
+  - field: 排程编号流水号
+    type: integer
+    format: JH-YYYYMMDD-XX
+    min: 1
+    max: 99
+    boundaries:
+    - 0
+    - 1
+    - 99
+    - 100
+    notes: 按宰杀线保存当日计划时生成，同一日期多条宰杀线递增
+  - field: 宰杀量(万只)
+    type: decimal
+    default: 15
+    boundaries:
+    - 0
+    - 0.01
+    - 15
+    - 极大值
+    notes: 默认15万可修改；0或负值应校验失败
+  - field: 成活率(%)
+    type: percent
+    boundaries:
+    - 0
+    - 0.01
+    - 100
+    - 100.01
+    notes: 补栏量=宰杀量/成活率
+  - field: 孵化率(%)
+    type: percent
+    boundaries:
+    - 0
+    - 0.01
+    - 100
+    - 100.01
+    notes: 参与上孵数量计算
+  - field: 健雏率(%)
+    type: percent
+    boundaries:
+    - 0
+    - 0.01
+    - 100
+    - 100.01
+    notes: 上孵数量=补栏量/孵化率/健雏率，精确到只
+  - field: 上孵数量/补栏量精度
+    type: integer_precision
+    unit: 只
+    boundaries:
+    - 小数第3位四舍五入
+    - 整数只
+    notes: PRD 要求精确到只
+  - field: 孵化周期(天)
+    type: enum
+    values:
+      鸡: 21
+      鸭: 28
+    notes: 固定值，非读取孵化系统配置（Q-007）
+  - field: 补栏日期
+    type: date_formula
+    formula: 宰杀日期 - 批次养殖总天数
+    notes: 补栏当天为0日龄
+  - field: 上孵日期
+    type: date_formula
+    formula: 补栏日期 - 孵化周期(鸡21/鸭28)
+  combinatorial_blocks:
+  - name: 列表查询
+    pict_eligible: true
+    parameters:
+      计划月份:
+      - 有数据月
+      - 无匹配月
+      - 空
+      计划状态:
+      - 暂存
+      - 待审核
+      - 已下推
+      - 驳回
+      - 空
+      宰杀线:
+      - 线A
+      - 线B
+      - 空
+    constraints:
+    - IF [计划月份] = "无匹配月" THEN [结果] = "空列表"
+  - name: 制定页保存当日计划
+    pict_eligible: true
+    parameters:
+      养殖品种:
+      - 鸡
+      - 鸭
+      分段养殖模版:
+      - 已引用
+      - 未引用
+      同日宰杀线数:
+      - 1条
+      - 2条
+      必填完整性:
+      - 完整
+      - 缺必填
+      成活率:
+      - 有效
+      - 边界0
+      - 无效大于100
+    constraints:
+    - IF [分段养殖模版] = "未引用" THEN [保存结果] <> "成功"
+    - IF [必填完整性] = "缺必填" THEN [保存结果] <> "成功"
+    - IF [成活率] IN ("边界0", "无效大于100") THEN [保存结果] <> "成功"
+    - IF [同日宰杀线数] = "2条" THEN [排程编号流水] = "01与02递增"
+  - name: 栋舍分配与前后计划
+    pict_eligible: true
+    parameters:
+      与上一计划关系:
+      - 不冲突
+      - 补栏日重叠
+      与下一计划关系:
+      - 不冲突
+      - 1段结束重叠
+      同日多宰杀线:
+      - 否
+      - 是
+    constraints:
+    - IF [与上一计划关系] = "补栏日重叠" THEN [栋舍分配] <> "成功"
+    - IF [与下一计划关系] = "1段结束重叠" THEN [栋舍分配] <> "成功"
+  - name: 月度看板状态展示
+    pict_eligible: false
+    parameters:
+      该日是否有排程:
+      - 无
+      - 有
+      单据状态:
+      - 暂存
+      - 待审核
+      - 已下推
+      - 驳回
+    notes: 仅2参数交互，已由 coverage 模板覆盖
+permission_scope:
+  owner: REQ-000
+  matrix_ref: REQ-000.module_permission_matrix.REQ-004
+  testpoints_ref: 03_testpoints/TP_REQ-000.yaml
+  actions:
+  - 查询
+  - 创建
+  - 删除
+  - 更新
+  - 提交
+requirements_delta:
+- date: 2026-07-31
+  source: 01_requirements/需求变动.md
+  note: 栋舍智能分配（策略配置/智能推荐/排程明细）；改写 TP/TC 59/60/61/62/93/94；新增 165~209
+- date: 2026-07-23T09:30
+  source: 01_requirements/需求变动.md
+  note: 权限测点统一见 REQ-000（TP-000-17 起）
+- date: 2026-08-13
+  source: null # original ZenTao evidence deleted by cleanup
+  summary: 补齐禅道用例48784~48791、48864~48865、49111~49112、49114；同步禅道 type/auto，不做本地自动化适配性评估
+  evidence: null # original page evidence deleted by cleanup
+- date: '2026-08-13'
+  source: null # original ZenTao evidence deleted by cleanup
+  summary: 补齐禅道用例48784~48791、48864~48865、49111~49112、49114；同步禅道 type/auto，不做本地自动化适配性评估
+  evidence: null # original page evidence deleted by cleanup
